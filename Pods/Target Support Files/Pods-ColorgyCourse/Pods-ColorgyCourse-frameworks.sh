@@ -84,8 +84,16 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-ColorgyCourse/Bolts.framework"
+  install_framework "Pods-ColorgyCourse/FBSDKCoreKit.framework"
+  install_framework "Pods-ColorgyCourse/FBSDKLoginKit.framework"
+  install_framework "Pods-ColorgyCourse/FBSDKShareKit.framework"
   install_framework "Pods-ColorgyCourse/Mixpanel.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-ColorgyCourse/Bolts.framework"
+  install_framework "Pods-ColorgyCourse/FBSDKCoreKit.framework"
+  install_framework "Pods-ColorgyCourse/FBSDKLoginKit.framework"
+  install_framework "Pods-ColorgyCourse/FBSDKShareKit.framework"
   install_framework "Pods-ColorgyCourse/Mixpanel.framework"
 fi

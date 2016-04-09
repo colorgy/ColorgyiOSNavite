@@ -7,6 +7,9 @@ target 'ColorgyCourse' do
   pod "Fabric"
   pod 'Crashlytics'
   pod 'Mixpanel'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit' 
 end
 
 target 'ColorgyCourseTests' do
