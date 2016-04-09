@@ -121,10 +121,14 @@ final public class PeriodRawData: NSObject {
 	/// - parameters:
 	///		- count: nil for default, or your required period count
 	/// - returns: an array of PeriodRawData
-	public class func generateFakePeiordRawData(count: Int) -> [PeriodRawData] {
+	public class func generateFakePeiordRawData(count: Int?) -> [PeriodRawData] {
+		
+		// check required count
+		let count = count ?? 16
 		
 		// initialize cache
 		var rawData = [PeriodRawData]()
+
 		// loop it
 		for index in 0..<count {
 			if let data = PeriodRawData(code: "\(index)", id: index, order: index, type: "Fake Period data", startTime: nil, endTime: nil) {

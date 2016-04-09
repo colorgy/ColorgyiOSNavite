@@ -299,7 +299,7 @@ final public class ColorgyAPI : NSObject {
 	/// Get school/orgazination period data
 	///
 	/// You can get school period data
-	public func getSchoolPeriodData(organization: String, success: ((periodData: [PeriodRawData]?) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func getSchoolPeriodData(organization: String, success: ((periodData: [PeriodRawData]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -337,7 +337,7 @@ final public class ColorgyAPI : NSObject {
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
-					let rawData = PeriodRawData.generatePeiordRawData(json)
+					let rawData = PeriodRawData.generatePeiordRawData(json) ?? PeriodRawData.generateFakePeiordRawData(nil)
 					self.mainBlock({ 
 						success?(periodData: rawData)
 					})

@@ -65,7 +65,12 @@ class LoginViewController: UIViewController {
 extension LoginViewController : LoginViewModelDelegate {
 	
 	func loginViewModel(failToLoginToFacebook error: ColorgyFacebookLoginError) {
-		
+		switch error {
+		case .CancelLoginFacebook:
+			print(error)
+		case .FailLoginToFacebook:
+			print(error)
+		}
 	}
 	
 	func loginViewModel(failToLoginToColorgy error: ColorgyLoginError, afError: AFError?) {

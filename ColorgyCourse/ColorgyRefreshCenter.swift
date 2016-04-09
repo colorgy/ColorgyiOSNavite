@@ -33,8 +33,9 @@ public enum RefreshingError: ErrorType {
 /// **ColorgyRefreshCenter**
 /// 
 /// This is a independent refresh center. This center works independently. Will not be affected by other api calls.
+///
 /// **Usage:**
-/// 1. Start a background worker while app launch
+/// 1. Initialize while app launch
 /// 2. start a background worker while app enter foreground
 /// 3. Stop background worker while app enter background
 final public class ColorgyRefreshCenter {

@@ -53,9 +53,7 @@ final public class LoginViewModel {
 	
 	/// Call this to perform login using email
 	public func emailLogin() {
-		colorgyAPI.getSchoolPeriodData("Ntust", success: { 
-			
-			}, failure: nil)
+
 	}
 	
 	public func emailRegister() {

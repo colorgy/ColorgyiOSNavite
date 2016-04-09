@@ -15,7 +15,6 @@ import SwiftyJSON
 public enum ColorgyFacebookLoginError: ErrorType {
 	case CancelLoginFacebook
 	case FailLoginToFacebook
-	case FailToGenerateToken
 }
 
 public enum ColorgyLoginError: ErrorType {
