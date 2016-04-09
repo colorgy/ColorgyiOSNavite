@@ -3,3 +3,4 @@ github "rs/SDWebImage"
 github "suzuki-0000/SKPhotoBrowser"
 github "SwiftyJSON/SwiftyJSON"
 github "larcus94/ImagePickerSheetController" ~> 0.9.1
+github "realm/realm-cocoa"

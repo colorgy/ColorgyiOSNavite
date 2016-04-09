@@ -19,12 +19,12 @@ PODS:
   - Mixpanel/Mixpanel (2.9.6)
 
 DEPENDENCIES:
-  - Crashlytics
-  - Fabric
-  - FBSDKCoreKit
-  - FBSDKLoginKit
-  - FBSDKShareKit
-  - Mixpanel
+  - Crashlytics (~> 3.7.0)
+  - Fabric (~> 1.6.7)
+  - FBSDKCoreKit (~> 4.10.1)
+  - FBSDKLoginKit (~> 4.10.1)
+  - FBSDKShareKit (~> 4.10.1)
+  - Mixpanel (~> 2.9.6)
 
 SPEC CHECKSUMS:
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4

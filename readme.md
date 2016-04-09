@@ -1,0 +1,21 @@
+# Colorgy iOS App
+哦。
+
+## Dependencies
+### Cocoapods (炸你專案)
+1. FBSDKCoreKit
+2. FBSDKLoginKit
+3. FBSDKShareKit
+4. [Fabric](https://get.fabric.io/)
+5. [Crashlytics](https://try.crashlytics.com/)
+6. Mixpanel
+
+### Carthage (讚讚讚)
+1. [AFNetworking](https://github.com/AFNetworking/AFNetworking)
+2. [SDWebImage](https://github.com/rs/SDWebImage)
+3. [SKPhotoBrowser](https://github.com/suzuki-0000/SKPhotoBrowser)
+4. [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+5. [ImagePickerSheetController](https://github.com/larcus94/ImagePickerSheetController)
+6. [Realm]()
+
+**感謝❤️以上作者**

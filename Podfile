@@ -4,12 +4,12 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'ColorgyCourse' do
-  pod "Fabric"
-  pod 'Crashlytics'
-  pod 'Mixpanel'
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKShareKit' 
+  pod "Fabric", '~> 1.6.7'
+  pod 'Crashlytics', '~> 3.7.0'
+  pod 'Mixpanel', '~> 2.9.6'
+  pod 'FBSDKCoreKit', '~> 4.10.1'
+  pod 'FBSDKLoginKit', '~> 4.10.1'
+  pod 'FBSDKShareKit', '~> 4.10.1'
 end
 
 target 'ColorgyCourseTests' do
