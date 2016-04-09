@@ -8,12 +8,19 @@
 
 import UIKit
 import SwiftyJSON
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
+		
+		let loginButton = FBSDKLoginButton()
+		loginButton.center = self.view.center
+		loginButton.readPermissions = ["email"]
+		self.view.addSubview(loginButton)
 	}
 
 	override func didReceiveMemoryWarning() {

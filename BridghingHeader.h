@@ -9,5 +9,6 @@
 #ifndef BridghingHeader_h
 #define BridghingHeader_h
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 #endif /* BridghingHeader_h */
