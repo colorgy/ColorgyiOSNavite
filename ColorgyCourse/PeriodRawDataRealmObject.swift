@@ -27,8 +27,10 @@ final public class PeriodRawDataRealmObject: Object {
 	public dynamic var endTime = ""
 	
 	// MARK: - Init
-	/// Use PeriodRawData to init a PeriodRawDataRealmObject
-	public init(data: PeriodRawData) {
+	/// Use PeriodRawData to get a PeriodRawDataRealmObject
+	public convenience init(data: PeriodRawData) {
+		
+		self.init()
 		
 		self.code = data.code
 		self.id = data.id
@@ -36,12 +38,6 @@ final public class PeriodRawDataRealmObject: Object {
 		self.type = data.type
 		self.startTime = data.startTime
 		self.endTime = data.endTime
-		
-		super.init()
-	}
-	
-	required public init() {
-		fatalError("init() has not been implemented")
 	}
 	
 	// MARK: - Generator

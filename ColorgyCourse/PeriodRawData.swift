@@ -95,7 +95,7 @@ final public class PeriodRawData: NSObject {
 		
 		guard let time = time else { return (nil, nil) }
 		
-		let timeArray = time.componentsSeparatedByString("_")
+		let timeArray = time.componentsSeparatedByString("-")
 		
 		return (timeArray.first, timeArray.last)
 	}

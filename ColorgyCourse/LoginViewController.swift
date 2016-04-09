@@ -87,8 +87,10 @@ extension LoginViewController : LoginViewModelDelegate {
 		// 2. if not, direct to select school view
 		if userHasPossibleOrganization {
 			// main view
+			print(userHasPossibleOrganization)
 		} else {
 			// direct to select school view
+			print(userHasPossibleOrganization)
 		}
 	}
 }

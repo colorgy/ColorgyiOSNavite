@@ -65,7 +65,8 @@ final public class LoginViewModel {
 	
 	/// Call this to perform login using email
 	public func emailLogin() {
-
+		let ya = PeriodRawDataRealmObject.getAllStoredPeriodRawDataRealmObject()
+		print(ya)
 	}
 	
 	public func emailRegister() {
@@ -82,12 +83,5 @@ final public class LoginViewModel {
 	init(delegate: LoginViewModelDelegate?) {
 		self.delegate = delegate
 		self.colorgyAPI = ColorgyAPI()
-		self.colorgyAPI.delegate = self
-	}
-}
-
-extension LoginViewModel : ColorgyAPIDelegate {
-	public func colorgyAPI(operationCountUpdated operationCount: Int) {
-		print(operationCount)
 	}
 }
