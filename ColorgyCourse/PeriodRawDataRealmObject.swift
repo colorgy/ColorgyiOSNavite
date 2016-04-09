@@ -93,6 +93,25 @@ final public class PeriodRawDataRealmObject: Object {
 		}
 	}
 	
+	/// You can store PeriodRawDataRealmObject into Realm
+	public class func storePeriodRawDataRealmObject(data: [PeriodRawDataRealmObject]) -> RealmStoringState {
+		do {
+			// Get the default Realm
+			let realm = try Realm()
+			// Start writing
+			realm.beginWrite()
+			// add the array to Realm
+			realm.add(data)
+			// Try to save to Realm
+			try realm.commitWrite()
+			// If success, return true
+			return RealmStoringState.Success
+		} catch {
+			// Cannot get the default Realm
+			return RealmStoringState.Failure
+		}
+	}
+	
 	// MARK: - Delete
 	public class func deleteAllStoredPeriodRawDataRealmObject() -> RealmStoringState {
 		do {

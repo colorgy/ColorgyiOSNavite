@@ -134,4 +134,9 @@ final public class ColorgyUserInformation {
 		let ud = NSUserDefaults.standardUserDefaults()
 		return ud.objectForKey(APIMeResultKeys.userOrganization) as? String
 	}
+	
+	public var userPossibleOrganization: String? {
+		let ud = NSUserDefaults.standardUserDefaults()
+		return ud.objectForKey(APIMeResultKeys.userPossibleOrganization) as? String
+	}
 }
