@@ -1,0 +1,19 @@
+PODS:
+  - Crashlytics (3.7.0):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.7)
+  - Mixpanel (2.9.6):
+    - Mixpanel/Mixpanel (= 2.9.6)
+  - Mixpanel/Mixpanel (2.9.6)
+
+DEPENDENCIES:
+  - Crashlytics
+  - Fabric
+  - Mixpanel
+
+SPEC CHECKSUMS:
+  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  Mixpanel: 048a9f2512ac1bb8bfdecf719da024873f50a9c2
+
+COCOAPODS: 0.39.0
