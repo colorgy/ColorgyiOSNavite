@@ -22,6 +22,7 @@ final public class LoginViewModel {
 	private let colorgyAPI: ColorgyAPI
 	
 	// MARK: - Methods
+	/// Call this to perform login using fb token
 	public func facebookLogin() {
 		ColorgyLogin.getFacebookAccessToken(success: { (token) in
 			// Success login from facebook,
@@ -38,12 +39,9 @@ final public class LoginViewModel {
 				// 2. if not, direct to select school view
 				
 				// test firing 100 req
-				for _ in 1...100 {
-					self.colorgyAPI.getSchoolCourseData(20000, year: 2015, term: 1, success: { (courses) in
-//						self.updateOperationCount()
-						}, process: nil, failure: nil)
+				for _ in 1...1 {
+					self.colorgyAPI.me(success: nil, failure: nil)
 				}
-//				self.updateOperationCount()
 				}, failure: { (error, afError) in
 					// fail to login to colorgy
 					self.delegate?.loginViewModel(failToLoginToColorgy: error, afError: afError)
@@ -53,12 +51,11 @@ final public class LoginViewModel {
 		})
 	}
 	
-	private func updateOperationCount() {
-		print(colorgyAPI.manager.operationQueue.operationCount)
-	}
-	
+	/// Call this to perform login using email
 	public func emailLogin() {
-		colorgyAPI.manager.operationQueue.operationCount
+		colorgyAPI.getSchoolPeriodData("Ntust", success: { 
+			
+			}, failure: nil)
 	}
 	
 	public func emailRegister() {

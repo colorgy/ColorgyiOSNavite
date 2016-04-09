@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
 	}
 	
 	@IBAction func emailLoginButtonClicked() {
-		
+		loginViewModel?.emailLogin()
 	}
 	
 	@IBAction func emailRegisterButtonClicked() {
@@ -40,6 +40,10 @@ class LoginViewController: UIViewController {
 		configureViewModel()
 		
 		navigationController?.navigationBarHidden = true
+	}
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
 	}
 	
 	// MARK: - Configure

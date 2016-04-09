@@ -47,6 +47,7 @@
 		635479F11CB8B02A00DE8CBC /* ColorgyLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E11CB8B02A00DE8CBC /* ColorgyLogin.swift */; };
 		635479F21CB8B02A00DE8CBC /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E21CB8B02A00DE8CBC /* AFError.swift */; };
 		635479F31CB8B02A00DE8CBC /* ColorgyLoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */; };
+		635479FB1CB8D17800DE8CBC /* PeriodRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479FA1CB8D17800DE8CBC /* PeriodRawData.swift */; };
 		A84AB692873E9E8DA6A72BC2 /* Pods_ColorgyCourse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576E6050CAE2354899BC93F6 /* Pods_ColorgyCourse.framework */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +130,7 @@
 		635479E11CB8B02A00DE8CBC /* ColorgyLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyLogin.swift; sourceTree = "<group>"; };
 		635479E21CB8B02A00DE8CBC /* AFError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFError.swift; sourceTree = "<group>"; };
 		635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyLoginResult.swift; sourceTree = "<group>"; };
+		635479FA1CB8D17800DE8CBC /* PeriodRawData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodRawData.swift; sourceTree = "<group>"; };
 		9F013244A3B8C8F64571951C /* Pods-ColorgyCourse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourse/Pods-ColorgyCourse.debug.xcconfig"; sourceTree = "<group>"; };
 		F16E987B487403193816ADE4 /* Pods-ColorgyCourse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourse.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourse/Pods-ColorgyCourse.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -216,6 +218,7 @@
 				6354798E1CB898C100DE8CBC /* Assets.xcassets */,
 				635479901CB898C100DE8CBC /* LaunchScreen.storyboard */,
 				635479D41CB8B02A00DE8CBC /* ColorgyUserInformation.swift */,
+				635479FA1CB8D17800DE8CBC /* PeriodRawData.swift */,
 				635479F61CB8B09100DE8CBC /* Extensions */,
 				635479F41CB8B04B00DE8CBC /* Colorgy API */,
 				635479931CB898C100DE8CBC /* Info.plist */,
@@ -537,6 +540,7 @@
 				635479EE1CB8B02A00DE8CBC /* StringExtension.swift in Sources */,
 				635479F31CB8B02A00DE8CBC /* ColorgyLoginResult.swift in Sources */,
 				635479ED1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift in Sources */,
+				635479FB1CB8D17800DE8CBC /* PeriodRawData.swift in Sources */,
 				635479F11CB8B02A00DE8CBC /* ColorgyLogin.swift in Sources */,
 				635479E91CB8B02A00DE8CBC /* ColorgyAPIUserResult.swift in Sources */,
 				635479F01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift in Sources */,
