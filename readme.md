@@ -16,6 +16,15 @@
 3. [SKPhotoBrowser](https://github.com/suzuki-0000/SKPhotoBrowser)
 4. [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 5. [ImagePickerSheetController](https://github.com/larcus94/ImagePickerSheetController)
-6. [Realm]()
+6. [Realm](https://realm.io)
 
 **感謝❤️以上作者**
+
+## Project 小解釋
+不解釋（誤
+### API & Refresh 機制的設計
+待補
+
+### MVVM 架構
+待補，反正應該比MVC好
+

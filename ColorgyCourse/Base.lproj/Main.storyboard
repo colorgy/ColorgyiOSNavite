@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w2D-G2-Odt">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -20,6 +23,123 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="100" y="639"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="Ip2-aH-Lj4">
+            <objects>
+                <viewController id="0TG-bl-5as" customClass="LoginViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bcW-9e-ODa"/>
+                        <viewControllerLayoutGuide type="bottom" id="cL3-lo-Oiu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vfx-jE-qCC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colorgyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Pn6-hF-NDe">
+                                <rect key="frame" x="253" y="140" width="94" height="107"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="6N4-dc-cI3"/>
+                                    <constraint firstAttribute="height" constant="107" id="tSh-eg-mdD"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Dp-KX-9ti" userLabel="MiddleLine">
+                                <rect key="frame" x="4" y="263" width="592" height="19"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="q7N-GZ-73x"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmN-dB-BlW">
+                                <rect key="frame" x="176" y="448" width="118" height="44"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.58823529409999997" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="gmV-7O-Dyc"/>
+                                    <constraint firstAttribute="width" constant="118" id="oiQ-mL-EwI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="信箱註冊">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIS-dT-RYQ">
+                                <rect key="frame" x="307" y="448" width="118" height="44"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.58823529409999997" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9Th-Wu-Mbc"/>
+                                    <constraint firstAttribute="width" constant="118" id="bhs-lc-dIS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="信箱登入">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如遇登入問題，重開即可～" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLQ-RL-Yb8">
+                                <rect key="frame" x="228" y="504" width="144" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fad-eA-lCh">
+                                <rect key="frame" x="176" y="388" width="249" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="249" id="L7u-Ko-wyw"/>
+                                    <constraint firstAttribute="height" constant="44" id="W0e-P9-KTo"/>
+                                </constraints>
+                                <state key="normal" image="facebookLogin"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Fad-eA-lCh" firstAttribute="centerX" secondItem="Pn6-hF-NDe" secondAttribute="centerX" constant="0.5" id="1Lf-7u-5DJ"/>
+                            <constraint firstAttribute="centerY" secondItem="6Dp-KX-9ti" secondAttribute="centerY" multiplier="1.1" constant="0.5" id="CaK-cB-BW4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Dp-KX-9ti" secondAttribute="trailing" constant="-16" id="KDS-WN-hPe"/>
+                            <constraint firstAttribute="centerX" secondItem="Pn6-hF-NDe" secondAttribute="centerX" id="KkY-un-OrZ"/>
+                            <constraint firstItem="QmN-dB-BlW" firstAttribute="leading" secondItem="Fad-eA-lCh" secondAttribute="leading" id="PpP-Af-OeH"/>
+                            <constraint firstItem="yLQ-RL-Yb8" firstAttribute="top" secondItem="QmN-dB-BlW" secondAttribute="bottom" constant="12" id="ST3-Xy-Rul"/>
+                            <constraint firstItem="Fad-eA-lCh" firstAttribute="centerY" secondItem="Vfx-jE-qCC" secondAttribute="centerY" multiplier="1.2" constant="50" id="TEA-du-jiQ"/>
+                            <constraint firstItem="DIS-dT-RYQ" firstAttribute="trailing" secondItem="Fad-eA-lCh" secondAttribute="trailing" id="XgK-aF-fAT"/>
+                            <constraint firstItem="yLQ-RL-Yb8" firstAttribute="centerX" secondItem="Fad-eA-lCh" secondAttribute="centerX" id="a8H-0N-ZQI"/>
+                            <constraint firstItem="6Dp-KX-9ti" firstAttribute="top" secondItem="Pn6-hF-NDe" secondAttribute="bottom" constant="16" id="aoh-jv-qQF"/>
+                            <constraint firstItem="DIS-dT-RYQ" firstAttribute="top" secondItem="Fad-eA-lCh" secondAttribute="bottom" constant="16" id="bBI-YW-2g3"/>
+                            <constraint firstItem="6Dp-KX-9ti" firstAttribute="leading" secondItem="Vfx-jE-qCC" secondAttribute="leadingMargin" constant="-16" id="cpi-Iz-41m"/>
+                            <constraint firstItem="QmN-dB-BlW" firstAttribute="top" secondItem="Fad-eA-lCh" secondAttribute="bottom" constant="16" id="flR-fl-lbc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gbD-Xa-GeW"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="emailLoginButton" destination="DIS-dT-RYQ" id="7In-tZ-i5Y"/>
+                        <outlet property="emailRegisterButton" destination="QmN-dB-BlW" id="z4o-Gr-vzv"/>
+                        <outlet property="fbLoginButton" destination="Fad-eA-lCh" id="hUf-qh-GvP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ap-Tt-hpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="510" y="-127"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Tf1-v9-rts">
+            <objects>
+                <navigationController storyboardIdentifier="Main Login View" automaticallyAdjustsScrollViewInsets="NO" id="w2D-G2-Odt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5QR-15-Yde">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0TG-bl-5as" kind="relationship" relationship="rootViewController" id="KB6-IP-r87"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LxE-nV-GAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-302" y="-127"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="colorgyLogo" width="94" height="107"/>
+        <image name="facebookLogin" width="251" height="46"/>
+    </resources>
 </document>
