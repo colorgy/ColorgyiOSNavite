@@ -14,6 +14,9 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var fbLoginButton: UIButton!
 	@IBOutlet weak var emailLoginButton: UIButton!
 	@IBOutlet weak var emailRegisterButton: UIButton!
+	
+	// MARK: - Parameters
+	var loginViewModel: LoginViewModel?
 
 	// MARK: - View Life Cycle
 	override func viewDidLoad() {
@@ -30,8 +33,16 @@ class LoginViewController: UIViewController {
 		emailRegisterButton.layer.cornerRadius = 4.0
 	}
 	
+	func setupViewModel() {
+		loginViewModel = LoginViewModel(delegate: self)
+	}
+	
 	// MARK: - Storyboard
 	struct Storyboard {
 		static let emailLoginSegue = "Email Login Segue"
 	}
+}
+
+extension LoginViewController : LoginViewModelDelegate {
+	
 }

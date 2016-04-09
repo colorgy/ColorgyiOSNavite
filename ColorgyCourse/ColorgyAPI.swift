@@ -45,9 +45,9 @@ public enum APIError: ErrorType {
 }
 
 /// **Colorgy API**
-/// 
+///
 /// All request to server starts here.
-/// 
+///
 /// You must initialize everytime you want to use it. You can cancel all operation separately, since you have separate manager.
 final public class ColorgyAPI : NSObject {
 	
@@ -135,11 +135,11 @@ final public class ColorgyAPI : NSObject {
 	/// - returns:
 	///   - result: ColorgyAPIMeResult?, you can store it.
 	///   - error: An error if you got one, then handle it.
-	public func me(success success: ((result: ColorgyAPIMeResult) -> Void)?, failure: ((error: APIMeError, AFError: AFError?) -> Void)?) {
+	public func me(success success: ((result: ColorgyAPIMeResult) -> Void)?, failure: ((error: APIMeError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				failure?(error: APIMeError.NetworkUnavailable, AFError: nil)
+				failure?(error: APIMeError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -147,7 +147,7 @@ final public class ColorgyAPI : NSObject {
 		qosBlock {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
-					failure?(error: APIMeError.APIUnavailable, AFError: nil)
+					failure?(error: APIMeError.APIUnavailable, afError: nil)
 				})
 				return
 			}
@@ -156,14 +156,14 @@ final public class ColorgyAPI : NSObject {
 			
 			guard let accesstoken = self.accessToken else {
 				self.mainBlock({
-					failure?(error: APIMeError.NoAccessToken, AFError: nil)
+					failure?(error: APIMeError.NoAccessToken, afError: nil)
 				})
 				return
 			}
 			let url = "https://colorgy.io:443/api/v1/me.json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.mainBlock({
-					failure?(error: APIMeError.InvalidURLString, AFError: nil)
+					failure?(error: APIMeError.InvalidURLString, afError: nil)
 				})
 				return
 			}
@@ -173,14 +173,14 @@ final public class ColorgyAPI : NSObject {
 				// will pass in a json, then generate a result
 				guard let response = response else {
 					self.mainBlock({
-						failure?(error: APIMeError.FailToParseResult, AFError: nil)
+						failure?(error: APIMeError.FailToParseResult, afError: nil)
 					})
 					return
 				}
 				let json = JSON(response)
 				guard let result = ColorgyAPIMeResult(json: json) else {
 					self.mainBlock({
-						failure?(error: APIMeError.FailToParseResult, AFError: nil)
+						failure?(error: APIMeError.FailToParseResult, afError: nil)
 					})
 					return
 				}
@@ -194,7 +194,7 @@ final public class ColorgyAPI : NSObject {
 					// then handle response
 					let aferror = AFError(operation: operation, error: error)
 					self.mainBlock({
-						failure?(error: APIMeError.APIConnectionFailure, AFError: aferror)
+						failure?(error: APIMeError.APIConnectionFailure, afError: aferror)
 					})
 			})
 		}
@@ -206,12 +206,12 @@ final public class ColorgyAPI : NSObject {
 	/// - parameters:
 	///   - count: Pass the count you want to download. nil~ for all course.
 	/// - returns: A parsed [CourseRawDataObject]? array. Might be nil or 0 element.
-	public func getSchoolCourseData(count: Int?, year: Int, term: Int, success: ((courses: [Course]) -> Void)?, process: (() -> Void)?, failure: ((error: APIError, AFError: AFError?) -> Void)?) {
+	public func getSchoolCourseData(count: Int?, year: Int, term: Int, success: ((courses: [Course]) -> Void)?, process: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
 				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, AFError: nil)
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
 				})
 			})
 			return
@@ -220,21 +220,21 @@ final public class ColorgyAPI : NSObject {
 		qosBlock {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
-					failure?(error: APIError.APIUnavailable, AFError: nil)
+					failure?(error: APIError.APIUnavailable, afError: nil)
 				})
 				return
 			}
 			
 			guard let accesstoken = self.accessToken else {
 				self.mainBlock({
-					failure?(error: APIError.NoAccessToken, AFError: nil)
+					failure?(error: APIError.NoAccessToken, afError: nil)
 				})
 				return
 			}
 			
 			guard let organization = ColorgyUserInformation.sharedInstance().userOrganization else {
 				self.mainBlock({
-					failure?(error: APIError.NoOrganization, AFError: nil)
+					failure?(error: APIError.NoOrganization, afError: nil)
 				})
 				return
 			}
@@ -244,7 +244,7 @@ final public class ColorgyAPI : NSObject {
 			
 			guard url.isValidURLString else {
 				self.mainBlock({
-					failure?(error: APIError.InvalidURLString, AFError: nil)
+					failure?(error: APIError.InvalidURLString, afError: nil)
 				})
 				return
 			}
@@ -260,13 +260,13 @@ final public class ColorgyAPI : NSObject {
 					return
 				} else {
 					self.mainBlock({
-						failure?(error: APIError.FailToParseResult, AFError: nil)
+						failure?(error: APIError.FailToParseResult, afError: nil)
 					})
 					return
 				}
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 					self.mainBlock({
-						failure?(error: APIError.APIConnectionFailure, AFError: nil)
+						failure?(error: APIError.APIConnectionFailure, afError: nil)
 					})
 					return
 			})
