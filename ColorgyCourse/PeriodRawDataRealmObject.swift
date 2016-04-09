@@ -9,8 +9,16 @@
 import Foundation
 import RealmSwift
 
+/// Specify the state of storing to Realm
+public enum RealmStoringState {
+	case Success
+	case Failure
+}
+
+/// PeriodRawData from Realm
 public class PeriodRawDataRealmObject: Object {
 	
+	// MARK: - Parameters
 	public dynamic var code = ""
 	public dynamic var id = 0
 	public dynamic var order = 0
@@ -18,18 +26,7 @@ public class PeriodRawDataRealmObject: Object {
 	public dynamic var startTime = ""
 	public dynamic var endTime = ""
 	
-	/// Help you to transform an array of PeriodRawData into PeriodRawDataRealmObject array
-	public class func transfromPeriodRawData(data: [PeriodRawData]) -> [PeriodRawDataRealmObject] {
-		
-		var dataObject = [PeriodRawDataRealmObject]()
-		
-		for _data in data {
-			dataObject.append(PeriodRawDataRealmObject(data: _data))
-		}
-		
-		return dataObject
-	}
-	
+	// MARK: - Init
 	/// Use PeriodRawData to init a PeriodRawDataRealmObject
 	public init(data: PeriodRawData) {
 		
@@ -46,4 +43,43 @@ public class PeriodRawDataRealmObject: Object {
 	required public init() {
 		fatalError("init() has not been implemented")
 	}
+	
+	// MARK: - Generator
+	/// Help you to transform an array of PeriodRawData into PeriodRawDataRealmObject array
+	public class func transfromPeriodRawData(data: [PeriodRawData]) -> [PeriodRawDataRealmObject] {
+		
+		var dataObject = [PeriodRawDataRealmObject]()
+		
+		for _data in data {
+			dataObject.append(PeriodRawDataRealmObject(data: _data))
+		}
+		
+		return dataObject
+	}
+	
+	// MARK: - Query
+	
+	// MARK: - Store
+	/// You can store PeriodRawData into Realm
+	public class func storePeriodRawData(data: [PeriodRawData]) -> RealmStoringState {
+		do {
+			// Get the default Realm
+			let realm = try Realm()
+			// Start writing
+			realm.beginWrite()
+			// transfrom data to periodRawDataRealmObject array
+			let periodRawDataRealmObject = PeriodRawDataRealmObject.transfromPeriodRawData(data)
+			// add the array to Realm
+			realm.add(periodRawDataRealmObject)
+			// Try to save to Realm
+			try realm.commitWrite()
+			// If success, return true
+			return RealmStoringState.Success
+		} catch {
+			// Cannot get the default Realm
+			return RealmStoringState.Failure
+		}
+	}
+	
+	// MARK: - Delete
 }

@@ -161,7 +161,7 @@ final public class PeriodRawData: NSObject {
 		var array = [PeriodRawData]()
 		
 		for data in dataObject {
-			array.append(PeriodRawData(dataObject: data)
+			array.append(PeriodRawData(dataObject: data))
 		}
 		
 		return array
