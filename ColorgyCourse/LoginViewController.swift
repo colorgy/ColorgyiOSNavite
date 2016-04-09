@@ -15,6 +15,19 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var emailLoginButton: UIButton!
 	@IBOutlet weak var emailRegisterButton: UIButton!
 	
+	// MARK: - Actions
+	@IBAction func fbLoginButtonClicked() {
+		loginViewModel?.facebookLogin()
+	}
+	
+	@IBAction func emailLoginButtonClicked() {
+		
+	}
+	
+	@IBAction func emailRegisterButtonClicked() {
+		
+	}
+	
 	// MARK: - Parameters
 	var loginViewModel: LoginViewModel?
 
@@ -23,6 +36,8 @@ class LoginViewController: UIViewController {
 		super.viewDidLoad()
 		
 		configureLoginButton()
+		
+		configureViewModel()
 		
 		navigationController?.navigationBarHidden = true
 	}
@@ -33,7 +48,7 @@ class LoginViewController: UIViewController {
 		emailRegisterButton.layer.cornerRadius = 4.0
 	}
 	
-	func setupViewModel() {
+	func configureViewModel() {
 		loginViewModel = LoginViewModel(delegate: self)
 	}
 	
@@ -45,4 +60,11 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController : LoginViewModelDelegate {
 	
+	func loginViewModel(failToLoginToFacebook error: ColorgyFacebookLoginError) {
+		
+	}
+	
+	func loginViewModel(failToLoginToColorgy error: ColorgyLoginError, afError: AFError?) {
+		
+	}
 }

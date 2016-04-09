@@ -39,12 +39,11 @@ final public class LoginViewModel {
 				
 				// test firing 100 req
 				for _ in 1...100 {
-					self.colorgyAPI.me(success: { (result) in
-						self.updateOperationCount()
-						}, failure: { (error, afError) in
-							self.updateOperationCount()
-					})
+					self.colorgyAPI.getSchoolCourseData(20000, year: 2015, term: 1, success: { (courses) in
+//						self.updateOperationCount()
+						}, process: nil, failure: nil)
 				}
+//				self.updateOperationCount()
 				}, failure: { (error, afError) in
 					// fail to login to colorgy
 					self.delegate?.loginViewModel(failToLoginToColorgy: error, afError: afError)
@@ -70,5 +69,12 @@ final public class LoginViewModel {
 	init(delegate: LoginViewModelDelegate?) {
 		self.delegate = delegate
 		self.colorgyAPI = ColorgyAPI()
+		self.colorgyAPI.delegate = self
+	}
+}
+
+extension LoginViewModel : ColorgyAPIDelegate {
+	public func colorgyAPI(operationCountUpdated operationCount: Int) {
+		print(operationCount)
 	}
 }

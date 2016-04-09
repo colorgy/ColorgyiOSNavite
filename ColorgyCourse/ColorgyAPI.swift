@@ -44,6 +44,10 @@ public enum APIError: ErrorType {
 	case NoOrganization
 }
 
+public protocol ColorgyAPIDelegate : class {
+	func colorgyAPI(operationCountUpdated operationCount: Int)
+}
+
 /// **Colorgy API**
 ///
 /// All request to server starts here.
@@ -54,6 +58,8 @@ final public class ColorgyAPI : NSObject {
 	// MARK: - Parameters
 	/// You can cancel all operation with this manager
 	public let manager: AFHTTPSessionManager
+	private var pointer: UnsafeMutablePointer<Void> = nil
+	public weak var delegate: ColorgyAPIDelegate?
 	
 	// MARK: - Init
 	/// initializer
@@ -62,6 +68,7 @@ final public class ColorgyAPI : NSObject {
 		manager.requestSerializer = AFJSONRequestSerializer()
 		manager.responseSerializer = AFJSONResponseSerializer()
 		super.init()
+		manager.operationQueue.addObserver(self, forKeyPath: "operationCount", options: [], context: pointer)
 	}
 	
 	/// public access token getter
@@ -126,6 +133,21 @@ final public class ColorgyAPI : NSObject {
 		
 		return networkStatus
 	}
+	
+	// MARK: - Operation Count Observer
+	public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+		if let keyPath = keyPath, let object = object {
+			if object.isEqual(self.manager.operationQueue) && keyPath == "operationCount" {
+				delegate?.colorgyAPI(operationCountUpdated: self.manager.operationQueue.operationCount)
+			} else {
+				super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+			}
+		}
+		else {
+			super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+		}
+	}
+	
 	
 	// MARK: - User API
 	
