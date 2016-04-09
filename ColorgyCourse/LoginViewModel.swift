@@ -14,11 +14,15 @@ import Foundation
 
 final public class LoginViewModel {
 	
+	// MARK: - Parameters
+	// MARK: Public
 	public weak var delegate: LoginViewModelDelegate?
+	// MARK: Private
+	private let colorgyAPI: ColorgyAPI
 	
 	// MARK: - Methods
 	public func facebookLogin() {
-		
+		ColorgyLogin.getFacebookAccessToken(<#T##success: ((token: String) -> Void)?##((token: String) -> Void)?##(token: String) -> Void#>, failure: <#T##((error: ColorgyFacebookLoginError) -> Void)?##((error: ColorgyFacebookLoginError) -> Void)?##(error: ColorgyFacebookLoginError) -> Void#>)
 	}
 	
 	public func emailLogin() {

@@ -27,21 +27,21 @@ public enum ColorgyLoginError: ErrorType {
 final public class ColorgyLogin {
 	
 	/// get Facebook Access Token
-	public class func getFacebookAccessToken(success: (token: String) -> Void, failure: (error: ColorgyFacebookLoginError) -> Void) {
+	public class func getFacebookAccessToken(success: ((token: String) -> Void)?, failure: ((error: ColorgyFacebookLoginError) -> Void)?) {
 		let manager = FBSDKLoginManager()
 		manager.logInWithReadPermissions(["email"], fromViewController: nil) { (result: FBSDKLoginManagerLoginResult!, error: NSError!) -> Void in
 			if error != nil {
 				print(error.localizedDescription)
-				failure(error: ColorgyFacebookLoginError.FailLoginToFacebook)
+				failure?(error: ColorgyFacebookLoginError.FailLoginToFacebook)
 			} else if result.isCancelled {
 				// canceled
-				failure(error: ColorgyFacebookLoginError.CancelLoginFacebook)
+				failure?(error: ColorgyFacebookLoginError.CancelLoginFacebook)
 			} else {
 				// ok
 				if let token = result?.token?.tokenString {
-					success(token: token)
+					success?(token: token)
 				} else {
-					failure(error: ColorgyFacebookLoginError.FailLoginToFacebook)
+					failure?(error: ColorgyFacebookLoginError.FailLoginToFacebook)
 				}
 			}
 		}

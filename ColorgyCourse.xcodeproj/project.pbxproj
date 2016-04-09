@@ -216,21 +216,8 @@
 				6354798E1CB898C100DE8CBC /* Assets.xcassets */,
 				635479901CB898C100DE8CBC /* LaunchScreen.storyboard */,
 				635479D41CB8B02A00DE8CBC /* ColorgyUserInformation.swift */,
-				635479D51CB8B02A00DE8CBC /* TimeStamp.swift */,
-				635479D61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift */,
-				635479D71CB8B02A00DE8CBC /* ColorgyAPI.swift */,
-				635479D81CB8B02A00DE8CBC /* ColorgyAPIMeResult.swift */,
-				635479D91CB8B02A00DE8CBC /* ColorgyAPIUserResult.swift */,
-				635479DA1CB8B02A00DE8CBC /* Course.swift */,
-				635479DB1CB8B02A00DE8CBC /* Period.swift */,
-				635479DC1CB8B02A00DE8CBC /* CourseRawDataObject.swift */,
-				635479DD1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift */,
-				635479DE1CB8B02A00DE8CBC /* StringExtension.swift */,
-				635479DF1CB8B02A00DE8CBC /* DateExtension.swift */,
-				635479E01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift */,
-				635479E11CB8B02A00DE8CBC /* ColorgyLogin.swift */,
-				635479E21CB8B02A00DE8CBC /* AFError.swift */,
-				635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */,
+				635479F61CB8B09100DE8CBC /* Extensions */,
+				635479F41CB8B04B00DE8CBC /* Colorgy API */,
 				635479931CB898C100DE8CBC /* Info.plist */,
 			);
 			path = ColorgyCourse;
@@ -252,6 +239,67 @@
 				635479A91CB898C100DE8CBC /* Info.plist */,
 			);
 			path = ColorgyCourseUITests;
+			sourceTree = "<group>";
+		};
+		635479F41CB8B04B00DE8CBC /* Colorgy API */ = {
+			isa = PBXGroup;
+			children = (
+				635479D51CB8B02A00DE8CBC /* TimeStamp.swift */,
+				635479F91CB8B0BD00DE8CBC /* AFNetworking Helper */,
+				635479F71CB8B0A400DE8CBC /* API */,
+				635479F51CB8B06F00DE8CBC /* Refresh Center */,
+				635479F81CB8B0B200DE8CBC /* Login */,
+			);
+			name = "Colorgy API";
+			sourceTree = "<group>";
+		};
+		635479F51CB8B06F00DE8CBC /* Refresh Center */ = {
+			isa = PBXGroup;
+			children = (
+				635479E01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift */,
+			);
+			name = "Refresh Center";
+			sourceTree = "<group>";
+		};
+		635479F61CB8B09100DE8CBC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				635479DD1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift */,
+				635479DE1CB8B02A00DE8CBC /* StringExtension.swift */,
+				635479DF1CB8B02A00DE8CBC /* DateExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		635479F71CB8B0A400DE8CBC /* API */ = {
+			isa = PBXGroup;
+			children = (
+				635479D71CB8B02A00DE8CBC /* ColorgyAPI.swift */,
+				635479D81CB8B02A00DE8CBC /* ColorgyAPIMeResult.swift */,
+				635479D91CB8B02A00DE8CBC /* ColorgyAPIUserResult.swift */,
+				635479DA1CB8B02A00DE8CBC /* Course.swift */,
+				635479DB1CB8B02A00DE8CBC /* Period.swift */,
+				635479DC1CB8B02A00DE8CBC /* CourseRawDataObject.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		635479F81CB8B0B200DE8CBC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				635479E11CB8B02A00DE8CBC /* ColorgyLogin.swift */,
+				635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		635479F91CB8B0BD00DE8CBC /* AFNetworking Helper */ = {
+			isa = PBXGroup;
+			children = (
+				635479D61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift */,
+				635479E21CB8B02A00DE8CBC /* AFError.swift */,
+			);
+			name = "AFNetworking Helper";
 			sourceTree = "<group>";
 		};
 		87B10B09AB7F67CF4D976F76 /* Pods */ = {
