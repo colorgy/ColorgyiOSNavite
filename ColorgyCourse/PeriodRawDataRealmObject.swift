@@ -16,7 +16,7 @@ public enum RealmStoringState {
 }
 
 /// PeriodRawData from Realm
-public class PeriodRawDataRealmObject: Object {
+final public class PeriodRawDataRealmObject: Object {
 	
 	// MARK: - Parameters
 	public dynamic var code = ""
@@ -58,6 +58,18 @@ public class PeriodRawDataRealmObject: Object {
 	}
 	
 	// MARK: - Query
+	/// Get all stored PeriodRawDataRealmObject
+	public class func getAllStoredPeriodRawDataRealmObject() -> [PeriodRawDataRealmObject] {
+		do {
+			// Get the default Realm
+			let realm = try Realm()
+			let objects = realm.objects(PeriodRawDataRealmObject)
+			// map the objects result
+			return objects.map({ return $0 })
+		} catch {
+			return []
+		}
+	}
 	
 	// MARK: - Store
 	/// You can store PeriodRawData into Realm
@@ -82,4 +94,23 @@ public class PeriodRawDataRealmObject: Object {
 	}
 	
 	// MARK: - Delete
+	public class func deleteAllStoredPeriodRawDataRealmObject() -> RealmStoringState {
+		do {
+			// Get the default Realm
+			let realm = try Realm()
+			// Start writing
+			realm.beginWrite()
+			// transfrom data to periodRawDataRealmObject array
+			let storedPeriodRawDataRealmObject = PeriodRawDataRealmObject.getAllStoredPeriodRawDataRealmObject()
+			// delete SequenceType
+			realm.delete(storedPeriodRawDataRealmObject)
+			// Try to save to Realm
+			try realm.commitWrite()
+			// If success, return true
+			return RealmStoringState.Success
+		} catch {
+			// Cannot get the default Realm
+			return RealmStoringState.Failure
+		}
+	}
 }
