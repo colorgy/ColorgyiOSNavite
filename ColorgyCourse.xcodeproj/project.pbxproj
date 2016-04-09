@@ -24,6 +24,10 @@
 		635479C21CB89C4E00DE8CBC /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479B91CB89C4E00DE8CBC /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		635479C31CB89C4E00DE8CBC /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479BA1CB89C4E00DE8CBC /* WebImage.framework */; };
 		635479C41CB89C4E00DE8CBC /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479BA1CB89C4E00DE8CBC /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		635479C91CB8A18F00DE8CBC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479C71CB8A18F00DE8CBC /* Realm.framework */; };
+		635479CA1CB8A18F00DE8CBC /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479C71CB8A18F00DE8CBC /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		635479CB1CB8A18F00DE8CBC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479C81CB8A18F00DE8CBC /* RealmSwift.framework */; };
+		635479CC1CB8A18F00DE8CBC /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479C81CB8A18F00DE8CBC /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A84AB692873E9E8DA6A72BC2 /* Pods_ColorgyCourse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576E6050CAE2354899BC93F6 /* Pods_ColorgyCourse.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +55,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				635479CA1CB8A18F00DE8CBC /* Realm.framework in Embed Frameworks */,
 				635479C21CB89C4E00DE8CBC /* SwiftyJSON.framework in Embed Frameworks */,
+				635479CC1CB8A18F00DE8CBC /* RealmSwift.framework in Embed Frameworks */,
 				635479C41CB89C4E00DE8CBC /* WebImage.framework in Embed Frameworks */,
 				635479BE1CB89C4E00DE8CBC /* ImagePickerSheetController.framework in Embed Frameworks */,
 				635479C01CB89C4E00DE8CBC /* SKPhotoBrowser.framework in Embed Frameworks */,
@@ -83,6 +89,8 @@
 		635479B91CB89C4E00DE8CBC /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		635479BA1CB89C4E00DE8CBC /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		635479C61CB89CB900DE8CBC /* BridghingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridghingHeader.h; sourceTree = "<group>"; };
+		635479C71CB8A18F00DE8CBC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		635479C81CB8A18F00DE8CBC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		9F013244A3B8C8F64571951C /* Pods-ColorgyCourse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourse/Pods-ColorgyCourse.debug.xcconfig"; sourceTree = "<group>"; };
 		F16E987B487403193816ADE4 /* Pods-ColorgyCourse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourse.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourse/Pods-ColorgyCourse.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,7 +104,9 @@
 				A84AB692873E9E8DA6A72BC2 /* Pods_ColorgyCourse.framework in Frameworks */,
 				635479BD1CB89C4E00DE8CBC /* ImagePickerSheetController.framework in Frameworks */,
 				635479C31CB89C4E00DE8CBC /* WebImage.framework in Frameworks */,
+				635479C91CB8A18F00DE8CBC /* Realm.framework in Frameworks */,
 				635479BB1CB89C4E00DE8CBC /* AFNetworking.framework in Frameworks */,
+				635479CB1CB8A18F00DE8CBC /* RealmSwift.framework in Frameworks */,
 				635479C11CB89C4E00DE8CBC /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				635479C61CB89CB900DE8CBC /* BridghingHeader.h */,
+				635479C71CB8A18F00DE8CBC /* Realm.framework */,
+				635479C81CB8A18F00DE8CBC /* RealmSwift.framework */,
 				635479B61CB89C4E00DE8CBC /* AFNetworking.framework */,
 				635479B71CB89C4E00DE8CBC /* ImagePickerSheetController.framework */,
 				635479B81CB89C4E00DE8CBC /* SKPhotoBrowser.framework */,
@@ -209,6 +221,7 @@
 				412A583853FC728546ED723D /* Copy Pods Resources */,
 				635479B51CB89BAE00DE8CBC /* ShellScript */,
 				635479C51CB89C4E00DE8CBC /* Embed Frameworks */,
+				635479CD1CB8A2DD00DE8CBC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -390,6 +403,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		635479CD1CB8A2DD00DE8CBC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" e709dd3229ee919ed0fef9ac4423afa4c9bae156 2fbc1d63ab59663379a655410b55e15089849de3798b93b390afc2613c3a9bb4";
 		};
 /* End PBXShellScriptBuildPhase section */
 
