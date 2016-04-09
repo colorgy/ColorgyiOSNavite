@@ -69,6 +69,18 @@ final public class PeriodRawData: NSObject {
 		self.init(code: _code, id: _id, order: _order, type: _type, startTime: _startTime, endTime: _endTime)
 	}
 	
+	public init(dataObject: PeriodRawDataRealmObject) {
+		
+		self.code = dataObject.code
+		self.id = dataObject.id
+		self.order = dataObject.order
+		self.type = dataObject.type
+		self.startTime = dataObject.startTime
+		self.endTime = dataObject.endTime
+		
+		super.init()
+	}
+	
 	// MARK: - Keys
 	private struct Key {
 		static let code = "code"
@@ -141,5 +153,17 @@ final public class PeriodRawData: NSObject {
 		
 		// return
 		return rawData
+	}
+	
+	/// Help you to transform data fromd Realm db into PeriodRawData
+	public class func transfromPeriodRawDataRealmObject(dataObject: [PeriodRawDataRealmObject]) -> [PeriodRawData] {
+		
+		var array = [PeriodRawData]()
+		
+		for data in dataObject {
+			array.append(PeriodRawData(dataObject: data)
+		}
+		
+		return array
 	}
 }

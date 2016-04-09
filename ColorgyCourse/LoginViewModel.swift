@@ -38,10 +38,7 @@ final public class LoginViewModel {
 				// 1. if yes, direct to main view
 				// 2. if not, direct to select school view
 				
-				// test firing 100 req
-				for _ in 1...1 {
-					self.colorgyAPI.me(success: nil, failure: nil)
-				}
+				
 				}, failure: { (error, afError) in
 					// fail to login to colorgy
 					self.delegate?.loginViewModel(failToLoginToColorgy: error, afError: afError)
