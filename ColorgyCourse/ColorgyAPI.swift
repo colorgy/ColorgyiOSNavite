@@ -287,8 +287,9 @@ final public class ColorgyAPI : NSObject {
 					return
 				}
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let aferror = AFError(operation: operation, error: error)
 					self.mainBlock({
-						failure?(error: APIError.APIConnectionFailure, afError: nil)
+						failure?(error: APIError.APIConnectionFailure, afError: aferror)
 					})
 					return
 			})
@@ -298,7 +299,7 @@ final public class ColorgyAPI : NSObject {
 	/// Get school/orgazination period data
 	///
 	/// You can get school period data
-	public func getSchoolPeriodData(organization: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func getSchoolPeriodData(organization: String, success: ((periodData: [PeriodRawData]?) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -336,12 +337,20 @@ final public class ColorgyAPI : NSObject {
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
-					print(json)
+					let rawData = PeriodRawData.generatePeiordRawData(json)
+					self.mainBlock({ 
+						success?(periodData: rawData)
+					})
 				} else {
-					
+					self.mainBlock({
+						failure?(error: APIError.FailToParseResult, afError: nil)
+					})
 				}
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
-					
+					let aferror = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: aferror)
+					})
 			})
 		}
 	}

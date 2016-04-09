@@ -19,6 +19,10 @@ final public class PeriodRawData: NSObject {
 	let startTime: String
 	let endTime: String
 	
+	public override var description: String {
+		return "PeriodRawData: {\n\tcode: \(code)\n\tid: \(id)\n\torder: \(order)\n\ttype: \(type)\n\tstartTime: \(startTime)\n\tendTime: \(endTime)\n}"
+	}
+	
 	// MARK: - Init
 	private init?(code: String?, id: Int?, order: Int?, type: String?, startTime: String?, endTime: String?) {
 		
@@ -109,4 +113,29 @@ final public class PeriodRawData: NSObject {
 		return rawData
 	}
 	
+	/// Generate Fake Period Raw Data
+	///
+	/// Will generate 16 period by default if you pass in nil
+	///
+	/// Or pass in required count
+	/// - parameters:
+	///		- count: nil for default, or your required period count
+	/// - returns: an array of PeriodRawData
+	public class func generateFakePeiordRawData(count: Int) -> [PeriodRawData] {
+		
+		// initialize cache
+		var rawData = [PeriodRawData]()
+		// loop it
+		for index in 0..<count {
+			if let data = PeriodRawData(code: "\(index)", id: index, order: index, type: "Fake Period data", startTime: nil, endTime: nil) {
+				rawData.append(data)
+			}
+		}
+		
+		// sort it
+		rawData = rawData.sort({ $0.order < $1.order })
+		
+		// return
+		return rawData
+	}
 }
