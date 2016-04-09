@@ -26,23 +26,46 @@ public enum ColorgyLoginError: ErrorType {
 /// Login starts here
 final public class ColorgyLogin {
 	
+	// MARK: - Helper
+	/// This Method will help you to wrap qos queue for you
+	private class func qosBlock(block: () -> Void) {
+		let qos = Int(QOS_CLASS_USER_INTERACTIVE.rawValue)
+		dispatch_async(dispatch_get_global_queue(qos, 0), { () -> Void in
+			block()
+		})
+	}
+	
+	/// This Method will help you to wrap qos queue for you
+	private class func mainBlock(block: () -> Void) {
+		dispatch_async(dispatch_get_main_queue(), { () -> Void in
+			block()
+		})
+	}
+	
+	// MARK: Login
 	/// get Facebook Access Token
-	public class func getFacebookAccessToken(success: ((token: String) -> Void)?, failure: ((error: ColorgyFacebookLoginError) -> Void)?) {
+	public class func getFacebookAccessToken(success success: ((token: String) -> Void)?, failure: ((error: ColorgyFacebookLoginError) -> Void)?) {
 		let manager = FBSDKLoginManager()
 		manager.logInWithReadPermissions(["email"], fromViewController: nil) { (result: FBSDKLoginManagerLoginResult!, error: NSError!) -> Void in
 			if error != nil {
 				print(error.localizedDescription)
-				failure?(error: ColorgyFacebookLoginError.FailLoginToFacebook)
+				mainBlock({ 
+					failure?(error: ColorgyFacebookLoginError.FailLoginToFacebook)
+				})
 			} else if result.isCancelled {
 				// canceled
-				failure?(error: ColorgyFacebookLoginError.CancelLoginFacebook)
+				mainBlock({
+					failure?(error: ColorgyFacebookLoginError.CancelLoginFacebook)
+				})
 			} else {
 				// ok
-				if let token = result?.token?.tokenString {
-					success?(token: token)
-				} else {
-					failure?(error: ColorgyFacebookLoginError.FailLoginToFacebook)
-				}
+				mainBlock({
+					if let token = result?.token?.tokenString {
+						success?(token: token)
+					} else {
+						failure?(error: ColorgyFacebookLoginError.FailLoginToFacebook)
+					}
+				})
 			}
 		}
 	}
@@ -67,21 +90,29 @@ final public class ColorgyLogin {
 		
 		manager.POST("https://colorgy.io/oauth/token", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
 			guard let response = response else {
-				failure?(error: ColorgyLoginError.FailToParseResult, AFError: nil)
+				mainBlock({
+					failure?(error: ColorgyLoginError.FailToParseResult, AFError: nil)
+				})
 				return
 			}
 			let json = JSON(response)
 			guard let result = ColorgyLoginResult(json: json) else {
-				failure?(error: ColorgyLoginError.FailToParseResult, AFError: nil)
+				mainBlock({
+					failure?(error: ColorgyLoginError.FailToParseResult, AFError: nil)
+				})
 				return
 			}
 			// store
 			ColorgyUserInformation.saveLoginResult(result)
 			// success
-			success?(result: result)
+			mainBlock({
+				success?(result: result)
+			})
 			}, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
-				let aferror = AFError(operation: operation, error: error)
-				failure?(error: ColorgyLoginError.NetworkError, AFError: aferror)
+				mainBlock({
+					let aferror = AFError(operation: operation, error: error)
+					failure?(error: ColorgyLoginError.NetworkError, AFError: aferror)
+				})
 		})
 	}
 }

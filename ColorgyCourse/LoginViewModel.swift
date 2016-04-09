@@ -8,8 +8,8 @@
 
 import Foundation
 
-@objc public protocol LoginViewModelDelegate: class {
-	
+public protocol LoginViewModelDelegate: class {
+	func failToLoginToFacebook(error: ColorgyFacebookLoginError)
 }
 
 final public class LoginViewModel {
@@ -22,7 +22,16 @@ final public class LoginViewModel {
 	
 	// MARK: - Methods
 	public func facebookLogin() {
-		ColorgyLogin.getFacebookAccessToken(<#T##success: ((token: String) -> Void)?##((token: String) -> Void)?##(token: String) -> Void#>, failure: <#T##((error: ColorgyFacebookLoginError) -> Void)?##((error: ColorgyFacebookLoginError) -> Void)?##(error: ColorgyFacebookLoginError) -> Void#>)
+		ColorgyLogin.getFacebookAccessToken(success: { (token) in
+			// get me data after login
+			self.colorgyAPI.me(success: { (result) in
+				<#code#>
+				}, failure: { (error, AFError) in
+					<#code#>
+			})
+			}, failure: { (error) in
+				self.delegate?.failToLoginToFacebook(error)
+		})
 	}
 	
 	public func emailLogin() {
@@ -36,5 +45,6 @@ final public class LoginViewModel {
 	// MARK: - Init
 	init(delegate: LoginViewModelDelegate?) {
 		self.delegate = delegate
+		self.colorgyAPI = ColorgyAPI()
 	}
 }

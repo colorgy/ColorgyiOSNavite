@@ -131,10 +131,11 @@ final public class ColorgyAPI : NSObject {
 	
 	/// You can simply get Me API using this.
 	///
+	/// **Causion** Will save result for you
 	/// - returns:
 	///   - result: ColorgyAPIMeResult?, you can store it.
 	///   - error: An error if you got one, then handle it.
-	public func me(success: ((result: ColorgyAPIMeResult) -> Void)?, failure: ((error: APIMeError, AFError: AFError?) -> Void)?) {
+	public func me(success success: ((result: ColorgyAPIMeResult) -> Void)?, failure: ((error: APIMeError, AFError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
