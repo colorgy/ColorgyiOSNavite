@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6340A3071CBA2BA5001AE3AE /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; };
+		6340A3081CBA2BA5001AE3AE /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
 		6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479891CB898C100DE8CBC /* ViewController.swift */; };
 		6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354798B1CB898C100DE8CBC /* Main.storyboard */; };
@@ -80,6 +82,7 @@
 				635479C21CB89C4E00DE8CBC /* SwiftyJSON.framework in Embed Frameworks */,
 				635479CC1CB8A18F00DE8CBC /* RealmSwift.framework in Embed Frameworks */,
 				635479C41CB89C4E00DE8CBC /* WebImage.framework in Embed Frameworks */,
+				6340A3081CBA2BA5001AE3AE /* KeychainSwift.framework in Embed Frameworks */,
 				635479BE1CB89C4E00DE8CBC /* ImagePickerSheetController.framework in Embed Frameworks */,
 				635479C01CB89C4E00DE8CBC /* SKPhotoBrowser.framework in Embed Frameworks */,
 				635479BC1CB89C4E00DE8CBC /* AFNetworking.framework in Embed Frameworks */,
@@ -91,6 +94,7 @@
 
 /* Begin PBXFileReference section */
 		576E6050CAE2354899BC93F6 /* Pods_ColorgyCourse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorgyCourse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
 		635479841CB898C000DE8CBC /* ColorgyCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorgyCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635479871CB898C100DE8CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		635479891CB898C100DE8CBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 				635479C31CB89C4E00DE8CBC /* WebImage.framework in Frameworks */,
 				635479C91CB8A18F00DE8CBC /* Realm.framework in Frameworks */,
 				635479BB1CB89C4E00DE8CBC /* AFNetworking.framework in Frameworks */,
+				6340A3071CBA2BA5001AE3AE /* KeychainSwift.framework in Frameworks */,
 				635479CB1CB8A18F00DE8CBC /* RealmSwift.framework in Frameworks */,
 				635479C11CB89C4E00DE8CBC /* SwiftyJSON.framework in Frameworks */,
 			);
@@ -182,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				635479C61CB89CB900DE8CBC /* BridghingHeader.h */,
+				6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */,
 				635479C71CB8A18F00DE8CBC /* Realm.framework */,
 				635479C81CB8A18F00DE8CBC /* RealmSwift.framework */,
 				635479B61CB89C4E00DE8CBC /* AFNetworking.framework */,
@@ -508,6 +514,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
 			);
 			outputPaths = (
 			);

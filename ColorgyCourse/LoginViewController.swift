@@ -25,10 +25,12 @@ class LoginViewController: UIViewController {
 	}
 	
 	@IBAction func emailRegisterButtonClicked() {
-		
+		loginViewModel?.emailRegister()
 	}
 	
 	// MARK: - Parameters
+	
+	// MARK: - ViewModel
 	var loginViewModel: LoginViewModel?
 
 	// MARK: - View Life Cycle

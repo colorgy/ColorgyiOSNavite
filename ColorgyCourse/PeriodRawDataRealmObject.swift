@@ -67,6 +67,20 @@ final public class PeriodRawDataRealmObject: Object {
 		}
 	}
 	
+	/// Get all stored PeriodRawData
+	public class func getAllStoredPeriodRawData() -> [PeriodRawData] {
+		do {
+			// Get the default Realm
+			let realm = try Realm()
+			let objects = realm.objects(PeriodRawDataRealmObject)
+			// map the objects result
+			let periodRawDataRealmObjects = objects.map({ return $0 })
+			return PeriodRawData.transfromPeriodRawDataRealmObject(periodRawDataRealmObjects)
+		} catch {
+			return []
+		}
+	}
+	
 	// MARK: - Store
 	/// You can store PeriodRawData into Realm
 	public class func storePeriodRawData(data: [PeriodRawData]) -> RealmStoringState {

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Delegate
 public protocol LoginViewModelDelegate: class {
 	func loginViewModel(failToLoginToFacebook error: ColorgyFacebookLoginError)
 	func loginViewModel(failToLoginToColorgy error: ColorgyLoginError, afError: AFError?)
@@ -65,12 +66,12 @@ final public class LoginViewModel {
 	
 	/// Call this to perform login using email
 	public func emailLogin() {
-		let ya = PeriodRawDataRealmObject.getAllStoredPeriodRawDataRealmObject()
+		let ya = PeriodRawDataRealmObject.getAllStoredPeriodRawData()
 		print(ya)
 	}
 	
 	public func emailRegister() {
-		
+		PeriodRawDataRealmObject.deleteAllStoredPeriodRawDataRealmObject()
 	}
 	
 	// MARK: - Helper

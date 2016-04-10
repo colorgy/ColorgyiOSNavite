@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KeychainSwift
 
 // MARK: - Keys
 private struct LoginResultKeys {
@@ -52,24 +53,26 @@ final public class ColorgyUserInformation {
 	// MARK: save/delete Login Result
 	public class func saveLoginResult(result: ColorgyLoginResult) {
 		let ud = NSUserDefaults.standardUserDefaults()
+		let keychain = KeychainSwift()
 		ud.setObject(result.created_at, forKey: LoginResultKeys.created_at)
 		ud.setObject(result.scope, forKey: LoginResultKeys.scope)
 		ud.setObject(result.token_type, forKey: LoginResultKeys.token_type)
-		ud.setObject(result.access_token, forKey: LoginResultKeys.access_token)
+		keychain.set(result.access_token, forKey: LoginResultKeys.access_token)
 		ud.setObject(result.expires_in, forKey: LoginResultKeys.expires_in)
-		ud.setObject(result.refresh_token, forKey: LoginResultKeys.refresh_token)
+		keychain.set(result.refresh_token, forKey: LoginResultKeys.refresh_token)
 		ud.setObject(result.createdDate, forKey: LoginResultKeys.createdDate)
 		ud.synchronize()
 	}
-	
+	//TODO: keychain
 	public class func deleteLoginResult() {
 		let ud = NSUserDefaults.standardUserDefaults()
+		let keychain = KeychainSwift()
 		ud.removeObjectForKey(LoginResultKeys.created_at)
 		ud.removeObjectForKey(LoginResultKeys.scope)
 		ud.removeObjectForKey(LoginResultKeys.token_type)
-		ud.removeObjectForKey(LoginResultKeys.access_token)
+		keychain.delete(LoginResultKeys.access_token)
 		ud.removeObjectForKey(LoginResultKeys.expires_in)
-		ud.removeObjectForKey(LoginResultKeys.refresh_token)
+		keychain.delete(LoginResultKeys.refresh_token)
 		ud.removeObjectForKey(LoginResultKeys.createdDate)
 		ud.synchronize()
 	}
@@ -114,13 +117,13 @@ final public class ColorgyUserInformation {
 	// MARK: - Getters
 	// MARK: Token
 	public var userAccessToken: String? {
-		let ud = NSUserDefaults.standardUserDefaults()
-		return ud.objectForKey(LoginResultKeys.access_token) as? String
+		let keychain = KeychainSwift()
+		return keychain.get(LoginResultKeys.access_token)
 	}
 	
 	public var userRefreshToken: String? {
-		let ud = NSUserDefaults.standardUserDefaults()
-		return ud.objectForKey(LoginResultKeys.refresh_token) as? String
+		let keychain = KeychainSwift()
+		return keychain.get(LoginResultKeys.refresh_token)
 	}
 	
 	// MARK: date since token created
