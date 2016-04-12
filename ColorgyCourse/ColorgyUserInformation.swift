@@ -38,6 +38,7 @@ private struct APIMeResultKeys {
 
 private struct UserSettingKeys {
 	static let deviceUUIDForPushNotificationKey = "UserSettingKeys deviceUUIDForPushNotificationKey"
+	static let devicePushNotificationTokenKey = "UserSettingKeys devicePushNotificationTokenKey"
 }
 
 // MARK: - Class
@@ -54,7 +55,9 @@ final public class ColorgyUserInformation {
 	}
 	
 	// MARK: - Save & Delete Region
+	
 	// MARK: save/delete Login Result
+	
 	public class func saveLoginResult(result: ColorgyLoginResult) {
 		let ud = NSUserDefaults.standardUserDefaults()
 		let keychain = KeychainSwift()
@@ -82,6 +85,7 @@ final public class ColorgyUserInformation {
 	}
 	
 	// MARK: Save/Delete API Me Result
+	
 	public class func saveAPIMeResult(result: ColorgyAPIMeResult) {
 		let ud = NSUserDefaults.standardUserDefaults()
 		ud.setObject(result._type, forKey: APIMeResultKeys.userType)
@@ -118,7 +122,10 @@ final public class ColorgyUserInformation {
 		ud.synchronize()
 	}
 	
+	// MARK: - Push Notification
+	
 	// MARK: Push Notification UUID 
+	
 	/// Generate a unique device uuid,
 	/// If fail to generate, will return false
 	/// 
@@ -147,6 +154,7 @@ final public class ColorgyUserInformation {
 		
 		// store it
 		ud.setObject(deviceUUID, forKey: UserSettingKeys.deviceUUIDForPushNotificationKey)
+		ud.synchronize()
 		
 		return true
 	}
@@ -156,8 +164,24 @@ final public class ColorgyUserInformation {
 		return ud.objectForKey(UserSettingKeys.deviceUUIDForPushNotificationKey) as? String
 	}
 	
+	// MARK: Current Device Push Notification Token
+	/// Store current device push notification token
+	public class func storePushNotificationToken(token: NSData) {
+		let ud = NSUserDefaults.standardUserDefaults()
+		ud.setObject(token, forKey: UserSettingKeys.devicePushNotificationTokenKey)
+		ud.synchronize()
+	}
+	
+	/// get current device push notification token
+	public var pushNotificationToken: NSData? {
+		let ud = NSUserDefaults.standardUserDefaults()
+		return ud.objectForKey(UserSettingKeys.devicePushNotificationTokenKey) as? NSData
+	}
+	
 	// MARK: - Getters
+	
 	// MARK: Token
+	
 	public var userAccessToken: String? {
 		let keychain = KeychainSwift()
 		return keychain.get(LoginResultKeys.access_token)

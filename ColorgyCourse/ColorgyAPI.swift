@@ -26,6 +26,8 @@ public enum APIError: ErrorType {
 	case APIUnavailable
 	/// User has no organization code
 	case NoOrganization
+	/// Internal preparation fail, might be uuid generate fail or something, chech inside
+	case InternalPreparationFail
 }
 
 public protocol ColorgyAPIDelegate : class {
@@ -366,14 +368,24 @@ final public class ColorgyAPI : NSObject {
 				})
 				return
 			}
+
 			
 			// pushing device token to server needs a unique uuid,
 			// so must generate one
+			// will return true if nothing is wrong when generating uuid
+			guard ColorgyUserInformation.generateDeviceUUID() else {
+				self.mainBlock({
+					failure?(error: APIError.InternalPreparationFail, afError: nil)
+				})
+				return
+			}
 			
-			var uuid = UserSetting.getDeviceUUID()
-			if uuid == nil {
-				UserSetting.generateAndStoreDeviceUUID()
-				uuid = UserSetting.getDeviceUUID()
+			// prevent not getting uuid
+			guard let uuid = ColorgyUserInformation.sharedInstance().deviceUUID else {
+				self.mainBlock({
+					failure?(error: APIError.InternalPreparationFail, afError: nil)
+				})
+				return
 			}
 			
 			let url = "https://colorgy.io:443/api/v1/me/devices/\(uuid).json?access_token=\(accesstoken)"
