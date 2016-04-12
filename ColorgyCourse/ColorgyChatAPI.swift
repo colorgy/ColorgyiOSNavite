@@ -1763,8 +1763,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/chatroom/more_message，參數包含使用者的userId, uuid,accessToken,chatroomId,從頭數過來的offset
 	///2. 比如說你想要拿到第51~75則訊息，offset設定為50即可
-	class func moreMessage(userId: String, chatroom: Chatroom, historyMessagesCount: Int, success: (messages: [ChatMessage]) -> Void, failure: () -> Void) {}
-	public func chatAPITemplate(success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func moreMessage(userId: String, chatroom: Chatroom, historyMessagesCount: Int, success: ((messages: [ChatMessage]) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1783,7 +1782,7 @@ final public class ColorgyChatAPI: NSObject {
 			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
-					failure?(error: ChatAPIError.NoUserId, afError: nil)
+					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
 				})
 				return
 			}
@@ -1795,12 +1794,20 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			print("history message count \(historyMessagesCount)")
+			// get 25 messages everytime, -1 because of starting from 0
+			let offset = chatroom.totalMessageLength - historyMessagesCount - 25
+			print(offset)
+			
 			let parameters = [
 				"uuid": uuid,
-				"accessToken": accessToken
+				"accessToken": accessToken,
+				"userId": userId,
+				"chatroomId": chatroom.chatroomId,
+				"offset": offset >= 0 ? offset : 0
 			]
 			
-			self.manager.POST(self.serverURL + , parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+			self.manager.POST(self.serverURL + "/chatroom/more_message", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
 					self.mainBlock({
