@@ -343,7 +343,7 @@ final public class ColorgyAPI : NSObject {
 	
 	// MARK: - Push Notification Device Token
 	/// Push notification device token to server. Use PUT, will update if already exist, will create if not exist.
-	public func PUTPushNotificationDeviceToken(success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func PUTPushNotificationDeviceToken(success success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -428,6 +428,67 @@ final public class ColorgyAPI : NSObject {
 		}
 	}
 	
-	
-	
+	/// Get all the token stored in server
+	public func GETAllStoredDeviceToken(success success: ((tokens: [(name: String, uuid: String)]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io:443/api/v1/me/devices.json?access_token=\(accesstoken)"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					// initialize a cache to store tokens
+					var storedTokens = [(name: String, uuid: String)]()
+					for (_, json) : (String, JSON) in json {
+						if let name = json["name"].string, let uuid = json["uuid"].string {
+							storedTokens.append((name, uuid))
+						}
+					}
+					success?(tokens: storedTokens)
+					return
+				} else {
+					self.mainBlock({
+						failure?(error: APIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 }

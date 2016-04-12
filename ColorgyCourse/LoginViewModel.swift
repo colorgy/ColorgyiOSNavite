@@ -66,12 +66,13 @@ final public class LoginViewModel {
 	
 	/// Call this to perform login using email
 	public func emailLogin() {
-		let ya = PeriodRawDataRealmObject.getAllStoredPeriodRawData()
-		print(ya)
+		colorgyAPI.GETAllStoredDeviceToken(success: { (tokens) in
+			print(tokens)
+			}, failure: nil)
 	}
 	
 	public func emailRegister() {
-		PeriodRawDataRealmObject.deleteAllStoredPeriodRawDataRealmObject()
+		
 	}
 	
 	// MARK: - Helper
