@@ -629,7 +629,7 @@ final public class ColorgyAPI : NSObject {
 	/// - parameters: 
 	///		- code: A course code.
 	/// - returns: userCourseObjects: A [UserCourseObject]? array, might be nil.
-	public func GETStudentsInSpecificCourse(code: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func GETStudentsInSpecificCourse(code: String, success: ((relationships: [StudnetAndCourseRelationshipObject]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -667,9 +667,9 @@ final public class ColorgyAPI : NSObject {
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
-					print(json)
+					let relationships = StudnetAndCourseRelationshipObject.generateRelationObjects(json)
 					self.mainBlock({
-						success?()
+						success?(relationships: relationships)
 					})
 					return
 				} else {

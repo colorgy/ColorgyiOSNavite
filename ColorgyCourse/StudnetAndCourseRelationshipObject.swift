@@ -87,4 +87,27 @@ final public class StudnetAndCourseRelationshipObject: NSObject {
 		
 		super.init()
 	}
+	
+	public class func generateRelationObjects(json: JSON) -> [StudnetAndCourseRelationshipObject] {
+		
+		// initialize cache
+		var objects = [StudnetAndCourseRelationshipObject]()
+		
+		// check if its an array
+		if json.isArray {
+			// array
+			for (_, json) : (String, JSON) in json {
+				if let object = StudnetAndCourseRelationshipObject(json: json) {
+					objects.append(object)
+				}
+			}
+		} else {
+			// single object
+			if let object = StudnetAndCourseRelationshipObject(json: json) {
+				objects.append(object)
+			}
+		}
+		
+		return objects
+	}
 }

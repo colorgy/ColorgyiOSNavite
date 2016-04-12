@@ -66,7 +66,9 @@ final public class LoginViewModel {
 	
 	/// Call this to perform login using email
 	public func emailLogin() {
-		colorgyAPI.GETStudentsInSpecificCourse("1042-3N1005702", success: nil, failure: nil)
+		colorgyAPI.GETStudentsInSpecificCourse("1042-3N1005702", success: { (relationships) in
+			print(relationships)
+			}, failure: nil)
 	}
 	
 	public func emailRegister() {
