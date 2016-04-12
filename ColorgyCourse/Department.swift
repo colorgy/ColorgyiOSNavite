@@ -53,7 +53,6 @@ final public class Department : CustomStringConvertible {
 		
 		for (key, json) : (String, JSON) in json {
 			if key == "departments" {
-				print(json)
 				if json.isArray {
 					for (_, json) : (String, JSON) in json {
 						if let department = Department(json: json) {

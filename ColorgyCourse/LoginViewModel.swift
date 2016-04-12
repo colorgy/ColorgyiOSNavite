@@ -73,6 +73,10 @@ final public class LoginViewModel {
 		colorgyAPI.getMeCourses(success: nil, failure: nil)
 		
 		colorgyAPI.getDepartments("ntust", success: nil, failure: nil)
+		
+		colorgyAPI.getMeEmailsOnServer({ (emails) in
+			print(emails)
+			}, failure: nil)
 	}
 	
 	public func emailRegister() {

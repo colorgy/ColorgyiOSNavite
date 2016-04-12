@@ -1517,7 +1517,7 @@ final public class ColorgyAPI : NSObject {
 	
 	
 	/// Post a new to server
-	public func postNewEmailToServer(email: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func postNewEmailToServer(email: String, success: ((emails: [(id: Int, email: String)]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1558,12 +1558,16 @@ final public class ColorgyAPI : NSObject {
 				]
 			]
 			
-			self.manager.GET(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+			self.manager.POST(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
 					print(json)
+					var emails = [(id: Int, email: String)]()
+					if let id = json["id"].int, let email = json["email"].string {
+						emails.append((id, email))
+					}
 					self.mainBlock({
-						success?()
+						success?(emails: emails)
 					})
 					return
 				} else {
@@ -1582,7 +1586,71 @@ final public class ColorgyAPI : NSObject {
 		}
 	}
 	
-	
+	/// get self emails on server
+	public func getMeEmailsOnServer(success: ((emails: [(id: Int, email: String)]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io:443/api/v1/me/emails.json?access_token=\(accesstoken)"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					print(json)
+					var emails = [(id: Int, email: String)]()
+					for (_, json) in json {
+						if let id = json["id"].int, let email = json["email"].string {
+							emails.append((id, email))
+						}
+					}
+					self.mainBlock({
+						success?(emails: emails)
+					})
+					return
+				} else {
+					self.mainBlock({
+						failure?(error: APIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 	
 	
 	
