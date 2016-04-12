@@ -689,6 +689,85 @@ final public class ColorgyAPI : NSObject {
 	}
 	
 	
+	/// You can simply get a user info API using this.
+	///
+	/// - returns: 
+	///		- result: ColorgyAPIMeResult?, you can store it.
+	///		- error: An error if you got one, then handle it.
+	public func getUserInfo(userId: String, success: ((user: ColorgyAPIUserResult) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io:443/api/v1/users/\(userId).json?access_token=\(accesstoken)"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					print(json)
+					if let user = ColorgyAPIUserResult(json: json) {
+						// must success to parse user result
+						self.mainBlock({
+							success?(user: user)
+						})
+						return
+					} else {
+						self.mainBlock({
+							failure?(error: APIError.FailToParseResult, afError: nil)
+						})
+						return
+					}
+				} else {
+					self.mainBlock({
+						failure?(error: APIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
