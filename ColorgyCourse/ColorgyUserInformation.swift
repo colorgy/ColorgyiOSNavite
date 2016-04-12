@@ -210,6 +210,18 @@ final public class ColorgyUserInformation {
 		return ud.objectForKey(APIMeResultKeys.userPossibleOrganization) as? String
 	}
 	
+	/// Get user's actual organization
+	/// 
+	/// Organization **>** Possible Organization
+	///
+	/// If neither existed, will be nil
+	public var userActualOrganization: String? {
+		let ud = NSUserDefaults.standardUserDefaults()
+		let organization = ud.objectForKey(APIMeResultKeys.userOrganization) as? String
+		let possibleOrganization = ud.objectForKey(APIMeResultKeys.userPossibleOrganization) as? String
+		return organization ?? possibleOrganization ?? nil
+	}
+	
 	public var userName : String? {
 		let ud = NSUserDefaults.standardUserDefaults()
 		return ud.objectForKey(APIMeResultKeys.userName) as? String

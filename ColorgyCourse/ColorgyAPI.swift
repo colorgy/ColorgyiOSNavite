@@ -415,7 +415,9 @@ final public class ColorgyAPI : NSObject {
 			]
 
 			self.manager.PUT(url, parameters: parameters, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-				success?()
+				self.mainBlock({
+					success?()
+				})
 				return
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 					let afError = AFError(operation: operation, error: error)
@@ -474,7 +476,9 @@ final public class ColorgyAPI : NSObject {
 							storedTokens.append((name, uuid))
 						}
 					}
-					success?(tokens: storedTokens)
+					self.mainBlock({
+						success?(tokens: storedTokens)
+					})
 					return
 				} else {
 					self.mainBlock({
@@ -529,7 +533,9 @@ final public class ColorgyAPI : NSObject {
 			}
 			
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-				success?()
+				self.mainBlock({
+					success?()
+				})
 				return
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 					let afError = AFError(operation: operation, error: error)
@@ -542,8 +548,80 @@ final public class ColorgyAPI : NSObject {
 	}
 	
 	
-	
-	
+	// MARK: - Course API
+	/// Get a specific course raw data object using course code.
+	/// Will just return a single data object.
+	/// Not an array
+	///
+	/// - parameters: 
+	///		- code: A specific course code.
+	/// - returns: courseRawDataObject: A single CourseRawDataObject?, might be nil.
+	public func GETCourseRawObjectWithCourseCode(code: String, success: ((object: CourseRawDataObject?) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			// check user's organization
+			guard let school = ColorgyUserInformation.sharedInstance().userActualOrganization else {
+				self.mainBlock({
+					failure?(error: APIError.NoOrganization, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io:443/api/v1/\(school.lowercaseString)/courses/\(code).json?access_token=\(accesstoken)"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					let rawDataObject = CourseRawDataObject(json: json)
+					self.mainBlock({
+						success?(object: rawDataObject)
+					})
+					return
+				} else {
+					self.mainBlock({
+						failure?(error: APIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 	
 	
 	

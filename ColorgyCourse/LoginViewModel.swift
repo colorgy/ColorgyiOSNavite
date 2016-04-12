@@ -66,9 +66,7 @@ final public class LoginViewModel {
 	
 	/// Call this to perform login using email
 	public func emailLogin() {
-		colorgyAPI.GETAllStoredDeviceToken(success: { (tokens) in
-			print(tokens)
-			}, failure: nil)
+		colorgyAPI.GETCourseRawObjectWithCourseCode("1042-3N1005702", success: nil, failure: nil)
 	}
 	
 	public func emailRegister() {
