@@ -8,12 +8,13 @@
 
 import Foundation
 import SocketIOClientSwift
+import SwiftyJSON
 
-class ColorgySocket : NSObject {
+final public class ColorgySocket : NSObject {
 	
-	internal let socket = SocketIOClient(socketURL: "http://chat.colorgy.io:80", options: [.Log(false), .ForcePolling(true), .ConnectParams(["__sails_io_sdk_version":"0.11.0"]), .ReconnectWait(2)])
-	internal var chatroom: Chatroom?
-	internal var didConnectToSocketOnce: Bool = false
+	private let socket = SocketIOClient(socketURL: NSURL(string: "http://chat.colorgy.io:80")!, options: [.Log(false), .ForcePolling(true), .ConnectParams(["__sails_io_sdk_version":"0.11.0"]), .ReconnectWait(2)])
+	public var chatroom: Chatroom?
+	private var didConnectToSocketOnce: Bool = false
 	
 	func connectToServer(withParameters parameters: [String : NSObject]!, registerToChatroom: (chatroom: Chatroom) -> Void, withMessages: (messages: [ChatMessage]) -> Void, reconnectToServerWithMessages: (messages: [ChatMessage]) -> Void) {
 		self.socket.on("connect") { (response: [AnyObject], ack: SocketAckEmitter) -> Void in

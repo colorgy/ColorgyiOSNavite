@@ -20,13 +20,13 @@ final public class ChatMessage: NSObject {
 	let chatProgress: Int?
 	
 	// MARK: - Key
-	private struct MessageType {
+	public struct MessageType {
 		static let Text = "text"
 		static let Image = "image"
 		static let Sticker = "sticker"
 	}
 	
-	private struct ContentKey {
+	public struct ContentKey {
 		static let Text = "text"
 		static let Image = "imgSrc"
 		static let Sticker = "stickerId"
