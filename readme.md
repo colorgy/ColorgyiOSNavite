@@ -18,6 +18,7 @@
 5. [ImagePickerSheetController](https://github.com/larcus94/ImagePickerSheetController)
 6. [Realm](https://realm.io)
 7. [keychain-swift](https://github.com/marketplacer/keychain-swift)
+8. [Socket.IO-Client-Swift](https://github.com/nuclearace/Socket.IO-Client-Swift)
 
 **感謝❤️以上作者**
 

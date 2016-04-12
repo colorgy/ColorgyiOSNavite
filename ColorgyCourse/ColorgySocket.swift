@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SocketIOClientSwift
 
 class ColorgySocket : NSObject {
 	

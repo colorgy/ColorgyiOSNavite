@@ -23,6 +23,8 @@
 		6305701C1CBD268A007D2C9D /* HistoryChatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */; };
 		6305701E1CBD2902007D2C9D /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701D1CBD2902007D2C9D /* Chatroom.swift */; };
 		630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701F1CBD2999007D2C9D /* ChatMessage.swift */; };
+		630570251CBD32BF007D2C9D /* SocketIOClientSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */; };
+		630570261CBD32BF007D2C9D /* SocketIOClientSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6340A3071CBA2BA5001AE3AE /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; };
 		6340A3081CBA2BA5001AE3AE /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
@@ -99,6 +101,7 @@
 				635479CC1CB8A18F00DE8CBC /* RealmSwift.framework in Embed Frameworks */,
 				635479C41CB89C4E00DE8CBC /* WebImage.framework in Embed Frameworks */,
 				6340A3081CBA2BA5001AE3AE /* KeychainSwift.framework in Embed Frameworks */,
+				630570261CBD32BF007D2C9D /* SocketIOClientSwift.framework in Embed Frameworks */,
 				635479BE1CB89C4E00DE8CBC /* ImagePickerSheetController.framework in Embed Frameworks */,
 				635479C01CB89C4E00DE8CBC /* SKPhotoBrowser.framework in Embed Frameworks */,
 				635479BC1CB89C4E00DE8CBC /* AFNetworking.framework in Embed Frameworks */,
@@ -126,6 +129,7 @@
 		6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryChatroom.swift; sourceTree = "<group>"; };
 		6305701D1CBD2902007D2C9D /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		6305701F1CBD2999007D2C9D /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIOClientSwift.framework; path = Carthage/Build/iOS/SocketIOClientSwift.framework; sourceTree = "<group>"; };
 		6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
 		635479841CB898C000DE8CBC /* ColorgyCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorgyCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635479871CB898C100DE8CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 			files = (
 				635479BF1CB89C4E00DE8CBC /* SKPhotoBrowser.framework in Frameworks */,
 				A84AB692873E9E8DA6A72BC2 /* Pods_ColorgyCourse.framework in Frameworks */,
+				630570251CBD32BF007D2C9D /* SocketIOClientSwift.framework in Frameworks */,
 				635479BD1CB89C4E00DE8CBC /* ImagePickerSheetController.framework in Frameworks */,
 				635479C31CB89C4E00DE8CBC /* WebImage.framework in Frameworks */,
 				635479C91CB8A18F00DE8CBC /* Realm.framework in Frameworks */,
@@ -262,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				635479C61CB89CB900DE8CBC /* BridghingHeader.h */,
+				630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */,
 				6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */,
 				635479C71CB8A18F00DE8CBC /* Realm.framework */,
 				635479C81CB8A18F00DE8CBC /* RealmSwift.framework */,
@@ -595,6 +601,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SocketIOClientSwift.framework",
 			);
 			outputPaths = (
 			);
