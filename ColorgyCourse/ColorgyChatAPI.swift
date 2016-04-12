@@ -1897,12 +1897,62 @@ final public class ColorgyChatAPI: NSObject {
 		}
 	}
 	
-	//    更新使用者狀態
-	//
-	//    用途：給 app 一個 web API endpoint 來更新使用者狀態
-	//    使用方式：
-	//
-	//    1. 傳一個http post給/users/update_user_status，參數包含使用者的status、 uuid、accessToken
-	
-	class func updateUserStatus(userId: String, status: String, success: () -> Void, failure: () -> Void) {}
+	///    更新使用者狀態
+	///
+	///    用途：給 app 一個 web API endpoint 來更新使用者狀態
+	///    使用方式：
+	///
+	///    1. 傳一個http post給/users/update_user_status，參數包含使用者的status、 uuid、accessToken
+	public func updateUserStatus(userId: String, status: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
+				})
+				return
+			}
+			
+			guard let accessToken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = [
+				"uuid": uuid,
+				"accessToken": accessToken,
+				"userId": userId,
+				"status": status
+			]
+			
+			self.manager.POST(self.serverURL + "/users/update_user_status", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				return
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					self.mainBlock({
+						let afError = AFError(operation: operation, error: error)
+						failure?(error: ChatAPIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 }
