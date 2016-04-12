@@ -1552,7 +1552,73 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/users/remove_chatroom，參數包括：uuid,accessToken,userId,chatroomId
 	///2. 若成功的話，會回傳一個{ result: success }
-	class func removeChatroom(userId: String, chatroomId: String, success:() -> Void, failure: () -> Void) {}
+	public func removeChatroom(userId: String, chatroomId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
+				})
+				return
+			}
+			
+			guard let accessToken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = [
+				"uuid": uuid,
+				"accessToken": accessToken,
+				"userId": userId,
+				"chatroomId": chatroomId
+			]
+			
+			self.manager.POST(self.serverURL + "/users/remove_chatroom", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					if json["result"].string == "success" {
+						self.mainBlock({
+							success?()
+						})
+						return
+					} else {
+						self.mainBlock({
+							failure?(error: ChatAPIError.FailToParseResult, afError: nil)
+						})
+						return
+					}
+				} else {
+					self.mainBlock({
+						failure?(error: ChatAPIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					self.mainBlock({
+						let afError = AFError(operation: operation, error: error)
+						failure?(error: ChatAPIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 	
 	///離開聊天室：
 	///
@@ -1561,7 +1627,73 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/chatroom/leave_chatroom，參數包括：uuid,accessToken,userId,chatroomId
 	///2. 若成功的話，會回傳一個{ result: success }
-	class func leaveChatroom(userId: String, chatroomId: String, success:() -> Void, failure: () -> Void) {}
+	public func leaveChatroom(userId: String, chatroomId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
+				})
+				return
+			}
+			
+			guard let accessToken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = [
+				"uuid": uuid,
+				"accessToken": accessToken,
+				"userId": userId,
+				"chatroomId": chatroomId
+			]
+			
+			self.manager.POST(self.serverURL + "/chatroom/leave_chatroom", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					if json["result"].string == "success" {
+						self.mainBlock({
+							success?()
+						})
+						return
+					} else {
+						self.mainBlock({
+							failure?(error: ChatAPIError.FailToParseResult, afError: nil)
+						})
+						return
+					}
+				} else {
+					self.mainBlock({
+						failure?(error: ChatAPIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					self.mainBlock({
+						let afError = AFError(operation: operation, error: error)
+						failure?(error: ChatAPIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 	
 	///更新對方稱呼：
 	///
@@ -1570,7 +1702,59 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/chatroom/update_target_alias，參數包括uuid,accessToken,userId,chatroomId,alias
 	///2. 若成功之後的establish connection後就會回傳對方的alias
-	class func updateOthersNickName(userId: String, chatroomId: String, nickname: String, success:() -> Void, failure: () -> Void) {}
+	public func updateOthersNickName(userId: String, chatroomId: String, nickname: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
+				})
+				return
+			}
+			
+			guard let accessToken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = [
+				"uuid": uuid,
+				"accessToken": accessToken,
+				"userId": userId,
+				"chatroomId": chatroomId,
+				"alias": nickname
+			]
+			
+			self.manager.POST(self.serverURL + "/chatroom/update_target_alias", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				return
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					self.mainBlock({
+						let afError = AFError(operation: operation, error: error)
+						failure?(error: ChatAPIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 	
 	///得到更多聊天訊息：
 	///
@@ -1580,6 +1764,64 @@ final public class ColorgyChatAPI: NSObject {
 	///1. 傳一個http post給/chatroom/more_message，參數包含使用者的userId, uuid,accessToken,chatroomId,從頭數過來的offset
 	///2. 比如說你想要拿到第51~75則訊息，offset設定為50即可
 	class func moreMessage(userId: String, chatroom: Chatroom, historyMessagesCount: Int, success: (messages: [ChatMessage]) -> Void, failure: () -> Void) {}
+	public func chatAPITemplate(success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
+			guard let accessToken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = [
+				"uuid": uuid,
+				"accessToken": accessToken
+			]
+			
+			self.manager.POST(self.serverURL + , parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					self.mainBlock({
+						success?()
+					})
+					return
+				} else {
+					self.mainBlock({
+						failure?(error: ChatAPIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					self.mainBlock({
+						let afError = AFError(operation: operation, error: error)
+						failure?(error: ChatAPIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 	
 	/// email_hints : Get data of email_hints
 	class func GetEmailHints(organization_code: String, success: (response: String) -> Void, failure: () -> Void) {}
