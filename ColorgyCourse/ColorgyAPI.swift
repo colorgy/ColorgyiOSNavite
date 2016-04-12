@@ -534,7 +534,7 @@ final public class ColorgyAPI : NSObject {
 				return
 			}
 			
-			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+			self.manager.DELETE(url, parameters: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				self.mainBlock({
 					success?()
 				})
@@ -977,7 +977,7 @@ final public class ColorgyAPI : NSObject {
 				return
 			}
 			
-			self.manager.GET(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+			self.manager.PUT(url, parameters: parameters, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				self.mainBlock({
 					success?()
 				})
@@ -1836,13 +1836,4 @@ final public class ColorgyAPI : NSObject {
 			})
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
