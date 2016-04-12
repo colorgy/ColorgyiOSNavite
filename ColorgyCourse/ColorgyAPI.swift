@@ -26,6 +26,8 @@ public enum APIError: ErrorType {
 	case APIUnavailable
 	/// User has no organization code
 	case NoOrganization
+	/// User has no user id
+	case NoUserId
 	/// Internal preparation fail, might be uuid generate fail or something, chech inside
 	case InternalPreparationFail
 }
@@ -769,8 +771,8 @@ final public class ColorgyAPI : NSObject {
 	
 	/// Get self courses from server.
 	///
-	/// - returns: userCourseObjects: A [UserCourseObject]? array, might be nil or 0 element.
-	public func getMeCourses(userId: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	/// - returns: ownerships: A [CourseOwnershipObject] array
+	public func getMeCourses(success success: ((ownerships: [CourseOwnershipObject]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -803,10 +805,14 @@ final public class ColorgyAPI : NSObject {
 				return
 			}
 			
-			// get current semester
-			let semester = Semester.currentSemesterAndYear()
+			guard let userId = ColorgyUserInformation.sharedInstance().userId else {
+				self.mainBlock({
+					failure?(error: APIError.NoUserId, afError: nil)
+				})
+				return
+			}
 			
-			let url = "https://colorgy.io:443/api/v1/user_courses.json?filter%5Buser_id%5D=\(userId)&filter%5Bcourse_organization_code%5D=\(organization)&filter%5Byear%5D=\(semester.year)&filter%5Bterm%5D=\(semester.term)&&&&&&&access_token=\(accesstoken)"
+			let url = "https://colorgy.io:443/api/v1/user_courses.json?filter%5Buser_id%5D=\(userId)&filter%5Bcourse_organization_code%5D=\(organization)&&&&&&&access_token=\(accesstoken)"
 			
 			guard url.isValidURLString else {
 				self.mainBlock({
@@ -818,10 +824,9 @@ final public class ColorgyAPI : NSObject {
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
-					print(json)
-					print(CourseOwnershipObject.generateOwnerShipObjects(json))
+					let ownerships = CourseOwnershipObject.generateOwnerShipObjects(json)
 					self.mainBlock({
-						success?()
+						success?(ownerships: ownerships)
 					})
 					return
 				} else {
@@ -839,6 +844,231 @@ final public class ColorgyAPI : NSObject {
 			})
 		}
 	}
+	
+	/// Get a specific courses from server.
+	///
+	/// If userid is not a Int string, then server will just return [ ] empty array.
+	///
+	/// - parameters: 
+	///		- userid: A specific user id
+	/// - returns: ownerships: A [CourseOwnershipObject] array
+	public func getUserCoursesWithUserId(userId: String, success: ((ownerships: [CourseOwnershipObject]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			guard let organization = ColorgyUserInformation.sharedInstance().userActualOrganization else {
+				self.mainBlock({
+					failure?(error: APIError.NoOrganization, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io:443/api/v1/user_courses.json?filter%5Buser_id%5D=\(userId)&filter%5Bcourse_organization_code%5D=\(organization)&&&&&&&access_token=\(accesstoken)"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					let ownerships = CourseOwnershipObject.generateOwnerShipObjects(json)
+					self.mainBlock({
+						success?(ownerships: ownerships)
+					})
+					return
+				} else {
+					self.mainBlock({
+						failure?(error: APIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	// MARK: Store / Delete Course on Server
+	/// Store course to server
+	public func storeCourseToServer(courseCode: String, year: Int, term: Int, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			guard let organization = ColorgyUserInformation.sharedInstance().userActualOrganization else {
+				self.mainBlock({
+					failure?(error: APIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
+			guard let userId = ColorgyUserInformation.sharedInstance().userId else {
+				self.mainBlock({
+					failure?(error: APIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
+			let uuid = "\(userId)-\(year)-\(term)-\(organization.uppercaseString)-\(courseCode)"
+			let url = "https://colorgy.io:443/api/v1/me/user_courses/\(uuid).json?access_token=\(accesstoken)"
+			let parameters = ["user_courses":
+				[
+					"course_code": courseCode,
+					"course_organization_code": organization.uppercaseString,
+					"year": year,
+					"term": term
+				]
+			]
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			self.manager.GET(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				return
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	/// Delete course on server
+	public func deleteCourseOnServer(courseCode: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			///
+			// get all course on server
+			// deleteing a course on server needs an uuid
+			// so we must get it from server
+			//
+			self.getMeCourses(success: { (ownerships) in
+				// loop through all ownerships
+				for ownership in ownerships {
+					// check and delete here
+					if courseCode == ownership.course_code {
+						let uuid = ownership.uuid
+						// prepare for delete url
+						let url = "https://colorgy.io:443/api/v1/me/user_courses/\(uuid).json?access_token=\(accesstoken)"
+						
+						guard url.isValidURLString else {
+							self.mainBlock({
+								failure?(error: APIError.InvalidURLString, afError: nil)
+							})
+							return
+						}
+						
+						// start delete job
+						self.manager.DELETE(url, parameters: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+							self.mainBlock({
+								success?()
+							})
+							return
+							}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+								let afError = AFError(operation: operation, error: error)
+								self.mainBlock({
+									failure?(error: APIError.InvalidURLString, afError: afError)
+								})
+								return
+						})
+					}
+				}
+				}, failure: { (error, afError) in
+					self.mainBlock({
+						failure?(error: APIError.NoAccessToken, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	// MARK: - Get School and Organization Data
+	
+	/// Get available school on server
+	
 	
 	
 	

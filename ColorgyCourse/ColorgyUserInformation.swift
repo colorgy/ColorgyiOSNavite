@@ -226,4 +226,9 @@ final public class ColorgyUserInformation {
 		let ud = NSUserDefaults.standardUserDefaults()
 		return ud.objectForKey(APIMeResultKeys.userName) as? String
 	}
+	
+	public var userId: Int? {
+		let ud = NSUserDefaults.standardUserDefaults()
+		return ud.objectForKey(APIMeResultKeys.userId) as? Int
+	}
 }

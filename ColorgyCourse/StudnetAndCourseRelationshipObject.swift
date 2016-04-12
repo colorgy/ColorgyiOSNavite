@@ -24,7 +24,7 @@ final public class CourseOwnershipObject: NSObject {
 	/// Organization code of a specific course.
 	///
 	/// Might be nil due to instable data base.
-	public let course_organization_code: String?
+	public let course_organization_code: String
 	/// Course Code.
 	///
 	/// This is a 😎 must have value.
