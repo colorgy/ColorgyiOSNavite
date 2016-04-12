@@ -1653,7 +1653,7 @@ final public class ColorgyAPI : NSObject {
 	}
 	
 	/// Update user iamge
-	public func patchUserImage(avatar: String, avatar_crop_x: Float, avatar_crop_y: Float, avatar_crop_w: Float, avatar_crop_h: Float, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func patchUserImage(avatar: String, avatar_crop_x: CGFloat, avatar_crop_y: CGFloat, avatar_crop_w: CGFloat, avatar_crop_h: CGFloat, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1691,10 +1691,10 @@ final public class ColorgyAPI : NSObject {
 			let parameters = ["user":
 				[
 					"avatar": avatar,
-					"avatar_crop_x": avatar_crop_x,
-					"avatar_crop_y": avatar_crop_y,
-					"avatar_crop_w": avatar_crop_w,
-					"avatar_crop_h": avatar_crop_h
+					"avatar_crop_x": Float(avatar_crop_x),
+					"avatar_crop_y": Float(avatar_crop_y),
+					"avatar_crop_w": Float(avatar_crop_w),
+					"avatar_crop_h": Float(avatar_crop_h)
 				]
 			]
 			
@@ -1722,6 +1722,41 @@ final public class ColorgyAPI : NSObject {
 		}
 	}
 	
+	/// Update user image
+	public func updateUserImage(image: UIImage, cropRect: CGRect, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			
+			// encode image to base64 string
+			guard let base64String = image.base64String else {
+				self.mainBlock({
+					failure?(error: APIError.InternalPreparationFail, afError: nil)
+				})
+				return
+			}
+			
+			let imageString = "data:image/png;base64,\(base64String)"
+			
+			self.patchUserImage(imageString, avatar_crop_x: cropRect.origin.x, avatar_crop_y: cropRect.origin.y, avatar_crop_w: cropRect.size.width, avatar_crop_h: cropRect.size.height, success: {
+				self.mainBlock({
+					success?()
+				})
+				}, failure: { (error, afError) in
+					self.mainBlock({
+						failure?(error: error, afError: afError)}
+					)
+			})
+		}
+	}
 	
 	// MARK: - Register A New User
 	public func registerNewUser(name: String, email: String, password: String, passwordConfirm: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
@@ -1775,7 +1810,6 @@ final public class ColorgyAPI : NSObject {
 			})
 		}
 	}
-	
 	
 	// MARK: - Chat related API
 	/// Can check which school is available to chat feature
