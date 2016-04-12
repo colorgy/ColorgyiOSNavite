@@ -51,7 +51,7 @@ final public class ColorgyAPI : NSObject {
 	
 	// MARK: - Init
 	/// initializer
-	override public init() {
+	public override init() {
 		manager = AFHTTPSessionManager(baseURL: nil)
 		manager.requestSerializer = AFJSONRequestSerializer()
 		manager.responseSerializer = AFJSONResponseSerializer()
@@ -59,14 +59,14 @@ final public class ColorgyAPI : NSObject {
 		manager.operationQueue.addObserver(self, forKeyPath: "operationCount", options: [], context: pointer)
 	}
 	
-	/// public access token getter
+	// MARK: - Helper
+	/// private access token getter
 	private var accessToken: String? {
 		get {
 			return ColorgyRefreshCenter.sharedInstance().accessToken
 		}
 	}
 	
-	// MARK: - Helper
 	/// This Method will help you to wrap qos queue for you
 	private func qosBlock(block: () -> Void) {
 		let qos = Int(QOS_CLASS_USER_INTERACTIVE.rawValue)
