@@ -959,6 +959,157 @@ final public class ColorgyChatAPI: NSObject {
 			]
 			
 			self.manager.POST(self.serverURL + "/users/answer_question", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				return
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					self.mainBlock({
+						let afError = AFError(operation: operation, error: error)
+						failure?(error: ChatAPIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	///檢查打招呼：(simple test passed)
+	///
+	///用途：檢查是否已經打過招呼。如果有打過回傳打招呼的結果。
+	///使用方式：
+	///
+	///1. 傳一個http post給/hi/check_hi，參數包含的userId,targetId,uuid,accessToken
+	///2. 回傳打招呼的結果，有兩種狀況可以繼續打招呼：(1) 從沒打過招呼 (2) 被拒絕可以再打一次，兩者的結果都是一樣的status 200：{ result: 'ok, you can say hi' }，若是已經(1)打過招呼然後成功過 (2)打過招呼還在等候回應，回傳status 200：{ result: 'already said hi' }
+	public func checkHi(userId: String, targetId: String, success: ((canSayHi: Bool, whoSaidHi: String?, chatroomId: String?) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
+				})
+				return
+			}
+			
+			guard let accessToken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = [
+				"uuid": uuid,
+				"accessToken": accessToken,
+				"userId": userId,
+				"targetId": targetId
+			]
+			
+			self.manager.POST(self.serverURL + "/hi/check_hi", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					var chatroomId: String? = json["chatroomId"].string
+					if json["result"].string == "already said hi" {
+						// can't say hi, return false
+						//          success(canSayHi: false, whoSaidHi: "you already said hi")
+						self.mainBlock({
+							success?(canSayHi: false, whoSaidHi: "you already said hi", chatroomId: chatroomId)
+						})
+						return
+					} else if json["result"].string == "ok, you can say hi" {
+						// can say hi, return true
+						//          success(canSayHi: true, whoSaidHi: nil)
+						self.mainBlock({
+							success?(canSayHi: true, whoSaidHi: nil, chatroomId: nil)
+						})
+						return
+					} else if json["result"].string == "target already said hi" {
+						//          success(canSayHi: false, whoSaidHi: "He/She already said hi")
+						self.mainBlock({
+							success?(canSayHi: false, whoSaidHi: "He/She already said hi", chatroomId: chatroomId)
+						})
+						return
+					} else {
+//						print("fail to check say hi, unknown result")
+						self.mainBlock({
+							failure?(error: ChatAPIError.FailToParseResult, afError: nil)
+						})
+						return
+					}
+				} else {
+					self.mainBlock({
+						failure?(error: ChatAPIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					self.mainBlock({
+						let afError = AFError(operation: operation, error: error)
+						failure?(error: ChatAPIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	///打招呼：(simple test passed)
+	///
+	///用途：與特定的使用者打招呼，如果以打過招呼就直接進入聊天室即可。
+	///使用方式：
+	///
+	///1. 傳一個http post給/hi/say_hi，參數包含使用者的userId,uuid, accessToken,targetId,message
+	///2. 與一個陌生人打招呼
+	class func sayHi(userId: String, targetId: String, message: String, success: () -> Void, failure: () -> Void) {}
+	public func chatAPITemplate(success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
+			guard let accessToken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = [
+				"uuid": uuid,
+				"accessToken": accessToken
+			]
+			
+			self.manager.POST(self.serverURL + , parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
 					self.mainBlock({
@@ -981,27 +1132,112 @@ final public class ColorgyChatAPI: NSObject {
 		}
 	}
 	
-	///檢查打招呼：(simple test passed)
+	///取得打招呼列表：(simple test passed)
 	///
-	///用途：檢查是否已經打過招呼。如果有打過回傳打招呼的結果。
+	///用途：取得被打招呼列表
 	///使用方式：
 	///
-	///1. 傳一個http post給/hi/check_hi，參數包含的userId,targetId,uuid,accessToken
-	///2. 回傳打招呼的結果，有兩種狀況可以繼續打招呼：(1) 從沒打過招呼 (2) 被拒絕可以再打一次，兩者的結果都是一樣的status 200：{ result: 'ok, you can say hi' }，若是已經(1)打過招呼然後成功過 (2)打過招呼還在等候回應，回傳status 200：{ result: 'already said hi' }
-	class func checkHi(userId: String, targetId: String, success: (canSayHi: Bool, whoSaidHi: String?, chatroomId: String?) -> Void, failure: () -> Void) {}
+	///1. 傳一個http post給/hi/get_list，參數包含使用者的userId,uuid,accessToken
+	///2. 回傳被打過招呼的列表
+	class func getHiList(userId: String, success: (hiList: [Hello]) -> Void, failure: () -> Void) {}
+	
+	/// 取得打招呼列表：(simple test passed)
+	///
+	/// 取得被打過招呼的列表：
+	///
+	/// 用途：取得打過招呼，還沒被接受的id列表
+	/// 使用方式：
+	///
+	/// 1. 傳一個http post給/hi/get_my_list，參數包含使用者的userId,uuid,accessToken
+	/// 2. 回傳被打過招呼的列表，成功的話會出現status 200：{ result: [...] }的對你打過招呼的人的userId
+	class func getMyList(userId: String, success: (hiedList: NSArray) -> Void, failure: () -> Void) {}
+	
+	///接受打招呼：(simple test passed)
+	///
+	///用途：接受一個打招呼
+	///使用方式：
+	///
+	///1. 傳一個http post給/hi/accept_hi，參數包含使用者的userId,uuid, accessToken,hiId
+	///2. 必須要是target才能傳送這個request，會產生一個空的聊天室，回傳status 200
+	class func acceptHi(userId: String, hiId: String, success: () -> Void, failure: () -> Void) {}
+	
+	///拒絕打招呼：(simple test passed)
+	///
+	///用途：拒絕一個打招呼
+	///使用方式：
+	///
+	///1. 傳一個http post給/hi/reject_hi，參數包含使用者的userId,uuid, accessToken,hiId
+	///2. 必須要是target才能傳送這個request，會將一個打招呼的status更改為rejected
+	class func rejectHi(userId: String, hiId: String, success: () -> Void, failure: () -> Void) {}
 	
 	
+	class func acceptHiWithHistoryChatroomId(userId: String, hiId: String, success: (chatroomId: String) -> Void, failure: () -> Void) {}
 	
 	
+	///檢查是否回答過最新問題：
+	///
+	///用途：在顯示問題之前需要先檢查是否回答過最新問題
+	///使用方式：
+	///
+	///1. 傳一個http post給/users/check_answered_latest，參數包含uuid,accessToken,userId
+	///2. 成功的會會回傳{ result: 'answered' }以及{ result: 'not answered'  }
+	class func checkAnsweredLatestQuestion(userId: String, success: (answered :Bool) -> Void, failure: () -> Void) {}
 	
 	
+	///取得好友列表：
+	///
+	///用途：給 app 一個 web API endpoint 來得到過去聊天過的使用者
+	///使用方式：
+	///
+	///1. 傳一個http post給/users/get_history_target，參數包含gender,uuid,accessToken,userId,page，page從零開始，0,1,2,3,4,5...一直到回傳為空陣列為止
+	///2. 如果成功，回傳的資料包括id,name, about,lastAnswer,avatar_blur_2x_url,一次會回傳20個
+	class func getHistoryTarget(userId: String, gender: Gender, page: Int, success: (targets: [HistoryChatroom]) -> Void, failure: () -> Void) {}
 	
+	///刪除聊天室：
+	///
+	///用途：提供一個刪除聊天室的api，而聊天室將會從此從自己的聊天列表消失
+	///使用方式：
+	///
+	///1. 傳一個http post給/users/remove_chatroom，參數包括：uuid,accessToken,userId,chatroomId
+	///2. 若成功的話，會回傳一個{ result: success }
+	class func removeChatroom(userId: String, chatroomId: String, success:() -> Void, failure: () -> Void) {}
 	
+	///離開聊天室：
+	///
+	///用途：提供一個離開聊天室的api，對方將會收到一個來自系統的訊息，而聊天室將會從此從自己的聊天列表消失
+	///使用方式：
+	///
+	///1. 傳一個http post給/chatroom/leave_chatroom，參數包括：uuid,accessToken,userId,chatroomId
+	///2. 若成功的話，會回傳一個{ result: success }
+	class func leaveChatroom(userId: String, chatroomId: String, success:() -> Void, failure: () -> Void) {}
 	
+	///更新對方稱呼：
+	///
+	///用途：更新對方的暱稱，並不會讓對方知道
+	///使用方式：
+	///
+	///1. 傳一個http post給/chatroom/update_target_alias，參數包括uuid,accessToken,userId,chatroomId,alias
+	///2. 若成功之後的establish connection後就會回傳對方的alias
+	class func updateOthersNickName(userId: String, chatroomId: String, nickname: String, success:() -> Void, failure: () -> Void) {}
 	
+	///得到更多聊天訊息：
+	///
+	///用途：取得聊天室過去的訊息
+	///使用方式：
+	///
+	///1. 傳一個http post給/chatroom/more_message，參數包含使用者的userId, uuid,accessToken,chatroomId,從頭數過來的offset
+	///2. 比如說你想要拿到第51~75則訊息，offset設定為50即可
+	class func moreMessage(userId: String, chatroom: Chatroom, historyMessagesCount: Int, success: (messages: [ChatMessage]) -> Void, failure: () -> Void) {}
 	
+	/// email_hints : Get data of email_hints
+	class func GetEmailHints(organization_code: String, success: (response: String) -> Void, failure: () -> Void) {}
 	
+	//    更新使用者狀態
+	//
+	//    用途：給 app 一個 web API endpoint 來更新使用者狀態
+	//    使用方式：
+	//
+	//    1. 傳一個http post給/users/update_user_status，參數包含使用者的status、 uuid、accessToken
 	
-	
-	
+	class func updateUserStatus(userId: String, status: String, success: () -> Void, failure: () -> Void) {}
 }
