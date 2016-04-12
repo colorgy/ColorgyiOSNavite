@@ -165,6 +165,7 @@ final public class ColorgyUserInformation {
 	}
 	
 	// MARK: Current Device Push Notification Token
+	
 	/// Store current device push notification token
 	public class func storePushNotificationToken(token: NSData) {
 		let ud = NSUserDefaults.standardUserDefaults()

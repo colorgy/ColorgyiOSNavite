@@ -388,6 +388,14 @@ final public class ColorgyAPI : NSObject {
 				return
 			}
 			
+			// get push notificatoin token 
+			guard let token = ColorgyUserInformation.sharedInstance().pushNotificationToken else {
+				self.mainBlock({
+					failure?(error: APIError.InternalPreparationFail, afError: nil)
+				})
+				return
+			}
+			
 			let url = "https://colorgy.io:443/api/v1/me/devices/\(uuid).json?access_token=\(accesstoken)"
 			
 			guard url.isValidURLString else {
@@ -405,15 +413,16 @@ final public class ColorgyAPI : NSObject {
 					"device_id": "\(token)"
 				]
 			]
-			
-			self.manager.PUT(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-				if let response = response {
-					let json = JSON(response)
-					print(json)
-				} else {
-					
-				}
+
+			self.manager.PUT(url, parameters: parameters, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				success?()
+				return
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
 					
 			})
 		}
