@@ -28,7 +28,7 @@ final public class Organization: CustomStringConvertible {
 	}
 	
 	public var description: String {
-		return "{\n\tcode = \(code)\n\tname = \(name)\n\tshortName = \(shortName)\n\tid = \(id)\n\ttype = \(type)\n}"
+		return "Organization: {\n\tcode = \(code)\n\tname = \(name)\n\tshortName = \(shortName)\n\tid = \(id)\n\ttype = \(type)\n}"
 	}
 	
 	// MARK: - Init
@@ -48,7 +48,7 @@ final public class Organization: CustomStringConvertible {
 	}
 	
 	// MARK: - Generator
-	class func generateSchoolsWithJSON(json: JSON) -> [Organization] {
+	class func generateOrganizationsWithJSON(json: JSON) -> [Organization] {
 		var objects = [Organization]()
 		
 		// if is an array

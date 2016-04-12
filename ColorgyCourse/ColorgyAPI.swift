@@ -740,7 +740,6 @@ final public class ColorgyAPI : NSObject {
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
-					print(json)
 					if let user = ColorgyAPIUserResult(json: json) {
 						// must success to parse user result
 						self.mainBlock({
@@ -1029,7 +1028,7 @@ final public class ColorgyAPI : NSObject {
 				// loop through all ownerships
 				for ownership in ownerships {
 					// check and delete here
-					if courseCode == ownership.course_code {
+					if courseCode == ownership.courseCode {
 						let uuid = ownership.uuid
 						// prepare for delete url
 						let url = "https://colorgy.io:443/api/v1/me/user_courses/\(uuid).json?access_token=\(accesstoken)"
@@ -1068,7 +1067,7 @@ final public class ColorgyAPI : NSObject {
 	// MARK: - Get Organization and Department Data
 	
 	/// Get available Organization on server
-	public func getSchool(success success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func getOrganizations(success success: ((organizations: [Organization]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1106,6 +1105,66 @@ final public class ColorgyAPI : NSObject {
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
+					let organizations = Organization.generateOrganizationsWithJSON(json)
+					self.mainBlock({
+						success?(organizations: organizations)
+					})
+					return
+				} else {
+					self.mainBlock({
+						failure?(error: APIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	/// Get departments on server
+	public func getDepartments(success success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let url =
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
 					print(json)
 					self.mainBlock({
 						success?()
@@ -1126,8 +1185,6 @@ final public class ColorgyAPI : NSObject {
 			})
 		}
 	}
-	
-	
 	
 	
 	
