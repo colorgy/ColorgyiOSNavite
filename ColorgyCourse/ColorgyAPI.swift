@@ -1316,6 +1316,219 @@ final public class ColorgyAPI : NSObject {
 		}
 	}
 	
+	/// Get self privacy setting
+	public func getUserPrivacySetting(userId: Int, success: ((isTimeTablePublic: Bool) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+
+			guard userId > 0 else {
+				self.mainBlock({
+					failure?(error: APIError.InternalPreparationFail, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io/api/v1/user_table_settings/\(userId).json"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					var isTimeTablePublic = false
+					if json.isArray {
+						if let visibility = json[0]["courses_table_visibility"].bool {
+							isTimeTablePublic = visibility
+						}
+					} else {
+						if let visibility = json["courses_table_visibility"].bool {
+							isTimeTablePublic = visibility
+						}
+					}
+					self.mainBlock({
+						success?(isTimeTablePublic: isTimeTablePublic)
+					})
+					return
+				} else {
+					self.mainBlock({
+						failure?(error: APIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	/// PATCH privacy setting
+	public func patchMEPrivacySetting(turnIt on: Bool, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			guard let userId = ColorgyUserInformation.sharedInstance().userId else {
+				self.mainBlock({
+					failure?(error: APIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io:443/api/v1/user_table_settings/\(userId).json?access_token=\(accesstoken)"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = [
+				"user_table_settings": [
+					"courses_table_visibility": on
+				]
+			]
+			
+			self.manager.PATCH(url, parameters: parameters, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				return
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	// MARK: - Report
+	/// Post a feedback to server
+	func postFeedbackToServer(userEmail: String, feedbackType: String, feedbackDescription: String) {
+		
+	}
+	
+	public func postFeedbackToServer(userEmail: String, feedbackType: String, feedbackDescription: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io:443/api/v1/me/user_app_feedbacks.json?access_token=\(accesstoken)"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			let osVersion = NSProcessInfo.processInfo().operatingSystemVersion
+			let appVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String
+			let parameters = ["user_app_feedbacks":
+				[
+					"user_email": userEmail,
+					"type": feedbackType,
+					"description": feedbackDescription,
+					"device_type": "ios",
+					"device_manufacturer": "Apple",
+					"device_os_verison": "\(osVersion.majorVersion).\(osVersion.minorVersion).\(osVersion.patchVersion)",
+					"app_verison": appVersion ?? "unknown version"
+				]
+			]
+			
+			self.manager.GET(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				return
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
