@@ -10,19 +10,21 @@ import Foundation
 
 final public class TimeStamp : NSObject {
 	
-	var year: Int
-	var month: Int
-	var date: Int
-	var hour: Int
-	var minute: Int
-	var second: Int
-	var millisecond: Int
+	// MARK: - Parameters
+	public let year: Int
+	public let month: Int
+	public let date: Int
+	public let hour: Int
+	public let minute: Int
+	public let second: Int
+	public let millisecond: Int
 	
 	public override var description: String {
 		return "TimeStamp: (\(year)-\(month)-\(date) \(hour):\(minute):\(second)'\(millisecond))"
 	}
 	
-	override init() {
+	// MARK: - Init
+	public override init() {
 		let now = NSDate()
 		self.year = now.year.intValue ?? 0
 		self.month = now.month.intValue ?? 0
@@ -34,18 +36,9 @@ final public class TimeStamp : NSObject {
 		super.init()
 	}
 	
-	init?(timeStampString: String) {
-		
-		self.year = Int()
-		self.month = Int()
-		self.date = Int()
-		self.hour = Int()
-		self.minute = Int()
-		self.second = Int()
-		self.millisecond = Int()
-		
-		super.init()
-		
+	public init?(timeStampString: String) {
+
+		// initialize cache
 		var _year: Int?
 		var _month: Int?
 		var _date: Int?
@@ -54,6 +47,7 @@ final public class TimeStamp : NSObject {
 		var _second: Int?
 		var _millisecond: Int?
 		
+		// start handle time
 		let trimLastCharaterStrings = timeStampString.characters.split("Z").map(String.init)
 		if let string = trimLastCharaterStrings.first {
 			let splitDayAndHourStrings = string.characters.split("T").map(String.init)
@@ -79,6 +73,7 @@ final public class TimeStamp : NSObject {
 			}
 		}
 		
+		// check
 		guard _year != nil else { return nil }
 		guard _month != nil else { return nil }
 		guard _date != nil else { return nil }
@@ -94,16 +89,18 @@ final public class TimeStamp : NSObject {
 		self.minute = _minute!
 		self.second = _second!
 		self.millisecond = _millisecond!
+		
+		super.init()
 	}
 	
-	func nsdateValue() -> NSDate? {
+	public func nsdateValue() -> NSDate? {
 		let formatter = NSDateFormatter()
 		formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss-SSS"
 		let dateString = "\(year)-\(month)-\(date)-\(hour)-\(minute)-\(second)-\(millisecond)"
 		return formatter.dateFromString(dateString)
 	}
 	
-	func timeIntervalSince1970() -> NSTimeInterval {
+	public func timeIntervalSince1970() -> NSTimeInterval {
 		if let nsdate = self.nsdateValue() {
 			return nsdate.timeIntervalSince1970
 		} else {
@@ -111,7 +108,7 @@ final public class TimeStamp : NSObject {
 		}
 	}
 	
-	func timeStampString() -> String {
+	public func timeStampString() -> String {
 		let now = NSDate()
 		if let dateCreated = self.nsdateValue() {
 			// apple's clock is 10 second behind aws's

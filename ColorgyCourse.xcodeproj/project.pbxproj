@@ -252,6 +252,7 @@
 				6305701F1CBD2999007D2C9D /* ChatMessage.swift */,
 				630570171CBD233A007D2C9D /* Hello.swift */,
 				630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */,
+				635479D51CB8B02A00DE8CBC /* TimeStamp.swift */,
 				6305700D1CBD11EA007D2C9D /* ChatUser.swift */,
 			);
 			name = Model;
@@ -333,7 +334,6 @@
 				635479FA1CB8D17800DE8CBC /* PeriodRawData.swift */,
 				630570041CBCC94A007D2C9D /* Department.swift */,
 				63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */,
-				635479D51CB8B02A00DE8CBC /* TimeStamp.swift */,
 				635479F91CB8B0BD00DE8CBC /* AFNetworking Helper */,
 				635479F71CB8B0A400DE8CBC /* API */,
 				635479F51CB8B06F00DE8CBC /* Refresh Center */,
