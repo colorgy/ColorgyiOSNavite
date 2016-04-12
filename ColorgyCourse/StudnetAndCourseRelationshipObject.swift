@@ -12,7 +12,7 @@ import SwiftyJSON
 /// This is used when you get the studnet in a specific course
 ///
 /// You will see the relationship between student and course
-final public class StudnetAndCourseRelationshipObject: NSObject {
+final public class CourseOwnershipObject: NSObject {
 	
 	// uuid here is not code, is server's
 	/// UUID here is a server stamp, must be unique.
@@ -42,10 +42,10 @@ final public class StudnetAndCourseRelationshipObject: NSObject {
 	public let _type: String
 	
 	public override var description: String {
-		return "StudnetAndCourseRelationshipObject: {\n\tuuid: \(uuid)\n\tid: \(id)\n\tcourse_organization_code: \(course_organization_code)\n\tcourse_code: \(course_code)\n\tuser_id: \(user_id)\n\tyear: \(year)\n\tterm: \(term)\n\t_type: \(_type)\n}"
+		return "CourseOwnershipObject: {\n\tuuid: \(uuid)\n\tid: \(id)\n\tcourse_organization_code: \(course_organization_code)\n\tcourse_code: \(course_code)\n\tuser_id: \(user_id)\n\tyear: \(year)\n\tterm: \(term)\n\t_type: \(_type)\n}"
 	}
 	
-	private struct StudnetAndCourseRelationshipObjectKey {
+	private struct CourseOwnershipObjectKey {
 		static let uuid = "uuid"
 		static let id = "id"
 		static let course_organization_code = "course_organization_code"
@@ -60,21 +60,21 @@ final public class StudnetAndCourseRelationshipObject: NSObject {
 	///
 	/// Won't be created if json file doesn't contain necessary values.
 	///
-	/// - parameters: 
-	///		- json: a json from server. This json is from **user API**, not school API.
+	/// - parameters:
+	///   - json: a json from server. This json is from **user API**, not school API.
 	init?(json: JSON) {
 		
 		// this json shouldn't be an array
 		guard !json.isArray else { return nil }
 		
-		guard let uuid = json[StudnetAndCourseRelationshipObjectKey.uuid].string else { return nil }
-		guard let id = json[StudnetAndCourseRelationshipObjectKey.id].int else { return nil }
-		guard let course_organization_code = json[StudnetAndCourseRelationshipObjectKey.course_organization_code].string else { return nil }
-		guard let course_code = json[StudnetAndCourseRelationshipObjectKey.course_code].string else { return nil }
-		guard let user_id = json[StudnetAndCourseRelationshipObjectKey.user_id].int else { return nil }
-		guard let year = json[StudnetAndCourseRelationshipObjectKey.year].int else { return nil }
-		guard let term = json[StudnetAndCourseRelationshipObjectKey.term].int else { return nil }
-		guard let _type = json[StudnetAndCourseRelationshipObjectKey._type].string else { return nil }
+		guard let uuid = json[CourseOwnershipObjectKey.uuid].string else { return nil }
+		guard let id = json[CourseOwnershipObjectKey.id].int else { return nil }
+		guard let course_organization_code = json[CourseOwnershipObjectKey.course_organization_code].string else { return nil }
+		guard let course_code = json[CourseOwnershipObjectKey.course_code].string else { return nil }
+		guard let user_id = json[CourseOwnershipObjectKey.user_id].int else { return nil }
+		guard let year = json[CourseOwnershipObjectKey.year].int else { return nil }
+		guard let term = json[CourseOwnershipObjectKey.term].int else { return nil }
+		guard let _type = json[CourseOwnershipObjectKey._type].string else { return nil }
 		
 		self.uuid = uuid
 		self.id = id
@@ -88,22 +88,22 @@ final public class StudnetAndCourseRelationshipObject: NSObject {
 		super.init()
 	}
 	
-	public class func generateRelationObjects(json: JSON) -> [StudnetAndCourseRelationshipObject] {
+	public class func generateOwnerShipObjects(json: JSON) -> [CourseOwnershipObject] {
 		
 		// initialize cache
-		var objects = [StudnetAndCourseRelationshipObject]()
+		var objects = [CourseOwnershipObject]()
 		
 		// check if its an array
 		if json.isArray {
 			// array
 			for (_, json) : (String, JSON) in json {
-				if let object = StudnetAndCourseRelationshipObject(json: json) {
+				if let object = CourseOwnershipObject(json: json) {
 					objects.append(object)
 				}
 			}
 		} else {
 			// single object
-			if let object = StudnetAndCourseRelationshipObject(json: json) {
+			if let object = CourseOwnershipObject(json: json) {
 				objects.append(object)
 			}
 		}

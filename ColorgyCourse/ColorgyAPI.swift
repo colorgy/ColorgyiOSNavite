@@ -635,7 +635,7 @@ final public class ColorgyAPI : NSObject {
 	/// - parameters: 
 	///		- code: A course code.
 	/// - returns: userCourseObjects: A [UserCourseObject]? array, might be nil.
-	public func GETStudentsInSpecificCourse(code: String, success: ((relationships: [StudnetAndCourseRelationshipObject]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func GETStudentsInSpecificCourse(code: String, success: ((ownerships: [CourseOwnershipObject]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -673,9 +673,9 @@ final public class ColorgyAPI : NSObject {
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
-					let relationships = StudnetAndCourseRelationshipObject.generateRelationObjects(json)
+					let ownerships = CourseOwnershipObject.generateOwnerShipObjects(json)
 					self.mainBlock({
-						success?(relationships: relationships)
+						success?(ownerships: ownerships)
 					})
 					return
 				} else {
@@ -770,7 +770,7 @@ final public class ColorgyAPI : NSObject {
 	/// Get self courses from server.
 	///
 	/// - returns: userCourseObjects: A [UserCourseObject]? array, might be nil or 0 element.
-	public func getMeCourses(success success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func getMeCourses(userId: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -796,7 +796,17 @@ final public class ColorgyAPI : NSObject {
 				return
 			}
 			
-			let url = "https://colorgy.io:443/api/v1/user_courses.json?filter%5Buser_id%5D=\(userId)&filter%5Bcourse_organization_code%5D=\(possibleOrganization)&filter%5Byear%5D=\(semester.year)&filter%5Bterm%5D=\(semester.term)&&&&&&&access_token=\(accesstoken)"
+			guard let organization = ColorgyUserInformation.sharedInstance().userActualOrganization else {
+				self.mainBlock({
+					failure?(error: APIError.NoOrganization, afError: nil)
+				})
+				return
+			}
+			
+			// get current semester
+			let semester = Semester.currentSemesterAndYear()
+			
+			let url = "https://colorgy.io:443/api/v1/user_courses.json?filter%5Buser_id%5D=\(userId)&filter%5Bcourse_organization_code%5D=\(organization)&filter%5Byear%5D=\(semester.year)&filter%5Bterm%5D=\(semester.term)&&&&&&&access_token=\(accesstoken)"
 			
 			guard url.isValidURLString else {
 				self.mainBlock({
@@ -809,6 +819,7 @@ final public class ColorgyAPI : NSObject {
 				if let response = response {
 					let json = JSON(response)
 					print(json)
+					print(CourseOwnershipObject.generateOwnerShipObjects(json))
 					self.mainBlock({
 						success?()
 					})
