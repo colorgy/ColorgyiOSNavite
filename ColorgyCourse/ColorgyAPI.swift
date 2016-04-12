@@ -220,9 +220,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -291,14 +289,12 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
 		
-		qosBlock { 
+		qosBlock {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
 					failure?(error: APIError.APIUnavailable, afError: nil)
@@ -326,7 +322,7 @@ final public class ColorgyAPI : NSObject {
 				if let response = response {
 					let json = JSON(response)
 					let rawData = PeriodRawData.generatePeiordRawData(json) ?? PeriodRawData.generateFakePeiordRawData(nil)
-					self.mainBlock({ 
+					self.mainBlock({
 						success?(periodData: rawData)
 					})
 				} else {
@@ -349,9 +345,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -370,7 +364,7 @@ final public class ColorgyAPI : NSObject {
 				})
 				return
 			}
-
+			
 			
 			// pushing device token to server needs a unique uuid,
 			// so must generate one
@@ -390,7 +384,7 @@ final public class ColorgyAPI : NSObject {
 				return
 			}
 			
-			// get push notificatoin token 
+			// get push notificatoin token
 			guard let token = ColorgyUserInformation.sharedInstance().pushNotificationToken else {
 				self.mainBlock({
 					failure?(error: APIError.InternalPreparationFail, afError: nil)
@@ -415,7 +409,7 @@ final public class ColorgyAPI : NSObject {
 					"device_id": "\(token)"
 				]
 			]
-
+			
 			self.manager.PUT(url, parameters: parameters, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				self.mainBlock({
 					success?()
@@ -437,9 +431,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -503,9 +495,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -555,16 +545,14 @@ final public class ColorgyAPI : NSObject {
 	/// Will just return a single data object.
 	/// Not an array
 	///
-	/// - parameters: 
-	///		- code: A specific course code.
+	/// - parameters:
+	///   - code: A specific course code.
 	/// - returns: courseRawDataObject: A single CourseRawDataObject?, might be nil.
 	public func GETCourseRawObjectWithCourseCode(code: String, success: ((object: CourseRawDataObject) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -634,16 +622,14 @@ final public class ColorgyAPI : NSObject {
 	/// Get users who enroll in specific course.
 	/// Server will return a UserCourseObject.
 	///
-	/// - parameters: 
-	///		- code: A course code.
+	/// - parameters:
+	///   - code: A course code.
 	/// - returns: userCourseObjects: A [UserCourseObject]? array, might be nil.
 	public func GETStudentsInSpecificCourse(code: String, success: ((ownerships: [CourseOwnershipObject]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -699,16 +685,14 @@ final public class ColorgyAPI : NSObject {
 	
 	/// You can simply get a user info API using this.
 	///
-	/// - returns: 
-	///		- result: ColorgyAPIMeResult?, you can store it.
-	///		- error: An error if you got one, then handle it.
+	/// - returns:
+	///   - result: ColorgyAPIMeResult?, you can store it.
+	///   - error: An error if you got one, then handle it.
 	public func getUserInfo(userId: String, success: ((user: ColorgyAPIUserResult) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -775,9 +759,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -848,16 +830,14 @@ final public class ColorgyAPI : NSObject {
 	///
 	/// If userid is not a Int string, then server will just return [ ] empty array.
 	///
-	/// - parameters: 
-	///		- userid: A specific user id
+	/// - parameters:
+	///   - userid: A specific user id
 	/// - returns: ownerships: A [CourseOwnershipObject] array
 	public func getUserCoursesWithUserId(userId: String, success: ((ownerships: [CourseOwnershipObject]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -923,9 +903,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -997,9 +975,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -1071,9 +1047,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -1131,9 +1105,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -1192,9 +1164,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -1252,9 +1222,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -1321,9 +1289,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -1335,7 +1301,7 @@ final public class ColorgyAPI : NSObject {
 				})
 				return
 			}
-
+			
 			guard userId > 0 else {
 				self.mainBlock({
 					failure?(error: APIError.InternalPreparationFail, afError: nil)
@@ -1390,9 +1356,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -1455,9 +1419,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -1521,9 +1483,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -1591,9 +1551,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -1621,7 +1579,7 @@ final public class ColorgyAPI : NSObject {
 				})
 				return
 			}
-
+			
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
@@ -1657,9 +1615,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -1727,9 +1683,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -1763,9 +1717,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
@@ -1817,9 +1769,7 @@ final public class ColorgyAPI : NSObject {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
-				self.mainBlock({
-					failure?(error: APIError.NetworkUnavailable, afError: nil)
-				})
+				failure?(error: APIError.NetworkUnavailable, afError: nil)
 			})
 			return
 		}
