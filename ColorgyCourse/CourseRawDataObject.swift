@@ -21,47 +21,47 @@ final public class CourseRawDataObject: CustomStringConvertible {
 	// 1. properties
 	// cache data from server
 	// required
-	let name: String
-	let code: String
-	let year: Int
-	let term: Int
+	public let name: String
+	public let code: String
+	public let year: Int
+	public let term: Int
 	
 	// optional
-	let credits: Int?
-	let lecturer: String?
-	let type: String?
-	let id: Int?
+	public let credits: Int?
+	public let lecturer: String?
+	public let type: String?
+	public let id: Int?
 	
-	let day_1: Int?
-	let day_2: Int?
-	let day_3: Int?
-	let day_4: Int?
-	let day_5: Int?
-	let day_6: Int?
-	let day_7: Int?
-	let day_8: Int?
-	let day_9: Int?
-	let period_1: Int?
-	let period_2: Int?
-	let period_3: Int?
-	let period_4: Int?
-	let period_5: Int?
-	let period_6: Int?
-	let period_7: Int?
-	let period_8: Int?
-	let period_9: Int?
-	let location_1: String?
-	let location_2: String?
-	let location_3: String?
-	let location_4: String?
-	let location_5: String?
-	let location_6: String?
-	let location_7: String?
-	let location_8: String?
-	let location_9: String?
+	public let day_1: Int?
+	public let day_2: Int?
+	public let day_3: Int?
+	public let day_4: Int?
+	public let day_5: Int?
+	public let day_6: Int?
+	public let day_7: Int?
+	public let day_8: Int?
+	public let day_9: Int?
+	public let period_1: Int?
+	public let period_2: Int?
+	public let period_3: Int?
+	public let period_4: Int?
+	public let period_5: Int?
+	public let period_6: Int?
+	public let period_7: Int?
+	public let period_8: Int?
+	public let period_9: Int?
+	public let location_1: String?
+	public let location_2: String?
+	public let location_3: String?
+	public let location_4: String?
+	public let location_5: String?
+	public let location_6: String?
+	public let location_7: String?
+	public let location_8: String?
+	public let location_9: String?
 	
 	// new part
-	var general_code: String?
+	public let general_code: String?
 	
 	public var description: String { return  "{\n\tname: \(name)\n\tcode: \(code)\n\tyear: \(year)\n\tterm: \(term)\n\tcredits: \(credits)\n\tlecturer: \(lecturer)\n\ttype: \(type)\n\tid: \(id)\n\tday_1: \(day_1)\n\tday_2: \(day_2)\n\tday_3: \(day_3)\n\tday_4: \(day_4)\n\tday_5: \(day_5)\n\tday_6: \(day_6)\n\tday_7: \(day_7)\n\tday_8: \(day_8)\n\tday_9: \(day_9)\n\tperiod_1: \(period_1)\n\tperiod_2: \(period_2)\n\tperiod_3: \(period_3)\n\tperiod_4: \(period_4)\n\tperiod_5: \(period_5)\n\tperiod_6: \(period_6)\n\tperiod_7: \(period_7)\n\tperiod_8: \(period_8)\n\tperiod_9: \(period_9)\n\tlocation_1: \(location_1)\n\tlocation_2: \(location_2)\n\tlocation_3: \(location_3)\n\tlocation_4: \(location_4)\n\tlocation_5: \(location_5)\n\tlocation_6: \(location_6)\n\tlocation_7: \(location_7)\n\tlocation_8: \(location_8)\n\tlocation_9: \(location_9)\n\tgeneral_code: \(general_code)\n}" }
 	

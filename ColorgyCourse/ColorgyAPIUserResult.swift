@@ -32,17 +32,17 @@ private struct APIResult {
 final public class ColorgyAPIUserResult : CustomStringConvertible {
 	
 	// MARK: - Parameters
-	let id: Int
-	let uuid: String
-	let username: String?
-	let name: String?
-	let avatar_url: String?
-	let cover_photo_url: String?
-	let _type: String?
-	let organization: String?
-	let department: String?
-	let possible_organization_code: String?
-	let possible_department_code: String?
+	public let id: Int
+	public let uuid: String
+	public let username: String?
+	public let name: String?
+	public let avatar_url: String?
+	public let cover_photo_url: String?
+	public let _type: String?
+	public let organization: String?
+	public let department: String?
+	public let possible_organization_code: String?
+	public let possible_department_code: String?
 	
 	public var description: String { return "ColorgyAPIUserResult: {\n\tid => \(id)\n\tuuid => \(uuid)\n\tusername => \(username)\n\tname => \(name)\n\tavatar_url => \(avatar_url)\n\tcover_photo_url => \(cover_photo_url)\n\t_type => \(_type)\n\torganization => \(organization)\n\tdepartment => \(department)\n\tpossible_organization_code => \(possible_organization_code)\n\tpossible_department_code => \(possible_department_code)\n}" }
 	

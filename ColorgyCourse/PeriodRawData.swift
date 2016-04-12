@@ -12,12 +12,12 @@ import SwiftyJSON
 final public class PeriodRawData: NSObject {
 	
 	// MARK: - Parameters
-	let code: String
-	let id: Int
-	let order: Int
-	let type: String
-	let startTime: String
-	let endTime: String
+	public let code: String
+	public let id: Int
+	public let order: Int
+	public let type: String
+	public let startTime: String
+	public let endTime: String
 	
 	public override var description: String {
 		return "PeriodRawData: {\n\tcode: \(code)\n\tid: \(id)\n\torder: \(order)\n\ttype: \(type)\n\tstartTime: \(startTime)\n\tendTime: \(endTime)\n}"

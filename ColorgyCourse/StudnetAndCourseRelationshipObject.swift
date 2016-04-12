@@ -16,30 +16,30 @@ final public class StudnetAndCourseRelationshipObject: NSObject {
 	
 	// uuid here is not code, is server's
 	/// UUID here is a server stamp, must be unique.
-	let uuid: String
+	public let uuid: String
 	/// Course's unique id in server.
 	///
 	/// Normally, you don't need to handle this in app.
-	let id: Int
+	public let id: Int
 	/// Organization code of a specific course.
 	///
 	/// Might be nil due to instable data base.
-	let course_organization_code: String?
+	public let course_organization_code: String?
 	/// Course Code.
 	///
 	/// This is a 😎 must have value.
 	///
 	/// Won't be nil. If this its nil, this UserCourseObject will never be generated.
 	/// Never thought too much, just use it!
-	let course_code: String
+	public let course_code: String
 	/// The id of user. Nothing special..
-	let user_id: Int
+	public let user_id: Int
 	/// Year. Format is like 2015, 1945, etc.
-	let year: Int
+	public let year: Int
 	/// 1 for first semester, 2 for second semester.
-	let term: Int
+	public let term: Int
 	/// Type of this course, like "ntust_course".
-	let _type: String
+	public let _type: String
 	
 	public override var description: String {
 		return "StudnetAndCourseRelationshipObject: {\n\tuuid: \(uuid)\n\tid: \(id)\n\tcourse_organization_code: \(course_organization_code)\n\tcourse_code: \(course_code)\n\tuser_id: \(user_id)\n\tyear: \(year)\n\tterm: \(term)\n\t_type: \(_type)\n}"

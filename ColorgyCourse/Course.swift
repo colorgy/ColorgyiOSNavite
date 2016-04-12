@@ -17,23 +17,23 @@ final public class Course: NSObject {
 	
 	// MARK: - Parameters
 	/// Used to course code, every course has a unique code to access with.
-	let code: String
+	public let code: String
 	/// Course's name
-	let name: String
+	public let name: String
 	/// Course's year. Format: 2015, 1945, etc.
-	let year: Int
+	public let year: Int
 	/// Course's term. Format: 1 for first semester, 2 for second semester.
-	let term: Int
+	public let term: Int
 	/// Name of course's teacher, professor.
-	let lecturer: String?
+	public let lecturer: String?
 	/// Credits of course
-	let credits: Int?
+	public let credits: Int?
 	/// _type of course, like "ntust_course"
-	let _type: String?
+	public let _type: String?
 	// how to configure location period ?
-	let periods: [Period]
+	public let periods: [Period]
 	/// general code of this course, might be nil
-	let general_code: String?
+	public let general_code: String?
 	
 	override public var description: String { return "{\n\tcode: \(code)\n\tname: \(name)\n\tyear: \(year)\n\tterm: \(term)\n\tlecturer: \(lecturer)\n\tcredits: \(credits)\n\t_type: \(_type)\n\tperiods😆: \n📖📖📖📖📖\n\(periods)\n📖📖📖📖📖\n\tgeneral_code: \(general_code)\n}" }
 	
