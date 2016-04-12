@@ -36,6 +36,10 @@ private struct APIMeResultKeys {
 	static let userFBEmail = "APIMeResultKeys userFBEmail"
 }
 
+private struct UserSettingKeys {
+	static let deviceUUIDForPushNotificationKey = "UserSettingKeys deviceUUIDForPushNotificationKey"
+}
+
 // MARK: - Class
 final public class ColorgyUserInformation {
 	
@@ -63,7 +67,7 @@ final public class ColorgyUserInformation {
 		ud.setObject(result.createdDate, forKey: LoginResultKeys.createdDate)
 		ud.synchronize()
 	}
-	//TODO: keychain
+	
 	public class func deleteLoginResult() {
 		let ud = NSUserDefaults.standardUserDefaults()
 		let keychain = KeychainSwift()
@@ -114,6 +118,44 @@ final public class ColorgyUserInformation {
 		ud.synchronize()
 	}
 	
+	// MARK: Push Notification UUID 
+	/// Generate a unique device uuid,
+	/// If fail to generate, will return false
+	/// 
+	/// Will generate only if user has required data:
+	///		- User name
+	///
+	/// Will store this uuid for further usage.
+	///
+	/// - returns: generate state
+	public class func generateDeviceUUID() -> Bool {
+		let ud = NSUserDefaults.standardUserDefaults()
+		
+		// User name is required
+		guard let username = ColorgyUserInformation.sharedInstance().userName else { return false }
+		
+		// Already has a uuid, no need to generate
+		guard ColorgyUserInformation.sharedInstance().deviceUUID == nil else { return true }
+		
+		// generate random uuid
+		let randomUUID = NSUUID().UUIDString
+		// get current device name
+		let deviceName = UIDevice.currentDevice().name
+		
+		// Create a device uuid string
+		let deviceUUID = "\(username.uuidEncode)-\(deviceName.uuidEncode)-\(randomUUID)"
+		
+		// store it
+		ud.setObject(deviceUUID, forKey: UserSettingKeys.deviceUUIDForPushNotificationKey)
+		
+		return true
+	}
+	
+	public var deviceUUID: String? {
+		let ud = NSUserDefaults.standardUserDefaults()
+		return ud.objectForKey(UserSettingKeys.deviceUUIDForPushNotificationKey) as? String
+	}
+	
 	// MARK: - Getters
 	// MARK: Token
 	public var userAccessToken: String? {
@@ -141,5 +183,10 @@ final public class ColorgyUserInformation {
 	public var userPossibleOrganization: String? {
 		let ud = NSUserDefaults.standardUserDefaults()
 		return ud.objectForKey(APIMeResultKeys.userPossibleOrganization) as? String
+	}
+	
+	public var userName : String? {
+		let ud = NSUserDefaults.standardUserDefaults()
+		return ud.objectForKey(APIMeResultKeys.userName) as? String
 	}
 }

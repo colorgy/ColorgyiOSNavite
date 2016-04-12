@@ -19,4 +19,15 @@ extension String {
 	var intValue: Int? {
 		return Int(self)
 	}
+	
+	/// Encode the string, will return a utf8 encoded string.
+	/// 
+	/// If fail to generate a encoded string, will return a uuid string
+	var uuidEncode: String {
+		if let data = self.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) {
+			return ("\(data)").stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString("<", withString: "").stringByReplacingOccurrencesOfString(">", withString: "")
+		} else {
+			return NSUUID().UUIDString
+		}
+	}
 }

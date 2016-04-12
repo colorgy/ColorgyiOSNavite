@@ -339,8 +339,73 @@ final public class ColorgyAPI : NSObject {
 		}
 	}
 	
-	
-	
+	// MARK: - Push Notification Device Token
+	/// Push notification device token to server. Use PUT, will update if already exist, will create if not exist.
+	public func PUTPushNotificationDeviceToken(success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			// pushing device token to server needs a unique uuid,
+			// so must generate one
+			
+			var uuid = UserSetting.getDeviceUUID()
+			if uuid == nil {
+				UserSetting.generateAndStoreDeviceUUID()
+				uuid = UserSetting.getDeviceUUID()
+			}
+			
+			let url = "https://colorgy.io:443/api/v1/me/devices/\(uuid).json?access_token=\(accesstoken)"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			// need uuid, device name, device type, device token
+			let parameters = [
+				"user_device": [
+					"type": "ios",
+					"name": UIDevice.currentDevice().name,
+					"device_id": "\(token)"
+				]
+			]
+			
+			self.manager.PUT(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					print(json)
+				} else {
+					
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					
+			})
+		}
+	}
 	
 	
 	
