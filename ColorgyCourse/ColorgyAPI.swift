@@ -1127,7 +1127,7 @@ final public class ColorgyAPI : NSObject {
 	}
 	
 	/// Get departments on server
-	public func getDepartments(success success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func getDepartments(organization: String, success: ((departments: [Department]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1153,7 +1153,7 @@ final public class ColorgyAPI : NSObject {
 				return
 			}
 			
-			let url =
+			let url = "https://colorgy.io:443/api/v1/organizations/\(organization.uppercaseString).json?access_token=\(accesstoken)"
 			
 			guard url.isValidURLString else {
 				self.mainBlock({
@@ -1165,9 +1165,9 @@ final public class ColorgyAPI : NSObject {
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
-					print(json)
+					let departments = Department.generateDepartments(json)
 					self.mainBlock({
-						success?()
+						success?(departments: departments)
 					})
 					return
 				} else {
@@ -1186,9 +1186,135 @@ final public class ColorgyAPI : NSObject {
 		}
 	}
 	
+	// MARK: - Update User Information
+	/// Update user organization, department, year
+	public func updateUserOrganization(organization: String, department: String, year: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io:443/api/v1/me.json?access_token=\(accesstoken)"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = ["user":
+				[
+					"unconfirmed_organization_code": organization,
+					"unconfirmed_department_code": department,
+					"unconfirmed_started_year": year
+				]
+			]
+			
+			self.manager.PATCH(url, parameters: parameters, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				return
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 	
-	
-	
+	// MARK: - Privacy Setting
+	/// Get self privacy setting
+	public func getMePrivacySetting(success success: ((isTimeTablePublic: Bool) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io:443/api/v1/me/user_table_settings.json?access_token=\(accesstoken)"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					var isTimeTablePublic = false
+					if json.isArray {
+						if let visibility = json[0]["courses_table_visibility"].bool {
+							isTimeTablePublic = visibility
+						}
+					} else {
+						if let visibility = json["courses_table_visibility"].bool {
+							isTimeTablePublic = visibility
+						}
+					}
+					self.mainBlock({
+						success?(isTimeTablePublic: isTimeTablePublic)
+					})
+					return
+				} else {
+					self.mainBlock({
+						failure?(error: APIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 	
 	
 	

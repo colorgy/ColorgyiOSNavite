@@ -32,7 +32,7 @@ final public class Organization: CustomStringConvertible {
 	}
 	
 	// MARK: - Init
-	init?(json: JSON) {
+	public init?(json: JSON) {
 		
 		guard let code = json[OrganizationKey.code].string else { return nil }
 		guard let name = json[OrganizationKey.name].string else { return nil }
@@ -48,7 +48,7 @@ final public class Organization: CustomStringConvertible {
 	}
 	
 	// MARK: - Generator
-	class func generateOrganizationsWithJSON(json: JSON) -> [Organization] {
+	public class func generateOrganizationsWithJSON(json: JSON) -> [Organization] {
 		var objects = [Organization]()
 		
 		// if is an array

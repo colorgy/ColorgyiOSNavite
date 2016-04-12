@@ -72,9 +72,7 @@ final public class LoginViewModel {
 		
 		colorgyAPI.getMeCourses(success: nil, failure: nil)
 		
-		colorgyAPI.getOrganization(success: { (organizations) in
-			print(organizations)
-			}, failure: nil)
+		colorgyAPI.getDepartments("ntust", success: nil, failure: nil)
 	}
 	
 	public func emailRegister() {
