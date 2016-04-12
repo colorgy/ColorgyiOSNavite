@@ -1482,7 +1482,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/users/get_history_target，參數包含gender,uuid,accessToken,userId,page，page從零開始，0,1,2,3,4,5...一直到回傳為空陣列為止
 	///2. 如果成功，回傳的資料包括id,name, about,lastAnswer,avatar_blur_2x_url,一次會回傳20個
-	public func getHistoryTarget(userId: String, gender: Gender, page: Int, success: ((targets: [HistoryChatroom) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func getHistoryTarget(userId: String, gender: Gender, page: Int, success: ((targets: [HistoryChatroom]) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1524,8 +1524,9 @@ final public class ColorgyChatAPI: NSObject {
 			self.manager.POST(self.serverURL + "/users/get_history_target", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
+					let targets = HistoryChatroom.generateHistoryChatrooms(json)
 					self.mainBlock({
-						success?()
+						success?(targets: targets)
 					})
 					return
 				} else {
