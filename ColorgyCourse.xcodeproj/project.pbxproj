@@ -224,6 +224,39 @@
 			name = "Login View";
 			sourceTree = "<group>";
 		};
+		630570211CBD2D85007D2C9D /* Colorgy Chat API */ = {
+			isa = PBXGroup;
+			children = (
+				6305700B1CBD0AB9007D2C9D /* ColorgySocket.swift */,
+				630570091CBD0AA1007D2C9D /* ColorgyChatAPI.swift */,
+				630570231CBD2DCC007D2C9D /* Model */,
+			);
+			name = "Colorgy Chat API";
+			sourceTree = "<group>";
+		};
+		630570221CBD2D97007D2C9D /* Realm Object */ = {
+			isa = PBXGroup;
+			children = (
+				635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */,
+			);
+			name = "Realm Object";
+			sourceTree = "<group>";
+		};
+		630570231CBD2DCC007D2C9D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				630570131CBD1C7D007D2C9D /* AvailableTarget.swift */,
+				6305700F1CBD182D007D2C9D /* ChatMeUserInformation.swift */,
+				6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */,
+				6305701D1CBD2902007D2C9D /* Chatroom.swift */,
+				6305701F1CBD2999007D2C9D /* ChatMessage.swift */,
+				630570171CBD233A007D2C9D /* Hello.swift */,
+				630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */,
+				6305700D1CBD11EA007D2C9D /* ChatUser.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		6354797B1CB898C000DE8CBC = {
 			isa = PBXGroup;
 			children = (
@@ -258,24 +291,14 @@
 		635479861CB898C000DE8CBC /* ColorgyCourse */ = {
 			isa = PBXGroup;
 			children = (
-				630570131CBD1C7D007D2C9D /* AvailableTarget.swift */,
-				630570151CBD1D47007D2C9D /* NumerExtensions.swift */,
-				6305700F1CBD182D007D2C9D /* ChatMeUserInformation.swift */,
-				630570091CBD0AA1007D2C9D /* ColorgyChatAPI.swift */,
-				6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */,
-				6305701D1CBD2902007D2C9D /* Chatroom.swift */,
-				6305701F1CBD2999007D2C9D /* ChatMessage.swift */,
-				630570171CBD233A007D2C9D /* Hello.swift */,
-				630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */,
-				6305700D1CBD11EA007D2C9D /* ChatUser.swift */,
-				6305700B1CBD0AB9007D2C9D /* ColorgySocket.swift */,
-				635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */,
+				630570221CBD2D97007D2C9D /* Realm Object */,
 				635479871CB898C100DE8CBC /* AppDelegate.swift */,
 				635479CE1CB8A5EF00DE8CBC /* Release.swift */,
 				635479891CB898C100DE8CBC /* ViewController.swift */,
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
 				630570081CBD0A45007D2C9D /* Login View */,
 				635479F61CB8B09100DE8CBC /* Extensions */,
+				630570211CBD2D85007D2C9D /* Colorgy Chat API */,
 				635479F41CB8B04B00DE8CBC /* Colorgy API */,
 				6354798E1CB898C100DE8CBC /* Assets.xcassets */,
 				635479901CB898C100DE8CBC /* LaunchScreen.storyboard */,
@@ -330,6 +353,7 @@
 		635479F61CB8B09100DE8CBC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				630570151CBD1D47007D2C9D /* NumerExtensions.swift */,
 				630570061CBCE26C007D2C9D /* UIImageExtension.swift */,
 				635479DD1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift */,
 				635479DE1CB8B02A00DE8CBC /* StringExtension.swift */,

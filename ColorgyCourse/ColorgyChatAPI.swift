@@ -1027,7 +1027,7 @@ final public class ColorgyChatAPI: NSObject {
 			self.manager.POST(self.serverURL + "/hi/check_hi", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
-					var chatroomId: String? = json["chatroomId"].string
+					let chatroomId: String? = json["chatroomId"].string
 					if json["result"].string == "already said hi" {
 						// can't say hi, return false
 						//          success(canSayHi: false, whoSaidHi: "you already said hi")
