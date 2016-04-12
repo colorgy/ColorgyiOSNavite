@@ -1652,6 +1652,131 @@ final public class ColorgyAPI : NSObject {
 		}
 	}
 	
+	/// Update user iamge
+	public func patchUserImage(avatar: String, avatar_crop_x: Float, avatar_crop_y: Float, avatar_crop_w: Float, avatar_crop_h: Float, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io:443/api/v1/me.json?access_token=\(accesstoken)"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = ["user":
+				[
+					"avatar": avatar,
+					"avatar_crop_x": avatar_crop_x,
+					"avatar_crop_y": avatar_crop_y,
+					"avatar_crop_w": avatar_crop_w,
+					"avatar_crop_h": avatar_crop_h
+				]
+			]
+			
+			self.manager.PATCH(url, parameters: parameters, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					print(json)
+					self.mainBlock({
+						success?()
+					})
+					return
+				} else {
+					self.mainBlock({
+						failure?(error: APIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	
+	// MARK: - Register A New User
+	public func registerNewUser(name: String, email: String, password: String, passwordConfirm: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io/api/v1/sign_up"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = [
+				"user": [
+					"name": name,
+					"email": email,
+					"password": password,
+					"password_confirmation": passwordConfirm
+				]
+			]
+			
+			self.manager.POST(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				return
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	
 	
 	
 	

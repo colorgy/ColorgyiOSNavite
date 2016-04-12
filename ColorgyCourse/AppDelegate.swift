@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Start Refresh Center
 		ColorgyRefreshCenter.initialization()
 		
-		
 		return true
 	}
 
