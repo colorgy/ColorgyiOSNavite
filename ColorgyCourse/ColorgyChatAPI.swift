@@ -1810,8 +1810,23 @@ final public class ColorgyChatAPI: NSObject {
 			self.manager.POST(self.serverURL + "/chatroom/more_message", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
+					var ms = ChatMessage.generateMessagesOnRequestingMoreMessage(json)
+					ms = ms.sort({ (m1: ChatMessage, m2: ChatMessage) -> Bool in
+						return m1.createdAt.timeIntervalSince1970() > m2.createdAt.timeIntervalSince1970()
+					})
+					print("getting \(ms.count) messages")
+					print("historyMessagesCount \(historyMessagesCount)")
+					print("total length \(chatroom.totalMessageLength)")
+					print("slicing")
+					if (historyMessagesCount + ms.count) > chatroom.totalMessageLength {
+						print("need slicing")
+						let countsNeedToSlice = (historyMessagesCount + ms.count) - chatroom.totalMessageLength
+						for _ in 1...countsNeedToSlice {
+							ms.removeFirst()
+						}
+					}
 					self.mainBlock({
-						success?()
+						success?(messages: ms)
 					})
 					return
 				} else {
@@ -1831,7 +1846,56 @@ final public class ColorgyChatAPI: NSObject {
 	}
 	
 	/// email_hints : Get data of email_hints
-	class func GetEmailHints(organization_code: String, success: (response: String) -> Void, failure: () -> Void) {}
+	public func GetEmailHints(organizationCode: String, success: ((response: String) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io:443/api/v1/email_hints/\(organizationCode).json"
+			
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					if let res = json["hint"].string {
+						print(res)
+						print("get hint OK")
+						self.mainBlock({
+							success?(response: res)
+						})
+						return
+					} else {
+						self.mainBlock({
+							failure?(error: ChatAPIError.FailToParseResult, afError: nil)
+						})
+						return
+					}
+				} else {
+					self.mainBlock({
+						failure?(error: ChatAPIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					self.mainBlock({
+						let afError = AFError(operation: operation, error: error)
+						failure?(error: ChatAPIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 	
 	//    更新使用者狀態
 	//
