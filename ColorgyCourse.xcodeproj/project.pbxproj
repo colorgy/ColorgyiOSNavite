@@ -19,6 +19,7 @@
 		630570121CBD1A2E007D2C9D /* ChatUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */; };
 		630570141CBD1C7D007D2C9D /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570131CBD1C7D007D2C9D /* AvailableTarget.swift */; };
 		630570161CBD1D47007D2C9D /* NumerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570151CBD1D47007D2C9D /* NumerExtensions.swift */; };
+		630570181CBD233A007D2C9D /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570171CBD233A007D2C9D /* Hello.swift */; };
 		6340A3071CBA2BA5001AE3AE /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; };
 		6340A3081CBA2BA5001AE3AE /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
@@ -118,6 +119,7 @@
 		630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUserInformation.swift; sourceTree = "<group>"; };
 		630570131CBD1C7D007D2C9D /* AvailableTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvailableTarget.swift; path = ../AvailableTarget.swift; sourceTree = "<group>"; };
 		630570151CBD1D47007D2C9D /* NumerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumerExtensions.swift; path = ../NumerExtensions.swift; sourceTree = "<group>"; };
+		630570171CBD233A007D2C9D /* Hello.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
 		6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
 		635479841CB898C000DE8CBC /* ColorgyCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorgyCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635479871CB898C100DE8CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				630570151CBD1D47007D2C9D /* NumerExtensions.swift */,
 				6305700F1CBD182D007D2C9D /* ChatMeUserInformation.swift */,
 				630570091CBD0AA1007D2C9D /* ColorgyChatAPI.swift */,
+				630570171CBD233A007D2C9D /* Hello.swift */,
 				630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */,
 				6305700D1CBD11EA007D2C9D /* ChatUser.swift */,
 				6305700B1CBD0AB9007D2C9D /* ColorgySocket.swift */,
@@ -608,6 +611,7 @@
 				635479FF1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift in Sources */,
 				630570121CBD1A2E007D2C9D /* ChatUserInformation.swift in Sources */,
 				6305700C1CBD0AB9007D2C9D /* ColorgySocket.swift in Sources */,
+				630570181CBD233A007D2C9D /* Hello.swift in Sources */,
 				635479CF1CB8A5EF00DE8CBC /* Release.swift in Sources */,
 				635479E51CB8B02A00DE8CBC /* TimeStamp.swift in Sources */,
 				635479E71CB8B02A00DE8CBC /* ColorgyAPI.swift in Sources */,

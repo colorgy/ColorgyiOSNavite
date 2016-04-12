@@ -43,6 +43,12 @@ public enum Gender: String {
 	case Unspecified = "unspecified"
 }
 
+public enum HiStatus: String {
+	case Pending = "pending"
+	case Accepted = "accepted"
+	case Rejected = "rejected"
+}
+
 public protocol ColorgyChatAPIDelegate: class {
 	func colorgyChatAPI(operationCountUpdated: Int)
 }
@@ -1072,8 +1078,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/hi/say_hi，參數包含使用者的userId,uuid, accessToken,targetId,message
 	///2. 與一個陌生人打招呼
-	class func sayHi(userId: String, targetId: String, message: String, success: () -> Void, failure: () -> Void) {}
-	public func chatAPITemplate(success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func sayHi(userId: String, targetId: String, message: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1092,7 +1097,75 @@ final public class ColorgyChatAPI: NSObject {
 			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
-					failure?(error: ChatAPIError.NoUserId, afError: nil)
+					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
+				})
+				return
+			}
+			
+			guard let accessToken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			guard userId != targetId else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.InternalPreparationFail, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = [
+				"uuid": uuid,
+				"accessToken": accessToken,
+				"userId": userId,
+				"targetId": targetId,
+				"message": message
+			]
+			
+			self.manager.POST(self.serverURL + "/hi/say_hi", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				return
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					self.mainBlock({
+						let afError = AFError(operation: operation, error: error)
+						failure?(error: ChatAPIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	///取得打招呼列表：(simple test passed)
+	///
+	///用途：取得被打招呼列表
+	///使用方式：
+	///
+	///1. 傳一個http post給/hi/get_list，參數包含使用者的userId,uuid,accessToken
+	///2. 回傳被打過招呼的列表
+	public func getHiList(userId: String, success: ((hiList: [Hello]) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
 				})
 				return
 			}
@@ -1106,14 +1179,16 @@ final public class ColorgyChatAPI: NSObject {
 			
 			let parameters = [
 				"uuid": uuid,
-				"accessToken": accessToken
+				"accessToken": accessToken,
+				"userId": userId
 			]
 			
-			self.manager.POST(self.serverURL + , parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+			self.manager.POST(self.serverURL + "/hi/get_list", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
+					let hiList = Hello.generateHiList(json)
 					self.mainBlock({
-						success?()
+						success?(hiList: hiList)
 					})
 					return
 				} else {
@@ -1132,26 +1207,6 @@ final public class ColorgyChatAPI: NSObject {
 		}
 	}
 	
-	///取得打招呼列表：(simple test passed)
-	///
-	///用途：取得被打招呼列表
-	///使用方式：
-	///
-	///1. 傳一個http post給/hi/get_list，參數包含使用者的userId,uuid,accessToken
-	///2. 回傳被打過招呼的列表
-	class func getHiList(userId: String, success: (hiList: [Hello]) -> Void, failure: () -> Void) {}
-	
-	/// 取得打招呼列表：(simple test passed)
-	///
-	/// 取得被打過招呼的列表：
-	///
-	/// 用途：取得打過招呼，還沒被接受的id列表
-	/// 使用方式：
-	///
-	/// 1. 傳一個http post給/hi/get_my_list，參數包含使用者的userId,uuid,accessToken
-	/// 2. 回傳被打過招呼的列表，成功的話會出現status 200：{ result: [...] }的對你打過招呼的人的userId
-	class func getMyList(userId: String, success: (hiedList: NSArray) -> Void, failure: () -> Void) {}
-	
 	///接受打招呼：(simple test passed)
 	///
 	///用途：接受一個打招呼
@@ -1159,7 +1214,58 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/hi/accept_hi，參數包含使用者的userId,uuid, accessToken,hiId
 	///2. 必須要是target才能傳送這個request，會產生一個空的聊天室，回傳status 200
-	class func acceptHi(userId: String, hiId: String, success: () -> Void, failure: () -> Void) {}
+	public func acceptHi(userId: String, hiId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
+				})
+				return
+			}
+			
+			guard let accessToken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = [
+				"uuid": uuid,
+				"accessToken": accessToken,
+				"userId": userId,
+				"hiId": hiId
+			]
+			
+			self.manager.POST(self.serverURL + "/hi/accept_hi", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				return
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					self.mainBlock({
+						let afError = AFError(operation: operation, error: error)
+						failure?(error: ChatAPIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 	
 	///拒絕打招呼：(simple test passed)
 	///
@@ -1169,10 +1275,126 @@ final public class ColorgyChatAPI: NSObject {
 	///1. 傳一個http post給/hi/reject_hi，參數包含使用者的userId,uuid, accessToken,hiId
 	///2. 必須要是target才能傳送這個request，會將一個打招呼的status更改為rejected
 	class func rejectHi(userId: String, hiId: String, success: () -> Void, failure: () -> Void) {}
+	public func rejectHi(userId: String, hiId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
+				})
+				return
+			}
+			
+			guard let accessToken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = [
+				"uuid": uuid,
+				"accessToken": accessToken,
+				"userId": userId,
+				"hiId": hiId
+			]
+			
+			self.manager.POST(self.serverURL + "/hi/reject_hi", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				return
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					self.mainBlock({
+						let afError = AFError(operation: operation, error: error)
+						failure?(error: ChatAPIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 	
-	
-	class func acceptHiWithHistoryChatroomId(userId: String, hiId: String, success: (chatroomId: String) -> Void, failure: () -> Void) {}
-	
+	public func acceptHiWithHistoryChatroomId(userId: String, hiId: String, success: ((chatroomId: String) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
+				})
+				return
+			}
+			
+			guard let accessToken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let parameters = [
+				"uuid": uuid,
+				"accessToken": accessToken,
+				"userId": userId,
+				"hiId": hiId
+			]
+			
+			self.manager.POST(self.serverURL + "/hi/accept_hi", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				if let response = response {
+					let json = JSON(response)
+					if let chatroomId =  json["chatroomId"].string {
+						self.mainBlock({
+							success?(chatroomId: chatroomId)
+						})
+						return
+					} else {
+						self.mainBlock({
+							failure?(error: ChatAPIError.FailToParseResult, afError: nil)
+						})
+						return
+					}
+				} else {
+					self.mainBlock({
+						failure?(error: ChatAPIError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					self.mainBlock({
+						let afError = AFError(operation: operation, error: error)
+						failure?(error: ChatAPIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
 	
 	///檢查是否回答過最新問題：
 	///

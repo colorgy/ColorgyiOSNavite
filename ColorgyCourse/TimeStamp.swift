@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TimeStamp : NSObject {
+final public class TimeStamp : NSObject {
 	
 	var year: Int
 	var month: Int
@@ -18,7 +18,7 @@ class TimeStamp : NSObject {
 	var second: Int
 	var millisecond: Int
 	
-	override var description: String {
+	public override var description: String {
 		return "TimeStamp: (\(year)-\(month)-\(date) \(hour):\(minute):\(second)'\(millisecond))"
 	}
 	
