@@ -1,5 +1,5 @@
 //
-//  StudnetAndCourseRelationshipObject.swift
+//  CourseOwnershipObject.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/4/12.
@@ -24,36 +24,36 @@ final public class CourseOwnershipObject: NSObject {
 	/// Organization code of a specific course.
 	///
 	/// Might be nil due to instable data base.
-	public let course_organization_code: String
+	public let courseOrganizationCode: String
 	/// Course Code.
 	///
 	/// This is a 😎 must have value.
 	///
 	/// Won't be nil. If this its nil, this UserCourseObject will never be generated.
 	/// Never thought too much, just use it!
-	public let course_code: String
+	public let courseCode: String
 	/// The id of user. Nothing special..
-	public let user_id: Int
+	public let userId: Int
 	/// Year. Format is like 2015, 1945, etc.
 	public let year: Int
 	/// 1 for first semester, 2 for second semester.
 	public let term: Int
 	/// Type of this course, like "ntust_course".
-	public let _type: String
+	public let type: String
 	
 	public override var description: String {
-		return "CourseOwnershipObject: {\n\tuuid: \(uuid)\n\tid: \(id)\n\tcourse_organization_code: \(course_organization_code)\n\tcourse_code: \(course_code)\n\tuser_id: \(user_id)\n\tyear: \(year)\n\tterm: \(term)\n\t_type: \(_type)\n}"
+		return "CourseOwnershipObject: {\n\tuuid: \(uuid)\n\tid: \(id)\n\tcourseOrganizationCode: \(courseOrganizationCode)\n\tcourseCode: \(courseCode)\n\tuserId: \(userId)\n\tyear: \(year)\n\tterm: \(term)\n\ttype: \(type)\n}"
 	}
 	
 	private struct CourseOwnershipObjectKey {
 		static let uuid = "uuid"
 		static let id = "id"
-		static let course_organization_code = "course_organization_code"
-		static let course_code = "course_code"
-		static let user_id = "user_id"
+		static let courseOrganizationCode = "course_organization_code"
+		static let courseCode = "course_code"
+		static let userId = "user_id"
 		static let year = "year"
 		static let term = "term"
-		static let _type = "_type"
+		static let type = "_type"
 	}
 	
 	/// Initialization: Create a StudnetAndCourseRelationshipObject.
@@ -69,21 +69,21 @@ final public class CourseOwnershipObject: NSObject {
 		
 		guard let uuid = json[CourseOwnershipObjectKey.uuid].string else { return nil }
 		guard let id = json[CourseOwnershipObjectKey.id].int else { return nil }
-		guard let course_organization_code = json[CourseOwnershipObjectKey.course_organization_code].string else { return nil }
-		guard let course_code = json[CourseOwnershipObjectKey.course_code].string else { return nil }
-		guard let user_id = json[CourseOwnershipObjectKey.user_id].int else { return nil }
+		guard let courseOrganizationCode = json[CourseOwnershipObjectKey.courseOrganizationCode].string else { return nil }
+		guard let courseCode = json[CourseOwnershipObjectKey.courseCode].string else { return nil }
+		guard let userId = json[CourseOwnershipObjectKey.userId].int else { return nil }
 		guard let year = json[CourseOwnershipObjectKey.year].int else { return nil }
 		guard let term = json[CourseOwnershipObjectKey.term].int else { return nil }
-		guard let _type = json[CourseOwnershipObjectKey._type].string else { return nil }
+		guard let type = json[CourseOwnershipObjectKey.type].string else { return nil }
 		
 		self.uuid = uuid
 		self.id = id
-		self.course_organization_code = course_organization_code
-		self.course_code = course_code
-		self.user_id = user_id
+		self.courseOrganizationCode = courseOrganizationCode
+		self.courseCode = courseCode
+		self.userId = userId
 		self.year = year
 		self.term = term
-		self._type = _type
+		self.type = type
 		
 		super.init()
 	}

@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63056FFF1CBCABB7007D2C9D /* StudnetAndCourseRelationshipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63056FFE1CBCABB7007D2C9D /* StudnetAndCourseRelationshipObject.swift */; };
+		63056FFF1CBCABB7007D2C9D /* CourseOwnershipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */; };
 		630570011CBCBC86007D2C9D /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570001CBCBC86007D2C9D /* Semester.swift */; };
+		630570031CBCC54C007D2C9D /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570021CBCC54C007D2C9D /* Organization.swift */; };
 		6340A3071CBA2BA5001AE3AE /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; };
 		6340A3081CBA2BA5001AE3AE /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
@@ -96,8 +97,9 @@
 
 /* Begin PBXFileReference section */
 		576E6050CAE2354899BC93F6 /* Pods_ColorgyCourse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorgyCourse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		63056FFE1CBCABB7007D2C9D /* StudnetAndCourseRelationshipObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudnetAndCourseRelationshipObject.swift; sourceTree = "<group>"; };
+		63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseOwnershipObject.swift; sourceTree = "<group>"; };
 		630570001CBCBC86007D2C9D /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
+		630570021CBCC54C007D2C9D /* Organization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Organization.swift; path = ../Organization.swift; sourceTree = "<group>"; };
 		6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
 		635479841CB898C000DE8CBC /* ColorgyCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorgyCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635479871CB898C100DE8CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -228,10 +230,11 @@
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
 				635479D01CB8AA0700DE8CBC /* LoginViewController.swift */,
 				635479D21CB8AC6300DE8CBC /* LoginViewModel.swift */,
-				63056FFE1CBCABB7007D2C9D /* StudnetAndCourseRelationshipObject.swift */,
+				63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */,
 				6354798E1CB898C100DE8CBC /* Assets.xcassets */,
 				635479901CB898C100DE8CBC /* LaunchScreen.storyboard */,
 				635479D41CB8B02A00DE8CBC /* ColorgyUserInformation.swift */,
+				630570021CBCC54C007D2C9D /* Organization.swift */,
 				635479FA1CB8D17800DE8CBC /* PeriodRawData.swift */,
 				635479F61CB8B09100DE8CBC /* Extensions */,
 				635479F41CB8B04B00DE8CBC /* Colorgy API */,
@@ -555,10 +558,11 @@
 				6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */,
 				635479EE1CB8B02A00DE8CBC /* StringExtension.swift in Sources */,
 				635479F31CB8B02A00DE8CBC /* ColorgyLoginResult.swift in Sources */,
-				63056FFF1CBCABB7007D2C9D /* StudnetAndCourseRelationshipObject.swift in Sources */,
+				63056FFF1CBCABB7007D2C9D /* CourseOwnershipObject.swift in Sources */,
 				635479ED1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift in Sources */,
 				635479FB1CB8D17800DE8CBC /* PeriodRawData.swift in Sources */,
 				635479F11CB8B02A00DE8CBC /* ColorgyLogin.swift in Sources */,
+				630570031CBCC54C007D2C9D /* Organization.swift in Sources */,
 				635479E91CB8B02A00DE8CBC /* ColorgyAPIUserResult.swift in Sources */,
 				635479F01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift in Sources */,
 				635479FF1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift in Sources */,
