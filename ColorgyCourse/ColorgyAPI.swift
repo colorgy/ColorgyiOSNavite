@@ -491,4 +491,69 @@ final public class ColorgyAPI : NSObject {
 			})
 		}
 	}
+	
+	/// Delete a uuid and push notification token set.
+	public func DELETEPushNotificationDeviceUUID(uuid: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			self.mainBlock({
+				self.mainBlock({
+					failure?(error: APIError.NetworkUnavailable, afError: nil)
+				})
+			})
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.mainBlock({
+					failure?(error: APIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard let accesstoken = self.accessToken else {
+				self.mainBlock({
+					failure?(error: APIError.NoAccessToken, afError: nil)
+				})
+				return
+			}
+			
+			let url = "https://colorgy.io:443/api/v1/me/devices/\(uuid).json?access_token=\(accesstoken)"
+			
+			guard url.isValidURLString else {
+				self.mainBlock({
+					failure?(error: APIError.InvalidURLString, afError: nil)
+				})
+				return
+			}
+			
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				success?()
+				return
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.mainBlock({
+						failure?(error: APIError.APIConnectionFailure, afError: afError)
+					})
+					return
+			})
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
