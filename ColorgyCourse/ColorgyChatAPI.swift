@@ -753,7 +753,7 @@ final public class ColorgyChatAPI: NSObject {
 			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
-					failure?(error: ChatAPIError.NoUserId, afError: nil)
+					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
 				})
 				return
 			}
@@ -765,24 +765,18 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
-			let parameters = [
+			let parameters  = [
 				"uuid": uuid,
-				"accessToken": accessToken
+				"accessToken": accessToken,
+				"userId": userId,
+				"targetId": targetId
 			]
 			
-			self.manager.POST(self.serverURL + , parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-				if let response = response {
-					let json = JSON(response)
-					self.mainBlock({
-						success?()
-					})
-					return
-				} else {
-					self.mainBlock({
-						failure?(error: ChatAPIError.FailToParseResult, afError: nil)
-					})
-					return
-				}
+			self.manager.POST(self.serverURL + "/users/block_user", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				return
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 					self.mainBlock({
 						let afError = AFError(operation: operation, error: error)
