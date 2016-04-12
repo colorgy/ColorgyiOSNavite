@@ -15,6 +15,8 @@
 		6305700A1CBD0AA1007D2C9D /* ColorgyChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570091CBD0AA1007D2C9D /* ColorgyChatAPI.swift */; };
 		6305700C1CBD0AB9007D2C9D /* ColorgySocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305700B1CBD0AB9007D2C9D /* ColorgySocket.swift */; };
 		6305700E1CBD11EA007D2C9D /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305700D1CBD11EA007D2C9D /* ChatUser.swift */; };
+		630570101CBD182D007D2C9D /* ChatMeUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305700F1CBD182D007D2C9D /* ChatMeUserInformation.swift */; };
+		630570121CBD1A2E007D2C9D /* ChatUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */; };
 		6340A3071CBA2BA5001AE3AE /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; };
 		6340A3081CBA2BA5001AE3AE /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
@@ -110,6 +112,8 @@
 		630570091CBD0AA1007D2C9D /* ColorgyChatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyChatAPI.swift; sourceTree = "<group>"; };
 		6305700B1CBD0AB9007D2C9D /* ColorgySocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgySocket.swift; sourceTree = "<group>"; };
 		6305700D1CBD11EA007D2C9D /* ChatUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
+		6305700F1CBD182D007D2C9D /* ChatMeUserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatMeUserInformation.swift; path = ../ChatMeUserInformation.swift; sourceTree = "<group>"; };
+		630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUserInformation.swift; sourceTree = "<group>"; };
 		6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
 		635479841CB898C000DE8CBC /* ColorgyCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorgyCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635479871CB898C100DE8CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -242,7 +246,9 @@
 		635479861CB898C000DE8CBC /* ColorgyCourse */ = {
 			isa = PBXGroup;
 			children = (
+				6305700F1CBD182D007D2C9D /* ChatMeUserInformation.swift */,
 				630570091CBD0AA1007D2C9D /* ColorgyChatAPI.swift */,
+				630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */,
 				6305700D1CBD11EA007D2C9D /* ChatUser.swift */,
 				6305700B1CBD0AB9007D2C9D /* ColorgySocket.swift */,
 				635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */,
@@ -587,10 +593,12 @@
 				635479ED1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift in Sources */,
 				635479FB1CB8D17800DE8CBC /* PeriodRawData.swift in Sources */,
 				635479F11CB8B02A00DE8CBC /* ColorgyLogin.swift in Sources */,
+				630570101CBD182D007D2C9D /* ChatMeUserInformation.swift in Sources */,
 				630570031CBCC54C007D2C9D /* Organization.swift in Sources */,
 				635479E91CB8B02A00DE8CBC /* ColorgyAPIUserResult.swift in Sources */,
 				635479F01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift in Sources */,
 				635479FF1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift in Sources */,
+				630570121CBD1A2E007D2C9D /* ChatUserInformation.swift in Sources */,
 				6305700C1CBD0AB9007D2C9D /* ColorgySocket.swift in Sources */,
 				635479CF1CB8A5EF00DE8CBC /* Release.swift in Sources */,
 				635479E51CB8B02A00DE8CBC /* TimeStamp.swift in Sources */,
