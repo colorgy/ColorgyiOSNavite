@@ -73,6 +73,19 @@ final public class LoginViewModel {
 		
 	}
 	
+	// MARK: - Notifications
+	private func registerNotification() {
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTokenRevokedNotification), name: ColorgyAppNotification.RefreshTokenRevokedNotification, object: nil)
+	}
+	
+	@objc private func refreshTokenRevokedNotification() {
+		print("YOOoooooo")
+	}
+	
+	deinit {
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
+	
 	// MARK: - Helper
 	private func checkUserOrganization() -> String {
 		// TODO: handle no orgnization
@@ -83,5 +96,6 @@ final public class LoginViewModel {
 	init(delegate: LoginViewModelDelegate?) {
 		self.delegate = delegate
 		self.colorgyAPI = ColorgyAPI()
+		registerNotification()
 	}
 }

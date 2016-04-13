@@ -219,7 +219,6 @@ final public class ColorgyRefreshCenter {
 				ColorgyRefreshCenter.revokeRefreshToken()
 				ColorgyRefreshCenter.sharedInstance().unlockWhenFinishRefreshingToken()
 				let aferror = AFError(operation: operation, error: error)
-				print(aferror)
 				failure?(error: RefreshingError.APIConnectionFail, AFError: aferror)
 				return
 		})
@@ -249,7 +248,7 @@ final public class ColorgyRefreshCenter {
 		ColorgyUserInformation.revokeRefreshCenterTokenState()
 		stopBackgroundWorker()
 		// sent a global revoke notification
-		NSNotificationCenter.defaultCenter().postNotificationName(<#T##aName: String##String#>, object: <#T##AnyObject?#>)
+		NSNotificationCenter.defaultCenter().postNotificationName(ColorgyAppNotification.RefreshTokenRevokedNotification, object: nil)
 	}
 	
 	/// After login to colorgy,
@@ -341,7 +340,7 @@ final public class ColorgyRefreshCenter {
 	
 	/// Start background worker
 	public class func startBackgroundWorker() {
-		ColorgyRefreshCenter.sharedInstance().backgroundWorker = NSTimer(timeInterval: 30.0, target: self, selector: #selector(ColorgyRefreshCenter.backgroundJob), userInfo: nil, repeats: true)
+		ColorgyRefreshCenter.sharedInstance().backgroundWorker = NSTimer(timeInterval: 30, target: self, selector: #selector(ColorgyRefreshCenter.backgroundJob), userInfo: nil, repeats: true)
 		ColorgyRefreshCenter.sharedInstance().backgroundWorker?.fire()
 		if let worker = ColorgyRefreshCenter.sharedInstance().backgroundWorker {
 			NSRunLoop.currentRunLoop().addTimer(worker, forMode: NSRunLoopCommonModes)
