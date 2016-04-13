@@ -107,7 +107,7 @@ final public class ColorgyChatAPI: NSObject {
 			// decrease counter
 			retryCounter -= 1
 			// check if available
-			if ColorgyRefreshCenter.sharedInstance().currentRefreshState == RefreshTokenState.NotRefreshing {
+			if ColorgyRefreshCenter.sharedInstance().currentRefreshingState == RefreshingState.NotRefreshing {
 				// if token is not refreshing, allow api accessing
 				return true
 			}

@@ -66,8 +66,15 @@ final public class LoginViewModel {
 	
 	/// Call this to perform login using email
 	public func emailLogin() {
-		ColorgyChatAPI().checkUserAvailability({ (user) in
-			print(user)
+		colorgyAPI.getMePrivacySetting(success: { (isTimeTablePublic) in
+			print(isTimeTablePublic)
+			self.colorgyAPI.patchMEPrivacySetting(turnIt: !isTimeTablePublic, success: nil, failure: {a,b in
+				print(a,b)
+			})
+			}, failure: nil)
+		
+		colorgyAPI.getUserPrivacySetting(9, success: { (isTimeTablePublic) in
+			print(isTimeTablePublic)
 			}, failure: nil)
 	}
 	
