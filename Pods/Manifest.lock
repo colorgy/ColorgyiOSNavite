@@ -17,6 +17,11 @@ PODS:
   - Mixpanel (2.9.6):
     - Mixpanel/Mixpanel (= 2.9.6)
   - Mixpanel/Mixpanel (2.9.6)
+  - Realm (0.98.6):
+    - Realm/Headers (= 0.98.6)
+  - Realm/Headers (0.98.6)
+  - RealmSwift (0.98.6):
+    - Realm (= 0.98.6)
 
 DEPENDENCIES:
   - Crashlytics (~> 3.7.0)
@@ -25,6 +30,7 @@ DEPENDENCIES:
   - FBSDKLoginKit (~> 4.10.1)
   - FBSDKShareKit (~> 4.10.1)
   - Mixpanel (~> 2.9.6)
+  - RealmSwift
 
 SPEC CHECKSUMS:
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
@@ -34,5 +40,7 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 699ff169080e3072de4b9b0faca90bf23dc36deb
   FBSDKShareKit: 2fd887cce0056bdda91f99b2021d724a4fed8e88
   Mixpanel: 048a9f2512ac1bb8bfdecf719da024873f50a9c2
+  Realm: 44803f35418c5d89b27825a564247fcd190de37e
+  RealmSwift: c7239c52c83f8c43525a5269ba7be1694da33afc
 
 COCOAPODS: 0.39.0

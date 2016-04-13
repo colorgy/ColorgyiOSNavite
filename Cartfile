@@ -6,3 +6,5 @@ github "larcus94/ImagePickerSheetController" ~> 0.9.1
 github "realm/realm-cocoa" ~> 0.98.6
 github "marketplacer/keychain-swift" ~> 3.0
 github "socketio/socket.io-client-swift" ~> 6.0.0
+github "Quick/Quick"
+github "Quick/Nimble"

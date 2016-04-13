@@ -2,7 +2,7 @@
 //  BridghingHeader.h
 //  ColorgyCourse
 //
-//  Created by David on 2016/4/9.
+//  Created by David on 2016/4/13.
 //  Copyright © 2016年 David. All rights reserved.
 //
 
@@ -10,5 +10,4 @@
 #define BridghingHeader_h
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-
 #endif /* BridghingHeader_h */

@@ -10,6 +10,7 @@ target 'ColorgyCourse' do
   pod 'FBSDKCoreKit', '~> 4.10.1'
   pod 'FBSDKLoginKit', '~> 4.10.1'
   pod 'FBSDKShareKit', '~> 4.10.1'
+  pod 'RealmSwift'
 end
 
 target 'ColorgyCourseTests' do

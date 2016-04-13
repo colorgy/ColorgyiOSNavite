@@ -89,6 +89,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-ColorgyCourse/FBSDKLoginKit.framework"
   install_framework "Pods-ColorgyCourse/FBSDKShareKit.framework"
   install_framework "Pods-ColorgyCourse/Mixpanel.framework"
+  install_framework "Pods-ColorgyCourse/Realm.framework"
+  install_framework "Pods-ColorgyCourse/RealmSwift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-ColorgyCourse/Bolts.framework"
@@ -96,4 +98,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-ColorgyCourse/FBSDKLoginKit.framework"
   install_framework "Pods-ColorgyCourse/FBSDKShareKit.framework"
   install_framework "Pods-ColorgyCourse/Mixpanel.framework"
+  install_framework "Pods-ColorgyCourse/Realm.framework"
+  install_framework "Pods-ColorgyCourse/RealmSwift.framework"
 fi

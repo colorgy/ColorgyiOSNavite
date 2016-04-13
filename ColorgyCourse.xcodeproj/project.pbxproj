@@ -46,9 +46,7 @@
 		635479C31CB89C4E00DE8CBC /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479BA1CB89C4E00DE8CBC /* WebImage.framework */; };
 		635479C41CB89C4E00DE8CBC /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479BA1CB89C4E00DE8CBC /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		635479C91CB8A18F00DE8CBC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479C71CB8A18F00DE8CBC /* Realm.framework */; };
-		635479CA1CB8A18F00DE8CBC /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479C71CB8A18F00DE8CBC /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		635479CB1CB8A18F00DE8CBC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479C81CB8A18F00DE8CBC /* RealmSwift.framework */; };
-		635479CC1CB8A18F00DE8CBC /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479C81CB8A18F00DE8CBC /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		635479CF1CB8A5EF00DE8CBC /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479CE1CB8A5EF00DE8CBC /* Release.swift */; };
 		635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D01CB8AA0700DE8CBC /* LoginViewController.swift */; };
 		635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D21CB8AC6300DE8CBC /* LoginViewModel.swift */; };
@@ -97,9 +95,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				635479CA1CB8A18F00DE8CBC /* Realm.framework in Embed Frameworks */,
 				635479C21CB89C4E00DE8CBC /* SwiftyJSON.framework in Embed Frameworks */,
-				635479CC1CB8A18F00DE8CBC /* RealmSwift.framework in Embed Frameworks */,
 				635479C41CB89C4E00DE8CBC /* WebImage.framework in Embed Frameworks */,
 				6340A3081CBA2BA5001AE3AE /* KeychainSwift.framework in Embed Frameworks */,
 				630570261CBD32BF007D2C9D /* SocketIOClientSwift.framework in Embed Frameworks */,
@@ -151,9 +147,8 @@
 		635479B81CB89C4E00DE8CBC /* SKPhotoBrowser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SKPhotoBrowser.framework; path = Carthage/Build/iOS/SKPhotoBrowser.framework; sourceTree = "<group>"; };
 		635479B91CB89C4E00DE8CBC /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		635479BA1CB89C4E00DE8CBC /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
-		635479C61CB89CB900DE8CBC /* BridghingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridghingHeader.h; sourceTree = "<group>"; };
-		635479C71CB8A18F00DE8CBC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
-		635479C81CB8A18F00DE8CBC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		635479C71CB8A18F00DE8CBC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = /Users/David/Desktop/ColorgyiOSNavite/Carthage/Build/iOS/Realm.framework; sourceTree = "<absolute>"; };
+		635479C81CB8A18F00DE8CBC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = /Users/David/Desktop/ColorgyiOSNavite/Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<absolute>"; };
 		635479CE1CB8A5EF00DE8CBC /* Release.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
 		635479D01CB8AA0700DE8CBC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		635479D21CB8AC6300DE8CBC /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -175,6 +170,8 @@
 		635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyLoginResult.swift; sourceTree = "<group>"; };
 		635479FA1CB8D17800DE8CBC /* PeriodRawData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodRawData.swift; sourceTree = "<group>"; };
 		635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodRawDataRealmObject.swift; sourceTree = "<group>"; };
+		6379FC6F1CBE9D2B002F10E1 /* BridghingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridghingHeader.h; sourceTree = "<group>"; };
+		6379FC701CBEA1A8002F10E1 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		9F013244A3B8C8F64571951C /* Pods-ColorgyCourse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourse/Pods-ColorgyCourse.debug.xcconfig"; sourceTree = "<group>"; };
 		F16E987B487403193816ADE4 /* Pods-ColorgyCourse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourse.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourse/Pods-ColorgyCourse.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -269,11 +266,8 @@
 			isa = PBXGroup;
 			children = (
 				632402B31CBE579B002969CA /* ColorgyAppNotification.swift */,
-				635479C61CB89CB900DE8CBC /* BridghingHeader.h */,
 				630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */,
 				6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */,
-				635479C71CB8A18F00DE8CBC /* Realm.framework */,
-				635479C81CB8A18F00DE8CBC /* RealmSwift.framework */,
 				635479B61CB89C4E00DE8CBC /* AFNetworking.framework */,
 				635479B71CB89C4E00DE8CBC /* ImagePickerSheetController.framework */,
 				635479B81CB89C4E00DE8CBC /* SKPhotoBrowser.framework */,
@@ -301,6 +295,8 @@
 		635479861CB898C000DE8CBC /* ColorgyCourse */ = {
 			isa = PBXGroup;
 			children = (
+				6379FC6F1CBE9D2B002F10E1 /* BridghingHeader.h */,
+				6379FC701CBEA1A8002F10E1 /* Header.h */,
 				630570221CBD2D97007D2C9D /* Realm Object */,
 				635479871CB898C100DE8CBC /* AppDelegate.swift */,
 				635479CE1CB8A5EF00DE8CBC /* Release.swift */,
@@ -601,8 +597,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SKPhotoBrowser.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SocketIOClientSwift.framework",
 			);
@@ -826,7 +820,7 @@
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = misk.ColorgyCourse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = ./BridghingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ColorgyCourse/Header.h";
 			};
 			name = Debug;
 		};
@@ -845,7 +839,7 @@
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = misk.ColorgyCourse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = ./BridghingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ColorgyCourse/Header.h";
 			};
 			name = Release;
 		};
