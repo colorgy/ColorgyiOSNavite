@@ -45,7 +45,7 @@ public enum RefreshingError: ErrorType {
 }
 
 /// **ColorgyRefreshCenter**
-/// 
+///
 /// This is a independent refresh center. This center works independently. Will not be affected by other api calls.
 ///
 /// **Usage:**
@@ -64,7 +64,7 @@ final public class ColorgyRefreshCenter {
 	// MARK: - init
 	
 	/// **Singleton** of ColorgyRefreshCenter
-	/// 
+	///
 	/// Will get the only instance of refresh center
 	class func sharedInstance() -> ColorgyRefreshCenter {
 		
@@ -95,7 +95,7 @@ final public class ColorgyRefreshCenter {
 		}
 		
 		// lock state first
-		ColorgyRefreshCenter.sharedInstance().lookToCheckRefreshRequirment()
+		ColorgyRefreshCenter.sharedInstance().lockToCheckRefreshRequirment()
 		// check token if expired
 		if ColorgyRefreshCenter.sharedInstance().currentRefreshTokenState == .Active {
 			// if still work, unlock api
@@ -226,7 +226,7 @@ final public class ColorgyRefreshCenter {
 	
 	// MARK: - Refreshing State Handler
 	/// Change current refresh state
-	private func lookToCheckRefreshRequirment() {
+	private func lockToCheckRefreshRequirment() {
 		self.refreshingState = .NeedToCheckRefreshRequirment
 	}
 	
@@ -265,7 +265,7 @@ final public class ColorgyRefreshCenter {
 	// MARK: - Time Remaining of A Token
 	/// Will return if token is still available, and its remaining time.
 	///
-	///	time less than 0 means that you need to refresh the token
+	/// time less than 0 means that you need to refresh the token
 	public class func refreshTokenRemainingTime() -> (remainingTime: Double, currentState: RefreshTokenState) {
 		
 		// 7000 second is closed to 2 hrs
@@ -307,16 +307,16 @@ final public class ColorgyRefreshCenter {
 			ColorgyRefreshCenter.refreshAccessToken(success: {
 				print("ok")
 				}, failure: { (error, AFError) in
-				if error == RefreshingError.NetworkUnavailable {
-					// try again
-					let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 2.0))
-					dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
-						ColorgyRefreshCenter.retryUntilTokenIsAvailable()
-					})
-				} else {
-					// TODO: fatal error
-					// stop when refresh token is revoke
-				}
+					if error == RefreshingError.NetworkUnavailable {
+						// try again
+						let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 2.0))
+						dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
+							ColorgyRefreshCenter.retryUntilTokenIsAvailable()
+						})
+					} else {
+						// TODO: fatal error
+						// stop when refresh token is revoke
+					}
 			})
 		}
 	}
@@ -399,7 +399,7 @@ final public class ColorgyRefreshCenter {
 		// while app enter background
 		// set the token to need to check available
 		// lock it, check again while app enter foreground again
-		ColorgyRefreshCenter.sharedInstance().lookToCheckRefreshRequirment()
+		ColorgyRefreshCenter.sharedInstance().lockToCheckRefreshRequirment()
 		
 		// stop background worker
 		ColorgyRefreshCenter.stopBackgroundWorker()
@@ -429,18 +429,11 @@ final public class ColorgyRefreshCenter {
 			// need to refresh
 			ColorgyRefreshCenter.retryUntilTokenIsAvailable()
 		}
-	
+  
 		// start background worker
 		ColorgyRefreshCenter.startBackgroundWorker()
 	}
 	
-	public func yo() {
-		if ColorgyRefreshCenter.sharedInstance().currentRefreshingState == .NotRefreshing {
-			ColorgyRefreshCenter.sharedInstance().lockWhileRefreshingToken()
-		} else {
-			ColorgyRefreshCenter.sharedInstance().unlockWhenFinishRefreshingToken()
-		}
-	}
 	
 	
 	

@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// **AFError** is used to check AFNetworking's erro state code and response body
+/// **AFError** is used to check AFNetworking's error state code and response body
 final public class AFError: NSObject {
 	
 	let statusCode: Int?
@@ -19,5 +19,9 @@ final public class AFError: NSObject {
 	init(operation: NSURLSessionDataTask?, error: NSError) {
 		self.statusCode = AFNetworkingErrorParser.statusCode(operation)
 		self.responseBody = AFNetworkingErrorParser.responseBody(error)
+		if let statusCode = self.statusCode where statusCode == 401 {
+			// 401 is not authed, tell refresh center to check the token
+			ColorgyRefreshCenter.notify401UnautherizedErrorGet()
+		}
 	}
 }
