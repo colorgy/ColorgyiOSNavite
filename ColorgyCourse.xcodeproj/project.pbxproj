@@ -25,6 +25,7 @@
 		630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701F1CBD2999007D2C9D /* ChatMessage.swift */; };
 		630570251CBD32BF007D2C9D /* SocketIOClientSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */; };
 		630570261CBD32BF007D2C9D /* SocketIOClientSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		632402B41CBE579B002969CA /* ColorgyAppNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632402B31CBE579B002969CA /* ColorgyAppNotification.swift */; };
 		6340A3071CBA2BA5001AE3AE /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; };
 		6340A3081CBA2BA5001AE3AE /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
@@ -130,6 +131,7 @@
 		6305701D1CBD2902007D2C9D /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		6305701F1CBD2999007D2C9D /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIOClientSwift.framework; path = Carthage/Build/iOS/SocketIOClientSwift.framework; sourceTree = "<group>"; };
+		632402B31CBE579B002969CA /* ColorgyAppNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyAppNotification.swift; sourceTree = "<group>"; };
 		6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
 		635479841CB898C000DE8CBC /* ColorgyCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorgyCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635479871CB898C100DE8CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 		6354797B1CB898C000DE8CBC = {
 			isa = PBXGroup;
 			children = (
+				632402B31CBE579B002969CA /* ColorgyAppNotification.swift */,
 				635479C61CB89CB900DE8CBC /* BridghingHeader.h */,
 				630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */,
 				6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */,
@@ -667,6 +670,7 @@
 				635479F21CB8B02A00DE8CBC /* AFError.swift in Sources */,
 				635479E61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift in Sources */,
 				630570011CBCBC86007D2C9D /* Semester.swift in Sources */,
+				632402B41CBE579B002969CA /* ColorgyAppNotification.swift in Sources */,
 				635479E41CB8B02A00DE8CBC /* ColorgyUserInformation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

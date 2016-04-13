@@ -66,16 +66,7 @@ final public class LoginViewModel {
 	
 	/// Call this to perform login using email
 	public func emailLogin() {
-		colorgyAPI.getMePrivacySetting(success: { (isTimeTablePublic) in
-			print(isTimeTablePublic)
-			self.colorgyAPI.patchMEPrivacySetting(turnIt: !isTimeTablePublic, success: nil, failure: {a,b in
-				print(a,b)
-			})
-			}, failure: nil)
-		
-		colorgyAPI.getUserPrivacySetting(9, success: { (isTimeTablePublic) in
-			print(isTimeTablePublic)
-			}, failure: nil)
+		colorgyAPI.getSchoolCourseData(20000, year: 2015, term: 1, success: nil, process: nil, failure: nil)
 	}
 	
 	public func emailRegister() {

@@ -82,8 +82,18 @@ final public class ColorgyRefreshCenter {
 	/// **Initialization**
 	/// Call this during app setup
 	public class func initialization() {
+		
 		// start monitoring
 		AFNetworkReachabilityManager.sharedManager().startMonitoring()
+		
+		// check if accesstoken is still working
+		ColorgyRefreshCenter.checkAccessToken { (tokenStillWorking) in
+			if !tokenStillWorking {
+				// if not working, refresh token
+				ColorgyRefreshCenter.retryUntilTokenIsAvailable()
+			}
+		}
+		
 		// lock state first
 		ColorgyRefreshCenter.sharedInstance().lookToCheckRefreshRequirment()
 		// check token if expired
@@ -94,6 +104,7 @@ final public class ColorgyRefreshCenter {
 			// if expired
 			ColorgyRefreshCenter.retryUntilTokenIsAvailable()
 		}
+		
 		// start background job
 		ColorgyRefreshCenter.startBackgroundWorker()
 	}
@@ -236,6 +247,9 @@ final public class ColorgyRefreshCenter {
 	/// revoke the state of refresh token
 	public class func revokeRefreshToken() {
 		ColorgyUserInformation.revokeRefreshCenterTokenState()
+		stopBackgroundWorker()
+		// sent a global revoke notification
+		NSNotificationCenter.defaultCenter().postNotificationName(<#T##aName: String##String#>, object: <#T##AnyObject?#>)
 	}
 	
 	/// After login to colorgy,
@@ -245,6 +259,8 @@ final public class ColorgyRefreshCenter {
 		ColorgyUserInformation.activeRefreshCenterTokenState()
 		// open it while refresh token is again available
 		ColorgyRefreshCenter.sharedInstance().unlockWhenFinishRefreshingToken()
+		
+		startBackgroundWorker()
 	}
 	
 	// MARK: - Time Remaining of A Token
@@ -312,10 +328,14 @@ final public class ColorgyRefreshCenter {
 	@objc private class func backgroundJob() {
 		print("Refresh token remaining time:", ColorgyRefreshCenter.refreshTokenRemainingTime().remainingTime, "seconds")
 		print("State:", ColorgyUserInformation.sharedInstance().refreshTokenState)
-		if ColorgyRefreshCenter.refreshTokenRemainingTime().currentState == .NeedToRefresh {
+		let tokenState = ColorgyRefreshCenter.sharedInstance().currentRefreshTokenState
+		if tokenState == .NeedToRefresh {
 			// if token expired
 			// refresh token
 			ColorgyRefreshCenter.retryUntilTokenIsAvailable()
+		} else if tokenState == .Revoke {
+			// if token is revoked, stop job
+			ColorgyRefreshCenter.stopBackgroundWorker()
 		}
 	}
 	
@@ -331,6 +351,43 @@ final public class ColorgyRefreshCenter {
 	/// Stop background worker
 	public class func stopBackgroundWorker() {
 		ColorgyRefreshCenter.sharedInstance().backgroundWorker?.invalidate()
+	}
+	
+	/// Check access token
+	private class func checkAccessToken(complete: (tokenStillWorking: Bool) -> Void) {
+		// check user email api
+		let manager = AFHTTPSessionManager(baseURL: nil)
+		manager.requestSerializer = AFJSONRequestSerializer()
+		manager.responseSerializer = AFJSONResponseSerializer()
+		
+		guard let accessToken = ColorgyRefreshCenter.sharedInstance().accessToken else {
+			complete(tokenStillWorking: false)
+			return
+		}
+		
+		let url = "https://colorgy.io:443/api/v1/me/emails.json?access_token=\(accessToken)"
+		
+		manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+			complete(tokenStillWorking: true)
+			return
+			}, failure: { (operaion: NSURLSessionDataTask?, error: NSError) in
+				complete(tokenStillWorking: false)
+				return
+		})
+	}
+	
+	/// If you get any 401 error from server,
+	///
+	/// Call this method and will check access token for you,
+	///
+	/// Will refresh token if needed
+	public class func notify401UnautherizedErrorGet() {
+		checkAccessToken { (tokenStillWorking) in
+			if !tokenStillWorking {
+				// token no longer working
+				ColorgyRefreshCenter.retryUntilTokenIsAvailable()
+			}
+		}
 	}
 	
 	// MARK: - Background Hanlder
@@ -355,6 +412,16 @@ final public class ColorgyRefreshCenter {
 	/// - Will **try** to unlock the refreshing state
 	/// - Will start background worker
 	public class func enterForeground() {
+		
+		// check if accesstoken is still working
+		ColorgyRefreshCenter.checkAccessToken { (tokenStillWorking) in
+			print(tokenStillWorking)
+			if !tokenStillWorking {
+				// if not working, refresh token
+				ColorgyRefreshCenter.retryUntilTokenIsAvailable()
+			}
+		}
+		
 		// to see if token has expired
 		if ColorgyRefreshCenter.sharedInstance().currentRefreshTokenState == .Active {
 			// if available, unlock
