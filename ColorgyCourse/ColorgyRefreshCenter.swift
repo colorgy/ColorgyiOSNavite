@@ -201,7 +201,6 @@ final public class ColorgyRefreshCenter {
 			ColorgyUserInformation.saveLoginResult(result)
 			ColorgyRefreshCenter.sharedInstance().unlockWhenFinishRefreshingToken()
 			print("Successfully refresh access token")
-			print(result.refresh_token)
 			success?()
 			return
 			}, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
@@ -209,6 +208,7 @@ final public class ColorgyRefreshCenter {
 				ColorgyRefreshCenter.revokeRefreshToken()
 				ColorgyRefreshCenter.sharedInstance().unlockWhenFinishRefreshingToken()
 				let aferror = AFError(operation: operation, error: error)
+				print(aferror)
 				failure?(error: RefreshingError.APIConnectionFail, AFError: aferror)
 				return
 		})
@@ -254,7 +254,7 @@ final public class ColorgyRefreshCenter {
 	public class func refreshTokenRemainingTime() -> (remainingTime: Double, currentState: RefreshTokenState) {
 		
 		// 7000 second is closed to 2 hrs
-		let aliveTime: Double = 15;
+		let aliveTime: Double = 7000;
 		
 		// make sure refresh token is not revoked
 		guard ColorgyUserInformation.sharedInstance().refreshTokenState != .Revoke else { return  (-1, RefreshTokenState.Revoke) }
@@ -280,27 +280,30 @@ final public class ColorgyRefreshCenter {
 	/// BUT! If any error occur from server, such as parse result failure, server external or internal error, token will become nil
 	public class func retryUntilTokenIsAvailable() {
 		
-		// stop when refresh token is revoke
-		
-		// check if token expried or not
-		// remaining time of a token must smaller than 0, expired token needs to refresh
-		guard ColorgyRefreshCenter.refreshTokenRemainingTime().currentState == .NeedToRefresh else { return }
-		// dont fire is token is refreshing, only fire the request when needed.
-		guard ColorgyRefreshCenter.sharedInstance().currentRefreshingState != RefreshingState.Refreshing else { return }
-		// fire the refresh request
-		ColorgyRefreshCenter.refreshAccessToken(success: {
-			print("ok")
-			}, failure: { (error, AFError) in
-			if error == RefreshingError.NetworkUnavailable {
-				// try again
-				let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 2.0))
-                dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
-					ColorgyRefreshCenter.retryUntilTokenIsAvailable()
-                })
-			} else {
-				// TODO: fatal error
-			}
-		})
+		autoreleasepool {
+			// stop when refresh token is revoke
+			guard ColorgyUserInformation.sharedInstance().refreshTokenState != .Revoke else { return }
+			// check if token expried or not
+			// remaining time of a token must smaller than 0, expired token needs to refresh
+			guard ColorgyRefreshCenter.refreshTokenRemainingTime().currentState == .NeedToRefresh else { return }
+			// dont fire is token is refreshing, only fire the request when needed.
+			guard ColorgyRefreshCenter.sharedInstance().currentRefreshingState != RefreshingState.Refreshing else { return }
+			// fire the refresh request
+			ColorgyRefreshCenter.refreshAccessToken(success: {
+				print("ok")
+				}, failure: { (error, AFError) in
+				if error == RefreshingError.NetworkUnavailable {
+					// try again
+					let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 2.0))
+					dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
+						ColorgyRefreshCenter.retryUntilTokenIsAvailable()
+					})
+				} else {
+					// TODO: fatal error
+					// stop when refresh token is revoke
+				}
+			})
+		}
 	}
 	
 	/// This is refresh center's background job, put this you want in it
@@ -308,6 +311,7 @@ final public class ColorgyRefreshCenter {
 	/// This method will check available time every 30 seconds.
 	@objc private class func backgroundJob() {
 		print("Refresh token remaining time:", ColorgyRefreshCenter.refreshTokenRemainingTime().remainingTime, "seconds")
+		print("State:", ColorgyUserInformation.sharedInstance().refreshTokenState)
 		if ColorgyRefreshCenter.refreshTokenRemainingTime().currentState == .NeedToRefresh {
 			// if token expired
 			// refresh token
@@ -317,12 +321,10 @@ final public class ColorgyRefreshCenter {
 	
 	/// Start background worker
 	public class func startBackgroundWorker() {
-		autoreleasepool {
-			ColorgyRefreshCenter.sharedInstance().backgroundWorker = NSTimer(timeInterval: 3.0, target: self, selector: #selector(ColorgyRefreshCenter.backgroundJob), userInfo: nil, repeats: true)
-			ColorgyRefreshCenter.sharedInstance().backgroundWorker?.fire()
-			if let worker = ColorgyRefreshCenter.sharedInstance().backgroundWorker {
-				NSRunLoop.currentRunLoop().addTimer(worker, forMode: NSRunLoopCommonModes)
-			}
+		ColorgyRefreshCenter.sharedInstance().backgroundWorker = NSTimer(timeInterval: 30.0, target: self, selector: #selector(ColorgyRefreshCenter.backgroundJob), userInfo: nil, repeats: true)
+		ColorgyRefreshCenter.sharedInstance().backgroundWorker?.fire()
+		if let worker = ColorgyRefreshCenter.sharedInstance().backgroundWorker {
+			NSRunLoop.currentRunLoop().addTimer(worker, forMode: NSRunLoopCommonModes)
 		}
 	}
 	
