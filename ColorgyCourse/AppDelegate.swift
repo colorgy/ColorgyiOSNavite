@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		// Start Refresh Center
 		ColorgyRefreshCenter.initialization()
+		ColorgyUserInformation.fakeRefreshToken()
+		
 		
 		return true
 	}

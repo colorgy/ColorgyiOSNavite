@@ -103,6 +103,8 @@ final public class ColorgyLogin {
 			}
 			// store
 			ColorgyUserInformation.saveLoginResult(result)
+			// active refresh token
+			ColorgyRefreshCenter.activeRefreshToken()
 			// success
 			mainBlock({
 				success?(result: result)
