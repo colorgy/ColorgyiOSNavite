@@ -122,11 +122,30 @@
                         <outlet property="emailLoginButton" destination="DIS-dT-RYQ" id="7In-tZ-i5Y"/>
                         <outlet property="emailRegisterButton" destination="QmN-dB-BlW" id="z4o-Gr-vzv"/>
                         <outlet property="fbLoginButton" destination="Fad-eA-lCh" id="hUf-qh-GvP"/>
+                        <segue destination="wsh-4F-bjd" kind="show" identifier="register email segue" id="44r-4U-aTd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ap-Tt-hpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="510" y="-127"/>
+        </scene>
+        <!--Email Register View Controller-->
+        <scene sceneID="8Cx-wN-ymA">
+            <objects>
+                <viewController id="wsh-4F-bjd" customClass="EmailRegisterViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LfS-rb-JK0"/>
+                        <viewControllerLayoutGuide type="bottom" id="uHJ-L8-pvq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jW0-ur-yE1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tHB-1z-ZAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1246" y="-127"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Tf1-v9-rts">

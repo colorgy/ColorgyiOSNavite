@@ -12,7 +12,7 @@ import FBSDKCoreKit
 import AFNetworking
 import SwiftyJSON
 
-public enum ColorgyFacebookLoginError: ErrorType {
+public enum FacebookLoginError: ErrorType {
 	case CancelLoginFacebook
 	case FailLoginToFacebook
 }
@@ -20,6 +20,9 @@ public enum ColorgyFacebookLoginError: ErrorType {
 public enum ColorgyLoginError: ErrorType {
 	case FailToParseResult
 	case NetworkError
+	case InvalidEmail
+	case PasswordLessThan8Charater
+	case InvalidURL
 }
 
 /// Login starts here
@@ -43,18 +46,18 @@ final public class ColorgyLogin {
 	
 	// MARK: Login
 	/// get Facebook Access Token
-	public class func getFacebookAccessToken(success success: ((token: String) -> Void)?, failure: ((error: ColorgyFacebookLoginError) -> Void)?) {
+	public class func getFacebookAccessToken(success success: ((token: String) -> Void)?, failure: ((error: FacebookLoginError) -> Void)?) {
 		let manager = FBSDKLoginManager()
 		manager.logInWithReadPermissions(["email"], fromViewController: nil) { (result: FBSDKLoginManagerLoginResult!, error: NSError!) -> Void in
 			if error != nil {
 				print(error.localizedDescription)
 				mainBlock({ 
-					failure?(error: ColorgyFacebookLoginError.FailLoginToFacebook)
+					failure?(error: FacebookLoginError.FailLoginToFacebook)
 				})
 			} else if result.isCancelled {
 				// canceled
 				mainBlock({
-					failure?(error: ColorgyFacebookLoginError.CancelLoginFacebook)
+					failure?(error: FacebookLoginError.CancelLoginFacebook)
 				})
 			} else {
 				// ok
@@ -62,7 +65,7 @@ final public class ColorgyLogin {
 					if let token = result?.token?.tokenString {
 						success?(token: token)
 					} else {
-						failure?(error: ColorgyFacebookLoginError.FailLoginToFacebook)
+						failure?(error: FacebookLoginError.FailLoginToFacebook)
 					}
 				})
 			}
@@ -87,7 +90,16 @@ final public class ColorgyLogin {
 			"scope": "public account offline_access"
 		]
 		
-		manager.POST("https://colorgy.io/oauth/token", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+		let url = "https://colorgy.io/oauth/token"
+		
+		guard url.isValidURLString else {
+			mainBlock({
+				failure?(error: ColorgyLoginError.InvalidURL, afError: nil)
+			})
+			return
+		}
+		
+		manager.POST(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
 			guard let response = response else {
 				mainBlock({
 					failure?(error: ColorgyLoginError.FailToParseResult, afError: nil)
@@ -114,6 +126,76 @@ final public class ColorgyLogin {
 					let aferror = AFError(operation: operation, error: error)
 					failure?(error: ColorgyLoginError.NetworkError, afError: aferror)
 				})
+		})
+	}
+	
+	/// Login colorgy using email and password 
+	public class func loginToColorgyWithEmail(email email: String, password: String, success: ((result: ColorgyLoginResult) -> Void)?, failure: ((error: ColorgyLoginError, afError: AFError?) -> Void)?) {
+		
+		guard email.isValidEmail else {
+			mainBlock({
+				failure?(error: ColorgyLoginError.InvalidEmail, afError: nil)
+			})
+			return
+		}
+		
+		guard password.characters.count >= 8 else {
+			mainBlock({
+				failure?(error: ColorgyLoginError.PasswordLessThan8Charater, afError: nil)
+			})
+			return
+		}
+		
+		let manager = AFHTTPSessionManager(baseURL: nil)
+		manager.requestSerializer = AFJSONRequestSerializer()
+		manager.requestSerializer.cachePolicy = .ReloadIgnoringLocalAndRemoteCacheData
+		manager.responseSerializer = AFJSONResponseSerializer()
+		
+		let parameters = [
+			"grant_type": "password",
+			// 應用程式ID application id, in colorgy server
+			"client_id": "ad2d3492de7f83f0708b5b1db0ac7041f9179f78a168171013a4458959085ba4",
+			"client_secret": "d9de77450d6365ca8bd6717bbf8502dfb4a088e50962258d5d94e7f7211596a3",
+			"username": email,
+			"password": password,
+			"scope": "public account offline_access"
+		]
+		
+		let url = "https://colorgy.io/oauth/token"
+		
+		guard url.isValidURLString else {
+			mainBlock({
+				failure?(error: ColorgyLoginError.InvalidURL, afError: nil)
+			})
+			return
+		}
+		
+		manager.POST(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+			if let response = response {
+				let json = JSON(response)
+				if let result = ColorgyLoginResult(json: json) {
+					mainBlock({
+						success?(result: result)
+					})
+					return
+				} else {
+					mainBlock({
+						failure?(error: ColorgyLoginError.FailToParseResult, afError: nil)
+					})
+					return
+				}
+			} else {
+				mainBlock({
+					failure?(error: ColorgyLoginError.FailToParseResult, afError: nil)
+				})
+				return
+			}
+			}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+				let afError = AFError(operation: operation, error: error)
+				mainBlock({
+					failure?(error: ColorgyLoginError.InvalidURL, afError: afError)
+				})
+				return
 		})
 	}
 }

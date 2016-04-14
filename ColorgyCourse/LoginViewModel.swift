@@ -10,10 +10,13 @@ import Foundation
 
 // MARK: - Delegate
 public protocol LoginViewModelDelegate: class {
-	func loginViewModel(failToLoginToFacebook error: ColorgyFacebookLoginError)
+	func loginViewModel(failToLoginToFacebook error: FacebookLoginError)
 	func loginViewModel(failToLoginToColorgy error: ColorgyLoginError, afError: AFError?)
 	func loginViewModel(failToGetDataFromServer error: APIError, afError: AFError?)
+	// Login part
 	func loginViewModel(loginToColorgy userHasPossibleOrganization: Bool)
+	func loginViewModelRequestToLoginWithEmail()
+	func loginViewModelRequestRegisterNewAccount()
 }
 
 final public class LoginViewModel {
@@ -66,11 +69,11 @@ final public class LoginViewModel {
 	
 	/// Call this to perform login using email
 	public func emailLogin() {
-		colorgyAPI.getSchoolCourseData(20000, year: 2015, term: 1, success: nil, process: nil, failure: nil)
+		delegate?.loginViewModelRequestToLoginWithEmail()
 	}
 	
 	public func emailRegister() {
-		
+		delegate?.loginViewModelRequestRegisterNewAccount()
 	}
 	
 	// MARK: - Notifications
@@ -93,7 +96,7 @@ final public class LoginViewModel {
 	}
 	
 	// MARK: - Init
-	init(delegate: LoginViewModelDelegate?) {
+	public init(delegate: LoginViewModelDelegate?) {
 		self.delegate = delegate
 		self.colorgyAPI = ColorgyAPI()
 		registerNotification()
