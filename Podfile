@@ -14,7 +14,8 @@ target 'ColorgyCourse' do
 end
 
 target 'ColorgyCourseTests' do
-
+  pod 'Quick'
+  pod 'Nimble'
 end
 
 target 'ColorgyCourseUITests' do

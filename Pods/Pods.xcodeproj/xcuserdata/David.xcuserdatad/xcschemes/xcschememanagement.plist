@@ -29,7 +29,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Nimble.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ColorgyCourse.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ColorgyCourseTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Quick.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -48,6 +63,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>0AD1B7993F38F249E58B46D7E7640FEF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2ECB89E32612C8723CF6BCD33169CA68</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4FA852B36637F5FBFB642C28D8B6C6BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -83,6 +108,11 @@
 			<true/>
 		</dict>
 		<key>F5ACF367AE3BD7A7F2AF2D430901DF7B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE8E1723D88A97A83CF0D2D256388168</key>
 		<dict>
 			<key>primary</key>
 			<true/>

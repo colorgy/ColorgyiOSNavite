@@ -25,11 +25,35 @@ class TestColorgyRefershCenter: XCTestCase {
         super.tearDown()
     }
 	
+	func testTokenState() {
+		expect(ColorgyRefreshCenter.sharedInstance().currentRefreshTokenState).toNot(equal(RefreshTokenState.Revoke))
+	}
+	
 	func testDoesHaveToken() {
 		
 		// Make sure these are not nil
 		expect(ColorgyRefreshCenter.sharedInstance().accessToken).toNot(equal(nil))
 		expect(ColorgyRefreshCenter.sharedInstance().refreshToken).toNot(equal(nil))
+	}
+	
+	func testRefreshingTokenRemainingTime() {
+		
+		let remainigTime = ColorgyRefreshCenter.refreshTokenRemainingTime()
+		
+		if remainigTime.remainingTime > 0 {
+			expect(remainigTime.currentState).to(equal(RefreshTokenState.Active))
+		}
+	}
+	
+	func testRefreshingToken() {
+		
+		var doesSuccess: [Bool] = []
+		
+		ColorgyRefreshCenter.refreshAccessToken(success: { 
+			doesSuccess.append(true)
+			}, failure: nil)
+		
+		expect(doesSuccess).toEventually(contain(true), timeout: 30.0, pollInterval: 1.0, description: nil)
 	}
 	
 	func testGettingRefreshingState() {
