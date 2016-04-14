@@ -45,8 +45,6 @@
 		635479C21CB89C4E00DE8CBC /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479B91CB89C4E00DE8CBC /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		635479C31CB89C4E00DE8CBC /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479BA1CB89C4E00DE8CBC /* WebImage.framework */; };
 		635479C41CB89C4E00DE8CBC /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479BA1CB89C4E00DE8CBC /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		635479C91CB8A18F00DE8CBC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479C71CB8A18F00DE8CBC /* Realm.framework */; };
-		635479CB1CB8A18F00DE8CBC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479C81CB8A18F00DE8CBC /* RealmSwift.framework */; };
 		635479CF1CB8A5EF00DE8CBC /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479CE1CB8A5EF00DE8CBC /* Release.swift */; };
 		635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D01CB8AA0700DE8CBC /* LoginViewController.swift */; };
 		635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D21CB8AC6300DE8CBC /* LoginViewModel.swift */; };
@@ -68,6 +66,50 @@
 		635479F31CB8B02A00DE8CBC /* ColorgyLoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */; };
 		635479FB1CB8D17800DE8CBC /* PeriodRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479FA1CB8D17800DE8CBC /* PeriodRawData.swift */; };
 		635479FF1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */; };
+		63F3EE411CBF3A850010D059 /* ColorgySocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305700B1CBD0AB9007D2C9D /* ColorgySocket.swift */; };
+		63F3EE421CBF3A850010D059 /* ColorgyChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570091CBD0AA1007D2C9D /* ColorgyChatAPI.swift */; };
+		63F3EE431CBF3A8A0010D059 /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570131CBD1C7D007D2C9D /* AvailableTarget.swift */; };
+		63F3EE441CBF3A8A0010D059 /* ChatMeUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305700F1CBD182D007D2C9D /* ChatMeUserInformation.swift */; };
+		63F3EE451CBF3A8A0010D059 /* HistoryChatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */; };
+		63F3EE461CBF3A8A0010D059 /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701D1CBD2902007D2C9D /* Chatroom.swift */; };
+		63F3EE471CBF3A8A0010D059 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701F1CBD2999007D2C9D /* ChatMessage.swift */; };
+		63F3EE481CBF3A8A0010D059 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570171CBD233A007D2C9D /* Hello.swift */; };
+		63F3EE491CBF3A8A0010D059 /* ChatUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */; };
+		63F3EE4A1CBF3A8A0010D059 /* TimeStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D51CB8B02A00DE8CBC /* TimeStamp.swift */; };
+		63F3EE4B1CBF3A8A0010D059 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305700D1CBD11EA007D2C9D /* ChatUser.swift */; };
+		63F3EE4E1CBF3B280010D059 /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479CE1CB8A5EF00DE8CBC /* Release.swift */; };
+		63F3EE4F1CBF3B280010D059 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479891CB898C100DE8CBC /* ViewController.swift */; };
+		63F3EE501CBF3B280010D059 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D01CB8AA0700DE8CBC /* LoginViewController.swift */; };
+		63F3EE511CBF3B280010D059 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D21CB8AC6300DE8CBC /* LoginViewModel.swift */; };
+		63F3EE521CBF3B280010D059 /* NumerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570151CBD1D47007D2C9D /* NumerExtensions.swift */; };
+		63F3EE531CBF3B280010D059 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570061CBCE26C007D2C9D /* UIImageExtension.swift */; };
+		63F3EE541CBF3B280010D059 /* SwiftyJSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479DD1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift */; };
+		63F3EE551CBF3B280010D059 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479DE1CB8B02A00DE8CBC /* StringExtension.swift */; };
+		63F3EE561CBF3B280010D059 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479DF1CB8B02A00DE8CBC /* DateExtension.swift */; };
+		63F3EE571CBF3B3A0010D059 /* ColorgyUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D41CB8B02A00DE8CBC /* ColorgyUserInformation.swift */; };
+		63F3EE581CBF3B3A0010D059 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570021CBCC54C007D2C9D /* Organization.swift */; };
+		63F3EE591CBF3B3A0010D059 /* PeriodRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479FA1CB8D17800DE8CBC /* PeriodRawData.swift */; };
+		63F3EE5A1CBF3B3A0010D059 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570041CBCC94A007D2C9D /* Department.swift */; };
+		63F3EE5B1CBF3B3A0010D059 /* CourseOwnershipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */; };
+		63F3EE5C1CBF3B470010D059 /* AFNetworkingErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift */; };
+		63F3EE5D1CBF3B470010D059 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E21CB8B02A00DE8CBC /* AFError.swift */; };
+		63F3EE5E1CBF3B470010D059 /* ColorgyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D71CB8B02A00DE8CBC /* ColorgyAPI.swift */; };
+		63F3EE5F1CBF3B470010D059 /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570001CBCBC86007D2C9D /* Semester.swift */; };
+		63F3EE601CBF3B470010D059 /* ColorgyAPIMeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D81CB8B02A00DE8CBC /* ColorgyAPIMeResult.swift */; };
+		63F3EE611CBF3B470010D059 /* ColorgyAPIUserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D91CB8B02A00DE8CBC /* ColorgyAPIUserResult.swift */; };
+		63F3EE621CBF3B470010D059 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479DA1CB8B02A00DE8CBC /* Course.swift */; };
+		63F3EE631CBF3B470010D059 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479DB1CB8B02A00DE8CBC /* Period.swift */; };
+		63F3EE641CBF3B470010D059 /* CourseRawDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479DC1CB8B02A00DE8CBC /* CourseRawDataObject.swift */; };
+		63F3EE651CBF3B470010D059 /* ColorgyRefreshCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift */; };
+		63F3EE661CBF3B470010D059 /* ColorgyLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E11CB8B02A00DE8CBC /* ColorgyLogin.swift */; };
+		63F3EE671CBF3B470010D059 /* ColorgyLoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */; };
+		63F3EE681CBF3B7A0010D059 /* PeriodRawDataRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */; };
+		63F3EE691CBF3B8E0010D059 /* ColorgyAppNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632402B31CBE579B002969CA /* ColorgyAppNotification.swift */; };
+		63F3EE6B1CBF3CA00010D059 /* TestColorgyRefershCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3EE6A1CBF3CA00010D059 /* TestColorgyRefershCenter.swift */; };
+		63F3EE6E1CBF3E480010D059 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F3EE6C1CBF3E480010D059 /* Nimble.framework */; };
+		63F3EE6F1CBF3E480010D059 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63F3EE6C1CBF3E480010D059 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63F3EE701CBF3E480010D059 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F3EE6D1CBF3E480010D059 /* Quick.framework */; };
+		63F3EE711CBF3E480010D059 /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63F3EE6D1CBF3E480010D059 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A84AB692873E9E8DA6A72BC2 /* Pods_ColorgyCourse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576E6050CAE2354899BC93F6 /* Pods_ColorgyCourse.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,7 +140,9 @@
 				635479C21CB89C4E00DE8CBC /* SwiftyJSON.framework in Embed Frameworks */,
 				635479C41CB89C4E00DE8CBC /* WebImage.framework in Embed Frameworks */,
 				6340A3081CBA2BA5001AE3AE /* KeychainSwift.framework in Embed Frameworks */,
+				63F3EE6F1CBF3E480010D059 /* Nimble.framework in Embed Frameworks */,
 				630570261CBD32BF007D2C9D /* SocketIOClientSwift.framework in Embed Frameworks */,
+				63F3EE711CBF3E480010D059 /* Quick.framework in Embed Frameworks */,
 				635479BE1CB89C4E00DE8CBC /* ImagePickerSheetController.framework in Embed Frameworks */,
 				635479C01CB89C4E00DE8CBC /* SKPhotoBrowser.framework in Embed Frameworks */,
 				635479BC1CB89C4E00DE8CBC /* AFNetworking.framework in Embed Frameworks */,
@@ -147,8 +191,6 @@
 		635479B81CB89C4E00DE8CBC /* SKPhotoBrowser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SKPhotoBrowser.framework; path = Carthage/Build/iOS/SKPhotoBrowser.framework; sourceTree = "<group>"; };
 		635479B91CB89C4E00DE8CBC /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		635479BA1CB89C4E00DE8CBC /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
-		635479C71CB8A18F00DE8CBC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = /Users/David/Desktop/ColorgyiOSNavite/Carthage/Build/iOS/Realm.framework; sourceTree = "<absolute>"; };
-		635479C81CB8A18F00DE8CBC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = /Users/David/Desktop/ColorgyiOSNavite/Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<absolute>"; };
 		635479CE1CB8A5EF00DE8CBC /* Release.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
 		635479D01CB8AA0700DE8CBC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		635479D21CB8AC6300DE8CBC /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -170,8 +212,10 @@
 		635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyLoginResult.swift; sourceTree = "<group>"; };
 		635479FA1CB8D17800DE8CBC /* PeriodRawData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodRawData.swift; sourceTree = "<group>"; };
 		635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodRawDataRealmObject.swift; sourceTree = "<group>"; };
-		6379FC6F1CBE9D2B002F10E1 /* BridghingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridghingHeader.h; sourceTree = "<group>"; };
 		6379FC701CBEA1A8002F10E1 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		63F3EE6A1CBF3CA00010D059 /* TestColorgyRefershCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestColorgyRefershCenter.swift; sourceTree = "<group>"; };
+		63F3EE6C1CBF3E480010D059 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
+		63F3EE6D1CBF3E480010D059 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
 		9F013244A3B8C8F64571951C /* Pods-ColorgyCourse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourse/Pods-ColorgyCourse.debug.xcconfig"; sourceTree = "<group>"; };
 		F16E987B487403193816ADE4 /* Pods-ColorgyCourse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourse.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourse/Pods-ColorgyCourse.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,15 +225,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63F3EE6E1CBF3E480010D059 /* Nimble.framework in Frameworks */,
 				635479BF1CB89C4E00DE8CBC /* SKPhotoBrowser.framework in Frameworks */,
 				A84AB692873E9E8DA6A72BC2 /* Pods_ColorgyCourse.framework in Frameworks */,
 				630570251CBD32BF007D2C9D /* SocketIOClientSwift.framework in Frameworks */,
 				635479BD1CB89C4E00DE8CBC /* ImagePickerSheetController.framework in Frameworks */,
 				635479C31CB89C4E00DE8CBC /* WebImage.framework in Frameworks */,
-				635479C91CB8A18F00DE8CBC /* Realm.framework in Frameworks */,
 				635479BB1CB89C4E00DE8CBC /* AFNetworking.framework in Frameworks */,
 				6340A3071CBA2BA5001AE3AE /* KeychainSwift.framework in Frameworks */,
-				635479CB1CB8A18F00DE8CBC /* RealmSwift.framework in Frameworks */,
+				63F3EE701CBF3E480010D059 /* Quick.framework in Frameworks */,
 				635479C11CB89C4E00DE8CBC /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +309,8 @@
 		6354797B1CB898C000DE8CBC = {
 			isa = PBXGroup;
 			children = (
+				63F3EE6C1CBF3E480010D059 /* Nimble.framework */,
+				63F3EE6D1CBF3E480010D059 /* Quick.framework */,
 				632402B31CBE579B002969CA /* ColorgyAppNotification.swift */,
 				630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */,
 				6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */,
@@ -295,7 +341,6 @@
 		635479861CB898C000DE8CBC /* ColorgyCourse */ = {
 			isa = PBXGroup;
 			children = (
-				6379FC6F1CBE9D2B002F10E1 /* BridghingHeader.h */,
 				6379FC701CBEA1A8002F10E1 /* Header.h */,
 				630570221CBD2D97007D2C9D /* Realm Object */,
 				635479871CB898C100DE8CBC /* AppDelegate.swift */,
@@ -317,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				6354799C1CB898C100DE8CBC /* ColorgyCourseTests.swift */,
+				63F3EE6A1CBF3CA00010D059 /* TestColorgyRefershCenter.swift */,
 				6354799E1CB898C100DE8CBC /* Info.plist */,
 			);
 			path = ColorgyCourseTests;
@@ -599,6 +645,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SocketIOClientSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Quick.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
 			);
 			outputPaths = (
 			);
@@ -673,7 +721,47 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63F3EE671CBF3B470010D059 /* ColorgyLoginResult.swift in Sources */,
+				63F3EE461CBF3A8A0010D059 /* Chatroom.swift in Sources */,
+				63F3EE5C1CBF3B470010D059 /* AFNetworkingErrorParser.swift in Sources */,
+				63F3EE641CBF3B470010D059 /* CourseRawDataObject.swift in Sources */,
+				63F3EE561CBF3B280010D059 /* DateExtension.swift in Sources */,
+				63F3EE5A1CBF3B3A0010D059 /* Department.swift in Sources */,
+				63F3EE601CBF3B470010D059 /* ColorgyAPIMeResult.swift in Sources */,
+				63F3EE521CBF3B280010D059 /* NumerExtensions.swift in Sources */,
+				63F3EE6B1CBF3CA00010D059 /* TestColorgyRefershCenter.swift in Sources */,
+				63F3EE491CBF3A8A0010D059 /* ChatUserInformation.swift in Sources */,
+				63F3EE651CBF3B470010D059 /* ColorgyRefreshCenter.swift in Sources */,
+				63F3EE431CBF3A8A0010D059 /* AvailableTarget.swift in Sources */,
+				63F3EE591CBF3B3A0010D059 /* PeriodRawData.swift in Sources */,
+				63F3EE661CBF3B470010D059 /* ColorgyLogin.swift in Sources */,
+				63F3EE501CBF3B280010D059 /* LoginViewController.swift in Sources */,
+				63F3EE531CBF3B280010D059 /* UIImageExtension.swift in Sources */,
+				63F3EE511CBF3B280010D059 /* LoginViewModel.swift in Sources */,
+				63F3EE621CBF3B470010D059 /* Course.swift in Sources */,
+				63F3EE611CBF3B470010D059 /* ColorgyAPIUserResult.swift in Sources */,
+				63F3EE4E1CBF3B280010D059 /* Release.swift in Sources */,
+				63F3EE4F1CBF3B280010D059 /* ViewController.swift in Sources */,
+				63F3EE5F1CBF3B470010D059 /* Semester.swift in Sources */,
+				63F3EE411CBF3A850010D059 /* ColorgySocket.swift in Sources */,
+				63F3EE4B1CBF3A8A0010D059 /* ChatUser.swift in Sources */,
+				63F3EE541CBF3B280010D059 /* SwiftyJSONExtension.swift in Sources */,
+				63F3EE551CBF3B280010D059 /* StringExtension.swift in Sources */,
+				63F3EE581CBF3B3A0010D059 /* Organization.swift in Sources */,
+				63F3EE451CBF3A8A0010D059 /* HistoryChatroom.swift in Sources */,
+				63F3EE471CBF3A8A0010D059 /* ChatMessage.swift in Sources */,
+				63F3EE681CBF3B7A0010D059 /* PeriodRawDataRealmObject.swift in Sources */,
+				63F3EE631CBF3B470010D059 /* Period.swift in Sources */,
 				6354799D1CB898C100DE8CBC /* ColorgyCourseTests.swift in Sources */,
+				63F3EE5D1CBF3B470010D059 /* AFError.swift in Sources */,
+				63F3EE441CBF3A8A0010D059 /* ChatMeUserInformation.swift in Sources */,
+				63F3EE5E1CBF3B470010D059 /* ColorgyAPI.swift in Sources */,
+				63F3EE5B1CBF3B3A0010D059 /* CourseOwnershipObject.swift in Sources */,
+				63F3EE4A1CBF3A8A0010D059 /* TimeStamp.swift in Sources */,
+				63F3EE571CBF3B3A0010D059 /* ColorgyUserInformation.swift in Sources */,
+				63F3EE481CBF3A8A0010D059 /* Hello.swift in Sources */,
+				63F3EE691CBF3B8E0010D059 /* ColorgyAppNotification.swift in Sources */,
+				63F3EE421CBF3A850010D059 /* ColorgyChatAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +901,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ColorgyCourse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -832,6 +921,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ColorgyCourse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -847,6 +937,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ColorgyCourseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = misk.ColorgyCourseTests;
@@ -859,6 +953,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ColorgyCourseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = misk.ColorgyCourseTests;

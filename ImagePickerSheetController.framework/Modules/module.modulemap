@@ -1,0 +1,10 @@
+framework module ImagePickerSheetController {
+  umbrella header "ImagePickerSheetController.h"
+
+  export *
+  module * { export * }
+}
+
+module ImagePickerSheetController.Swift {
+    header "ImagePickerSheetController-Swift.h"
+}
