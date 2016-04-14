@@ -47,17 +47,28 @@ class TestColorgyRefershCenter: XCTestCase {
 	
 	func testRefreshingToken() {
 		
-		var doesSuccess: [Bool] = []
+		func done() {
+			expect(ColorgyRefreshCenter.sharedInstance().currentRefreshTokenState).to(equal(RefreshTokenState.Active))
+		}
 		
-		ColorgyRefreshCenter.refreshAccessToken(success: { 
-			doesSuccess.append(true)
-			}, failure: nil)
-		
-		expect(doesSuccess).toEventually(contain(true), timeout: 30.0, pollInterval: 1.0, description: nil)
+		waitUntil(timeout: 30.0) { (done) in
+			ColorgyRefreshCenter.refreshAccessToken(success: {
+				done()
+				}, failure: nil)
+		}
 	}
 	
 	func testGettingRefreshingState() {
 		
+		func done() {
+			expect(ColorgyRefreshCenter.sharedInstance().currentRefreshTokenState).to(equal(RefreshTokenState.Active))
+		}
+		
+		waitUntil { (done) in
+			ColorgyRefreshCenter.retryUntilTokenIsAvailable()
+			NSThread.sleepForTimeInterval(0.5)
+			done()
+		}
 	}
 
     func testExample() {
