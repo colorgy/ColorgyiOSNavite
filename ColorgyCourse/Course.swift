@@ -38,7 +38,7 @@ final public class Course: NSObject {
 	override public var description: String { return "{\n\tcode: \(code)\n\tname: \(name)\n\tyear: \(year)\n\tterm: \(term)\n\tlecturer: \(lecturer)\n\tcredits: \(credits)\n\t_type: \(_type)\n\tperiods😆: \n📖📖📖📖📖\n\(periods)\n📖📖📖📖📖\n\tgeneral_code: \(general_code)\n}" }
 	
 	// MARK: - Init
-	private init?(code: String?, name: String?, year: Int?, term: Int?, lecturer: String?, credits: Int?, _type: String?, days: [Int?], periods: [Int?], locations: [String?], general_code: String?) {
+	public init?(code: String?, name: String?, year: Int?, term: Int?, lecturer: String?, credits: Int?, _type: String?, days: [Int?], periods: [Int?], locations: [String?], general_code: String?) {
 		
 		// optional
 		self._type = _type
@@ -53,6 +53,7 @@ final public class Course: NSObject {
 		guard let name = name else { return nil }
 		guard let year = year else { return nil }
 		guard let term = term else { return nil }
+		guard term <= 2 && term > 0 else { return nil }
 		
 		self.code = code
 		self.name = name

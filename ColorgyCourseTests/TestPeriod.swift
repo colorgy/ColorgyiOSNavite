@@ -1,5 +1,5 @@
 //
-//  TestColorgyAPI.swift
+//  TestPeriod.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/4/14.
@@ -10,15 +10,13 @@ import XCTest
 @testable import ColorgyCourse
 import Quick
 import Nimble
+import SwiftyJSON
 
-class TestColorgyAPI: XCTestCase {
-	
-	var colorgyAPI: ColorgyAPI!
+class TestPeriod: XCTestCase {
 
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-		colorgyAPI = ColorgyAPI()
     }
     
     override func tearDown() {
@@ -26,29 +24,29 @@ class TestColorgyAPI: XCTestCase {
         super.tearDown()
     }
 
-	func testMeApi() {
+	func testCreatePeriod() {
 		
+		var period = Period(day: 0, period: 0, location: "locationnnn")
+		expect(period).toNot(beNil())
+		
+		period = Period(day: -1, period: 0, location: "locationnnn")
+		expect(period).to(beNil())
+		
+		period = Period(day: 7, period: 0, location: "locationnnn")
+		expect(period).to(beNil())
 	}
 	
-	func testGetCourseFromServer() {
+	func testCreatePeriodArray() {
 		
-		var courses = [Course]()
-		let courseCount = 10
+		let days: [Int?] = [1,2,3,4]
+		let periods: [Int?] = [1,2,3,3]
+		let locations: [String?] = ["", "", "", ""]
 		
-		func done() {
-			expect(courses.count).to(equal(courseCount))
-		}
+		var array = Period.generatePeriods(days, periods: periods, locations: locations)
+		expect(array.count).to(equal(4))
 		
-		waitUntil(timeout: 30.0) { (done) in
-			ColorgyAPI().getSchoolCourseData(courseCount, year: 2015, term: 1, success: { (_courses) in
-				for c in _courses {
-					courses.append(c)
-				}
-				done()
-			}, process: nil) { (error, afError) in
-				XCTFail()
-			}
-		}
+		array = Period.generatePeriods([1,1], periods: [1,2], locations: [nil, ""])
+		expect(array.count).to(equal(2))
 	}
 
     func testPerformanceExample() {

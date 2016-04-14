@@ -21,6 +21,7 @@ class ViewController: UIViewController {
 		loginButton.center = self.view.center
 		loginButton.readPermissions = ["email"]
 		self.view.addSubview(loginButton)
+		
 	}
 
 	override func didReceiveMemoryWarning() {

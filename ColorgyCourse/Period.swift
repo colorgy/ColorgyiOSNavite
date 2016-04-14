@@ -24,7 +24,9 @@ final public class Period: NSObject {
 	}
 	
 	// MARK: Init
-	public init(day: Int, period: Int, location: String?) {
+	public init?(day: Int, period: Int, location: String?) {
+		
+		guard day >= 0 && day < 7 else { return nil }
 		self.day = day
 		self.period = period
 		if location == "" {
