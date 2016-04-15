@@ -32,6 +32,18 @@ public class EmailLoginViewController: UIViewController {
 		viewModel = EmailLoginViewModel(delegate: self)
     }
 	
+	public override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		showNavigationBar()
+	}
+	
+	public override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		hideNavigationBar()
+	}
+	
 	// MARK: - Configuration
 	private func configureLoginView() {
 		
@@ -73,6 +85,15 @@ public class EmailLoginViewController: UIViewController {
 		loginButton.anchorViewTo(view)
 		
 		loginButton.addTarget(self, action: #selector(loginButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
+	}
+	
+	// MARK: - Helper
+	private func showNavigationBar() {
+		navigationController?.setNavigationBarHidden(false, animated: true)
+	}
+	
+	private func hideNavigationBar() {
+		navigationController?.setNavigationBarHidden(true, animated: true)
 	}
 	
 	// MARK: - Selector

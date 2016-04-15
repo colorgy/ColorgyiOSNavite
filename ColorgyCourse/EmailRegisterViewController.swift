@@ -50,7 +50,19 @@ public class EmailRegisterViewController: UIViewController {
 		viewModel = EmailRegisterViewModel(delegate: self)
     }
 	
-	// MARK: - Configure
+	public override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		showNavigationBar()
+	}
+	
+	public override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		hideNavigationBar()
+	}
+	
+	// MARK: - Configuration
 	private func configureRegisterView() {
 		usernameInputView = IconedTextInputView(imageName: "grayUserNameIcon", placeholder: "輸入名稱", keyboardType: .Default, isPassword: false, delegate: self)
 		emailInputView = IconedTextInputView(imageName: "grayEmailIcon", placeholder: "輸入信箱", keyboardType: .EmailAddress, isPassword: false, delegate: self)
@@ -158,6 +170,15 @@ public class EmailRegisterViewController: UIViewController {
 		stillNotRecievingLabel.center.y = checkEmailButton.frame.maxY + 16
 		
 		view.addSubview(stillNotRecievingLabel)
+	}
+	
+	// MARK: - Helper
+	private func showNavigationBar() {
+		navigationController?.setNavigationBarHidden(false, animated: true)
+	}
+	
+	private func hideNavigationBar() {
+		navigationController?.setNavigationBarHidden(true, animated: true)
 	}
 	
 	// MARK: - Selectors
