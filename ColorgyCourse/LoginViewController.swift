@@ -60,7 +60,7 @@ public class LoginViewController: UIViewController {
 	
 	// MARK: - Storyboard
 	struct Storyboard {
-		static let emailLoginSegue = "Email Login Segue"
+		static let emailLoginSegue = "email login segue"
 		static let registerEmailSegue = "register email segue"
 	}
 	
@@ -107,7 +107,7 @@ extension LoginViewController : LoginViewModelDelegate {
 	}
 	
 	public func loginViewModelRequestToLoginWithEmail() {
-		
+		performSegueWithIdentifier(Storyboard.emailLoginSegue, sender: nil)
 	}
 	
 	public func loginViewModelRequestRegisterNewAccount() {
