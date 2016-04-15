@@ -117,6 +117,29 @@ class TestTimeStamp: XCTestCase {
 		expect(ts1).to(beNil())
 		expect(ts2).toNot(beNil())
 	}
+	
+	func testNilValueOnCreatingTimeStamp() {
+		let t1 = "o-03-22T03:05:32.979Z"
+		let t2 = "1969-o-22T03:05:32.979Z"
+		let t3 = "1969-03-oT03:05:32.979Z"
+		let t4 = "1969-03-22To:05:32.979Z"
+		let t5 = "1969-03-22T03:o:32.979Z"
+		let t6 = "1969-03-22T03:05:xZ"
+		
+		let ts1 = TimeStamp(timeStampString: t1)
+		let ts2 = TimeStamp(timeStampString: t2)
+		let ts3 = TimeStamp(timeStampString: t3)
+		let ts4 = TimeStamp(timeStampString: t4)
+		let ts5 = TimeStamp(timeStampString: t5)
+		let ts6 = TimeStamp(timeStampString: t6)
+		
+		expect(ts1).to(beNil())
+		expect(ts2).to(beNil())
+		expect(ts3).to(beNil())
+		expect(ts4).to(beNil())
+		expect(ts5).to(beNil())
+		expect(ts6).to(beNil())
+	}
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
