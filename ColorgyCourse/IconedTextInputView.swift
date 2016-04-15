@@ -71,8 +71,14 @@ public class IconedTextInputView: UIView {
 		inputTextField.addTarget(self, action: #selector(inputTextFieldTextChanged), forControlEvents: UIControlEvents.EditingChanged)
 	}
 	
+	// Overrding this to assign first responder to text field inside
 	public override func becomeFirstResponder() -> Bool {
 		inputTextField?.becomeFirstResponder()
+		return true
+	}
+	
+	public override func resignFirstResponder() -> Bool {
+		inputTextField?.resignFirstResponder()
 		return true
 	}
 	

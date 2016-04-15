@@ -114,11 +114,12 @@ extension EmailRegisterViewController : IconedTextInputViewDelegate {
 		if textInputView == usernameInputView {
 			emailInputView?.becomeFirstResponder()
 		} else if textInputView == emailInputView {
-			
+			passwordInputView?.becomeFirstResponder()
 		} else if textInputView == passwordInputView {
-			
+			confirmPasswordInputView?.becomeFirstResponder()
 		} else if textInputView == confirmPasswordInputView {
-			
+			confirmPasswordInputView?.resignFirstResponder()
+			viewModel?.submitRegistration()
 		}
 	}
 	
@@ -126,12 +127,16 @@ extension EmailRegisterViewController : IconedTextInputViewDelegate {
 		
 		if textInputView == usernameInputView {
 			print(changedText)
+			viewModel?.userName = changedText
 		} else if textInputView == emailInputView {
 			print(changedText)
+			viewModel?.email = changedText
 		} else if textInputView == passwordInputView {
 			print(changedText)
+			viewModel?.password = changedText
 		} else if textInputView == confirmPasswordInputView {
 			print(changedText)
+			viewModel?.confirmPassword = changedText
 		}
 	}
 }
@@ -139,14 +144,43 @@ extension EmailRegisterViewController : IconedTextInputViewDelegate {
 extension EmailRegisterViewController : EmailRegisterViewModelDelegate {
 	
 	public func emailRegisterViewModelSuccessfullySubmitRegistration() {
+		let alert = UIAlertController(title: "你輸入的資料有誤哦！", message: nil, preferredStyle: .Alert)
+		let ok = UIAlertAction(title: "知道了", style: .Default, handler: nil)
+		alert.addAction(ok)
 		
+		let message: String? = "你可以登入惹，但是我還沒串API嗚嗚"
+		
+		dispatch_async(dispatch_get_main_queue()) {
+			self.presentViewController(alert, animated: true, completion: nil)
+		}
 	}
 	
 	public func emailRegisterViewModel(invalidRequiredInformation error: InvalidInformationError) {
 		
+		let alert = UIAlertController(title: "你輸入的資料有誤哦！", message: nil, preferredStyle: .Alert)
+		let ok = UIAlertAction(title: "知道了", style: .Default, handler: nil)
+		alert.addAction(ok)
+		
+		var message: String?
+		switch error {
+		case .NoUserName:
+			message = "請輸入名字"
+		case .InvalidEmail:
+			message = "Email格式不正確，請輸入正確的Email唷！"
+		case .PasswordMustGreaterThanOrEqualTo8Charaters:
+			message = "密碼要大於8個字元喔！"
+		case .TwoPasswordsDontMatch:
+			message = "兩個密碼不一樣，請再次確認唷！"
+		}
+		
+		alert.message = message
+		
+		dispatch_async(dispatch_get_main_queue()) { 
+			self.presentViewController(alert, animated: true, completion: nil)
+		}
 	}
 	
 	public func emailRegisterViewModel(errorSumittingRequest error: APIError, afError: AFError?) {
-		
+		// TODO: finish fail to connect api
 	}
 }
