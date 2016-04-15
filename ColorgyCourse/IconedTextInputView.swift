@@ -41,6 +41,7 @@ public class IconedTextInputView: UIView {
 		
 		// No auto correction
 		inputTextField.autocorrectionType = .No
+		inputTextField.autocapitalizationType = .None
 		
 		// arrange
 		placeholderImageView.frame.origin.x = 36

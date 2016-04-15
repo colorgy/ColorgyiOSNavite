@@ -25,14 +25,33 @@ public class EmailLoginViewController: UIViewController {
 		// configure view
 		configureLoginView()
 		
+		// configure view
+		view.backgroundColor = ColorgyColor.BackgroundColor
+		
 		// assign view model
 		viewModel = EmailLoginViewModel(delegate: self)
     }
 	
 	// MARK: - Configuration
 	private func configureLoginView() {
+		
 		emailInputView = IconedTextInputView(imageName: "grayEmailIcon", placeholder: "輸入信箱", keyboardType: .Default, isPassword: false, delegate: self)
 		passwordInputView = IconedTextInputView(imageName: "grayPasswordIcon", placeholder: "輸入密碼", keyboardType: .Default, isPassword: true, delegate: self)
+		
+		// arrange view
+		let initialPosition: CGFloat = 66
+		let _ = [emailInputView, passwordInputView].reduce(initialPosition, combine: arrangeView)
+		
+		// add subview
+		[emailInputView, passwordInputView].forEach(view.addSubview)
+		
+		// configure button
+		configureLoginButton()
+	}
+	
+	private func arrangeView(currentY: CGFloat, view: IconedTextInputView) -> CGFloat {
+		view.frame.origin.y = currentY
+		return currentY + 4 + view.bounds.height
 	}
 	
 	private func configureLoginButton() {
@@ -41,7 +60,7 @@ public class EmailLoginViewController: UIViewController {
 		loginButton.backgroundColor = ColorgyColor.MainOrange
 		loginButton.tintColor = UIColor.whiteColor()
 		loginButton.titleLabel?.font = UIFont.systemFontOfSize(14.0)
-		loginButton.setTitle("註冊", forState: UIControlState.Normal)
+		loginButton.setTitle("登入", forState: UIControlState.Normal)
 		
 		loginButton.layer.cornerRadius = 4.0
 		
@@ -88,7 +107,7 @@ extension EmailLoginViewController : IconedTextInputViewDelegate {
 		if textInputView == emailInputView {
 			passwordInputView.becomeFirstResponder()
 		} else if textInputView == passwordInputView {
-			
+			viewModel?.loginToColorgy()
 		}
 	}
 	
