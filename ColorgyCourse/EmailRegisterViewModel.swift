@@ -63,10 +63,10 @@ final public class EmailRegisterViewModel {
 		}
 		
 		// if no data is wrong, perform api request
-//		api.registerNewUser(userName, email: email, password: password, passwordConfirm: confirmPassword, success: { 
-//			self.delegate?.emailRegisterViewModelSuccessfullySubmitRegistration()
-//			}, failure: { (error, afError) in
-//			self.delegate?.emailRegisterViewModel(errorSumittingRequest: error, afError: afError)
-//		})
+		api.registerNewUser(userName, email: email, password: password, passwordConfirm: confirmPassword, success: { 
+			self.delegate?.emailRegisterViewModelSuccessfullySubmitRegistration()
+			}, failure: { (error, afError) in
+			self.delegate?.emailRegisterViewModel(errorSumittingRequest: error, afError: afError)
+		})
 	}
 }

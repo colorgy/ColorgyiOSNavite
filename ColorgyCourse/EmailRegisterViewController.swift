@@ -13,18 +13,18 @@ public class EmailRegisterViewController: UIViewController {
 	// MARK: - Parameters
 	
 	// MARK: Register
-	private var usernameInputView: IconedTextInputView?
-	private var emailInputView: IconedTextInputView?
-	private var passwordInputView: IconedTextInputView?
-	private var confirmPasswordInputView: IconedTextInputView?
-	private var submitRegistrationButton: UIButton?
+	private var usernameInputView: IconedTextInputView!
+	private var emailInputView: IconedTextInputView!
+	private var passwordInputView: IconedTextInputView!
+	private var confirmPasswordInputView: IconedTextInputView!
+	private var submitRegistrationButton: UIButton!
 	
 	// MARK: Check Email
-	private var hintLabel: UILabel?
-	private var emailLabel: UILabel?
-	private var hintSubLabel: UILabel?
-	private var checkEmailButton: UIButton?
-	private var stillNotRecieveingLabel: UILabel?
+	private var hintLabel: UILabel!
+	private var emailLabel: UILabel!
+	private var hintSublabel: UILabel!
+	private var checkEmailButton: UIButton!
+	private var stillNotRecievingLabel: UILabel!
 	
 	// MARK: View Model
 	private var viewModel: EmailRegisterViewModel?
@@ -35,9 +35,18 @@ public class EmailRegisterViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 		configureRegisterView()
+		configureCheckEmailView()
 		
+		// hide all view first
+		hideAllViews()
+		
+		// first shoe register view
+		showRegisterView()
+		
+		// configure view
 		view.backgroundColor = ColorgyColor.BackgroundColor
 		
+		// assign view model
 		viewModel = EmailRegisterViewModel(delegate: self)
     }
 	
@@ -50,10 +59,10 @@ public class EmailRegisterViewController: UIViewController {
 		
 		// arrange
 		let initialY: CGFloat = 66.0
-		let _ = [usernameInputView!, emailInputView!, passwordInputView!, confirmPasswordInputView!].reduce(initialY, combine: arrangeView)
+		let _ = [usernameInputView, emailInputView, passwordInputView, confirmPasswordInputView].reduce(initialY, combine: arrangeView)
 		
 		// add view
-		[usernameInputView!, emailInputView!, passwordInputView!, confirmPasswordInputView!].forEach(view.addSubview)
+		[usernameInputView, emailInputView, passwordInputView, confirmPasswordInputView].forEach(view.addSubview)
 		
 		// configure button
 		configureRegistrationButton()
@@ -67,43 +76,134 @@ public class EmailRegisterViewController: UIViewController {
 	private func configureRegistrationButton() {
 		
 		submitRegistrationButton = UIButton(type: UIButtonType.System)
-		submitRegistrationButton?.backgroundColor = ColorgyColor.MainOrange
-		submitRegistrationButton?.tintColor = UIColor.whiteColor()
-		submitRegistrationButton?.titleLabel?.font = UIFont.systemFontOfSize(14.0)
-		submitRegistrationButton?.setTitle("註冊", forState: UIControlState.Normal)
+		submitRegistrationButton.backgroundColor = ColorgyColor.MainOrange
+		submitRegistrationButton.tintColor = UIColor.whiteColor()
+		submitRegistrationButton.titleLabel?.font = UIFont.systemFontOfSize(14.0)
+		submitRegistrationButton.setTitle("註冊", forState: UIControlState.Normal)
 		
-		submitRegistrationButton?.layer.cornerRadius = 4.0
+		submitRegistrationButton.layer.cornerRadius = 4.0
 		
-		submitRegistrationButton?.frame.size = CGSize(width: 249, height: 44)
+		submitRegistrationButton.frame.size = CGSize(width: 249, height: 44)
 		
 		// buttom of confirmPasswordInputView
-		submitRegistrationButton?.frame.origin.y = confirmPasswordInputView!.frame.maxY + 36
-		submitRegistrationButton?.center.x = confirmPasswordInputView!.center.x
+		submitRegistrationButton.frame.origin.y = confirmPasswordInputView.frame.maxY + 36
+		submitRegistrationButton.center.x = confirmPasswordInputView.center.x
 		
-		submitRegistrationButton?.anchorViewTo(view)
+		submitRegistrationButton.anchorViewTo(view)
 		
-		submitRegistrationButton?.addTarget(self, action: #selector(submitRegistrationButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
-	}
-	
-	@objc private func submitRegistrationButtonClicked() {
-		viewModel?.submitRegistration()
+		submitRegistrationButton.addTarget(self, action: #selector(submitRegistrationButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
 	}
 	
 	private func configureCheckEmailView() {
 		
+		hintLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 20))
+		hintLabel.textAlignment = .Center
+		hintLabel.textColor = UIColor(red: 74/255.0, green: 74/255.0, blue: 74/255.0, alpha: 1)
+		hintLabel.text = "五分鐘內驗證信將送到"
+		hintLabel.font = UIFont.systemFontOfSize(18)
+		hintLabel.sizeToFit()
+		
+		emailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 20))
+		emailLabel.textAlignment = .Center
+		emailLabel.textColor = ColorgyColor.MainOrange
+		emailLabel.font = UIFont.systemFontOfSize(14)
+		emailLabel.sizeToFit()
+		
+		hintSublabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 20))
+		hintSublabel.textAlignment = .Center
+		hintSublabel.textColor = UIColor(red: 74/255.0, green: 74/255.0, blue: 74/255.0, alpha: 1)
+		hintSublabel.text = "趕快去收信吧！"
+		hintSublabel.font = UIFont.systemFontOfSize(18)
+		hintSublabel.sizeToFit()
+		
+		// arrange
+		hintLabel.center.x = view.center.x
+		emailLabel.center.x = view.center.x
+		hintSublabel.center.x = view.center.x
+		
+		hintLabel.frame.origin.y = 65
+		emailLabel.frame.origin.y = hintLabel.frame.maxY + 8
+		hintSublabel.frame.origin.y = emailLabel.frame.maxY + 8
+		
+		// add subview
+		view.addSubview(hintLabel)
+		view.addSubview(emailLabel)
+		view.addSubview(hintSublabel)
+		
+		// button
+		checkEmailButton = UIButton(type: UIButtonType.System)
+		checkEmailButton.frame = CGRect(x: 0, y: 0, width: 249, height: 44)
+		checkEmailButton.backgroundColor = ColorgyColor.MainOrange
+		checkEmailButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+		checkEmailButton.setTitle("確認收到認證信", forState: UIControlState.Normal)
+		checkEmailButton.titleLabel?.font = UIFont.systemFontOfSize(14)
+		checkEmailButton.layer.cornerRadius = 4.0
+		checkEmailButton.addTarget(self, action: #selector(checkEmailButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
+		
+		checkEmailButton.center.x = view.center.x
+		checkEmailButton.center.y = hintSublabel.frame.maxY + 66
+		
+		view.addSubview(checkEmailButton)
+		
+		stillNotRecievingLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 20))
+		stillNotRecievingLabel.textAlignment = .Center
+		stillNotRecievingLabel.textColor = UIColor(red: 200/255.0, green: 199/255.0, blue: 198/255.0, alpha: 1)
+		stillNotRecievingLabel.text = "還是沒收到？"
+		stillNotRecievingLabel.font = UIFont.systemFontOfSize(14)
+		stillNotRecievingLabel.sizeToFit()
+		stillNotRecievingLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(stillNotRecievingEmailClicked)))
+		stillNotRecievingLabel.userInteractionEnabled = true
+		
+		stillNotRecievingLabel.center.x = view.center.x
+		stillNotRecievingLabel.center.y = checkEmailButton.frame.maxY + 16
+		
+		view.addSubview(stillNotRecievingLabel)
+	}
+	
+	// MARK: - Selectors
+	@objc private func submitRegistrationButtonClicked() {
+		viewModel?.submitRegistration()
+	}
+	
+	@objc private func checkEmailButtonClicked() {
+		
+	}
+	
+	@objc private func stillNotRecievingEmailClicked() {
+		
 	}
 	
 	// MARK: - Layout
-	private func layoutRegisterView() {
-		
+	private func showRegisterView() {
+		usernameInputView.show()
+		emailInputView.show()
+		passwordInputView.show()
+		confirmPasswordInputView.show()
+		submitRegistrationButton.show()
 	}
 	
-	private func layoutCheckEmailView() {
-		
+	private func showCheckEmailView() {
+		hintLabel.show()
+		emailLabel.show()
+		emailLabel.text = viewModel?.email
+		hintSublabel.show()
+		checkEmailButton.show()
+		stillNotRecievingLabel.show()
 	}
 	
-	private func removeAllLayout() {
+	private func hideAllViews() {
 		
+		usernameInputView.hide()
+		emailInputView.hide()
+		passwordInputView.hide()
+		confirmPasswordInputView.hide()
+		submitRegistrationButton.hide()
+		
+		hintLabel.hide()
+		emailLabel.hide()
+		hintSublabel.hide()
+		checkEmailButton.hide()
+		stillNotRecievingLabel.hide()
 	}
 }
 
@@ -126,16 +226,12 @@ extension EmailRegisterViewController : IconedTextInputViewDelegate {
 	public func iconedTextInputViewTextChanged(textInputView: IconedTextInputView, changedText: String?) {
 		
 		if textInputView == usernameInputView {
-			print(changedText)
 			viewModel?.userName = changedText
 		} else if textInputView == emailInputView {
-			print(changedText)
 			viewModel?.email = changedText
 		} else if textInputView == passwordInputView {
-			print(changedText)
 			viewModel?.password = changedText
 		} else if textInputView == confirmPasswordInputView {
-			print(changedText)
 			viewModel?.confirmPassword = changedText
 		}
 	}
@@ -144,15 +240,8 @@ extension EmailRegisterViewController : IconedTextInputViewDelegate {
 extension EmailRegisterViewController : EmailRegisterViewModelDelegate {
 	
 	public func emailRegisterViewModelSuccessfullySubmitRegistration() {
-		let alert = UIAlertController(title: "你輸入的資料有誤哦！", message: nil, preferredStyle: .Alert)
-		let ok = UIAlertAction(title: "知道了", style: .Default, handler: nil)
-		alert.addAction(ok)
-		
-		let message: String? = "你可以登入惹，但是我還沒串API嗚嗚"
-		
-		dispatch_async(dispatch_get_main_queue()) {
-			self.presentViewController(alert, animated: true, completion: nil)
-		}
+		hideAllViews()
+		showCheckEmailView()
 	}
 	
 	public func emailRegisterViewModel(invalidRequiredInformation error: InvalidInformationError) {
@@ -181,6 +270,11 @@ extension EmailRegisterViewController : EmailRegisterViewModelDelegate {
 	}
 	
 	public func emailRegisterViewModel(errorSumittingRequest error: APIError, afError: AFError?) {
-		// TODO: finish fail to connect api
+		let alert = UIAlertController(title: "Server 錯誤", message: "\(error)\n\(afError?.statusCode)\n\(afError?.responseBody)", preferredStyle: .Alert)
+		let ok = UIAlertAction(title: "知道了", style: .Default, handler: nil)
+		alert.addAction(ok)
+		dispatch_async(dispatch_get_main_queue()) {
+			self.presentViewController(alert, animated: true, completion: nil)
+		}
 	}
 }
