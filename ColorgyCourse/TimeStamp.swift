@@ -73,7 +73,7 @@ final public class TimeStamp : NSObject {
 			}
 		}
 		
-		// check
+		// check if nil
 		guard _year != nil else { return nil }
 		guard _month != nil else { return nil }
 		guard _date != nil else { return nil }
@@ -81,6 +81,21 @@ final public class TimeStamp : NSObject {
 		guard _minute != nil else { return nil }
 		guard _second != nil else { return nil }
 		guard _millisecond != nil else { return nil }
+		
+		// check millisecond
+		guard _millisecond < 1000 && _millisecond >= 0 else { return nil }
+		// check second
+		guard _second < 60 && _second >= 0 else { return nil }
+		// check minute
+		guard _minute < 60 && _minute >= 0 else { return nil }
+		// check hour
+		guard _hour < 24 && _hour >= 0 else { return nil }
+		// check date
+		guard _date <= 31 && _date >= 1 else { return nil }
+		// check month
+		guard _month <= 12 && _month >= 1 else { return nil }
+		// check year
+		guard _year >= 1970 else { return nil }
 		
 		self.year = _year!
 		self.month = _month!
