@@ -191,7 +191,20 @@ public class EmailRegisterViewController: UIViewController {
 	}
 	
 	@objc private func stillNotRecievingEmailClicked() {
-		
+		dispatch_async(dispatch_get_main_queue(), { () -> Void in
+			let alert = UIAlertController(title: "還是沒收到驗證信嗎？", message: "你可以到粉絲專頁將你的問題私訊給我們，我們將有專人幫您處理！", preferredStyle: .Alert)
+			let ok = UIAlertAction(title: "前往粉專", style: .Cancel) { (action: UIAlertAction) in
+				if UIApplication.sharedApplication().canOpenURL(NSURL(string: "fb://profile/1529686803975150")!) {
+					UIApplication.sharedApplication().openURL(NSURL(string: "fb://profile/1529686803975150")!)
+				} else {
+					UIApplication.sharedApplication().openURL(NSURL(string: "https://www.facebook.com/1529686803975150")!)
+				}
+			}
+			let cancel = UIAlertAction(title: "取消", style: .Default, handler: nil)
+			alert.addAction(ok)
+			alert.addAction(cancel)
+			self.presentViewController(alert, animated: true, completion: nil)
+		})
 	}
 	
 	// MARK: - Layout
