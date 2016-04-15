@@ -92,7 +92,7 @@ final public class LoginViewModel {
 	// MARK: - Helper
 	private func checkUserOrganization() -> String {
 		// TODO: handle no orgnization
-		return ColorgyUserInformation.sharedInstance().userOrganization ?? ColorgyUserInformation.sharedInstance().userPossibleOrganization ?? "error orgnization"
+		return ColorgyUserInformation.sharedInstance().userActualOrganization ?? "error orgnization"
 	}
 	
 	// MARK: - Init

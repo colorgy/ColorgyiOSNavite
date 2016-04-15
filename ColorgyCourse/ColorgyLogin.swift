@@ -174,6 +174,10 @@ final public class ColorgyLogin {
 			if let response = response {
 				let json = JSON(response)
 				if let result = ColorgyLoginResult(json: json) {
+					// store
+					ColorgyUserInformation.saveLoginResult(result)
+					// active refresh token
+					ColorgyRefreshCenter.activeRefreshToken()
 					mainBlock({
 						success?(result: result)
 					})

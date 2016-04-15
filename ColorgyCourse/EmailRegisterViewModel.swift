@@ -8,10 +8,10 @@
 
 import Foundation
 
-public enum InvalidInformationError {
+public enum InvalidInformationError: ErrorType {
 	case NoUserName
 	case InvalidEmail
-	case PasswordMustGreaterThanOrEqualTo8Charaters
+	case PasswordLessThen8Characters
 	case TwoPasswordsDontMatch
 }
 
@@ -53,7 +53,7 @@ final public class EmailRegisterViewModel {
 		}
 		
 		guard let password = password where password.characters.count >= 8 else {
-			delegate?.emailRegisterViewModel(invalidRequiredInformation: InvalidInformationError.PasswordMustGreaterThanOrEqualTo8Charaters)
+			delegate?.emailRegisterViewModel(invalidRequiredInformation: InvalidInformationError.PasswordLessThen8Characters)
 			return
 		}
 		

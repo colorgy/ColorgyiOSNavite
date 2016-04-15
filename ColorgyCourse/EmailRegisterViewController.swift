@@ -256,7 +256,7 @@ extension EmailRegisterViewController : EmailRegisterViewModelDelegate {
 			message = "請輸入名字"
 		case .InvalidEmail:
 			message = "Email格式不正確，請輸入正確的Email唷！"
-		case .PasswordMustGreaterThanOrEqualTo8Charaters:
+		case .PasswordLessThen8Characters:
 			message = "密碼要大於8個字元喔！"
 		case .TwoPasswordsDontMatch:
 			message = "兩個密碼不一樣，請再次確認唷！"
