@@ -108,10 +108,11 @@ public class EmailRegisterViewController: UIViewController {
 }
 
 extension EmailRegisterViewController : IconedTextInputViewDelegate {
+	
 	public func iconedTextInputViewShouldReturn(textInputView: IconedTextInputView) {
 		
 		if textInputView == usernameInputView {
-			
+			emailInputView?.becomeFirstResponder()
 		} else if textInputView == emailInputView {
 			
 		} else if textInputView == passwordInputView {
@@ -120,8 +121,32 @@ extension EmailRegisterViewController : IconedTextInputViewDelegate {
 			
 		}
 	}
+	
+	public func iconedTextInputViewTextChanged(textInputView: IconedTextInputView, changedText: String?) {
+		
+		if textInputView == usernameInputView {
+			print(changedText)
+		} else if textInputView == emailInputView {
+			print(changedText)
+		} else if textInputView == passwordInputView {
+			print(changedText)
+		} else if textInputView == confirmPasswordInputView {
+			print(changedText)
+		}
+	}
 }
 
 extension EmailRegisterViewController : EmailRegisterViewModelDelegate {
 	
+	public func emailRegisterViewModelSuccessfullySubmitRegistration() {
+		
+	}
+	
+	public func emailRegisterViewModel(invalidRequiredInformation error: InvalidInformationError) {
+		
+	}
+	
+	public func emailRegisterViewModel(errorSumittingRequest error: APIError, afError: AFError?) {
+		
+	}
 }

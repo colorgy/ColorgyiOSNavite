@@ -10,6 +10,7 @@ import UIKit
 
 public protocol IconedTextInputViewDelegate: class {
 	func iconedTextInputViewShouldReturn(textInputView: IconedTextInputView)
+	func iconedTextInputViewTextChanged(textInputView: IconedTextInputView, changedText: String?)
 }
 /// This view is used on register or login view
 ///
@@ -65,6 +66,13 @@ public class IconedTextInputView: UIView {
 		
 		// assigning delegate
 		self.delegate = delegate
+		
+		// Observe text changing
+		inputTextField.addTarget(self, action: #selector(inputTextFieldTextChanged), forControlEvents: UIControlEvents.ValueChanged)
+	}
+	
+	@objc private func inputTextFieldTextChanged() {
+		delegate?.iconedTextInputViewTextChanged(self, changedText: inputTextField?.text)
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
