@@ -68,7 +68,12 @@ public class IconedTextInputView: UIView {
 		self.delegate = delegate
 		
 		// Observe text changing
-		inputTextField.addTarget(self, action: #selector(inputTextFieldTextChanged), forControlEvents: UIControlEvents.ValueChanged)
+		inputTextField.addTarget(self, action: #selector(inputTextFieldTextChanged), forControlEvents: UIControlEvents.EditingChanged)
+	}
+	
+	public override func becomeFirstResponder() -> Bool {
+		inputTextField?.becomeFirstResponder()
+		return true
 	}
 	
 	@objc private func inputTextFieldTextChanged() {
