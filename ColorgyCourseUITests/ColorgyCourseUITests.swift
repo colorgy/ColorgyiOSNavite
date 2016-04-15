@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import Quick
+import Nimble
 
 class ColorgyCourseUITests: XCTestCase {
         
@@ -28,15 +30,44 @@ class ColorgyCourseUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testEmailLogin() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
 		
+		let app = XCUIApplication()
+		app.buttons["信箱登入"].tap()
+		app.textFields["輸入信箱"].tap()
+		app.textFields["輸入信箱"].typeText("colorgy-test-account-94@test.colorgy.io")
+		app.secureTextFields["輸入密碼"].tap()
+		app.secureTextFields["輸入密碼"].typeText("colorgy-test-account-94")
+		app.buttons["登入"].tap()
+		
+		expect(app.buttons["信箱登入"].exists).toNot(beTrue())
     }
 	
-	func testExample2() {
+	func testLoginFail() {
 		// Use recording to get started writing UI tests.
 		// Use XCTAssert and related functions to verify your tests produce the correct results.
+		
+		
+		let app = XCUIApplication()
+		app.buttons["信箱註冊"].tap()
+		app.textFields["輸入名稱"].tap()
+		app.textFields["輸入名稱"].typeText("yoyo")
+		app.textFields["輸入信箱"].tap()
+		app.textFields["輸入信箱"].typeText("yoyo")
+		app.buttons["註冊"].tap()
+		expect(app.alerts["你輸入的資料有誤哦！"].collectionViews.buttons["知道了"].exists).to(beTrue())
+		app.alerts["你輸入的資料有誤哦！"].collectionViews.buttons["知道了"].tap()
+		app.secureTextFields["輸入密碼"].tap()
+		app.secureTextFields["輸入密碼"].typeText("yoyoyoyo")
+		app.secureTextFields["再次輸入密碼"].tap()
+		app.secureTextFields["再次輸入密碼"].typeText("yoyoyoyo")
+		app.buttons["註冊"].tap()
+		expect(app.alerts["你輸入的資料有誤哦！"].collectionViews.buttons["知道了"].exists).to(beTrue())
+		app.alerts["你輸入的資料有誤哦！"].collectionViews.buttons["知道了"].tap()
+		
+		
 		
 	}
 	
