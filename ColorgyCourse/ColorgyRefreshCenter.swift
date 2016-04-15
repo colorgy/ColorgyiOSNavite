@@ -340,6 +340,9 @@ final public class ColorgyRefreshCenter {
 	
 	/// Start background worker
 	public class func startBackgroundWorker() {
+		// First invalidate previous one
+		ColorgyRefreshCenter.sharedInstance().backgroundWorker?.invalidate()
+		// then create a new one
 		ColorgyRefreshCenter.sharedInstance().backgroundWorker = NSTimer(timeInterval: 30, target: self, selector: #selector(ColorgyRefreshCenter.backgroundJob), userInfo: nil, repeats: true)
 		ColorgyRefreshCenter.sharedInstance().backgroundWorker?.fire()
 		if let worker = ColorgyRefreshCenter.sharedInstance().backgroundWorker {
