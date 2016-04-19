@@ -14,6 +14,7 @@ import SwiftyJSON
 /// You will see the relationship between student and course
 final public class CourseOwnershipObject: NSObject {
 	
+	// MARK: - Parameters
 	// uuid here is not code, is server's
 	/// UUID here is a server stamp, must be unique.
 	public let uuid: String
@@ -45,6 +46,7 @@ final public class CourseOwnershipObject: NSObject {
 		return "CourseOwnershipObject: {\n\tuuid: \(uuid)\n\tid: \(id)\n\tcourseOrganizationCode: \(courseOrganizationCode)\n\tcourseCode: \(courseCode)\n\tuserId: \(userId)\n\tyear: \(year)\n\tterm: \(term)\n\ttype: \(type)\n}"
 	}
 	
+	// MARK: - Key
 	private struct CourseOwnershipObjectKey {
 		static let uuid = "uuid"
 		static let id = "id"
@@ -56,6 +58,7 @@ final public class CourseOwnershipObject: NSObject {
 		static let type = "_type"
 	}
 	
+	// MARK: - Init
 	/// Initialization: Create a StudnetAndCourseRelationshipObject.
 	///
 	/// Won't be created if json file doesn't contain necessary values.
@@ -88,6 +91,7 @@ final public class CourseOwnershipObject: NSObject {
 		super.init()
 	}
 	
+	// MARK: - Generator
 	public class func generateOwnerShipObjects(json: JSON) -> [CourseOwnershipObject] {
 		
 		// initialize cache

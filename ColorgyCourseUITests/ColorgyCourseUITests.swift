@@ -66,9 +66,6 @@ class ColorgyCourseUITests: XCTestCase {
 		app.buttons["註冊"].tap()
 		expect(app.alerts["你輸入的資料有誤哦！"].collectionViews.buttons["知道了"].exists).to(beTrue())
 		app.alerts["你輸入的資料有誤哦！"].collectionViews.buttons["知道了"].tap()
-		
-		
-		
 	}
 	
 }

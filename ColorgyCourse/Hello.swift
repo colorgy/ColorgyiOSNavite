@@ -11,6 +11,7 @@ import SwiftyJSON
 
 final public class Hello: NSObject {
 	
+	// MARK: - Parameters
 	public let userId: String
 	public let targetId: String
 	public let message: String
@@ -27,6 +28,7 @@ final public class Hello: NSObject {
 		return "Hello: {\n\tuserId -> \(userId)\n\ttargetId -> \(targetId)\n\tmessage -> \(message)\n\tstatus -> \(status)\n\tid -> \(id)\n\tname -> \(name)\n\timageURL -> \(imageURL)\n\tupdatedAt -> \(updatedAt)\n\tcreatedAt -> \(createdAt)\n\tlastAnsweredDate -> \(lastAnsweredDate)\n\tlastAnswer -> \(lastAnswer)\n}"
 	}
 	
+	// MARK: - Init
 	public convenience init?(json: JSON) {
 		
 		var _userId: String?
@@ -97,6 +99,7 @@ final public class Hello: NSObject {
 		super.init()
 	}
 	
+	// MARK: - Generator
 	public class func generateHiList(json: JSON) -> [Hello] {
 		let json = json["result"]
 		var hiList = [Hello]()

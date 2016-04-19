@@ -9,15 +9,15 @@
 import Foundation
 import AFNetworking
 
-class AFNetworkingErrorParser {
+final public class AFNetworkingErrorParser {
 	
 	/// 可以拿到 Status Code
-	class func statusCode(operation: NSURLSessionDataTask?) -> Int? {
+	public class func statusCode(operation: NSURLSessionDataTask?) -> Int? {
 		return (operation?.response as? NSHTTPURLResponse)?.statusCode
 	}
 	
 	/// 可以拿到 response body
-	class func responseBody(error: NSError) -> String? {
+	public class func responseBody(error: NSError) -> String? {
 		
 		guard let data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] as? NSData else {
 			// fail to get data

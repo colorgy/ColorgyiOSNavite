@@ -47,6 +47,7 @@ class TestColorgyAPI: XCTestCase {
 				done()
 			}, process: nil) { (error, afError) in
 				XCTFail()
+				done()
 			}
 		}
 	}

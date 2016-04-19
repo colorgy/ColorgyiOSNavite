@@ -341,7 +341,7 @@ final public class ColorgyAPI : NSObject {
 	
 	// MARK: - Push Notification Device Token
 	/// Push notification device token to server. Use PUT, will update if already exist, will create if not exist.
-	public func PUTPushNotificationDeviceToken(success success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func putPushNotificationDeviceToken(success success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -427,7 +427,7 @@ final public class ColorgyAPI : NSObject {
 	}
 	
 	/// Get all the token stored in server
-	public func GETAllStoredDeviceToken(success success: ((tokens: [(name: String, uuid: String)]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func getAllStoredDeviceToken(success success: ((tokens: [(name: String, uuid: String)]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -491,7 +491,7 @@ final public class ColorgyAPI : NSObject {
 	}
 	
 	/// Delete a uuid and push notification token set.
-	public func DELETEPushNotificationDeviceUUID(uuid: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func deletePushNotificationDeviceUUID(uuid: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -548,7 +548,7 @@ final public class ColorgyAPI : NSObject {
 	/// - parameters:
 	///   - code: A specific course code.
 	/// - returns: courseRawDataObject: A single CourseRawDataObject?, might be nil.
-	public func GETCourseRawObjectWithCourseCode(code: String, success: ((object: CourseRawDataObject) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func getCourseRawObjectWithCourseCode(code: String, success: ((object: CourseRawDataObject) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -625,7 +625,7 @@ final public class ColorgyAPI : NSObject {
 	/// - parameters:
 	///   - code: A course code.
 	/// - returns: userCourseObjects: A [UserCourseObject]? array, might be nil.
-	public func GETStudentsInSpecificCourse(code: String, success: ((ownerships: [CourseOwnershipObject]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func getStudentsInSpecificCourse(code: String, success: ((ownerships: [CourseOwnershipObject]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({

@@ -11,12 +11,16 @@ import Foundation
 /// **AFError** is used to check AFNetworking's error state code and response body
 final public class AFError: NSObject {
 	
-	let statusCode: Int?
-	let responseBody: String?
+	// MARK: - Parameters
+	/// Status code of this error, might be 403, 401, 502.....
+	public let statusCode: Int?
+	/// Response body of this error
+	public let responseBody: String?
 	
 	override public var description: String { return "AFError:{\n\tstatusCode: \(statusCode)\n\tresponseBody: \(responseBody)\n" }
 	
-	init(operation: NSURLSessionDataTask?, error: NSError) {
+	// MARK: - Init
+	public init(operation: NSURLSessionDataTask?, error: NSError) {
 		self.statusCode = AFNetworkingErrorParser.statusCode(operation)
 		self.responseBody = AFNetworkingErrorParser.responseBody(error)
 		if let statusCode = self.statusCode where statusCode == 401 {
