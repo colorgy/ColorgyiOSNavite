@@ -45,6 +45,7 @@ public class EmailRegisterViewController: UIViewController {
 		
 		// configure view
 		view.backgroundColor = ColorgyColor.BackgroundColor
+		title = "註冊"
 		
 		// assign view model
 		viewModel = EmailRegisterViewModel(delegate: self)

@@ -4,57 +4,62 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Bolts.xcscheme_^#shared#^_</key>
+		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FBSDKCoreKit.xcscheme_^#shared#^_</key>
+		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FBSDKLoginKit.xcscheme_^#shared#^_</key>
+		<key>FBSDKLoginKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FBSDKShareKit.xcscheme_^#shared#^_</key>
+		<key>FBSDKShareKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Mixpanel.xcscheme_^#shared#^_</key>
+		<key>Mixpanel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Nimble.xcscheme_^#shared#^_</key>
+		<key>Nimble.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-ColorgyCourse.xcscheme_^#shared#^_</key>
+		<key>Pods-ColorgyCourse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-ColorgyCourseTests.xcscheme_^#shared#^_</key>
+		<key>Pods-ColorgyCourseTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Quick.xcscheme_^#shared#^_</key>
+		<key>Pods-ColorgyCourseUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Realm.xcscheme_^#shared#^_</key>
+		<key>Quick.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RealmSwift.xcscheme_^#shared#^_</key>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -103,6 +108,11 @@
 			<true/>
 		</dict>
 		<key>D8470470292BC39EE263E6103508E41A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE5ABBADE9F888BEF9EA0A724EDFEED5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

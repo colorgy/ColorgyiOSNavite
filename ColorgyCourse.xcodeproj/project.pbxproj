@@ -96,6 +96,7 @@
 		63C3CE451CC0C94B000EE808 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE441CC0C94B000EE808 /* libz.tbd */; };
 		63C3CE471CC0C98B000EE808 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE461CC0C98B000EE808 /* SystemConfiguration.framework */; };
 		63C3CE491CC0C990000EE808 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE481CC0C990000EE808 /* Security.framework */; };
+		63EC77201CC6060E008025A7 /* ColorgyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */; };
 		63F3EE6B1CBF3CA00010D059 /* TestColorgyRefershCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3EE6A1CBF3CA00010D059 /* TestColorgyRefershCenter.swift */; };
 		63F3EE731CBF49CC0010D059 /* PeriodRawDataRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */; };
 		63F3EE761CBF49D10010D059 /* ColorgyUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D41CB8B02A00DE8CBC /* ColorgyUserInformation.swift */; };
@@ -129,6 +130,7 @@
 		63F3EE9A1CBF53A40010D059 /* TestColorgyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3EE991CBF53A40010D059 /* TestColorgyAPI.swift */; };
 		63F3EE9C1CBF56990010D059 /* TestCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3EE9B1CBF56990010D059 /* TestCourseModel.swift */; };
 		A84AB692873E9E8DA6A72BC2 /* Pods_ColorgyCourse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576E6050CAE2354899BC93F6 /* Pods_ColorgyCourse.framework */; };
+		AC38DA7C69CB77289F628790 /* Pods_ColorgyCourseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1F3E09DFD2F7723F151AD0 /* Pods_ColorgyCourseUITests.framework */; };
 		CB5F7F720BF8448C1DF2AE6A /* Pods_ColorgyCourseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC494E8CDA3225AD0D49A2D6 /* Pods_ColorgyCourseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +172,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		02D01171AE68C2280C00D053 /* Pods-ColorgyCourseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourseUITests/Pods-ColorgyCourseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3A1F3E09DFD2F7723F151AD0 /* Pods_ColorgyCourseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorgyCourseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		576E6050CAE2354899BC93F6 /* Pods_ColorgyCourse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorgyCourse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseOwnershipObject.swift; sourceTree = "<group>"; };
 		630570001CBCBC86007D2C9D /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
@@ -244,9 +248,11 @@
 		63C3CE441CC0C94B000EE808 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		63C3CE461CC0C98B000EE808 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		63C3CE481CC0C990000EE808 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyNavigationController.swift; sourceTree = "<group>"; };
 		63F3EE6A1CBF3CA00010D059 /* TestColorgyRefershCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestColorgyRefershCenter.swift; sourceTree = "<group>"; };
 		63F3EE991CBF53A40010D059 /* TestColorgyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestColorgyAPI.swift; sourceTree = "<group>"; };
 		63F3EE9B1CBF56990010D059 /* TestCourseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCourseModel.swift; sourceTree = "<group>"; };
+		90E3DBDD69350AAF687C2015 /* Pods-ColorgyCourseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourseUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourseUITests/Pods-ColorgyCourseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		94F70303EE975BA2983F45A1 /* Pods-ColorgyCourseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourseTests/Pods-ColorgyCourseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9F013244A3B8C8F64571951C /* Pods-ColorgyCourse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourse/Pods-ColorgyCourse.debug.xcconfig"; sourceTree = "<group>"; };
 		B05C6C68737E6E760C1FD17C /* Pods-ColorgyCourseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourseTests/Pods-ColorgyCourseTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -286,6 +292,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC38DA7C69CB77289F628790 /* Pods_ColorgyCourseUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +309,7 @@
 				63C3CE401CC0C93D000EE808 /* libc++.1.tbd */,
 				576E6050CAE2354899BC93F6 /* Pods_ColorgyCourse.framework */,
 				FC494E8CDA3225AD0D49A2D6 /* Pods_ColorgyCourseTests.framework */,
+				3A1F3E09DFD2F7723F151AD0 /* Pods_ColorgyCourseUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -388,6 +396,7 @@
 				635479CE1CB8A5EF00DE8CBC /* Release.swift */,
 				635479891CB898C100DE8CBC /* ViewController.swift */,
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
+				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
 				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
 				63C3CE161CC0C673000EE808 /* Email Login View */,
 				63C3CE171CC0C67D000EE808 /* Email Register View */,
@@ -520,6 +529,8 @@
 				F16E987B487403193816ADE4 /* Pods-ColorgyCourse.release.xcconfig */,
 				94F70303EE975BA2983F45A1 /* Pods-ColorgyCourseTests.debug.xcconfig */,
 				B05C6C68737E6E760C1FD17C /* Pods-ColorgyCourseTests.release.xcconfig */,
+				02D01171AE68C2280C00D053 /* Pods-ColorgyCourseUITests.debug.xcconfig */,
+				90E3DBDD69350AAF687C2015 /* Pods-ColorgyCourseUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -576,9 +587,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 635479B21CB898C100DE8CBC /* Build configuration list for PBXNativeTarget "ColorgyCourseUITests" */;
 			buildPhases = (
+				6108952817F7CEBA180B551D /* Check Pods Manifest.lock */,
 				6354799F1CB898C100DE8CBC /* Sources */,
 				635479A01CB898C100DE8CBC /* Frameworks */,
 				635479A11CB898C100DE8CBC /* Resources */,
+				96286340E228A1FB2556817C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -721,6 +734,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		6108952817F7CEBA180B551D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		635479B51CB89BAE00DE8CBC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -782,6 +810,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ColorgyCourseTests/Pods-ColorgyCourseTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		96286340E228A1FB2556817C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ColorgyCourseUITests/Pods-ColorgyCourseUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DB4B06AB2ECD8F9D3BBA3D2A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -833,6 +876,7 @@
 				635479FF1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift in Sources */,
 				630570121CBD1A2E007D2C9D /* ChatUserInformation.swift in Sources */,
 				6305700C1CBD0AB9007D2C9D /* ColorgySocket.swift in Sources */,
+				63EC77201CC6060E008025A7 /* ColorgyNavigationController.swift in Sources */,
 				63C3CE1F1CC0C76F000EE808 /* ChatMeUserInformation.swift in Sources */,
 				637305601CBF823B0016A7FC /* EmailRegisterViewController.swift in Sources */,
 				630570181CBD233A007D2C9D /* Hello.swift in Sources */,
@@ -1119,6 +1163,7 @@
 		};
 		635479B31CB898C100DE8CBC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02D01171AE68C2280C00D053 /* Pods-ColorgyCourseUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = ColorgyCourseUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1130,6 +1175,7 @@
 		};
 		635479B41CB898C100DE8CBC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90E3DBDD69350AAF687C2015 /* Pods-ColorgyCourseUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = ColorgyCourseUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

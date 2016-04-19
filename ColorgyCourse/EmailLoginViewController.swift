@@ -27,6 +27,7 @@ public class EmailLoginViewController: UIViewController {
 		
 		// configure view
 		view.backgroundColor = ColorgyColor.BackgroundColor
+		title = "登入"
 		
 		// assign view model
 		viewModel = EmailLoginViewModel(delegate: self)

@@ -166,10 +166,10 @@
             </objects>
             <point key="canvasLocation" x="1452" y="217"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Colorgy Navigation Controller-->
         <scene sceneID="Tf1-v9-rts">
             <objects>
-                <navigationController storyboardIdentifier="Main Login View" automaticallyAdjustsScrollViewInsets="NO" id="w2D-G2-Odt" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Main Login View" automaticallyAdjustsScrollViewInsets="NO" id="w2D-G2-Odt" customClass="ColorgyNavigationController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5QR-15-Yde">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

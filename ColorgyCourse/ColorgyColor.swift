@@ -15,6 +15,7 @@ struct ColorgyColor {
 	static let BackgroundColor = UIColor(red:0.980,  green:0.969,  blue:0.961, alpha:1)
 	static let waterBlue = UIColor(red:0,  green:0.812,  blue:0.894, alpha:1)
 	static let grayContentTextColor = UIColor(red: 151/255.0, green: 151/255.0, blue: 151/255.0, alpha: 1)
+	static let NavigationbarTitleColor = UIColor(red: 74/255.0, green: 74/255.0, blue: 74/255.0, alpha: 1)
 }
 
 extension UIColor {
