@@ -877,7 +877,6 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http get給/questions/get_question
 	///2. 成功的會會回傳最新的問題以及date參數
-	class func getQuestion(success: (date: String?, question: String?) -> Void, failure: () -> Void) {}
 	public func getQuestion(success: (((date: String?, question: String?)) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
@@ -924,7 +923,6 @@ final public class ColorgyChatAPI: NSObject {
 	///使用方式：
 	///
 	///1. 傳一個http post給/users/answer_question，參數包含uuid,accessToken, userId,date(format:yyyymmdd),answer
-	class func answerQuestion(userId: String, answer: String, date: String, success: () -> Void, failure: () -> Void) {}
 	public func answerQuestion(userId: String, answer: String, date: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
@@ -1274,7 +1272,6 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/hi/reject_hi，參數包含使用者的userId,uuid, accessToken,hiId
 	///2. 必須要是target才能傳送這個request，會將一個打招呼的status更改為rejected
-	class func rejectHi(userId: String, hiId: String, success: () -> Void, failure: () -> Void) {}
 	public func rejectHi(userId: String, hiId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
