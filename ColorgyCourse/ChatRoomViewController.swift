@@ -24,7 +24,7 @@ final public class ChatroomViewController: DLMessagesViewController {
 	
 	// MARK: Views
 	private var dropDownButton: UIBarButtonItem!
-	private let floatingOptionView = FloatingOptionView()
+	private var floatingOptionView = FloatingOptionView()
 	
 	// MARK: View Model
 	private var viewModel: ChatroomViewModel?
@@ -48,6 +48,10 @@ final public class ChatroomViewController: DLMessagesViewController {
 	
 	public override func viewDidDisappear(animated: Bool) {
 		super.viewDidAppear(animated)
+	}
+	
+	deinit {
+		print("deinit")
 	}
 	
 	// MARK: - Configuration

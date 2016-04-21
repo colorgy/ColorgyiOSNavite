@@ -66,9 +66,12 @@
 		637305601CBF823B0016A7FC /* EmailRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373055F1CBF823B0016A7FC /* EmailRegisterViewController.swift */; };
 		637305621CBF82D10016A7FC /* IconedTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637305611CBF82D10016A7FC /* IconedTextInputView.swift */; };
 		637305641CBF83D80016A7FC /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637305631CBF83D80016A7FC /* UIViewExtension.swift */; };
-		6375476E1CC87C1800BC3BBD /* TestChatLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375476D1CC87C1800BC3BBD /* TestChatLoginVC.swift */; };
 		637547701CC8A96900BC3BBD /* ChatMessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375476F1CC8A96900BC3BBD /* ChatMessageList.swift */; };
 		637547721CC8B1BB00BC3BBD /* FloatingOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547711CC8B1BB00BC3BBD /* FloatingOptionView.swift */; };
+		637547741CC8BE8400BC3BBD /* SayHelloCountsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547731CC8BE8400BC3BBD /* SayHelloCountsCell.swift */; };
+		637547761CC8BF4A00BC3BBD /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547751CC8BF4A00BC3BBD /* FriendListViewModel.swift */; };
+		637547781CC8BF6200BC3BBD /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547771CC8BF6200BC3BBD /* FriendListViewController.swift */; };
+		6375477A1CC8C23700BC3BBD /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */; };
 		63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */; };
 		63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */; };
 		63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */; };
@@ -255,9 +258,12 @@
 		6373055F1CBF823B0016A7FC /* EmailRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailRegisterViewController.swift; sourceTree = "<group>"; };
 		637305611CBF82D10016A7FC /* IconedTextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconedTextInputView.swift; sourceTree = "<group>"; };
 		637305631CBF83D80016A7FC /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		6375476D1CC87C1800BC3BBD /* TestChatLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestChatLoginVC.swift; sourceTree = "<group>"; };
 		6375476F1CC8A96900BC3BBD /* ChatMessageList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageList.swift; sourceTree = "<group>"; };
 		637547711CC8B1BB00BC3BBD /* FloatingOptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingOptionView.swift; sourceTree = "<group>"; };
+		637547731CC8BE8400BC3BBD /* SayHelloCountsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SayHelloCountsCell.swift; sourceTree = "<group>"; };
+		637547751CC8BF4A00BC3BBD /* FriendListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
+		637547771CC8BF6200BC3BBD /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
 		6379FC701CBEA1A8002F10E1 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
@@ -442,9 +448,12 @@
 				635479CE1CB8A5EF00DE8CBC /* Release.swift */,
 				635479891CB898C100DE8CBC /* ViewController.swift */,
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
+				637547751CC8BF4A00BC3BBD /* FriendListViewModel.swift */,
+				637547771CC8BF6200BC3BBD /* FriendListViewController.swift */,
+				637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */,
+				637547731CC8BE8400BC3BBD /* SayHelloCountsCell.swift */,
 				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
 				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
-				6375476D1CC87C1800BC3BBD /* TestChatLoginVC.swift */,
 				6375476C1CC87BF600BC3BBD /* Chat Room View */,
 				63C3CE161CC0C673000EE808 /* Email Login View */,
 				63C3CE171CC0C67D000EE808 /* Email Register View */,
@@ -932,6 +941,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6375477A1CC8C23700BC3BBD /* FriendListTableViewCell.swift in Sources */,
 				635479EA1CB8B02A00DE8CBC /* Course.swift in Sources */,
 				635479EF1CB8B02A00DE8CBC /* DateExtension.swift in Sources */,
 				635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */,
@@ -944,7 +954,9 @@
 				635479EE1CB8B02A00DE8CBC /* StringExtension.swift in Sources */,
 				63EC77B91CC8743D008025A7 /* DLMessageLabel.swift in Sources */,
 				635479F31CB8B02A00DE8CBC /* ColorgyLoginResult.swift in Sources */,
+				637547741CC8BE8400BC3BBD /* SayHelloCountsCell.swift in Sources */,
 				63EC77B31CC8743D008025A7 /* DLIncomingMessageBubble.swift in Sources */,
+				637547761CC8BF4A00BC3BBD /* FriendListViewModel.swift in Sources */,
 				63EC77BB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift in Sources */,
 				63C3CE231CC0C76F000EE808 /* UIImageExtension.swift in Sources */,
 				63056FFF1CBCABB7007D2C9D /* CourseOwnershipObject.swift in Sources */,
@@ -974,6 +986,7 @@
 				63EC77C51CC875A0008025A7 /* ChatRoomViewModel.swift in Sources */,
 				635479E51CB8B02A00DE8CBC /* TimeStamp.swift in Sources */,
 				635479E71CB8B02A00DE8CBC /* ColorgyAPI.swift in Sources */,
+				637547781CC8BF6200BC3BBD /* FriendListViewController.swift in Sources */,
 				635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */,
 				635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */,
 				63EC77B61CC8743D008025A7 /* DLIncomingPhotoBubble.swift in Sources */,
@@ -985,7 +998,6 @@
 				63C3CE201CC0C76F000EE808 /* ColorgyAppNotification.swift in Sources */,
 				635479F21CB8B02A00DE8CBC /* AFError.swift in Sources */,
 				63EC77C11CC8743D008025A7 /* TextInputView.swift in Sources */,
-				6375476E1CC87C1800BC3BBD /* TestChatLoginVC.swift in Sources */,
 				63EC77BF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift in Sources */,
 				63EC77B81CC8743D008025A7 /* DLMessageData.swift in Sources */,
 				635479E61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift in Sources */,

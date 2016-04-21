@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol FloatingOptionViewDelegate {
+protocol FloatingOptionViewDelegate: class {
 	func floatingOptionViewShouldBlockUser()
 	func floatingOptionViewShouldLeaveChatroom()
 	func floatingOptionViewShouldNameUser()
@@ -25,7 +25,7 @@ class FloatingOptionView: UIView {
 	*/
 	
 	var isShown = false
-	var delegate: FloatingOptionViewDelegate?
+	weak var delegate: FloatingOptionViewDelegate?
 	
 	init() {
 		super.init(frame: UIScreen.mainScreen().bounds)
