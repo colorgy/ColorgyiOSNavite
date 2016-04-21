@@ -59,7 +59,7 @@ extension ChatroomViewController : DLMessagesViewControllerDelegate {
 	}
 	
 	public func DLMessagesViewControllerDidClickedMessageButton(withReturnMessage message: String?) {
-		
+		viewModel?.sendTextMessage(message)
 	}
 	
 	public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

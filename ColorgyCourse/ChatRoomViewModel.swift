@@ -35,17 +35,30 @@ final public class ChatroomViewModel {
 	
 	// MARK: Private
 	private let socket: ColorgySocket
+	private let api: ColorgyChatAPI
+	private var isRequestingForMoreMessage: Bool = false
+	private var historyMessagesCount: Int = 0
+	
+	// MARK: Public 
+	
 	
 	// MARK: - Init
 	public init(delegate: ChatroomViewModelDelegate?) {
 		self.delegate = delegate
 		self.socket = ColorgySocket()
 		self.messageList = ChatMessageList()
+		self.api = ColorgyChatAPI()
 	}
 	
 	// MARK: - Public Methods
 	public func connectToChatRoom() {
 		prepareForSocket()
+	}
+	
+	public func sendTextMessage(message: String?) {
+		guard let message = message else { return }
+		guard let userId = userId else { return }
+		socket.sendTextMessage(message, withUserId: userId)
 	}
 	
 	// MARK: - Private Methods
@@ -88,6 +101,7 @@ final public class ChatroomViewModel {
 					self.messageList.addMessage(m)
 					self.delegate?.chatroomViewModelRecievedOneMessage()
 				}
+				self.historyMessagesCount = messages.count
 				self.delegate?.chatroomViewModelDidConnectToChatRoom()
 			}, reconnectToServerWithMessages: { (messages) in
 				print("reconnect to server")
@@ -106,5 +120,47 @@ final public class ChatroomViewModel {
 		}
 		
 		socket.connect()
+	}
+	
+	// MARK: Requesting More Message
+	private func requestMoreMessage(complete: (() -> Void)?) {
+		
+		guard !isRequestingForMoreMessage, let chatroom = self.chatroom else {
+			complete?()
+			return
+		}
+		
+		// begin requesting more mesage
+		beginRequestingMoreMessage()
+		
+		// fire api
+		api.checkUserAvailability({ (user) in
+			self.api.moreMessage(user.userId, chatroom: chatroom, historyMessagesCount: self.historyMessagesCount, success: { (messages) in
+				// add count from more message
+				self.historyMessagesCount += messages.count
+				// append messages to messageList
+				messages.forEach({ (message: ChatMessage) in
+					self.messageList.addMessage(message)
+					self.delegate?.chatroomViewModelRecievedOneMessage()
+				})
+				self.finishRequestingMoreMessage()
+				self.delegate?.chatroomViewModelDidRecieveMessages()
+				complete?()
+				}, failure: { (error, afError) in
+					self.finishRequestingMoreMessage()
+					complete?()
+			})
+			}, failure: { (error, afError) in
+				self.finishRequestingMoreMessage()
+				complete?()
+		})
+	}
+	
+	private func beginRequestingMoreMessage() {
+		isRequestingForMoreMessage = true
+	}
+	
+	private func finishRequestingMoreMessage() {
+		isRequestingForMoreMessage = false
 	}
 }
