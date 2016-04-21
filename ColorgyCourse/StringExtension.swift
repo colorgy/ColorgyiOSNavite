@@ -37,4 +37,9 @@ extension String {
 		let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
 		return emailTest.evaluateWithObject(self)
 	}
+	
+	/// Return a NSURL if the string is a valid url string
+	var url: NSURL? {
+		return NSURL(string: self)
+	}
 }

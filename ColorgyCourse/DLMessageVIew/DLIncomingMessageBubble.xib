@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="177" id="uwJ-g1-WBx" customClass="DLIncomingMessageBubble" customModule="ColorgyCourse" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="628" height="177"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uwJ-g1-WBx" id="FBw-lb-KLs">
+                <rect key="frame" x="0.0" y="0.0" width="628" height="176.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="這是收到的訊息" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gh-ym-MY2" customClass="DLMessageLabel" customModule="ColorgyCourse" customModuleProvider="target">
+                        <rect key="frame" x="51" y="2" width="119" height="172"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U7I-fk-jOb">
+                        <rect key="frame" x="8" y="2" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="5v2-8k-0u3"/>
+                            <constraint firstAttribute="width" constant="35" id="YEt-wG-NSM"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3Gh-ym-MY2" firstAttribute="top" secondItem="FBw-lb-KLs" secondAttribute="top" constant="2" id="KVV-4d-REN"/>
+                    <constraint firstAttribute="bottom" secondItem="3Gh-ym-MY2" secondAttribute="bottom" constant="2" id="L7k-Kj-GiQ"/>
+                    <constraint firstAttribute="topMargin" secondItem="U7I-fk-jOb" secondAttribute="top" constant="6" id="QiA-rY-JRM"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="U7I-fk-jOb" secondAttribute="leading" id="aNx-A8-oOU"/>
+                    <constraint firstAttribute="bottom" secondItem="U7I-fk-jOb" secondAttribute="bottom" constant="8" id="j4a-J6-9v3"/>
+                    <constraint firstItem="3Gh-ym-MY2" firstAttribute="leading" secondItem="U7I-fk-jOb" secondAttribute="trailing" constant="8" id="pl8-JQ-XPR"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="U7I-fk-jOb" secondAttribute="bottom" id="wq1-Uq-YdF"/>
+                    <constraint firstItem="3Gh-ym-MY2" firstAttribute="width" relation="lessThanOrEqual" secondItem="FBw-lb-KLs" secondAttribute="width" multiplier="0.7" id="xJ5-OP-O2P"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="j4a-J6-9v3"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="textlabel" destination="3Gh-ym-MY2" id="tbB-Pr-nab"/>
+                <outlet property="userImageView" destination="U7I-fk-jOb" id="hff-2F-6aV"/>
+            </connections>
+            <point key="canvasLocation" x="561" y="323.5"/>
+        </tableViewCell>
+    </objects>
+</document>

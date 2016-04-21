@@ -97,6 +97,22 @@
 		63C3CE471CC0C98B000EE808 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE461CC0C98B000EE808 /* SystemConfiguration.framework */; };
 		63C3CE491CC0C990000EE808 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE481CC0C990000EE808 /* Security.framework */; };
 		63EC77201CC6060E008025A7 /* ColorgyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */; };
+		63EC77A01CC871CC008025A7 /* Log.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63EC779F1CC871CC008025A7 /* Log.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63EC77B21CC8743D008025A7 /* ATrickyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A21CC8743D008025A7 /* ATrickyView.swift */; };
+		63EC77B31CC8743D008025A7 /* DLIncomingMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */; };
+		63EC77B41CC8743D008025A7 /* DLIncomingMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77A41CC8743D008025A7 /* DLIncomingMessageBubble.xib */; };
+		63EC77B51CC8743D008025A7 /* DLIncomingMessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A51CC8743D008025A7 /* DLIncomingMessageDelegate.swift */; };
+		63EC77B61CC8743D008025A7 /* DLIncomingPhotoBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A61CC8743D008025A7 /* DLIncomingPhotoBubble.swift */; };
+		63EC77B71CC8743D008025A7 /* DLIncomingPhotoBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77A71CC8743D008025A7 /* DLIncomingPhotoBubble.xib */; };
+		63EC77B81CC8743D008025A7 /* DLMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A81CC8743D008025A7 /* DLMessageData.swift */; };
+		63EC77B91CC8743D008025A7 /* DLMessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A91CC8743D008025A7 /* DLMessageLabel.swift */; };
+		63EC77BA1CC8743D008025A7 /* DLMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77AA1CC8743D008025A7 /* DLMessagesViewController.swift */; };
+		63EC77BB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77AB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift */; };
+		63EC77BC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77AC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib */; };
+		63EC77BD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77AD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift */; };
+		63EC77BE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77AE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib */; };
+		63EC77BF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77AF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift */; };
+		63EC77C11CC8743D008025A7 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77B11CC8743D008025A7 /* TextInputView.swift */; };
 		63F3EE6B1CBF3CA00010D059 /* TestColorgyRefershCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3EE6A1CBF3CA00010D059 /* TestColorgyRefershCenter.swift */; };
 		63F3EE731CBF49CC0010D059 /* PeriodRawDataRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */; };
 		63F3EE761CBF49D10010D059 /* ColorgyUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D41CB8B02A00DE8CBC /* ColorgyUserInformation.swift */; };
@@ -165,6 +181,7 @@
 				635479BE1CB89C4E00DE8CBC /* ImagePickerSheetController.framework in Embed Frameworks */,
 				635479C01CB89C4E00DE8CBC /* SKPhotoBrowser.framework in Embed Frameworks */,
 				635479BC1CB89C4E00DE8CBC /* AFNetworking.framework in Embed Frameworks */,
+				63EC77A01CC871CC008025A7 /* Log.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +266,22 @@
 		63C3CE461CC0C98B000EE808 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		63C3CE481CC0C990000EE808 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyNavigationController.swift; sourceTree = "<group>"; };
+		63EC779F1CC871CC008025A7 /* Log.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Log.framework; path = Carthage/Build/iOS/Log.framework; sourceTree = "<group>"; };
+		63EC77A21CC8743D008025A7 /* ATrickyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATrickyView.swift; sourceTree = "<group>"; };
+		63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLIncomingMessageBubble.swift; sourceTree = "<group>"; };
+		63EC77A41CC8743D008025A7 /* DLIncomingMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLIncomingMessageBubble.xib; sourceTree = "<group>"; };
+		63EC77A51CC8743D008025A7 /* DLIncomingMessageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLIncomingMessageDelegate.swift; sourceTree = "<group>"; };
+		63EC77A61CC8743D008025A7 /* DLIncomingPhotoBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLIncomingPhotoBubble.swift; sourceTree = "<group>"; };
+		63EC77A71CC8743D008025A7 /* DLIncomingPhotoBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLIncomingPhotoBubble.xib; sourceTree = "<group>"; };
+		63EC77A81CC8743D008025A7 /* DLMessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLMessageData.swift; sourceTree = "<group>"; };
+		63EC77A91CC8743D008025A7 /* DLMessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLMessageLabel.swift; sourceTree = "<group>"; };
+		63EC77AA1CC8743D008025A7 /* DLMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLMessagesViewController.swift; sourceTree = "<group>"; };
+		63EC77AB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLOutgoingMessageBubble.swift; sourceTree = "<group>"; };
+		63EC77AC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLOutgoingMessageBubble.xib; sourceTree = "<group>"; };
+		63EC77AD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLOutgoingPhotoBubble.swift; sourceTree = "<group>"; };
+		63EC77AE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLOutgoingPhotoBubble.xib; sourceTree = "<group>"; };
+		63EC77AF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLPhotoMessageDelegate.swift; sourceTree = "<group>"; };
+		63EC77B11CC8743D008025A7 /* TextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 		63F3EE6A1CBF3CA00010D059 /* TestColorgyRefershCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestColorgyRefershCenter.swift; sourceTree = "<group>"; };
 		63F3EE991CBF53A40010D059 /* TestColorgyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestColorgyAPI.swift; sourceTree = "<group>"; };
 		63F3EE9B1CBF56990010D059 /* TestCourseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCourseModel.swift; sourceTree = "<group>"; };
@@ -360,6 +393,7 @@
 		6354797B1CB898C000DE8CBC = {
 			isa = PBXGroup;
 			children = (
+				63EC779F1CC871CC008025A7 /* Log.framework */,
 				630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */,
 				6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */,
 				635479B61CB89C4E00DE8CBC /* AFNetworking.framework */,
@@ -390,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				6379FC701CBEA1A8002F10E1 /* Header.h */,
+				63EC77A11CC8743D008025A7 /* DLMessageVIew */,
 				630570221CBD2D97007D2C9D /* Realm Object */,
 				635479871CB898C100DE8CBC /* AppDelegate.swift */,
 				63C3CE1A1CC0C76F000EE808 /* ColorgyAppNotification.swift */,
@@ -522,6 +557,28 @@
 			name = "Email Register View";
 			sourceTree = "<group>";
 		};
+		63EC77A11CC8743D008025A7 /* DLMessageVIew */ = {
+			isa = PBXGroup;
+			children = (
+				63EC77A21CC8743D008025A7 /* ATrickyView.swift */,
+				63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */,
+				63EC77A41CC8743D008025A7 /* DLIncomingMessageBubble.xib */,
+				63EC77A51CC8743D008025A7 /* DLIncomingMessageDelegate.swift */,
+				63EC77A61CC8743D008025A7 /* DLIncomingPhotoBubble.swift */,
+				63EC77A71CC8743D008025A7 /* DLIncomingPhotoBubble.xib */,
+				63EC77A81CC8743D008025A7 /* DLMessageData.swift */,
+				63EC77A91CC8743D008025A7 /* DLMessageLabel.swift */,
+				63EC77AA1CC8743D008025A7 /* DLMessagesViewController.swift */,
+				63EC77AB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift */,
+				63EC77AC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib */,
+				63EC77AD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift */,
+				63EC77AE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib */,
+				63EC77AF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift */,
+				63EC77B11CC8743D008025A7 /* TextInputView.swift */,
+			);
+			path = DLMessageVIew;
+			sourceTree = "<group>";
+		};
 		87B10B09AB7F67CF4D976F76 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,7 +709,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				635479921CB898C100DE8CBC /* LaunchScreen.storyboard in Resources */,
+				63EC77BC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib in Resources */,
+				63EC77B41CC8743D008025A7 /* DLIncomingMessageBubble.xib in Resources */,
 				6354798F1CB898C100DE8CBC /* Assets.xcassets in Resources */,
+				63EC77B71CC8743D008025A7 /* DLIncomingPhotoBubble.xib in Resources */,
+				63EC77BE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib in Resources */,
 				6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -762,6 +823,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SocketIOClientSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Log.framework",
 			);
 			outputPaths = (
 			);
@@ -857,13 +919,17 @@
 				6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */,
 				6305701E1CBD2902007D2C9D /* Chatroom.swift in Sources */,
 				635479EE1CB8B02A00DE8CBC /* StringExtension.swift in Sources */,
+				63EC77B91CC8743D008025A7 /* DLMessageLabel.swift in Sources */,
 				635479F31CB8B02A00DE8CBC /* ColorgyLoginResult.swift in Sources */,
+				63EC77B31CC8743D008025A7 /* DLIncomingMessageBubble.swift in Sources */,
+				63EC77BB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift in Sources */,
 				63C3CE231CC0C76F000EE808 /* UIImageExtension.swift in Sources */,
 				63056FFF1CBCABB7007D2C9D /* CourseOwnershipObject.swift in Sources */,
 				6305701C1CBD268A007D2C9D /* HistoryChatroom.swift in Sources */,
 				63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */,
 				63C3CE221CC0C76F000EE808 /* Organization.swift in Sources */,
 				6305700A1CBD0AA1007D2C9D /* ColorgyChatAPI.swift in Sources */,
+				63EC77B51CC8743D008025A7 /* DLIncomingMessageDelegate.swift in Sources */,
 				635479ED1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift in Sources */,
 				630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */,
 				637305641CBF83D80016A7FC /* UIViewExtension.swift in Sources */,
@@ -885,15 +951,22 @@
 				635479E71CB8B02A00DE8CBC /* ColorgyAPI.swift in Sources */,
 				635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */,
 				635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */,
+				63EC77B61CC8743D008025A7 /* DLIncomingPhotoBubble.swift in Sources */,
 				630570051CBCC94A007D2C9D /* Department.swift in Sources */,
 				635479E81CB8B02A00DE8CBC /* ColorgyAPIMeResult.swift in Sources */,
+				63EC77BD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift in Sources */,
 				635479EB1CB8B02A00DE8CBC /* Period.swift in Sources */,
 				63C3CE201CC0C76F000EE808 /* ColorgyAppNotification.swift in Sources */,
 				635479F21CB8B02A00DE8CBC /* AFError.swift in Sources */,
+				63EC77C11CC8743D008025A7 /* TextInputView.swift in Sources */,
+				63EC77BF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift in Sources */,
+				63EC77B81CC8743D008025A7 /* DLMessageData.swift in Sources */,
 				635479E61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift in Sources */,
 				630570011CBCBC86007D2C9D /* Semester.swift in Sources */,
+				63EC77BA1CC8743D008025A7 /* DLMessagesViewController.swift in Sources */,
 				63C3CE211CC0C76F000EE808 /* NumerExtensions.swift in Sources */,
 				635479E41CB8B02A00DE8CBC /* ColorgyUserInformation.swift in Sources */,
+				63EC77B21CC8743D008025A7 /* ATrickyView.swift in Sources */,
 				63561C4C1CBF937F004AEF6D /* ColorgyColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

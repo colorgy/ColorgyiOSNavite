@@ -8,3 +8,4 @@ github "marketplacer/keychain-swift" ~> 3.0
 github "socketio/socket.io-client-swift" ~> 6.0.0
 github "Quick/Quick"
 github "Quick/Nimble"
+github "delba/Log"

@@ -111,6 +111,20 @@ SWIFT_CLASS("_TtC14SKPhotoBrowser13SKCaptionView")
 
 @class UIImage;
 
+SWIFT_CLASS("_TtC14SKPhotoBrowser12SKLocalPhoto")
+@interface SKLocalPhoto : NSObject
+@property (nonatomic, strong) UIImage * _Null_unspecified underlyingImage;
+@property (nonatomic, copy) NSString * _Null_unspecified photoURL;
+@property (nonatomic) BOOL shouldCachePhotoURLImage;
+@property (nonatomic, copy) NSString * _Null_unspecified caption;
+- (void)checkCache;
+- (void)loadUnderlyingImageAndNotify;
+- (void)loadUnderlyingImageComplete;
++ (SKLocalPhoto * _Nonnull)photoWithImageURL:(NSString * _Nonnull)url;
++ (SKLocalPhoto * _Nonnull)photoWithImageURL:(NSString * _Nonnull)url holder:(UIImage * _Nullable)holder;
+@end
+
+
 SWIFT_CLASS("_TtC14SKPhotoBrowser7SKPhoto")
 @interface SKPhoto : NSObject
 @property (nonatomic, strong) UIImage * _Null_unspecified underlyingImage;
@@ -158,8 +172,6 @@ SWIFT_CLASS("_TtC14SKPhotoBrowser14SKPhotoBrowser")
 @property (nonatomic, weak) id <SKPhotoBrowserDelegate> _Nullable delegate;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Null_unspecified)nibNameOrNil bundle:(NSBundle * _Null_unspecified)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithPhotos:(NSArray * _Nonnull)photos;
-- (nonnull instancetype)initWithOriginImage:(UIImage * _Nonnull)originImage photos:(NSArray * _Nonnull)photos animatedFromView:(UIView * _Nonnull)animatedFromView;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewWillLayoutSubviews;
