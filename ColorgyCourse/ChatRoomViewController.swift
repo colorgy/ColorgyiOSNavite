@@ -64,72 +64,72 @@ extension ChatroomViewController : DLMessagesViewControllerDelegate {
 	
 	public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if viewModel != nil {
-			return viewModel!.messages.count
+			return viewModel!.messageList.count
 		} else {
 			return 0
 		}
 	}
 	
 	public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		if viewModel?.messages[indexPath.row].userId != userId {
+		if viewModel?.messageList[indexPath.row].userId != userId {
 			// incoming
-			if viewModel?.messages[indexPath.row].type == ChatMessage.MessageType.Text {
+			if viewModel?.messageList[indexPath.row].type == ChatMessage.MessageType.Text {
 				let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLIncomingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLIncomingMessageBubble
 				
 				//				cell.userImageView.sd_setImageWithURL(userProfileImageString.url, placeholderImage: nil)
 //				cell.userImageView.image = userProfileImage
-				cell.message = viewModel?.messages[indexPath.row]
+				cell.message = viewModel?.messageList[indexPath.row]
 				cell.delegate = self
 				
 				return cell
-			} else if viewModel?.messages[indexPath.row].type == ChatMessage.MessageType.Image {
+			} else if viewModel?.messageList[indexPath.row].type == ChatMessage.MessageType.Image {
 				let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLIncomingPhotoBubbleIdentifier, forIndexPath: indexPath) as! DLIncomingPhotoBubble
 				
 				//				cell.userImageView.sd_setImageWithURL(userProfileImageString.url, placeholderImage: nil)
 //				cell.userImageView.image = userProfileImage
-				cell.message = viewModel?.messages[indexPath.row]
+				cell.message = viewModel?.messageList[indexPath.row]
 				cell.delegate = self
 				
 				return cell
-			} else if viewModel?.messages[indexPath.row].type == ChatMessage.MessageType.Sticker {
+			} else if viewModel?.messageList[indexPath.row].type == ChatMessage.MessageType.Sticker {
 				let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLIncomingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLIncomingMessageBubble
 				
-				cell.message = viewModel?.messages[indexPath.row]
+				cell.message = viewModel?.messageList[indexPath.row]
 				cell.delegate = self
 				
 				return cell
 			} else {
 				let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLIncomingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLIncomingMessageBubble
 				
-				cell.message = viewModel?.messages[indexPath.row]
+				cell.message = viewModel?.messageList[indexPath.row]
 				cell.delegate = self
 				
 				return cell
 			}
 		} else {
-			if viewModel?.messages[indexPath.row].type == ChatMessage.MessageType.Text {
+			if viewModel?.messageList[indexPath.row].type == ChatMessage.MessageType.Text {
 				let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLOutgoingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLOutgoingMessageBubble
 				
-				cell.message = viewModel?.messages[indexPath.row]
+				cell.message = viewModel?.messageList[indexPath.row]
 				
 				return cell
-			} else if viewModel?.messages[indexPath.row].type == ChatMessage.MessageType.Image {
+			} else if viewModel?.messageList[indexPath.row].type == ChatMessage.MessageType.Image {
 				let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLOutgoingPhotoBubbleIdentifier, forIndexPath: indexPath) as! DLOutgoingPhotoBubble
 				
-				cell.message = viewModel?.messages[indexPath.row]
+				cell.message = viewModel?.messageList[indexPath.row]
 				cell.delegate = self
 				
 				return cell
-			} else if viewModel?.messages[indexPath.row].type == ChatMessage.MessageType.Sticker {
+			} else if viewModel?.messageList[indexPath.row].type == ChatMessage.MessageType.Sticker {
 				let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLOutgoingPhotoBubbleIdentifier, forIndexPath: indexPath) as! DLOutgoingPhotoBubble
 				
-				cell.message = viewModel?.messages[indexPath.row]
+				cell.message = viewModel?.messageList[indexPath.row]
 				
 				return cell
 			} else {
 				let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLOutgoingPhotoBubbleIdentifier, forIndexPath: indexPath) as! DLOutgoingPhotoBubble
 				
-				cell.message = viewModel?.messages[indexPath.row]
+				cell.message = viewModel?.messageList[indexPath.row]
 				
 				return cell
 			}
@@ -154,6 +154,7 @@ extension ChatroomViewController : ChatroomViewModelDelegate {
 	}
 	
 	public func chatroomViewModelDidConnectToChatRoom() {
+		print(viewModel?.messageList.messageList)
 		recievingABunchMessages()
 	}
 	

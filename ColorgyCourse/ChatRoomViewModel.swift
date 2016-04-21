@@ -31,7 +31,7 @@ final public class ChatroomViewModel {
 	
 	// MARK: Socket data
 	var chatroom: Chatroom?
-	var messages: [ChatMessage]
+	var messageList: ChatMessageList
 	
 	// MARK: Private
 	private let socket: ColorgySocket
@@ -40,7 +40,7 @@ final public class ChatroomViewModel {
 	public init(delegate: ChatroomViewModelDelegate?) {
 		self.delegate = delegate
 		self.socket = ColorgySocket()
-		self.messages = [ChatMessage]()
+		self.messageList = ChatMessageList()
 	}
 	
 	// MARK: - Public Methods
@@ -85,7 +85,7 @@ final public class ChatroomViewModel {
 			self.chatroom = chatroom
 			}, withMessages: { (messages) in
 				for m in messages {
-					self.messages.append(m)
+					self.messageList.addMessage(m)
 					self.delegate?.chatroomViewModelRecievedOneMessage()
 				}
 				self.delegate?.chatroomViewModelDidConnectToChatRoom()
@@ -95,7 +95,7 @@ final public class ChatroomViewModel {
 		
 		socket.onRecievingMessage { (messages) in
 			for m in messages {
-				self.messages.append(m)
+				self.messageList.addMessage(m)
 				self.delegate?.chatroomViewModelRecievedOneMessage()
 			}
 			self.delegate?.chatroomViewModelDidRecieveMessages()

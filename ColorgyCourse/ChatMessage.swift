@@ -76,6 +76,18 @@ final public class ChatMessage: NSObject {
 		self.init(id: id, type: type, content: content, userId: userId, createdAt: createdAt, chatProgress: chatProgress)
 	}
 	
+	init(fakedata id: String) {
+		
+		self.id = id
+		self.type = ""
+		self.content = ""
+		self.userId = ""
+		self.createdAt = TimeStamp()
+		self.chatProgress = 0
+		
+		super.init()
+	}
+	
 	convenience init?(onRequestingMoreMessage json: JSON) {
 		
 		var id: String?
@@ -216,6 +228,15 @@ final public class ChatMessage: NSObject {
 					complete(messages: messages)
 				})
 			}
+		}
+	}
+	
+	/// Will check message's id, same message will have same id
+	public override func isEqual(object: AnyObject?) -> Bool {
+		if let object = object as? ChatMessage {
+			return self.id == object.id
+		} else {
+			return false
 		}
 	}
 }
