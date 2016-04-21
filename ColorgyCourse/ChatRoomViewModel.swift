@@ -7,11 +7,19 @@
 //
 
 import Foundation
+import Photos
+import ImagePickerSheetController
 
 public protocol ChatroomViewModelDelegate: class {
 	func chatroomViewModelDidConnectToChatRoom()
 	func chatroomViewModelDidRecieveMessages()
 	func chatroomViewModelRecievedOneMessage()
+	// photo
+	func chatroomViewModelRequestPhotoAccess()
+	func chatroomViewModelNeedPermissionToAccessPhoto()
+	func chatroomViewModelOpenImagePicker()
+	// Send message fail
+	func chatroomViewModelFailToSendMessage(error: ChatAPIError, afError: AFError?)
 }
 
 final public class ChatroomViewModel {
@@ -38,6 +46,7 @@ final public class ChatroomViewModel {
 	private let api: ColorgyChatAPI
 	private var isRequestingForMoreMessage: Bool = false
 	private var historyMessagesCount: Int = 0
+	private var shouldDisconnectSocket: Bool = true
 	
 	// MARK: Public 
 	
@@ -50,6 +59,11 @@ final public class ChatroomViewModel {
 		self.api = ColorgyChatAPI()
 	}
 	
+	// MARK: - Deinit
+	deinit {
+		socket.disconnect()
+	}
+	
 	// MARK: - Public Methods
 	public func connectToChatRoom() {
 		prepareForSocket()
@@ -59,6 +73,33 @@ final public class ChatroomViewModel {
 		guard let message = message else { return }
 		guard let userId = userId else { return }
 		socket.sendTextMessage(message, withUserId: userId)
+	}
+	
+	public func sendImage(image: UIImage) {
+		guard let userId = userId else { return }
+		api.uploadImage(image, success: { (result) in
+			self.socket.sendPhotoMessage(result, withUserId: userId)
+			}, failure: { (error, afError) in
+				self.delegate?.chatroomViewModelFailToSendMessage(error, afError: afError)
+		})
+	}
+	
+	public func openImagePicker() {
+		if PHPhotoLibrary.authorizationStatus() == .Authorized {
+			self.shouldDisconnectSocket = false
+			delegate?.chatroomViewModelOpenImagePicker()
+		} else if PHPhotoLibrary.authorizationStatus() == .Denied {
+			delegate?.chatroomViewModelNeedPermissionToAccessPhoto()
+		} else if PHPhotoLibrary.authorizationStatus() == .NotDetermined {
+			PHPhotoLibrary.requestAuthorization({ (status: PHAuthorizationStatus) -> Void in
+				let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 1.0))
+				dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
+					self.openImagePicker()
+				})
+			})
+		} else {
+			delegate?.chatroomViewModelNeedPermissionToAccessPhoto()
+		}
 	}
 	
 	// MARK: - Private Methods

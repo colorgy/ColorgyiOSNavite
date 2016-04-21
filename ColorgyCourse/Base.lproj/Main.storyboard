@@ -219,10 +219,10 @@
             </objects>
             <point key="canvasLocation" x="-302" y="-127"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Colorgy Navigation Controller-->
         <scene sceneID="YJt-Uo-Ov6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wNN-6T-gAM" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wNN-6T-gAM" customClass="ColorgyNavigationController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="f6k-Og-v7P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

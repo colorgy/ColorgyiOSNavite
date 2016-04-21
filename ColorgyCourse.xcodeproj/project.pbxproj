@@ -68,6 +68,7 @@
 		637305641CBF83D80016A7FC /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637305631CBF83D80016A7FC /* UIViewExtension.swift */; };
 		6375476E1CC87C1800BC3BBD /* TestChatLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375476D1CC87C1800BC3BBD /* TestChatLoginVC.swift */; };
 		637547701CC8A96900BC3BBD /* ChatMessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375476F1CC8A96900BC3BBD /* ChatMessageList.swift */; };
+		637547721CC8B1BB00BC3BBD /* FloatingOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547711CC8B1BB00BC3BBD /* FloatingOptionView.swift */; };
 		63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */; };
 		63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */; };
 		63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */; };
@@ -256,6 +257,7 @@
 		637305631CBF83D80016A7FC /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		6375476D1CC87C1800BC3BBD /* TestChatLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestChatLoginVC.swift; sourceTree = "<group>"; };
 		6375476F1CC8A96900BC3BBD /* ChatMessageList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageList.swift; sourceTree = "<group>"; };
+		637547711CC8B1BB00BC3BBD /* FloatingOptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingOptionView.swift; sourceTree = "<group>"; };
 		6379FC701CBEA1A8002F10E1 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
@@ -553,6 +555,7 @@
 			isa = PBXGroup;
 			children = (
 				63EC77C21CC87595008025A7 /* ChatRoomViewController.swift */,
+				637547711CC8B1BB00BC3BBD /* FloatingOptionView.swift */,
 				63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */,
 			);
 			name = "Chat Room View";
@@ -988,6 +991,7 @@
 				635479E61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift in Sources */,
 				630570011CBCBC86007D2C9D /* Semester.swift in Sources */,
 				63EC77BA1CC8743D008025A7 /* DLMessagesViewController.swift in Sources */,
+				637547721CC8B1BB00BC3BBD /* FloatingOptionView.swift in Sources */,
 				63C3CE211CC0C76F000EE808 /* NumerExtensions.swift in Sources */,
 				635479E41CB8B02A00DE8CBC /* ColorgyUserInformation.swift in Sources */,
 				63EC77B21CC8743D008025A7 /* ATrickyView.swift in Sources */,
