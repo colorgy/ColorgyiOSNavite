@@ -113,6 +113,8 @@
 		63EC77BE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77AE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib */; };
 		63EC77BF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77AF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift */; };
 		63EC77C11CC8743D008025A7 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77B11CC8743D008025A7 /* TextInputView.swift */; };
+		63EC77C31CC87595008025A7 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C21CC87595008025A7 /* ChatRoomViewController.swift */; };
+		63EC77C51CC875A0008025A7 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */; };
 		63F3EE6B1CBF3CA00010D059 /* TestColorgyRefershCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3EE6A1CBF3CA00010D059 /* TestColorgyRefershCenter.swift */; };
 		63F3EE731CBF49CC0010D059 /* PeriodRawDataRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */; };
 		63F3EE761CBF49D10010D059 /* ColorgyUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D41CB8B02A00DE8CBC /* ColorgyUserInformation.swift */; };
@@ -282,6 +284,8 @@
 		63EC77AE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLOutgoingPhotoBubble.xib; sourceTree = "<group>"; };
 		63EC77AF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLPhotoMessageDelegate.swift; sourceTree = "<group>"; };
 		63EC77B11CC8743D008025A7 /* TextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
+		63EC77C21CC87595008025A7 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		63F3EE6A1CBF3CA00010D059 /* TestColorgyRefershCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestColorgyRefershCenter.swift; sourceTree = "<group>"; };
 		63F3EE991CBF53A40010D059 /* TestColorgyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestColorgyAPI.swift; sourceTree = "<group>"; };
 		63F3EE9B1CBF56990010D059 /* TestCourseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCourseModel.swift; sourceTree = "<group>"; };
@@ -433,6 +437,8 @@
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
 				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
 				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
+				63EC77C21CC87595008025A7 /* ChatRoomViewController.swift */,
+				63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */,
 				63C3CE161CC0C673000EE808 /* Email Login View */,
 				63C3CE171CC0C67D000EE808 /* Email Register View */,
 				630570081CBD0A45007D2C9D /* Login View */,
@@ -947,6 +953,7 @@
 				637305601CBF823B0016A7FC /* EmailRegisterViewController.swift in Sources */,
 				630570181CBD233A007D2C9D /* Hello.swift in Sources */,
 				635479CF1CB8A5EF00DE8CBC /* Release.swift in Sources */,
+				63EC77C51CC875A0008025A7 /* ChatRoomViewModel.swift in Sources */,
 				635479E51CB8B02A00DE8CBC /* TimeStamp.swift in Sources */,
 				635479E71CB8B02A00DE8CBC /* ColorgyAPI.swift in Sources */,
 				635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */,
@@ -956,6 +963,7 @@
 				635479E81CB8B02A00DE8CBC /* ColorgyAPIMeResult.swift in Sources */,
 				63EC77BD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift in Sources */,
 				635479EB1CB8B02A00DE8CBC /* Period.swift in Sources */,
+				63EC77C31CC87595008025A7 /* ChatRoomViewController.swift in Sources */,
 				63C3CE201CC0C76F000EE808 /* ColorgyAppNotification.swift in Sources */,
 				635479F21CB8B02A00DE8CBC /* AFError.swift in Sources */,
 				63EC77C11CC8743D008025A7 /* TextInputView.swift in Sources */,
