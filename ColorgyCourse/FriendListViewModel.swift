@@ -9,7 +9,9 @@
 import Foundation
 
 public protocol FriendListViewModelDelegate: class {
-	
+	func friendListViewModelFailToLoadFriendList(error: ChatAPIError, afError: AFError?)
+	func friendListViewModelFinishLoadFriendList()
+	func friendListViewModelChatContextError(error: ColorgyChatContextError)
 }
 
 final public class FriendListViewModel {
@@ -17,17 +19,34 @@ final public class FriendListViewModel {
 	// MARK: - Parameters
 	// MARK: Public
 	public weak var delegate: FriendListViewModelDelegate?
-	public var historyChatrooms: [HistoryChatroom]
-	public var hiList: [Hello]
+	public private(set) var historyChatrooms: [HistoryChatroom]
+	public private(set) var hiList: [Hello]
+	// MARK: Private
+	private let api: ColorgyChatAPI
 	
 	// MARK: - Init
 	public init(delegate: FriendListViewModelDelegate?) {
 		self.delegate = delegate
 		self.historyChatrooms = [HistoryChatroom]()
 		self.hiList = [Hello]()
+		self.api = ColorgyChatAPI()
 	}
 	
 	// MARK: - Public Methods
+	public func loadFriendList() {
+		// check context if user id does exist
+		guard let userId = ColorgyChatContext.sharedInstance().userId else {
+			self.delegate?.friendListViewModelChatContextError(ColorgyChatContextError.NoUserId)
+			return
+		}
+		// fire api to get history chatroom
+		api.getHistoryTarget(userId, gender: Gender.Unspecified, page: 0, success: { (targets) in
+			self.historyChatrooms = targets
+			self.delegate?.friendListViewModelFinishLoadFriendList()
+		}, failure: { (error, afError) in
+			self.delegate?.friendListViewModelFailToLoadFriendList(error, afError: afError)
+		})
+	}
 	
 	// MARK: - Private Methods
 	

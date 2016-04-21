@@ -16,7 +16,6 @@ class FriendListTableViewCell: UITableViewCell {
 	@IBOutlet weak var userLastMessageLabel: UILabel!
 	@IBOutlet weak var timeStampLabel: UILabel!
 	
-	var userId: String?
 	var historyChatroom: HistoryChatroom! {
 		didSet {
 			if historyChatroom != nil {
@@ -28,7 +27,6 @@ class FriendListTableViewCell: UITableViewCell {
 	func updateUI() {
 		if historyChatroom.image.isValidURLString {
 			
-			print("chatProgress\(historyChatroom.chatProgress)")
 			if historyChatroom.chatProgress >= 100 {
 				// can show photo
 				userProfileImageView.sd_setImageWithURL(historyChatroom.image.url)
@@ -65,7 +63,7 @@ class FriendListTableViewCell: UITableViewCell {
 		}
 		userNameLabel.text = (historyChatroom.name != "" ? historyChatroom.name : " ")
 		userQuestionLabel.text = " "
-		let prefixString = (userId == historyChatroom.lastSpeaker ? "你：" : "")
+		let prefixString = (ColorgyChatContext.sharedInstance().userId == historyChatroom.lastSpeaker ? "你：" : "")
 		let lastMessage = (historyChatroom.lastContent != "" ? historyChatroom.lastContent : " ") ?? " "
 		userLastMessageLabel.text = prefixString + lastMessage
 		timeStampLabel.text = historyChatroom.lastContentTime.timeStampString()

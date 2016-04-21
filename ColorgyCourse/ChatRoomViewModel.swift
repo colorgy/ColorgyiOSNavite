@@ -29,17 +29,13 @@ final public class ChatroomViewModel {
 	
 	// MARK: Required
 	/// **Need chatroomId to create chatroom**
-	var chatroomId: String!
-	/// **Need userId to create chatroom**
-	var userId: String!
-	/// **Need uuid to create chatroom**
-	var uuid: String!
+	public var chatroomId: String!
 	/// **Need history chatroom to check blur percentage
-	var historyChatroom: HistoryChatroom!
+	public var historyChatroom: HistoryChatroom!
 	
 	// MARK: Socket data
-	var chatroom: Chatroom?
-	var messageList: ChatMessageList
+	public var chatroom: Chatroom?
+	public private(set) var messageList: ChatMessageList
 	
 	// MARK: Private
 	private let socket: ColorgySocket
@@ -71,12 +67,12 @@ final public class ChatroomViewModel {
 	
 	public func sendTextMessage(message: String?) {
 		guard let message = message else { return }
-		guard let userId = userId else { return }
+		guard let userId = ColorgyChatContext.sharedInstance().userId else { return }
 		socket.sendTextMessage(message, withUserId: userId)
 	}
 	
 	public func sendImage(image: UIImage) {
-		guard let userId = userId else { return }
+		guard let userId = ColorgyChatContext.sharedInstance().userId else { return }
 		api.uploadImage(image, success: { (result) in
 			self.socket.sendPhotoMessage(result, withUserId: userId)
 			}, failure: { (error, afError) in
@@ -113,11 +109,11 @@ final public class ChatroomViewModel {
 			print("fail to initialize chat room, no chatroomId")
 			return
 		}
-		guard userId != nil else {
+		guard let userId = ColorgyChatContext.sharedInstance().userId else {
 			print("fail to initialize chat room, no userId")
 			return
 		}
-		guard uuid != nil else {
+		guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 			print("fail to initialize chat room, no uuid")
 			return
 		}

@@ -18,6 +18,8 @@ public class FriendListViewController: UIViewController {
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		title = "好朋友"
+		
 		friendListTableView.delegate = self
 		friendListTableView.dataSource = self
 		friendListTableView.estimatedRowHeight = 120
@@ -28,12 +30,35 @@ public class FriendListViewController: UIViewController {
 		viewModel = FriendListViewModel(delegate: self)
 	}
 	
+	public override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		viewModel?.loadFriendList()
+		delay(2.0) { 
+			self.viewModel?.loadFriendList()
+		}
+	}
+	
+	func delay(time: Double, complete: () -> Void) {
+		let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * time))
+		dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
+			complete()
+		})
+	}
+	
 	// MARK: - Storyboard
 	struct Storyboard {
 		static let FriendListCellIdentifier = "Friend List Cell"
-//		static let GotoChatroomSegueIdentifier = "goto chatroom"
+		static let GotoChatroomSegueIdentifier = "chat room segue"
 		static let SayHelloCellIdentifier = "hello counts cell"
 //		static let SayHelloSegue = "to say hi segue" 
+	}
+	
+	public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == Storyboard.GotoChatroomSegueIdentifier, let historyChatroom = sender as? HistoryChatroom {
+			let vc = segue.destinationViewController as! ChatroomViewController
+			vc.historyChatroom = historyChatroom
+		}
 	}
 }
 
@@ -59,15 +84,40 @@ extension FriendListViewController : UITableViewDelegate, UITableViewDataSource 
 			return cell
 		} else {
 			let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.FriendListCellIdentifier, forIndexPath: indexPath) as! FriendListTableViewCell
-			
-			cell.userId = userId
 			cell.historyChatroom = viewModel?.historyChatrooms[indexPath.row]
-			
 			return cell
+		}
+	}
+	
+	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		if indexPath.section == 0 {
+			print("to hello view \(#line) \(#file) \(#function)")
+		} else {
+			performSegueWithIdentifier(Storyboard.GotoChatroomSegueIdentifier, sender: viewModel?.historyChatrooms[indexPath.row])
+		}
+	}
+	
+	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		if indexPath.section == 0 {
+			return 51
+		} else {
+			return 82
 		}
 	}
 }
 
 extension FriendListViewController : FriendListViewModelDelegate {
 	
+	public func friendListViewModelFinishLoadFriendList() {
+		print("ok load friend")
+		friendListTableView.reloadData()
+	}
+	
+	public func friendListViewModelChatContextError(error: ColorgyChatContextError) {
+		print("Context error: \(error) \(#line) \(#function)")
+	}
+	
+	public func friendListViewModelFailToLoadFriendList(error: ChatAPIError, afError: AFError?) {
+		print("api error: \(error) \(afError) \(#line) \(#function)")
+	}
 }

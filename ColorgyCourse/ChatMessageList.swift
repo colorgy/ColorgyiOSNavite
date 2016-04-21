@@ -8,19 +8,19 @@
 
 import Foundation
 
-class ChatMessageList {
+final public class ChatMessageList {
 	var messageList: [ChatMessage]
 	
-	init() {
+	public init() {
 		messageList = [ChatMessage]()
 	}
 	
-	func addMessage(message:ChatMessage) {
+	public func addMessage(message:ChatMessage) {
 		messageList.append(message)
 	}
 	
 	// MARK: - Public Getter
-	var count: Int {
+	public var count: Int {
 		return messageList.count
 	}
 	
@@ -38,15 +38,15 @@ class ChatMessageList {
 }
 
 extension ChatMessageList : SequenceType {
-	typealias Generator = ChatMessageListGenerator
+	public typealias Generator = ChatMessageListGenerator
 	
-	func generate() -> Generator {
+	public func generate() -> Generator {
 		return ChatMessageListGenerator(chatMessageList: self.messageList)
 	}
 }
 
-class ChatMessageListGenerator : GeneratorType {
-	typealias Element = ChatMessage
+public class ChatMessageListGenerator : GeneratorType {
+	public typealias Element = ChatMessage
 	
 	var currentIndex: Int = 0
 	var chatMessageList: [ChatMessage]?
@@ -55,7 +55,7 @@ class ChatMessageListGenerator : GeneratorType {
 		self.chatMessageList = chatMessageList
 	}
 	
-	func next() -> Element? {
+	public func next() -> Element? {
 		guard let list = chatMessageList else { return nil }
 		
 		if currentIndex < list.count {

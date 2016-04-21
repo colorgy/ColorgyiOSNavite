@@ -1521,7 +1521,8 @@ final public class ColorgyChatAPI: NSObject {
 			self.manager.POST(self.serverURL + "/users/get_history_target", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
-					let targets = HistoryChatroom.generateHistoryChatrooms(json)
+					var targets = HistoryChatroom.generateHistoryChatrooms(json)
+					targets.sortInPlace { $0.lastContentTime.timeIntervalSince1970() > $1.lastContentTime.timeIntervalSince1970() }
 					self.mainBlock({
 						success?(targets: targets)
 					})

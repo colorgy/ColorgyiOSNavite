@@ -13,12 +13,6 @@ import ImagePickerSheetController
 final public class ChatroomViewController: DLMessagesViewController {
 	
 	// MARK: - Parameters
-	/// **Need chatroomId to create chatroom**
-	var chatroomId: String!
-	/// **Need userId to create chatroom**
-	var userId: String!
-	/// **Need uuid to create chatroom**
-	var uuid: String!
 	/// **Need history chatroom to check blur percentage
 	var historyChatroom: HistoryChatroom!
 	
@@ -32,7 +26,7 @@ final public class ChatroomViewController: DLMessagesViewController {
 	// MARK: - Life Cycle
     override public func viewDidLoad() {
         super.viewDidLoad()
-		
+	
 		self.delegate = self
         // Do any additional setup after loading the view.
 		setupViewModel()
@@ -57,9 +51,7 @@ final public class ChatroomViewController: DLMessagesViewController {
 	// MARK: - Configuration
 	private func setupViewModel() {
 		viewModel = ChatroomViewModel(delegate: self)
-		viewModel?.chatroomId = self.chatroomId
-		viewModel?.userId = self.userId
-		viewModel?.uuid = self.uuid
+		viewModel?.chatroomId = self.historyChatroom.chatroomId
 	}
 	
 	private func configureFloatingOptionView() {
@@ -132,7 +124,7 @@ extension ChatroomViewController : DLMessagesViewControllerDelegate {
 	}
 	
 	public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		if viewModel?.messageList[indexPath.row].userId != userId {
+		if viewModel?.messageList[indexPath.row].userId != ColorgyChatContext.sharedInstance().userId {
 			// incoming
 			if viewModel?.messageList[indexPath.row].type == ChatMessage.MessageType.Text {
 				let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLIncomingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLIncomingMessageBubble
