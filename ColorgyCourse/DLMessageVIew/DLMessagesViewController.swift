@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct DLMessageControllerIdentifier {
+public struct DLMessageControllerIdentifier {
     static let DLIncomingMessageBubbleIdentifier = "DLIncomingMessageBubble"
     static let DLOutgoingMessageBubbleIdentifier = "DLOutgoingMessageBubble"
 	
@@ -16,13 +16,13 @@ struct DLMessageControllerIdentifier {
 	static let DLOutgoingPhotoBubbleIdentifier = "DLOutgoingPhotoBubble"
 }
 
-protocol DLMessagesViewControllerDelegate {
+public protocol DLMessagesViewControllerDelegate {
     func DLMessagesViewControllerDidClickedMessageButton(withReturnMessage message: String?)
 	func DLMessagesViewControllerDidClickedCameraButton()
 	func DLMessagesViewControllerDidTapOnBubbleTableView()
 }
 
-class DLMessagesViewController: UIViewController {
+public class DLMessagesViewController: UIViewController {
     
     var bubbleTableView: UITableView!
     var keyboardTextInputView: TextInputView!
@@ -34,7 +34,7 @@ class DLMessagesViewController: UIViewController {
 	// tap to dismiss keyboard
 	var tapToDismissKeyboard: Bool = true
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
@@ -94,12 +94,12 @@ class DLMessagesViewController: UIViewController {
 		self.view.addSubview(keyboardTextInputView)
 	}
 	
-	override func viewDidAppear(animated: Bool) {
+	public override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		registerForNotifications()
 	}
 	
-	override func viewDidDisappear(animated: Bool) {
+	public override func viewDidDisappear(animated: Bool) {
 		super.viewDidDisappear(animated)
 		unregisterNotifications()
 	}
@@ -260,21 +260,21 @@ extension DLMessagesViewController : TextInputViewDelegate {
 }
 
 extension DLMessagesViewController : UITableViewDelegate, UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLIncomingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLIncomingMessageBubble
         
         return cell
     }
 	
-	func scrollViewDidScroll(scrollView: UIScrollView) {
+	public func scrollViewDidScroll(scrollView: UIScrollView) {
 		
 	}
 }

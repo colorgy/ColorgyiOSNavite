@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w2D-G2-Odt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wNN-6T-gAM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,10 +7,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Chatroom View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ChatroomViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,7 +23,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="639"/>
+            <point key="canvasLocation" x="1278" y="635"/>
+        </scene>
+        <!--Test Chat LoginVC-->
+        <scene sceneID="kBN-tI-3HR">
+            <objects>
+                <viewController id="Jlv-r0-Ei7" customClass="TestChatLoginVC" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zqd-Qt-tqr"/>
+                        <viewControllerLayoutGuide type="bottom" id="wSQ-0p-sLV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NQl-gV-p8l">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbg-GP-4qV">
+                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="btC" destination="Jlv-r0-Ei7" eventType="touchUpInside" id="Fu9-ys-ItV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zbg-GP-4qV" firstAttribute="centerY" secondItem="NQl-gV-p8l" secondAttribute="centerY" id="Hys-kJ-Lra"/>
+                            <constraint firstItem="zbg-GP-4qV" firstAttribute="centerX" secondItem="NQl-gV-p8l" secondAttribute="centerX" id="sDW-KH-Iks"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Lqq-md-YhH"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="show room" id="8LJ-2M-ayS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HZx-wu-HCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="510" y="635"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Ip2-aH-Lj4">
@@ -164,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9r-gl-eJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="217"/>
+            <point key="canvasLocation" x="2264" y="217"/>
         </scene>
         <!--Colorgy Navigation Controller-->
         <scene sceneID="Tf1-v9-rts">
@@ -183,6 +218,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LxE-nV-GAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-302" y="-127"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YJt-Uo-Ov6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wNN-6T-gAM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="f6k-Og-v7P">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Jlv-r0-Ei7" kind="relationship" relationship="rootViewController" id="wtP-R2-nOY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L5m-Mu-RIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-302" y="635"/>
         </scene>
     </scenes>
     <resources>

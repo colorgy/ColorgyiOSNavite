@@ -66,6 +66,7 @@
 		637305601CBF823B0016A7FC /* EmailRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373055F1CBF823B0016A7FC /* EmailRegisterViewController.swift */; };
 		637305621CBF82D10016A7FC /* IconedTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637305611CBF82D10016A7FC /* IconedTextInputView.swift */; };
 		637305641CBF83D80016A7FC /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637305631CBF83D80016A7FC /* UIViewExtension.swift */; };
+		6375476E1CC87C1800BC3BBD /* TestChatLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375476D1CC87C1800BC3BBD /* TestChatLoginVC.swift */; };
 		63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */; };
 		63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */; };
 		63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */; };
@@ -252,6 +253,7 @@
 		6373055F1CBF823B0016A7FC /* EmailRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailRegisterViewController.swift; sourceTree = "<group>"; };
 		637305611CBF82D10016A7FC /* IconedTextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconedTextInputView.swift; sourceTree = "<group>"; };
 		637305631CBF83D80016A7FC /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		6375476D1CC87C1800BC3BBD /* TestChatLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestChatLoginVC.swift; sourceTree = "<group>"; };
 		6379FC701CBEA1A8002F10E1 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
@@ -437,8 +439,8 @@
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
 				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
 				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
-				63EC77C21CC87595008025A7 /* ChatRoomViewController.swift */,
-				63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */,
+				6375476D1CC87C1800BC3BBD /* TestChatLoginVC.swift */,
+				6375476C1CC87BF600BC3BBD /* Chat Room View */,
 				63C3CE161CC0C673000EE808 /* Email Login View */,
 				63C3CE171CC0C67D000EE808 /* Email Register View */,
 				630570081CBD0A45007D2C9D /* Login View */,
@@ -542,6 +544,15 @@
 				635479E21CB8B02A00DE8CBC /* AFError.swift */,
 			);
 			name = "AFNetworking Helper";
+			sourceTree = "<group>";
+		};
+		6375476C1CC87BF600BC3BBD /* Chat Room View */ = {
+			isa = PBXGroup;
+			children = (
+				63EC77C21CC87595008025A7 /* ChatRoomViewController.swift */,
+				63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */,
+			);
+			name = "Chat Room View";
 			sourceTree = "<group>";
 		};
 		63C3CE161CC0C673000EE808 /* Email Login View */ = {
@@ -967,6 +978,7 @@
 				63C3CE201CC0C76F000EE808 /* ColorgyAppNotification.swift in Sources */,
 				635479F21CB8B02A00DE8CBC /* AFError.swift in Sources */,
 				63EC77C11CC8743D008025A7 /* TextInputView.swift in Sources */,
+				6375476E1CC87C1800BC3BBD /* TestChatLoginVC.swift in Sources */,
 				63EC77BF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift in Sources */,
 				63EC77B81CC8743D008025A7 /* DLMessageData.swift in Sources */,
 				635479E61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift in Sources */,
