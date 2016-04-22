@@ -51,7 +51,7 @@ final public class FriendListViewModel {
 			return
 		}
 		// fire api to get history chatroom
-		api.getHistoryTarget(userId, gender: Gender.Unspecified, page: 0, success: { (targets) in
+		api.getHistoryTarget(gender: Gender.Unspecified, page: 0, success: { (targets) in
 			self.historyChatrooms = targets
 			self.delegate?.friendListViewModelFinishLoadFriendList()
 		}, failure: { (error, afError) in

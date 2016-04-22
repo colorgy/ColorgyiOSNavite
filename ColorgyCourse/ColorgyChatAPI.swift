@@ -334,7 +334,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/users/check_name_exists，參數包含使用者的name
 	///2. 回傳json：{ result: 'ok' }或者json：{ result: 'exists' }、狀態皆為200
-	public func checkNameExists(name: String, success: ((status: NameStatus) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func checkNameExists(name name: String, success: ((status: NameStatus) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -403,7 +403,7 @@ final public class ColorgyChatAPI: NSObject {
 	///使用方式：
 	///
 	///1. 傳一個http post給/users/update_name，參數包含使用者的name、userId、 uuid、accessToken
-	public func updateName(name: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func updateName(name name: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -476,7 +476,7 @@ final public class ColorgyChatAPI: NSObject {
 	///使用方式：
 	///
 	///1. 傳一個http post給/users/update_about，參數包含使用者的about、userId、 uuid、accessToken
-	public func updateAbout(horoscope: String?, school: String?, habitancy: String?, conversation: String?, passion: String?, expertise: String?, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func updateAbout(horoscope horoscope: String?, school: String?, habitancy: String?, conversation: String?, passion: String?, expertise: String?, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -556,7 +556,7 @@ final public class ColorgyChatAPI: NSObject {
 	///使用方式：
 	///
 	///1. 傳一個http post給/users/update_from_core，參數包含使用者的 uuid、accessToken
-	public func updateFromCore(success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func updateFromCore(success success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -621,7 +621,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/users/me，參數包括使用者的 uuid, accessToken
 	///2. 回傳使用者的基本資料，包括status, name, about, lastAnswer, avatar_url
-	public func me(success: ((userInformation: ChatMeUserInformation) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func me(success success: ((userInformation: ChatMeUserInformation) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -701,7 +701,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/users/get_user，參數包含使用者的userId
 	///2. 回傳使用者的公開詳細資料，包含使用者的status,name,about,lastAnsweredDate,lastAnswer,avatar_blur_2x_url(預設就是都是最模糊的),organization_code
-	public func getUser(success: ((userInformation: ChatUserInformation) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func getUser(success success: ((userInformation: ChatUserInformation) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -787,7 +787,7 @@ final public class ColorgyChatAPI: NSObject {
 	///使用方式：
 	///
 	///1. 傳一個http post給/report/report_user，參數包含uuid, accessToken,  userId, targetId, type,reason
-	public func reportUser(targetId: String, type: String?, reason: String?, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func reportUser(targetId targetId: String, type: String?, reason: String?, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -864,7 +864,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/users/block_user，參數包含uuid,accessToken, userId,targetId
 	///2. 回傳200即代表已經封鎖
-	public func blockUser(targetId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func blockUser(targetId targetId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -939,7 +939,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/users/get_available_target，參數包含gender,uuid,accessToken,userId,page，page從零開始，0,1,2,3,4,5...一直到回傳為空陣列為止
 	///2. 如果成功，回傳的資料包括id,name, about,lastAnswer,avatar_blur_2x_url,一次會回傳20個
-	public func getAvailableTarget(gender: Gender, page: Int, success: ((targets: [AvailableTarget]) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func getAvailableTarget(gender gender: Gender, page: Int, success: ((targets: [AvailableTarget]) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1023,7 +1023,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http get給/questions/get_question
 	///2. 成功的會會回傳最新的問題以及date參數
-	public func getQuestion(success: (((date: String?, question: String?)) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func getQuestion(success success: (((date: String?, question: String?)) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1076,7 +1076,7 @@ final public class ColorgyChatAPI: NSObject {
 	///使用方式：
 	///
 	///1. 傳一個http post給/users/answer_question，參數包含uuid,accessToken, userId,date(format:yyyymmdd),answer
-	public func answerQuestion(answer: String, date: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func answerQuestion(answer answer: String, date: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1151,7 +1151,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/hi/check_hi，參數包含的userId,targetId,uuid,accessToken
 	///2. 回傳打招呼的結果，有兩種狀況可以繼續打招呼：(1) 從沒打過招呼 (2) 被拒絕可以再打一次，兩者的結果都是一樣的status 200：{ result: 'ok, you can say hi' }，若是已經(1)打過招呼然後成功過 (2)打過招呼還在等候回應，回傳status 200：{ result: 'already said hi' }
-	public func checkHi(targetId: String, success: ((canSayHi: Bool, whoSaidHi: String?, chatroomId: String?) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func checkHi(targetId targetId: String, success: ((canSayHi: Bool, whoSaidHi: String?, chatroomId: String?) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1257,7 +1257,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/hi/say_hi，參數包含使用者的userId,uuid, accessToken,targetId,message
 	///2. 與一個陌生人打招呼
-	public func sayHi(targetId: String, message: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func sayHi(targetId targetId: String, message: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1339,7 +1339,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/hi/get_list，參數包含使用者的userId,uuid,accessToken
 	///2. 回傳被打過招呼的列表
-	public func getHiList(success: ((hiList: [Hello]) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func getHiList(success success: ((hiList: [Hello]) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1421,7 +1421,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/hi/accept_hi，參數包含使用者的userId,uuid, accessToken,hiId
 	///2. 必須要是target才能傳送這個request，會產生一個空的聊天室，回傳status 200
-	public func acceptHi(hiId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func acceptHi(hiId hiId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1495,7 +1495,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/hi/reject_hi，參數包含使用者的userId,uuid, accessToken,hiId
 	///2. 必須要是target才能傳送這個request，會將一個打招呼的status更改為rejected
-	public func rejectHi(hiId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func rejectHi(hiId hiId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1562,7 +1562,7 @@ final public class ColorgyChatAPI: NSObject {
 		}
 	}
 	
-	public func acceptHiWithHistoryChatroomId(hiId: String, success: ((chatroomId: String) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func acceptHiWithHistoryChatroomId(hiId hiId: String, success: ((chatroomId: String) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1651,7 +1651,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/users/check_answered_latest，參數包含uuid,accessToken,userId
 	///2. 成功的會會回傳{ result: 'answered' }以及{ result: 'not answered'  }
-	public func checkAnsweredLatestQuestion(success: ((answered :Bool) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func checkAnsweredLatestQuestion(success success: ((answered :Bool) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1744,7 +1744,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/users/get_history_target，參數包含gender,uuid,accessToken,userId,page，page從零開始，0,1,2,3,4,5...一直到回傳為空陣列為止
 	///2. 如果成功，回傳的資料包括id,name, about,lastAnswer,avatar_blur_2x_url,一次會回傳20個
-	public func getHistoryTarget(gender: Gender, page: Int, success: ((targets: [HistoryChatroom]) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func getHistoryTarget(gender gender: Gender, page: Int, success: ((targets: [HistoryChatroom]) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1829,7 +1829,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/users/remove_chatroom，參數包括：uuid,accessToken,userId,chatroomId
 	///2. 若成功的話，會回傳一個{ result: success }
-	public func removeChatroom(chatroomId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func removeChatroom(chatroomId chatroomId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -1918,7 +1918,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/chatroom/leave_chatroom，參數包括：uuid,accessToken,userId,chatroomId
 	///2. 若成功的話，會回傳一個{ result: success }
-	public func leaveChatroom(chatroomId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func leaveChatroom(chatroomId chatroomId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -2007,7 +2007,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/chatroom/update_target_alias，參數包括uuid,accessToken,userId,chatroomId,alias
 	///2. 若成功之後的establish connection後就會回傳對方的alias
-	public func updateOthersNickName(chatroomId: String, nickname: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func updateOthersNickName(chatroomId chatroomId: String, nickname: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -2082,7 +2082,7 @@ final public class ColorgyChatAPI: NSObject {
 	///
 	///1. 傳一個http post給/chatroom/more_message，參數包含使用者的userId, uuid,accessToken,chatroomId,從頭數過來的offset
 	///2. 比如說你想要拿到第51~75則訊息，offset設定為50即可
-	public func moreMessage(chatroom: Chatroom, historyMessagesCount: Int, success: ((messages: [ChatMessage]) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func moreMessage(chatroom chatroom: Chatroom, historyMessagesCount: Int, success: ((messages: [ChatMessage]) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -2179,7 +2179,7 @@ final public class ColorgyChatAPI: NSObject {
 	}
 	
 	/// email_hints : Get data of email_hints
-	public func GetEmailHints(organizationCode: String, success: ((response: String) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func GetEmailHints(organizationCode organizationCode: String, success: ((response: String) -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({
@@ -2243,7 +2243,7 @@ final public class ColorgyChatAPI: NSObject {
 	///    使用方式：
 	///
 	///    1. 傳一個http post給/users/update_user_status，參數包含使用者的status、 uuid、accessToken
-	public func updateUserStatus(status: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+	public func updateUserStatus(status status: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			self.mainBlock({

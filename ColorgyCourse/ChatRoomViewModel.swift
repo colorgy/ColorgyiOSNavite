@@ -172,7 +172,7 @@ final public class ChatroomViewModel {
 		
 		// fire api
 		api.checkUserAvailability({ (user) in
-			self.api.moreMessage(user.userId, chatroom: chatroom, historyMessagesCount: self.historyMessagesCount, success: { (messages) in
+			self.api.moreMessage(chatroom: chatroom, historyMessagesCount: self.historyMessagesCount, success: { (messages) in
 				// add count from more message
 				self.historyMessagesCount += messages.count
 				// append messages to messageList
