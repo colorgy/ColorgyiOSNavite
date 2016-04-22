@@ -32,22 +32,12 @@ public class FriendListViewController: UIViewController {
 	
 	public override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		
-		delay(2.0) { 
-			self.viewModel?.loadFriendList()
-			self.viewModel?.startLoadingFriend()
-		}
+		viewModel?.startLoadingFriend()
 	}
 	
 	public override func viewDidDisappear(animated: Bool) {
 		super.viewDidDisappear(animated)
-		self.viewModel?.stopLoadingFriend()
-	}
-	func delay(time: Double, complete: () -> Void) {
-		let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * time))
-		dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
-			complete()
-		})
+		viewModel?.stopLoadingFriend()
 	}
 	
 	// MARK: - Storyboard
@@ -121,32 +111,12 @@ extension FriendListViewController : UITableViewDelegate, UITableViewDataSource 
 
 extension FriendListViewController : FriendListViewModelDelegate {
 	
-	public func friendListViewModelFinishLoadFriendList() {
-		print("ok load friend")
-		reloadFriend()
-	}
-	
-	public func friendListViewModelFailToLoadFriendList(error: ChatAPIError, afError: AFError?) {
-		print("api error: \(error) \(afError) \(#line) \(#function)")
-	}
-	
-	public func friendListViewModelFinishLoadHiList() {
-		print("api: \(#line) \(#function)")
-		reloadHi()
-	}
-	
-	public func friendListViewModelFailToLoadHiList(error: ChatAPIError, afError: AFError?) {
-		print("api error: \(error) \(afError) \(#line) \(#function)")
-	}
-	
 	// reload part
 	public func friendListViewModelReloadFriendList() {
-		print("api: \(#line) \(#function)")
 		reloadFriend()
 	}
 	
 	public func friendListViewModelReloadHiList() {
-		print("api: \(#line) \(#function)")
 		reloadHi()
 	}
 	

@@ -269,7 +269,7 @@ final public class ColorgyRefreshCenter {
 	public class func refreshTokenRemainingTime() -> (remainingTime: Double, currentState: RefreshTokenState) {
 		
 		// 7000 second is closed to 2 hrs
-		let aliveTime: Double = 10;
+		let aliveTime: Double = 7000;
 		
 		// make sure refresh token is not revoked
 		guard ColorgyUserInformation.sharedInstance().refreshTokenState != .Revoke else { return  (-1, RefreshTokenState.Revoke) }

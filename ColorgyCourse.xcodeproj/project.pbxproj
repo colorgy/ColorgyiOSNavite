@@ -451,13 +451,10 @@
 				635479CE1CB8A5EF00DE8CBC /* Release.swift */,
 				635479891CB898C100DE8CBC /* ViewController.swift */,
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
-				637547751CC8BF4A00BC3BBD /* FriendListViewModel.swift */,
-				637547771CC8BF6200BC3BBD /* FriendListViewController.swift */,
-				637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */,
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
-				637547731CC8BE8400BC3BBD /* SayHelloCountsCell.swift */,
 				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
 				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
+				6375477E1CC9E65100BC3BBD /* Friend List View */,
 				6375476C1CC87BF600BC3BBD /* Chat Room View */,
 				63C3CE161CC0C673000EE808 /* Email Login View */,
 				63C3CE171CC0C67D000EE808 /* Email Register View */,
@@ -572,6 +569,17 @@
 				63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */,
 			);
 			name = "Chat Room View";
+			sourceTree = "<group>";
+		};
+		6375477E1CC9E65100BC3BBD /* Friend List View */ = {
+			isa = PBXGroup;
+			children = (
+				637547731CC8BE8400BC3BBD /* SayHelloCountsCell.swift */,
+				637547751CC8BF4A00BC3BBD /* FriendListViewModel.swift */,
+				637547771CC8BF6200BC3BBD /* FriendListViewController.swift */,
+				637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */,
+			);
+			name = "Friend List View";
 			sourceTree = "<group>";
 		};
 		63C3CE161CC0C673000EE808 /* Email Login View */ = {

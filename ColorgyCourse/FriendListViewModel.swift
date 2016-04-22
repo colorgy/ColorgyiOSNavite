@@ -9,11 +9,6 @@
 import Foundation
 
 public protocol FriendListViewModelDelegate: class {
-	// first time connect part
-	func friendListViewModelFailToLoadFriendList(error: ChatAPIError, afError: AFError?)
-	func friendListViewModelFinishLoadFriendList()
-	func friendListViewModelFailToLoadHiList(error: ChatAPIError, afError: AFError?)
-	func friendListViewModelFinishLoadHiList()
 	// reload part
 	func friendListViewModelReloadHiList()
 	func friendListViewModelReloadFriendList()
@@ -42,27 +37,8 @@ final public class FriendListViewModel {
 	}
 	
 	// MARK: - Public Methods
-	public func loadFriendList() {
-		// fire api to get history chatroom
-		api.getHistoryTarget(gender: Gender.Unspecified, page: 0, success: { (targets) in
-			self.historyChatrooms = targets
-			self.delegate?.friendListViewModelFinishLoadFriendList()
-		}, failure: { (error, afError) in
-			self.delegate?.friendListViewModelFailToLoadFriendList(error, afError: afError)
-		})
-	}
-	
-	public func loadHi() {
-		api.getHiList(success: { (hiList) in
-			self.hiList = hiList
-			self.delegate?.friendListViewModelFinishLoadHiList()
-			}, failure: { (error, afError) in
-				self.delegate?.friendListViewModelFailToLoadHiList(error, afError: afError)
-		})
-	}
-	
 	public func startLoadingFriend() {
-		loadingFriendTimer = NSTimer(timeInterval: reloadTime, target: self, selector: #selector(reloadFriend), userInfo: nil, repeats: true)
+		loadingFriendTimer = NSTimer(timeInterval: reloadTime, target: self, selector: #selector(reloadChatroom), userInfo: nil, repeats: true)
 		loadingFriendTimer?.fire()
 		if loadingFriendTimer != nil {
 			NSRunLoop.currentRunLoop().addTimer(loadingFriendTimer!, forMode: NSRunLoopCommonModes)
@@ -76,8 +52,10 @@ final public class FriendListViewModel {
 	
 	// MARK: - Private Methods
 	@objc private func reloadChatroom() {
-		reloadFriend()
-		reloadHi()
+		autoreleasepool {
+			reloadFriend()
+			reloadHi()
+		}
 	}
 	
 	@objc private func reloadFriend() {
