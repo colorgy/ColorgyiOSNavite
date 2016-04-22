@@ -8,11 +8,26 @@
 
 import UIKit
 
-class SayHelloCountsCell: UITableViewCell {
+final public class SayHelloCountsCell: UITableViewCell {
 	
 	@IBOutlet weak var countsLabel: DLMessageLabel!
+	private var currentHelloCount: String? = "0"
+	public func animateCountsLabel() {
+		print(countsLabel.text)
+		if currentHelloCount != countsLabel.text {
+			// need animation
+			UIView.animateWithDuration(0.3, delay: 1.3, options: [], animations: {
+				self.countsLabel.transform = CGAffineTransformMakeScale(1.2, 1.2)
+				}, completion: { (_) in
+					UIView.animateWithDuration(0.2, animations: { 
+						self.countsLabel.transform = CGAffineTransformIdentity
+					})
+			})
+		}
+		currentHelloCount = countsLabel.text
+	}
 	
-	override func awakeFromNib() {
+	override public func awakeFromNib() {
 		super.awakeFromNib()
 		// Initialization code
 		countsLabel.textColor = UIColor.whiteColor()
@@ -31,7 +46,7 @@ class SayHelloCountsCell: UITableViewCell {
 		self.selectionStyle = .None
 	}
 	
-	override func setSelected(selected: Bool, animated: Bool) {
+	override public func setSelected(selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
 		
 		// Configure the view for the selected state

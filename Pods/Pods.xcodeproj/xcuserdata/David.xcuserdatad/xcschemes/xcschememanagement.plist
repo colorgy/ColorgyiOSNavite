@@ -4,17 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Bolts 2.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Bolts.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FBSDKCoreKit 2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -24,17 +14,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FBSDKLoginKit 2.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>FBSDKLoginKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FBSDKShareKit 2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -49,32 +29,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Mixpanel.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Nimble.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Nimble.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-ColorgyCourse.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-ColorgyCourse.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-ColorgyCourseTests 2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -89,27 +49,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Quick 2.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Quick.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Realm 2.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Realm.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>RealmSwift 2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

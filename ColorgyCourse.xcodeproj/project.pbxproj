@@ -105,7 +105,6 @@
 		63C3CE471CC0C98B000EE808 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE461CC0C98B000EE808 /* SystemConfiguration.framework */; };
 		63C3CE491CC0C990000EE808 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE481CC0C990000EE808 /* Security.framework */; };
 		63EC77201CC6060E008025A7 /* ColorgyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */; };
-		63EC77A01CC871CC008025A7 /* Log.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63EC779F1CC871CC008025A7 /* Log.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63EC77B21CC8743D008025A7 /* ATrickyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A21CC8743D008025A7 /* ATrickyView.swift */; };
 		63EC77B31CC8743D008025A7 /* DLIncomingMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */; };
 		63EC77B41CC8743D008025A7 /* DLIncomingMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77A41CC8743D008025A7 /* DLIncomingMessageBubble.xib */; };
@@ -191,7 +190,6 @@
 				635479BE1CB89C4E00DE8CBC /* ImagePickerSheetController.framework in Embed Frameworks */,
 				635479C01CB89C4E00DE8CBC /* SKPhotoBrowser.framework in Embed Frameworks */,
 				635479BC1CB89C4E00DE8CBC /* AFNetworking.framework in Embed Frameworks */,
-				63EC77A01CC871CC008025A7 /* Log.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +281,6 @@
 		63C3CE461CC0C98B000EE808 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		63C3CE481CC0C990000EE808 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyNavigationController.swift; sourceTree = "<group>"; };
-		63EC779F1CC871CC008025A7 /* Log.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Log.framework; path = Carthage/Build/iOS/Log.framework; sourceTree = "<group>"; };
 		63EC77A21CC8743D008025A7 /* ATrickyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATrickyView.swift; sourceTree = "<group>"; };
 		63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLIncomingMessageBubble.swift; sourceTree = "<group>"; };
 		63EC77A41CC8743D008025A7 /* DLIncomingMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLIncomingMessageBubble.xib; sourceTree = "<group>"; };
@@ -413,7 +410,6 @@
 		6354797B1CB898C000DE8CBC = {
 			isa = PBXGroup;
 			children = (
-				63EC779F1CC871CC008025A7 /* Log.framework */,
 				630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */,
 				6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */,
 				635479B61CB89C4E00DE8CBC /* AFNetworking.framework */,
@@ -867,7 +863,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SocketIOClientSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Log.framework",
 			);
 			outputPaths = (
 			);

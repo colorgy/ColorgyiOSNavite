@@ -57,11 +57,13 @@ public class FriendListViewController: UIViewController {
 	
 	// MARK: - Reload
 	private func reloadFriend() {
-		friendListTableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+//		friendListTableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+		friendListTableView.reloadData()
 	}
 	
 	private func reloadHi() {
-		friendListTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+//		friendListTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+		friendListTableView.reloadData()
 	}
 }
 
@@ -83,7 +85,8 @@ extension FriendListViewController : UITableViewDelegate, UITableViewDataSource 
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		if indexPath.section == 0 {
 			let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.SayHelloCellIdentifier, forIndexPath: indexPath) as! SayHelloCountsCell
-			cell.countsLabel.text = viewModel != nil ? "\(viewModel!.hiList.count)" : " "
+			cell.countsLabel.text = viewModel != nil ? "\(viewModel!.hiList.count)" : "0"
+			cell.animateCountsLabel()
 			return cell
 		} else {
 			let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.FriendListCellIdentifier, forIndexPath: indexPath) as! FriendListTableViewCell
