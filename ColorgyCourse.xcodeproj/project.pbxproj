@@ -73,6 +73,7 @@
 		637547781CC8BF6200BC3BBD /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547771CC8BF6200BC3BBD /* FriendListViewController.swift */; };
 		6375477A1CC8C23700BC3BBD /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */; };
 		6375477C1CC8D69800BC3BBD /* ColorgyChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */; };
+		6375477D1CC9D67600BC3BBD /* ColorgyChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */; };
 		63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */; };
 		63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */; };
 		63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */; };
@@ -1065,6 +1066,7 @@
 				63C3CE3D1CC0C8C0000EE808 /* UIViewExtension.swift in Sources */,
 				63C3CE391CC0C8BC000EE808 /* LoginViewController.swift in Sources */,
 				63C3CE3C1CC0C8C0000EE808 /* UIImageExtension.swift in Sources */,
+				6375477D1CC9D67600BC3BBD /* ColorgyChatContext.swift in Sources */,
 				63F3EE7E1CBF49DF0010D059 /* Semester.swift in Sources */,
 				63F3EE801CBF49DF0010D059 /* ColorgyAPIUserResult.swift in Sources */,
 				63C3CE361CC0C8BC000EE808 /* EmailRegisterViewController.swift in Sources */,
