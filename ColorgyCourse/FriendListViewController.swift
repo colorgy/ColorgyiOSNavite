@@ -60,6 +60,15 @@ public class FriendListViewController: UIViewController {
 			vc.historyChatroom = historyChatroom
 		}
 	}
+	
+	// MARK: - Reload
+	private func reloadFriend() {
+		friendListTableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+	}
+	
+	private func reloadHi() {
+		friendListTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+	}
 }
 
 extension FriendListViewController : UITableViewDelegate, UITableViewDataSource {
@@ -110,7 +119,7 @@ extension FriendListViewController : FriendListViewModelDelegate {
 	
 	public func friendListViewModelFinishLoadFriendList() {
 		print("ok load friend")
-		friendListTableView.reloadData()
+		reloadFriend()
 	}
 	
 	public func friendListViewModelChatContextError(error: ColorgyChatContextError) {
@@ -119,5 +128,37 @@ extension FriendListViewController : FriendListViewModelDelegate {
 	
 	public func friendListViewModelFailToLoadFriendList(error: ChatAPIError, afError: AFError?) {
 		print("api error: \(error) \(afError) \(#line) \(#function)")
+	}
+	
+	public func friendListViewModelFinishLoadHiList() {
+		print("api: \(#line) \(#function)")
+		reloadHi()
+	}
+	
+	public func friendListViewModelFailToLoadHiList(error: ChatAPIError, afError: AFError?) {
+		print("api error: \(error) \(afError) \(#line) \(#function)")
+	}
+	
+	// reload part
+	public func friendListViewModelReloadFriendList() {
+		print("api: \(#line) \(#function)")
+		reloadFriend()
+	}
+	
+	public func friendListViewModelReloadHiList() {
+		print("api: \(#line) \(#function)")
+		reloadHi()
+	}
+	
+	public func friendListViewModelFailToReloadFriendList(error: ChatAPIError, afError: AFError?) {
+		print("api error: \(error) \(afError) \(#line) \(#function)")
+	}
+	
+	public func friendListViewModelFailToReloadHiList(error: ChatAPIError, afError: AFError?) {
+		print("api error: \(error) \(afError) \(#line) \(#function)")
+	}
+	
+	public func friendListViewModelFailToReloadListsDueToChatContextError(error: ColorgyChatContextError) {
+		print("Context error: \(error) \(#line) \(#function)")
 	}
 }

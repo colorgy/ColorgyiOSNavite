@@ -9,9 +9,18 @@
 import Foundation
 
 public protocol FriendListViewModelDelegate: class {
+	// first time connect part
 	func friendListViewModelFailToLoadFriendList(error: ChatAPIError, afError: AFError?)
 	func friendListViewModelFinishLoadFriendList()
+	func friendListViewModelFailToLoadHiList(error: ChatAPIError, afError: AFError?)
+	func friendListViewModelFinishLoadHiList()
 	func friendListViewModelChatContextError(error: ColorgyChatContextError)
+	// reload part
+	func friendListViewModelReloadHiList()
+	func friendListViewModelReloadFriendList()
+	func friendListViewModelFailToReloadHiList(error: ChatAPIError, afError: AFError?)
+	func friendListViewModelFailToReloadFriendList(error: ChatAPIError, afError: AFError?)
+	func friendListViewModelFailToReloadListsDueToChatContextError(error: ColorgyChatContextError)
 }
 
 final public class FriendListViewModel {
@@ -23,6 +32,8 @@ final public class FriendListViewModel {
 	public private(set) var hiList: [Hello]
 	// MARK: Private
 	private let api: ColorgyChatAPI
+	private var loadingFriendTimer: NSTimer?
+	private let reloadTime: NSTimeInterval = 16.0
 	
 	// MARK: - Init
 	public init(delegate: FriendListViewModelDelegate?) {
@@ -48,7 +59,68 @@ final public class FriendListViewModel {
 		})
 	}
 	
-	// MARK: - Private Methods
+	public func loadHi() {
+		
+		guard let userId = ColorgyChatContext.sharedInstance().userId else {
+			self.delegate?.friendListViewModelChatContextError(ColorgyChatContextError.NoUserId)
+			return
+		}
+		
+		api.getHiList(userId, success: { (hiList) in
+			self.hiList = hiList
+			self.delegate?.friendListViewModelFinishLoadHiList()
+			}, failure: { (error, afError) in
+				self.delegate?.friendListViewModelFailToLoadHiList(error, afError: afError)
+		})
+	}
 	
+	public func startLoadingFriend() {
+		loadingFriendTimer = NSTimer(timeInterval: reloadTime, target: self, selector: #selector(reloadFriend), userInfo: nil, repeats: true)
+		loadingFriendTimer?.fire()
+		if loadingFriendTimer != nil {
+			NSRunLoop.currentRunLoop().addTimer(loadingFriendTimer!, forMode: NSRunLoopCommonModes)
+		}
+	}
+	
+	public func stopLoadingFriend() {
+		loadingFriendTimer?.invalidate()
+		loadingFriendTimer = nil
+	}
+	
+	// MARK: - Private Methods
+	@objc private func reloadChatroom() {
+		reloadFriend()
+		reloadHi()
+	}
+	
+	@objc private func reloadFriend() {
+		
+		guard let userId = ColorgyChatContext.sharedInstance().userId else {
+			delegate?.friendListViewModelFailToReloadListsDueToChatContextError(ColorgyChatContextError.NoUserId)
+			return
+		}
+		
+		api.getHistoryTarget(userId, gender: Gender.Unspecified, page: 0, success: { (targets) in
+			self.historyChatrooms = targets
+			self.delegate?.friendListViewModelReloadFriendList()
+			}, failure: { (error, afError) in
+				self.delegate?.friendListViewModelFailToReloadFriendList(error, afError: afError)
+		})
+	}
+	
+	@objc private func reloadHi() {
+		
+		guard let userId = ColorgyChatContext.sharedInstance().userId else {
+			delegate?.friendListViewModelFailToReloadListsDueToChatContextError(ColorgyChatContextError.NoUserId)
+			return
+		}
+		
+		api.getHiList(userId, success: { (hiList) in
+			self.hiList = hiList
+			self.delegate?.friendListViewModelReloadHiList()
+			}, failure: { (error, afError) in
+				self.delegate?.friendListViewModelFailToReloadHiList(error, afError: afError)
+		})
+	}
 	
 }
