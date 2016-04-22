@@ -30,6 +30,8 @@ public enum ChatAPIError: ErrorType {
 	case NoUserUUID
 	/// Internal preparation fail, might be uuid generate fail or something, chech inside
 	case InternalPreparationFail
+	/// **fatal error* No user id failure, need to load user id
+	case NoUserId
 }
 
 public enum NameStatus: String {
@@ -118,6 +120,31 @@ final public class ColorgyChatAPI: NSObject {
 		return false
 	}
 	
+	/// This depends on Chat Conext
+	/// Will lock if user is still not available
+	/// - returns:
+	///   - True: If user is available
+	///   - False: Time out, no network might cause this problem
+	private func chatContextUserIdAvailable() -> Bool {
+		
+		var retryCounter = 5
+		
+		while retryCounter > 0 {
+			// decrease counter
+			retryCounter -= 1
+			// check if available
+			
+			if ColorgyChatContext.sharedInstance().userId != nil {
+				// if token is not refreshing, allow api accessing
+				return true
+			}
+			// wait for 3 seconds
+			NSThread.sleepForTimeInterval(3.0)
+		}
+		
+		return false
+	}
+	
 	/// **Reachability**
 	///
 	/// Check network first before firing any api request
@@ -170,6 +197,13 @@ final public class ColorgyChatAPI: NSObject {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
 				})
 				return
 			}
@@ -233,6 +267,13 @@ final public class ColorgyChatAPI: NSObject {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
 				})
 				return
 			}
@@ -310,6 +351,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			let parameters = [
 				"name": name
 			]
@@ -372,6 +420,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
@@ -427,6 +482,13 @@ final public class ColorgyChatAPI: NSObject {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
 				})
 				return
 			}
@@ -497,6 +559,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
@@ -551,6 +620,13 @@ final public class ColorgyChatAPI: NSObject {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
 				})
 				return
 			}
@@ -628,6 +704,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
@@ -700,6 +783,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
@@ -763,6 +853,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
@@ -820,6 +917,13 @@ final public class ColorgyChatAPI: NSObject {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
 				})
 				return
 			}
@@ -894,6 +998,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			self.manager.GET(self.serverURL + "/questions/get_question", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
@@ -916,7 +1027,7 @@ final public class ColorgyChatAPI: NSObject {
 			})
 		}
 	}
-
+	
 	///回答問題：
 	///
 	///用途：回傳當日（或者最新）問題的答案給伺服器，如果不是最新會回傳錯誤。
@@ -936,6 +1047,13 @@ final public class ColorgyChatAPI: NSObject {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
 				})
 				return
 			}
@@ -1001,6 +1119,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
@@ -1047,7 +1172,7 @@ final public class ColorgyChatAPI: NSObject {
 						})
 						return
 					} else {
-//						print("fail to check say hi, unknown result")
+						//            print("fail to check say hi, unknown result")
 						self.mainBlock({
 							failure?(error: ChatAPIError.FailToParseResult, afError: nil)
 						})
@@ -1089,6 +1214,13 @@ final public class ColorgyChatAPI: NSObject {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
 				})
 				return
 			}
@@ -1161,6 +1293,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
@@ -1229,6 +1368,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
@@ -1289,6 +1435,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
@@ -1338,6 +1491,13 @@ final public class ColorgyChatAPI: NSObject {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
 				})
 				return
 			}
@@ -1413,6 +1573,13 @@ final public class ColorgyChatAPI: NSObject {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
 				})
 				return
 			}
@@ -1496,6 +1663,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
@@ -1563,6 +1737,13 @@ final public class ColorgyChatAPI: NSObject {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
 				})
 				return
 			}
@@ -1642,6 +1823,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
@@ -1717,6 +1905,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
@@ -1774,6 +1969,13 @@ final public class ColorgyChatAPI: NSObject {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
 				})
 				return
 			}
@@ -1861,6 +2063,13 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
+				})
+				return
+			}
+			
 			let url = "https://colorgy.io:443/api/v1/email_hints/\(organizationCode).json"
 			
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
@@ -1914,6 +2123,13 @@ final public class ColorgyChatAPI: NSObject {
 			guard self.allowAPIAccessing() else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
+				})
+				return
+			}
+			
+			guard self.chatContextUserIdAvailable() else {
+				self.mainBlock({
+					failure?(error: ChatAPIError.NoUserId, afError: nil)
 				})
 				return
 			}

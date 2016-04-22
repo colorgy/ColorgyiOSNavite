@@ -33,12 +33,16 @@ public class FriendListViewController: UIViewController {
 	public override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		viewModel?.loadFriendList()
 		delay(2.0) { 
 			self.viewModel?.loadFriendList()
+			self.viewModel?.startLoadingFriend()
 		}
 	}
 	
+	public override func viewDidDisappear(animated: Bool) {
+		super.viewDidDisappear(animated)
+		self.viewModel?.stopLoadingFriend()
+	}
 	func delay(time: Double, complete: () -> Void) {
 		let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * time))
 		dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in

@@ -86,14 +86,6 @@ final public class ColorgyRefreshCenter {
 		// start monitoring
 		AFNetworkReachabilityManager.sharedManager().startMonitoring()
 		
-		// check if accesstoken is still working
-		ColorgyRefreshCenter.checkAccessToken { (tokenStillWorking) in
-			if !tokenStillWorking {
-				// if not working, refresh token
-				ColorgyRefreshCenter.retryUntilTokenIsAvailable()
-			}
-		}
-		
 		// lock state first
 		ColorgyRefreshCenter.sharedInstance().lockToCheckRefreshRequirment()
 		// check token if expired
@@ -105,6 +97,14 @@ final public class ColorgyRefreshCenter {
 			ColorgyRefreshCenter.retryUntilTokenIsAvailable()
 		}
 		
+		// check if accesstoken is still working
+		ColorgyRefreshCenter.checkAccessToken { (tokenStillWorking) in
+			if !tokenStillWorking {
+				// if not working, refresh token
+				ColorgyRefreshCenter.retryUntilTokenIsAvailable()
+			}
+		}
+
 		// start background job
 		ColorgyRefreshCenter.startBackgroundWorker()
 	}
@@ -269,7 +269,7 @@ final public class ColorgyRefreshCenter {
 	public class func refreshTokenRemainingTime() -> (remainingTime: Double, currentState: RefreshTokenState) {
 		
 		// 7000 second is closed to 2 hrs
-		let aliveTime: Double = 7000;
+		let aliveTime: Double = 10;
 		
 		// make sure refresh token is not revoked
 		guard ColorgyUserInformation.sharedInstance().refreshTokenState != .Revoke else { return  (-1, RefreshTokenState.Revoke) }
