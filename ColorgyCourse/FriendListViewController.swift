@@ -126,10 +126,6 @@ extension FriendListViewController : FriendListViewModelDelegate {
 		reloadFriend()
 	}
 	
-	public func friendListViewModelChatContextError(error: ColorgyChatContextError) {
-		print("Context error: \(error) \(#line) \(#function)")
-	}
-	
 	public func friendListViewModelFailToLoadFriendList(error: ChatAPIError, afError: AFError?) {
 		print("api error: \(error) \(afError) \(#line) \(#function)")
 	}
@@ -160,9 +156,5 @@ extension FriendListViewController : FriendListViewModelDelegate {
 	
 	public func friendListViewModelFailToReloadHiList(error: ChatAPIError, afError: AFError?) {
 		print("api error: \(error) \(afError) \(#line) \(#function)")
-	}
-	
-	public func friendListViewModelFailToReloadListsDueToChatContextError(error: ColorgyChatContextError) {
-		print("Context error: \(error) \(#line) \(#function)")
 	}
 }

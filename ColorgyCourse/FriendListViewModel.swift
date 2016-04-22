@@ -14,13 +14,11 @@ public protocol FriendListViewModelDelegate: class {
 	func friendListViewModelFinishLoadFriendList()
 	func friendListViewModelFailToLoadHiList(error: ChatAPIError, afError: AFError?)
 	func friendListViewModelFinishLoadHiList()
-	func friendListViewModelChatContextError(error: ColorgyChatContextError)
 	// reload part
 	func friendListViewModelReloadHiList()
 	func friendListViewModelReloadFriendList()
 	func friendListViewModelFailToReloadHiList(error: ChatAPIError, afError: AFError?)
 	func friendListViewModelFailToReloadFriendList(error: ChatAPIError, afError: AFError?)
-	func friendListViewModelFailToReloadListsDueToChatContextError(error: ColorgyChatContextError)
 }
 
 final public class FriendListViewModel {
@@ -45,11 +43,6 @@ final public class FriendListViewModel {
 	
 	// MARK: - Public Methods
 	public func loadFriendList() {
-		// check context if user id does exist
-		guard let userId = ColorgyChatContext.sharedInstance().userId else {
-			self.delegate?.friendListViewModelChatContextError(ColorgyChatContextError.NoUserId)
-			return
-		}
 		// fire api to get history chatroom
 		api.getHistoryTarget(gender: Gender.Unspecified, page: 0, success: { (targets) in
 			self.historyChatrooms = targets
@@ -60,13 +53,7 @@ final public class FriendListViewModel {
 	}
 	
 	public func loadHi() {
-		
-		guard let userId = ColorgyChatContext.sharedInstance().userId else {
-			self.delegate?.friendListViewModelChatContextError(ColorgyChatContextError.NoUserId)
-			return
-		}
-		
-		api.getHiList(userId, success: { (hiList) in
+		api.getHiList(success: { (hiList) in
 			self.hiList = hiList
 			self.delegate?.friendListViewModelFinishLoadHiList()
 			}, failure: { (error, afError) in
@@ -94,13 +81,7 @@ final public class FriendListViewModel {
 	}
 	
 	@objc private func reloadFriend() {
-		
-		guard let userId = ColorgyChatContext.sharedInstance().userId else {
-			delegate?.friendListViewModelFailToReloadListsDueToChatContextError(ColorgyChatContextError.NoUserId)
-			return
-		}
-		
-		api.getHistoryTarget(userId, gender: Gender.Unspecified, page: 0, success: { (targets) in
+		api.getHistoryTarget(gender: Gender.Unspecified, page: 0, success: { (targets) in
 			self.historyChatrooms = targets
 			self.delegate?.friendListViewModelReloadFriendList()
 			}, failure: { (error, afError) in
@@ -109,13 +90,7 @@ final public class FriendListViewModel {
 	}
 	
 	@objc private func reloadHi() {
-		
-		guard let userId = ColorgyChatContext.sharedInstance().userId else {
-			delegate?.friendListViewModelFailToReloadListsDueToChatContextError(ColorgyChatContextError.NoUserId)
-			return
-		}
-		
-		api.getHiList(userId, success: { (hiList) in
+		api.getHiList(success: { (hiList) in
 			self.hiList = hiList
 			self.delegate?.friendListViewModelReloadHiList()
 			}, failure: { (error, afError) in

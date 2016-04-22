@@ -271,13 +271,6 @@ final public class ColorgyChatAPI: NSObject {
 				return
 			}
 			
-			guard self.chatContextUserIdAvailable() else {
-				self.mainBlock({
-					failure?(error: ChatAPIError.NoUserId, afError: nil)
-				})
-				return
-			}
-			
 			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
 				self.mainBlock({
 					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
