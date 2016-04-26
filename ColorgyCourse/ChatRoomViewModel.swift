@@ -142,6 +142,8 @@ final public class ChatroomViewModel {
 				self.delegate?.chatroomViewModelDidConnectToChatRoom()
 			}, reconnectToServerWithMessages: { (messages) in
 				print("reconnect to server")
+			}, failToConnectToSocket: { (error) in
+			
 		})
 		
 		socket.onRecievingMessage { (messages) in

@@ -46,11 +46,14 @@ final public class ColorgyChatContext {
 			ColorgyChatContext.sharedInstance().userId = user.userId
 			ColorgyChatContext.sharedInstance().status = user.status
 			}, failure: { (error, afError) in
+				print(error, afError)
 				autoreleasepool({
-					let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 2.0))
-					dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
-						self.promiseToCheckUserAvailability()
-					})
+					if ColorgyRefreshCenter.sharedInstance().currentRefreshTokenState != .Revoke {
+						let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 2.0))
+						dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
+							self.promiseToCheckUserAvailability()
+						})
+					}
 				})
 		})
 	}

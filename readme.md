@@ -1,4 +1,6 @@
 # Colorgy iOS App
+[![codebeat badge](https://codebeat.co/badges/e538b932-40f9-41cb-81bc-04941fdd43e2)](https://codebeat.co/projects/github-com-colorgy-colorgyiosnavite)
+
 哦。
 
 ## Dependencies
