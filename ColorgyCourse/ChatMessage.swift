@@ -44,48 +44,22 @@ final public class ChatMessage: NSObject {
 		var createdAt: String?
 		var chatProgress: Int?
 		
-		if json["id"].string != nil {
-			id = json["id"].string!
-		}
-		if json["data"]["type"].string != nil {
-			type = json["data"]["type"].string!
-		}
+		id = json["id"].string
+		type = json["data"]["type"].string
 		
 		if type == ChatMessage.MessageType.Text {
-			if json["data"]["content"]["text"].string != nil {
-				content = json["data"]["content"][ChatMessage.ContentKey.Text].string!
-			}
+			content = json["data"]["content"][ChatMessage.ContentKey.Text].string
 		} else if type == ChatMessage.MessageType.Image {
-			if json["data"]["content"]["imgSrc"].string != nil {
-				content = json["data"]["content"][ChatMessage.ContentKey.Image].string!
-			}
+			content = json["data"]["content"][ChatMessage.ContentKey.Image].string
 		} else if type == ChatMessage.MessageType.Sticker {
-			if json["data"]["content"]["stickerId"].string != nil {
-				content = json["data"]["content"][ChatMessage.ContentKey.Sticker].string!
-			}
+			content = json["data"]["content"][ChatMessage.ContentKey.Sticker].string
 		}
 		
-		if json["data"]["userId"].string != nil {
-			userId = json["data"]["userId"].string!
-		}
-		if json["data"]["createdAt"].string != nil {
-			createdAt = json["data"]["createdAt"].string!
-		}
+		userId = json["data"]["userId"].string
+		createdAt = json["data"]["createdAt"].string
 		chatProgress = json["data"]["chatProgress"].int
 		
 		self.init(id: id, type: type, content: content, userId: userId, createdAt: createdAt, chatProgress: chatProgress)
-	}
-	
-	init(fakedata id: String) {
-		
-		self.id = id
-		self.type = ""
-		self.content = ""
-		self.userId = ""
-		self.createdAt = TimeStamp()
-		self.chatProgress = 0
-		
-		super.init()
 	}
 	
 	convenience init?(onRequestingMoreMessage json: JSON) {
@@ -95,35 +69,20 @@ final public class ChatMessage: NSObject {
 		var content: String?
 		var userId: String?
 		var createdAt: String?
-		var chatProgress: Int?
 		
-		if json["id"].string != nil {
-			id = json["id"].string!
-		}
-		if json["type"].string != nil {
-			type = json["type"].string!
-		}
+		id = json["id"].string
+		type = json["type"].string
 		
 		if type == ChatMessage.MessageType.Text {
-			if json["content"]["text"].string != nil {
-				content = json["content"][ChatMessage.ContentKey.Text].string!
-			}
+			content = json["content"][ChatMessage.ContentKey.Text].string
 		} else if type == ChatMessage.MessageType.Image {
-			if json["content"]["imgSrc"].string != nil {
-				content = json["content"][ChatMessage.ContentKey.Image].string!
-			}
+			content = json["content"][ChatMessage.ContentKey.Image].string
 		} else if type == ChatMessage.MessageType.Sticker {
-			if json["content"]["stickerId"].string != nil {
-				content = json["content"][ChatMessage.ContentKey.Sticker].string!
-			}
+			content = json["content"][ChatMessage.ContentKey.Sticker].string
 		}
 		
-		if json["userId"].string != nil {
-			userId = json["userId"].string!
-		}
-		if json["createdAt"].string != nil {
-			createdAt = json["createdAt"].string!
-		}
+		userId = json["userId"].string
+		createdAt = json["createdAt"].string
 		
 		self.init(id: id, type: type, content: content, userId: userId, createdAt: createdAt, chatProgress: 1)
 	}
@@ -137,36 +96,19 @@ final public class ChatMessage: NSObject {
 		var createdAt: String?
 		var chatProgress: Int?
 		
-		if json["id"].string != nil {
-			id = json["id"].string!
-		}
-		if json["type"].string != nil {
-			type = json["type"].string!
-		}
+		id = json["id"].string
+		type = json["type"].string
 		
 		if type == ChatMessage.MessageType.Text {
-			if json["content"]["text"].string != nil {
-				content = json["content"][ChatMessage.ContentKey.Text].string!
-			}
+			content = json["content"][ChatMessage.ContentKey.Text].string
 		} else if type == ChatMessage.MessageType.Image {
-			if json["content"]["imgSrc"].string != nil {
-				content = json["content"][ChatMessage.ContentKey.Image].string!
-			}
+			content = json["content"][ChatMessage.ContentKey.Image].string
 		} else if type == ChatMessage.MessageType.Sticker {
-			if json["content"]["stickerId"].string != nil {
-				content = json["content"][ChatMessage.ContentKey.Sticker].string!
-			}
+			content = json["content"][ChatMessage.ContentKey.Sticker].string
 		}
 		
-		if json["content"]["image"] != nil {
-			print(json["content"]["image"])
-		}
-		if json["userId"].string != nil {
-			userId = json["userId"].string!
-		}
-		if json["createdAt"].string != nil {
-			createdAt = json["createdAt"].string!
-		}
+		userId = json["userId"].string
+		createdAt = json["createdAt"].string
 		chatProgress = json["data"]["chatProgress"].int
 		
 		self.init(id: id, type: type, content: content, userId: userId, createdAt: createdAt, chatProgress: chatProgress)

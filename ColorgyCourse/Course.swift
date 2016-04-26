@@ -117,52 +117,6 @@ final public class Course: NSObject {
 		self.init(code: code, name: name, year: year, term: term, lecturer: lecturer, credits: credits, _type: _type, days: days, periods: periods, locations: locations, general_code: general_code)
 	}
 	
-	// MARK: - Key
-	private struct Key {
-		// required
-		static let name = "name"
-		static let code = "code"
-		static let year = "year"
-		static let term = "term"
-		
-		// optional
-		static let credits = "credits"
-		static let lecturer = "lecturer"
-		// caution key is _type in json
-		static let type = "_type"
-		static let id = "id"
-		
-		static let day_1 = "day_1"
-		static let day_2 = "day_2"
-		static let day_3 = "day_3"
-		static let day_4 = "day_4"
-		static let day_5 = "day_5"
-		static let day_6 = "day_6"
-		static let day_7 = "day_7"
-		static let day_8 = "day_8"
-		static let day_9 = "day_9"
-		static let period_1 = "period_1"
-		static let period_2 = "period_2"
-		static let period_3 = "period_3"
-		static let period_4 = "period_4"
-		static let period_5 = "period_5"
-		static let period_6 = "period_6"
-		static let period_7 = "period_7"
-		static let period_8 = "period_8"
-		static let period_9 = "period_9"
-		static let location_1 = "location_1"
-		static let location_2 = "location_2"
-		static let location_3 = "location_3"
-		static let location_4 = "location_4"
-		static let location_5 = "location_5"
-		static let location_6 = "location_6"
-		static let location_7 = "location_7"
-		static let location_8 = "location_8"
-		static let location_9 = "location_9"
-		
-		static let general_code = "general_code"
-	}
-	
 	// MARK: - Generators
 	/// Generate an array of courses
 	public class func generateCourseArrayWithRawDataObjects(rawDataObjects: [CourseRawDataObject]) -> [Course] {
