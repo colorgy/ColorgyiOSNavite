@@ -103,24 +103,6 @@ final public class ColorgySocket : NSObject {
 		self.socket.disconnect()
 	}
 	
-	func onError() {
-		self.socket.on("error") { (response: [AnyObject], ack: SocketAckEmitter) -> Void in
-			print(response)
-		}
-	}
-	
-	func onDisconnect() {
-		self.socket.on("disconnect") { (response: [AnyObject], ack: SocketAckEmitter) -> Void in
-			print(response)
-		}
-	}
-	
-	func onReconnect() {
-		self.socket.on("reconnect") { (response: [AnyObject], ack: SocketAckEmitter) -> Void in
-			print(response)
-		}
-	}
-	
 	func sendTextMessage(message: String, withUserId userId: String) {
 		if let chatroom = self.chatroom {
 			let postData: [String : NSObject]! = [
