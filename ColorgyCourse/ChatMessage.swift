@@ -165,6 +165,7 @@ final public class ChatMessage: NSObject {
 					messages.append(message)
 				}
 			}
+			messages.sortInPlace { return $0.createdAt.timeIntervalSince1970() < $1.createdAt.timeIntervalSince1970() }
 			dispatch_async(dispatch_get_main_queue(), { () -> Void in
 				complete(messages: messages)
 			})

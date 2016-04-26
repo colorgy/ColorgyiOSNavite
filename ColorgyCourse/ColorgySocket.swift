@@ -40,15 +40,11 @@ final public class ColorgySocket : NSObject {
 			registerToChatroom(chatroom: _chatroom)
 			
 			ChatMessage.generateMessagesOnConnent(JSON(responseOnEmit), complete: { (messages) in
-				// sort message with timestamp
-				let sortedMessages = messages.sort({ (m1: ChatMessage, m2: ChatMessage) -> Bool in
-					return m1.createdAt.timeIntervalSince1970() < m2.createdAt.timeIntervalSince1970()
-				})
 				if !self.didConnectToSocketOnce {
-					withMessages(messages: sortedMessages)
+					withMessages(messages: messages)
 					self.didConnectToSocketOnce = true
 				} else {
-					reconnectToServerWithMessages(messages: sortedMessages)
+					reconnectToServerWithMessages(messages: messages)
 				}
 			})
 		})
