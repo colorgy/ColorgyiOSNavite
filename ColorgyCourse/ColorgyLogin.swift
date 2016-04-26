@@ -60,6 +60,25 @@ final public class ColorgyLogin {
 		return
 	}
 	
+	/// Handle the response returned from afnetworking
+	private class func handleResonse(response: AnyObject?, success: ((result: ColorgyLoginResult) -> Void)?, failure: ((error: ColorgyLoginError, afError: AFError?) -> Void)?) {
+		guard let response = response else {
+			failureHelper(failure, error: ColorgyLoginError.FailToParseResult, afError: nil)
+			return
+		}
+		let json = JSON(response)
+		guard let result = ColorgyLoginResult(json: json) else {
+			failureHelper(failure, error: ColorgyLoginError.FailToParseResult, afError: nil)
+			return
+		}
+		// store
+		ColorgyUserInformation.saveLoginResult(result)
+		// active refresh token
+		ColorgyRefreshCenter.activeRefreshToken()
+		// success
+		successHelper(success, result: result)
+	}
+	
 	// MARK: Login
 	/// get Facebook Access Token
 	public class func getFacebookAccessToken(success success: ((token: String) -> Void)?, failure: ((error: FacebookLoginError) -> Void)?) {
@@ -110,21 +129,7 @@ final public class ColorgyLogin {
 		}
 		
 		manager.POST(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
-			guard let response = response else {
-				failureHelper(failure, error: ColorgyLoginError.FailToParseResult, afError: nil)
-				return
-			}
-			let json = JSON(response)
-			guard let result = ColorgyLoginResult(json: json) else {
-				failureHelper(failure, error: ColorgyLoginError.FailToParseResult, afError: nil)
-				return
-			}
-			// store
-			ColorgyUserInformation.saveLoginResult(result)
-			// active refresh token
-			ColorgyRefreshCenter.activeRefreshToken()
-			// success
-			successHelper(success, result: result)
+			handleResonse(response, success: success, failure: failure)
 			}, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
 				let aferror = AFError(operation: operation, error: error)
 				failureHelper(failure, error: ColorgyLoginError.APIConnectionFailure, afError: aferror)
@@ -163,20 +168,7 @@ final public class ColorgyLogin {
 		}
 		
 		manager.POST(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-			guard let response = response else {
-				failureHelper(failure, error: ColorgyLoginError.FailToParseResult, afError: nil)
-				return
-			}
-			let json = JSON(response)
-			guard let result = ColorgyLoginResult(json: json) else {
-				failureHelper(failure, error: ColorgyLoginError.FailToParseResult, afError: nil)
-				return
-			}
-			// store
-			ColorgyUserInformation.saveLoginResult(result)
-			// active refresh token
-			ColorgyRefreshCenter.activeRefreshToken()
-			successHelper(success, result: result)
+			handleResonse(response, success: success, failure: failure)
 			}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 				let afError = AFError(operation: operation, error: error)
 				failureHelper(failure, error: ColorgyLoginError.APIConnectionFailure, afError: afError)
