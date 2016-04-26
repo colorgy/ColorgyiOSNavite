@@ -19,10 +19,10 @@ public enum FacebookLoginError: ErrorType {
 
 public enum ColorgyLoginError: ErrorType {
 	case FailToParseResult
-	case NetworkError
 	case InvalidEmail
 	case PasswordLessThan8Charater
 	case InvalidURL
+	case APIConnectionFailure
 }
 
 /// Login starts here
@@ -42,6 +42,15 @@ final public class ColorgyLogin {
 		dispatch_async(dispatch_get_main_queue(), { () -> Void in
 			block()
 		})
+	}
+	
+	
+	/// This method will help you handle failure condition
+	private class func failureHelper(block: ((error: ColorgyLoginError, afError: AFError?) -> Void)?, error: ColorgyLoginError, afError: AFError?) {
+		mainBlock { 
+			block?(error: error, afError: afError)
+		}
+		return
 	}
 	
 	// MARK: Login
@@ -93,24 +102,18 @@ final public class ColorgyLogin {
 		let url = "https://colorgy.io/oauth/token"
 		
 		guard url.isValidURLString else {
-			mainBlock({
-				failure?(error: ColorgyLoginError.InvalidURL, afError: nil)
-			})
+			failureHelper(failure, error: ColorgyLoginError.InvalidURL, afError: nil)
 			return
 		}
 		
 		manager.POST(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
 			guard let response = response else {
-				mainBlock({
-					failure?(error: ColorgyLoginError.FailToParseResult, afError: nil)
-				})
+				failureHelper(failure, error: ColorgyLoginError.FailToParseResult, afError: nil)
 				return
 			}
 			let json = JSON(response)
 			guard let result = ColorgyLoginResult(json: json) else {
-				mainBlock({
-					failure?(error: ColorgyLoginError.FailToParseResult, afError: nil)
-				})
+				failureHelper(failure, error: ColorgyLoginError.FailToParseResult, afError: nil)
 				return
 			}
 			// store
@@ -122,10 +125,8 @@ final public class ColorgyLogin {
 				success?(result: result)
 			})
 			}, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
-				mainBlock({
-					let aferror = AFError(operation: operation, error: error)
-					failure?(error: ColorgyLoginError.NetworkError, afError: aferror)
-				})
+				let aferror = AFError(operation: operation, error: error)
+				failureHelper(failure, error: ColorgyLoginError.APIConnectionFailure, afError: aferror)
 		})
 	}
 	
@@ -133,16 +134,12 @@ final public class ColorgyLogin {
 	public class func loginToColorgyWithEmail(email email: String, password: String, success: ((result: ColorgyLoginResult) -> Void)?, failure: ((error: ColorgyLoginError, afError: AFError?) -> Void)?) {
 		
 		guard email.isValidEmail else {
-			mainBlock({
-				failure?(error: ColorgyLoginError.InvalidEmail, afError: nil)
-			})
+			failureHelper(failure, error: ColorgyLoginError.InvalidEmail, afError: nil)
 			return
 		}
 		
 		guard password.characters.count >= 8 else {
-			mainBlock({
-				failure?(error: ColorgyLoginError.PasswordLessThan8Charater, afError: nil)
-			})
+			failureHelper(failure, error: ColorgyLoginError.PasswordLessThan8Charater, afError: nil)
 			return
 		}
 		
@@ -171,35 +168,26 @@ final public class ColorgyLogin {
 		}
 		
 		manager.POST(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-			if let response = response {
-				let json = JSON(response)
-				if let result = ColorgyLoginResult(json: json) {
-					// store
-					ColorgyUserInformation.saveLoginResult(result)
-					// active refresh token
-					ColorgyRefreshCenter.activeRefreshToken()
-					mainBlock({
-						success?(result: result)
-					})
-					return
-				} else {
-					mainBlock({
-						failure?(error: ColorgyLoginError.FailToParseResult, afError: nil)
-					})
-					return
-				}
-			} else {
-				mainBlock({
-					failure?(error: ColorgyLoginError.FailToParseResult, afError: nil)
-				})
+			guard let response = response else {
+				failureHelper(failure, error: ColorgyLoginError.FailToParseResult, afError: nil)
 				return
 			}
+			let json = JSON(response)
+			guard let result = ColorgyLoginResult(json: json) else {
+				failureHelper(failure, error: ColorgyLoginError.FailToParseResult, afError: nil)
+				return
+			}
+			// store
+			ColorgyUserInformation.saveLoginResult(result)
+			// active refresh token
+			ColorgyRefreshCenter.activeRefreshToken()
+			mainBlock({
+				success?(result: result)
+			})
+			return
 			}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 				let afError = AFError(operation: operation, error: error)
-				mainBlock({
-					failure?(error: ColorgyLoginError.InvalidURL, afError: afError)
-				})
-				return
+				failureHelper(failure, error: ColorgyLoginError.APIConnectionFailure, afError: afError)
 		})
 	}
 }
