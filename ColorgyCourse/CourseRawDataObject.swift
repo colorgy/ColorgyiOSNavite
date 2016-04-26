@@ -124,23 +124,18 @@ final public class CourseRawDataObject: CustomStringConvertible {
 		// required
 		guard let name = json[rawDataKey.name].string else { return nil }
 		self.name = name
-		
 		guard let code = json[rawDataKey.code].string else { return nil }
 		self.code = code
-		
 		guard let year = json[rawDataKey.year].int else { return nil }
 		self.year = year
-		
 		guard let term = json[rawDataKey.term].int else { return nil }
 		self.term = term
-		
 		
 		// optional
 		self.credits = json[rawDataKey.credits].int
 		self.lecturer = json[rawDataKey.lecturer].string
 		self.type = json[rawDataKey.type].string
 		self.id = json[rawDataKey.id].int
-		
 		
 		self.day_1 = json[rawDataKey.day_1].int
 		self.day_2 = json[rawDataKey.day_2].int
@@ -151,7 +146,6 @@ final public class CourseRawDataObject: CustomStringConvertible {
 		self.day_7 = json[rawDataKey.day_7].int
 		self.day_8 = json[rawDataKey.day_8].int
 		self.day_9 = json[rawDataKey.day_9].int
-		
 		self.period_1 = json[rawDataKey.period_1].int
 		self.period_2 = json[rawDataKey.period_2].int
 		self.period_3 = json[rawDataKey.period_3].int
@@ -161,7 +155,6 @@ final public class CourseRawDataObject: CustomStringConvertible {
 		self.period_7 = json[rawDataKey.period_7].int
 		self.period_8 = json[rawDataKey.period_8].int
 		self.period_9 = json[rawDataKey.period_9].int
-		
 		self.location_1 = json[rawDataKey.location_1].string
 		self.location_2 = json[rawDataKey.location_2].string
 		self.location_3 = json[rawDataKey.location_3].string
