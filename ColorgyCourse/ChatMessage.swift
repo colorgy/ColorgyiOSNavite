@@ -42,6 +42,8 @@ final public class ChatMessage: NSObject {
 			return json["data"]["content"][ChatMessage.ContentKey.Image].string
 		} else if type == ChatMessage.MessageType.Sticker {
 			return json["data"]["content"][ChatMessage.ContentKey.Sticker].string
+		} else {
+			return nil
 		}
 	}
 	
