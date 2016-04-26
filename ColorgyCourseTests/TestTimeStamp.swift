@@ -119,19 +119,12 @@ class TestTimeStamp: XCTestCase {
 	}
 	
 	func testNilValueOnCreatingTimeStamp() {
-		let t1 = "o-03-22T03:05:32.979Z"
-		let t2 = "1969-o-22T03:05:32.979Z"
-		let t3 = "1969-03-oT03:05:32.979Z"
-		let t4 = "1969-03-22To:05:32.979Z"
-		let t5 = "1969-03-22T03:o:32.979Z"
-		let t6 = "1969-03-22T03:05:xZ"
-		
-		let ts1 = TimeStamp(timeStampString: t1)
-		let ts2 = TimeStamp(timeStampString: t2)
-		let ts3 = TimeStamp(timeStampString: t3)
-		let ts4 = TimeStamp(timeStampString: t4)
-		let ts5 = TimeStamp(timeStampString: t5)
-		let ts6 = TimeStamp(timeStampString: t6)
+		let ts1 = TimeStamp(timeStampString: "o-03-22T03:05:32.979Z")
+		let ts2 = TimeStamp(timeStampString: "1969-o-22T03:05:32.979Z")
+		let ts3 = TimeStamp(timeStampString: "1969-03-oT03:05:32.979Z")
+		let ts4 = TimeStamp(timeStampString: "1969-03-22To:05:32.979Z")
+		let ts5 = TimeStamp(timeStampString: "1969-03-22T03:o:32.979Z")
+		let ts6 = TimeStamp(timeStampString: "1969-03-22T03:05:xZ")
 		
 		expect(ts1).to(beNil())
 		expect(ts2).to(beNil())
