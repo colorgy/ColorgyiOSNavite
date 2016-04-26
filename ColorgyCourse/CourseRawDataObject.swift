@@ -246,14 +246,14 @@ final public class CourseRawDataObject: CustomStringConvertible {
 		if json.isArray {
 			// start looping
 			for (_, json) : (String, JSON) in json {
-				if let object = CourseRawDataObject(json: json) {
-					objects.append(object)
+				if let rawDataObject = CourseRawDataObject(json: json) {
+					objects.append(rawDataObject)
 				}
 			}
 		} else {
 			// single object
-			if let object = CourseRawDataObject(json: json) {
-				objects.append(object)
+			if let rawDataObject = CourseRawDataObject(json: json) {
+				objects.append(rawDataObject)
 			}
 		}
 		

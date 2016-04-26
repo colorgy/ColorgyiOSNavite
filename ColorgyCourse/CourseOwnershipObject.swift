@@ -101,14 +101,14 @@ final public class CourseOwnershipObject: NSObject {
 		if json.isArray {
 			// array
 			for (_, json) : (String, JSON) in json {
-				if let object = CourseOwnershipObject(json: json) {
-					objects.append(object)
+				if let ownershipObject = CourseOwnershipObject(json: json) {
+					objects.append(ownershipObject)
 				}
 			}
 		} else {
 			// single object
-			if let object = CourseOwnershipObject(json: json) {
-				objects.append(object)
+			if let ownershipObject = CourseOwnershipObject(json: json) {
+				objects.append(ownershipObject)
 			}
 		}
 		
