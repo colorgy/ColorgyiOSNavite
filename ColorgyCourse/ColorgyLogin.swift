@@ -79,32 +79,27 @@ final public class ColorgyLogin {
 		successHelper(success, result: result)
 	}
 	
-	/// Handle fb login result
-	private class func handleFacebookLoginResult(result: FBSDKLoginManagerLoginResult!, error: NSError!, success: ((token: String) -> Void)?, failure: ((error: FacebookLoginError) -> Void)?) {
-		mainBlock({
-			if error != nil {
-				print(error.localizedDescription)
-				failure?(error: FacebookLoginError.FailLoginToFacebook)
-			} else if result.isCancelled {
-				// canceled
-				failure?(error: FacebookLoginError.CancelLoginFacebook)
-			} else {
-				// ok
-				if let token = result?.token?.tokenString {
-					success?(token: token)
-				} else {
-					failure?(error: FacebookLoginError.FailLoginToFacebook)
-				}
-			}
-		})
-	}
-	
 	// MARK: Login
 	/// get Facebook Access Token
 	public class func getFacebookAccessToken(success success: ((token: String) -> Void)?, failure: ((error: FacebookLoginError) -> Void)?) {
 		let manager = FBSDKLoginManager()
 		manager.logInWithReadPermissions(["email"], fromViewController: nil) { (result: FBSDKLoginManagerLoginResult!, error: NSError!) -> Void in
-			handleFacebookLoginResult(result, error: error, success: success, failure: failure)
+			mainBlock({
+				if error != nil {
+					print(error.localizedDescription)
+					failure?(error: FacebookLoginError.FailLoginToFacebook)
+				} else if result.isCancelled {
+					// canceled
+					failure?(error: FacebookLoginError.CancelLoginFacebook)
+				} else {
+					// ok
+					if let token = result?.token?.tokenString {
+						success?(token: token)
+					} else {
+						failure?(error: FacebookLoginError.FailLoginToFacebook)
+					}
+				}
+			})
 		}
 	}
 	
