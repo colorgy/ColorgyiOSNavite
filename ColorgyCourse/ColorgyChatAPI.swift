@@ -1824,6 +1824,12 @@ final public class ColorgyChatAPI: NSObject {
 	///2. 若成功的話，會回傳一個{ result: success }
 	public func removeChatroom(chatroomId chatroomId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
+		let suburl = "/users/remove_chatroom"
+		handleChatroom(suburl, chatroomId: chatroomId, success: success, failure: failure)
+	}
+	
+	private func handleChatroom(suburl: String, chatroomId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
+		
 		guard networkAvailable() else {
 			self.mainBlock({
 				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
@@ -1874,7 +1880,7 @@ final public class ColorgyChatAPI: NSObject {
 				"chatroomId": chatroomId
 			]
 			
-			self.manager.POST(self.serverURL + "/users/remove_chatroom", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+			self.manager.POST(self.serverURL + suburl, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				if let response = response {
 					let json = JSON(response)
 					if json["result"].string == "success" {
@@ -1913,84 +1919,8 @@ final public class ColorgyChatAPI: NSObject {
 	///2. 若成功的話，會回傳一個{ result: success }
 	public func leaveChatroom(chatroomId chatroomId: String, success: (() -> Void)?, failure: ((error: ChatAPIError, afError: AFError?) -> Void)?) {
 		
-		guard networkAvailable() else {
-			self.mainBlock({
-				failure?(error: ChatAPIError.NetworkUnavailable, afError: nil)
-			})
-			return
-		}
-		
-		qosBlock {
-			guard self.allowAPIAccessing() else {
-				self.mainBlock({
-					failure?(error: ChatAPIError.APIUnavailable, afError: nil)
-				})
-				return
-			}
-			
-			guard self.chatContextUserIdAvailable() else {
-				self.mainBlock({
-					failure?(error: ChatAPIError.NoUserId, afError: nil)
-				})
-				return
-			}
-			
-			guard let userId = ColorgyChatContext.sharedInstance().userId else {
-				self.mainBlock({
-					failure?(error: ChatAPIError.NoUserId, afError: nil)
-				})
-				return
-			}
-			
-			guard let uuid = ColorgyUserInformation.sharedInstance().userUUID else {
-				self.mainBlock({
-					failure?(error: ChatAPIError.NoUserUUID, afError: nil)
-				})
-				return
-			}
-			
-			guard let accessToken = self.accessToken else {
-				self.mainBlock({
-					failure?(error: ChatAPIError.NoAccessToken, afError: nil)
-				})
-				return
-			}
-			
-			let parameters = [
-				"uuid": uuid,
-				"accessToken": accessToken,
-				"userId": userId,
-				"chatroomId": chatroomId
-			]
-			
-			self.manager.POST(self.serverURL + "/chatroom/leave_chatroom", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-				if let response = response {
-					let json = JSON(response)
-					if json["result"].string == "success" {
-						self.mainBlock({
-							success?()
-						})
-						return
-					} else {
-						self.mainBlock({
-							failure?(error: ChatAPIError.FailToParseResult, afError: nil)
-						})
-						return
-					}
-				} else {
-					self.mainBlock({
-						failure?(error: ChatAPIError.FailToParseResult, afError: nil)
-					})
-					return
-				}
-				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
-					self.mainBlock({
-						let afError = AFError(operation: operation, error: error)
-						failure?(error: ChatAPIError.APIConnectionFailure, afError: afError)
-					})
-					return
-			})
-		}
+		let suburl = "/chatroom/leave_chatroom"
+		handleChatroom(suburl, chatroomId: chatroomId, success: success, failure: failure)
 	}
 	
 	///更新對方稱呼：
