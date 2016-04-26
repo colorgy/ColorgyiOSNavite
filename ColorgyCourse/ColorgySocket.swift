@@ -10,42 +10,48 @@ import Foundation
 import SocketIOClientSwift
 import SwiftyJSON
 
+public enum ColorgySocketError: ErrorType {
+	case FailToCreateChatroom
+}
+
 final public class ColorgySocket : NSObject {
 	
 	private let socket = SocketIOClient(socketURL: NSURL(string: "http://chat.colorgy.io:80")!, options: [.Log(false), .ForcePolling(true), .ConnectParams(["__sails_io_sdk_version":"0.11.0"]), .ReconnectWait(2)])
 	public var chatroom: Chatroom?
 	private var didConnectToSocketOnce: Bool = false
 	
-	func connectToServer(withParameters parameters: [String : NSObject]!, registerToChatroom: (chatroom: Chatroom) -> Void, withMessages: (messages: [ChatMessage]) -> Void, reconnectToServerWithMessages: (messages: [ChatMessage]) -> Void) {
+	func connectToServer(withParameters parameters: [String : NSObject]!, registerToChatroom: (chatroom: Chatroom) -> Void, withMessages: (messages: [ChatMessage]) -> Void, reconnectToServerWithMessages: (messages: [ChatMessage]) -> Void, failToConnectToSocket: (error: ColorgySocketError) -> Void) {
 		self.socket.on("connect") { (response: [AnyObject], ack: SocketAckEmitter) -> Void in
 			self.socket.emitWithAck("post", parameters)(timeoutAfter: 10, callback: { (responseOnEmit) -> Void in
-				self.handleConnectToServer(responseOnEmit, registerToChatroom: registerToChatroom, withMessages: withMessages, reconnectToServerWithMessages: reconnectToServerWithMessages)
+				self.handleConnectToServer(responseOnEmit, registerToChatroom: registerToChatroom, withMessages: withMessages, reconnectToServerWithMessages: reconnectToServerWithMessages, failToConnectToSocket: failToConnectToSocket)
 			})
 		}
 	}
 	
-	private func handleConnectToServer(responseOnEmit: [AnyObject], registerToChatroom: (chatroom: Chatroom) -> Void, withMessages: (messages: [ChatMessage]) -> Void, reconnectToServerWithMessages: (messages: [ChatMessage]) -> Void) {
-		dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INTERACTIVE.rawValue), 0)) { () -> Void in
-			if let _chatroom = Chatroom(json: JSON(responseOnEmit)) {
-				dispatch_async(dispatch_get_main_queue(), { () -> Void in
-					self.chatroom = _chatroom
-					registerToChatroom(chatroom: _chatroom)
-				})
-				
-				ChatMessage.generateMessagesOnConnent(JSON(responseOnEmit), complete: { (messages) in
-					// sort message with timestamp
-					let sortedMessages = messages.sort({ (m1: ChatMessage, m2: ChatMessage) -> Bool in
-						return m1.createdAt.timeIntervalSince1970() < m2.createdAt.timeIntervalSince1970()
-					})
-					if !self.didConnectToSocketOnce {
-						withMessages(messages: sortedMessages)
-						self.didConnectToSocketOnce = true
-					} else {
-						reconnectToServerWithMessages(messages: sortedMessages)
-					}
-				})
+	private func handleConnectToServer(responseOnEmit: [AnyObject], registerToChatroom: (chatroom: Chatroom) -> Void, withMessages: (messages: [ChatMessage]) -> Void, reconnectToServerWithMessages: (messages: [ChatMessage]) -> Void, failToConnectToSocket: (error: ColorgySocketError) -> Void) {
+		dispatch_async(dispatch_get_main_queue(), { () -> Void in
+			
+			guard let _chatroom = Chatroom(json: JSON(responseOnEmit)) else {
+				failToConnectToSocket(error: ColorgySocketError.FailToCreateChatroom)
+				return
 			}
-		}
+				
+			self.chatroom = _chatroom
+			registerToChatroom(chatroom: _chatroom)
+			
+			ChatMessage.generateMessagesOnConnent(JSON(responseOnEmit), complete: { (messages) in
+				// sort message with timestamp
+				let sortedMessages = messages.sort({ (m1: ChatMessage, m2: ChatMessage) -> Bool in
+					return m1.createdAt.timeIntervalSince1970() < m2.createdAt.timeIntervalSince1970()
+				})
+				if !self.didConnectToSocketOnce {
+					withMessages(messages: sortedMessages)
+					self.didConnectToSocketOnce = true
+				} else {
+					reconnectToServerWithMessages(messages: sortedMessages)
+				}
+			})
+		})
 	}
 	
 	func onRecievingMessage(messagesRecieved messagesRecieved: (messages: [ChatMessage]) -> Void) {
