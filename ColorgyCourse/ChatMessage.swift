@@ -34,6 +34,17 @@ final public class ChatMessage: NSObject {
 	
 	override public var description: String { return "ChatMessage: {\n\tid => \(id)\n\ttype => \(type)\n\tcontent => \(content)\n\tuserId => \(userId)\n\tcreatedAt => \(createdAt)\n\tchatProgress => \(chatProgress)\n}" }
 	
+	// MARK: - Helper
+	private class func getContent(type: String?, fromJSON json: JSON) -> String? {
+		if type == ChatMessage.MessageType.Text {
+			return json["data"]["content"][ChatMessage.ContentKey.Text].string
+		} else if type == ChatMessage.MessageType.Image {
+			return json["data"]["content"][ChatMessage.ContentKey.Image].string
+		} else if type == ChatMessage.MessageType.Sticker {
+			return json["data"]["content"][ChatMessage.ContentKey.Sticker].string
+		}
+	}
+	
 	// MARK: - Init
 	convenience init?(onMessage json: JSON) {
 		
@@ -46,15 +57,7 @@ final public class ChatMessage: NSObject {
 		
 		id = json["id"].string
 		type = json["data"]["type"].string
-		
-		if type == ChatMessage.MessageType.Text {
-			content = json["data"]["content"][ChatMessage.ContentKey.Text].string
-		} else if type == ChatMessage.MessageType.Image {
-			content = json["data"]["content"][ChatMessage.ContentKey.Image].string
-		} else if type == ChatMessage.MessageType.Sticker {
-			content = json["data"]["content"][ChatMessage.ContentKey.Sticker].string
-		}
-		
+		content = ChatMessage.getContent(type, fromJSON: json)
 		userId = json["data"]["userId"].string
 		createdAt = json["data"]["createdAt"].string
 		chatProgress = json["data"]["chatProgress"].int
@@ -72,15 +75,7 @@ final public class ChatMessage: NSObject {
 		
 		id = json["id"].string
 		type = json["type"].string
-		
-		if type == ChatMessage.MessageType.Text {
-			content = json["content"][ChatMessage.ContentKey.Text].string
-		} else if type == ChatMessage.MessageType.Image {
-			content = json["content"][ChatMessage.ContentKey.Image].string
-		} else if type == ChatMessage.MessageType.Sticker {
-			content = json["content"][ChatMessage.ContentKey.Sticker].string
-		}
-		
+		content = ChatMessage.getContent(type, fromJSON: json)
 		userId = json["userId"].string
 		createdAt = json["createdAt"].string
 		
@@ -136,7 +131,6 @@ final public class ChatMessage: NSObject {
 	// MARK: - Generators
 	public class func generateMessages(json: JSON) -> [ChatMessage] {
 		var messages = [ChatMessage]()
-		//		print(json)
 		for (_, json) : (String, JSON) in json {
 			if let message = ChatMessage(onMessage: json) {
 				messages.append(message)
@@ -147,7 +141,6 @@ final public class ChatMessage: NSObject {
 	
 	class func generateMessagesOnRequestingMoreMessage(json: JSON) -> [ChatMessage] {
 		var messages = [ChatMessage]()
-		//		print(json)
 		for (_, json) : (String, JSON) in json["messageList"] {
 			if let message = ChatMessage(onRequestingMoreMessage: json) {
 				messages.append(message)
@@ -159,17 +152,20 @@ final public class ChatMessage: NSObject {
 	class func generateMessagesOnConnent(json: JSON, complete: (messages: [ChatMessage]) -> Void) {
 		var messages = [ChatMessage]()
 		dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INTERACTIVE.rawValue), 0)) { () -> Void in
-			if let (_, json) = json.first {
-				//			print(json["body"]["result"]["messageList"].count)
-				for (_, json) : (String, JSON) in json["body"]["result"]["messageList"] {
-					if let message = ChatMessage(onConnect: json) {
-						messages.append(message)
-					}
-				}
+			guard let (_, json) = json.first else {
 				dispatch_async(dispatch_get_main_queue(), { () -> Void in
 					complete(messages: messages)
 				})
+				return
 			}
+			for (_, json) : (String, JSON) in json["body"]["result"]["messageList"] {
+				if let message = ChatMessage(onConnect: json) {
+					messages.append(message)
+				}
+			}
+			dispatch_async(dispatch_get_main_queue(), { () -> Void in
+				complete(messages: messages)
+			})
 		}
 	}
 	
