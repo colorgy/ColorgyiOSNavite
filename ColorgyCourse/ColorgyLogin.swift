@@ -53,31 +53,34 @@ final public class ColorgyLogin {
 		return
 	}
 	
+	private class func successHelper(block: ((result: ColorgyLoginResult) -> Void)?, result: ColorgyLoginResult) {
+		mainBlock {
+			block?(result: result)
+		}
+		return
+	}
+	
 	// MARK: Login
 	/// get Facebook Access Token
 	public class func getFacebookAccessToken(success success: ((token: String) -> Void)?, failure: ((error: FacebookLoginError) -> Void)?) {
 		let manager = FBSDKLoginManager()
 		manager.logInWithReadPermissions(["email"], fromViewController: nil) { (result: FBSDKLoginManagerLoginResult!, error: NSError!) -> Void in
-			if error != nil {
-				print(error.localizedDescription)
-				mainBlock({ 
+			mainBlock({
+				if error != nil {
+					print(error.localizedDescription)
 					failure?(error: FacebookLoginError.FailLoginToFacebook)
-				})
-			} else if result.isCancelled {
-				// canceled
-				mainBlock({
+				} else if result.isCancelled {
+					// canceled
 					failure?(error: FacebookLoginError.CancelLoginFacebook)
-				})
-			} else {
-				// ok
-				mainBlock({
+				} else {
+					// ok
 					if let token = result?.token?.tokenString {
 						success?(token: token)
 					} else {
 						failure?(error: FacebookLoginError.FailLoginToFacebook)
 					}
-				})
-			}
+				}
+			})
 		}
 	}
 	
@@ -121,9 +124,7 @@ final public class ColorgyLogin {
 			// active refresh token
 			ColorgyRefreshCenter.activeRefreshToken()
 			// success
-			mainBlock({
-				success?(result: result)
-			})
+			successHelper(success, result: result)
 			}, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
 				let aferror = AFError(operation: operation, error: error)
 				failureHelper(failure, error: ColorgyLoginError.APIConnectionFailure, afError: aferror)
@@ -133,16 +134,6 @@ final public class ColorgyLogin {
 	/// Login colorgy using email and password 
 	public class func loginToColorgyWithEmail(email email: String, password: String, success: ((result: ColorgyLoginResult) -> Void)?, failure: ((error: ColorgyLoginError, afError: AFError?) -> Void)?) {
 		
-		guard email.isValidEmail else {
-			failureHelper(failure, error: ColorgyLoginError.InvalidEmail, afError: nil)
-			return
-		}
-		
-		guard password.characters.count >= 8 else {
-			failureHelper(failure, error: ColorgyLoginError.PasswordLessThan8Charater, afError: nil)
-			return
-		}
-		
 		let manager = AFHTTPSessionManager(baseURL: nil)
 		manager.requestSerializer = AFJSONRequestSerializer()
 		manager.requestSerializer.cachePolicy = .ReloadIgnoringLocalAndRemoteCacheData
@@ -150,7 +141,6 @@ final public class ColorgyLogin {
 		
 		let parameters = [
 			"grant_type": "password",
-			// 應用程式ID application id, in colorgy server
 			"client_id": "ad2d3492de7f83f0708b5b1db0ac7041f9179f78a168171013a4458959085ba4",
 			"client_secret": "d9de77450d6365ca8bd6717bbf8502dfb4a088e50962258d5d94e7f7211596a3",
 			"username": email,
@@ -158,12 +148,17 @@ final public class ColorgyLogin {
 			"scope": "public account offline_access"
 		]
 		
+		guard email.isValidEmail else {
+			failureHelper(failure, error: ColorgyLoginError.InvalidEmail, afError: nil)
+			return
+		}
+		guard password.characters.count >= 8 else {
+			failureHelper(failure, error: ColorgyLoginError.PasswordLessThan8Charater, afError: nil)
+			return
+		}
 		let url = "https://colorgy.io/oauth/token"
-		
 		guard url.isValidURLString else {
-			mainBlock({
-				failure?(error: ColorgyLoginError.InvalidURL, afError: nil)
-			})
+				failureHelper(failure, error: ColorgyLoginError.InvalidURL, afError: nil)
 			return
 		}
 		
@@ -181,10 +176,7 @@ final public class ColorgyLogin {
 			ColorgyUserInformation.saveLoginResult(result)
 			// active refresh token
 			ColorgyRefreshCenter.activeRefreshToken()
-			mainBlock({
-				success?(result: result)
-			})
-			return
+			successHelper(success, result: result)
 			}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 				let afError = AFError(operation: operation, error: error)
 				failureHelper(failure, error: ColorgyLoginError.APIConnectionFailure, afError: afError)
