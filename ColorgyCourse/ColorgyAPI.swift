@@ -1049,44 +1049,28 @@ final public class ColorgyAPI : NSObject {
 				self.handleAPIUnavailable(failure)
 				return
 			}
-			
 			guard userId > 0 else {
-				self.mainBlock({
-					failure?(error: APIError.InternalPreparationFail, afError: nil)
-				})
+				self.handleFailToParseResult(failure)
 				return
 			}
-			
 			let url = "https://colorgy.io/api/v1/user_table_settings/\(userId).json"
-			
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
 			}
 			
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-				if let response = response {
-					let json = JSON(response)
-					var isTimeTablePublic = false
-					if json.isArray {
-						if let visibility = json[0]["courses_table_visibility"].bool {
-							isTimeTablePublic = visibility
-						}
-					} else {
-						if let visibility = json["courses_table_visibility"].bool {
-							isTimeTablePublic = visibility
-						}
-					}
-					self.mainBlock({
-						success?(isTimeTablePublic: isTimeTablePublic)
-					})
-					return
-				} else {
-					self.mainBlock({
-						failure?(error: APIError.FailToParseResult, afError: nil)
-					})
+				guard let response = response else {
+					self.handleFailToParseResult(failure)
 					return
 				}
+				let json = JSON(response)
+				// TODO: 測式這個function
+				let isTimeTablePublic = (json.isArray ? json[0]["courses_table_visibility"].bool : json["courses_table_visibility"].bool) ?? false
+				self.mainBlock({
+					success?(isTimeTablePublic: isTimeTablePublic)
+				})
+				return
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 					let afError = AFError(operation: operation, error: error)
 					self.handleAPIConnectionFailure(failure, afError: afError)
@@ -1108,21 +1092,15 @@ final public class ColorgyAPI : NSObject {
 				self.handleAPIUnavailable(failure)
 				return
 			}
-			
 			guard let accesstoken = self.accessToken else {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			
 			guard let userId = ColorgyUserInformation.sharedInstance().userId else {
-				self.mainBlock({
-					failure?(error: APIError.NoUserId, afError: nil)
-				})
+				self.handleNoUserId(failure)
 				return
 			}
-			
 			let url = "https://colorgy.io:443/api/v1/user_table_settings/\(userId).json?access_token=\(accesstoken)"
-			
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1161,14 +1139,11 @@ final public class ColorgyAPI : NSObject {
 				self.handleAPIUnavailable(failure)
 				return
 			}
-			
 			guard let accesstoken = self.accessToken else {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			
 			let url = "https://colorgy.io:443/api/v1/me/user_app_feedbacks.json?access_token=\(accesstoken)"
-			
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1215,14 +1190,11 @@ final public class ColorgyAPI : NSObject {
 				self.handleAPIUnavailable(failure)
 				return
 			}
-			
 			guard let accesstoken = self.accessToken else {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			
 			let url = "https://colorgy.io:443/api/v1/me/emails.json?access_token=\(accesstoken)"
-			
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1235,23 +1207,20 @@ final public class ColorgyAPI : NSObject {
 			]
 			
 			self.manager.POST(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-				if let response = response {
-					let json = JSON(response)
-					print(json)
-					var emails = [(id: Int, email: String)]()
-					if let id = json["id"].int, let email = json["email"].string {
-						emails.append((id, email))
-					}
-					self.mainBlock({
-						success?(emails: emails)
-					})
-					return
-				} else {
-					self.mainBlock({
-						failure?(error: APIError.FailToParseResult, afError: nil)
-					})
+				guard let response = response else {
+					self.handleFailToParseResult(failure)
 					return
 				}
+				let json = JSON(response)
+				print(json)
+				var emails = [(id: Int, email: String)]()
+				if let id = json["id"].int, let email = json["email"].string {
+					emails.append((id, email))
+				}
+				self.mainBlock({
+					success?(emails: emails)
+				})
+				return
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 					let afError = AFError(operation: operation, error: error)
 					self.handleAPIConnectionFailure(failure, afError: afError)
@@ -1273,39 +1242,33 @@ final public class ColorgyAPI : NSObject {
 				self.handleAPIUnavailable(failure)
 				return
 			}
-			
 			guard let accesstoken = self.accessToken else {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			
 			let url = "https://colorgy.io:443/api/v1/me/emails.json?access_token=\(accesstoken)"
-			
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
 			}
 			
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-				if let response = response {
-					let json = JSON(response)
-					print(json)
-					var emails = [(id: Int, email: String)]()
-					for (_, json) in json {
-						if let id = json["id"].int, let email = json["email"].string {
-							emails.append((id, email))
-						}
-					}
-					self.mainBlock({
-						success?(emails: emails)
-					})
-					return
-				} else {
-					self.mainBlock({
-						failure?(error: APIError.FailToParseResult, afError: nil)
-					})
+				guard let response = response else {
+					self.handleFailToParseResult(failure)
 					return
 				}
+				let json = JSON(response)
+				print(json)
+				var emails = [(id: Int, email: String)]()
+				for (_, json) in json {
+					if let id = json["id"].int, let email = json["email"].string {
+						emails.append((id, email))
+					}
+				}
+				self.mainBlock({
+					success?(emails: emails)
+				})
+				return
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 					let afError = AFError(operation: operation, error: error)
 					self.handleAPIConnectionFailure(failure, afError: afError)
@@ -1327,14 +1290,11 @@ final public class ColorgyAPI : NSObject {
 				self.handleAPIUnavailable(failure)
 				return
 			}
-			
 			guard let accesstoken = self.accessToken else {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			
 			let url = "https://colorgy.io:443/api/v1/me.json?access_token=\(accesstoken)"
-			
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1351,19 +1311,15 @@ final public class ColorgyAPI : NSObject {
 			]
 			
 			self.manager.PATCH(url, parameters: parameters, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-				if let response = response {
-					let json = JSON(response)
-					print(json)
-					self.mainBlock({
-						success?()
-					})
-					return
-				} else {
-					self.mainBlock({
-						failure?(error: APIError.FailToParseResult, afError: nil)
-					})
+				guard let response = response else {
+					self.handleFailToParseResult(failure)
 					return
 				}
+				print(json)
+				self.mainBlock({
+					success?()
+				})
+				return
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 					let afError = AFError(operation: operation, error: error)
 					self.handleAPIConnectionFailure(failure, afError: afError)
@@ -1384,9 +1340,7 @@ final public class ColorgyAPI : NSObject {
 			
 			// encode image to base64 string
 			guard let base64String = image.base64String else {
-				self.mainBlock({
-					failure?(error: APIError.InternalPreparationFail, afError: nil)
-				})
+				self.handleInternalPreparationFailure(failure)
 				return
 			}
 			
@@ -1397,9 +1351,7 @@ final public class ColorgyAPI : NSObject {
 					success?()
 				})
 				}, failure: { (error, afError) in
-					self.mainBlock({
-						failure?(error: error, afError: afError)}
-					)
+					self.handleAPIConnectionFailure(failure, afError: afError)
 			})
 		}
 	}
@@ -1417,9 +1369,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleAPIUnavailable(failure)
 				return
 			}
-			
 			let url = "https://colorgy.io/api/v1/sign_up"
-			
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1461,32 +1411,26 @@ final public class ColorgyAPI : NSObject {
 				self.handleAPIUnavailable(failure)
 				return
 			}
-			
 			guard let accesstoken = self.accessToken else {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			
 			let url = "https://colorgy.io:443/api/v1/available_org/\(organization.uppercaseString).json?access_token=\(accesstoken)"
-			
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
 			}
 			
 			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-				if let response = response {
-					let json = JSON(response)
-					self.mainBlock({
-						success?(isAvailable: json["available"].boolValue)
-					})
-					return
-				} else {
-					self.mainBlock({
-						failure?(error: APIError.FailToParseResult, afError: nil)
-					})
+				guard let response = response else {
+					self.handleFailToParseResult(failure)
 					return
 				}
+				let json = JSON(response)
+				self.mainBlock({
+					success?(isAvailable: json["available"].boolValue)
+				})
+				return
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 					let afError = AFError(operation: operation, error: error)
 					self.handleAPIConnectionFailure(failure, afError: afError)

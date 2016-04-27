@@ -32,14 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		// Setup Chat Contect
 		ColorgyChatContext.initialize()
-		
-		ColorgyAPI().patchMEPrivacySetting(turnIt: true, success: nil) { (error, afError) in
-			print(error, afError)	
-		}
-		ColorgyAPI().getMePrivacySetting(success: { (isTimeTablePublic) in
-			print(isTimeTablePublic)
-			print(isTimeTablePublic)
-			}, failure: nil)
 
 		return true
 	}
