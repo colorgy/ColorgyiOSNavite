@@ -39,101 +39,93 @@ class TestTimeStamp: XCTestCase {
 		
 		expect(ts1).toNot(beNil())
 		expect(ts2).toNot(beNil())
+		
+		// ms
+		let t1ms = "2016-03-22T03:05:32.9799Z"
+		let t2ms = "2016-04-07T16:39:59.9Z"
+		
+		let ts1ms = TimeStamp(timeStampString: t1ms)
+		let ts2ms = TimeStamp(timeStampString: t2ms)
+		
+		expect(ts1ms).toNot(beNil())
+		expect(ts2ms).toNot(beNil())
+		
+		// sec
+		let t1s = "2016-03-22T03:05:60.979Z"
+		let t2s = "2016-04-07T16:39:0.979Z"
+		
+		let ts1s = TimeStamp(timeStampString: t1s)
+		let ts2s = TimeStamp(timeStampString: t2s)
+		
+		expect(ts1s).to(beNil())
+		expect(ts2s).toNot(beNil())
+		
+		// min
+		let t1min = "2016-03-22T03:60:32.979Z"
+		let t2min = "2016-04-07T16:001:59.521Z"
+		
+		let ts1min = TimeStamp(timeStampString: t1min)
+		let ts2min = TimeStamp(timeStampString: t2min)
+		
+		expect(ts1min).to(beNil())
+		expect(ts2min).toNot(beNil())
+		
+		// hour
+		let t1h = "2016-03-22T24:05:32.979Z"
+		let t2h = "2016-04-07T016:39:59.521Z"
+		
+		let ts1h = TimeStamp(timeStampString: t1h)
+		let ts2h = TimeStamp(timeStampString: t2h)
+		
+		expect(ts1h).to(beNil())
+		expect(ts2h).toNot(beNil())
+		
+		// date
+		let t2d = "2016-03-31T03:05:32.979Z"
+		let t1d = "2016-04-32T16:39:59.521Z"
+		
+		let ts1d = TimeStamp(timeStampString: t1d)
+		let ts2d = TimeStamp(timeStampString: t2d)
+		
+		expect(ts1d).to(beNil())
+		expect(ts2d).toNot(beNil())
+		
+		// month
+		let t2m = "2016-03-22T03:05:32.979Z"
+		let t1m = "2016-00-07T16:39:59.521Z"
+		
+		let ts1m = TimeStamp(timeStampString: t1m)
+		let ts2m = TimeStamp(timeStampString: t2m)
+		
+		expect(ts1m).to(beNil())
+		expect(ts2m).toNot(beNil())
+		
+		// year
+		let t1y = "1969-03-22T03:05:32.979Z"
+		let t2y = "2099-04-07T16:39:59.521Z"
+		
+		let ts1y = TimeStamp(timeStampString: t1y)
+		let ts2y = TimeStamp(timeStampString: t2y)
+		
+		expect(ts1y).to(beNil())
+		expect(ts2y).toNot(beNil())
+		
+		// nil
+		let ts1n = TimeStamp(timeStampString: "o-03-22T03:05:32.979Z")
+		let ts2n = TimeStamp(timeStampString: "1969-o-22T03:05:32.979Z")
+		let ts3n = TimeStamp(timeStampString: "1969-03-oT03:05:32.979Z")
+		let ts4n = TimeStamp(timeStampString: "1969-03-22To:05:32.979Z")
+		let ts5n = TimeStamp(timeStampString: "1969-03-22T03:o:32.979Z")
+		let ts6n = TimeStamp(timeStampString: "1969-03-22T03:05:xZ")
+		
+		expect(ts1n).to(beNil())
+		expect(ts2n).to(beNil())
+		expect(ts3n).to(beNil())
+		expect(ts4n).to(beNil())
+		expect(ts5n).to(beNil())
+		expect(ts6n).to(beNil())
 	}
 	
-	func testTimeStampMillisecond() {
-		let t1 = "2016-03-22T03:05:32.9799Z"
-		let t2 = "2016-04-07T16:39:59.9Z"
-		
-		let ts1 = TimeStamp(timeStampString: t1)
-		let ts2 = TimeStamp(timeStampString: t2)
-		
-		expect(ts1).toNot(beNil())
-		expect(ts2).toNot(beNil())
-	}
-	
-	func testTimeStampSecond() {
-		let t1 = "2016-03-22T03:05:60.979Z"
-		let t2 = "2016-04-07T16:39:0.979Z"
-		
-		let ts1 = TimeStamp(timeStampString: t1)
-		let ts2 = TimeStamp(timeStampString: t2)
-		
-		expect(ts1).to(beNil())
-		expect(ts2).toNot(beNil())
-	}
-	
-	func testTimeStampMinute() {
-		let t1 = "2016-03-22T03:60:32.979Z"
-		let t2 = "2016-04-07T16:001:59.521Z"
-		
-		let ts1 = TimeStamp(timeStampString: t1)
-		let ts2 = TimeStamp(timeStampString: t2)
-		
-		expect(ts1).to(beNil())
-		expect(ts2).toNot(beNil())
-	}
-	
-	func testTimeStampHour() {
-		let t1 = "2016-03-22T24:05:32.979Z"
-		let t2 = "2016-04-07T016:39:59.521Z"
-		
-		let ts1 = TimeStamp(timeStampString: t1)
-		let ts2 = TimeStamp(timeStampString: t2)
-		
-		expect(ts1).to(beNil())
-		expect(ts2).toNot(beNil())
-	}
-	
-	func testTimeStampDate() {
-		let t2 = "2016-03-31T03:05:32.979Z"
-		let t1 = "2016-04-32T16:39:59.521Z"
-		
-		let ts1 = TimeStamp(timeStampString: t1)
-		let ts2 = TimeStamp(timeStampString: t2)
-		
-		expect(ts1).to(beNil())
-		expect(ts2).toNot(beNil())
-	}
-	
-	func testTimeStampMonth() {
-		let t2 = "2016-03-22T03:05:32.979Z"
-		let t1 = "2016-00-07T16:39:59.521Z"
-		
-		let ts1 = TimeStamp(timeStampString: t1)
-		let ts2 = TimeStamp(timeStampString: t2)
-		
-		expect(ts1).to(beNil())
-		expect(ts2).toNot(beNil())
-	}
-	
-	func testTimeStampYear() {
-		let t1 = "1969-03-22T03:05:32.979Z"
-		let t2 = "2099-04-07T16:39:59.521Z"
-		
-		let ts1 = TimeStamp(timeStampString: t1)
-		let ts2 = TimeStamp(timeStampString: t2)
-		
-		expect(ts1).to(beNil())
-		expect(ts2).toNot(beNil())
-	}
-	
-	func testNilValueOnCreatingTimeStamp() {
-		let ts1 = TimeStamp(timeStampString: "o-03-22T03:05:32.979Z")
-		let ts2 = TimeStamp(timeStampString: "1969-o-22T03:05:32.979Z")
-		let ts3 = TimeStamp(timeStampString: "1969-03-oT03:05:32.979Z")
-		let ts4 = TimeStamp(timeStampString: "1969-03-22To:05:32.979Z")
-		let ts5 = TimeStamp(timeStampString: "1969-03-22T03:o:32.979Z")
-		let ts6 = TimeStamp(timeStampString: "1969-03-22T03:05:xZ")
-		
-		expect(ts1).to(beNil())
-		expect(ts2).to(beNil())
-		expect(ts3).to(beNil())
-		expect(ts4).to(beNil())
-		expect(ts5).to(beNil())
-		expect(ts6).to(beNil())
-	}
-    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
