@@ -30,7 +30,7 @@ private struct APIResult {
 }
 
 /// You can easily use this to handle with result from Me API.
-final public class ColorgyAPIMeResult : CustomStringConvertible {
+public class ColorgyAPIMeResult : CustomStringConvertible {
 	
 	// MARK: - Parameters
 	public let id: Int
@@ -49,13 +49,6 @@ final public class ColorgyAPIMeResult : CustomStringConvertible {
 	public let fbemail: String?
 	
 	public var description: String { return "ColorgyAPIMeResult: {\n\tid => \(id)\n\tuuid => \(uuid)\n\tusername => \(username)\n\tname => \(name)\n\tavatar_url => \(avatar_url)\n\tcover_photo_url => \(cover_photo_url)\n\t_type => \(_type)\n\torganization => \(organization)\n\tdepartment => \(department)\n\tpossible_organization_code => \(possible_organization_code)\n\tpossible_department_code => \(possible_department_code)\n\temail => \(email)\n\tfbemail => \(fbemail)\n}" }
-	
-	func isUserRegisteredTheirSchool() -> Bool {
-		if (self.possible_organization_code == nil || self.possible_department_code == nil) {
-			return false
-		}
-		return true
-	}
 	
 	// MARK: - Init
 	init?(json: JSON) {

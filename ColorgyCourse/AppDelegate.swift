@@ -32,6 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		// Setup Chat Contect
 		ColorgyChatContext.initialize()
+		
+		ColorgyAPI().getUserInfo("8", success: { (user) in
+			print(user)
+			}, failure: nil)
+		ColorgyAPI().getUserInfo("9", success: { (user) in
+			print(user)
+			}, failure: nil)
+		ColorgyAPI().me(success: { (result) in
+			print(result)
+			}, failure: nil)
 
 		return true
 	}
