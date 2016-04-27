@@ -1315,7 +1315,6 @@ final public class ColorgyAPI : NSObject {
 					self.handleFailToParseResult(failure)
 					return
 				}
-				print(json)
 				self.mainBlock({
 					success?()
 				})
