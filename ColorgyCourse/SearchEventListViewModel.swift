@@ -19,6 +19,8 @@ final public class SearchEventListViewModel {
 	public private(set) var events: [String]
 	public private(set) var filteredEvents: [String]
 	
+	private var searchId: String = ""
+	
 	init(delegate: SearchEventListViewModelDelegate?) {
 		self.delegate = delegate
 		let _events = ["「前面沒有人，後面也沒人，這世界好大呀，於是我就哭了。」─【登幽州台歌】前不見古人，後不見來者。 念天地之悠悠，獨愴然而涕下。",
@@ -79,25 +81,35 @@ final public class SearchEventListViewModel {
 		               "廢文翻譯",
 		               "水鳥在沙洲上叫，害我好想把個正妹"]
 		self.events = []
-		for _ in 1...1000 {
+		for _ in 1...100000 {
 			for e in _events {
 				self.events.append(e)
 			}
 		}
+		print(self.events.count)
 		self.filteredEvents = []
 	}
 	
 	public func searchEventWithText(text: String?) {
 		dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INTERACTIVE.rawValue), 0)) {
+			self.searchId = NSUUID().UUIDString
+			let thisSearchId = self.searchId
 			self.filteredEvents = []
 			guard let text = text else { return }
-			self.events.forEach { (event) in
+			let before = NSDate()
+			for event in self.events {
+				if thisSearchId != self.searchId {
+					break
+				}
 				if event.rangeOfString(text, options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil, locale: nil) != nil {
 					self.filteredEvents.append(event)
 				}
 			}
 			dispatch_async(dispatch_get_main_queue(), {
-				self.delegate?.searchEventListViewModelUpdateFilteredEvents(self.filteredEvents)
+				if thisSearchId == self.searchId {
+					print(NSDate().timeIntervalSinceDate(before), "seconds for searching \(self.events.count) events")
+					self.delegate?.searchEventListViewModelUpdateFilteredEvents(self.filteredEvents)
+				}
 			})
 		}
 	}

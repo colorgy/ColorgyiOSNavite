@@ -187,7 +187,6 @@ public final class SearchEventListViewController: UIViewController {
 		self.isSearching = false
 		self.searchBarBackButton.show()
 		self.searchBarTitleLabel.show()
-		self.searchField.resignFirstResponder()
 		self.searchField.text = ""
 		UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.2, options: [.CurveEaseOut], animations: {
 			self.searchButton.frame.origin.x = self.searchBar.bounds.width - self.searchButton.bounds.width - 16
@@ -202,6 +201,7 @@ public final class SearchEventListViewController: UIViewController {
 				self.searchCancelButton.hide()
 				self.searchField.hide()
 				self.searchButton.userInteractionEnabled = true
+				self.searchField.resignFirstResponder()
 		})
 	}
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		630472841CE5782C00D907C4 /* SearchEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472831CE5782C00D907C4 /* SearchEventListViewController.swift */; };
 		630472861CE5AA4E00D907C4 /* SearchEventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */; };
+		630472891CE5DD2000D907C4 /* WeekCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */; };
+		6304728B1CE5DDC500D907C4 /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304728A1CE5DDC500D907C4 /* WeekCalendarView.swift */; };
 		63056FFF1CBCABB7007D2C9D /* CourseOwnershipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */; };
 		630570011CBCBC86007D2C9D /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570001CBCBC86007D2C9D /* Semester.swift */; };
 		630570051CBCC94A007D2C9D /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570041CBCC94A007D2C9D /* Department.swift */; };
@@ -204,6 +206,8 @@
 		576E6050CAE2354899BC93F6 /* Pods_ColorgyCourse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorgyCourse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		630472831CE5782C00D907C4 /* SearchEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewController.swift; sourceTree = "<group>"; };
 		630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewModel.swift; sourceTree = "<group>"; };
+		630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekCalendarViewController.swift; sourceTree = "<group>"; };
+		6304728A1CE5DDC500D907C4 /* WeekCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
 		63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseOwnershipObject.swift; sourceTree = "<group>"; };
 		630570001CBCBC86007D2C9D /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
 		630570041CBCC94A007D2C9D /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
@@ -367,6 +371,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		630472871CE5DCEF00D907C4 /* Search Event List View */ = {
+			isa = PBXGroup;
+			children = (
+				630472831CE5782C00D907C4 /* SearchEventListViewController.swift */,
+				630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */,
+			);
+			name = "Search Event List View";
+			sourceTree = "<group>";
+		};
 		630570081CBD0A45007D2C9D /* Login View */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,11 +464,12 @@
 				635479CE1CB8A5EF00DE8CBC /* Release.swift */,
 				635479891CB898C100DE8CBC /* ViewController.swift */,
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
-				630472831CE5782C00D907C4 /* SearchEventListViewController.swift */,
-				630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */,
+				630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */,
+				6304728A1CE5DDC500D907C4 /* WeekCalendarView.swift */,
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
 				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
 				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
+				630472871CE5DCEF00D907C4 /* Search Event List View */,
 				6375477E1CC9E65100BC3BBD /* Friend List View */,
 				6375476C1CC87BF600BC3BBD /* Chat Room View */,
 				63C3CE161CC0C673000EE808 /* Email Login View */,
@@ -1004,8 +1018,10 @@
 				637547781CC8BF6200BC3BBD /* FriendListViewController.swift in Sources */,
 				635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */,
 				635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */,
+				6304728B1CE5DDC500D907C4 /* WeekCalendarView.swift in Sources */,
 				63EC77B61CC8743D008025A7 /* DLIncomingPhotoBubble.swift in Sources */,
 				630570051CBCC94A007D2C9D /* Department.swift in Sources */,
+				630472891CE5DD2000D907C4 /* WeekCalendarViewController.swift in Sources */,
 				635479E81CB8B02A00DE8CBC /* ColorgyAPIMeResult.swift in Sources */,
 				63EC77BD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift in Sources */,
 				635479EB1CB8B02A00DE8CBC /* Period.swift in Sources */,

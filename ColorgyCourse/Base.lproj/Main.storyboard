@@ -43,6 +43,24 @@
             </objects>
             <point key="canvasLocation" x="-302" y="-845"/>
         </scene>
+        <!--Week Calendar View Controller-->
+        <scene sceneID="Eo4-V3-MBP">
+            <objects>
+                <viewController id="Jj9-z5-nhC" customClass="WeekCalendarViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aox-nL-BW5"/>
+                        <viewControllerLayoutGuide type="bottom" id="Upg-Rw-Cn2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AG8-Ay-s0b">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UOf-6N-W3t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="505" y="-845"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="Ip2-aH-Lj4">
             <objects>
