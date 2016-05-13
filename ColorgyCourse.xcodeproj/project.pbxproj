@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		630472841CE5782C00D907C4 /* SearchEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472831CE5782C00D907C4 /* SearchEventListViewController.swift */; };
+		630472861CE5AA4E00D907C4 /* SearchEventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */; };
 		63056FFF1CBCABB7007D2C9D /* CourseOwnershipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */; };
 		630570011CBCBC86007D2C9D /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570001CBCBC86007D2C9D /* Semester.swift */; };
 		630570051CBCC94A007D2C9D /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570041CBCC94A007D2C9D /* Department.swift */; };
@@ -202,6 +203,7 @@
 		3A1F3E09DFD2F7723F151AD0 /* Pods_ColorgyCourseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorgyCourseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		576E6050CAE2354899BC93F6 /* Pods_ColorgyCourse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorgyCourse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		630472831CE5782C00D907C4 /* SearchEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewController.swift; sourceTree = "<group>"; };
+		630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewModel.swift; sourceTree = "<group>"; };
 		63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseOwnershipObject.swift; sourceTree = "<group>"; };
 		630570001CBCBC86007D2C9D /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
 		630570041CBCC94A007D2C9D /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				635479891CB898C100DE8CBC /* ViewController.swift */,
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
 				630472831CE5782C00D907C4 /* SearchEventListViewController.swift */,
+				630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */,
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
 				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
 				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
@@ -1014,6 +1017,7 @@
 				63EC77B81CC8743D008025A7 /* DLMessageData.swift in Sources */,
 				635479E61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift in Sources */,
 				630570011CBCBC86007D2C9D /* Semester.swift in Sources */,
+				630472861CE5AA4E00D907C4 /* SearchEventListViewModel.swift in Sources */,
 				63EC77BA1CC8743D008025A7 /* DLMessagesViewController.swift in Sources */,
 				637547721CC8B1BB00BC3BBD /* FloatingOptionView.swift in Sources */,
 				63C3CE211CC0C76F000EE808 /* NumerExtensions.swift in Sources */,

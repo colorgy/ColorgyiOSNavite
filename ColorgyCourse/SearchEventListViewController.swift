@@ -16,12 +16,17 @@ public final class SearchEventListViewController: UIViewController {
 	var searchButton: UIButton!
 	var searchCancelButton: UIButton!
 	var searchField: UITextField!
+	
+	var viewModel: SearchEventListViewModel?
 
     override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 		configureSearchBar()
+		
+		// view model
+		viewModel = SearchEventListViewModel(delegate: self)
 		
 		view.backgroundColor = ColorgyColor.BackgroundColor
     }
@@ -191,4 +196,8 @@ public final class SearchEventListViewController: UIViewController {
 				self.searchButton.userInteractionEnabled = true
 		})
 	}
+}
+
+extension SearchEventListViewController : SearchEventListViewModelDelegate {
+	
 }
