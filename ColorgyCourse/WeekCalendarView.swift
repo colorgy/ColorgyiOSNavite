@@ -49,7 +49,7 @@ final public class WeekCalendarView: UIView {
 		weekContainerView = UIScrollView()
 		weekContainerView.frame.size = CGSize(width: weekContainerWidth, height: weekContainerHeight)
 		weekContainerView.contentSize = CGSize(width: itemSize * 7, height: itemSize * 24)
-		print(weekContainerView.contentSize)
+		
 		let contentView = UIView()
 		contentView.frame.size = weekContainerView.contentSize
 		contentView.backgroundColor = ColorgyColor.BackgroundColor
@@ -105,7 +105,40 @@ final public class WeekCalendarView: UIView {
 	}
 	
 	func configureHeader() {
+		let headerContainerWidth = weekContainerView.bounds.width
+		let headerContentWidth = weekContentView.bounds.width
+		let itemSize = weekContainerView.bounds.width / 5
+		headerContainerView = UIScrollView()
+		headerContainerView.frame.size = CGSize(width: headerContainerWidth, height: headerHeight)
+		headerContainerView.backgroundColor = UIColor.whiteColor()
+		headerContainerView.frame.origin.x = sidebarWidth
+		headerContainerView.contentSize = CGSize(width: headerContentWidth, height: headerHeight)
 		
+		addSubview(headerContainerView)
+		
+		let contentView = UIView()
+		contentView.frame.size = headerContainerView.contentSize
+		for (index, weekday) in ["週一","週二","週三","週四","週五","週六","週日"].enumerate() {
+			let dateLabel = UILabel()
+			dateLabel.textAlignment = .Center
+			dateLabel.frame.size = CGSize(width: 40, height: 13)
+			dateLabel.text = "\(index)"
+			dateLabel.textColor = ColorgyColor.TextColor
+			dateLabel.center.x = itemSize * (index.CGFloatValue + 0.5)
+			dateLabel.center.y = contentView.center.y / 2
+			contentView.addSubview(dateLabel)
+			
+			let weekdayLabel = UILabel()
+			weekdayLabel.textAlignment = .Center
+			weekdayLabel.frame.size = CGSize(width: 40, height: 13)
+			weekdayLabel.text = weekday
+			weekdayLabel.textColor = ColorgyColor.TextColor
+			weekdayLabel.center.x = itemSize * (index.CGFloatValue + 0.5)
+			weekdayLabel.center.y = contentView.center.y * 1.5
+			contentView.addSubview(weekdayLabel)
+		}
+		
+		headerContainerView.addSubview(contentView)
 	}
 
 }
@@ -114,6 +147,7 @@ extension WeekCalendarView : UIScrollViewDelegate {
 	public func scrollViewDidScroll(scrollView: UIScrollView) {
 		if scrollView == weekContainerView {
 			sidebarContainerView.contentOffset.y = weekContainerView.contentOffset.y
+			headerContainerView.contentOffset.x = weekContainerView.contentOffset.x
 		}
 	}
 }

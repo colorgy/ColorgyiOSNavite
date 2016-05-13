@@ -14,7 +14,7 @@ final public class WeekCalendarViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		let v = WeekCalendarView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height))
+		let v = WeekCalendarView(frame: CGRect(x: 0, y: 20, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height - 20))
 		view.addSubview(v)
     }
 
