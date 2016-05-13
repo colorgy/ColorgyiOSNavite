@@ -17,7 +17,11 @@ public final class SearchEventListViewController: UIViewController {
 	var searchCancelButton: UIButton!
 	var searchField: UITextField!
 	
+	var isSearching: Bool = false
+	
 	var viewModel: SearchEventListViewModel?
+	
+	
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -126,7 +130,7 @@ public final class SearchEventListViewController: UIViewController {
 		searchField.autocorrectionType = .No
 		searchField.autocapitalizationType = .None
 		searchField.keyboardType = .Default
-		searchField.addTarget(self, action: #selector(SearchEventListViewController.searchFieldTextChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+		searchField.addTarget(self, action: #selector(SearchEventListViewController.searchFieldTextChanged(_:)), forControlEvents: UIControlEvents.EditingChanged)
 		
 		searchBar.addSubview(searchField)
 		
@@ -149,6 +153,7 @@ public final class SearchEventListViewController: UIViewController {
 	
 	func searchFieldTextChanged(textField: UITextField) {
 		print(textField.text)
+		viewModel?.searchEventWithText(textField.text)
 	}
 	
 	// MARK: - Animation code
@@ -170,13 +175,16 @@ public final class SearchEventListViewController: UIViewController {
 			self.searchField.alpha = 1.0
 			self.searchField.transform = CGAffineTransformIdentity
 			}, completion: { (finished) in
+				self.isSearching = true
 				self.searchBarBackButton.hide()
 				self.searchBarTitleLabel.hide()
 				self.searchButton.userInteractionEnabled = false
+				self.searchField.becomeFirstResponder()
 		})
 	}
 	
 	func offSearchStage() {
+		self.isSearching = false
 		self.searchBarBackButton.show()
 		self.searchBarTitleLabel.show()
 		self.searchField.resignFirstResponder()
@@ -199,5 +207,7 @@ public final class SearchEventListViewController: UIViewController {
 }
 
 extension SearchEventListViewController : SearchEventListViewModelDelegate {
-	
+	public func searchEventListViewModelUpdateFilteredEvents(events: [String]) {
+		print(events.count)
+	}
 }
