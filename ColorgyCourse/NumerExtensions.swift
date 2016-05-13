@@ -33,4 +33,8 @@ extension Int {
 	var stringValue: String {
 		return String(self)
 	}
+	
+	var CGFloatValue: CGFloat {
+		return CGFloat(self)
+	}
 }

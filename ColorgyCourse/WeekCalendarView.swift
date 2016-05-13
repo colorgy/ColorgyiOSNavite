@@ -31,6 +31,10 @@ final public class WeekCalendarView: UIView {
 	// MARK: - Init
 	override public init(frame: CGRect) {
 		super.init(frame: frame)
+		
+		configureWeekContainerView()
+		configureSidebar()
+		configureHeader()
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -40,10 +44,76 @@ final public class WeekCalendarView: UIView {
 	// MARK: - Configuration
 	private func configureWeekContainerView() {
 		let weekContainerWidth = bounds.width - sidebarWidth
-		let weekContainerHeight = bounds.height
+		let weekContainerHeight = bounds.height - headerHeight
 		let itemSize = weekContainerWidth / 5
+		weekContainerView = UIScrollView()
+		weekContainerView.frame.size = CGSize(width: weekContainerWidth, height: weekContainerHeight)
+		weekContainerView.contentSize = CGSize(width: itemSize * 7, height: itemSize * 24)
+		print(weekContainerView.contentSize)
+		let contentView = UIView()
+		contentView.frame.size = weekContainerView.contentSize
+		contentView.backgroundColor = ColorgyColor.BackgroundColor
+		for line in 0...48 {
+			let seperator = UIView(frame: CGRect(origin: CGPointZero, size: CGSize(width: weekContainerView.contentSize.width, height: 2.0)))
+			seperator.center.y = line.CGFloatValue * (itemSize / 2)
+			seperator.backgroundColor = UIColor.whiteColor()
+			contentView.addSubview(seperator)
+		}
+		weekContentView = contentView.resizableSnapshotViewFromRect(contentView.frame, afterScreenUpdates: true, withCapInsets: UIEdgeInsetsZero)
+		weekContainerView.addSubview(weekContentView)
+		weekContainerView.bounces = false
+		weekContainerView.delegate = self
+		
+		weekContainerView.frame.origin = CGPoint(x: sidebarWidth, y: headerHeight)
+
+		addSubview(weekContainerView)
 	}
 	
+	func configureSidebar() {
+		let sidebarContainerHeight = weekContainerView.bounds.height
+		let sidebarContentHeight = weekContentView.bounds.height
+		let itemSize = weekContainerView.bounds.width / 5
+		sidebarContainerView = UIScrollView()
+		sidebarContainerView.frame.size = CGSize(width: sidebarWidth, height: sidebarContainerHeight)
+		sidebarContainerView.frame.origin.y = headerHeight
+		sidebarContainerView.backgroundColor = UIColor.whiteColor()
+		sidebarContainerView.contentSize = CGSize(width: sidebarWidth, height: sidebarContentHeight)
+		
+		addSubview(sidebarContainerView)
+		
+		let contentView = UIView()
+		contentView.frame.size = sidebarContainerView.contentSize
+		for (index, _time) in ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"].enumerate() {
+			// 00:00 ~ 24:00
+			let timeLabel = UILabel()
+			timeLabel.frame.size.width = 100
+			timeLabel.frame.size.height = 13
+			timeLabel.font = UIFont.systemFontOfSize(12)
+			timeLabel.textAlignment = .Center
+			timeLabel.textColor = ColorgyColor.TextColor
+			timeLabel.text = "\(_time):00"
+			timeLabel.center.x = contentView.bounds.midX
+			timeLabel.center.y = itemSize * index.CGFloatValue
+			
+			contentView.addSubview(timeLabel)
+		}
+		
+		sidebarContentView = contentView.resizableSnapshotViewFromRect(contentView.frame, afterScreenUpdates: true, withCapInsets: UIEdgeInsetsZero)
+		
+		sidebarContainerView.addSubview(sidebarContentView)
+		sidebarContainerView.userInteractionEnabled = false
+	}
 	
+	func configureHeader() {
+		
+	}
 
+}
+
+extension WeekCalendarView : UIScrollViewDelegate {
+	public func scrollViewDidScroll(scrollView: UIScrollView) {
+		if scrollView == weekContainerView {
+			sidebarContainerView.contentOffset.y = weekContainerView.contentOffset.y
+		}
+	}
 }
