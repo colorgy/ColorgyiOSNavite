@@ -11,12 +11,22 @@ import UIKit
 final public class WeekCalendarView: UIView {
 	
 	// for calendar view
-	private var containerView: UIScrollView!
-	private var contentView: UIView!
-	// for side bar
+	private var weekContainerView: UIScrollView!
+	private var weekContentView: UIView!
+	private let itemHeight: CGFloat = 54.0
 	
+	// for side bar
+	private var sidebarContainerView: UIScrollView!
+	private var sidebarContentView: UIView!
+	private let sidebarWidth: CGFloat = 44.0
 	
 	// for header
+	private var headerContainerView: UIScrollView!
+	private var headerContentView: UIView!
+	private let headerHeight: CGFloat = 44.0
+	
+	// for month
+	private var monthLabel: UILabel!
 	
 	// MARK: - Init
 	override public init(frame: CGRect) {
@@ -28,8 +38,10 @@ final public class WeekCalendarView: UIView {
 	}
 	
 	// MARK: - Configuration
-	private func configureContentView() {
-		
+	private func configureWeekContainerView() {
+		let weekContainerWidth = bounds.width - sidebarWidth
+		let weekContainerHeight = bounds.height
+		let itemSize = weekContainerWidth / 5
 	}
 	
 	
