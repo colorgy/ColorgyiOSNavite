@@ -28,6 +28,14 @@ final public class WeekCalendarView: UIView {
 	// for month
 	private var monthLabel: UILabel!
 	
+	// MARK: - Public Parameters
+	public var days: [Int] = [0,1,2,3,4,5,6] {
+		didSet {
+			updateDateLabels()
+		}
+	}
+	private var dateLabels: [UILabel] = []
+	
 	// MARK: - Init
 	override public init(frame: CGRect) {
 		super.init(frame: frame)
@@ -126,6 +134,7 @@ final public class WeekCalendarView: UIView {
 			dateLabel.textColor = ColorgyColor.TextColor
 			dateLabel.center.x = itemSize * (index.CGFloatValue + 0.5)
 			dateLabel.center.y = contentView.center.y / 2
+			dateLabels.append(dateLabel)
 			contentView.addSubview(dateLabel)
 			
 			let weekdayLabel = UILabel()
@@ -139,6 +148,13 @@ final public class WeekCalendarView: UIView {
 		}
 		
 		headerContainerView.addSubview(contentView)
+	}
+	
+	private func updateDateLabels() {
+		guard days.count == 7 else { return }
+		for (index, day) in days.enumerate() {
+			dateLabels[index].text = "\(day)"
+		}
 	}
 
 }
