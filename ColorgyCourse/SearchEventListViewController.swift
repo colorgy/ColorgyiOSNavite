@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchEventListViewController: UIViewController {
+public final class SearchEventListViewController: UIViewController {
 	
 	var searchBar: UIView!
 	var searchBarTitleLabel: UILabel!
@@ -17,7 +17,7 @@ class SearchEventListViewController: UIViewController {
 	var searchCancelButton: UIButton!
 	var searchField: UITextField!
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -26,7 +26,7 @@ class SearchEventListViewController: UIViewController {
 		view.backgroundColor = ColorgyColor.BackgroundColor
     }
 	
-	override func viewDidAppear(animated: Bool) {
+	override public func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 	
 	}
@@ -114,11 +114,14 @@ class SearchEventListViewController: UIViewController {
 	}
 	
 	func configureSearchField() {
-		searchField = UITextField()
-		searchField.bounds.size.height = 20
-		searchField.bounds.size.width = UIScreen.mainScreen().bounds.width - (searchButton.bounds.width + searchCancelButton.bounds.width + 4 * 16)
+		let width = UIScreen.mainScreen().bounds.width - (searchButton.bounds.width + searchCancelButton.bounds.width + 4 * 16)
+		searchField = UITextField(frame: CGRect(x: 0, y: 0, width: width, height: 21))
 		searchField.placeholder = "搜尋事件..."
 		searchField.tintColor = ColorgyColor.MainOrange
+		searchField.autocorrectionType = .No
+		searchField.autocapitalizationType = .None
+		searchField.keyboardType = .Default
+		searchField.addTarget(self, action: #selector(SearchEventListViewController.searchFieldTextChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
 		
 		searchBar.addSubview(searchField)
 		
@@ -139,6 +142,10 @@ class SearchEventListViewController: UIViewController {
 		offSearchStage()
 	}
 	
+	func searchFieldTextChanged(textField: UITextField) {
+		print(textField.text)
+	}
+	
 	// MARK: - Animation code
 	func onSearchStage() {
 		// search button to left
@@ -151,9 +158,12 @@ class SearchEventListViewController: UIViewController {
 		UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.2, options: [.CurveEaseOut], animations: {
 			self.searchButton.frame.origin.x = 16
 			self.searchBarBackButton.alpha = 0.0
+			self.searchBarBackButton.transform = CGAffineTransformMakeTranslation(-200, 0)
 			self.searchBarTitleLabel.alpha = 0.0
+			self.searchBarTitleLabel.transform = CGAffineTransformMakeTranslation(-200, 0)
 			self.searchCancelButton.alpha = 1.0
 			self.searchField.alpha = 1.0
+			self.searchField.transform = CGAffineTransformIdentity
 			}, completion: { (finished) in
 				self.searchBarBackButton.hide()
 				self.searchBarTitleLabel.hide()
@@ -165,12 +175,16 @@ class SearchEventListViewController: UIViewController {
 		self.searchBarBackButton.show()
 		self.searchBarTitleLabel.show()
 		self.searchField.resignFirstResponder()
-		UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.2, options: [.CurveEaseOut], animations: {
+		self.searchField.text = ""
+		UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.2, options: [.CurveEaseOut], animations: {
 			self.searchButton.frame.origin.x = self.searchBar.bounds.width - self.searchButton.bounds.width - 16
 			self.searchBarBackButton.alpha = 1.0
+			self.searchBarBackButton.transform = CGAffineTransformIdentity
 			self.searchBarTitleLabel.alpha = 1.0
+			self.searchBarTitleLabel.transform = CGAffineTransformIdentity
 			self.searchCancelButton.alpha = 0.0
 			self.searchField.alpha = 0.0
+			self.searchField.transform = CGAffineTransformMakeTranslation(200, 0)
 			}, completion: { (finished) in
 				self.searchCancelButton.hide()
 				self.searchField.hide()
