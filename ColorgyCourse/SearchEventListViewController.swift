@@ -22,7 +22,21 @@ class SearchEventListViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 		configureSearchBar()
+		
+		view.backgroundColor = ColorgyColor.BackgroundColor
     }
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+	
+	}
+	
+	func delay(time: Double, complete: () -> Void) {
+		let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * time))
+		dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
+			complete()
+		})
+	}
 	
 	// MARK: - configuration
 	func configureSearchBar() {
@@ -31,6 +45,12 @@ class SearchEventListViewController: UIViewController {
 		
 		configureSearchBarTitleLabel()
 		configureSearchBarBackButton()
+		configureSearchButton()
+		configureSearchCancelButton()
+		configureSearchField()
+		
+		searchCancelButton.hide()
+		searchField.hide()
 		
 		view.addSubview(searchBar)
 	}
@@ -56,6 +76,7 @@ class SearchEventListViewController: UIViewController {
 		searchBarBackButton.bounds.size.height = 20
 		searchBarBackButton.setImage(UIImage(named: "OrangeBackButton"), forState: UIControlState.Normal)
 		searchBarBackButton.addTarget(self, action: #selector(SearchEventListViewController.backButtonClicked), forControlEvents: .TouchUpInside)
+		searchBarBackButton.tintColor = ColorgyColor.MainOrange
 		
 		searchBar.addSubview(searchBarBackButton)
 		
@@ -64,19 +85,96 @@ class SearchEventListViewController: UIViewController {
 	}
 	
 	func configureSearchButton() {
+		searchButton = UIButton(type: UIButtonType.System)
+		searchButton.bounds.size.width = 20
+		searchButton.bounds.size.height = 20
+		searchButton.setImage(UIImage(named: "OrangeSearchButton"), forState: UIControlState.Normal)
+		searchButton.addTarget(self, action: #selector(SearchEventListViewController.searchButtonClicked), forControlEvents: .TouchUpInside)
+		searchButton.tintColor = ColorgyColor.MainOrange
 		
+		searchBar.addSubview(searchButton)
+		
+		searchButton.center.y = searchBarTitleLabel.center.y
+		searchButton.frame.origin.x = searchBar.bounds.width - searchButton.bounds.width - 16
 	}
 	
 	func configureSearchCancelButton() {
+		searchCancelButton = UIButton(type: UIButtonType.System)
+		searchCancelButton.bounds.size.width = 100
+		searchCancelButton.setTitle("取消", forState: UIControlState.Normal)
+		searchCancelButton.titleLabel?.font = UIFont.systemFontOfSize(16)
+		searchCancelButton.tintColor = ColorgyColor.MainOrange
+		searchCancelButton.sizeToFit()
+		searchCancelButton.addTarget(self, action: #selector(SearchEventListViewController.searchCancelButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
 		
+		searchBar.addSubview(searchCancelButton)
+		
+		searchCancelButton.center.y = searchBarTitleLabel.center.y
+		searchCancelButton.frame.origin.x = searchBar.bounds.width - searchCancelButton.bounds.width - 16
 	}
 	
 	func configureSearchField() {
+		searchField = UITextField()
+		searchField.bounds.size.height = 20
+		searchField.bounds.size.width = UIScreen.mainScreen().bounds.width - (searchButton.bounds.width + searchCancelButton.bounds.width + 4 * 16)
+		searchField.placeholder = "搜尋事件..."
+		searchField.tintColor = ColorgyColor.MainOrange
 		
+		searchBar.addSubview(searchField)
+		
+		searchField.center.y = searchBarTitleLabel.center.y
+		searchField.frame.origin.x = searchButton.bounds.width + 2 * 16
 	}
 	
 	// MARK: - Methods
 	func backButtonClicked() {
 		
+	}
+	
+	func searchButtonClicked() {
+		onSearchStage()
+	}
+	
+	func searchCancelButtonClicked() {
+		offSearchStage()
+	}
+	
+	// MARK: - Animation code
+	func onSearchStage() {
+		// search button to left
+		// hide back button
+		// hide title
+		// show cancel
+		// show field
+		searchCancelButton.show()
+		searchField.show()
+		UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.2, options: [.CurveEaseOut], animations: {
+			self.searchButton.frame.origin.x = 16
+			self.searchBarBackButton.alpha = 0.0
+			self.searchBarTitleLabel.alpha = 0.0
+			self.searchCancelButton.alpha = 1.0
+			self.searchField.alpha = 1.0
+			}, completion: { (finished) in
+				self.searchBarBackButton.hide()
+				self.searchBarTitleLabel.hide()
+				self.searchButton.userInteractionEnabled = false
+		})
+	}
+	
+	func offSearchStage() {
+		self.searchBarBackButton.show()
+		self.searchBarTitleLabel.show()
+		self.searchField.resignFirstResponder()
+		UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.2, options: [.CurveEaseOut], animations: {
+			self.searchButton.frame.origin.x = self.searchBar.bounds.width - self.searchButton.bounds.width - 16
+			self.searchBarBackButton.alpha = 1.0
+			self.searchBarTitleLabel.alpha = 1.0
+			self.searchCancelButton.alpha = 0.0
+			self.searchField.alpha = 0.0
+			}, completion: { (finished) in
+				self.searchCancelButton.hide()
+				self.searchField.hide()
+				self.searchButton.userInteractionEnabled = true
+		})
 	}
 }

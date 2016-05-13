@@ -26,4 +26,10 @@ extension UIView {
 	func show() {
 		self.hidden = false
 	}
+	
+	/// Show border 
+	func showBorder() {
+		self.layer.borderWidth = 1.0
+		self.layer.borderColor = UIColor.greenColor().CGColor
+	}
 }
