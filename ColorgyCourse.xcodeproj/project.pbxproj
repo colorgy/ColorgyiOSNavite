@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630472841CE5782C00D907C4 /* SearchEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472831CE5782C00D907C4 /* SearchEventListViewController.swift */; };
 		63056FFF1CBCABB7007D2C9D /* CourseOwnershipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */; };
 		630570011CBCBC86007D2C9D /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570001CBCBC86007D2C9D /* Semester.swift */; };
 		630570051CBCC94A007D2C9D /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570041CBCC94A007D2C9D /* Department.swift */; };
@@ -200,6 +201,7 @@
 		02D01171AE68C2280C00D053 /* Pods-ColorgyCourseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourseUITests/Pods-ColorgyCourseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A1F3E09DFD2F7723F151AD0 /* Pods_ColorgyCourseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorgyCourseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		576E6050CAE2354899BC93F6 /* Pods_ColorgyCourse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorgyCourse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		630472831CE5782C00D907C4 /* SearchEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewController.swift; sourceTree = "<group>"; };
 		63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseOwnershipObject.swift; sourceTree = "<group>"; };
 		630570001CBCBC86007D2C9D /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
 		630570041CBCC94A007D2C9D /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				635479CE1CB8A5EF00DE8CBC /* Release.swift */,
 				635479891CB898C100DE8CBC /* ViewController.swift */,
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
+				630472831CE5782C00D907C4 /* SearchEventListViewController.swift */,
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
 				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
 				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
@@ -950,6 +953,7 @@
 			files = (
 				6375477A1CC8C23700BC3BBD /* FriendListTableViewCell.swift in Sources */,
 				635479EA1CB8B02A00DE8CBC /* Course.swift in Sources */,
+				630472841CE5782C00D907C4 /* SearchEventListViewController.swift in Sources */,
 				635479EF1CB8B02A00DE8CBC /* DateExtension.swift in Sources */,
 				635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */,
 				635479EC1CB8B02A00DE8CBC /* CourseRawDataObject.swift in Sources */,
