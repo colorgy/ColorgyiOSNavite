@@ -4,13 +4,20 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'ColorgyCourse' do
-  pod "Fabric", '~> 1.6.7'
+  pod 'Fabric', '~> 1.6.7'
   pod 'Crashlytics', '~> 3.7.0'
   pod 'Mixpanel', '~> 2.9.6'
   pod 'FBSDKCoreKit', '~> 4.10.1'
   pod 'FBSDKLoginKit', '~> 4.10.1'
   pod 'FBSDKShareKit', '~> 4.10.1'
   pod 'RealmSwift'
+  pod 'AFNetworking', '~> 3.0'
+  pod 'SDWebImage', '~>3.7'
+  pod 'SKPhotoBrowser'
+  pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+  pod 'ImagePickerSheetController', '~> 0.9.1'
+  pod 'KeychainSwift', '~> 3.0'
+  pod 'Socket.IO-Client-Swift', '~> 6.1.1'
 end
 
 target 'ColorgyCourseTests' do

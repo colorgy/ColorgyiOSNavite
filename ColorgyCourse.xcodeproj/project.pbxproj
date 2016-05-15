@@ -22,10 +22,6 @@
 		6305701C1CBD268A007D2C9D /* HistoryChatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */; };
 		6305701E1CBD2902007D2C9D /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701D1CBD2902007D2C9D /* Chatroom.swift */; };
 		630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701F1CBD2999007D2C9D /* ChatMessage.swift */; };
-		630570251CBD32BF007D2C9D /* SocketIOClientSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */; };
-		630570261CBD32BF007D2C9D /* SocketIOClientSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6340A3071CBA2BA5001AE3AE /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; };
-		6340A3081CBA2BA5001AE3AE /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
 		6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479891CB898C100DE8CBC /* ViewController.swift */; };
 		6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354798B1CB898C100DE8CBC /* Main.storyboard */; };
@@ -33,16 +29,6 @@
 		635479921CB898C100DE8CBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635479901CB898C100DE8CBC /* LaunchScreen.storyboard */; };
 		6354799D1CB898C100DE8CBC /* ColorgyCourseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354799C1CB898C100DE8CBC /* ColorgyCourseTests.swift */; };
 		635479A81CB898C100DE8CBC /* ColorgyCourseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479A71CB898C100DE8CBC /* ColorgyCourseUITests.swift */; };
-		635479BB1CB89C4E00DE8CBC /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479B61CB89C4E00DE8CBC /* AFNetworking.framework */; };
-		635479BC1CB89C4E00DE8CBC /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479B61CB89C4E00DE8CBC /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		635479BD1CB89C4E00DE8CBC /* ImagePickerSheetController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479B71CB89C4E00DE8CBC /* ImagePickerSheetController.framework */; };
-		635479BE1CB89C4E00DE8CBC /* ImagePickerSheetController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479B71CB89C4E00DE8CBC /* ImagePickerSheetController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		635479BF1CB89C4E00DE8CBC /* SKPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479B81CB89C4E00DE8CBC /* SKPhotoBrowser.framework */; };
-		635479C01CB89C4E00DE8CBC /* SKPhotoBrowser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479B81CB89C4E00DE8CBC /* SKPhotoBrowser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		635479C11CB89C4E00DE8CBC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479B91CB89C4E00DE8CBC /* SwiftyJSON.framework */; };
-		635479C21CB89C4E00DE8CBC /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479B91CB89C4E00DE8CBC /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		635479C31CB89C4E00DE8CBC /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635479BA1CB89C4E00DE8CBC /* WebImage.framework */; };
-		635479C41CB89C4E00DE8CBC /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 635479BA1CB89C4E00DE8CBC /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		635479CF1CB8A5EF00DE8CBC /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479CE1CB8A5EF00DE8CBC /* Release.swift */; };
 		635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D01CB8AA0700DE8CBC /* LoginViewController.swift */; };
 		635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D21CB8AC6300DE8CBC /* LoginViewModel.swift */; };
@@ -180,26 +166,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		635479C51CB89C4E00DE8CBC /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				635479C21CB89C4E00DE8CBC /* SwiftyJSON.framework in Embed Frameworks */,
-				635479C41CB89C4E00DE8CBC /* WebImage.framework in Embed Frameworks */,
-				6340A3081CBA2BA5001AE3AE /* KeychainSwift.framework in Embed Frameworks */,
-				630570261CBD32BF007D2C9D /* SocketIOClientSwift.framework in Embed Frameworks */,
-				635479BE1CB89C4E00DE8CBC /* ImagePickerSheetController.framework in Embed Frameworks */,
-				635479C01CB89C4E00DE8CBC /* SKPhotoBrowser.framework in Embed Frameworks */,
-				635479BC1CB89C4E00DE8CBC /* AFNetworking.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		02D01171AE68C2280C00D053 /* Pods-ColorgyCourseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourseUITests/Pods-ColorgyCourseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A1F3E09DFD2F7723F151AD0 /* Pods_ColorgyCourseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorgyCourseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,8 +185,6 @@
 		6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryChatroom.swift; sourceTree = "<group>"; };
 		6305701D1CBD2902007D2C9D /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		6305701F1CBD2999007D2C9D /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
-		630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIOClientSwift.framework; path = Carthage/Build/iOS/SocketIOClientSwift.framework; sourceTree = "<group>"; };
-		6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
 		635479841CB898C000DE8CBC /* ColorgyCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorgyCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635479871CB898C100DE8CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		635479891CB898C100DE8CBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -234,11 +198,6 @@
 		635479A31CB898C100DE8CBC /* ColorgyCourseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorgyCourseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		635479A71CB898C100DE8CBC /* ColorgyCourseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorgyCourseUITests.swift; sourceTree = "<group>"; };
 		635479A91CB898C100DE8CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		635479B61CB89C4E00DE8CBC /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
-		635479B71CB89C4E00DE8CBC /* ImagePickerSheetController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImagePickerSheetController.framework; path = Carthage/Build/iOS/ImagePickerSheetController.framework; sourceTree = "<group>"; };
-		635479B81CB89C4E00DE8CBC /* SKPhotoBrowser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SKPhotoBrowser.framework; path = Carthage/Build/iOS/SKPhotoBrowser.framework; sourceTree = "<group>"; };
-		635479B91CB89C4E00DE8CBC /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		635479BA1CB89C4E00DE8CBC /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		635479CE1CB8A5EF00DE8CBC /* Release.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
 		635479D01CB8AA0700DE8CBC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		635479D21CB8AC6300DE8CBC /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -326,14 +285,7 @@
 				63C3CE471CC0C98B000EE808 /* SystemConfiguration.framework in Frameworks */,
 				63C3CE451CC0C94B000EE808 /* libz.tbd in Frameworks */,
 				63C3CE431CC0C945000EE808 /* libc++.tbd in Frameworks */,
-				635479BF1CB89C4E00DE8CBC /* SKPhotoBrowser.framework in Frameworks */,
 				A84AB692873E9E8DA6A72BC2 /* Pods_ColorgyCourse.framework in Frameworks */,
-				630570251CBD32BF007D2C9D /* SocketIOClientSwift.framework in Frameworks */,
-				635479BD1CB89C4E00DE8CBC /* ImagePickerSheetController.framework in Frameworks */,
-				635479C31CB89C4E00DE8CBC /* WebImage.framework in Frameworks */,
-				635479BB1CB89C4E00DE8CBC /* AFNetworking.framework in Frameworks */,
-				6340A3071CBA2BA5001AE3AE /* KeychainSwift.framework in Frameworks */,
-				635479C11CB89C4E00DE8CBC /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,13 +379,6 @@
 		6354797B1CB898C000DE8CBC = {
 			isa = PBXGroup;
 			children = (
-				630570241CBD32BF007D2C9D /* SocketIOClientSwift.framework */,
-				6340A3061CBA2BA5001AE3AE /* KeychainSwift.framework */,
-				635479B61CB89C4E00DE8CBC /* AFNetworking.framework */,
-				635479B71CB89C4E00DE8CBC /* ImagePickerSheetController.framework */,
-				635479B81CB89C4E00DE8CBC /* SKPhotoBrowser.framework */,
-				635479B91CB89C4E00DE8CBC /* SwiftyJSON.framework */,
-				635479BA1CB89C4E00DE8CBC /* WebImage.framework */,
 				635479861CB898C000DE8CBC /* ColorgyCourse */,
 				6354799B1CB898C100DE8CBC /* ColorgyCourseTests */,
 				635479A61CB898C100DE8CBC /* ColorgyCourseUITests */,
@@ -666,7 +611,6 @@
 				11C09EAAC34B25F44EC5F429 /* Embed Pods Frameworks */,
 				412A583853FC728546ED723D /* Copy Pods Resources */,
 				635479B51CB89BAE00DE8CBC /* ShellScript */,
-				635479C51CB89C4E00DE8CBC /* Embed Frameworks */,
 				635E69771CC3B5D400C67689 /* ShellScript */,
 				635479CD1CB8A2DD00DE8CBC /* ShellScript */,
 			);
@@ -876,13 +820,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ImagePickerSheetController.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SKPhotoBrowser.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SocketIOClientSwift.framework",
 			);
 			outputPaths = (
 			);

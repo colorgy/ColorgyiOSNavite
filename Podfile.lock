@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - Bolts (1.7.0):
     - Bolts/AppLinks (= 1.7.0)
     - Bolts/Tasks (= 1.7.0)
@@ -14,6 +29,8 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.10.1):
     - FBSDKCoreKit
+  - ImagePickerSheetController (0.9.1)
+  - KeychainSwift (3.0.13)
   - Mixpanel (2.9.6):
     - Mixpanel/Mixpanel (= 2.9.6)
   - Mixpanel/Mixpanel (2.9.6)
@@ -24,29 +41,58 @@ PODS:
   - Realm/Headers (0.98.7)
   - RealmSwift (0.98.7):
     - Realm (= 0.98.7)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+  - SKPhotoBrowser (1.8.8)
+  - Socket.IO-Client-Swift (6.1.1)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
+  - AFNetworking (~> 3.0)
   - Crashlytics (~> 3.7.0)
   - Fabric (~> 1.6.7)
   - FBSDKCoreKit (~> 4.10.1)
   - FBSDKLoginKit (~> 4.10.1)
   - FBSDKShareKit (~> 4.10.1)
+  - ImagePickerSheetController (~> 0.9.1)
+  - KeychainSwift (~> 3.0)
   - Mixpanel (~> 2.9.6)
   - Nimble
   - Quick
   - RealmSwift
+  - SDWebImage (~> 3.7)
+  - SKPhotoBrowser
+  - Socket.IO-Client-Swift (~> 6.1.1)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FBSDKCoreKit: d2aaed5e9ab7d8d6301c533376a1fbff1cf3deb5
   FBSDKLoginKit: 699ff169080e3072de4b9b0faca90bf23dc36deb
   FBSDKShareKit: 2fd887cce0056bdda91f99b2021d724a4fed8e88
+  ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
+  KeychainSwift: 3bda518adb1ab386da0a9a1de93b561ee2c9322b
   Mixpanel: 048a9f2512ac1bb8bfdecf719da024873f50a9c2
   Nimble: 72bcc3e2f02242e6bfaaf8d9412ca7bfe3d8b417
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
   Realm: 46df2178359b6b57812e6cf957956febaba513a5
   RealmSwift: 3056e6d7ad30ed50dd866185a615fccea73db5f5
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SKPhotoBrowser: 06c5ad76f3c404d16067d9cc771054759630bc53
+  Socket.IO-Client-Swift: 86a3744e1da181a4078a24a632bd3acc34b9f1f5
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		ColorgyRefreshCenter.initialization()
 		
 		// Setup Chat Contect
-		ColorgyChatContext.initialize()
+//		ColorgyChatContext.initialize()
 
 		return true
 	}
