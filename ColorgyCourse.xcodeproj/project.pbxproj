@@ -334,8 +334,8 @@
 		630337EA1CE9734A006FEA1C /* Blur Wall */ = {
 			isa = PBXGroup;
 			children = (
-				630337E61CE964EE006FEA1C /* BlurWallView.swift */,
 				630337ED1CE97906006FEA1C /* BlurWallViewController.swift */,
+				630337E61CE964EE006FEA1C /* BlurWallView.swift */,
 				630337EB1CE974CE006FEA1C /* BlurWallViewModel.swift */,
 				630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */,
 			);

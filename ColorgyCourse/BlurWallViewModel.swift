@@ -10,7 +10,7 @@ import Foundation
 
 public protocol BlurWallViewModelDelegate: class {
 	func blurWallViewModel(failToLoadWall error: ChatAPIError, afError: AFError?)
-	func blurWallViewModel(updateWallWithGender gender: Gender)
+	func blurWallViewModel(updateWallWithGender gender: Gender, andUpdatedTargets targets: [AvailableTarget])
 }
 
 final public class BlurWallViewModel {
@@ -39,7 +39,7 @@ final public class BlurWallViewModel {
 			case .Unspecified:
 				self.unspecifiedTargets = targets
 			}
-			self.delegate?.blurWallViewModel(updateWallWithGender: gender)
+			self.delegate?.blurWallViewModel(updateWallWithGender: gender, andUpdatedTargets: targets)
 			}, failure: { (error, afError) in
 				self.delegate?.blurWallViewModel(failToLoadWall: error, afError: afError)
 		})

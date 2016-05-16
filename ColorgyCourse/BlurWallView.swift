@@ -33,6 +33,9 @@ final public class BlurWallView: UIView {
 	func configureBlurWallCollectionView(frame: CGRect) {
 		blurWallCollectionViewFlowLayout = UICollectionViewFlowLayout()
 		blurWallCollectionViewFlowLayout.itemSize = CGSize(width: frame.width / 2, height: frame.width / 2)
+		blurWallCollectionViewFlowLayout.minimumLineSpacing = 0
+		blurWallCollectionViewFlowLayout.minimumInteritemSpacing = 0
+		blurWallCollectionViewFlowLayout.sectionInset = UIEdgeInsetsZero
 		
 		blurWallCollectionView = UICollectionView(frame: frame, collectionViewLayout: blurWallCollectionViewFlowLayout)
 		blurWallCollectionView.backgroundColor = UIColor.clearColor()
@@ -63,7 +66,7 @@ extension BlurWallView : UICollectionViewDelegate, UICollectionViewDataSource {
 	
 	public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifer, forIndexPath: indexPath) as! BlurWallViewCell
-		
+		cell.blurImageURL = targets[indexPath.item].avatarBlur2XURL
 		return cell
 	}
 }

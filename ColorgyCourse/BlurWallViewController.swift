@@ -10,17 +10,37 @@ import UIKit
 
 final public class BlurWallViewController: UIViewController {
 	
-	public var blurWall: BlurWallView!
+	private var blurWall: BlurWallView!
+	private var viewModel: BlurWallViewModel?
 
     override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 		configureBlurWall()
+		viewModel = BlurWallViewModel(delegate: self)
     }
+	
+	public override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		viewModel?.loadWallWithGender(Gender.Unspecified)
+	}
 	
 	func configureBlurWall() {
 		blurWall = BlurWallView(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
 		view.addSubview(blurWall)
+	}
+}
+
+extension BlurWallViewController : BlurWallViewModelDelegate {
+	
+	public func blurWallViewModel(updateWallWithGender gender: Gender, andUpdatedTargets targets: [AvailableTarget]) {
+		blurWall.targets = targets
+		print(targets.count)
+	}
+
+	public func blurWallViewModel(failToLoadWall error: ChatAPIError, afError: AFError?) {
+		
 	}
 }
