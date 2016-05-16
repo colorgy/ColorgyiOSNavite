@@ -25,7 +25,7 @@ final public class BlurWallViewController: UIViewController {
 	public override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		print("load shit")
-		viewModel?.loadWallWithGender(gender)
+		viewModel?.requestMoreTarget(gender)
 	}
 	
 	func configureBlurWall() {
