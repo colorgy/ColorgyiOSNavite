@@ -11,6 +11,7 @@
 		630337E91CE9732B006FEA1C /* BlurWallViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */; };
 		630337EC1CE974CE006FEA1C /* BlurWallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337EB1CE974CE006FEA1C /* BlurWallViewModel.swift */; };
 		630337EE1CE97906006FEA1C /* BlurWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337ED1CE97906006FEA1C /* BlurWallViewController.swift */; };
+		630337F01CE9AB4B006FEA1C /* AvailableTargetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337EF1CE9AB4B006FEA1C /* AvailableTargetList.swift */; };
 		630472841CE5782C00D907C4 /* SearchEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472831CE5782C00D907C4 /* SearchEventListViewController.swift */; };
 		630472861CE5AA4E00D907C4 /* SearchEventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */; };
 		630472891CE5DD2000D907C4 /* WeekCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */; };
@@ -178,6 +179,7 @@
 		630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallViewCell.swift; sourceTree = "<group>"; };
 		630337EB1CE974CE006FEA1C /* BlurWallViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallViewModel.swift; sourceTree = "<group>"; };
 		630337ED1CE97906006FEA1C /* BlurWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallViewController.swift; sourceTree = "<group>"; };
+		630337EF1CE9AB4B006FEA1C /* AvailableTargetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableTargetList.swift; sourceTree = "<group>"; };
 		630472831CE5782C00D907C4 /* SearchEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewController.swift; sourceTree = "<group>"; };
 		630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewModel.swift; sourceTree = "<group>"; };
 		630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekCalendarViewController.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */,
+				630337EF1CE9AB4B006FEA1C /* AvailableTargetList.swift */,
 				63C3CE191CC0C76F000EE808 /* ChatMeUserInformation.swift */,
 				6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */,
 				6305701D1CBD2902007D2C9D /* Chatroom.swift */,
@@ -929,6 +932,7 @@
 				635479EA1CB8B02A00DE8CBC /* Course.swift in Sources */,
 				630472841CE5782C00D907C4 /* SearchEventListViewController.swift in Sources */,
 				635479EF1CB8B02A00DE8CBC /* DateExtension.swift in Sources */,
+				630337F01CE9AB4B006FEA1C /* AvailableTargetList.swift in Sources */,
 				635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */,
 				635479EC1CB8B02A00DE8CBC /* CourseRawDataObject.swift in Sources */,
 				63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */,

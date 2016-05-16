@@ -8,6 +8,10 @@
 
 import UIKit
 
+public protocol BlurWallViewDelegate: class {
+	func blurWallViewAboutToTouchTheEnd()
+}
+
 final public class BlurWallView: UIView {
 	
 	private var blurWallCollectionView: UICollectionView!
@@ -23,9 +27,15 @@ final public class BlurWallView: UIView {
 	private func updateTargets() {
 		blurWallCollectionView.reloadData()
 	}
+	
+	private let preloadPoint = 10
+	
+	weak var delegate: BlurWallViewDelegate?
 
-	override public init(frame: CGRect) {
+	public init(frame: CGRect, delegate: BlurWallViewDelegate?) {
 		super.init(frame: frame)
+		
+		self.delegate = delegate
 		
 		configureBlurWallCollectionView(frame)
 	}
@@ -52,6 +62,11 @@ final public class BlurWallView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	private func checkIfReachingTheEnd(indexPath: NSIndexPath) {
+		if indexPath.item == targets.count - preloadPoint {
+			delegate?.blurWallViewAboutToTouchTheEnd()
+		}
+	}
 }
 
 extension BlurWallView : UICollectionViewDelegate, UICollectionViewDataSource {
@@ -67,6 +82,7 @@ extension BlurWallView : UICollectionViewDelegate, UICollectionViewDataSource {
 	public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifer, forIndexPath: indexPath) as! BlurWallViewCell
 		cell.blurImageURL = targets[indexPath.item].avatarBlur2XURL
+		checkIfReachingTheEnd(indexPath)
 		return cell
 	}
 }

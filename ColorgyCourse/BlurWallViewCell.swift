@@ -23,6 +23,7 @@ final public class BlurWallViewCell: UICollectionViewCell {
 		super.init(frame: frame)
 		
 		configureBlurImageView()
+		configureGradientLayer()
 	}
 	
 	func configureBlurImageView() {
@@ -30,10 +31,17 @@ final public class BlurWallViewCell: UICollectionViewCell {
 		addSubview(blurImageView)
 	}
 	
+	func configureGradientLayer() {
+		let gradient = CAGradientLayer()
+		gradient.frame = bounds
+		gradient.colors = [UIColor.whiteColor().withAlpha(0.5).CGColor, UIColor.blackColor().withAlpha(0.5).CGColor]
+		blurImageView.layer.addSublayer(gradient)
+	}
+	
 	func updateImage() {
 		guard let blurImageURL = blurImageURL else { return }
 		guard let url = blurImageURL.url else { return }
-		blurImageView.setImageWithURL(url)
+		blurImageView.setImageWithURL(url, placeholderImage: nil)
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {

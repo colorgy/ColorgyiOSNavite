@@ -23,12 +23,12 @@ final public class BlurWallViewController: UIViewController {
 	
 	public override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		
+		print("load shit")
 		viewModel?.loadWallWithGender(Gender.Unspecified)
 	}
 	
 	func configureBlurWall() {
-		blurWall = BlurWallView(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+		blurWall = BlurWallView(frame: UIScreen.mainScreen().bounds, delegate: self)
 		view.addSubview(blurWall)
 	}
 }
@@ -42,5 +42,12 @@ extension BlurWallViewController : BlurWallViewModelDelegate {
 
 	public func blurWallViewModel(failToLoadWall error: ChatAPIError, afError: AFError?) {
 		
+	}
+}
+
+extension BlurWallViewController : BlurWallViewDelegate {
+	
+	public func blurWallViewAboutToTouchTheEnd() {
+		print("about to touch the end")
 	}
 }
