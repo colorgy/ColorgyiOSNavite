@@ -12,7 +12,8 @@ final public class BlurWallViewController: UIViewController {
 	
 	private var blurWall: BlurWallView!
 	private var viewModel: BlurWallViewModel?
-
+	private var gender: Gender = .Unspecified
+	
     override public func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,7 +25,7 @@ final public class BlurWallViewController: UIViewController {
 	public override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		print("load shit")
-		viewModel?.loadWallWithGender(Gender.Unspecified)
+		viewModel?.loadWallWithGender(gender)
 	}
 	
 	func configureBlurWall() {
@@ -34,20 +35,26 @@ final public class BlurWallViewController: UIViewController {
 }
 
 extension BlurWallViewController : BlurWallViewModelDelegate {
-	
-	public func blurWallViewModel(updateWallWithGender gender: Gender, andUpdatedTargets targets: [AvailableTarget]) {
-		blurWall.targets = targets
-		print(targets.count)
-	}
 
 	public func blurWallViewModel(failToLoadWall error: ChatAPIError, afError: AFError?) {
 		
 	}
+	
+	public func blurWallViewModel(failToRequestMoreData error: ChatAPIError, afError: AFError?) {
+		
+	}
+	
+	public func blurWallViewModel(updateWallWithGender gender: Gender, andUpdatedTargetList targetList: AvailableTargetList) {
+		blurWall.targetList = targetList
+	}
+	
+	
 }
 
 extension BlurWallViewController : BlurWallViewDelegate {
 	
 	public func blurWallViewAboutToTouchTheEnd() {
 		print("about to touch the end")
+		viewModel?.requestMoreTarget(gender)
 	}
 }

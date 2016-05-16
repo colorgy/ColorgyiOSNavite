@@ -18,7 +18,7 @@ final public class BlurWallView: UIView {
 	private var blurWallCollectionViewFlowLayout: UICollectionViewFlowLayout!
 	private let cellIdentifer = "BlurWallViewCell"
 	
-	public var targets: [AvailableTarget] = [] {
+	public var targetList: AvailableTargetList = AvailableTargetList() {
 		didSet {
 			updateTargets()
 		}
@@ -63,7 +63,7 @@ final public class BlurWallView: UIView {
 	}
 
 	private func checkIfReachingTheEnd(indexPath: NSIndexPath) {
-		if indexPath.item == targets.count - preloadPoint {
+		if indexPath.item == targetList.count - preloadPoint {
 			delegate?.blurWallViewAboutToTouchTheEnd()
 		}
 	}
@@ -76,12 +76,12 @@ extension BlurWallView : UICollectionViewDelegate, UICollectionViewDataSource {
 	}
 	
 	public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return targets.count
+		return targetList.count
 	}
 	
 	public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifer, forIndexPath: indexPath) as! BlurWallViewCell
-		cell.blurImageURL = targets[indexPath.item].avatarBlur2XURL
+		cell.blurImageURL = targetList[indexPath.item].avatarBlur2XURL
 		checkIfReachingTheEnd(indexPath)
 		return cell
 	}

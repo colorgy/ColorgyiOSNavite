@@ -41,7 +41,7 @@ final public class BlurWallViewCell: UICollectionViewCell {
 	func updateImage() {
 		guard let blurImageURL = blurImageURL else { return }
 		guard let url = blurImageURL.url else { return }
-		blurImageView.setImageWithURL(url, placeholderImage: nil)
+		blurImageView.setImageWithURL(url, placeholderImage: UIImage(named: "1.png"))
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {

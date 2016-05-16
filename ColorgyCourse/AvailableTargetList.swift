@@ -30,6 +30,10 @@ final public class AvailableTargetList {
 			availableTargetList[index] = newValue
 		}
 	}
+	
+	public func addTargets(targets: [AvailableTarget]) {
+		targets.forEach { availableTargetList.append($0) }
+	}
 }
 
 extension AvailableTargetList : SequenceType {

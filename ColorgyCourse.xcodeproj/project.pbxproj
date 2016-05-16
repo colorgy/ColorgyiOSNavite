@@ -12,6 +12,7 @@
 		630337EC1CE974CE006FEA1C /* BlurWallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337EB1CE974CE006FEA1C /* BlurWallViewModel.swift */; };
 		630337EE1CE97906006FEA1C /* BlurWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337ED1CE97906006FEA1C /* BlurWallViewController.swift */; };
 		630337F01CE9AB4B006FEA1C /* AvailableTargetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337EF1CE9AB4B006FEA1C /* AvailableTargetList.swift */; };
+		630337F21CE9B265006FEA1C /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 630337F11CE9B265006FEA1C /* 1.png */; };
 		630472841CE5782C00D907C4 /* SearchEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472831CE5782C00D907C4 /* SearchEventListViewController.swift */; };
 		630472861CE5AA4E00D907C4 /* SearchEventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */; };
 		630472891CE5DD2000D907C4 /* WeekCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */; };
@@ -180,6 +181,7 @@
 		630337EB1CE974CE006FEA1C /* BlurWallViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallViewModel.swift; sourceTree = "<group>"; };
 		630337ED1CE97906006FEA1C /* BlurWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallViewController.swift; sourceTree = "<group>"; };
 		630337EF1CE9AB4B006FEA1C /* AvailableTargetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableTargetList.swift; sourceTree = "<group>"; };
+		630337F11CE9B265006FEA1C /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		630472831CE5782C00D907C4 /* SearchEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewController.swift; sourceTree = "<group>"; };
 		630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewModel.swift; sourceTree = "<group>"; };
 		630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekCalendarViewController.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
 				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
 				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
+				630337F11CE9B265006FEA1C /* 1.png */,
 				630337EA1CE9734A006FEA1C /* Blur Wall */,
 				630472871CE5DCEF00D907C4 /* Search Event List View */,
 				6375477E1CC9E65100BC3BBD /* Friend List View */,
@@ -736,6 +739,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				635479921CB898C100DE8CBC /* LaunchScreen.storyboard in Resources */,
+				630337F21CE9B265006FEA1C /* 1.png in Resources */,
 				63EC77BC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib in Resources */,
 				63EC77B41CC8743D008025A7 /* DLIncomingMessageBubble.xib in Resources */,
 				6354798F1CB898C100DE8CBC /* Assets.xcassets in Resources */,
