@@ -34,7 +34,8 @@ final public class BlurWallViewModel {
 	}
 	
 	public func loadWallWithGender(gender: Gender) {
-		requestMoreTargets(gender, page: 0, success: { (targets) in
+		let page = pageOfGender(gender)
+		requestMoreTargets(gender, page: page, success: { (targets) in
 			self.updateTargetsWith(targets, andGender: gender)
 			}, failure: { (error, afError) in
 				self.delegate?.blurWallViewModel(failToLoadWall: error, afError: afError)

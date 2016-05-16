@@ -13,6 +13,7 @@
 		630337EE1CE97906006FEA1C /* BlurWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337ED1CE97906006FEA1C /* BlurWallViewController.swift */; };
 		630337F01CE9AB4B006FEA1C /* AvailableTargetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337EF1CE9AB4B006FEA1C /* AvailableTargetList.swift */; };
 		630337F21CE9B265006FEA1C /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 630337F11CE9B265006FEA1C /* 1.png */; };
+		630337F31CE9B563006FEA1C /* AvailableTargetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337EF1CE9AB4B006FEA1C /* AvailableTargetList.swift */; };
 		630472841CE5782C00D907C4 /* SearchEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472831CE5782C00D907C4 /* SearchEventListViewController.swift */; };
 		630472861CE5AA4E00D907C4 /* SearchEventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */; };
 		630472891CE5DD2000D907C4 /* WeekCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */; };
@@ -1036,6 +1037,7 @@
 				63F3EE7C1CBF49DF0010D059 /* AFError.swift in Sources */,
 				63F3EE791CBF49D10010D059 /* Department.swift in Sources */,
 				63C3CE351CC0C8BC000EE808 /* EmailLoginViewModel.swift in Sources */,
+				630337F31CE9B563006FEA1C /* AvailableTargetList.swift in Sources */,
 				6373055C1CBF72190016A7FC /* TestPeriod.swift in Sources */,
 				63C3CE3A1CC0C8BC000EE808 /* LoginViewModel.swift in Sources */,
 				63C3CE261CC0C8A5000EE808 /* Organization.swift in Sources */,

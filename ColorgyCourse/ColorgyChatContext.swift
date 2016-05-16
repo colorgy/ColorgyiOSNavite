@@ -16,8 +16,16 @@ public enum ColorgyChatContextError: ErrorType {
 final public class ColorgyChatContext {
 	
 	// MARK: - Parameters
+	// MARK: Auth
 	public private(set) var userId: String?
 	public private(set) var status: Int?
+	// MARK: Data
+	public private(set) var unspecifiedTargets: AvailableTargetList
+	public private(set) var maleTargets: AvailableTargetList
+	public private(set) var femaleTargets: AvailableTargetList
+	private var currentUnspecifiedPage: Int = 0
+	private var currentMalePage: Int = 0
+	private var currentFemalePage: Int = 0
 	
 	/// **Singleton** of ColorgyChatContext
 	///
@@ -32,7 +40,9 @@ final public class ColorgyChatContext {
 	}
 	
 	private init() {
-		
+		unspecifiedTargets = AvailableTargetList()
+		maleTargets = AvailableTargetList()
+		femaleTargets = AvailableTargetList()
 	}
 	
 	/// Call this at app launch

@@ -14,24 +14,32 @@ public protocol BlurWallViewDelegate: class {
 
 final public class BlurWallView: UIView {
 	
-	private var blurWallCollectionView: UICollectionView!
-	private var blurWallCollectionViewFlowLayout: UICollectionViewFlowLayout!
-	private let cellIdentifer = "BlurWallViewCell"
+	// MARK: - Parameters
 	
+	// MARK: Private
+	/// collection view of blur wall
+	private var blurWallCollectionView: UICollectionView!
+	/// layout of collection view
+	private var blurWallCollectionViewFlowLayout: UICollectionViewFlowLayout!
+	/// cell identifier of collection view
+	private let cellIdentifer = "BlurWallViewCell"
+	/// This is where you start to request for more data
+	private let preloadPoint = 10
+	
+	
+	// MARK: Public
+	/// Set this after list updated, will auto update ui
 	public var targetList: AvailableTargetList = AvailableTargetList() {
 		didSet {
 			updateTargets()
 		}
 	}
-	
-	private func updateTargets() {
-		blurWallCollectionView.reloadData()
-	}
-	
-	private let preloadPoint = 10
-	
-	weak var delegate: BlurWallViewDelegate?
+	/// Delegate of this blur wall view
+	public weak var delegate: BlurWallViewDelegate?
 
+	// MARK: - Init
+	
+	/// Initialization
 	public init(frame: CGRect, delegate: BlurWallViewDelegate?) {
 		super.init(frame: frame)
 		
@@ -39,12 +47,21 @@ final public class BlurWallView: UIView {
 		
 		configureBlurWallCollectionView(frame)
 	}
+	
+	required public init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 
+	// MARK: - Configuration
+	
+	/// Configure blur wall collection view
 	func configureBlurWallCollectionView(frame: CGRect) {
 		blurWallCollectionViewFlowLayout = UICollectionViewFlowLayout()
-		blurWallCollectionViewFlowLayout.itemSize = CGSize(width: frame.width / 2, height: frame.width / 2)
-		blurWallCollectionViewFlowLayout.minimumLineSpacing = 0
-		blurWallCollectionViewFlowLayout.minimumInteritemSpacing = 0
+		let spacing: CGFloat = 1.5
+		let itemWidth = frame.width / 2 - spacing
+		blurWallCollectionViewFlowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
+		blurWallCollectionViewFlowLayout.minimumLineSpacing = spacing * 2
+		blurWallCollectionViewFlowLayout.minimumInteritemSpacing = spacing * 2
 		blurWallCollectionViewFlowLayout.sectionInset = UIEdgeInsetsZero
 		
 		blurWallCollectionView = UICollectionView(frame: frame, collectionViewLayout: blurWallCollectionViewFlowLayout)
@@ -57,11 +74,14 @@ final public class BlurWallView: UIView {
 		
 		addSubview(blurWallCollectionView)
 	}
-	
-	required public init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
 
+	// MARK: - Update UI
+	/// Update targets on blur wall
+	private func updateTargets() {
+		blurWallCollectionView.reloadData()
+	}
+	
+	// MARK: - Methods
 	private func checkIfReachingTheEnd(indexPath: NSIndexPath) {
 		if indexPath.item == targetList.count - preloadPoint {
 			delegate?.blurWallViewAboutToTouchTheEnd()
@@ -69,6 +89,7 @@ final public class BlurWallView: UIView {
 	}
 }
 
+// MARK: - Collection View Delegate and DataSource
 extension BlurWallView : UICollectionViewDelegate, UICollectionViewDataSource {
 	
 	public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
