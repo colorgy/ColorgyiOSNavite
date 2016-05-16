@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		630337E71CE964EE006FEA1C /* BlurWallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337E61CE964EE006FEA1C /* BlurWallView.swift */; };
 		630337E91CE9732B006FEA1C /* BlurWallViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */; };
+		630337EC1CE974CE006FEA1C /* BlurWallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337EB1CE974CE006FEA1C /* BlurWallViewModel.swift */; };
+		630337EE1CE97906006FEA1C /* BlurWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337ED1CE97906006FEA1C /* BlurWallViewController.swift */; };
 		630472841CE5782C00D907C4 /* SearchEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472831CE5782C00D907C4 /* SearchEventListViewController.swift */; };
 		630472861CE5AA4E00D907C4 /* SearchEventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */; };
 		630472891CE5DD2000D907C4 /* WeekCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */; };
@@ -174,6 +176,8 @@
 		576E6050CAE2354899BC93F6 /* Pods_ColorgyCourse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorgyCourse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		630337E61CE964EE006FEA1C /* BlurWallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallView.swift; sourceTree = "<group>"; };
 		630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallViewCell.swift; sourceTree = "<group>"; };
+		630337EB1CE974CE006FEA1C /* BlurWallViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallViewModel.swift; sourceTree = "<group>"; };
+		630337ED1CE97906006FEA1C /* BlurWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallViewController.swift; sourceTree = "<group>"; };
 		630472831CE5782C00D907C4 /* SearchEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewController.swift; sourceTree = "<group>"; };
 		630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewModel.swift; sourceTree = "<group>"; };
 		630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekCalendarViewController.swift; sourceTree = "<group>"; };
@@ -327,6 +331,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		630337EA1CE9734A006FEA1C /* Blur Wall */ = {
+			isa = PBXGroup;
+			children = (
+				630337E61CE964EE006FEA1C /* BlurWallView.swift */,
+				630337ED1CE97906006FEA1C /* BlurWallViewController.swift */,
+				630337EB1CE974CE006FEA1C /* BlurWallViewModel.swift */,
+				630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */,
+			);
+			name = "Blur Wall";
+			sourceTree = "<group>";
+		};
 		630472871CE5DCEF00D907C4 /* Search Event List View */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,10 +431,9 @@
 				630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */,
 				6304728A1CE5DDC500D907C4 /* WeekCalendarView.swift */,
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
-				630337E61CE964EE006FEA1C /* BlurWallView.swift */,
-				630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */,
 				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
 				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
+				630337EA1CE9734A006FEA1C /* Blur Wall */,
 				630472871CE5DCEF00D907C4 /* Search Event List View */,
 				6375477E1CC9E65100BC3BBD /* Friend List View */,
 				6375476C1CC87BF600BC3BBD /* Chat Room View */,
@@ -918,6 +932,7 @@
 				635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */,
 				635479EC1CB8B02A00DE8CBC /* CourseRawDataObject.swift in Sources */,
 				63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */,
+				630337EE1CE97906006FEA1C /* BlurWallViewController.swift in Sources */,
 				63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */,
 				6305700E1CBD11EA007D2C9D /* ChatUser.swift in Sources */,
 				6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */,
@@ -943,6 +958,7 @@
 				635479F11CB8B02A00DE8CBC /* ColorgyLogin.swift in Sources */,
 				63561C4E1CBF9848004AEF6D /* EmailRegisterViewModel.swift in Sources */,
 				635479E91CB8B02A00DE8CBC /* ColorgyAPIUserResult.swift in Sources */,
+				630337EC1CE974CE006FEA1C /* BlurWallViewModel.swift in Sources */,
 				635479F01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift in Sources */,
 				637547701CC8A96900BC3BBD /* ChatMessageList.swift in Sources */,
 				637305621CBF82D10016A7FC /* IconedTextInputView.swift in Sources */,
