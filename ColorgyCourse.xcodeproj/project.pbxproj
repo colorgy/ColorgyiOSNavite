@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630337E71CE964EE006FEA1C /* BlurWallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337E61CE964EE006FEA1C /* BlurWallView.swift */; };
+		630337E91CE9732B006FEA1C /* BlurWallViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */; };
 		630472841CE5782C00D907C4 /* SearchEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472831CE5782C00D907C4 /* SearchEventListViewController.swift */; };
 		630472861CE5AA4E00D907C4 /* SearchEventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */; };
 		630472891CE5DD2000D907C4 /* WeekCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */; };
@@ -170,6 +172,8 @@
 		02D01171AE68C2280C00D053 /* Pods-ColorgyCourseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourseUITests/Pods-ColorgyCourseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A1F3E09DFD2F7723F151AD0 /* Pods_ColorgyCourseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorgyCourseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		576E6050CAE2354899BC93F6 /* Pods_ColorgyCourse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorgyCourse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		630337E61CE964EE006FEA1C /* BlurWallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallView.swift; sourceTree = "<group>"; };
+		630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallViewCell.swift; sourceTree = "<group>"; };
 		630472831CE5782C00D907C4 /* SearchEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewController.swift; sourceTree = "<group>"; };
 		630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewModel.swift; sourceTree = "<group>"; };
 		630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekCalendarViewController.swift; sourceTree = "<group>"; };
@@ -412,6 +416,8 @@
 				630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */,
 				6304728A1CE5DDC500D907C4 /* WeekCalendarView.swift */,
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
+				630337E61CE964EE006FEA1C /* BlurWallView.swift */,
+				630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */,
 				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
 				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
 				630472871CE5DCEF00D907C4 /* Search Event List View */,
@@ -952,6 +958,7 @@
 				6375477C1CC8D69800BC3BBD /* ColorgyChatContext.swift in Sources */,
 				635479E51CB8B02A00DE8CBC /* TimeStamp.swift in Sources */,
 				635479E71CB8B02A00DE8CBC /* ColorgyAPI.swift in Sources */,
+				630337E91CE9732B006FEA1C /* BlurWallViewCell.swift in Sources */,
 				637547781CC8BF6200BC3BBD /* FriendListViewController.swift in Sources */,
 				635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */,
 				635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */,
@@ -970,6 +977,7 @@
 				63EC77B81CC8743D008025A7 /* DLMessageData.swift in Sources */,
 				635479E61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift in Sources */,
 				630570011CBCBC86007D2C9D /* Semester.swift in Sources */,
+				630337E71CE964EE006FEA1C /* BlurWallView.swift in Sources */,
 				630472861CE5AA4E00D907C4 /* SearchEventListViewModel.swift in Sources */,
 				63EC77BA1CC8743D008025A7 /* DLMessagesViewController.swift in Sources */,
 				637547721CC8B1BB00BC3BBD /* FloatingOptionView.swift in Sources */,
