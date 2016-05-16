@@ -183,7 +183,7 @@ final public class ColorgyChatAPI: NSObject {
 	///   - False: Time out, no network might cause this problem
 	private func allowAPIAccessing() -> Bool {
 		
-		var retryCounter = 30
+		var retryCounter = 100
 		
 		while retryCounter > 0 {
 			// decrease counter
@@ -194,7 +194,7 @@ final public class ColorgyChatAPI: NSObject {
 				return true
 			}
 			// wait for 3 seconds
-			NSThread.sleepForTimeInterval(0.5)
+			NSThread.sleepForTimeInterval(0.1)
 		}
 		
 		return false

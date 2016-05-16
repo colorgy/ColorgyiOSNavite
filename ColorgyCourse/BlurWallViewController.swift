@@ -57,4 +57,8 @@ extension BlurWallViewController : BlurWallViewDelegate {
 		print("about to touch the end")
 		viewModel?.requestMoreTarget(gender)
 	}
+	
+	public func blurWallViewDidSelectTarget(target: AvailableTarget) {
+		print(target)
+	}
 }

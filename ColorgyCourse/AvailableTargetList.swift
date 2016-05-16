@@ -34,6 +34,10 @@ final public class AvailableTargetList {
 	public func addTargets(targets: [AvailableTarget]) {
 		targets.forEach { availableTargetList.append($0) }
 	}
+	
+	public func clearList() {
+		availableTargetList = []
+	}
 }
 
 extension AvailableTargetList : SequenceType {

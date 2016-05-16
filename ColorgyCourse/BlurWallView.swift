@@ -10,6 +10,7 @@ import UIKit
 
 public protocol BlurWallViewDelegate: class {
 	func blurWallViewAboutToTouchTheEnd()
+	func blurWallViewDidSelectTarget(target: AvailableTarget)
 }
 
 final public class BlurWallView: UIView {
@@ -82,6 +83,7 @@ final public class BlurWallView: UIView {
 	}
 	
 	// MARK: - Methods
+	/// To check the specific indexPath is the point to request for more targets.
 	private func checkIfReachingTheEnd(indexPath: NSIndexPath) {
 		if indexPath.item == targetList.count - preloadPoint {
 			delegate?.blurWallViewAboutToTouchTheEnd()
@@ -105,5 +107,9 @@ extension BlurWallView : UICollectionViewDelegate, UICollectionViewDataSource {
 		cell.blurImageURL = targetList[indexPath.item].avatarBlur2XURL
 		checkIfReachingTheEnd(indexPath)
 		return cell
+	}
+	
+	public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		delegate?.blurWallViewDidSelectTarget(targetList[indexPath.item])
 	}
 }
