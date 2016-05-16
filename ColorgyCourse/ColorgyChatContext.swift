@@ -41,7 +41,7 @@ final public class ColorgyChatContext {
 	}
 	
 	/// Will get user info on chat server
-	public class func promiseToCheckUserAvailability() {
+	private class func promiseToCheckUserAvailability() {
 		ColorgyChatAPI().checkUserAvailability({ (user) in
 			ColorgyChatContext.sharedInstance().userId = user.userId
 			ColorgyChatContext.sharedInstance().status = user.status

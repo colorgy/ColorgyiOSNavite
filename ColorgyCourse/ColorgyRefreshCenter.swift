@@ -81,7 +81,7 @@ final public class ColorgyRefreshCenter {
 	
 	/// **Initialization**
 	/// Call this during app setup
-	public class func initialization() {
+	public class func initialize() {
 		
 		// start monitoring
 		AFNetworkReachabilityManager.sharedManager().startMonitoring()

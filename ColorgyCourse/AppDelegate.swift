@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 		
 		// Start Refresh Center
-		ColorgyRefreshCenter.initialization()
+		ColorgyRefreshCenter.initialize()
 		
 		// Setup Chat Contect
 		ColorgyChatContext.initialize()
