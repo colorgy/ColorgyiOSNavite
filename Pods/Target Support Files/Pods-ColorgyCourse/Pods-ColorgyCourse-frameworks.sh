@@ -98,7 +98,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-ColorgyCourse/SKPhotoBrowser.framework"
   install_framework "Pods-ColorgyCourse/SocketIOClientSwift.framework"
   install_framework "Pods-ColorgyCourse/SwiftyJSON.framework"
-  install_framework "Pods-ColorgyCourse/iVersion.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-ColorgyCourse/AFNetworking.framework"
@@ -115,5 +114,4 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-ColorgyCourse/SKPhotoBrowser.framework"
   install_framework "Pods-ColorgyCourse/SocketIOClientSwift.framework"
   install_framework "Pods-ColorgyCourse/SwiftyJSON.framework"
-  install_framework "Pods-ColorgyCourse/iVersion.framework"
 fi

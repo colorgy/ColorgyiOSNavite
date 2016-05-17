@@ -18,7 +18,6 @@ target 'ColorgyCourse' do
   pod 'ImagePickerSheetController', '~> 0.9.1'
   pod 'KeychainSwift', '~> 3.0'
   pod 'Socket.IO-Client-Swift', '~> 6.1.1'
-  pod 'iVersion', '~> 1.11'
 end
 
 target 'ColorgyCourseTests' do

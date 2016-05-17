@@ -30,7 +30,6 @@ PODS:
   - FBSDKShareKit (4.10.1):
     - FBSDKCoreKit
   - ImagePickerSheetController (0.9.1)
-  - iVersion (1.11.4)
   - KeychainSwift (3.0.13)
   - Mixpanel (2.9.6):
     - Mixpanel/Mixpanel (= 2.9.6)
@@ -57,7 +56,6 @@ DEPENDENCIES:
   - FBSDKLoginKit (~> 4.10.1)
   - FBSDKShareKit (~> 4.10.1)
   - ImagePickerSheetController (~> 0.9.1)
-  - iVersion (~> 1.11)
   - KeychainSwift (~> 3.0)
   - Mixpanel (~> 2.9.6)
   - Nimble
@@ -86,7 +84,6 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 699ff169080e3072de4b9b0faca90bf23dc36deb
   FBSDKShareKit: 2fd887cce0056bdda91f99b2021d724a4fed8e88
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
-  iVersion: 2b6ffe708672cb494ba3cab150a94800c2892e81
   KeychainSwift: 3bda518adb1ab386da0a9a1de93b561ee2c9322b
   Mixpanel: 048a9f2512ac1bb8bfdecf719da024873f50a9c2
   Nimble: 72bcc3e2f02242e6bfaaf8d9412ca7bfe3d8b417
