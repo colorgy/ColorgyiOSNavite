@@ -35,10 +35,6 @@ final public class BlurWallViewController: UIViewController {
 }
 
 extension BlurWallViewController : BlurWallViewModelDelegate {
-
-	public func blurWallViewModel(failToLoadWall error: ChatAPIError, afError: AFError?) {
-		
-	}
 	
 	public func blurWallViewModel(failToRequestMoreData error: ChatAPIError, afError: AFError?) {
 		
