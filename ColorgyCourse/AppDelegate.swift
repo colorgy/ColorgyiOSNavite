@@ -32,6 +32,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		// Setup Chat Contect
 		ColorgyChatContext.initialize()
+		
+		if let url = "http://itunes.apple.com/tw/lookup?id=998230121".url {
+			if let data = NSData(contentsOfURL: url) {
+				do {
+					
+					let lookup = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+					print(lookup)
+				} catch {
+					
+				}
+			}
+		}
 
 		return true
 	}
