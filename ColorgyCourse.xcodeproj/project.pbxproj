@@ -32,6 +32,7 @@
 		6307AC371CEAB66F00345025 /* SearchEventBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307AC361CEAB66F00345025 /* SearchEventBar.swift */; };
 		6324BF2F1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */; };
 		6324BF301CEFF721003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */; };
+		6324BF321CF00B7C003F1329 /* SearchCourseBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
 		6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479891CB898C100DE8CBC /* ViewController.swift */; };
 		6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354798B1CB898C100DE8CBC /* Main.storyboard */; };
@@ -203,6 +204,7 @@
 		6305701F1CBD2999007D2C9D /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		6307AC361CEAB66F00345025 /* SearchEventBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventBar.swift; sourceTree = "<group>"; };
 		6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyChatAPIErrorHandler.swift; sourceTree = "<group>"; };
+		6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseBar.swift; sourceTree = "<group>"; };
 		635479841CB898C000DE8CBC /* ColorgyCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorgyCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635479871CB898C100DE8CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		635479891CB898C100DE8CBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
 				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
 				630337F11CE9B265006FEA1C /* 1.png */,
+				6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */,
 				630337EA1CE9734A006FEA1C /* Blur Wall */,
 				630472871CE5DCEF00D907C4 /* Search Event List View */,
 				6375477E1CC9E65100BC3BBD /* Friend List View */,
@@ -954,6 +957,7 @@
 				63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */,
 				63C3CE221CC0C76F000EE808 /* Organization.swift in Sources */,
 				6305700A1CBD0AA1007D2C9D /* ColorgyChatAPI.swift in Sources */,
+				6324BF321CF00B7C003F1329 /* SearchCourseBar.swift in Sources */,
 				63EC77B51CC8743D008025A7 /* DLIncomingMessageDelegate.swift in Sources */,
 				635479ED1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift in Sources */,
 				630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */,
