@@ -39,10 +39,10 @@ final public class FriendListViewModel {
 	// MARK: - Public Methods
 	public func startLoadingFriend() {
 		loadingFriendTimer = NSTimer(timeInterval: reloadTime, target: self, selector: #selector(reloadChatroom), userInfo: nil, repeats: true)
-		loadingFriendTimer?.fire()
 		if loadingFriendTimer != nil {
 			NSRunLoop.currentRunLoop().addTimer(loadingFriendTimer!, forMode: NSRunLoopCommonModes)
 		}
+		loadingFriendTimer?.fire()
 	}
 	
 	public func stopLoadingFriend() {
@@ -52,10 +52,10 @@ final public class FriendListViewModel {
 	
 	// MARK: - Private Methods
 	@objc private func reloadChatroom() {
-		autoreleasepool {
+//		autoreleasepool {
 			reloadFriend()
 			reloadHi()
-		}
+//		}
 	}
 	
 	@objc private func reloadFriend() {

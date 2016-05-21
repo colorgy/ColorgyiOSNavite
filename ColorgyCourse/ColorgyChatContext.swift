@@ -27,6 +27,8 @@ final public class ColorgyChatContext {
 	private var currentMalePage: Int = 0
 	private var currentFemalePage: Int = 0
 	
+	private let chatAPI: ColorgyChatAPI
+	
 	/// **Singleton** of ColorgyChatContext
 	///
 	/// Will get the only instance of refresh center
@@ -43,6 +45,8 @@ final public class ColorgyChatContext {
 		unspecifiedTargets = AvailableTargetList()
 		maleTargets = AvailableTargetList()
 		femaleTargets = AvailableTargetList()
+		
+		chatAPI = ColorgyChatAPI()
 	}
 	
 	/// Call this at app launch
@@ -52,7 +56,7 @@ final public class ColorgyChatContext {
 	
 	/// Will get user info on chat server
 	private class func promiseToCheckUserAvailability() {
-		ColorgyChatAPI().checkUserAvailability({ (user) in
+		self.sharedInstance().chatAPI.checkUserAvailability({ (user) in
 			ColorgyChatContext.sharedInstance().userId = user.userId
 			ColorgyChatContext.sharedInstance().status = user.status
 			}, failure: { (error, afError) in

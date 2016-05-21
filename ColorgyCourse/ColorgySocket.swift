@@ -26,9 +26,16 @@ final public class ColorgySocket : NSObject {
 				self.handleConnectToServer(responseOnEmit, registerToChatroom: registerToChatroom, withMessages: withMessages, reconnectToServerWithMessages: reconnectToServerWithMessages, failToConnectToSocket: failToConnectToSocket)
 			})
 		}
+		
+		self.socket.on("error") { (response: [AnyObject], ack: SocketAckEmitter) in
+			print(response, ack)
+		}
 	}
 	
 	private func handleConnectToServer(responseOnEmit: [AnyObject], registerToChatroom: (chatroom: Chatroom) -> Void, withMessages: (messages: [ChatMessage]) -> Void, reconnectToServerWithMessages: (messages: [ChatMessage]) -> Void, failToConnectToSocket: (error: ColorgySocketError) -> Void) {
+		
+		print(responseOnEmit)
+		
 		dispatch_async(dispatch_get_main_queue(), { () -> Void in
 			
 			guard let _chatroom = Chatroom(json: JSON(responseOnEmit)) else {

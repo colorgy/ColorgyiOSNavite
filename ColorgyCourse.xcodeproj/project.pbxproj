@@ -30,6 +30,8 @@
 		6305701E1CBD2902007D2C9D /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701D1CBD2902007D2C9D /* Chatroom.swift */; };
 		630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701F1CBD2999007D2C9D /* ChatMessage.swift */; };
 		6307AC371CEAB66F00345025 /* SearchEventBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307AC361CEAB66F00345025 /* SearchEventBar.swift */; };
+		6324BF2F1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */; };
+		6324BF301CEFF721003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
 		6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479891CB898C100DE8CBC /* ViewController.swift */; };
 		6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354798B1CB898C100DE8CBC /* Main.storyboard */; };
@@ -200,6 +202,7 @@
 		6305701D1CBD2902007D2C9D /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		6305701F1CBD2999007D2C9D /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		6307AC361CEAB66F00345025 /* SearchEventBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventBar.swift; sourceTree = "<group>"; };
+		6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyChatAPIErrorHandler.swift; sourceTree = "<group>"; };
 		635479841CB898C000DE8CBC /* ColorgyCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorgyCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635479871CB898C100DE8CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		635479891CB898C100DE8CBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -373,6 +376,7 @@
 			children = (
 				6305700B1CBD0AB9007D2C9D /* ColorgySocket.swift */,
 				630570091CBD0AA1007D2C9D /* ColorgyChatAPI.swift */,
+				6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */,
 				630570231CBD2DCC007D2C9D /* Model */,
 			);
 			name = "Colorgy Chat API";
@@ -641,7 +645,6 @@
 				11C09EAAC34B25F44EC5F429 /* Embed Pods Frameworks */,
 				412A583853FC728546ED723D /* Copy Pods Resources */,
 				635479B51CB89BAE00DE8CBC /* ShellScript */,
-				635E69771CC3B5D400C67689 /* ShellScript */,
 				635479CD1CB8A2DD00DE8CBC /* ShellScript */,
 			);
 			buildRules = (
@@ -871,19 +874,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" e709dd3229ee919ed0fef9ac4423afa4c9bae156 2fbc1d63ab59663379a655410b55e15089849de3798b93b390afc2613c3a9bb4";
 		};
-		635E69771CC3B5D400C67689 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
-		};
 		6AF2665B7E57437768932BBA /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -947,6 +937,7 @@
 				630337EE1CE97906006FEA1C /* BlurWallViewController.swift in Sources */,
 				63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */,
 				6307AC371CEAB66F00345025 /* SearchEventBar.swift in Sources */,
+				6324BF2F1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */,
 				6305700E1CBD11EA007D2C9D /* ChatUser.swift in Sources */,
 				6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */,
 				6305701E1CBD2902007D2C9D /* Chatroom.swift in Sources */,
@@ -1036,6 +1027,7 @@
 				63F3EE6B1CBF3CA00010D059 /* TestColorgyRefershCenter.swift in Sources */,
 				63F3EE841CBF49DF0010D059 /* ColorgyRefreshCenter.swift in Sources */,
 				6354799D1CB898C100DE8CBC /* ColorgyCourseTests.swift in Sources */,
+				6324BF301CEFF721003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */,
 				63F3EE8C1CBF49EE0010D059 /* StringExtension.swift in Sources */,
 				63C3CE2E1CC0C8B5000EE808 /* ColorgyColor.swift in Sources */,
 				63F3EE7C1CBF49DF0010D059 /* AFError.swift in Sources */,
