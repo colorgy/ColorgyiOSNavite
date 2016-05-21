@@ -455,17 +455,12 @@
 				63EC77A11CC8743D008025A7 /* DLMessageVIew */,
 				630570221CBD2D97007D2C9D /* Realm Object */,
 				635479871CB898C100DE8CBC /* AppDelegate.swift */,
-				63C3CE1A1CC0C76F000EE808 /* ColorgyAppNotification.swift */,
-				635479CE1CB8A5EF00DE8CBC /* Release.swift */,
 				635479891CB898C100DE8CBC /* ViewController.swift */,
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
-				630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */,
-				6304728A1CE5DDC500D907C4 /* WeekCalendarView.swift */,
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
-				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
-				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
 				630337F11CE9B265006FEA1C /* 1.png */,
-				6393BBFF1CF01AD7008BFF72 /* ColorgyNavigationBar.swift */,
+				6393BC031CF01B74008BFF72 /* Global */,
+				6393BC011CF01B5B008BFF72 /* Week Calendar View */,
 				6324BF331CF00E6D003F1329 /* Search Course View */,
 				630337EA1CE9734A006FEA1C /* Blur Wall */,
 				630472871CE5DCEF00D907C4 /* Search Event List View */,
@@ -595,6 +590,35 @@
 				637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */,
 			);
 			name = "Friend List View";
+			sourceTree = "<group>";
+		};
+		6393BC011CF01B5B008BFF72 /* Week Calendar View */ = {
+			isa = PBXGroup;
+			children = (
+				630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */,
+				6304728A1CE5DDC500D907C4 /* WeekCalendarView.swift */,
+			);
+			name = "Week Calendar View";
+			sourceTree = "<group>";
+		};
+		6393BC021CF01B6B008BFF72 /* Global View */ = {
+			isa = PBXGroup;
+			children = (
+				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
+				6393BBFF1CF01AD7008BFF72 /* ColorgyNavigationBar.swift */,
+			);
+			name = "Global View";
+			sourceTree = "<group>";
+		};
+		6393BC031CF01B74008BFF72 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				63C3CE1A1CC0C76F000EE808 /* ColorgyAppNotification.swift */,
+				635479CE1CB8A5EF00DE8CBC /* Release.swift */,
+				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
+				6393BC021CF01B6B008BFF72 /* Global View */,
+			);
+			name = Global;
 			sourceTree = "<group>";
 		};
 		63C3CE161CC0C673000EE808 /* Email Login View */ = {
