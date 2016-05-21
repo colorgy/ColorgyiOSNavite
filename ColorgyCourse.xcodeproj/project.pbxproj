@@ -410,6 +410,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		6324BF331CF00E6D003F1329 /* Search Course View */ = {
+			isa = PBXGroup;
+			children = (
+				6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */,
+			);
+			name = "Search Course View";
+			sourceTree = "<group>";
+		};
 		6354797B1CB898C000DE8CBC = {
 			isa = PBXGroup;
 			children = (
@@ -449,7 +457,7 @@
 				63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */,
 				63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */,
 				630337F11CE9B265006FEA1C /* 1.png */,
-				6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */,
+				6324BF331CF00E6D003F1329 /* Search Course View */,
 				630337EA1CE9734A006FEA1C /* Blur Wall */,
 				630472871CE5DCEF00D907C4 /* Search Event List View */,
 				6375477E1CC9E65100BC3BBD /* Friend List View */,
