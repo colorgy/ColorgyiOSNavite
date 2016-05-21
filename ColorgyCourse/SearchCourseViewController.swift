@@ -22,7 +22,17 @@ final public class SearchCourseViewController: UIViewController {
     }
 	
 	private func configureSearchCourseBar() {
-		searchBar = SearchCourseBar(frame: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 64)))
+		searchBar = SearchCourseBar(frame: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 64)), delegate: self)
 		view.addSubview(searchBar)
+	}
+}
+
+extension SearchCourseViewController : SearchCourseBarDelegate {
+	public func searchCourseBarCancelButtonClicked() {
+		
+	}
+	
+	public func searchCourseBar(didUpdateSearchText text: String?) {
+		
 	}
 }

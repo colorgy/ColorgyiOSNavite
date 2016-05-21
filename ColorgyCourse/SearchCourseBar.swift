@@ -29,8 +29,9 @@ final public class SearchCourseBar: UIView {
 	public weak var delegate: SearchCourseBarDelegate?
 	
 	// MARK: - Init
-	public override init(frame: CGRect) {
+	public init(frame: CGRect, delegate: SearchCourseBarDelegate?) {
 		super.init(frame: frame)
+		self.delegate = delegate
 		configureIconImageView()
 		configureCancelButton()
 		configureSearchTextField()
@@ -87,7 +88,6 @@ final public class SearchCourseBar: UIView {
 	}
 	
 	@objc private func searchTextFieldTextChanged(textField: UITextField) {
-		print(textField.text)
 		delegate?.searchCourseBar(didUpdateSearchText: textField.text)
 	}
 }

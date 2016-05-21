@@ -76,6 +76,7 @@
 		6375477A1CC8C23700BC3BBD /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */; };
 		6375477C1CC8D69800BC3BBD /* ColorgyChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */; };
 		6375477D1CC9D67600BC3BBD /* ColorgyChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */; };
+		6393BBFE1CF0179E008BFF72 /* SearchCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393BBFD1CF0179E008BFF72 /* SearchCourseViewModel.swift */; };
 		63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */; };
 		63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */; };
 		63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */; };
@@ -255,6 +256,7 @@
 		637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
 		6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyChatContext.swift; sourceTree = "<group>"; };
 		6379FC701CBEA1A8002F10E1 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		6393BBFD1CF0179E008BFF72 /* SearchCourseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseViewModel.swift; sourceTree = "<group>"; };
 		63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
 		63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableTarget.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 			children = (
 				6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */,
 				6324BF341CF00E9B003F1329 /* SearchCourseViewController.swift */,
+				6393BBFD1CF0179E008BFF72 /* SearchCourseViewModel.swift */,
 			);
 			name = "Search Course View";
 			sourceTree = "<group>";
@@ -995,6 +998,7 @@
 				635479E51CB8B02A00DE8CBC /* TimeStamp.swift in Sources */,
 				635479E71CB8B02A00DE8CBC /* ColorgyAPI.swift in Sources */,
 				630337E91CE9732B006FEA1C /* BlurWallViewCell.swift in Sources */,
+				6393BBFE1CF0179E008BFF72 /* SearchCourseViewModel.swift in Sources */,
 				637547781CC8BF6200BC3BBD /* FriendListViewController.swift in Sources */,
 				635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */,
 				635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */,
