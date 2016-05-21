@@ -17,6 +17,8 @@ final public class SearchCourseViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 		configureSearchCourseBar()
+		
+		view.backgroundColor = ColorgyColor.BackgroundColor
     }
 	
 	private func configureSearchCourseBar() {
