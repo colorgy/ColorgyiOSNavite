@@ -11,12 +11,14 @@ import UIKit
 final public class SearchCourseViewController: UIViewController {
 	
 	private var searchBar: SearchCourseBar!
+	private var viewModel: SearchCourseViewModel?
 
     override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 		configureSearchCourseBar()
+		viewModel = SearchCourseViewModel(delegate: self)
 		
 		view.backgroundColor = ColorgyColor.BackgroundColor
     }
@@ -28,11 +30,19 @@ final public class SearchCourseViewController: UIViewController {
 }
 
 extension SearchCourseViewController : SearchCourseBarDelegate {
+	
 	public func searchCourseBarCancelButtonClicked() {
 		
 	}
 	
 	public func searchCourseBar(didUpdateSearchText text: String?) {
+		
+	}
+}
+
+extension SearchCourseViewController : SearchCourseViewModelDelegate {
+	
+	public func searchCourseViewModelUpdateFilteredCourses(courses: [String]) {
 		
 	}
 }
