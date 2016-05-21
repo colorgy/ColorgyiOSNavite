@@ -46,7 +46,7 @@ final public class SearchCourseBar: UIView {
 	private func configureSearchTextField() {
 		searchTextField = UITextField()
 		searchTextField.frame.size.width = bounds.width - (searchIconImageVIew.bounds.width + cancelButton.bounds.width) - 4 * 16
-		searchTextField.frame.size.height = 18
+		searchTextField.frame.size.height = 21
 		searchTextField.tintColor = ColorgyColor.MainOrange
 		searchTextField.center.y = centerOfBar.y
 		searchTextField.frame.origin.x = searchIconImageVIew.frame.origin.x + 16 * 2

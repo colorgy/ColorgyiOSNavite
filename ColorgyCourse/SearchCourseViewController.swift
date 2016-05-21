@@ -36,7 +36,7 @@ extension SearchCourseViewController : SearchCourseBarDelegate {
 	}
 	
 	public func searchCourseBar(didUpdateSearchText text: String?) {
-		
+		viewModel?.searchCourseWithText(text)
 	}
 }
 

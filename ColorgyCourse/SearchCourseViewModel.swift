@@ -85,7 +85,7 @@ final public class SearchCourseViewModel {
 		               "廢文翻譯",
 		               "水鳥在沙洲上叫，害我好想把個正妹"]
 		self.courses = []
-		for _ in 1...100000 {
+		for _ in 1...10000 {
 			for e in _events {
 				self.courses.append(e)
 			}
