@@ -12,4 +12,5 @@ struct ColorgyAppNotification {
 	static let RefreshTokenRevokedNotification = "ColorgyAppNotification RefreshTokenRevokedNotification"
 	static let MessageRecievedNotification = "ColorgyAppNotification MessageRecievedNotification"
 	static let HelloRecievedNotification = "ColorgyAppNotification HelloRecievedNotification"
+	static let NewVersionAppReleased = "ColorgyAppNotification NewVersionAppReleased"
 }

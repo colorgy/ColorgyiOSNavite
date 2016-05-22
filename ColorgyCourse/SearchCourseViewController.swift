@@ -21,11 +21,6 @@ final public class SearchCourseViewController: UIViewController {
 		viewModel = SearchCourseViewModel(delegate: self)
 		
 		view.backgroundColor = ColorgyColor.BackgroundColor
-		
-		let a = ColorgyNavigationBar()
-		a.title = "100"
-//		a.frame.origin.y = 100
-		view.addSubview(a)
     }
 	
 	private func configureSearchCourseBar() {
