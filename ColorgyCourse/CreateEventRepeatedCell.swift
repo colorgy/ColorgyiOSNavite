@@ -13,6 +13,9 @@ final public class CreateEventRepeatedCell: UITableViewCell {
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var contentLabel: UILabel!
 	@IBOutlet weak var repeatSwitch: UISwitch!
+	
+	@IBOutlet weak var upperSeperatorLine: UIView!
+	@IBOutlet weak var bottomSeperatorLine: UIView!
 
     override public func awakeFromNib() {
         super.awakeFromNib()

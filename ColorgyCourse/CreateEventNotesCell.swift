@@ -13,6 +13,9 @@ final public class CreateEventNotesCell: UITableViewCell {
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var contentTextView: UITextView!
 	
+	@IBOutlet weak var upperSeperatorLine: UIView!
+	@IBOutlet weak var bottomSeperatorLine: UIView!
+	
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

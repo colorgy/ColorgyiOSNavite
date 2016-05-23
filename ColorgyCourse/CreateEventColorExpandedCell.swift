@@ -23,6 +23,9 @@ final public class CreateEventColorExpandedCell: UITableViewCell {
 	@IBOutlet weak var purpleColorView: UIView!
 	@IBOutlet weak var peachColorView: UIView!
 	
+	@IBOutlet weak var upperSeperatorLine: UIView!
+	@IBOutlet weak var bottomSeperatorLine: UIView!
+	
 	public weak var delegate: CreateEventColorCellDelegate?
 
     override public func awakeFromNib() {

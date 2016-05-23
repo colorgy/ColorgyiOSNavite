@@ -29,11 +29,31 @@
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LM9-U5-0oy">
                         <rect key="frame" x="464" y="6" width="51" height="31"/>
                     </switch>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VUL-AO-pjX">
+                        <rect key="frame" x="0.0" y="0.0" width="526" height="16"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="8lb-J9-iwt"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHL-Sm-T1f">
+                        <rect key="frame" x="0.0" y="28" width="526" height="16"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="gvo-oR-bcP"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="AHL-Sm-T1f" firstAttribute="leading" secondItem="Wtc-CU-MOR" secondAttribute="leading" id="2Y4-Wx-4YT"/>
                     <constraint firstItem="LM9-U5-0oy" firstAttribute="centerY" secondItem="Wtc-CU-MOR" secondAttribute="centerY" id="3Y1-dd-DPQ"/>
+                    <constraint firstAttribute="bottom" secondItem="AHL-Sm-T1f" secondAttribute="bottom" id="4pC-tt-46i"/>
                     <constraint firstItem="9pz-aQ-h9x" firstAttribute="centerY" secondItem="K8Z-02-aBU" secondAttribute="centerY" id="EOt-1B-hbP"/>
+                    <constraint firstAttribute="trailing" secondItem="AHL-Sm-T1f" secondAttribute="trailing" id="HrD-T5-O9D"/>
+                    <constraint firstItem="VUL-AO-pjX" firstAttribute="top" secondItem="Wtc-CU-MOR" secondAttribute="top" id="O7m-9Q-tDk"/>
+                    <constraint firstAttribute="trailing" secondItem="VUL-AO-pjX" secondAttribute="trailing" id="dDf-L6-Se4"/>
                     <constraint firstItem="LM9-U5-0oy" firstAttribute="leading" secondItem="9pz-aQ-h9x" secondAttribute="trailing" constant="8" id="gfM-6F-Qhv"/>
+                    <constraint firstItem="VUL-AO-pjX" firstAttribute="leading" secondItem="Wtc-CU-MOR" secondAttribute="leading" id="j7p-AK-Ipn"/>
                     <constraint firstItem="9pz-aQ-h9x" firstAttribute="leading" secondItem="K8Z-02-aBU" secondAttribute="trailing" constant="32" id="jd4-Lf-vWo"/>
                     <constraint firstAttribute="trailingMargin" secondItem="LM9-U5-0oy" secondAttribute="trailing" constant="5" id="ngt-fZ-xoX"/>
                     <constraint firstItem="K8Z-02-aBU" firstAttribute="centerY" secondItem="Wtc-CU-MOR" secondAttribute="centerY" id="qc9-eB-AnC"/>
@@ -41,9 +61,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bottomSeperatorLine" destination="AHL-Sm-T1f" id="9Pc-9V-mT4"/>
                 <outlet property="contentLabel" destination="9pz-aQ-h9x" id="GTf-xJ-Lo9"/>
                 <outlet property="repeatSwitch" destination="LM9-U5-0oy" id="Idr-AH-3eI"/>
                 <outlet property="titleLabel" destination="K8Z-02-aBU" id="soo-tv-IJp"/>
+                <outlet property="upperSeperatorLine" destination="VUL-AO-pjX" id="5qx-b4-BQ3"/>
             </connections>
             <point key="canvasLocation" x="412" y="382"/>
         </tableViewCell>

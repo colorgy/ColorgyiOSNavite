@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="151"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DiQ-GF-5Tf" id="RGF-UE-TeN">
-                <rect key="frame" x="0.0" y="0.0" width="393" height="151"/>
+                <rect key="frame" x="0.0" y="0.0" width="393" height="150.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAr-a6-Odt">
@@ -27,19 +27,41 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQR-Bz-rV7">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="oby-Sd-R7x"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGa-2k-vf7">
+                        <rect key="frame" x="0.0" y="151" width="393" height="0.0"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="zct-lS-sCX"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="fQR-Bz-rV7" firstAttribute="top" secondItem="RGF-UE-TeN" secondAttribute="top" id="2Ir-XM-XvB"/>
                     <constraint firstItem="fAr-a6-Odt" firstAttribute="top" secondItem="RGF-UE-TeN" secondAttribute="topMargin" constant="5" id="9Xt-3J-5ya"/>
                     <constraint firstAttribute="topMargin" secondItem="gYd-4C-mF9" secondAttribute="top" id="FAs-oP-gCP"/>
                     <constraint firstAttribute="bottomMargin" secondItem="gYd-4C-mF9" secondAttribute="bottom" constant="-0.5" id="Hyj-mS-U9i"/>
+                    <constraint firstItem="UGa-2k-vf7" firstAttribute="leading" secondItem="RGF-UE-TeN" secondAttribute="leading" id="O2X-m4-LUQ"/>
+                    <constraint firstAttribute="trailing" secondItem="fQR-Bz-rV7" secondAttribute="trailing" id="OLO-5M-Xjt"/>
+                    <constraint firstAttribute="trailing" secondItem="UGa-2k-vf7" secondAttribute="trailing" id="ZpO-hV-5xa"/>
+                    <constraint firstItem="fQR-Bz-rV7" firstAttribute="leading" secondItem="RGF-UE-TeN" secondAttribute="leading" id="cdG-U7-An2"/>
                     <constraint firstItem="fAr-a6-Odt" firstAttribute="leading" secondItem="RGF-UE-TeN" secondAttribute="leadingMargin" constant="8" id="dqK-6I-A9z"/>
+                    <constraint firstAttribute="bottom" secondItem="UGa-2k-vf7" secondAttribute="bottom" id="eCe-dS-7cL"/>
                     <constraint firstItem="gYd-4C-mF9" firstAttribute="leading" secondItem="fAr-a6-Odt" secondAttribute="trailing" constant="32" id="g37-nO-Hfe"/>
                     <constraint firstAttribute="trailingMargin" secondItem="gYd-4C-mF9" secondAttribute="trailing" id="vkm-n2-ebh"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bottomSeperatorLine" destination="UGa-2k-vf7" id="VUO-iS-eKt"/>
                 <outlet property="contentTextView" destination="gYd-4C-mF9" id="VEg-ir-x15"/>
                 <outlet property="titleLabel" destination="fAr-a6-Odt" id="pdN-Ya-l0h"/>
+                <outlet property="upperSeperatorLine" destination="fQR-Bz-rV7" id="G8V-ht-Gox"/>
             </connections>
             <point key="canvasLocation" x="505.5" y="423.5"/>
         </tableViewCell>

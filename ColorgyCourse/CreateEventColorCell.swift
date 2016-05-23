@@ -13,6 +13,9 @@ final public class CreateEventColorCell: UITableViewCell {
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var choosedColorView: UIView!
 	
+	@IBOutlet weak var upperSeperatorLine: UIView!
+	@IBOutlet weak var bottomSeperatorLine: UIView!
+	
 	public weak var delegate: CreateEventColorCellDelegate?
 
     override public func awakeFromNib() {

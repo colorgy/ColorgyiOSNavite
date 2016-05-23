@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="483" height="66"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FVS-ZP-8ft" id="5VM-G5-pkx">
-                <rect key="frame" x="0.0" y="0.0" width="483" height="66"/>
+                <rect key="frame" x="0.0" y="0.0" width="483" height="65.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dl-Yu-HVK">
@@ -26,18 +26,40 @@
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRz-ET-G8o">
+                        <rect key="frame" x="0.0" y="0.0" width="483" height="1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="N6Q-0z-5c6"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZD-ae-zf1">
+                        <rect key="frame" x="0.0" y="66" width="483" height="0.0"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="rNK-I7-rYS"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="4dl-Yu-HVK" firstAttribute="centerY" secondItem="5VM-G5-pkx" secondAttribute="centerY" id="Gt0-fr-GYA"/>
                     <constraint firstItem="4dl-Yu-HVK" firstAttribute="leading" secondItem="5VM-G5-pkx" secondAttribute="leadingMargin" constant="8" id="JfF-KI-Khn"/>
+                    <constraint firstAttribute="trailing" secondItem="iZD-ae-zf1" secondAttribute="trailing" id="Jkh-OF-7cK"/>
+                    <constraint firstItem="RRz-ET-G8o" firstAttribute="top" secondItem="5VM-G5-pkx" secondAttribute="top" id="KgS-Zv-Uhw"/>
+                    <constraint firstAttribute="bottom" secondItem="iZD-ae-zf1" secondAttribute="bottom" id="OVB-bB-b0B"/>
+                    <constraint firstItem="RRz-ET-G8o" firstAttribute="leading" secondItem="5VM-G5-pkx" secondAttribute="leading" id="Xl7-OS-Acj"/>
                     <constraint firstItem="Il2-ws-UYd" firstAttribute="leading" secondItem="4dl-Yu-HVK" secondAttribute="trailing" constant="32" id="agS-NH-GRU"/>
+                    <constraint firstItem="iZD-ae-zf1" firstAttribute="leading" secondItem="5VM-G5-pkx" secondAttribute="leading" id="g2K-Dy-1cq"/>
                     <constraint firstItem="Il2-ws-UYd" firstAttribute="centerY" secondItem="4dl-Yu-HVK" secondAttribute="centerY" id="isR-up-Xlf"/>
+                    <constraint firstAttribute="trailing" secondItem="RRz-ET-G8o" secondAttribute="trailing" id="sqy-xO-BF3"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Il2-ws-UYd" secondAttribute="trailing" id="yBD-hM-DUP"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bottomSeperatorLine" destination="iZD-ae-zf1" id="1hX-o0-YSh"/>
                 <outlet property="titleLabel" destination="4dl-Yu-HVK" id="YSC-Ch-CeF"/>
                 <outlet property="titleTextField" destination="Il2-ws-UYd" id="oOc-ib-qiQ"/>
+                <outlet property="upperSeperatorLine" destination="RRz-ET-G8o" id="7DT-aT-tpk"/>
             </connections>
             <point key="canvasLocation" x="315.5" y="278"/>
         </tableViewCell>

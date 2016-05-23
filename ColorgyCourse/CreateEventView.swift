@@ -185,12 +185,12 @@ extension CreateEventView : UITableViewDataSource {
 			// notes section
 			switch indexPath.row {
 			case CellArrangement.NotesSection.notesCell.rawValue:
-				return 44.0
+				return 132.0
 			default:
 				return 44.0
 			}
 		default:
-			return 132.0
+			return 44.0
 		}
 	}
 	
