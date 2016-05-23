@@ -36,6 +36,21 @@ final public class WeekCalendarView: UIView {
 	}
 	private var dateLabels: [UILabel] = []
 	
+	// MARK: - Event
+	public var events: [Event] = [] {
+		didSet {
+			updateEvents()
+		}
+	}
+	
+	private var itemSize: CGFloat {
+		return weekContainerView.bounds.width / 5
+	}
+	
+	private var calendarHeight: CGFloat {
+		return weekContainerView.contentSize.height
+	}
+	
 	// MARK: - Init
 	override public init(frame: CGRect) {
 		super.init(frame: frame)
@@ -91,7 +106,7 @@ final public class WeekCalendarView: UIView {
 		
 		let contentView = UIView()
 		contentView.frame.size = sidebarContainerView.contentSize
-		for (index, _time) in ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"].enumerate() {
+		for (index, _time) in ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"].enumerate() {
 			// 00:00 ~ 24:00
 			let timeLabel = UILabel()
 			timeLabel.frame.size.width = 100
@@ -101,7 +116,7 @@ final public class WeekCalendarView: UIView {
 			timeLabel.textColor = ColorgyColor.TextColor
 			timeLabel.text = "\(_time):00"
 			timeLabel.center.x = contentView.bounds.midX
-			timeLabel.center.y = itemSize * index.CGFloatValue
+			timeLabel.center.y = itemSize * (index + 1).CGFloatValue
 			
 			contentView.addSubview(timeLabel)
 		}
@@ -157,6 +172,44 @@ final public class WeekCalendarView: UIView {
 		}
 	}
 
+	private func updateEvents() {
+		events.forEach { (event) in
+			print(event)
+			let cell = UIView()
+			// TODO: check starts and ends time
+			cell.frame.size.height = pointOnWeekViewOfDate(event.ends) - pointOnWeekViewOfDate(event.starts)
+			cell.frame.size.width = itemSize
+			cell.frame.origin.y = pointOnWeekViewOfDate(event.starts)
+			cell.frame.origin.x = pointOfX(event.starts).CGFloatValue * itemSize
+			cell.backgroundColor = UIColor.blueColor()
+			cell.layer.cornerRadius = 2.0
+			weekContentView.addSubview(cell)
+		}
+	}
+	
+	private func pointOfX(date: NSDate) -> Int {
+		let ya = (date.weekday - 1 - 1) % 7
+		if ya < 0 {
+			return 6
+		}
+		return ya
+	}
+	
+	private func pointOnWeekViewOfDate(date: NSDate) -> CGFloat {
+		let minutes = (date.hour * 60 + date.minute).DoubleValue
+		let minutesOf24Hours = 24 * 60.DoubleValue
+		return (minutes / minutesOf24Hours).CGFloatValue * calendarHeight
+	}
+	
+	// MARK: - Helper
+	public func scrollToCurrentTime() {
+		let now = NSDate()
+		let y = pointOnWeekViewOfDate(now) - itemSize
+		let x = pointOfX(now).CGFloatValue * itemSize
+		print(x,y)
+		let fuckY = max(0, min(y, calendarHeight - weekContainerView.frame.height))
+		weekContainerView.setContentOffset(CGPoint(x: min(x, itemSize * 2), y: fuckY), animated: true)
+	}
 }
 
 extension WeekCalendarView : UIScrollViewDelegate {

@@ -21,6 +21,11 @@ final public class SearchCourseViewController: UIViewController {
 		viewModel = SearchCourseViewModel(delegate: self)
 		
 		view.backgroundColor = ColorgyColor.BackgroundColor
+		
+		
+		
+		
+		
     }
 	
 	private func configureSearchCourseBar() {

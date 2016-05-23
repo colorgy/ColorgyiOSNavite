@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Vgp-X5-vja" customClass="CreateEventRepeatedCell" customModule="ColorgyCourse" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="526" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vgp-X5-vja" id="Wtc-CU-MOR">
+                <rect key="frame" x="0.0" y="0.0" width="526" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8Z-02-aBU">
+                        <rect key="frame" x="16" y="11" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pz-aQ-h9x">
+                        <rect key="frame" x="90" y="11" width="366" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LM9-U5-0oy">
+                        <rect key="frame" x="464" y="6" width="51" height="31"/>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LM9-U5-0oy" firstAttribute="centerY" secondItem="Wtc-CU-MOR" secondAttribute="centerY" id="3Y1-dd-DPQ"/>
+                    <constraint firstItem="9pz-aQ-h9x" firstAttribute="centerY" secondItem="K8Z-02-aBU" secondAttribute="centerY" id="EOt-1B-hbP"/>
+                    <constraint firstItem="LM9-U5-0oy" firstAttribute="leading" secondItem="9pz-aQ-h9x" secondAttribute="trailing" constant="8" id="gfM-6F-Qhv"/>
+                    <constraint firstItem="9pz-aQ-h9x" firstAttribute="leading" secondItem="K8Z-02-aBU" secondAttribute="trailing" constant="32" id="jd4-Lf-vWo"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="LM9-U5-0oy" secondAttribute="trailing" constant="5" id="ngt-fZ-xoX"/>
+                    <constraint firstItem="K8Z-02-aBU" firstAttribute="centerY" secondItem="Wtc-CU-MOR" secondAttribute="centerY" id="qc9-eB-AnC"/>
+                    <constraint firstItem="K8Z-02-aBU" firstAttribute="leading" secondItem="Wtc-CU-MOR" secondAttribute="leadingMargin" constant="8" id="y0Y-iV-w2T"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="contentLabel" destination="9pz-aQ-h9x" id="GTf-xJ-Lo9"/>
+                <outlet property="repeatSwitch" destination="LM9-U5-0oy" id="Idr-AH-3eI"/>
+                <outlet property="titleLabel" destination="K8Z-02-aBU" id="soo-tv-IJp"/>
+            </connections>
+            <point key="canvasLocation" x="412" y="382"/>
+        </tableViewCell>
+    </objects>
+</document>
