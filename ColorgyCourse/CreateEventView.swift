@@ -24,6 +24,7 @@ final public class CreateEventView: UIView {
 		static let titleCell = "CreateEventTitleCell"
 		static let selectColorCell = "CreateEventColorCell"
 		static let repeatedCell = "CreateEventRepeatedCell"
+		static let notesCell = "CreateEventNotesCell"
 	}
 	
 	// MARK: - Configuration
@@ -35,6 +36,7 @@ final public class CreateEventView: UIView {
 		createEventTableView.registerNib(UINib(nibName: NibName.titleCell, bundle: nil), forCellReuseIdentifier: NibName.titleCell)
 		createEventTableView.registerNib(UINib(nibName: NibName.selectColorCell, bundle: nil), forCellReuseIdentifier: NibName.selectColorCell)
 		createEventTableView.registerNib(UINib(nibName: NibName.repeatedCell, bundle: nil), forCellReuseIdentifier: NibName.repeatedCell)
+		createEventTableView.registerNib(UINib(nibName: NibName.notesCell, bundle: nil), forCellReuseIdentifier: NibName.notesCell)
 		
 		// delegate & datasource
 		createEventTableView.delegate = self
@@ -60,7 +62,7 @@ extension CreateEventView : UITableViewDataSource {
 	}
 	
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 3
+		return 4
 	}
 	
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -74,6 +76,9 @@ extension CreateEventView : UITableViewDataSource {
 		case 2:
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatedCell, forIndexPath: indexPath) as! CreateEventRepeatedCell
 			return cell
+		case 3:
+			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notesCell, forIndexPath: indexPath) as! CreateEventNotesCell
+			return cell
 		default:
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
 			return cell
@@ -84,6 +89,8 @@ extension CreateEventView : UITableViewDataSource {
 		switch indexPath.row {
 		case 1:
 			return 88.0
+		case 3:
+			return 44.0 * 3
 		default:
 			return 44.0
 		}
