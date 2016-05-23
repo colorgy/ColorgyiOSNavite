@@ -31,7 +31,7 @@ extension CreateEventNotesCell : UITextViewDelegate {
 	
 	public func textViewDidBeginEditing(textView: UITextView) {
 		if textView.textColor == ColorgyColor.grayContentTextColor {
-			// placeholder
+			// clear placeholder, change text color
 			textView.textColor = ColorgyColor.TextColor
 			textView.text = ""
 		}
@@ -39,8 +39,8 @@ extension CreateEventNotesCell : UITextViewDelegate {
 	
 	public func textViewDidEndEditing(textView: UITextView) {
 		if textView.textColor == ColorgyColor.TextColor {
-			if textView.text == nil || textView == "" {
-				// no input
+			if textView.text == nil || textView.text == "" {
+				// no input, set plcaeholder
 				textView.textColor = ColorgyColor.grayContentTextColor
 				textView.text = "寫下一點東西吧！"
 			}

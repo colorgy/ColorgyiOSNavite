@@ -16,6 +16,7 @@ final public class CreateEventView: UIView {
 		super.init(frame: frame)
 		
 		configureCreateEventTableView()
+		backgroundColor = ColorgyColor.BackgroundColor
 	}
 	
 	
@@ -44,8 +45,15 @@ final public class CreateEventView: UIView {
 		
 		// style
 		createEventTableView.separatorStyle = .None
+		createEventTableView.backgroundColor = UIColor.clearColor()
+		
+		createEventTableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(t)))
 		
 		addSubview(createEventTableView)
+	}
+	
+	@objc private func t() {
+		endEditing(true)
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
