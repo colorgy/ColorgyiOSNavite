@@ -14,6 +14,9 @@ final public class CreateEventDateAndLocationCell: UITableViewCell {
 	@IBOutlet weak var deleteTitleLabel: UILabel!
 	@IBOutlet weak var deleteRegionView: UIView!
 	
+	@IBOutlet weak var containerView: UIView!
+	@IBOutlet weak var seperatorLine1: UIView!
+	@IBOutlet weak var seperatorLine2: UIView!
 	@IBOutlet weak var sideBarView: UIView!
 	@IBOutlet weak var startsDateLabel: UILabel!
 	@IBOutlet weak var endsDateLabel: UILabel!
@@ -35,6 +38,10 @@ final public class CreateEventDateAndLocationCell: UITableViewCell {
 		
 		deleteRegionView.backgroundColor = UIColor.clearColor()
 		deleteRegionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateEventDateAndLocationCell.deleteRegionTapped)))
+		
+		containerView.backgroundColor = UIColor.whiteColor()
+		seperatorLine1.backgroundColor = ColorgyColor.BackgroundColor
+		seperatorLine2.backgroundColor = ColorgyColor.BackgroundColor
 		
 		sideBarView.backgroundColor = ColorgyColor.MainOrange
 		

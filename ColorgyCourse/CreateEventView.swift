@@ -193,7 +193,7 @@ extension CreateEventView : UITableViewDataSource {
 			// date section
 			switch indexPath.row {
 			case CellArrangement.EventDateSection.dateAndLocationCell.rawValue:
-				return 120.0
+				return 180.0
 			default:
 				return 44.0
 			}
