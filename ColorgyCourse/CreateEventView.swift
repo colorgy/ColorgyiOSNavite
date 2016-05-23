@@ -11,10 +11,13 @@ import UIKit
 final public class CreateEventView: UIView {
 
 	private var createEventTableView: UITableView!
+	private var expandedIndexPaths: [NSIndexPath]
+	private var selectColorCellExpanded: Bool = false
+	private var selectedColor: UIColor? = UIColor(red: 198/255.0, green: 188/255.0, blue: 188/255.0, alpha: 1.0)
 	
 	override public init(frame: CGRect) {
+		expandedIndexPaths = []
 		super.init(frame: frame)
-		
 		configureCreateEventTableView()
 		backgroundColor = ColorgyColor.BackgroundColor
 	}
@@ -26,6 +29,8 @@ final public class CreateEventView: UIView {
 		static let selectColorCell = "CreateEventColorCell"
 		static let repeatedCell = "CreateEventRepeatedCell"
 		static let notesCell = "CreateEventNotesCell"
+		
+		static let expandedSelectColorCell = "CreateEventColorExpandedCell"
 	}
 	
 	// MARK: - Configuration
@@ -38,6 +43,8 @@ final public class CreateEventView: UIView {
 		createEventTableView.registerNib(UINib(nibName: NibName.selectColorCell, bundle: nil), forCellReuseIdentifier: NibName.selectColorCell)
 		createEventTableView.registerNib(UINib(nibName: NibName.repeatedCell, bundle: nil), forCellReuseIdentifier: NibName.repeatedCell)
 		createEventTableView.registerNib(UINib(nibName: NibName.notesCell, bundle: nil), forCellReuseIdentifier: NibName.notesCell)
+		
+		createEventTableView.registerNib(UINib(nibName: NibName.expandedSelectColorCell, bundle: nil), forCellReuseIdentifier: NibName.expandedSelectColorCell)
 		
 		// delegate & datasource
 		createEventTableView.delegate = self
@@ -79,8 +86,17 @@ extension CreateEventView : UITableViewDataSource {
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
 			return cell
 		case 1:
-			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.selectColorCell, forIndexPath: indexPath) as! CreateEventColorCell
-			return cell
+			if selectColorCellExpanded {
+				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.expandedSelectColorCell, forIndexPath: indexPath) as! CreateEventColorExpandedCell
+				cell.updateSelectedColor(selectedColor)
+				cell.delegate = self
+				return cell
+			} else {
+				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.selectColorCell, forIndexPath: indexPath) as! CreateEventColorCell
+				cell.updateSelectedColor(selectedColor)
+				cell.delegate = self
+				return cell
+			}
 		case 2:
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatedCell, forIndexPath: indexPath) as! CreateEventRepeatedCell
 			return cell
@@ -96,15 +112,38 @@ extension CreateEventView : UITableViewDataSource {
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		switch indexPath.row {
 		case 1:
-			return 88.0
+			if selectColorCellExpanded {
+				return 88.0
+			} else {
+				return 44.0
+			}
 		case 3:
 			return 44.0 * 3
 		default:
 			return 44.0
 		}
 	}
+	
+	private func reloadColorCell() {
+		createEventTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+	}
 }
 
 extension CreateEventView : UITableViewDelegate {
 	
+	
+}
+
+extension CreateEventView : CreateEventColorCellDelegate {
+	
+	public func createEventColorCellNeedsExpand() {
+		selectColorCellExpanded = true
+		reloadColorCell()
+	}
+	
+	public func createEventColorCell(needsCollapseWithSelectedColor color: UIColor?) {
+		selectedColor = color
+		selectColorCellExpanded = false
+		reloadColorCell()
+	}
 }

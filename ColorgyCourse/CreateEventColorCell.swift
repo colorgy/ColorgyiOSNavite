@@ -13,15 +13,7 @@ final public class CreateEventColorCell: UITableViewCell {
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var choosedColorView: UIView!
 	
-	@IBOutlet weak var grayColorView: UIView!
-	@IBOutlet weak var orangeColorView: UIView!
-	@IBOutlet weak var yellowColorView: UIView!
-	@IBOutlet weak var greenColorView: UIView!
-	@IBOutlet weak var blueGreenColorView: UIView!
-	@IBOutlet weak var blueColorView: UIView!
-	@IBOutlet weak var indigoColorView: UIView!
-	@IBOutlet weak var purpleColorView: UIView!
-	@IBOutlet weak var peachColorView: UIView!
+	public weak var delegate: CreateEventColorCellDelegate?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -30,34 +22,17 @@ final public class CreateEventColorCell: UITableViewCell {
 		titleLabel.textColor = ColorgyColor.grayContentTextColor
 		titleLabel.text = "顏色"
 		
-		// corner radius
-		grayColorView.layer.cornerRadius = grayColorView.bounds.width / 2
-		orangeColorView.layer.cornerRadius = orangeColorView.bounds.width / 2
-		yellowColorView.layer.cornerRadius = yellowColorView.bounds.width / 2
-		greenColorView.layer.cornerRadius = greenColorView.bounds.width / 2
-		blueGreenColorView.layer.cornerRadius = blueGreenColorView.bounds.width / 2
-		blueColorView.layer.cornerRadius = blueColorView.bounds.width / 2
-		indigoColorView.layer.cornerRadius = indigoColorView.bounds.width / 2
-		purpleColorView.layer.cornerRadius = purpleColorView.bounds.width / 2
-		peachColorView.layer.cornerRadius = peachColorView.bounds.width / 2
-		
 		choosedColorView.layer.cornerRadius = choosedColorView.bounds.width / 2
+		choosedColorView.backgroundColor = UIColor(red: 198/255.0, green: 188/255.0, blue: 188/255.0, alpha: 1.0)
 		
-		// set color
-		grayColorView.backgroundColor = UIColor(red: 198/255.0, green: 188/255.0, blue: 188/255.0, alpha: 1.0)
-		orangeColorView.backgroundColor = UIColor(red: 248/255.0, green: 150/255.0, blue: 128/255.0, alpha: 1.0)
-		yellowColorView.backgroundColor = UIColor(red: 245/255.0, green: 166/255.0, blue: 35/255.0, alpha: 1.0)
-		greenColorView.backgroundColor = UIColor(red: 155/255.0, green: 206/255.0, blue: 2/255.0, alpha: 1.0)
-		blueGreenColorView.backgroundColor = UIColor(red: 0/255.0, green: 208/255.0, blue: 173/255.0, alpha: 1.0)
-		blueColorView.backgroundColor = UIColor(red: 0/255.0, green: 207/255.0, blue: 228/255.0, alpha: 1.0)
-		indigoColorView.backgroundColor = UIColor(red: 7/255.0, green: 148/255.0, blue: 191/255.0, alpha: 1.0)
-		purpleColorView.backgroundColor = UIColor(red: 226/255.0, green: 137/255.0, blue: 250/255.0, alpha: 1.0)
-		peachColorView.backgroundColor = UIColor(red: 247/255.0, green: 107/255.0, blue: 157/255.0, alpha: 1.0)
-		
-		// default color
-		choosedColorView.backgroundColor = grayColorView.backgroundColor
-		
-		selectionStyle = .None
+		addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateEventColorCell.tapped)))
     }
+	
+	@objc private func tapped() {
+		delegate?.createEventColorCellNeedsExpand()
+	}
 
+	public func updateSelectedColor(color: UIColor?) {
+		choosedColorView.backgroundColor = color
+	}
 }
