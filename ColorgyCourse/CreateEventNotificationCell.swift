@@ -1,5 +1,5 @@
 //
-//  CreateEventRepeatedCell.swift
+//  CreateEventNotificationCell.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/5/23.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final public class CreateEventRepeatedCell: UITableViewCell {
+final public class CreateEventNotificationCell: UITableViewCell {
 	
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var contentLabel: UILabel!
@@ -21,20 +21,20 @@ final public class CreateEventRepeatedCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
 		
-		titleLabel.text = "重複"
 		titleLabel.textColor = ColorgyColor.grayContentTextColor
+		titleLabel.text = "通知"
 		
-		contentLabel.text = "永不"
+		contentLabel.text = "15分鐘前"
 		contentLabel.textColor = ColorgyColor.TextColor
 		contentLabel.textAlignment = .Right
 		
 		disclosureIndicatorImageView.image = UIImage(named: "GrayDisclosureIndicator")
 		disclosureIndicatorImageView.contentMode = .ScaleAspectFill
 		
-		selectionStyle = .None
-		
 		upperSeperatorLine.backgroundColor = ColorgyColor.BackgroundColor
 		bottomSeperatorLine.backgroundColor = ColorgyColor.BackgroundColor
+		
+		selectionStyle = .None
     }
-
+	
 }

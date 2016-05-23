@@ -1,5 +1,5 @@
 //
-//  CreateEventRepeatedCell.swift
+//  CreateEventRepeatEndsCell.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/5/23.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-final public class CreateEventRepeatedCell: UITableViewCell {
+final public class CreateEventRepeatEndsCell: UITableViewCell {
 	
-	@IBOutlet weak var titleLabel: UILabel!
-	@IBOutlet weak var contentLabel: UILabel!
 	@IBOutlet weak var disclosureIndicatorImageView: UIImageView!
+	@IBOutlet weak var titleLable: UILabel!
+	@IBOutlet weak var contentLabel: UILabel!
 	
 	@IBOutlet weak var upperSeperatorLine: UIView!
 	@IBOutlet weak var bottomSeperatorLine: UIView!
@@ -21,15 +21,15 @@ final public class CreateEventRepeatedCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
 		
-		titleLabel.text = "重複"
-		titleLabel.textColor = ColorgyColor.grayContentTextColor
+		disclosureIndicatorImageView.image = UIImage(named: "GrayDisclosureIndicator")
+		disclosureIndicatorImageView.contentMode = .ScaleAspectFill
+		
+		titleLable.textColor = ColorgyColor.grayContentTextColor
+		titleLable.text = "重複結束"
 		
 		contentLabel.text = "永不"
 		contentLabel.textColor = ColorgyColor.TextColor
 		contentLabel.textAlignment = .Right
-		
-		disclosureIndicatorImageView.image = UIImage(named: "GrayDisclosureIndicator")
-		disclosureIndicatorImageView.contentMode = .ScaleAspectFill
 		
 		selectionStyle = .None
 		
