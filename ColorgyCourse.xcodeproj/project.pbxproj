@@ -90,6 +90,8 @@
 		63B1C3591CF2992700989B5D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3571CF2991A00989B5D /* UIColorExtension.swift */; };
 		63B1C35B1CF29C4900989B5D /* CreateEventRepeatedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C35A1CF29C4900989B5D /* CreateEventRepeatedCell.xib */; };
 		63B1C35D1CF29C5800989B5D /* CreateEventRepeatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C35C1CF29C5800989B5D /* CreateEventRepeatedCell.swift */; };
+		63B1C35F1CF2AF9400989B5D /* CreateEventNotesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C35E1CF2AF9400989B5D /* CreateEventNotesCell.xib */; };
+		63B1C3611CF2AF9C00989B5D /* CreateEventNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3601CF2AF9C00989B5D /* CreateEventNotesCell.swift */; };
 		63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */; };
 		63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */; };
 		63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */; };
@@ -282,6 +284,8 @@
 		63B1C3571CF2991A00989B5D /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		63B1C35A1CF29C4900989B5D /* CreateEventRepeatedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventRepeatedCell.xib; sourceTree = "<group>"; };
 		63B1C35C1CF29C5800989B5D /* CreateEventRepeatedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventRepeatedCell.swift; sourceTree = "<group>"; };
+		63B1C35E1CF2AF9400989B5D /* CreateEventNotesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventNotesCell.xib; sourceTree = "<group>"; };
+		63B1C3601CF2AF9C00989B5D /* CreateEventNotesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventNotesCell.swift; sourceTree = "<group>"; };
 		63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
 		63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableTarget.swift; sourceTree = "<group>"; };
@@ -659,6 +663,8 @@
 				63B1C3551CF2977B00989B5D /* CreateEventColorCell.swift */,
 				63B1C35A1CF29C4900989B5D /* CreateEventRepeatedCell.xib */,
 				63B1C35C1CF29C5800989B5D /* CreateEventRepeatedCell.swift */,
+				63B1C35E1CF2AF9400989B5D /* CreateEventNotesCell.xib */,
+				63B1C3601CF2AF9C00989B5D /* CreateEventNotesCell.swift */,
 			);
 			name = "Create Event View";
 			sourceTree = "<group>";
@@ -831,6 +837,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63B1C35F1CF2AF9400989B5D /* CreateEventNotesCell.xib in Resources */,
 				635479921CB898C100DE8CBC /* LaunchScreen.storyboard in Resources */,
 				630337F21CE9B265006FEA1C /* 1.png in Resources */,
 				63EC77BC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib in Resources */,
@@ -1091,6 +1098,7 @@
 				63C3CE201CC0C76F000EE808 /* ColorgyAppNotification.swift in Sources */,
 				635479F21CB8B02A00DE8CBC /* AFError.swift in Sources */,
 				63EC77C11CC8743D008025A7 /* TextInputView.swift in Sources */,
+				63B1C3611CF2AF9C00989B5D /* CreateEventNotesCell.swift in Sources */,
 				63EC77BF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift in Sources */,
 				63B1C3581CF2991A00989B5D /* UIColorExtension.swift in Sources */,
 				63AC1B3F1CF1389000FDD724 /* ColorgyVersionControl.swift in Sources */,

@@ -8,13 +8,13 @@
 
 import UIKit
 
-class CreateEventRepeatedCell: UITableViewCell {
+final public class CreateEventRepeatedCell: UITableViewCell {
 	
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var contentLabel: UILabel!
 	@IBOutlet weak var repeatSwitch: UISwitch!
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 		
