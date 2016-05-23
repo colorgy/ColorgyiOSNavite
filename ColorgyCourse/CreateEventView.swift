@@ -22,18 +22,10 @@ final public class CreateEventView: UIView {
 			case colorCell = 1
 			case repeatCell = 2
 		}
-		
-		enum EventDateSection: Int {
-			case dateAndLocationCell = 0
-		}
-		
-		enum NotesSection: Int {
-			case notesCell = 0
-		}
 	}
 	
 	private var infoSectionCount: Int = 3
-	private var eventDateSectionCount: Int = 1
+	private var eventDateSectionCount: Int = 10
 	private var notesSectionCount: Int = 1
 	
 	override public init(frame: CGRect) {
@@ -146,25 +138,12 @@ extension CreateEventView : UITableViewDataSource {
 				return cell
 			}
 		case 1:
-			// date section
-			switch indexPath.row {
-			case CellArrangement.EventDateSection.dateAndLocationCell.rawValue:
-				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.dateAndLocationCell, forIndexPath: indexPath) as! CreateEventDateAndLocationCell
-				return cell
-			default:
-				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
-				return cell
-			}
+			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.dateAndLocationCell, forIndexPath: indexPath) as! CreateEventDateAndLocationCell
+			return cell
 		case 2:
 			// notes section
-			switch indexPath.row {
-			case CellArrangement.NotesSection.notesCell.rawValue:
-				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notesCell, forIndexPath: indexPath) as! CreateEventNotesCell
-				return cell
-			default:
-				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
-				return cell
-			}
+			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notesCell, forIndexPath: indexPath) as! CreateEventNotesCell
+			return cell
 		default:
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
 			return cell
@@ -191,20 +170,10 @@ extension CreateEventView : UITableViewDataSource {
 			}
 		case 1:
 			// date section
-			switch indexPath.row {
-			case CellArrangement.EventDateSection.dateAndLocationCell.rawValue:
-				return 180.0
-			default:
-				return 44.0
-			}
+			return 180.0
 		case 2:
 			// notes section
-			switch indexPath.row {
-			case CellArrangement.NotesSection.notesCell.rawValue:
-				return 132.0
-			default:
-				return 44.0
-			}
+			return 132.0
 		default:
 			return 44.0
 		}
