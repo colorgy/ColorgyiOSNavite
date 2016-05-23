@@ -15,13 +15,33 @@ final public class CreateEventView: UIView {
 	private var selectColorCellExpanded: Bool = false
 	private var selectedColor: UIColor? = UIColor(red: 198/255.0, green: 188/255.0, blue: 188/255.0, alpha: 1.0)
 	
+	// MARK: - Table view arrangement
+	enum CellArrangement {
+		enum InfoSection: Int {
+			case titleCell = 0
+			case colorCell = 1
+			case repeatCell = 2
+		}
+		
+		//		enum EventDateSection: Int {
+		//
+		//		}
+		
+		enum NotesSection: Int {
+			case notesCell = 0
+		}
+	}
+	
+	private var infoSectionCount: Int = 3
+	private var eventDateSectionCount: Int = 0
+	private var notesSectionCount: Int = 1
+	
 	override public init(frame: CGRect) {
 		expandedIndexPaths = []
 		super.init(frame: frame)
 		configureCreateEventTableView()
 		backgroundColor = ColorgyColor.BackgroundColor
 	}
-	
 	
 	// MARK: - Key
 	private struct NibName {
@@ -73,36 +93,65 @@ extension CreateEventView : UITableViewDataSource {
 	
 	// TODO: into 3 sections, one for containing dates
 	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 1
+		return 3
 	}
 	
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 4
+		switch section {
+		case 0:
+			return infoSectionCount
+		case 1:
+			return eventDateSectionCount
+		case 2:
+			return notesSectionCount
+		default:
+			return 0
+		}
 	}
 	
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		switch indexPath.row {
+		
+		switch indexPath.section {
 		case 0:
-			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
-			return cell
-		case 1:
-			if selectColorCellExpanded {
-				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.expandedSelectColorCell, forIndexPath: indexPath) as! CreateEventColorExpandedCell
-				cell.updateSelectedColor(selectedColor)
-				cell.delegate = self
+			// info section
+			switch indexPath.row {
+			case CellArrangement.InfoSection.titleCell.rawValue:
+				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
 				return cell
-			} else {
-				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.selectColorCell, forIndexPath: indexPath) as! CreateEventColorCell
-				cell.updateSelectedColor(selectedColor)
-				cell.delegate = self
+			case CellArrangement.InfoSection.colorCell.rawValue:
+				if selectColorCellExpanded {
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.expandedSelectColorCell, forIndexPath: indexPath) as! CreateEventColorExpandedCell
+					cell.updateSelectedColor(selectedColor)
+					cell.delegate = self
+					return cell
+				} else {
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.selectColorCell, forIndexPath: indexPath) as! CreateEventColorCell
+					cell.updateSelectedColor(selectedColor)
+					cell.delegate = self
+					return cell
+				}
+			case CellArrangement.InfoSection.repeatCell.rawValue:
+				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatedCell, forIndexPath: indexPath) as! CreateEventRepeatedCell
+				return cell
+			default:
+				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
 				return cell
 			}
+//		case 1:
+//			// date section
+//			switch indexPath.row {
+//			
+//			}
 		case 2:
-			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatedCell, forIndexPath: indexPath) as! CreateEventRepeatedCell
-			return cell
-		case 3:
-			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notesCell, forIndexPath: indexPath) as! CreateEventNotesCell
-			return cell
+			// notes section
+			switch indexPath.row {
+			case CellArrangement.NotesSection.notesCell.rawValue:
+				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notesCell, forIndexPath: indexPath) as! CreateEventNotesCell
+				return cell
+			default:
+				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
+				return cell
+			}
 		default:
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
 			return cell
@@ -110,22 +159,49 @@ extension CreateEventView : UITableViewDataSource {
 	}
 	
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		switch indexPath.row {
-		case 1:
-			if selectColorCellExpanded {
-				return 88.0
-			} else {
+		switch indexPath.section {
+		case 0:
+			// info section
+			switch indexPath.row {
+			case CellArrangement.InfoSection.titleCell.rawValue:
+				return 44.0
+			case CellArrangement.InfoSection.colorCell.rawValue:
+				if selectColorCellExpanded {
+					return 88.0
+				} else {
+					return 44.0
+				}
+			case CellArrangement.InfoSection.repeatCell.rawValue:
+				return 44.0
+			default:
 				return 44.0
 			}
-		case 3:
-			return 44.0 * 3
+			//		case 1:
+			//			// date section
+			//			switch indexPath.row {
+			//
+		//			}
+		case 2:
+			// notes section
+			switch indexPath.row {
+			case CellArrangement.NotesSection.notesCell.rawValue:
+				return 44.0
+			default:
+				return 44.0
+			}
 		default:
-			return 44.0
+			return 132.0
 		}
 	}
 	
+	// MARK: - Color Cell
 	private func reloadColorCell() {
 		createEventTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+	}
+	
+	private func expandColorCell(expanded: Bool) {
+		selectColorCellExpanded = true
+		reloadColorCell()
 	}
 }
 
@@ -137,13 +213,11 @@ extension CreateEventView : UITableViewDelegate {
 extension CreateEventView : CreateEventColorCellDelegate {
 	
 	public func createEventColorCellNeedsExpand() {
-		selectColorCellExpanded = true
-		reloadColorCell()
+		expandColorCell(true)
 	}
 	
 	public func createEventColorCell(needsCollapseWithSelectedColor color: UIColor?) {
 		selectedColor = color
-		selectColorCellExpanded = false
-		reloadColorCell()
+		expandColorCell(false)
 	}
 }
