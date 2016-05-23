@@ -23,9 +23,9 @@ final public class CreateEventView: UIView {
 			case repeatCell = 2
 		}
 		
-		//		enum EventDateSection: Int {
-		//
-		//		}
+		enum EventDateSection: Int {
+			case dateAndLocationCell = 0
+		}
 		
 		enum NotesSection: Int {
 			case notesCell = 0
@@ -33,7 +33,7 @@ final public class CreateEventView: UIView {
 	}
 	
 	private var infoSectionCount: Int = 3
-	private var eventDateSectionCount: Int = 0
+	private var eventDateSectionCount: Int = 1
 	private var notesSectionCount: Int = 1
 	
 	override public init(frame: CGRect) {
@@ -45,11 +45,15 @@ final public class CreateEventView: UIView {
 	
 	// MARK: - Key
 	private struct NibName {
+		// info nib
 		static let titleCell = "CreateEventTitleCell"
 		static let selectColorCell = "CreateEventColorCell"
 		static let repeatedCell = "CreateEventRepeatedCell"
+		// date nib
+		static let dateAndLocationCell = "CreateEventDateAndLocationCell"
+		// notes nib
 		static let notesCell = "CreateEventNotesCell"
-		
+		// expanded nib
 		static let expandedSelectColorCell = "CreateEventColorExpandedCell"
 	}
 	
@@ -59,11 +63,15 @@ final public class CreateEventView: UIView {
 		createEventTableView = UITableView(frame: frame)
 		
 		// register nib
+		// info nib
 		createEventTableView.registerNib(UINib(nibName: NibName.titleCell, bundle: nil), forCellReuseIdentifier: NibName.titleCell)
 		createEventTableView.registerNib(UINib(nibName: NibName.selectColorCell, bundle: nil), forCellReuseIdentifier: NibName.selectColorCell)
 		createEventTableView.registerNib(UINib(nibName: NibName.repeatedCell, bundle: nil), forCellReuseIdentifier: NibName.repeatedCell)
+		// date nib
+		createEventTableView.registerNib(UINib(nibName: NibName.dateAndLocationCell, bundle: nil), forCellReuseIdentifier: NibName.dateAndLocationCell)
+		// notes nib
 		createEventTableView.registerNib(UINib(nibName: NibName.notesCell, bundle: nil), forCellReuseIdentifier: NibName.notesCell)
-		
+		// expanded nib
 		createEventTableView.registerNib(UINib(nibName: NibName.expandedSelectColorCell, bundle: nil), forCellReuseIdentifier: NibName.expandedSelectColorCell)
 		
 		// delegate & datasource
@@ -137,11 +145,16 @@ extension CreateEventView : UITableViewDataSource {
 				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
 				return cell
 			}
-//		case 1:
-//			// date section
-//			switch indexPath.row {
-//			
-//			}
+		case 1:
+			// date section
+			switch indexPath.row {
+			case CellArrangement.EventDateSection.dateAndLocationCell.rawValue:
+				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.dateAndLocationCell, forIndexPath: indexPath) as! CreateEventDateAndLocationCell
+				return cell
+			default:
+				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
+				return cell
+			}
 		case 2:
 			// notes section
 			switch indexPath.row {
@@ -176,11 +189,14 @@ extension CreateEventView : UITableViewDataSource {
 			default:
 				return 44.0
 			}
-			//		case 1:
-			//			// date section
-			//			switch indexPath.row {
-			//
-		//			}
+		case 1:
+			// date section
+			switch indexPath.row {
+			case CellArrangement.EventDateSection.dateAndLocationCell.rawValue:
+				return 120.0
+			default:
+				return 44.0
+			}
 		case 2:
 			// notes section
 			switch indexPath.row {
