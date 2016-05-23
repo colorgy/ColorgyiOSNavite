@@ -26,6 +26,11 @@ final public class CreateEventNotesCell: UITableViewCell {
 		contentTextView.delegate = self
 		contentTextView.textColor = ColorgyColor.grayContentTextColor
 		contentTextView.text = "寫下一點東西吧！"
+		
+		selectionStyle = .None
+		
+		upperSeperatorLine.backgroundColor = ColorgyColor.BackgroundColor
+		bottomSeperatorLine.backgroundColor = ColorgyColor.BackgroundColor
     }
 
 }

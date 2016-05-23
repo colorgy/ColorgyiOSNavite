@@ -59,6 +59,9 @@ final public class CreateEventColorExpandedCell: UITableViewCell {
 		choosedColorView.backgroundColor = grayColorView.backgroundColor
 		
 		selectionStyle = .None
+		
+		upperSeperatorLine.backgroundColor = ColorgyColor.BackgroundColor
+		bottomSeperatorLine.backgroundColor = ColorgyColor.BackgroundColor
 	}
 	
 	@objc private func tapped(gesture: UITapGestureRecognizer) {

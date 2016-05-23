@@ -200,7 +200,7 @@ extension CreateEventView : UITableViewDataSource {
 	}
 	
 	private func expandColorCell(expanded: Bool) {
-		selectColorCellExpanded = true
+		selectColorCellExpanded = expanded
 		reloadColorCell()
 	}
 }

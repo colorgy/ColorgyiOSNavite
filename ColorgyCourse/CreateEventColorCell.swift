@@ -29,6 +29,11 @@ final public class CreateEventColorCell: UITableViewCell {
 		choosedColorView.backgroundColor = UIColor(red: 198/255.0, green: 188/255.0, blue: 188/255.0, alpha: 1.0)
 		
 		addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateEventColorCell.tapped)))
+		
+		selectionStyle = .None
+		
+		upperSeperatorLine.backgroundColor = ColorgyColor.BackgroundColor
+		bottomSeperatorLine.backgroundColor = ColorgyColor.BackgroundColor
     }
 	
 	@objc private func tapped() {

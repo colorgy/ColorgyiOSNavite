@@ -30,6 +30,9 @@ final public class CreateEventRepeatedCell: UITableViewCell {
 		repeatSwitch.on = false
 		
 		selectionStyle = .None
+		
+		upperSeperatorLine.backgroundColor = ColorgyColor.BackgroundColor
+		bottomSeperatorLine.backgroundColor = ColorgyColor.BackgroundColor
     }
 
 }
