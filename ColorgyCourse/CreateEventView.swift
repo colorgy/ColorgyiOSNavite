@@ -22,13 +22,27 @@ final public class CreateEventView: UIView {
 		enum InfoSection: Int {
 			case titleCell = 0
 			case colorCell = 1
-			case repeatCell = 2
-			case repeatEndsCell = 3
-			case notificationCell = 4
+		}
+		
+		enum NonRepeatSection: Int {
+			case repeatCell = 0
+			case notificationCell = 1
+		}
+		
+		enum RepeatSection: Int {
+			case repeatCell = 0
+			case repeatEndsCell = 1
+			case notificationCell = 2
 		}
 	}
 	
-	private var infoSectionCount: Int = 5
+	private var infoSection: Int = 0
+	private var repeatSection: Int = 1
+	private var eventDateSection: Int = 2
+	private var notesSection: Int = 3
+	
+	private var infoSectionCount: Int = 2
+	private var repeatSectionCount: Int = 2
 	private var eventDateSectionCount: Int = 10
 	private var notesSectionCount: Int = 1
 	
@@ -88,28 +102,52 @@ final public class CreateEventView: UIView {
 	
 	@objc private func t() {
 		endEditing(true)
+		print("yo")
+		changeEventTo(!eventRepeated)
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	// MARK: - Color Cell
+	private func reloadColorCell() {
+		createEventTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+	}
+	
+	private func expandColorCell(expanded: Bool) {
+		selectColorCellExpanded = expanded
+		reloadColorCell()
+	}
+	
+	// MARK: - Repeat Cell
+	private func reloadRepeatCell() {
+		createEventTableView.reloadSections(NSIndexSet(index: repeatSection), withRowAnimation: UITableViewRowAnimation.Fade)
+	}
+	
+	private func changeEventTo(repeated: Bool) {
+		eventRepeated = repeated
+		repeatSectionCount = repeated ? 3 : 2
+		reloadRepeatCell()
+	}
 }
 
 extension CreateEventView : UITableViewDataSource {
 	
 	// TODO: into 3 sections, one for containing dates
 	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 3
+		return 4
 	}
 	
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
-		case 0:
+		case infoSection:
 			return infoSectionCount
-		case 1:
+		case repeatSection:
+			return repeatSectionCount
+		case eventDateSection:
 			return eventDateSectionCount
-		case 2:
+		case notesSection:
 			return notesSectionCount
 		default:
 			return 0
@@ -119,7 +157,7 @@ extension CreateEventView : UITableViewDataSource {
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
 		switch indexPath.section {
-		case 0:
+		case infoSection:
 			// info section
 			switch indexPath.row {
 			case CellArrangement.InfoSection.titleCell.rawValue:
@@ -137,35 +175,55 @@ extension CreateEventView : UITableViewDataSource {
 					cell.delegate = self
 					return cell
 				}
-			case CellArrangement.InfoSection.repeatCell.rawValue:
-				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatedCell, forIndexPath: indexPath) as! CreateEventRepeatedCell
-				return cell
-			case CellArrangement.InfoSection.repeatEndsCell.rawValue:
-				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatEndsCell, forIndexPath: indexPath) as! CreateEventRepeatEndsCell
-				return cell
-			case CellArrangement.InfoSection.notificationCell.rawValue:
-				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notificationCell, forIndexPath: indexPath) as! CreateEventNotificationCell
-				return cell
 			default:
-				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
-				return cell
+				break
 			}
-		case 1:
+		case repeatSection:
+			// info section
+			if eventRepeated {
+				switch indexPath.row {
+				case CellArrangement.RepeatSection.repeatCell.rawValue:
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatedCell, forIndexPath: indexPath) as! CreateEventRepeatedCell
+					return cell
+				case CellArrangement.RepeatSection.repeatEndsCell.rawValue:
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatEndsCell, forIndexPath: indexPath) as! CreateEventRepeatEndsCell
+					return cell
+				case CellArrangement.RepeatSection.notificationCell.rawValue:
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notificationCell, forIndexPath: indexPath) as! CreateEventNotificationCell
+					return cell
+				default:
+					break
+				}
+			} else {
+				switch indexPath.row {
+				case CellArrangement.NonRepeatSection.repeatCell.rawValue:
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatedCell, forIndexPath: indexPath) as! CreateEventRepeatedCell
+					return cell
+				case CellArrangement.NonRepeatSection.notificationCell.rawValue:
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notificationCell, forIndexPath: indexPath) as! CreateEventNotificationCell
+					return cell
+				default:
+					break
+				}
+			}
+		case eventDateSection:
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.dateAndLocationCell, forIndexPath: indexPath) as! CreateEventDateAndLocationCell
 			return cell
-		case 2:
+		case notesSection:
 			// notes section
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notesCell, forIndexPath: indexPath) as! CreateEventNotesCell
 			return cell
 		default:
-			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
-			return cell
+			break
 		}
+		
+		let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
+		return cell
 	}
 	
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		switch indexPath.section {
-		case 0:
+		case infoSection:
 			// info section
 			switch indexPath.row {
 			case CellArrangement.InfoSection.titleCell.rawValue:
@@ -176,19 +234,16 @@ extension CreateEventView : UITableViewDataSource {
 				} else {
 					return 44.0
 				}
-			case CellArrangement.InfoSection.repeatCell.rawValue:
-				return 44.0
-			case CellArrangement.InfoSection.repeatEndsCell.rawValue:
-				return 44.0
-			case CellArrangement.InfoSection.notificationCell.rawValue:
-				return 44.0
 			default:
 				return 44.0
 			}
-		case 1:
+		case repeatSection:
+			// date section
+			return 44.0
+		case eventDateSection:
 			// date section
 			return 180.0
-		case 2:
+		case notesSection:
 			// notes section
 			return 132.0
 		default:
@@ -196,14 +251,24 @@ extension CreateEventView : UITableViewDataSource {
 		}
 	}
 	
-	// MARK: - Color Cell
-	private func reloadColorCell() {
-		createEventTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+	public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		switch section {
+		case repeatSection:
+			return 24.0
+		default:
+			return 0.0
+		}
 	}
 	
-	private func expandColorCell(expanded: Bool) {
-		selectColorCellExpanded = expanded
-		reloadColorCell()
+	public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		switch section {
+		case repeatSection:
+			let view = UIView(frame: CGRectZero)
+			view.backgroundColor = UIColor.clearColor()
+			return view
+		default:
+			return nil
+		}
 	}
 }
 

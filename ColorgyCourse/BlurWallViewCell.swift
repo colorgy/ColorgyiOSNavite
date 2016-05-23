@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import WebImage
 
 final public class BlurWallViewCell: UICollectionViewCell {
 	

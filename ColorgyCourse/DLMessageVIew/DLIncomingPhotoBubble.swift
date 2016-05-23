@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import WebImage
 
 class DLIncomingPhotoBubble: UITableViewCell {
 	
