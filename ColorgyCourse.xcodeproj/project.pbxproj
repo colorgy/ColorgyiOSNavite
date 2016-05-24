@@ -109,6 +109,7 @@
 		63B1C37E1CF4244400989B5D /* PasswordInputBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C37A1CF4221400989B5D /* PasswordInputBox.swift */; };
 		63B1C3801CF424C700989B5D /* ConfirmPasswordInputBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C37F1CF424C700989B5D /* ConfirmPasswordInputBox.swift */; };
 		63B1C3811CF428C100989B5D /* ConfirmPasswordInputBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C37F1CF424C700989B5D /* ConfirmPasswordInputBox.swift */; };
+		63B1C3831CF42D9600989B5D /* PhoneInputBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3821CF42D9600989B5D /* PhoneInputBox.swift */; };
 		63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */; };
 		63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */; };
 		63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */; };
@@ -316,6 +317,7 @@
 		63B1C37A1CF4221400989B5D /* PasswordInputBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordInputBox.swift; sourceTree = "<group>"; };
 		63B1C37C1CF4227A00989B5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63B1C37F1CF424C700989B5D /* ConfirmPasswordInputBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordInputBox.swift; sourceTree = "<group>"; };
+		63B1C3821CF42D9600989B5D /* PhoneInputBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneInputBox.swift; sourceTree = "<group>"; };
 		63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
 		63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableTarget.swift; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 				63AC1B401CF155F800FDD724 /* Event.swift */,
 				63B1C3741CF30B0500989B5D /* InputBox.swift */,
 				63B1C3771CF3EDBF00989B5D /* EmailInputBox.swift */,
+				63B1C3821CF42D9600989B5D /* PhoneInputBox.swift */,
 				63B1C37A1CF4221400989B5D /* PasswordInputBox.swift */,
 				63B1C37F1CF424C700989B5D /* ConfirmPasswordInputBox.swift */,
 				6393BC031CF01B74008BFF72 /* Global */,
@@ -1076,6 +1079,7 @@
 				63B1C3561CF2977B00989B5D /* CreateEventColorExpandedCell.swift in Sources */,
 				630337F01CE9AB4B006FEA1C /* AvailableTargetList.swift in Sources */,
 				635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */,
+				63B1C3831CF42D9600989B5D /* PhoneInputBox.swift in Sources */,
 				635479EC1CB8B02A00DE8CBC /* CourseRawDataObject.swift in Sources */,
 				63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */,
 				63B1C36B1CF2D38C00989B5D /* CreateEventDateAndLocationCell.swift in Sources */,

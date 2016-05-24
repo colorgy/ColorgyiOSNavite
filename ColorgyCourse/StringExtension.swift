@@ -38,6 +38,13 @@ extension String {
 		return emailTest.evaluateWithObject(self)
 	}
 	
+	/// Check if this string is an valid mobile number string
+	var isValidMobileNumber: Bool {
+		let mobileRegex = "09\\d{8}"
+		let mobileTest = NSPredicate(format: "SELF MATCHES %@", mobileRegex)
+		return mobileTest.evaluateWithObject(self)
+	}
+	
 	/// Return a NSURL if the string is a valid url string
 	var url: NSURL? {
 		return NSURL(string: self)
