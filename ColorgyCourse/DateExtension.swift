@@ -124,11 +124,7 @@ extension NSDate {
 	}
 	
 	func dateByAddingYear(year: Int) -> NSDate? {
-		let components = NSDateComponents()
-		components.year = NSIntegerMax
-		components.month = NSIntegerMax
-		components.weekOfYear = NSIntegerMax
-		components.day = NSIntegerMax
+		let components = NSDateComponents.maxComponents()
 		components.year = year
 		return NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: self, options: [])
 	}
@@ -138,11 +134,7 @@ extension NSDate {
 	}
 	
 	func dateByAddingMonth(month: Int) -> NSDate? {
-		let components = NSDateComponents()
-		components.year = NSIntegerMax
-		components.month = NSIntegerMax
-		components.weekOfYear = NSIntegerMax
-		components.day = NSIntegerMax
+		let components = NSDateComponents.maxComponents()
 		components.month = month
 		return NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: self, options: [])
 	}
@@ -152,11 +144,7 @@ extension NSDate {
 	}
 	
 	func dateByAddingWeek(week: Int) -> NSDate? {
-		let components = NSDateComponents()
-		components.year = NSIntegerMax
-		components.month = NSIntegerMax
-		components.weekOfYear = NSIntegerMax
-		components.day = NSIntegerMax
+		let components = NSDateComponents.maxComponents()
 		components.weekOfYear = week
 		return NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: self, options: [])
 	}
@@ -166,16 +154,23 @@ extension NSDate {
 	}
 	
 	func dateByAddingDay(day: Int) -> NSDate? {
-		let components = NSDateComponents()
-		components.year = NSIntegerMax
-		components.month = NSIntegerMax
-		components.weekOfYear = NSIntegerMax
-		components.day = NSIntegerMax
+		let components = NSDateComponents.maxComponents()
 		components.day = day
 		return NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: self, options: [])
 	}
 	
 	func dateBySubtractingDay(day: Int) -> NSDate? {
 		return self.dateByAddingDay(-day)
+	}
+}
+
+extension NSDateComponents {
+	class func maxComponents() -> NSDateComponents {
+		let components = NSDateComponents()
+		components.year = NSIntegerMax
+		components.month = NSIntegerMax
+		components.weekOfYear = NSIntegerMax
+		components.day = NSIntegerMax
+		return components
 	}
 }
