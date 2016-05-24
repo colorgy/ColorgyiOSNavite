@@ -51,24 +51,36 @@ public class InputBox: UIView {
 	
 	private func configureTextField(placeholder: String?, isPassword: Bool, keyboardType: UIKeyboardType) {
 		textfield = UITextField()
-		textfield.frame.size.height = 21
-		textfield.font = UIFont.systemFontOfSize(14)
-		textfield.center.y = bounds.midY
-		textfield.frame.origin.x = iconImageView.frame.maxX + 21
-		textfield.frame.size.width = bounds.width - iconImageView.frame.maxX - 21 - iconImageView.bounds.width - 16 - 8
 		
-		textfield.tintColor = ColorgyColor.MainOrange
+		textFieldSizeAndPosition()
+		textFieldStyle()
 		
 		textfield.keyboardType = keyboardType
 		textfield.placeholder = placeholder
 		textfield.secureTextEntry = isPassword
 		
-		textfield.autocorrectionType = .No
-		textfield.autocapitalizationType = .None
+		textFieldSettings()
 		
 		addSubview(textfield)
 		
 		textfield.addTarget(self, action: #selector(InputBox.textfieldEditingChange), forControlEvents: UIControlEvents.EditingChanged)
+	}
+	
+	private func textFieldSizeAndPosition() {
+		textfield.frame.size.height = 21
+		textfield.font = UIFont.systemFontOfSize(14)
+		textfield.center.y = bounds.midY
+		textfield.frame.origin.x = iconImageView.frame.maxX + 21
+		textfield.frame.size.width = bounds.width - iconImageView.frame.maxX - 21 - iconImageView.bounds.width - 16 - 8
+	}
+	
+	private func textFieldStyle() {
+		textfield.tintColor = ColorgyColor.MainOrange
+	}
+	
+	private func textFieldSettings() {
+		textfield.autocorrectionType = .No
+		textfield.autocapitalizationType = .None
 	}
 	
 	private func configureIndicator() {
