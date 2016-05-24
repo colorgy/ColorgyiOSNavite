@@ -11,7 +11,7 @@ import Foundation
 final public class PhoneInputBox: InputBox {
 	
 	public init() {
-		super.init(imageName: "PhoneIcon", placeholder: "手機（傳送驗證碼）", isPassword: false, keyboardType: UIKeyboardType.PhonePad)
+		super.init(imageName: "PhoneIcon", placeholder: "手機（傳送驗證碼）", isPassword: false, keyboardType: UIKeyboardType.NumberPad)
 		self.inputBoxDelegate = self
 	}
 	
@@ -28,11 +28,7 @@ final public class PhoneInputBox: InputBox {
 	}
 	
 	private func updateIndicatorWithValidPhone(isValid: Bool) {
-		if isValid {
-			showOKIndicator()
-		} else {
-			showErrorIndicator()
-		}
+		isValid ? showOKIndicator() : showErrorIndicator()
 	}
 }
 

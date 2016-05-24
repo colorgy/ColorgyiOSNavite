@@ -34,11 +34,7 @@ final public class PasswordInputBox: InputBox {
 	}
 	
 	private func updateIndicatorWithValidPassword(isValid: Bool) {
-		if isValid {
-			showOKIndicator()
-		} else {
-			showErrorIndicator()
-		}
+		isValid ? showOKIndicator() : showErrorIndicator()
 	}
 	
 	// MARK: - Getter

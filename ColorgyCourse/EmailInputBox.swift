@@ -28,11 +28,7 @@ final public class EmailInputBox: InputBox {
 	}
 	
 	private func updateIndicatorWithValidEmail(isValid: Bool) {
-		if isValid {
-			showOKIndicator()
-		} else {
-			showErrorIndicator()
-		}
+		isValid ? showOKIndicator() : showErrorIndicator()
 	}
 }
 
