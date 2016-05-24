@@ -58,4 +58,11 @@ final public class ColorgyFullScreenButton: UIButton {
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+	
+	// MARK: - Methods
+	public func centerHorizontally() {
+		if let superview = self.superview {
+			self.center.x = superview.bounds.midX
+		}
+	}
 }
