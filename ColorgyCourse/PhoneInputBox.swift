@@ -11,7 +11,7 @@ import Foundation
 final public class PhoneInputBox: InputBox {
 	
 	public init() {
-		super.init(imageName: "PhoneIcon", placeholder: "手機（傳送驗證碼）", isPassword: false, keyboardType: UIKeyboardType.EmailAddress)
+		super.init(imageName: "PhoneIcon", placeholder: "手機（傳送驗證碼）", isPassword: false, keyboardType: UIKeyboardType.PhonePad)
 		self.inputBoxDelegate = self
 	}
 	
@@ -21,7 +21,7 @@ final public class PhoneInputBox: InputBox {
 	
 	// MARK: - Validator
 	private func isValidPhone(phone: String?) -> Bool {
-		if let phone = phone where phone.isValidEmail {
+		if let phone = phone where phone.isValidMobileNumber {
 			return true
 		}
 		return false

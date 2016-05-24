@@ -11,8 +11,8 @@ import UIKit
 public class EmailLoginViewController: UIViewController {
 	
 	// MARK: - Parameters
-	private var emailInputView: IconedTextInputView!
-	private var passwordInputView: IconedTextInputView!
+//	private var emailInputView: IconedTextInputView!
+//	private var passwordInputView: IconedTextInputView!
 	private var viewModel: EmailLoginViewModel?
 	private var loginButton: UIButton!
 
@@ -42,6 +42,9 @@ public class EmailLoginViewController: UIViewController {
 		p2.frame.origin.y = 250 + 44 * 2
 		view.addSubview(p2)
 		p2.bindPasswordInputBox(p)
+		let ph = PhoneInputBox()
+		ph.frame.origin.y = 250 + 44 * 3
+		view.addSubview(ph)
     }
 	
 	public override func viewWillAppear(animated: Bool) {
@@ -59,15 +62,15 @@ public class EmailLoginViewController: UIViewController {
 	// MARK: - Configuration
 	private func configureLoginView() {
 		
-		emailInputView = IconedTextInputView(imageName: "grayEmailIcon", placeholder: "輸入信箱", keyboardType: .Default, isPassword: false, delegate: self)
-		passwordInputView = IconedTextInputView(imageName: "grayPasswordIcon", placeholder: "輸入密碼", keyboardType: .Default, isPassword: true, delegate: self)
-		
-		// arrange view
-		let initialPosition: CGFloat = 66
-		let _ = [emailInputView, passwordInputView].reduce(initialPosition, combine: arrangeView)
-		
-		// add subview
-		[emailInputView, passwordInputView].forEach(view.addSubview)
+//		emailInputView = IconedTextInputView(imageName: "grayEmailIcon", placeholder: "輸入信箱", keyboardType: .Default, isPassword: false, delegate: self)
+//		passwordInputView = IconedTextInputView(imageName: "grayPasswordIcon", placeholder: "輸入密碼", keyboardType: .Default, isPassword: true, delegate: self)
+//		
+//		// arrange view
+//		let initialPosition: CGFloat = 66
+//		let _ = [emailInputView, passwordInputView].reduce(initialPosition, combine: arrangeView)
+//		
+//		// add subview
+//		[emailInputView, passwordInputView].forEach(view.addSubview)
 		
 		// configure button
 		configureLoginButton()
@@ -91,8 +94,8 @@ public class EmailLoginViewController: UIViewController {
 		loginButton.frame.size = CGSize(width: 249, height: 44)
 		
 		// buttom of confirmPasswordInputView
-		loginButton.frame.origin.y = passwordInputView.frame.maxY + 36
-		loginButton.center.x = passwordInputView.center.x
+//		loginButton.frame.origin.y = passwordInputView.frame.maxY + 36
+//		loginButton.center.x = passwordInputView.center.x
 		
 		loginButton.anchorViewTo(view)
 		
@@ -130,26 +133,5 @@ extension EmailLoginViewController : EmailLoginViewModelDelegate {
 	
 	public func emailLoginViewModel(failToRetrieveDataFromServre error: APIError, afError: AFError?) {
 		print(error, afError)
-	}
-}
-
-extension EmailLoginViewController : IconedTextInputViewDelegate {
-	
-	public func iconedTextInputViewShouldReturn(textInputView: IconedTextInputView) {
-		
-		if textInputView == emailInputView {
-			passwordInputView.becomeFirstResponder()
-		} else if textInputView == passwordInputView {
-			viewModel?.loginToColorgy()
-		}
-	}
-	
-	public func iconedTextInputViewTextChanged(textInputView: IconedTextInputView, changedText: String?) {
-		
-		if textInputView == emailInputView {
-			viewModel?.email = changedText
-		} else if textInputView == passwordInputView {
-			viewModel?.password = changedText
-		}
 	}
 }
