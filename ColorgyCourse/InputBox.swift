@@ -101,11 +101,13 @@ public class InputBox: UIView {
 	
 	private func changeIndicatorImage(image: UIImage?) {
 		if indicator.image != image {
-			UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+			UIView.animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.6, options: [], animations: {
 				self.indicator.image = image
 				self.indicator.transform = CGAffineTransformMakeScale(1.2, 1.2)
 				}, completion: { _ in
-					self.indicator.transform = CGAffineTransformIdentity
+					UIView.animateWithDuration(0.1, animations: {
+						self.indicator.transform = CGAffineTransformIdentity
+					})
 			})
 		}
 	}

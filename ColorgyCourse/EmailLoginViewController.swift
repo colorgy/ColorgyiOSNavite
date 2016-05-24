@@ -32,9 +32,16 @@ public class EmailLoginViewController: UIViewController {
 		// assign view model
 		viewModel = EmailLoginViewModel(delegate: self)
 		
-		let aaaa = LoginInputBox()
-		aaaa.frame.origin.y = 250
-		view.addSubview(aaaa)
+		let e = EmailInputBox()
+		e.frame.origin.y = 250
+		view.addSubview(e)
+		let p = PasswordInputBox(placeholder: "密碼（8個字以上）")
+		p.frame.origin.y = 250 + 44 * 1
+		view.addSubview(p)
+		let p2 = ConfirmPasswordInputBox(placeholder: "確認密碼")
+		p2.frame.origin.y = 250 + 44 * 2
+		view.addSubview(p2)
+		p2.bindPasswordInputBox(p)
     }
 	
 	public override func viewWillAppear(animated: Bool) {
