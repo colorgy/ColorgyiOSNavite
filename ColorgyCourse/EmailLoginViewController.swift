@@ -16,6 +16,8 @@ public class EmailLoginViewController: UIViewController {
 	private var emailInputBox: EmailInputBox!
 	private var passwordInputBox: PasswordInputBox!
 	private var loginButton: ColorgyFullScreenButton!
+	
+	private var billboard: ColorgyBillboardView!
 
 	// MARK: - Life Cycle
     override public func viewDidLoad() {
@@ -24,6 +26,7 @@ public class EmailLoginViewController: UIViewController {
         // Do any additional setup after loading the view.
 		
 		// configure view
+		configureBillboard()
 		configureLoginView()
 		
 		// configure view
@@ -38,6 +41,14 @@ public class EmailLoginViewController: UIViewController {
 	}
 	
 	// MARK: - Configuration
+	private func configureBillboard() {
+		billboard = ColorgyBillboardView(frame: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 170)))
+		
+		view.addSubview(billboard)
+		
+		billboard.billboardText = "登入"
+	}
+	
 	private func configureLoginView() {
 		
 		emailInputBox = EmailInputBox()

@@ -18,6 +18,9 @@ public class EmailRegisterViewController: UIViewController {
 	private var passwordInputBox: PasswordInputBox!
 	private var confirmPasswordInputBox: ConfirmPasswordInputBox!
 	private var registerButton: ColorgyFullScreenButton!
+	
+	private var billboard: ColorgyBillboardView!
+	
 	// MARK: View Model
 	private var viewModel: EmailRegisterViewModel?
 
@@ -26,6 +29,7 @@ public class EmailRegisterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		configureBillboard()
 		configureRegistrationView()
 		
 		// configure view
@@ -40,6 +44,14 @@ public class EmailRegisterViewController: UIViewController {
 	}
 	
 	// MARK: - Configuration
+	private func configureBillboard() {
+		billboard = ColorgyBillboardView(frame: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 170)))
+		
+		view.addSubview(billboard)
+		
+		billboard.billboardText = "註冊"
+	}
+	
 	private func configureRegistrationView() {
 		emailInputBox = EmailInputBox()
 		phoneInputBox = PhoneInputBox()
