@@ -49,6 +49,7 @@ public class EmailLoginViewController: UIViewController {
 		let gg = ColorgyFullScreenButton(title: "確認註冊", delegate: self)
 		gg.frame.origin.y = 250 + 44 * 4.5
 		view.addSubview(gg)
+		gg.centerHorizontallyToSuperview()
     }
 	
 	public override func viewWillAppear(animated: Bool) {

@@ -37,4 +37,13 @@ extension UIView {
 	func containsPoint(point: CGPoint) -> Bool {
 		return CGRectContainsPoint(self.bounds, point)
 	}
+	
+	/// Make a view center horizontally to superview.
+	///
+	/// Only works if the view has a superview
+	func centerHorizontallyToSuperview() {
+		if let superview = self.superview {
+			self.center.x = superview.bounds.midX
+		}
+	}
 }
