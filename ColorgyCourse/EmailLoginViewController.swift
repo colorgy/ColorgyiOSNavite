@@ -45,6 +45,10 @@ public class EmailLoginViewController: UIViewController {
 		let ph = PhoneInputBox()
 		ph.frame.origin.y = 250 + 44 * 3
 		view.addSubview(ph)
+		
+		let gg = ColorgyFullScreenButton(title: "確認註冊", delegate: self)
+		gg.frame.origin.y = 250 + 44 * 4.5
+		view.addSubview(gg)
     }
 	
 	public override func viewWillAppear(animated: Bool) {
@@ -133,5 +137,11 @@ extension EmailLoginViewController : EmailLoginViewModelDelegate {
 	
 	public func emailLoginViewModel(failToRetrieveDataFromServre error: APIError, afError: AFError?) {
 		print(error, afError)
+	}
+}
+
+extension EmailLoginViewController : ColorgyFullScreenButtonDelegate {
+	public func colorgyFullScreenButtonClicked(button: ColorgyFullScreenButton) {
+		
 	}
 }

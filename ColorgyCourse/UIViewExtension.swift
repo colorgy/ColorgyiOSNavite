@@ -32,4 +32,9 @@ extension UIView {
 		self.layer.borderWidth = 1.0
 		self.layer.borderColor = UIColor.greenColor().CGColor
 	}
+	
+	/// To check if cgpoint is inside the view
+	func containsPoint(point: CGPoint) -> Bool {
+		return CGRectContainsPoint(self.bounds, point)
+	}
 }

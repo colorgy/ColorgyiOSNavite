@@ -12,38 +12,50 @@ public protocol ColorgyFullScreenButtonDelegate: class {
 	func colorgyFullScreenButtonClicked(button: ColorgyFullScreenButton)
 }
 
-final public class ColorgyFullScreenButton: UIView {
-	
-	private var titleLabel: UILabel!
+final public class ColorgyFullScreenButton: UIButton {
 	
 	public weak var delegate: ColorgyFullScreenButtonDelegate?
 
-	public init(title: String?) {
+	public init(title: String?, delegate: ColorgyFullScreenButtonDelegate?) {
 		super.init(frame: UIScreen.mainScreen().bounds)
+		
 		frame.size.height = 36.0
+		frame.size.width = UIScreen.mainScreen().bounds.width - 24 * 2
+		layer.borderColor = ColorgyColor.MainOrange.CGColor
+		layer.borderWidth = 1.5
+		layer.cornerRadius = 2.0
 		
-		configureTitle(title)
+		self.delegate = delegate
 		
-		addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ColorgyFullScreenButton.tapped)))
+		setTitle(title, forState: UIControlState.Normal)
+		titleLabel?.font = UIFont.systemFontOfSize(16)
+		setTitleColor(ColorgyColor.MainOrange, forState: UIControlState.Normal)
+		
+		addTarget(self, action: #selector(ColorgyFullScreenButton.touchEnter), forControlEvents: [.TouchDown, .TouchDragEnter])
+		addTarget(self, action: #selector(ColorgyFullScreenButton.touchExit), forControlEvents: [.TouchCancel, .TouchDragExit, .TouchUpOutside])
+		addTarget(self, action: #selector(ColorgyFullScreenButton.touchUpInside), forControlEvents: UIControlEvents.TouchUpInside)
+	}
+	
+	@objc private func touchEnter() {
+		UIView.animateWithDuration(0.15) {
+			self.alpha = 0.7
+		}
+	}
+	
+	@objc private func touchExit() {
+		UIView.animateWithDuration(0.15) {
+			self.alpha = 1.0
+		}
+	}
+	
+	@objc private func touchUpInside() {
+		UIView.animateWithDuration(0.15) {
+			self.alpha = 1.0
+		}
+		delegate?.colorgyFullScreenButtonClicked(self)
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
-	}
-
-	// MARK: - Configuration
-	private func configureTitle(title: String?) {
-		titleLabel = UILabel(frame: frame)
-		titleLabel.center = CGPoint(x: bounds.midX, y: bounds.midY)
-		titleLabel.textAlignment = .Center
-		titleLabel.textColor = ColorgyColor.MainOrange
-		titleLabel.text = title
-		titleLabel.font = UIFont.systemFontOfSize(16.0)
-		
-		addSubview(titleLabel)
-	}
-	
-	@objc private func tapped() {
-		delegate?.colorgyFullScreenButtonClicked(self)
 	}
 }
