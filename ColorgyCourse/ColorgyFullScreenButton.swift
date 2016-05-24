@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol ColorgyFullScreenButtonDelegate: class {
-	
+	func colorgyFullScreenButtonClicked(button: ColorgyFullScreenButton)
 }
 
 final public class ColorgyFullScreenButton: UIView {
@@ -23,6 +23,8 @@ final public class ColorgyFullScreenButton: UIView {
 		frame.size.height = 36.0
 		
 		configureTitle(title)
+		
+		addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ColorgyFullScreenButton.tapped)))
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -39,5 +41,9 @@ final public class ColorgyFullScreenButton: UIView {
 		titleLabel.font = UIFont.systemFontOfSize(16.0)
 		
 		addSubview(titleLabel)
+	}
+	
+	@objc private func tapped() {
+		delegate?.colorgyFullScreenButtonClicked(self)
 	}
 }
