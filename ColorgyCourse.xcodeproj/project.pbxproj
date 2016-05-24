@@ -112,6 +112,7 @@
 		63B1C3841CF430B900989B5D /* PhoneInputBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3821CF42D9600989B5D /* PhoneInputBox.swift */; };
 		63B1C3861CF4350000989B5D /* ColorgyFullScreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3851CF4350000989B5D /* ColorgyFullScreenButton.swift */; };
 		63B1C3871CF4350700989B5D /* ColorgyFullScreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3851CF4350000989B5D /* ColorgyFullScreenButton.swift */; };
+		63B1C3891CF45A1300989B5D /* ColorgyBillboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3881CF45A1300989B5D /* ColorgyBillboardView.swift */; };
 		63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */; };
 		63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */; };
 		63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */; };
@@ -319,6 +320,7 @@
 		63B1C37F1CF424C700989B5D /* ConfirmPasswordInputBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordInputBox.swift; sourceTree = "<group>"; };
 		63B1C3821CF42D9600989B5D /* PhoneInputBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneInputBox.swift; sourceTree = "<group>"; };
 		63B1C3851CF4350000989B5D /* ColorgyFullScreenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyFullScreenButton.swift; sourceTree = "<group>"; };
+		63B1C3881CF45A1300989B5D /* ColorgyBillboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyBillboardView.swift; sourceTree = "<group>"; };
 		63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
 		63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableTarget.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				63AC1B401CF155F800FDD724 /* Event.swift */,
 				63B1C3851CF4350000989B5D /* ColorgyFullScreenButton.swift */,
 				63B1C3741CF30B0500989B5D /* InputBox.swift */,
+				63B1C3881CF45A1300989B5D /* ColorgyBillboardView.swift */,
 				63B1C3771CF3EDBF00989B5D /* EmailInputBox.swift */,
 				63B1C3821CF42D9600989B5D /* PhoneInputBox.swift */,
 				63B1C37A1CF4221400989B5D /* PasswordInputBox.swift */,
@@ -1139,6 +1142,7 @@
 				635479E51CB8B02A00DE8CBC /* TimeStamp.swift in Sources */,
 				635479E71CB8B02A00DE8CBC /* ColorgyAPI.swift in Sources */,
 				630337E91CE9732B006FEA1C /* BlurWallViewCell.swift in Sources */,
+				63B1C3891CF45A1300989B5D /* ColorgyBillboardView.swift in Sources */,
 				6393BBFE1CF0179E008BFF72 /* SearchCourseViewModel.swift in Sources */,
 				637547781CC8BF6200BC3BBD /* FriendListViewController.swift in Sources */,
 				635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */,

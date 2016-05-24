@@ -45,9 +45,10 @@ public class EmailLoginViewController: UIViewController {
 		
 		let views = [emailInputBox, passwordInputBox]
 		// arrange view
-		let initialPosition = CGPoint(x: 0, y: 120)
+		let initialPosition = CGPoint(x: 0, y: 170)
 		views.reduce(initialPosition.y, combine: arrangeView)
 		views.forEach(view.addSubview)
+		
 		
 		// configure button
 		configureLoginButton()

@@ -46,10 +46,14 @@ public class EmailRegisterViewController: UIViewController {
 		passwordInputBox = PasswordInputBox()
 		confirmPasswordInputBox = ConfirmPasswordInputBox()
 		
+		// arrange views
 		let views = [emailInputBox, phoneInputBox, passwordInputBox, confirmPasswordInputBox]
-		let initialPosition = CGPoint(x: 0, y: 120)
-		views.reduce(initialPosition.y, combine: arrangeView)
+		let initialPosition = CGPoint(x: 0, y: 170)
+		let _ = views.reduce(initialPosition.y, combine: arrangeView)
 		views.forEach(view.addSubview)
+		
+		// bind password validator
+		confirmPasswordInputBox.bindPasswordInputBox(passwordInputBox)
 		
 		configureRegisterButton()
 	}
