@@ -16,8 +16,8 @@ final public class ConfirmPasswordInputBox: InputBox {
 		}
 	}
 	
-	public init(placeholder: String?) {
-		super.init(imageName: "PasswordIcon", placeholder: placeholder, isPassword: true, keyboardType: UIKeyboardType.Default)
+	public init() {
+		super.init(imageName: "PasswordIcon", placeholder: "確認密碼", isPassword: true, keyboardType: UIKeyboardType.Default)
 		self.inputBoxDelegate = self
 	}
 	

@@ -16,8 +16,8 @@ final public class PasswordInputBox: InputBox {
 	
 	public weak var delegate: PasswordInputBoxDelegate?
 	
-	public init(placeholder: String?) {
-		super.init(imageName: "PasswordIcon", placeholder: placeholder, isPassword: true, keyboardType: UIKeyboardType.Default)
+	public init() {
+		super.init(imageName: "PasswordIcon", placeholder: "密碼（8個字以上）", isPassword: true, keyboardType: UIKeyboardType.Default)
 		self.inputBoxDelegate = self
 	}
 	
