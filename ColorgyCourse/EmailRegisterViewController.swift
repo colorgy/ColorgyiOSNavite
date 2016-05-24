@@ -30,7 +30,6 @@ public class EmailRegisterViewController: UIViewController {
 		
 		// configure view
 		view.backgroundColor = ColorgyColor.BackgroundColor
-		title = "註冊"
 		
 		// assign view model
 		viewModel = EmailRegisterViewModel(delegate: self)
@@ -57,7 +56,7 @@ public class EmailRegisterViewController: UIViewController {
 	
 	private func arrangeView(currentY: CGFloat, view: InputBox) -> CGFloat {
 		view.frame.origin.y = currentY
-		return currentY + 4 + view.bounds.height
+		return currentY + 2 + view.bounds.height
 	}
 	
 	private func configureRegisterButton() {

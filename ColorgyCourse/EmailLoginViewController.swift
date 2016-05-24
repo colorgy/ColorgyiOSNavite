@@ -13,8 +13,9 @@ public class EmailLoginViewController: UIViewController {
 	// MARK: - Parameters
 	private var viewModel: EmailLoginViewModel?
 	
-	
-	private var loginButton: UIButton!
+	private var emailInputBox: EmailInputBox!
+	private var passwordInputBox: PasswordInputBox!
+	private var loginButton: ColorgyFullScreenButton!
 
 	// MARK: - Life Cycle
     override public func viewDidLoad() {
@@ -27,7 +28,6 @@ public class EmailLoginViewController: UIViewController {
 		
 		// configure view
 		view.backgroundColor = ColorgyColor.BackgroundColor
-		title = "登入"
 		
 		// assign view model
 		viewModel = EmailLoginViewModel(delegate: self)
@@ -40,22 +40,29 @@ public class EmailLoginViewController: UIViewController {
 	// MARK: - Configuration
 	private func configureLoginView() {
 		
+		emailInputBox = EmailInputBox()
+		passwordInputBox = PasswordInputBox()
 		
-
-//		// arrange view
-//		let initialPosition: CGFloat = 66
-//		let _ = [emailInputView, passwordInputView].reduce(initialPosition, combine: arrangeView)
-//		
-//		// add subview
-//		[emailInputView, passwordInputView].forEach(view.addSubview)
+		let views = [emailInputBox, passwordInputBox]
+		// arrange view
+		let initialPosition = CGPoint(x: 0, y: 120)
+		views.reduce(initialPosition.y, combine: arrangeView)
+		views.forEach(view.addSubview)
 		
 		// configure button
-//		configureLoginButton()
+		configureLoginButton()
 	}
 	
-	private func arrangeView(currentY: CGFloat, view: UIView) -> CGFloat {
+	private func arrangeView(currentY: CGFloat, view: InputBox) -> CGFloat {
 		view.frame.origin.y = currentY
-		return currentY + 4 + view.bounds.height
+		return currentY + 2 + view.bounds.height
+	}
+	
+	private func configureLoginButton() {
+		loginButton =  ColorgyFullScreenButton(title: "登入", delegate: self)
+		loginButton.frame.origin.y = passwordInputBox.frame.maxY + 48
+		view.addSubview(loginButton)
+		loginButton.centerHorizontallyToSuperview()
 	}
 	
 	// MARK: - Selector
@@ -85,6 +92,8 @@ extension EmailLoginViewController : EmailLoginViewModelDelegate {
 
 extension EmailLoginViewController : ColorgyFullScreenButtonDelegate {
 	public func colorgyFullScreenButtonClicked(button: ColorgyFullScreenButton) {
-		
+		if button == loginButton {
+			
+		}
 	}
 }
