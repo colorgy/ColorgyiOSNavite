@@ -25,6 +25,7 @@ final public class PasswordInputBox: InputBox {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	// MARK: - Validator
 	private func isValidPassword(password: String?) -> Bool {
 		if let password = password where password.characters.count >= 8 {
 			return true
@@ -40,11 +41,11 @@ final public class PasswordInputBox: InputBox {
 		}
 	}
 	
+	// MARK: - Getter
 	public var password: String? {
 		return textfield.text
 	}
 }
-
 
 extension PasswordInputBox : InputBoxDelegate {
 	public func inputBoxEditingChanged(text: String?) {

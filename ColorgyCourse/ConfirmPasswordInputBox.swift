@@ -25,6 +25,7 @@ final public class ConfirmPasswordInputBox: InputBox {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	// MARK: - Validator
 	private func isValidPassword(password: String?) -> Bool {
 		if let password = password where password.characters.count >= 8 {
 			return confirmTwoPassword()
@@ -39,18 +40,6 @@ final public class ConfirmPasswordInputBox: InputBox {
 		return false
 	}
 	
-	public var password: String? {
-		return textfield.text
-	}
-	
-	private func setDelegate() {
-		passwordInputBox?.delegate = self
-	}
-	
-	public func bindPasswordInputBox(inputbox: PasswordInputBox) {
-		passwordInputBox = inputbox
-	}
-	
 	private func updateIndicatorWithValidPassword(isValid: Bool) {
 		if isValid {
 			showOKIndicator()
@@ -58,14 +47,28 @@ final public class ConfirmPasswordInputBox: InputBox {
 			showErrorIndicator()
 		}
 	}
+	
+	// MARK: - Getter
+	public var password: String? {
+		return textfield.text
+	}
+	
+	// MARK: - Handle password delegate
+	private func setDelegate() {
+		passwordInputBox?.delegate = self
+	}
+	
+	public func bindPasswordInputBox(inputbox: PasswordInputBox) {
+		passwordInputBox = inputbox
+	}
 }
-
 
 extension ConfirmPasswordInputBox : InputBoxDelegate {
 	public func inputBoxEditingChanged(text: String?) {
 		updateIndicatorWithValidPassword(isValidPassword(text))
 	}
 }
+
 extension ConfirmPasswordInputBox : PasswordInputBoxDelegate {
 	public func passwordInputBox(passwordUpdated password: String?) {
 		updateIndicatorWithValidPassword(isValidPassword(password))

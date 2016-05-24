@@ -19,6 +19,7 @@ final public class EmailInputBox: InputBox {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	// MARK: - Validator
 	private func isValidEmail(email: String?) -> Bool {
 		if let email = email where email.isValidEmail {
 			return true
@@ -34,7 +35,6 @@ final public class EmailInputBox: InputBox {
 		}
 	}
 }
-
 
 extension EmailInputBox : InputBoxDelegate {
 	public func inputBoxEditingChanged(text: String?) {
