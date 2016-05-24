@@ -57,6 +57,8 @@ public class InputBox: UIView {
 		textfield.frame.origin.x = iconImageView.frame.maxX + 21
 		textfield.frame.size.width = bounds.width - iconImageView.frame.maxX - 21 - iconImageView.bounds.width - 16 - 8
 		
+		textfield.tintColor = ColorgyColor.MainOrange
+		
 		textfield.keyboardType = keyboardType
 		textfield.placeholder = placeholder
 		textfield.secureTextEntry = isPassword
@@ -90,20 +92,17 @@ public class InputBox: UIView {
 	}
 	
 	public func showOKIndicator() {
-		if indicator.image != okIndicatorImage {
-			UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: { 
-				self.indicator.image = self.okIndicatorImage
-				self.indicator.transform = CGAffineTransformMakeScale(1.2, 1.2)
-				}, completion: { _ in
-					self.indicator.transform = CGAffineTransformIdentity
-			})
-		}
+		changeIndicatorImage(okIndicatorImage)
 	}
 	
 	public func showErrorIndicator() {
-		if indicator.image != errorIndicatorImage {
+		changeIndicatorImage(errorIndicatorImage)
+	}
+	
+	private func changeIndicatorImage(image: UIImage?) {
+		if indicator.image != image {
 			UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
-				self.indicator.image = self.errorIndicatorImage
+				self.indicator.image = image
 				self.indicator.transform = CGAffineTransformMakeScale(1.2, 1.2)
 				}, completion: { _ in
 					self.indicator.transform = CGAffineTransformIdentity
