@@ -242,7 +242,7 @@ extension CreateEventView : UITableViewDataSource {
 			return 44.0
 		case eventDateSection:
 			// date section
-			return 180.0
+			return 175.0
 		case notesSection:
 			// notes section
 			return 132.0

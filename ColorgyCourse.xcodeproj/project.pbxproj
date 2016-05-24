@@ -101,6 +101,10 @@
 		63B1C36F1CF2DEEE00989B5D /* CreateEventNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C36E1CF2DEEE00989B5D /* CreateEventNotificationCell.swift */; };
 		63B1C3711CF2F25700989B5D /* CreateEventRepeatEndsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C3701CF2F25700989B5D /* CreateEventRepeatEndsCell.xib */; };
 		63B1C3731CF2F26000989B5D /* CreateEventRepeatEndsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3721CF2F26000989B5D /* CreateEventRepeatEndsCell.swift */; };
+		63B1C3751CF30B0500989B5D /* InputBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3741CF30B0500989B5D /* InputBox.swift */; };
+		63B1C3761CF30E1B00989B5D /* InputBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3741CF30B0500989B5D /* InputBox.swift */; };
+		63B1C3781CF3EDBF00989B5D /* LoginInputBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3771CF3EDBF00989B5D /* LoginInputBox.swift */; };
+		63B1C3791CF3EDD100989B5D /* LoginInputBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3771CF3EDBF00989B5D /* LoginInputBox.swift */; };
 		63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */; };
 		63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */; };
 		63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */; };
@@ -304,6 +308,8 @@
 		63B1C36E1CF2DEEE00989B5D /* CreateEventNotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventNotificationCell.swift; sourceTree = "<group>"; };
 		63B1C3701CF2F25700989B5D /* CreateEventRepeatEndsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventRepeatEndsCell.xib; sourceTree = "<group>"; };
 		63B1C3721CF2F26000989B5D /* CreateEventRepeatEndsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventRepeatEndsCell.swift; sourceTree = "<group>"; };
+		63B1C3741CF30B0500989B5D /* InputBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputBox.swift; sourceTree = "<group>"; };
+		63B1C3771CF3EDBF00989B5D /* LoginInputBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInputBox.swift; sourceTree = "<group>"; };
 		63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
 		63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableTarget.swift; sourceTree = "<group>"; };
@@ -502,11 +508,13 @@
 				635479871CB898C100DE8CBC /* AppDelegate.swift */,
 				635479891CB898C100DE8CBC /* ViewController.swift */,
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
-				63B1C34C1CF1EC1600989B5D /* Create Event View */,
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
 				630337F11CE9B265006FEA1C /* 1.png */,
 				63AC1B401CF155F800FDD724 /* Event.swift */,
+				63B1C3741CF30B0500989B5D /* InputBox.swift */,
+				63B1C3771CF3EDBF00989B5D /* LoginInputBox.swift */,
 				6393BC031CF01B74008BFF72 /* Global */,
+				63B1C34C1CF1EC1600989B5D /* Create Event View */,
 				6393BC011CF01B5B008BFF72 /* Week Calendar View */,
 				6324BF331CF00E6D003F1329 /* Search Course View */,
 				630337EA1CE9734A006FEA1C /* Blur Wall */,
@@ -1094,6 +1102,7 @@
 				630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */,
 				637305641CBF83D80016A7FC /* UIViewExtension.swift in Sources */,
 				635479FB1CB8D17800DE8CBC /* PeriodRawData.swift in Sources */,
+				63B1C3781CF3EDBF00989B5D /* LoginInputBox.swift in Sources */,
 				635479F11CB8B02A00DE8CBC /* ColorgyLogin.swift in Sources */,
 				63B1C3501CF1ED9A00989B5D /* CreateEventTitleCell.swift in Sources */,
 				63561C4E1CBF9848004AEF6D /* EmailRegisterViewModel.swift in Sources */,
@@ -1121,6 +1130,7 @@
 				637547781CC8BF6200BC3BBD /* FriendListViewController.swift in Sources */,
 				635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */,
 				63AC1B411CF155F800FDD724 /* Event.swift in Sources */,
+				63B1C3751CF30B0500989B5D /* InputBox.swift in Sources */,
 				635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */,
 				6304728B1CE5DDC500D907C4 /* WeekCalendarView.swift in Sources */,
 				63EC77B61CC8743D008025A7 /* DLIncomingPhotoBubble.swift in Sources */,
@@ -1183,6 +1193,7 @@
 				63C3CE3A1CC0C8BC000EE808 /* LoginViewModel.swift in Sources */,
 				63C3CE261CC0C8A5000EE808 /* Organization.swift in Sources */,
 				63C3CE371CC0C8BC000EE808 /* EmailRegisterViewModel.swift in Sources */,
+				63B1C3761CF30E1B00989B5D /* InputBox.swift in Sources */,
 				63F3EE951CBF49EE0010D059 /* Hello.swift in Sources */,
 				63C3CE2D1CC0C8B5000EE808 /* ViewController.swift in Sources */,
 				63F3EE961CBF49EE0010D059 /* ChatUserInformation.swift in Sources */,
@@ -1198,6 +1209,7 @@
 				63C3CE2C1CC0C8B5000EE808 /* Release.swift in Sources */,
 				63F3EE821CBF49DF0010D059 /* Period.swift in Sources */,
 				63F3EE861CBF49DF0010D059 /* ColorgyLoginResult.swift in Sources */,
+				63B1C3791CF3EDD100989B5D /* LoginInputBox.swift in Sources */,
 				63F3EE7B1CBF49DF0010D059 /* AFNetworkingErrorParser.swift in Sources */,
 				63F3EE7F1CBF49DF0010D059 /* ColorgyAPIMeResult.swift in Sources */,
 				63B1C3591CF2992700989B5D /* UIColorExtension.swift in Sources */,
