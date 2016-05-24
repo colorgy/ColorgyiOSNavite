@@ -18,11 +18,26 @@ final public class LoginInputBox: InputBox {
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+	
+	func isValidEmail(email: String?) -> Bool {
+		if let email = email where email.isValidEmail {
+			return true
+		}
+		return false
+	}
+	
+	func updateIndicatorWithValidEmail(isValid: Bool) {
+		if isValid {
+			showOKIndicator()
+		} else {
+			showErrorIndicator()
+		}
+	}
 }
 
 
 extension LoginInputBox : InputBoxDelegate {
 	public func inputBoxEditingChanged(text: String?) {
-		print(text)
+		updateIndicatorWithValidEmail(isValidEmail(text))
 	}
 }

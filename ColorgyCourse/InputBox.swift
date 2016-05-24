@@ -17,6 +17,8 @@ public class InputBox: UIView {
 	public private(set) var iconImageView: UIImageView!
 	public private(set) var textfield: UITextField!
 	public private(set) var indicator: UIImageView!
+	private var okIndicatorImage: UIImage?
+	private var errorIndicatorImage: UIImage?
 	
 	public weak var inputBoxDelegate: InputBoxDelegate?
 
@@ -25,6 +27,7 @@ public class InputBox: UIView {
 		super.init(frame: UIScreen.mainScreen().bounds)
 		frame.size.height = 44
 		backgroundColor = UIColor.whiteColor()
+		configureIndicatorImages()
 		configureIconImageView(imageName)
 		configureIndicator()
 		configureTextField(placeholder, isPassword: isPassword, keyboardType: keyboardType)
@@ -71,14 +74,40 @@ public class InputBox: UIView {
 		indicator.frame.size = CGSize(width: 21, height: 21)
 		indicator.frame.origin.x = bounds.width - indicator.bounds.width - 16
 		indicator.center.y = bounds.midY
-		
-		indicator.image = UIImage(named: "EmailIcon")
+		indicator.contentMode = .ScaleAspectFit
 		
 		addSubview(indicator)
+	}
+	
+	private func configureIndicatorImages() {
+		okIndicatorImage = UIImage(named: "OKIndicator")
+		errorIndicatorImage = UIImage(named: "ErrorIndicator")
 	}
 
 	// MARK: - Methods
 	@objc private func textfieldEditingChange() {
 		inputBoxDelegate?.inputBoxEditingChanged(textfield.text)
+	}
+	
+	public func showOKIndicator() {
+		if indicator.image != okIndicatorImage {
+			UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: { 
+				self.indicator.image = self.okIndicatorImage
+				self.indicator.transform = CGAffineTransformMakeScale(1.2, 1.2)
+				}, completion: { _ in
+					self.indicator.transform = CGAffineTransformIdentity
+			})
+		}
+	}
+	
+	public func showErrorIndicator() {
+		if indicator.image != errorIndicatorImage {
+			UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+				self.indicator.image = self.errorIndicatorImage
+				self.indicator.transform = CGAffineTransformMakeScale(1.2, 1.2)
+				}, completion: { _ in
+					self.indicator.transform = CGAffineTransformIdentity
+			})
+		}
 	}
 }

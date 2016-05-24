@@ -32,9 +32,9 @@ public class EmailLoginViewController: UIViewController {
 		// assign view model
 		viewModel = EmailLoginViewModel(delegate: self)
 		
-//		let aaaa = LoginInputBox(imageName: "EmailIcon", placeholder: "信箱", isPassword: false, keyboardType: .Default)
-//		aaaa.frame.origin.y = 250
-//		view.addSubview(aaaa)
+		let aaaa = LoginInputBox()
+		aaaa.frame.origin.y = 250
+		view.addSubview(aaaa)
     }
 	
 	public override func viewWillAppear(animated: Bool) {
