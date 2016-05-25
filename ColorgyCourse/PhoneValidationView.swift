@@ -146,6 +146,7 @@ final public class PhoneValidationView: UIView {
 		line.frame.origin.y = resendValidationCodeLabel.bounds.height - line.bounds.height
 		resendValidationCodeLabel.addSubview(line)
 		
+		resendValidationCodeLabel.userInteractionEnabled = true
 		resendValidationCodeLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PhoneValidationView.resendValidationCodeLabelTapped)))
 		
 		addSubview(resendValidationCodeLabel)
@@ -164,6 +165,7 @@ final public class PhoneValidationView: UIView {
 		line.frame.origin.y = reenterPhoneLabel.bounds.height - line.bounds.height
 		reenterPhoneLabel.addSubview(line)
 		
+		reenterPhoneLabel.userInteractionEnabled = true
 		reenterPhoneLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PhoneValidationView.reenterPhoneNumberLabelTapped)))
 		
 		addSubview(reenterPhoneLabel)
