@@ -14,11 +14,20 @@ final public class PhoneValidationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		let k = PhoneValidationView()
+		let k = PhoneValidationView(delegate: self)
 		view.addSubview(k)
 		k.targetPhoneNumber = "0988913868"
 		
 		view.backgroundColor = ColorgyColor.BackgroundColor
     }
 
+}
+extension PhoneValidationViewController : PhoneValidationViewDelegate {
+	public func phoneValidationViewRequestReenterPhoneNumber() {
+		
+	}
+	
+	public func phoneValidationViewRequestResendValidationCode() {
+		
+	}
 }

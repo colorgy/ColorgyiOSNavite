@@ -8,6 +8,11 @@
 
 import UIKit
 
+public protocol PhoneValidationViewDelegate: class {
+	func phoneValidationViewRequestResendValidationCode()
+	func phoneValidationViewRequestReenterPhoneNumber()
+}
+
 final public class PhoneValidationView: UIView {
 	
 	private var titleLabel: UILabel!
@@ -25,17 +30,27 @@ final public class PhoneValidationView: UIView {
 	private var reenterPhoneLabel: UILabel!
 	private var middleSeperatorSlashLabel: UILabel!
 	
+	public weak var delegate: PhoneValidationViewDelegate?
+	public var validationCode: String? {
+		get {
+			var code = ""
+			digits.forEach({ code += $0.text ?? "" })
+			return code
+		}
+	}
 	public var targetPhoneNumber: String? {
 		didSet {
 			updateTargetPhoneNumber()
 		}
 	}
 
-	public init() {
+	public init(delegate: PhoneValidationViewDelegate?) {
 		super.init(frame: CGRect(origin: CGPointZero, size: CGSizeZero))
 		frame.size.width = UIScreen.mainScreen().bounds.width
 		frame.size.height = 182.0
 		backgroundColor = UIColor.whiteColor()
+		
+		self.delegate = delegate
 		
 		configureTitle()
 		configureSubtitle()
@@ -131,6 +146,8 @@ final public class PhoneValidationView: UIView {
 		line.frame.origin.y = resendValidationCodeLabel.bounds.height - line.bounds.height
 		resendValidationCodeLabel.addSubview(line)
 		
+		resendValidationCodeLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PhoneValidationView.resendValidationCodeLabelTapped)))
+		
 		addSubview(resendValidationCodeLabel)
 	}
 	
@@ -146,6 +163,8 @@ final public class PhoneValidationView: UIView {
 		line.backgroundColor = reenterPhoneLabel.textColor
 		line.frame.origin.y = reenterPhoneLabel.bounds.height - line.bounds.height
 		reenterPhoneLabel.addSubview(line)
+		
+		reenterPhoneLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PhoneValidationView.reenterPhoneNumberLabelTapped)))
 		
 		addSubview(reenterPhoneLabel)
 	}
@@ -205,5 +224,13 @@ final public class PhoneValidationView: UIView {
 	
 	private func updateTargetPhoneNumber() {
 		subtitleLabel.text = "已發送簡訊至 " + (targetPhoneNumber ?? "")
+	}
+	
+	@objc private func resendValidationCodeLabelTapped() {
+		delegate?.phoneValidationViewRequestResendValidationCode()
+	}
+	
+	@objc private func reenterPhoneNumberLabelTapped() {
+		delegate?.phoneValidationViewRequestReenterPhoneNumber()
 	}
 }
