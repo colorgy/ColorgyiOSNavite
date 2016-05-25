@@ -49,4 +49,13 @@ extension String {
 	var url: NSURL? {
 		return NSURL(string: self)
 	}
+	
+	/// Get charater at index
+	func charaterAtIndex(index: Int) -> String? {
+		guard index < self.characters.count else { return nil }
+		let startIndex = self.startIndex.advancedBy(index)
+		let range = startIndex...startIndex
+		return self[range]
+	}
+
 }

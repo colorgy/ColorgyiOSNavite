@@ -37,4 +37,11 @@ extension Int {
 	var CGFloatValue: CGFloat {
 		return CGFloat(self)
 	}
+	
+	func times(block: (index: Int) -> Void) {
+		guard self >= 0 else { return }
+		for index in 0..<self {
+			block(index: index)
+		}
+	}
 }
