@@ -20,12 +20,21 @@ final public class PhoneValidationView: UIView {
 	private var digits: [UILabel] = []
 	
 	private var hiddenDigitTextField: UITextField!
+	
+	public var targetPhoneNumber: String? {
+		didSet {
+			updateTargetPhoneNumber()
+		}
+	}
 
 	public init() {
 		super.init(frame: CGRect(origin: CGPointZero, size: CGSizeZero))
 		frame.size.width = UIScreen.mainScreen().bounds.width
 		frame.size.height = 182.0
+		backgroundColor = UIColor.whiteColor()
 		
+		configureTitle()
+		configureSubtitle()
 		configureDigits()
 		configureHiddenDigitTextField()
 		
@@ -53,7 +62,7 @@ final public class PhoneValidationView: UIView {
 			digit.textColor = ColorgyColor.waterBlue
 			digit.textAlignment = .Center
 			digit.frame.origin.x = initialX + index.CGFloatValue * (digitSpacing + digitSize)
-			digit.frame.origin.y = 50
+			digit.frame.origin.y = subtitleLabel.frame.maxY + 20
 			
 			let line = digitBottomLine(digit.bounds.width)
 			line.frame.origin.y = digit.bounds.maxY - line.bounds.height
@@ -79,6 +88,26 @@ final public class PhoneValidationView: UIView {
 		hiddenDigitTextField.addTarget(self, action: #selector(PhoneValidationView.hiddenDigitTextFieldEditingChanged), forControlEvents: UIControlEvents.EditingChanged)
 		
 		addSubview(hiddenDigitTextField)
+	}
+	
+	private func configureTitle() {
+		titleLabel = UILabel(frame: CGRect(origin: CGPoint(x: 0, y: 24), size: CGSize(width: bounds.width, height: 18)))
+		titleLabel.font = UIFont.systemFontOfSize(18)
+		titleLabel.textColor = ColorgyColor.TextColor
+		titleLabel.textAlignment = .Center
+		titleLabel.text = "請輸入驗證碼"
+		
+		addSubview(titleLabel)
+	}
+	
+	private func configureSubtitle() {
+		subtitleLabel = UILabel(frame: CGRect(origin: CGPointZero, size: CGSize(width: bounds.width, height: 13)))
+		subtitleLabel.frame.origin.y = titleLabel.frame.maxY + 6
+		subtitleLabel.font = UIFont.systemFontOfSize(13)
+		subtitleLabel.textColor = ColorgyColor.TextColor
+		subtitleLabel.textAlignment = .Center
+		
+		addSubview(subtitleLabel)
 	}
 	
 	// MARK: - Methods
@@ -113,5 +142,9 @@ final public class PhoneValidationView: UIView {
 		var text = ""
 		digits.forEach({ text += $0.text ?? "" })
 		hiddenDigitTextField.text = text
+	}
+	
+	private func updateTargetPhoneNumber() {
+		subtitleLabel.text = "已發送簡訊至 " + (targetPhoneNumber ?? "")
 	}
 }

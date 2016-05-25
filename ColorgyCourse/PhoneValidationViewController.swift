@@ -16,6 +16,9 @@ final public class PhoneValidationViewController: UIViewController {
         // Do any additional setup after loading the view.
 		let k = PhoneValidationView()
 		view.addSubview(k)
+		k.targetPhoneNumber = "0988913868"
+		
+		view.backgroundColor = ColorgyColor.BackgroundColor
     }
 
 }
