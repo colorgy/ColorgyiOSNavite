@@ -8,6 +8,7 @@
 
 import Foundation
 import AFNetworking
+import SwiftyJSON
 
 final public class AFNetworkingErrorParser {
 	
@@ -17,22 +18,18 @@ final public class AFNetworkingErrorParser {
 	}
 	
 	/// 可以拿到 response body
-	public class func responseBody(error: NSError) -> String? {
+	public class func responseBody(error: NSError) -> JSON? {
 		
 		guard let data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] as? NSData else {
 			// fail to get data
 			return nil
 		}
 		
-		// temp message
-		var message = String()
-		
 		do {
-			message = try "\(NSJSONSerialization.JSONObjectWithData(data, options: []))"
+			let j = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+			return JSON(j)
 		} catch {
 			return nil
 		}
-		
-		return message
 	}
 }

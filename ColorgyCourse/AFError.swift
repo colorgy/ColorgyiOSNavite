@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 /// **AFError** is used to check AFNetworking's error state code and response body
 final public class AFError: NSObject {
@@ -15,7 +16,7 @@ final public class AFError: NSObject {
 	/// Status code of this error, might be 403, 401, 502.....
 	public let statusCode: Int?
 	/// Response body of this error
-	public let responseBody: String?
+	public let responseBody: JSON?
 	
 	override public var description: String { return "AFError:{\n\tstatusCode: \(statusCode)\n\tresponseBody: \(responseBody)\n" }
 	

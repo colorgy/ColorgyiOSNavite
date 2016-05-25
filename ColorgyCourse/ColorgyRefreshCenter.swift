@@ -268,8 +268,9 @@ final public class ColorgyRefreshCenter {
 	/// time less than 0 means that you need to refresh the token
 	public class func refreshTokenRemainingTime() -> (remainingTime: Double, currentState: RefreshTokenState) {
 		
-		// 7000 second is closed to 2 hrs
-		let aliveTime: Double = 7000;
+		// 172800 seconds is 2 days
+		// 172000 second is closed to 2 days
+		let aliveTime: Double = 172000;
 		
 		// make sure refresh token is not revoked
 		guard ColorgyUserInformation.sharedInstance().refreshTokenState != .Revoke else { return  (-1, RefreshTokenState.Revoke) }
@@ -343,7 +344,7 @@ final public class ColorgyRefreshCenter {
 		// First invalidate previous one
 		ColorgyRefreshCenter.sharedInstance().backgroundWorker?.invalidate()
 		// then create a new one
-		ColorgyRefreshCenter.sharedInstance().backgroundWorker = NSTimer(timeInterval: 30, target: self, selector: #selector(ColorgyRefreshCenter.backgroundJob), userInfo: nil, repeats: true)
+		ColorgyRefreshCenter.sharedInstance().backgroundWorker = NSTimer(timeInterval: 300, target: self, selector: #selector(ColorgyRefreshCenter.backgroundJob), userInfo: nil, repeats: true)
 		ColorgyRefreshCenter.sharedInstance().backgroundWorker?.fire()
 		if let worker = ColorgyRefreshCenter.sharedInstance().backgroundWorker {
 			NSRunLoop.currentRunLoop().addTimer(worker, forMode: NSRunLoopCommonModes)
@@ -371,10 +372,8 @@ final public class ColorgyRefreshCenter {
 		
 		manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 			complete(tokenStillWorking: true)
-			return
 			}, failure: { (operaion: NSURLSessionDataTask?, error: NSError) in
 				complete(tokenStillWorking: false)
-				return
 		})
 	}
 	
