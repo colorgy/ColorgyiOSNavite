@@ -60,7 +60,6 @@ public class EmailLoginViewController: UIViewController {
 		views.reduce(initialPosition.y, combine: arrangeView)
 		views.forEach(view.addSubview)
 		
-		
 		// configure button
 		configureLoginButton()
 	}

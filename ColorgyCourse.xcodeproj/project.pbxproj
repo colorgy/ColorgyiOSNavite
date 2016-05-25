@@ -34,6 +34,8 @@
 		6324BF301CEFF721003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */; };
 		6324BF321CF00B7C003F1329 /* SearchCourseBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */; };
 		6324BF351CF00E9B003F1329 /* SearchCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF341CF00E9B003F1329 /* SearchCourseViewController.swift */; };
+		632C0C531CF541FA002C9380 /* PhoneValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C521CF541FA002C9380 /* PhoneValidationView.swift */; };
+		632C0C551CF542CD002C9380 /* PhoneDigitValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C541CF542CD002C9380 /* PhoneDigitValidationField.swift */; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
 		6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479891CB898C100DE8CBC /* ViewController.swift */; };
 		6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354798B1CB898C100DE8CBC /* Main.storyboard */; };
@@ -244,6 +246,8 @@
 		6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyChatAPIErrorHandler.swift; sourceTree = "<group>"; };
 		6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseBar.swift; sourceTree = "<group>"; };
 		6324BF341CF00E9B003F1329 /* SearchCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseViewController.swift; sourceTree = "<group>"; };
+		632C0C521CF541FA002C9380 /* PhoneValidationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneValidationView.swift; sourceTree = "<group>"; };
+		632C0C541CF542CD002C9380 /* PhoneDigitValidationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneDigitValidationField.swift; sourceTree = "<group>"; };
 		635479841CB898C000DE8CBC /* ColorgyCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorgyCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635479871CB898C100DE8CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		635479891CB898C100DE8CBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -526,6 +530,8 @@
 				63B1C3851CF4350000989B5D /* ColorgyFullScreenButton.swift */,
 				63B1C3741CF30B0500989B5D /* InputBox.swift */,
 				63B1C3881CF45A1300989B5D /* ColorgyBillboardView.swift */,
+				632C0C521CF541FA002C9380 /* PhoneValidationView.swift */,
+				632C0C541CF542CD002C9380 /* PhoneDigitValidationField.swift */,
 				63B1C3771CF3EDBF00989B5D /* EmailInputBox.swift */,
 				63B1C3821CF42D9600989B5D /* PhoneInputBox.swift */,
 				63B1C37A1CF4221400989B5D /* PasswordInputBox.swift */,
@@ -1081,6 +1087,7 @@
 				635479EA1CB8B02A00DE8CBC /* Course.swift in Sources */,
 				630472841CE5782C00D907C4 /* SearchEventListViewController.swift in Sources */,
 				635479EF1CB8B02A00DE8CBC /* DateExtension.swift in Sources */,
+				632C0C531CF541FA002C9380 /* PhoneValidationView.swift in Sources */,
 				63B1C3561CF2977B00989B5D /* CreateEventColorExpandedCell.swift in Sources */,
 				630337F01CE9AB4B006FEA1C /* AvailableTargetList.swift in Sources */,
 				635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */,
@@ -1177,6 +1184,7 @@
 				637547721CC8B1BB00BC3BBD /* FloatingOptionView.swift in Sources */,
 				63C3CE211CC0C76F000EE808 /* NumerExtensions.swift in Sources */,
 				635479E41CB8B02A00DE8CBC /* ColorgyUserInformation.swift in Sources */,
+				632C0C551CF542CD002C9380 /* PhoneDigitValidationField.swift in Sources */,
 				63EC77B21CC8743D008025A7 /* ATrickyView.swift in Sources */,
 				63B1C35D1CF29C5800989B5D /* CreateEventRepeatedCell.swift in Sources */,
 				63561C4C1CBF937F004AEF6D /* ColorgyColor.swift in Sources */,

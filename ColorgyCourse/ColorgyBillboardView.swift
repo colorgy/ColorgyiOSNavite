@@ -45,7 +45,7 @@ final public class ColorgyBillboardView: UIView {
 	
 	private func configureBillboardImageView() {
 		billboardImageView = UIImageView(frame: CGRect(origin: CGPointZero, size: CGSize(width: 81, height: 80)))
-		billboardImageView.image = UIImage(named: "ChickAndGirl")
+		billboardImageView.image = UIImage(named: "Billboard")
 		billboardImageView.contentMode = .ScaleAspectFit
 		
 		billboardImageView.center.x = bounds.width * (152.5 / 375.0)
