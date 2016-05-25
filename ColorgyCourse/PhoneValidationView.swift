@@ -21,6 +21,10 @@ final public class PhoneValidationView: UIView {
 	
 	private var hiddenDigitTextField: UITextField!
 	
+	private var resendValidationCodeLabel: UILabel!
+	private var reenterPhoneLabel: UILabel!
+	private var middleSeperatorSlashLabel: UILabel!
+	
 	public var targetPhoneNumber: String? {
 		didSet {
 			updateTargetPhoneNumber()
@@ -37,6 +41,10 @@ final public class PhoneValidationView: UIView {
 		configureSubtitle()
 		configureDigits()
 		configureHiddenDigitTextField()
+		configureResendValidationCodeLabel()
+		configureReenterPhoneLabel()
+		configureMiddleSeperatorSlashLabel()
+		arrangeUnderlinedLabels()
 		
 		addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PhoneValidationView.validationViewTapped)))
 	}
@@ -108,6 +116,57 @@ final public class PhoneValidationView: UIView {
 		subtitleLabel.textAlignment = .Center
 		
 		addSubview(subtitleLabel)
+	}
+	
+	private func configureResendValidationCodeLabel() {
+		resendValidationCodeLabel = UILabel(frame: CGRect(origin: CGPointZero, size: CGSize(width: 14 * 7, height: 14)))
+		resendValidationCodeLabel.font = UIFont.systemFontOfSize(14)
+		resendValidationCodeLabel.textColor = ColorgyColor.lightGrayContentTextColor
+		resendValidationCodeLabel.textAlignment = .Center
+		resendValidationCodeLabel.text = "重新發送驗證碼"
+		resendValidationCodeLabel.frame.origin.y = digit1.frame.maxY + 24
+		
+		let line = digitBottomLine(resendValidationCodeLabel.bounds.width)
+		line.backgroundColor = resendValidationCodeLabel.textColor
+		line.frame.origin.y = resendValidationCodeLabel.bounds.height - line.bounds.height
+		resendValidationCodeLabel.addSubview(line)
+		
+		addSubview(resendValidationCodeLabel)
+	}
+	
+	private func configureReenterPhoneLabel() {
+		reenterPhoneLabel = UILabel(frame: CGRect(origin: CGPointZero, size: CGSize(width: 14 * 6, height: 14)))
+		reenterPhoneLabel.font = UIFont.systemFontOfSize(14)
+		reenterPhoneLabel.textColor = ColorgyColor.lightGrayContentTextColor
+		reenterPhoneLabel.textAlignment = .Center
+		reenterPhoneLabel.text = "重新輸入手機"
+		reenterPhoneLabel.frame.origin.y = digit1.frame.maxY + 24
+		
+		let line = digitBottomLine(reenterPhoneLabel.bounds.width)
+		line.backgroundColor = reenterPhoneLabel.textColor
+		line.frame.origin.y = reenterPhoneLabel.bounds.height - line.bounds.height
+		reenterPhoneLabel.addSubview(line)
+		
+		addSubview(reenterPhoneLabel)
+	}
+	
+	private func configureMiddleSeperatorSlashLabel() {
+		middleSeperatorSlashLabel = UILabel(frame: CGRect(origin: CGPointZero, size: CGSize(width: 14, height: 14)))
+		middleSeperatorSlashLabel.font = UIFont.systemFontOfSize(14)
+		middleSeperatorSlashLabel.textColor = ColorgyColor.lightGrayContentTextColor
+		middleSeperatorSlashLabel.textAlignment = .Center
+		middleSeperatorSlashLabel.text = "／"
+		middleSeperatorSlashLabel.frame.origin.y = digit1.frame.maxY + 24
+
+		addSubview(middleSeperatorSlashLabel)
+	}
+	
+	private func arrangeUnderlinedLabels() {
+		let initialX = (bounds.width - (resendValidationCodeLabel.bounds.width + reenterPhoneLabel.bounds.width + middleSeperatorSlashLabel.bounds.width)) / 2
+		
+		resendValidationCodeLabel.frame.origin.x = initialX
+		middleSeperatorSlashLabel.frame.origin.x = resendValidationCodeLabel.frame.maxX
+		reenterPhoneLabel.frame.origin.x = middleSeperatorSlashLabel.frame.maxX
 	}
 	
 	// MARK: - Methods
