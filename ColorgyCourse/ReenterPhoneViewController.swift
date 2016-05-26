@@ -14,6 +14,10 @@ final public class ReenterPhoneViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		view.backgroundColor = ColorgyColor.BackgroundColor
+		
+		let re = ReenterPhoneNumberView(title: "yGGHJgo", subtitle: "lsakgjlsaklaskl")
+		view.addSubview(re)
     }
 
 }
