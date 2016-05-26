@@ -77,7 +77,6 @@ public class EmailRegisterViewController: UIViewController {
 		registerButton = ColorgyFullScreenButton(title: "確認註冊", delegate: self)
 		registerButton.frame.origin.y = confirmPasswordInputBox.frame.maxY + 24
 		view.addSubview(registerButton)
-		registerButton.centerHorizontallyToSuperview()
 	}
 }
 

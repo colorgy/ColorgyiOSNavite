@@ -37,6 +37,7 @@
 		632C0C531CF541FA002C9380 /* PhoneValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C521CF541FA002C9380 /* PhoneValidationView.swift */; };
 		632C0C551CF542CD002C9380 /* PhoneDigitValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C541CF542CD002C9380 /* PhoneDigitValidationField.swift */; };
 		632C0C571CF54A09002C9380 /* PhoneValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C561CF54A09002C9380 /* PhoneValidationViewController.swift */; };
+		632C0C591CF7032C002C9380 /* ReenterPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C581CF7032C002C9380 /* ReenterPhoneViewController.swift */; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
 		6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479891CB898C100DE8CBC /* ViewController.swift */; };
 		6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354798B1CB898C100DE8CBC /* Main.storyboard */; };
@@ -250,6 +251,7 @@
 		632C0C521CF541FA002C9380 /* PhoneValidationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneValidationView.swift; sourceTree = "<group>"; };
 		632C0C541CF542CD002C9380 /* PhoneDigitValidationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneDigitValidationField.swift; sourceTree = "<group>"; };
 		632C0C561CF54A09002C9380 /* PhoneValidationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneValidationViewController.swift; sourceTree = "<group>"; };
+		632C0C581CF7032C002C9380 /* ReenterPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReenterPhoneViewController.swift; sourceTree = "<group>"; };
 		635479841CB898C000DE8CBC /* ColorgyCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorgyCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635479871CB898C100DE8CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		635479891CB898C100DE8CBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
 				630337F11CE9B265006FEA1C /* 1.png */,
 				63AC1B401CF155F800FDD724 /* Event.swift */,
+				632C0C581CF7032C002C9380 /* ReenterPhoneViewController.swift */,
 				63B1C3851CF4350000989B5D /* ColorgyFullScreenButton.swift */,
 				63B1C3741CF30B0500989B5D /* InputBox.swift */,
 				63B1C3881CF45A1300989B5D /* ColorgyBillboardView.swift */,
@@ -1142,6 +1145,7 @@
 				635479FF1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift in Sources */,
 				630570121CBD1A2E007D2C9D /* ChatUserInformation.swift in Sources */,
 				6305700C1CBD0AB9007D2C9D /* ColorgySocket.swift in Sources */,
+				632C0C591CF7032C002C9380 /* ReenterPhoneViewController.swift in Sources */,
 				63EC77201CC6060E008025A7 /* ColorgyNavigationController.swift in Sources */,
 				63C3CE1F1CC0C76F000EE808 /* ChatMeUserInformation.swift in Sources */,
 				637305601CBF823B0016A7FC /* EmailRegisterViewController.swift in Sources */,

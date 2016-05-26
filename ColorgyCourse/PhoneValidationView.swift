@@ -81,7 +81,7 @@ final public class PhoneValidationView: UIView {
 		let digitSpacing: CGFloat = 8
 		let initialX: CGFloat = (bounds.width - (digitSpacing * 3 + digitSize * 4)) / 2
 		for (index, digit) in digits.enumerate() {
-			digit.font = UIFont.systemFontOfSize(40)
+			digit.font = UIFont.boldSystemFontOfSize(40)
 			digit.textColor = ColorgyColor.waterBlue
 			digit.textAlignment = .Center
 			digit.frame.origin.x = initialX + index.CGFloatValue * (digitSpacing + digitSize)

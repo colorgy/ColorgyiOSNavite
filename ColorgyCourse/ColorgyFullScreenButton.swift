@@ -59,4 +59,7 @@ final public class ColorgyFullScreenButton: UIButton {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	public override func didMoveToSuperview() {
+		centerHorizontallyToSuperview()
+	}
 }

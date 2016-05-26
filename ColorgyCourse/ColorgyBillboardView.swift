@@ -45,5 +45,11 @@ final public class ColorgyBillboardView: UIView {
 	}
 	
 	// MARK: - Update UI 
-
+	public func showInitialImage() {
+		billboardImageView.image = initialImage
+	}
+	
+	public func showErrorImage() {
+		billboardImageView.image = errorImage
+	}
 }

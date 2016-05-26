@@ -71,7 +71,6 @@ public class EmailLoginViewController: UIViewController {
 		loginButton =  ColorgyFullScreenButton(title: "登入", delegate: self)
 		loginButton.frame.origin.y = passwordInputBox.frame.maxY + 48
 		view.addSubview(loginButton)
-		loginButton.centerHorizontallyToSuperview()
 	}
 	
 	// MARK: - Selector

@@ -189,6 +189,8 @@ final public class ColorgyRefreshCenter {
 			return
 		}
 		
+		// TODO: may have 2 refresh job at a time!!!
+		// TODO: 1 job at a time in afnetworking.
 		// lock
 		ColorgyRefreshCenter.sharedInstance().lockWhileRefreshingToken()
 		
