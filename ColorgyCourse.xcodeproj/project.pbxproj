@@ -38,6 +38,7 @@
 		632C0C551CF542CD002C9380 /* PhoneDigitValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C541CF542CD002C9380 /* PhoneDigitValidationField.swift */; };
 		632C0C571CF54A09002C9380 /* PhoneValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C561CF54A09002C9380 /* PhoneValidationViewController.swift */; };
 		632C0C591CF7032C002C9380 /* ReenterPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C581CF7032C002C9380 /* ReenterPhoneViewController.swift */; };
+		632C0C5B1CF70381002C9380 /* ReenterPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C5A1CF70381002C9380 /* ReenterPhoneNumberView.swift */; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
 		6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479891CB898C100DE8CBC /* ViewController.swift */; };
 		6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354798B1CB898C100DE8CBC /* Main.storyboard */; };
@@ -252,6 +253,7 @@
 		632C0C541CF542CD002C9380 /* PhoneDigitValidationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneDigitValidationField.swift; sourceTree = "<group>"; };
 		632C0C561CF54A09002C9380 /* PhoneValidationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneValidationViewController.swift; sourceTree = "<group>"; };
 		632C0C581CF7032C002C9380 /* ReenterPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReenterPhoneViewController.swift; sourceTree = "<group>"; };
+		632C0C5A1CF70381002C9380 /* ReenterPhoneNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReenterPhoneNumberView.swift; sourceTree = "<group>"; };
 		635479841CB898C000DE8CBC /* ColorgyCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorgyCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635479871CB898C100DE8CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		635479891CB898C100DE8CBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 				630337F11CE9B265006FEA1C /* 1.png */,
 				63AC1B401CF155F800FDD724 /* Event.swift */,
 				632C0C581CF7032C002C9380 /* ReenterPhoneViewController.swift */,
+				632C0C5A1CF70381002C9380 /* ReenterPhoneNumberView.swift */,
 				63B1C3851CF4350000989B5D /* ColorgyFullScreenButton.swift */,
 				63B1C3741CF30B0500989B5D /* InputBox.swift */,
 				63B1C3881CF45A1300989B5D /* ColorgyBillboardView.swift */,
@@ -1095,6 +1098,7 @@
 				635479EF1CB8B02A00DE8CBC /* DateExtension.swift in Sources */,
 				632C0C531CF541FA002C9380 /* PhoneValidationView.swift in Sources */,
 				63B1C3561CF2977B00989B5D /* CreateEventColorExpandedCell.swift in Sources */,
+				632C0C5B1CF70381002C9380 /* ReenterPhoneNumberView.swift in Sources */,
 				630337F01CE9AB4B006FEA1C /* AvailableTargetList.swift in Sources */,
 				635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */,
 				63B1C3831CF42D9600989B5D /* PhoneInputBox.swift in Sources */,
