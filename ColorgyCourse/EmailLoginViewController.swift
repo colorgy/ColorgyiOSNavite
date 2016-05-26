@@ -42,11 +42,9 @@ public class EmailLoginViewController: UIViewController {
 	
 	// MARK: - Configuration
 	private func configureBillboard() {
-		billboard = ColorgyBillboardView(frame: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 170)))
+		billboard = ColorgyBillboardView(initialImageName: "LoginBillboard", errorImageName: "LoginErrorBillboard")
 		
 		view.addSubview(billboard)
-		
-		billboard.billboardText = "登入"
 	}
 	
 	private func configureLoginView() {
@@ -104,7 +102,8 @@ extension EmailLoginViewController : EmailLoginViewModelDelegate {
 extension EmailLoginViewController : ColorgyFullScreenButtonDelegate {
 	public func colorgyFullScreenButtonClicked(button: ColorgyFullScreenButton) {
 		if button == loginButton {
-			
+			emailInputBox.showOKIndicator()
+			passwordInputBox.showErrorIndicator()
 		}
 	}
 }

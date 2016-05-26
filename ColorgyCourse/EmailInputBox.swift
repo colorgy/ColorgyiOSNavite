@@ -30,10 +30,11 @@ final public class EmailInputBox: InputBox {
 	private func updateIndicatorWithValidEmail(isValid: Bool) {
 		isValid ? showOKIndicator() : showErrorIndicator()
 	}
+
 }
 
 extension EmailInputBox : InputBoxDelegate {
-	public func inputBoxEditingChanged(text: String?) {
+	public func inputBoxEditingChanged(inputbox: InputBox, text: String?) {
 		updateIndicatorWithValidEmail(isValidEmail(text))
 	}
 }

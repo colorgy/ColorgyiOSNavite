@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol InputBoxDelegate: class {
-	func inputBoxEditingChanged(text: String?)
+	func inputBoxEditingChanged(inputbox: InputBox, text: String?)
 }
 
 public class InputBox: UIView {
@@ -88,7 +88,7 @@ public class InputBox: UIView {
 
 	// MARK: - Methods
 	@objc private func textfieldEditingChange() {
-		inputBoxDelegate?.inputBoxEditingChanged(textfield.text)
+		inputBoxDelegate?.inputBoxEditingChanged(self, text: textfield.text)
 	}
 	
 	public func showOKIndicator() {
@@ -110,5 +110,13 @@ public class InputBox: UIView {
 					})
 			})
 		}
+	}
+	
+	public func invalidateIndicator() {
+		indicator.hide()
+	}
+	
+	public func validateIndicator() {
+		indicator.show()
 	}
 }

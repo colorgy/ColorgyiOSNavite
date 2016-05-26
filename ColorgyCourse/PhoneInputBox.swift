@@ -36,4 +36,7 @@ extension PhoneInputBox : InputBoxDelegate {
 	public func inputBoxEditingChanged(text: String?) {
 		updateIndicatorWithValidPhone(isValidPhone(text))
 	}
+	public func inputBoxEditingChanged(inputbox: InputBox, text: String?) {
+		updateIndicatorWithValidPhone(isValidPhone(text))
+	}
 }

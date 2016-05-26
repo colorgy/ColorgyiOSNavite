@@ -44,7 +44,7 @@ final public class PasswordInputBox: InputBox {
 }
 
 extension PasswordInputBox : InputBoxDelegate {
-	public func inputBoxEditingChanged(text: String?) {
+	public func inputBoxEditingChanged(inputbox: InputBox, text: String?) {
 		updateIndicatorWithValidPassword(isValidPassword(text))
 		delegate?.passwordInputBox(passwordUpdated: text)
 	}

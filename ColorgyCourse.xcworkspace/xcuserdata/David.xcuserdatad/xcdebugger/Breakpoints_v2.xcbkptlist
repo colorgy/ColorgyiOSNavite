@@ -41,22 +41,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ColorgyCourse/ColorgyFullScreenButton.swift"
-            timestampString = "485772586.056685"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "touchUpInside()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ColorgyCourse/ColorgyRefreshCenter.swift"
             timestampString = "485864452.41563"
             startingColumnNumber = "9223372036854775807"
@@ -90,13 +74,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ColorgyCourse/ColorgyRefreshCenter.swift"
-            timestampString = "485864516.671576"
+            timestampString = "485942866.703808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "refreshAccessToken(success:failure:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ColorgyCourse/ColorgyRefreshCenter.swift"
+            timestampString = "485942945.512712"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "revokeRefreshToken()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ColorgyCourse.ColorgyRefreshCenter.revokeRefreshToken () -&gt; ()"
+                  moduleName = "ColorgyCourse"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/David/Desktop/ColorgyiOSNavite/ColorgyCourse/ColorgyRefreshCenter.swift"
+                  timestampString = "485945298.45486"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "248"
+                  endingLineNumber = "248"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ColorgyCourse.ColorgyRefreshCenter.(refreshAccessToken (success : Swift.Optional&lt;() -&gt; ()&gt;, failure : Swift.Optional&lt;(error : ColorgyCourse.RefreshingError, AFError : Swift.Optional&lt;ColorgyCourse.AFError&gt;) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "ColorgyCourse"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/David/Desktop/ColorgyiOSNavite/ColorgyCourse/ColorgyRefreshCenter.swift"
+                  timestampString = "485945298.455011"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "248"
+                  endingLineNumber = "248"
+                  offsetFromSymbolStart = "363">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ColorgyCourse.ColorgyRefreshCenter.(refreshAccessToken (success : Swift.Optional&lt;() -&gt; ()&gt;, failure : Swift.Optional&lt;(error : ColorgyCourse.RefreshingError, AFError : Swift.Optional&lt;ColorgyCourse.AFError&gt;) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "ColorgyCourse"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/David/Desktop/ColorgyiOSNavite/ColorgyCourse/ColorgyRefreshCenter.swift"
+                  timestampString = "485945298.455154"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "248"
+                  endingLineNumber = "248"
+                  offsetFromSymbolStart = "1083">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ColorgyCourse.ColorgyRefreshCenter.(refreshAccessToken (success : Swift.Optional&lt;() -&gt; ()&gt;, failure : Swift.Optional&lt;(error : ColorgyCourse.RefreshingError, AFError : Swift.Optional&lt;ColorgyCourse.AFError&gt;) -&gt; ()&gt;) -&gt; ()).(closure #2)"
+                  moduleName = "ColorgyCourse"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/David/Desktop/ColorgyiOSNavite/ColorgyCourse/ColorgyRefreshCenter.swift"
+                  timestampString = "485945298.455354"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "248"
+                  endingLineNumber = "248"
+                  offsetFromSymbolStart = "33">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

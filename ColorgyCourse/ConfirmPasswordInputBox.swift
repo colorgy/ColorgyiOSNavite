@@ -60,7 +60,7 @@ final public class ConfirmPasswordInputBox: InputBox {
 }
 
 extension ConfirmPasswordInputBox : InputBoxDelegate {
-	public func inputBoxEditingChanged(text: String?) {
+	public func inputBoxEditingChanged(inputbox: InputBox, text: String?) {
 		updateIndicatorWithValidPassword(isValidPassword(text))
 	}
 }

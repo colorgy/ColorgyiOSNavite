@@ -45,11 +45,9 @@ public class EmailRegisterViewController: UIViewController {
 	
 	// MARK: - Configuration
 	private func configureBillboard() {
-		billboard = ColorgyBillboardView(frame: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 170)))
+		billboard = ColorgyBillboardView(initialImageName: "RegisterBillboard", errorImageName: "RegisterErrorBillboard")
 		
 		view.addSubview(billboard)
-		
-		billboard.billboardText = "註冊"
 	}
 	
 	private func configureRegistrationView() {
