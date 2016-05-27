@@ -122,7 +122,7 @@ final public class ReenterPhoneNumberView: UIView {
 		cancelButton.center.y = horizontalSeperatorLine.frame.maxY + 18 / 2 + 12
 		cancelButton.center.x = (bounds.width / 2) / 2
 		
-		confirmButton.addTarget(self, action: #selector(ReenterPhoneNumberView.confirmButtonTapped), forControlEvents: UIControlEvents.TouchUpInside)
+		cancelButton.addTarget(self, action: #selector(ReenterPhoneNumberView.cancelButtonTapped), forControlEvents: UIControlEvents.TouchUpInside)
 		
 		addSubview(cancelButton)
 	}
@@ -139,7 +139,7 @@ final public class ReenterPhoneNumberView: UIView {
 		confirmButton.center.y = horizontalSeperatorLine.frame.maxY + 18 / 2 + 12
 		confirmButton.center.x = (bounds.width / 2) / 2 * 3
 		
-		confirmButton.addTarget(self, action: #selector(ReenterPhoneNumberView.cancelButtonTapped), forControlEvents: UIControlEvents.TouchUpInside)
+		confirmButton.addTarget(self, action: #selector(ReenterPhoneNumberView.confirmButtonTapped), forControlEvents: UIControlEvents.TouchUpInside)
 		
 		addSubview(confirmButton)
 	}
