@@ -8,6 +8,11 @@
 
 import UIKit
 
+public protocol ReenterPhoneNumberViewDelegate: class {
+	func reenterPhoneNumberViewConfirmButtonClicked()
+	func reenterPhoneNumberViewCancelButtonClicked()
+}
+
 final public class ReenterPhoneNumberView: UIView {
 
 	private var titleLabel: UILabel!
@@ -22,13 +27,20 @@ final public class ReenterPhoneNumberView: UIView {
 	private let titleFontSize: CGFloat = 18
 	private let subtitleFontSize: CGFloat = 12
 	
-	public convenience init(title: String?, subtitle: String?) {
+	public weak var delegate: ReenterPhoneNumberViewDelegate?
+	
+	public convenience init(title: String?, subtitle: String?, delegate: ReenterPhoneNumberViewDelegate?) {
 		self.init()
+		
+		self.delegate = delegate
+		
 		configureViewSize()
 		configureTitleLabel(title)
 		configureSubtitleLabel(subtitle)
 		configurePhoneNumberTextField()
 		configureSeperatorLine()
+		configureCancelButton()
+		configureConfirmButton()
 	}
 	
 	// MARK: - Configration
@@ -99,10 +111,45 @@ final public class ReenterPhoneNumberView: UIView {
 	}
 	
 	private func configureCancelButton() {
+		cancelButton = UIButton(type: UIButtonType.System)
+		cancelButton.frame.size = CGSize(width: bounds.width / 2, height: 40)
+		cancelButton.tintColor = ColorgyColor.grayContentTextColor
+		cancelButton.setTitle("取消", forState: UIControlState.Normal)
+		cancelButton.titleLabel?.textAlignment = .Center
+		cancelButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
+		cancelButton.setTitleColor(ColorgyColor.grayContentTextColor, forState: UIControlState.Normal)
 		
+		cancelButton.center.y = horizontalSeperatorLine.frame.maxY + 18 / 2 + 12
+		cancelButton.center.x = (bounds.width / 2) / 2
+		
+		confirmButton.addTarget(self, action: #selector(ReenterPhoneNumberView.confirmButtonTapped), forControlEvents: UIControlEvents.TouchUpInside)
+		
+		addSubview(cancelButton)
 	}
 	
 	private func configureConfirmButton() {
+		confirmButton = UIButton(type: UIButtonType.System)
+		confirmButton.frame.size = CGSize(width: bounds.width / 2, height: 40)
+		confirmButton.tintColor = ColorgyColor.MainOrange
+		confirmButton.setTitle("確認", forState: UIControlState.Normal)
+		confirmButton.titleLabel?.textAlignment = .Center
+		confirmButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
+		confirmButton.setTitleColor(ColorgyColor.MainOrange, forState: UIControlState.Normal)
 		
+		confirmButton.center.y = horizontalSeperatorLine.frame.maxY + 18 / 2 + 12
+		confirmButton.center.x = (bounds.width / 2) / 2 * 3
+		
+		confirmButton.addTarget(self, action: #selector(ReenterPhoneNumberView.cancelButtonTapped), forControlEvents: UIControlEvents.TouchUpInside)
+		
+		addSubview(confirmButton)
+	}
+	
+	// MARK: - Methods
+	@objc private func cancelButtonTapped() {
+		delegate?.reenterPhoneNumberViewCancelButtonClicked()
+	}
+	
+	@objc private func confirmButtonTapped() {
+		delegate?.reenterPhoneNumberViewConfirmButtonClicked()
 	}
 }
