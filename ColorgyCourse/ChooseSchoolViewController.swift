@@ -13,6 +13,7 @@ final public class ChooseSchoolViewController: UIViewController {
 	private var viewModel: ChooseSchoolViewModel?
 	private var billboard: ColorgyBillboardView!
 	private var schoolTableView: UITableView!
+	private var searchBar: ChooseSchoolSearchBar!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ final public class ChooseSchoolViewController: UIViewController {
 		
 		viewModel = ChooseSchoolViewModel(delegate: self)
 		configureBillboard()
+		configureSearchBar()
 		configureSchoolTableView()
     }
 
@@ -53,6 +55,12 @@ final public class ChooseSchoolViewController: UIViewController {
 		// delegate and datesource
 		schoolTableView.dataSource = self
 		schoolTableView.delegate = self
+	}
+	
+	private func configureSearchBar() {
+		searchBar = ChooseSchoolSearchBar()
+		
+		view.addSubview(searchBar)
 	}
 	
 	// MARK: - Key

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public protocol PasswordInputBoxDelegate: class {
 	func passwordInputBox(passwordUpdated password: String?)

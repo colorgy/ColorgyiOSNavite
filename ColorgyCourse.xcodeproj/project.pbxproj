@@ -83,6 +83,7 @@
 		6375477D1CC9D67600BC3BBD /* ColorgyChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */; };
 		638BFA0C1D07C2D900939731 /* ChooseSchoolTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 638BFA0B1D07C2D900939731 /* ChooseSchoolTableViewCell.xib */; };
 		638BFA0E1D07C43000939731 /* ChooseSchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638BFA0D1D07C43000939731 /* ChooseSchoolTableViewCell.swift */; };
+		638BFA101D07CB2100939731 /* ChooseSchoolSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638BFA0F1D07CB2100939731 /* ChooseSchoolSearchBar.swift */; };
 		6393BBFE1CF0179E008BFF72 /* SearchCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393BBFD1CF0179E008BFF72 /* SearchCourseViewModel.swift */; };
 		6393BC001CF01AD7008BFF72 /* ColorgyNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393BBFF1CF01AD7008BFF72 /* ColorgyNavigationBar.swift */; };
 		63AC1B3F1CF1389000FDD724 /* ColorgyVersionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AC1B3E1CF1389000FDD724 /* ColorgyVersionControl.swift */; };
@@ -310,6 +311,7 @@
 		6379FC701CBEA1A8002F10E1 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		638BFA0B1D07C2D900939731 /* ChooseSchoolTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseSchoolTableViewCell.xib; sourceTree = "<group>"; };
 		638BFA0D1D07C43000939731 /* ChooseSchoolTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSchoolTableViewCell.swift; sourceTree = "<group>"; };
+		638BFA0F1D07CB2100939731 /* ChooseSchoolSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSchoolSearchBar.swift; sourceTree = "<group>"; };
 		6393BBFD1CF0179E008BFF72 /* SearchCourseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseViewModel.swift; sourceTree = "<group>"; };
 		6393BBFF1CF01AD7008BFF72 /* ColorgyNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyNavigationBar.swift; sourceTree = "<group>"; };
 		63AC1B3E1CF1389000FDD724 /* ColorgyVersionControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyVersionControl.swift; sourceTree = "<group>"; };
@@ -698,6 +700,7 @@
 		638BFA0A1D07C12C00939731 /* Choose School View */ = {
 			isa = PBXGroup;
 			children = (
+				638BFA0F1D07CB2100939731 /* ChooseSchoolSearchBar.swift */,
 				63F628B21D07B3BC00F55E38 /* ChooseSchoolViewController.swift */,
 				63F628B41D07B40A00F55E38 /* ChooseSchoolViewModel.swift */,
 				638BFA0B1D07C2D900939731 /* ChooseSchoolTableViewCell.xib */,
@@ -1125,6 +1128,7 @@
 				635479EF1CB8B02A00DE8CBC /* DateExtension.swift in Sources */,
 				632C0C531CF541FA002C9380 /* PhoneValidationView.swift in Sources */,
 				63B1C3561CF2977B00989B5D /* CreateEventColorExpandedCell.swift in Sources */,
+				638BFA101D07CB2100939731 /* ChooseSchoolSearchBar.swift in Sources */,
 				632C0C5B1CF70381002C9380 /* ReenterPhoneNumberView.swift in Sources */,
 				630337F01CE9AB4B006FEA1C /* AvailableTargetList.swift in Sources */,
 				635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */,
