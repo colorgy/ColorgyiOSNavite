@@ -58,7 +58,7 @@ final public class ChooseSchoolViewController: UIViewController {
 	}
 	
 	private func configureSearchBar() {
-		searchBar = ChooseSchoolSearchBar()
+		searchBar = ChooseSchoolSearchBar(delegate: self)
 		
 		view.addSubview(searchBar)
 	}
@@ -93,5 +93,11 @@ extension ChooseSchoolViewController : UITableViewDelegate, UITableViewDataSourc
 		let cell = tableView.dequeueReusableCellWithIdentifier(Key.cellIdentifier, forIndexPath: indexPath) as! ChooseSchoolTableViewCell
 		cell.school = viewModel?.schools[indexPath.row]
 		return cell
+	}
+}
+
+extension ChooseSchoolViewController : ChooseSchoolSearchBarDelegate {
+	public func chooseSchoolSearchBarUpdateSearchText(text: String?) {
+		print(text)
 	}
 }

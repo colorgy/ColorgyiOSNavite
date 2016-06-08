@@ -8,6 +8,10 @@
 
 import UIKit
 
+public protocol ChooseSchoolSearchBarDelegate: class {
+	func chooseSchoolSearchBarUpdateSearchText(text: String?)
+}
+
 final public class ChooseSchoolSearchBar: UIView {
 
 	private var searchIcon: UIImageView!
@@ -18,12 +22,16 @@ final public class ChooseSchoolSearchBar: UIView {
 			return (bounds.height - 20.0) / 2 + 20
 		}
 	}
+	public private(set) var isSearching: Bool = false
+	public weak var delegate: ChooseSchoolSearchBarDelegate?
 	
-	public init() {
+	public init(delegate: ChooseSchoolSearchBarDelegate?) {
 		super.init(frame: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 64)))
 		configureSearchIcon()
 		configureCancelButton()
 		configureSearchTextField()
+		offSearchStage()
+		self.delegate = delegate
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -40,6 +48,9 @@ final public class ChooseSchoolSearchBar: UIView {
 		searchIcon.frame.origin.x = 16
 		searchIcon.center.y = centerY
 		
+		searchIcon.userInteractionEnabled = true
+		searchIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ChooseSchoolSearchBar.searchIconTapped)))
+		
 		addSubview(searchIcon)
 	}
 	
@@ -53,6 +64,8 @@ final public class ChooseSchoolSearchBar: UIView {
 		
 		searchTextField.frame.origin.x = searchIcon.frame.maxX + 20
 		searchTextField.center.y = centerY
+		
+		searchTextField.addTarget(self, action: #selector(ChooseSchoolSearchBar.searchTextFieldEditingChanged(_:)), forControlEvents: UIControlEvents.EditingChanged)
 		
 		addSubview(searchTextField)
 	}
@@ -68,6 +81,58 @@ final public class ChooseSchoolSearchBar: UIView {
 		cancelButton.frame.origin.x = UIScreen.mainScreen().bounds.width - cancelButton.bounds.width - 16
 		cancelButton.center.y = centerY
 		
+		cancelButton.addTarget(self, action: #selector(ChooseSchoolSearchBar.cancelButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
+		
 		addSubview(cancelButton)
+	}
+	
+	// MARK: - Searching state
+	private func onSearchStage() {
+		isSearching = true
+		self.cancelButton.show()
+		self.searchTextField.show()
+		self.cancelButton.alpha = 0
+		self.searchTextField.alpha = 0
+		UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+			self.backgroundColor = UIColor.whiteColor()
+			self.cancelButton.alpha = 1
+			self.searchTextField.alpha = 1
+			}, completion: { (finished) in
+				self.searchTextField.becomeFirstResponder()
+		})
+	}
+	
+	private func offSearchStage() {
+		isSearching = false
+		self.cancelButton.alpha = 1
+		self.searchTextField.alpha = 1
+		self.searchTextField.resignFirstResponder()
+		UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+			self.backgroundColor = UIColor.clearColor()
+			self.cancelButton.alpha = 0
+			self.searchTextField.alpha = 0
+			}, completion: { (finished) in
+				self.cancelButton.hide()
+				self.searchTextField.hide()
+		})
+	}
+	
+	// MARK: - Gesture
+	@objc private func searchIconTapped() {
+		onSearchStage()
+	}
+	
+	// MARK: - TextField Editing Changed
+	@objc private func searchTextFieldEditingChanged(textField: UITextField) {
+		delegate?.chooseSchoolSearchBarUpdateSearchText(textField.text)
+	}
+	
+	// MARK: - Methods
+	public func cancelSearching() {
+		offSearchStage()
+	}
+	
+	@objc private func cancelButtonClicked() {
+		offSearchStage()
 	}
 }
