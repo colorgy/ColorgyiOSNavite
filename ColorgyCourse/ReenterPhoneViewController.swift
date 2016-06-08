@@ -10,16 +10,29 @@ import UIKit
 
 final public class ReenterPhoneViewController: UIViewController {
 	
-	private var reenterPhoneNumberView: ReenterPhoneNumberView!
+	public private(set) var reenterPhoneNumberView: ReenterPhoneNumberView!
+	private var _title: String?
+	private var _subtitle: String?
+	
+	public init(title: String?, subtitle: String?) {
+		super.init(nibName: nil, bundle: nil)
+		self.modalPresentationStyle = .Custom
+		self._title = title
+		self._subtitle = subtitle
+	}
+	
+	required public init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 
 	// MARK: - Life Cycle
     override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		view.backgroundColor = ColorgyColor.BackgroundColor
+		view.backgroundColor = UIColor.blackColor().withAlpha(0.7)
 		
-		reenterPhoneNumberView = ReenterPhoneNumberView(title: "yGGHJgo", subtitle: "lsakgjlsaklaskl", delegate: self)
+		reenterPhoneNumberView = ReenterPhoneNumberView(title: _title, subtitle: _subtitle, delegate: self)
 		view.addSubview(reenterPhoneNumberView)
 		moveReenterPhoneNumberViewToInitialPosition()
     }
@@ -35,25 +48,26 @@ final public class ReenterPhoneViewController: UIViewController {
 	}
 	
 	// MARK: - Notification
-	func registerNotification() {
+	private func registerNotification() {
 		// keyboard
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
 	}
 	
-	func unregisterNotification() {
+	private func unregisterNotification() {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
 	
 	// MARK: - Handle Keyboard
-	func keyboardWillShow(notification: NSNotification) {
-		if let kbSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
-			print(kbSize)
+	@objc private func keyboardWillShow(notification: NSNotification) {
+		if let kbRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+			print(kbRect)
+			moveReenterPhoneNumberViewToKeyboardShowPosition(kbRect.size)
 		}
 	}
 	
-	func keyboardWillHide(notification: NSNotification) {
-		
+	@objc private func keyboardWillHide(notification: NSNotification) {
+		moveReenterPhoneNumberViewToInitialPosition()
 	}
 	
 	// MARK: - Move Reenter Phone View
@@ -63,7 +77,7 @@ final public class ReenterPhoneViewController: UIViewController {
 	}
 
 	private func moveReenterPhoneNumberViewToKeyboardShowPosition(keyboardSize: CGSize) {
-		reenterPhoneNumberView.center.y = view.bounds.height * 0.4
+		reenterPhoneNumberView.center.y = (view.bounds.height - keyboardSize.height) / 2
 	}
 }
 
@@ -73,6 +87,7 @@ extension ReenterPhoneViewController : ReenterPhoneNumberViewDelegate {
 	}
 	
 	public func reenterPhoneNumberViewCancelButtonClicked() {
-		
+		view.endEditing(true)
+		dismissViewControllerAnimated(true, completion: nil)
 	}
 }

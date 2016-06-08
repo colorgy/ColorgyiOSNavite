@@ -88,6 +88,7 @@ final public class ColorgyRefreshCenter {
 		
 		// lock state first
 		ColorgyRefreshCenter.sharedInstance().lockToCheckRefreshRequirment()
+		
 		// check token if expired
 		if ColorgyRefreshCenter.sharedInstance().currentRefreshTokenState == .Active {
 			// if still work, unlock api
@@ -103,6 +104,7 @@ final public class ColorgyRefreshCenter {
 				// if not working, refresh token
 				ColorgyRefreshCenter.retryUntilTokenIsAvailable()
 			}
+			print("token working? \(tokenStillWorking)")
 		}
 
 		// start background job

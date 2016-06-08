@@ -9,6 +9,8 @@
 import UIKit
 
 final public class PhoneValidationViewController: UIViewController {
+	
+	var transitionManager: ReenterPhoneNumberViewControllerTransitioningDelegate?
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,10 @@ final public class PhoneValidationViewController: UIViewController {
 		view.insertSubview(bb, belowSubview: k)
 		
 		view.backgroundColor = ColorgyColor.BackgroundColor
+		
+		let sendCode = ColorgyFullScreenButton(title: "送出驗證碼", delegate: self)
+		sendCode.frame.origin.y = k.frame.maxY + 24
+		view.addSubview(sendCode)
     }
 
 }
@@ -33,5 +39,15 @@ extension PhoneValidationViewController : PhoneValidationViewDelegate {
 	
 	public func phoneValidationViewRequestResendValidationCode() {
 		print("phoneValidationViewRequestResendValidationCode")
+	}
+}
+
+extension PhoneValidationViewController : ColorgyFullScreenButtonDelegate {
+	public func colorgyFullScreenButtonClicked(button: ColorgyFullScreenButton) {
+		transitionManager = ReenterPhoneNumberViewControllerTransitioningDelegate()
+		transitionManager?.mainViewController = self
+		let a = ReenterPhoneViewController(title: "重新輸入手機", subtitle: "請檢查不要再寫錯囉～")
+		transitionManager?.presentingViewController = a
+		presentViewController(a, animated: true, completion: nil)
 	}
 }
