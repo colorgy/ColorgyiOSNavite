@@ -28,6 +28,8 @@ final public class ChooseSchoolTableViewCell: UITableViewCell {
     }
 
 	private func updateUI() {
-		titleLabel.text = school?.name
+		let schoolName = school?.name ?? ""
+		let schoolCode = school?.code ?? ""
+		titleLabel.text = schoolCode + " " + schoolName
 	}
 }

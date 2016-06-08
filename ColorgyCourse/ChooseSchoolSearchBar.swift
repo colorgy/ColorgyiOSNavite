@@ -10,6 +10,7 @@ import UIKit
 
 public protocol ChooseSchoolSearchBarDelegate: class {
 	func chooseSchoolSearchBarUpdateSearchText(text: String?)
+	func chooseSchoolSearchBarCancelSearching()
 }
 
 final public class ChooseSchoolSearchBar: UIView {
@@ -119,7 +120,9 @@ final public class ChooseSchoolSearchBar: UIView {
 	
 	// MARK: - Gesture
 	@objc private func searchIconTapped() {
-		onSearchStage()
+		if !isSearching {
+			onSearchStage()
+		}
 	}
 	
 	// MARK: - TextField Editing Changed

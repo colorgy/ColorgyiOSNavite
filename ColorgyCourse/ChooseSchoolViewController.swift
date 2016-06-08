@@ -78,6 +78,11 @@ extension ChooseSchoolViewController : ChooseSchoolViewModelDelegate {
 	public func chooseSchoolViewModelFailToFetchSchool(error: APIError, afError: AFError?) {
 		
 	}
+	
+	public func chooseSchoolViewModelUpdateFilteredSchool(schools: [Organization]) {
+		print(schools)
+		schoolTableView.reloadData()
+	}
 }
 
 extension ChooseSchoolViewController : UITableViewDelegate, UITableViewDataSource {
@@ -86,12 +91,16 @@ extension ChooseSchoolViewController : UITableViewDelegate, UITableViewDataSourc
 	}
 	
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return viewModel?.schools.count ?? 0
+		if searchBar.isSearching {
+			return viewModel?.filteredSchools.count ?? 0
+		} else {
+			return viewModel?.schools.count ?? 0
+		}
 	}
 	
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier(Key.cellIdentifier, forIndexPath: indexPath) as! ChooseSchoolTableViewCell
-		cell.school = viewModel?.schools[indexPath.row]
+		cell.school = searchBar.isSearching ? viewModel?.filteredSchools[indexPath.row] : viewModel?.schools[indexPath.row]
 		return cell
 	}
 }
@@ -99,5 +108,10 @@ extension ChooseSchoolViewController : UITableViewDelegate, UITableViewDataSourc
 extension ChooseSchoolViewController : ChooseSchoolSearchBarDelegate {
 	public func chooseSchoolSearchBarUpdateSearchText(text: String?) {
 		print(text)
+		viewModel?.filterSchoolWithText(text)
+	}
+	
+	public func chooseSchoolSearchBarCancelSearching() {
+		schoolTableView.reloadData()
 	}
 }
