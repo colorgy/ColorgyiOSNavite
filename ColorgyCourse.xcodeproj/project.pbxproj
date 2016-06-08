@@ -81,6 +81,8 @@
 		6375477A1CC8C23700BC3BBD /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */; };
 		6375477C1CC8D69800BC3BBD /* ColorgyChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */; };
 		6375477D1CC9D67600BC3BBD /* ColorgyChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */; };
+		638BFA0C1D07C2D900939731 /* ChooseSchoolTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 638BFA0B1D07C2D900939731 /* ChooseSchoolTableViewCell.xib */; };
+		638BFA0E1D07C43000939731 /* ChooseSchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638BFA0D1D07C43000939731 /* ChooseSchoolTableViewCell.swift */; };
 		6393BBFE1CF0179E008BFF72 /* SearchCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393BBFD1CF0179E008BFF72 /* SearchCourseViewModel.swift */; };
 		6393BC001CF01AD7008BFF72 /* ColorgyNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393BBFF1CF01AD7008BFF72 /* ColorgyNavigationBar.swift */; };
 		63AC1B3F1CF1389000FDD724 /* ColorgyVersionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AC1B3E1CF1389000FDD724 /* ColorgyVersionControl.swift */; };
@@ -306,6 +308,8 @@
 		637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
 		6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyChatContext.swift; sourceTree = "<group>"; };
 		6379FC701CBEA1A8002F10E1 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		638BFA0B1D07C2D900939731 /* ChooseSchoolTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseSchoolTableViewCell.xib; sourceTree = "<group>"; };
+		638BFA0D1D07C43000939731 /* ChooseSchoolTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSchoolTableViewCell.swift; sourceTree = "<group>"; };
 		6393BBFD1CF0179E008BFF72 /* SearchCourseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseViewModel.swift; sourceTree = "<group>"; };
 		6393BBFF1CF01AD7008BFF72 /* ColorgyNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyNavigationBar.swift; sourceTree = "<group>"; };
 		63AC1B3E1CF1389000FDD724 /* ColorgyVersionControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyVersionControl.swift; sourceTree = "<group>"; };
@@ -540,8 +544,7 @@
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
 				630337F11CE9B265006FEA1C /* 1.png */,
-				63F628B21D07B3BC00F55E38 /* ChooseSchoolViewController.swift */,
-				63F628B41D07B40A00F55E38 /* ChooseSchoolViewModel.swift */,
+				638BFA0A1D07C12C00939731 /* Choose School View */,
 				63AC1B401CF155F800FDD724 /* Event.swift */,
 				632C0C581CF7032C002C9380 /* ReenterPhoneViewController.swift */,
 				632C0C5F1CF7FE9F002C9380 /* ReenterPhoneNumberViewControllerTransitioningDelegate.swift */,
@@ -690,6 +693,17 @@
 				637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */,
 			);
 			name = "Friend List View";
+			sourceTree = "<group>";
+		};
+		638BFA0A1D07C12C00939731 /* Choose School View */ = {
+			isa = PBXGroup;
+			children = (
+				63F628B21D07B3BC00F55E38 /* ChooseSchoolViewController.swift */,
+				63F628B41D07B40A00F55E38 /* ChooseSchoolViewModel.swift */,
+				638BFA0B1D07C2D900939731 /* ChooseSchoolTableViewCell.xib */,
+				638BFA0D1D07C43000939731 /* ChooseSchoolTableViewCell.swift */,
+			);
+			name = "Choose School View";
 			sourceTree = "<group>";
 		};
 		6393BC011CF01B5B008BFF72 /* Week Calendar View */ = {
@@ -926,6 +940,7 @@
 				63B1C3541CF291E100989B5D /* CreateEventColorExpandedCell.xib in Resources */,
 				63B1C3691CF2D38400989B5D /* CreateEventDateAndLocationCell.xib in Resources */,
 				63B1C36D1CF2DEE600989B5D /* CreateEventNotificationCell.xib in Resources */,
+				638BFA0C1D07C2D900939731 /* ChooseSchoolTableViewCell.xib in Resources */,
 				63EC77B71CC8743D008025A7 /* DLIncomingPhotoBubble.xib in Resources */,
 				63EC77BE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib in Resources */,
 				6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */,
@@ -1192,6 +1207,7 @@
 				635479E81CB8B02A00DE8CBC /* ColorgyAPIMeResult.swift in Sources */,
 				63EC77BD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift in Sources */,
 				632C0C5D1CF71637002C9380 /* PhoneNumberTextField.swift in Sources */,
+				638BFA0E1D07C43000939731 /* ChooseSchoolTableViewCell.swift in Sources */,
 				635479EB1CB8B02A00DE8CBC /* Period.swift in Sources */,
 				63B1C3671CF2B5A800989B5D /* CreateEventColorCellDelegate.swift in Sources */,
 				63EC77C31CC87595008025A7 /* ChatRoomViewController.swift in Sources */,
