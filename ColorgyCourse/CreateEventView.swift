@@ -321,8 +321,8 @@ extension CreateEventView : CreateEventColorCellDelegate {
 	}
 }
 
-extension CreateEventView : CreateEventAddDateCellDelegate {
-	public func createEventAddDateCellAddDateButtonClicked() {
+extension CreateEventView : CreateEventAddChildEventCellDelegate {
+	public func createEventAddChildEventCellAddDateButtonClicked() {
 		// Will get called if user wants to add a new child event
 		print("need to implement add date here")
 	}

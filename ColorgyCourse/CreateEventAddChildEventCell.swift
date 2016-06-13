@@ -27,12 +27,12 @@ final public class CreateEventAddChildEventCell: UITableViewCell {
 		addDateButton.layer.borderColor = ColorgyColor.MainOrange.CGColor
 		addDateButton.layer.borderWidth = 1.5
 		addDateButton.setTitle("繼續新增時段", forState: UIControlState.Normal)
-		addDateButton.addTarget(self, action: #selector(CreateEventAddChildEventCell.addDateButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
+		addDateButton.addTarget(self, action: #selector(CreateEventAddChildEventCell.addChildEventButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
 		
 		backgroundColor = UIColor.clearColor()
 	}
 	
-	@objc private func addDateButtonClicked() {
-		delegate?.createEventAddDateCellAddChildEventButtonClicked()
+	@objc private func addChildEventButtonClicked() {
+		delegate?.createEventAddChildEventCellAddChildEventButtonClicked()
 	}
 }
