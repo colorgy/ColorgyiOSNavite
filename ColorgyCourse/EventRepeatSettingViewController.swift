@@ -31,6 +31,9 @@ final public class EventRepeatSettingViewController: UIViewController {
 	private func configureNavigationBar() {
 		navigationBar = ColorgyNavigationBar()
 		navigationBar.title = "重複"
+		navigationBar.iWantACrossButtonAtLeft()
+		navigationBar.iWantACheckButtonAtRight()
+		navigationBar.delegate = self
 		view.addSubview(navigationBar)
 	}
 	
@@ -69,4 +72,14 @@ extension EventRepeatSettingViewController : UITableViewDelegate, UITableViewDat
 
 extension EventRepeatSettingViewController : EventRepeatSettingViewModelDelegate {
 	
+}
+
+extension EventRepeatSettingViewController : ColorgyNavigationBarDelegate {
+	public func colorgyNavigationBarCrossButtonClicked() {
+		print("cross!!!")
+	}
+	
+	public func colorgyNavigationBarCheckButtonClicked() {
+		print("check!!")
+	}
 }

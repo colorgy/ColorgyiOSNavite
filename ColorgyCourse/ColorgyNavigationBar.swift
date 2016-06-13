@@ -8,6 +8,12 @@
 
 import UIKit
 
+@objc public protocol ColorgyNavigationBarDelegate: class {
+	optional func colorgyNavigationBarBackButtonClicked()
+	optional func colorgyNavigationBarCrossButtonClicked()
+	optional func colorgyNavigationBarCheckButtonClicked()
+}
+
 public class ColorgyNavigationBar: UIView {
 	
 	// MARK: - Parameters
@@ -24,6 +30,7 @@ public class ColorgyNavigationBar: UIView {
 			return (bounds.height - 20) / 2 + 20
 		}
 	}
+	public weak var delegate: ColorgyNavigationBarDelegate?
 	
 	// MARK: - Buttons
 	private var leftButton: UIButton!
@@ -61,29 +68,61 @@ public class ColorgyNavigationBar: UIView {
 
 	// MARK: - Configure Buttons
 	public func iWantACrossButtonAtLeft() {
-		
+		configureLeftButtonWithImage("OrangeCrossButton")
+		leftButton.addTarget(self, action: #selector(ColorgyNavigationBar.crossButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
 	}
 	
 	public func iWantABackButtonAtLeft() {
 		configureLeftButtonWithImage("OrangeBackButton")
+		leftButton.addTarget(self, action: #selector(ColorgyNavigationBar.backButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
 	}
 	
 	public func iWantACheckButtonAtRight() {
-		
+		configureRightButtonWithImage("OrangeCheckButton")
+		rightButton.addTarget(self, action: #selector(ColorgyNavigationBar.checkButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
 	}
 	
 	private func configureLeftButtonWithImage(name: String) {
-		leftButton = UIButton(type: UIButtonType.System)
-		leftButton.setImage(UIImage(named: name), forState: UIControlState.Normal)
-		leftButton.contentMode = .ScaleAspectFill
-		
-		leftButton.frame.size.height = 20
-		leftButton.frame.size.width = 20
-		leftButton.sizeToFit()
+		leftButton = configureBarButton(name)
 		
 		leftButton.frame.origin.x = 16
 		leftButton.center.y = centerY
 		
 		addSubview(leftButton)
+	}
+	
+	private func configureRightButtonWithImage(name: String) {
+		rightButton = configureBarButton(name)
+		
+		rightButton.frame.origin.x = bounds.width - rightButton.bounds.width - 16
+		rightButton.center.y = centerY
+		
+		addSubview(rightButton)
+	}
+	
+	private func configureBarButton(name: String) -> UIButton {
+		let button = UIButton(type: UIButtonType.System)
+		button.setImage(UIImage(named: name), forState: UIControlState.Normal)
+		button.contentMode = .ScaleAspectFill
+		button.tintColor = ColorgyColor.MainOrange
+		
+		button.frame.size.height = 20
+		button.frame.size.width = 20
+		button.sizeToFit()
+		
+		return button
+	}
+	
+	// MARK: - Button Methods
+	@objc private func crossButtonClicked() {
+		delegate?.colorgyNavigationBarCrossButtonClicked?()
+	}
+	
+	@objc private func checkButtonClicked() {
+		delegate?.colorgyNavigationBarCheckButtonClicked?()
+	}
+	
+	@objc private func backButtonClicked() {
+		delegate?.colorgyNavigationBarBackButtonClicked?()
 	}
 }

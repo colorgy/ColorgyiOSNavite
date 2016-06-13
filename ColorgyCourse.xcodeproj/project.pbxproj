@@ -157,6 +157,8 @@
 		63E4471A1D0E5E6B005186FD /* EventRepeatSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */; };
 		63E4471C1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */; };
 		63E4471E1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4471D1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift */; };
+		63E447221D0E7DE8005186FD /* ColorgyStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447211D0E7DE8005186FD /* ColorgyStyle.swift */; };
+		63E447231D0E8314005186FD /* ColorgyStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447211D0E7DE8005186FD /* ColorgyStyle.swift */; };
 		63EC77201CC6060E008025A7 /* ColorgyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */; };
 		63EC77B21CC8743D008025A7 /* ATrickyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A21CC8743D008025A7 /* ATrickyView.swift */; };
 		63EC77B31CC8743D008025A7 /* DLIncomingMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */; };
@@ -366,6 +368,7 @@
 		63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingViewModel.swift; sourceTree = "<group>"; };
 		63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventRepeatSettingTableViewCell.xib; sourceTree = "<group>"; };
 		63E4471D1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingTableViewCell.swift; sourceTree = "<group>"; };
+		63E447211D0E7DE8005186FD /* ColorgyStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyStyle.swift; sourceTree = "<group>"; };
 		63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyNavigationController.swift; sourceTree = "<group>"; };
 		63EC77A21CC8743D008025A7 /* ATrickyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATrickyView.swift; sourceTree = "<group>"; };
 		63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLIncomingMessageBubble.swift; sourceTree = "<group>"; };
@@ -554,6 +557,7 @@
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
 				63AC1B401CF155F800FDD724 /* Event.swift */,
+				63E447211D0E7DE8005186FD /* ColorgyStyle.swift */,
 				6393BC031CF01B74008BFF72 /* Global */,
 				630337F11CE9B265006FEA1C /* 1.png */,
 				63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */,
@@ -1220,6 +1224,7 @@
 				637547701CC8A96900BC3BBD /* ChatMessageList.swift in Sources */,
 				635479FF1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift in Sources */,
 				630570121CBD1A2E007D2C9D /* ChatUserInformation.swift in Sources */,
+				63E447221D0E7DE8005186FD /* ColorgyStyle.swift in Sources */,
 				6305700C1CBD0AB9007D2C9D /* ColorgySocket.swift in Sources */,
 				632C0C591CF7032C002C9380 /* ReenterPhoneViewController.swift in Sources */,
 				63EC77201CC6060E008025A7 /* ColorgyNavigationController.swift in Sources */,
@@ -1323,6 +1328,7 @@
 				63F3EE831CBF49DF0010D059 /* CourseRawDataObject.swift in Sources */,
 				63F3EE981CBF49EE0010D059 /* ChatUser.swift in Sources */,
 				63F3EE781CBF49D10010D059 /* PeriodRawData.swift in Sources */,
+				63E447231D0E8314005186FD /* ColorgyStyle.swift in Sources */,
 				63C3CE2C1CC0C8B5000EE808 /* Release.swift in Sources */,
 				63F3EE821CBF49DF0010D059 /* Period.swift in Sources */,
 				63F3EE861CBF49DF0010D059 /* ColorgyLoginResult.swift in Sources */,

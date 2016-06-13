@@ -19,7 +19,7 @@ class EventRepeatSettingTableViewCell: UITableViewCell {
 		selectionStyle = .None
 		
 		titleLabel.textColor = ColorgyColor.TextColor
-		titleLabel.font = UIFont.systemFontOfSize(16)
+		titleLabel.setFontAsContentTextFont()
 		
 		seperatorLine.backgroundColor = ColorgyColor.BackgroundColor
     }

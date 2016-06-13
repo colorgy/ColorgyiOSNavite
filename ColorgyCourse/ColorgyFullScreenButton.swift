@@ -28,7 +28,7 @@ final public class ColorgyFullScreenButton: UIButton {
 		self.delegate = delegate
 		
 		setTitle(title, forState: UIControlState.Normal)
-		titleLabel?.font = UIFont.systemFontOfSize(16)
+		titleLabel?.setFontAsContentTextFont()
 		setTitleColor(ColorgyColor.MainOrange, forState: UIControlState.Normal)
 		
 		addTarget(self, action: #selector(ColorgyFullScreenButton.touchEnter), forControlEvents: [.TouchDown, .TouchDragEnter])

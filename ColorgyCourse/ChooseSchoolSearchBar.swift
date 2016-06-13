@@ -59,7 +59,7 @@ final public class ChooseSchoolSearchBar: UIView {
 		searchTextField = UITextField()
 		searchTextField.frame.size.width = UIScreen.mainScreen().bounds.width - cancelButton.bounds.width - searchIcon.bounds.width - 4 * 16
 		searchTextField.frame.size.height = 25
-		searchTextField.font = UIFont.systemFontOfSize(15)
+		searchTextField.setFontAsContentTextFont()
 		searchTextField.placeholder = "輸入學校名稱"
 		searchTextField.tintColor = ColorgyColor.MainOrange
 		
@@ -76,7 +76,7 @@ final public class ChooseSchoolSearchBar: UIView {
 		cancelButton.tintColor = ColorgyColor.MainOrange
 		cancelButton.setTitle("取消", forState: UIControlState.Normal)
 		cancelButton.setTitleColor(ColorgyColor.MainOrange, forState: UIControlState.Normal)
-		cancelButton.titleLabel?.font = UIFont.systemFontOfSize(16)
+		cancelButton.titleLabel?.setFontAsContentTextFont()
 		cancelButton.sizeToFit()
 		
 		cancelButton.frame.origin.x = UIScreen.mainScreen().bounds.width - cancelButton.bounds.width - 16
