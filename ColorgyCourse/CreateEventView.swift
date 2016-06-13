@@ -228,6 +228,7 @@ extension CreateEventView : UITableViewDataSource {
 			}
 		case childEventSection:
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.childEventCell, forIndexPath: indexPath) as! CreateEventChildEventCell
+			cell.delegate = self
 			return cell
 		case addChildEventSection:
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.addChildEventCell, forIndexPath: indexPath) as! CreateEventAddChildEventCell
@@ -325,10 +326,16 @@ extension CreateEventView : CreateEventColorCellDelegate {
 	}
 }
 
+extension CreateEventView : CreateEventChildEventCellDelegate {
+	public func createEventChildEventCellNeedToDeleteChildEvent(id: String?) {
+		viewModel?.removeChildeEventWithId(id)
+		reloadChildEventSection()
+	}
+}
+
 extension CreateEventView : CreateEventAddChildEventCellDelegate {
 	public func createEventAddChildEventCellAddChildEventButtonClicked() {
 		// Will get called if user wants to add a new child event
-		print("need to implement add date here")
 		viewModel?.createNewChildEvent()
 		reloadChildEventSection()
 	}

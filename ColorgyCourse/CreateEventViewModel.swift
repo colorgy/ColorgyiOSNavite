@@ -34,4 +34,10 @@ final public class CreateEventViewModel {
 		let childEvent = CreateEventContext.ChildEvent(startTime: NSDate(), endTime: NSDate(), location: "yooooo")
 		context.childEvents.append(childEvent)
 	}
+	
+	public func removeChildeEventWithId(id: String?) {
+		context.childEvents = context.childEvents.filter { (event) -> Bool in
+			return event.eventId != id
+		}
+	}
 }
