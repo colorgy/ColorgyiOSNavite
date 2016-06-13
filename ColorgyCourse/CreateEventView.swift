@@ -13,9 +13,11 @@ final public class CreateEventView: UIView {
 	private var createEventTableView: UITableView!
 	// select color
 	private var selectColorCellExpanded: Bool = false
-	private var selectedColor: UIColor? = UIColor(red: 198/255.0, green: 188/255.0, blue: 188/255.0, alpha: 1.0)
 	// repeat
 	private var eventRepeated: Bool = false
+	// viewmodel reference
+	public var viewModel: CreateEventViewModel?
+
 	
 	// MARK: - Table view arrangement
 	private enum CellArrangement {
@@ -46,8 +48,9 @@ final public class CreateEventView: UIView {
 	private var eventDateSectionCount: Int = 10
 	private var notesSectionCount: Int = 1
 	
-	override public init(frame: CGRect) {
+	public init(frame: CGRect, viewModel: CreateEventViewModel?) {
 		super.init(frame: frame)
+		self.viewModel = viewModel
 		configureCreateEventTableView()
 		backgroundColor = ColorgyColor.BackgroundColor
 	}
@@ -166,12 +169,12 @@ extension CreateEventView : UITableViewDataSource {
 			case CellArrangement.InfoSection.colorCell.rawValue:
 				if selectColorCellExpanded {
 					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.expandedSelectColorCell, forIndexPath: indexPath) as! CreateEventColorExpandedCell
-					cell.updateSelectedColor(selectedColor)
+					cell.updateSelectedColor(viewModel?.context.color)
 					cell.delegate = self
 					return cell
 				} else {
 					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.selectColorCell, forIndexPath: indexPath) as! CreateEventColorCell
-					cell.updateSelectedColor(selectedColor)
+					cell.updateSelectedColor(viewModel?.context.color)
 					cell.delegate = self
 					return cell
 				}
@@ -283,7 +286,7 @@ extension CreateEventView : CreateEventColorCellDelegate {
 	}
 	
 	public func createEventColorCell(needsCollapseWithSelectedColor color: UIColor?) {
-		selectedColor = color
+		viewModel?.updateSelectedColor(color)
 		expandColorCell(false)
 	}
 }
