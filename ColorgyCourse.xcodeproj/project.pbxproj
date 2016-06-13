@@ -155,6 +155,8 @@
 		63C3CE491CC0C990000EE808 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE481CC0C990000EE808 /* Security.framework */; };
 		63E447181D0E5E58005186FD /* EventRepeatSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */; };
 		63E4471A1D0E5E6B005186FD /* EventRepeatSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */; };
+		63E4471C1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */; };
+		63E4471E1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4471D1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift */; };
 		63EC77201CC6060E008025A7 /* ColorgyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */; };
 		63EC77B21CC8743D008025A7 /* ATrickyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A21CC8743D008025A7 /* ATrickyView.swift */; };
 		63EC77B31CC8743D008025A7 /* DLIncomingMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */; };
@@ -362,6 +364,8 @@
 		63C3CE481CC0C990000EE808 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingViewController.swift; sourceTree = "<group>"; };
 		63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingViewModel.swift; sourceTree = "<group>"; };
+		63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventRepeatSettingTableViewCell.xib; sourceTree = "<group>"; };
+		63E4471D1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingTableViewCell.swift; sourceTree = "<group>"; };
 		63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyNavigationController.swift; sourceTree = "<group>"; };
 		63EC77A21CC8743D008025A7 /* ATrickyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATrickyView.swift; sourceTree = "<group>"; };
 		63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLIncomingMessageBubble.swift; sourceTree = "<group>"; };
@@ -550,13 +554,15 @@
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
 				63AC1B401CF155F800FDD724 /* Event.swift */,
+				6393BC031CF01B74008BFF72 /* Global */,
 				630337F11CE9B265006FEA1C /* 1.png */,
 				63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */,
+				63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */,
+				63E4471D1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift */,
 				63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */,
 				638BFA0A1D07C12C00939731 /* Choose School View */,
 				63E447141D0E5D85005186FD /* Reenter Phone View Controller */,
 				63E447161D0E5DBE005186FD /* Phone Validation View */,
-				6393BC031CF01B74008BFF72 /* Global */,
 				63B1C34C1CF1EC1600989B5D /* Create Event View */,
 				6393BC011CF01B5B008BFF72 /* Week Calendar View */,
 				6324BF331CF00E6D003F1329 /* Search Course View */,
@@ -978,6 +984,7 @@
 				63EC77BE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib in Resources */,
 				6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */,
 				63B1C37D1CF4227A00989B5D /* Assets.xcassets in Resources */,
+				63E4471C1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib in Resources */,
 				63B1C3711CF2F25700989B5D /* CreateEventRepeatEndsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1197,6 +1204,7 @@
 				63B1C3651CF2B49F00989B5D /* CreateEventColorCell.swift in Sources */,
 				63EC77B51CC8743D008025A7 /* DLIncomingMessageDelegate.swift in Sources */,
 				635479ED1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift in Sources */,
+				63E4471E1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift in Sources */,
 				630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */,
 				637305641CBF83D80016A7FC /* UIViewExtension.swift in Sources */,
 				635479FB1CB8D17800DE8CBC /* PeriodRawData.swift in Sources */,

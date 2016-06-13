@@ -19,6 +19,15 @@ public class ColorgyNavigationBar: UIView {
 			centerLabel()
 		}
 	}
+	private var centerY: CGFloat {
+		get {
+			return (bounds.height - 20) / 2 + 20
+		}
+	}
+	
+	// MARK: - Buttons
+	private var leftButton: UIButton!
+	private var rightButton: UIButton!
 
 	// MARK: - Init
 	public init() {
@@ -47,7 +56,34 @@ public class ColorgyNavigationBar: UIView {
 	
 	private func centerLabel() {
 		titleLabel.center.x = bounds.midX
-		titleLabel.center.y = (bounds.height - 20) / 2 + 20
+		titleLabel.center.y = centerY
 	}
 
+	// MARK: - Configure Buttons
+	public func iWantACrossButtonAtLeft() {
+		
+	}
+	
+	public func iWantABackButtonAtLeft() {
+		configureLeftButtonWithImage("OrangeBackButton")
+	}
+	
+	public func iWantACheckButtonAtRight() {
+		
+	}
+	
+	private func configureLeftButtonWithImage(name: String) {
+		leftButton = UIButton(type: UIButtonType.System)
+		leftButton.setImage(UIImage(named: name), forState: UIControlState.Normal)
+		leftButton.contentMode = .ScaleAspectFill
+		
+		leftButton.frame.size.height = 20
+		leftButton.frame.size.width = 20
+		leftButton.sizeToFit()
+		
+		leftButton.frame.origin.x = 16
+		leftButton.center.y = centerY
+		
+		addSubview(leftButton)
+	}
 }
