@@ -29,4 +29,9 @@ final public class CreateEventViewModel {
 	public func updateSelectedColor(color: UIColor?) {
 		context.color = color
 	}
+	
+	public func createNewChildEvent() {
+		let childEvent = CreateEventContext.ChildEvent(startTime: NSDate(), endTime: NSDate(), location: "yooooo")
+		context.childEvents.append(childEvent)
+	}
 }

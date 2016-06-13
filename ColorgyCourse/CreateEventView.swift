@@ -141,6 +141,11 @@ final public class CreateEventView: UIView {
 		repeatSectionCount = repeated ? 3 : 2
 		reloadRepeatCell()
 	}
+	
+	// MARK: - Child Event Cell
+	private func reloadChildEventSection() {
+		createEventTableView.reloadSections(NSIndexSet(index: childEventSection), withRowAnimation: UITableViewRowAnimation.Fade)
+	}
 }
 
 extension CreateEventView : UITableViewDataSource {
@@ -324,5 +329,7 @@ extension CreateEventView : CreateEventAddChildEventCellDelegate {
 	public func createEventAddChildEventCellAddChildEventButtonClicked() {
 		// Will get called if user wants to add a new child event
 		print("need to implement add date here")
+		viewModel?.createNewChildEvent()
+		reloadChildEventSection()
 	}
 }
