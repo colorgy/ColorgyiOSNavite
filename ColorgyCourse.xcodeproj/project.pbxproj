@@ -153,6 +153,8 @@
 		63C3CE451CC0C94B000EE808 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE441CC0C94B000EE808 /* libz.tbd */; };
 		63C3CE471CC0C98B000EE808 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE461CC0C98B000EE808 /* SystemConfiguration.framework */; };
 		63C3CE491CC0C990000EE808 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE481CC0C990000EE808 /* Security.framework */; };
+		63E447181D0E5E58005186FD /* EventRepeatSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */; };
+		63E4471A1D0E5E6B005186FD /* EventRepeatSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */; };
 		63EC77201CC6060E008025A7 /* ColorgyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */; };
 		63EC77B21CC8743D008025A7 /* ATrickyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A21CC8743D008025A7 /* ATrickyView.swift */; };
 		63EC77B31CC8743D008025A7 /* DLIncomingMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */; };
@@ -358,6 +360,8 @@
 		63C3CE441CC0C94B000EE808 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		63C3CE461CC0C98B000EE808 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		63C3CE481CC0C990000EE808 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingViewController.swift; sourceTree = "<group>"; };
+		63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingViewModel.swift; sourceTree = "<group>"; };
 		63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyNavigationController.swift; sourceTree = "<group>"; };
 		63EC77A21CC8743D008025A7 /* ATrickyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATrickyView.swift; sourceTree = "<group>"; };
 		63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLIncomingMessageBubble.swift; sourceTree = "<group>"; };
@@ -545,23 +549,13 @@
 				635479891CB898C100DE8CBC /* ViewController.swift */,
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
-				630337F11CE9B265006FEA1C /* 1.png */,
-				638BFA0A1D07C12C00939731 /* Choose School View */,
 				63AC1B401CF155F800FDD724 /* Event.swift */,
-				632C0C581CF7032C002C9380 /* ReenterPhoneViewController.swift */,
-				632C0C5F1CF7FE9F002C9380 /* ReenterPhoneNumberViewControllerTransitioningDelegate.swift */,
-				632C0C5A1CF70381002C9380 /* ReenterPhoneNumberView.swift */,
-				632C0C5C1CF71637002C9380 /* PhoneNumberTextField.swift */,
-				63B1C3851CF4350000989B5D /* ColorgyFullScreenButton.swift */,
-				63B1C3741CF30B0500989B5D /* InputBox.swift */,
-				63B1C3881CF45A1300989B5D /* ColorgyBillboardView.swift */,
-				632C0C521CF541FA002C9380 /* PhoneValidationView.swift */,
-				632C0C561CF54A09002C9380 /* PhoneValidationViewController.swift */,
-				632C0C541CF542CD002C9380 /* PhoneDigitValidationField.swift */,
-				63B1C3771CF3EDBF00989B5D /* EmailInputBox.swift */,
-				63B1C3821CF42D9600989B5D /* PhoneInputBox.swift */,
-				63B1C37A1CF4221400989B5D /* PasswordInputBox.swift */,
-				63B1C37F1CF424C700989B5D /* ConfirmPasswordInputBox.swift */,
+				630337F11CE9B265006FEA1C /* 1.png */,
+				63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */,
+				63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */,
+				638BFA0A1D07C12C00939731 /* Choose School View */,
+				63E447141D0E5D85005186FD /* Reenter Phone View Controller */,
+				63E447161D0E5DBE005186FD /* Phone Validation View */,
 				6393BC031CF01B74008BFF72 /* Global */,
 				63B1C34C1CF1EC1600989B5D /* Create Event View */,
 				6393BC011CF01B5B008BFF72 /* Week Calendar View */,
@@ -730,6 +724,9 @@
 		6393BC031CF01B74008BFF72 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				63B1C3881CF45A1300989B5D /* ColorgyBillboardView.swift */,
+				63B1C3851CF4350000989B5D /* ColorgyFullScreenButton.swift */,
+				63E447151D0E5D9D005186FD /* Input Box */,
 				63AC1B3E1CF1389000FDD724 /* ColorgyVersionControl.swift */,
 				63C3CE1A1CC0C76F000EE808 /* ColorgyAppNotification.swift */,
 				635479CE1CB8A5EF00DE8CBC /* Release.swift */,
@@ -781,6 +778,39 @@
 				63561C4D1CBF9848004AEF6D /* EmailRegisterViewModel.swift */,
 			);
 			name = "Email Register View";
+			sourceTree = "<group>";
+		};
+		63E447141D0E5D85005186FD /* Reenter Phone View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				632C0C581CF7032C002C9380 /* ReenterPhoneViewController.swift */,
+				632C0C5F1CF7FE9F002C9380 /* ReenterPhoneNumberViewControllerTransitioningDelegate.swift */,
+				632C0C5A1CF70381002C9380 /* ReenterPhoneNumberView.swift */,
+				632C0C5C1CF71637002C9380 /* PhoneNumberTextField.swift */,
+			);
+			name = "Reenter Phone View Controller";
+			sourceTree = "<group>";
+		};
+		63E447151D0E5D9D005186FD /* Input Box */ = {
+			isa = PBXGroup;
+			children = (
+				63B1C3741CF30B0500989B5D /* InputBox.swift */,
+				63B1C3771CF3EDBF00989B5D /* EmailInputBox.swift */,
+				63B1C3821CF42D9600989B5D /* PhoneInputBox.swift */,
+				63B1C37A1CF4221400989B5D /* PasswordInputBox.swift */,
+				63B1C37F1CF424C700989B5D /* ConfirmPasswordInputBox.swift */,
+			);
+			name = "Input Box";
+			sourceTree = "<group>";
+		};
+		63E447161D0E5DBE005186FD /* Phone Validation View */ = {
+			isa = PBXGroup;
+			children = (
+				632C0C521CF541FA002C9380 /* PhoneValidationView.swift */,
+				632C0C561CF54A09002C9380 /* PhoneValidationViewController.swift */,
+				632C0C541CF542CD002C9380 /* PhoneDigitValidationField.swift */,
+			);
+			name = "Phone Validation View";
 			sourceTree = "<group>";
 		};
 		63EC77A11CC8743D008025A7 /* DLMessageVIew */ = {
@@ -1161,6 +1191,7 @@
 				632C0C601CF7FE9F002C9380 /* ReenterPhoneNumberViewControllerTransitioningDelegate.swift in Sources */,
 				63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */,
 				63C3CE221CC0C76F000EE808 /* Organization.swift in Sources */,
+				63E4471A1D0E5E6B005186FD /* EventRepeatSettingViewModel.swift in Sources */,
 				6305700A1CBD0AA1007D2C9D /* ColorgyChatAPI.swift in Sources */,
 				6324BF321CF00B7C003F1329 /* SearchCourseBar.swift in Sources */,
 				63B1C3651CF2B49F00989B5D /* CreateEventColorCell.swift in Sources */,
@@ -1194,6 +1225,7 @@
 				632C0C571CF54A09002C9380 /* PhoneValidationViewController.swift in Sources */,
 				635479E51CB8B02A00DE8CBC /* TimeStamp.swift in Sources */,
 				635479E71CB8B02A00DE8CBC /* ColorgyAPI.swift in Sources */,
+				63E447181D0E5E58005186FD /* EventRepeatSettingViewController.swift in Sources */,
 				630337E91CE9732B006FEA1C /* BlurWallViewCell.swift in Sources */,
 				63B1C3891CF45A1300989B5D /* ColorgyBillboardView.swift in Sources */,
 				6393BBFE1CF0179E008BFF72 /* SearchCourseViewModel.swift in Sources */,
