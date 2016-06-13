@@ -136,6 +136,7 @@ final public class ChooseSchoolSearchBar: UIView {
 	}
 	
 	@objc private func cancelButtonClicked() {
+		delegate?.chooseSchoolSearchBarCancelSearching()
 		offSearchStage()
 	}
 }

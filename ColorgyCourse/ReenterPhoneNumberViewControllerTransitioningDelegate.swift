@@ -11,7 +11,9 @@ import UIKit
 
 final public class ReenterPhoneNumberViewControllerTransitioningDelegate: NSObject {
 	private var isPresenting: Bool = false
-	public var transitionDuration: NSTimeInterval = 0.3
+	public var transitionDurationForPresentation: NSTimeInterval = 0.2
+	public var transitionDurationForDismissal: NSTimeInterval = 0.2
+	
 	public var presentingViewController: ReenterPhoneViewController? {
 		didSet {
 			setupPresentingVC()
@@ -46,7 +48,7 @@ extension ReenterPhoneNumberViewControllerTransitioningDelegate : UIViewControll
 
 extension ReenterPhoneNumberViewControllerTransitioningDelegate : UIViewControllerAnimatedTransitioning {
 	public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-		return transitionDuration
+		return isPresenting ? transitionDurationForPresentation : transitionDurationForDismissal
 	}
 	
 	public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -62,7 +64,8 @@ extension ReenterPhoneNumberViewControllerTransitioningDelegate : UIViewControll
 		
 		if isPresenting {
 			// initial state
-			presentingVC.reenterPhoneNumberView.transform = CGAffineTransformMakeTranslation(0, -100)
+			presentingVC.reenterPhoneNumberView.transform = CGAffineTransformMakeScale(1.15, 1.15)
+			presentingVC.reenterPhoneNumberView.alpha = 0
 			presentingVC.view.backgroundColor = UIColor.blackColor().withAlpha(0)
 		}
 		
@@ -74,15 +77,15 @@ extension ReenterPhoneNumberViewControllerTransitioningDelegate : UIViewControll
 			if self.isPresenting {
 				// goto reenter
 				presentingVC.reenterPhoneNumberView.transform = CGAffineTransformIdentity
+				presentingVC.reenterPhoneNumberView.alpha = 1
 				presentingVC.view.backgroundColor = UIColor.blackColor().withAlpha(0.7)
 			} else {
 				// back
 				presentingVC.view.alpha = 0
+				presentingVC.reenterPhoneNumberView.alpha = 0
 			}
 			}, completion: { (finished) in
 				transitionContext.completeTransition(true)
 		})
-
-		
 	}
 }
