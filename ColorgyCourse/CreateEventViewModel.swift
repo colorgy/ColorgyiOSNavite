@@ -22,6 +22,10 @@ final public class CreateEventViewModel {
 		self.context = CreateEventContext()
 	}
 	
+	public func updateTitleText(text: String?) {
+		context.title = text
+	}
+	
 	public func updateSelectedColor(color: UIColor?) {
 		context.color = color
 	}

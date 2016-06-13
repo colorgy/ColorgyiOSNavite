@@ -8,6 +8,10 @@
 
 import UIKit
 
+public protocol CreateEventTitleCellDelegate: class {
+	func createEventTitleCellTitleTextUpdated(text: String?)
+}
+
 final public class CreateEventTitleCell: UITableViewCell {
 
 	@IBOutlet weak var titleLabel: UILabel!
@@ -15,6 +19,8 @@ final public class CreateEventTitleCell: UITableViewCell {
 	
 	@IBOutlet weak var upperSeperatorLine: UIView!
 	@IBOutlet weak var bottomSeperatorLine: UIView!
+	
+	public weak var delegate: CreateEventTitleCellDelegate?
 	
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +33,7 @@ final public class CreateEventTitleCell: UITableViewCell {
 		titleTextField.autocorrectionType = .No
 		titleTextField.autocapitalizationType = .None
 		titleTextField.textColor = ColorgyColor.TextColor
+		titleTextField.addTarget(self, action: #selector(CreateEventTitleCell.titleTextEdtingChanged), forControlEvents: UIControlEvents.EditingChanged)
 		
 		selectionStyle = .None
 		
@@ -34,4 +41,11 @@ final public class CreateEventTitleCell: UITableViewCell {
 		bottomSeperatorLine.backgroundColor = ColorgyColor.BackgroundColor
     }
 
+	@objc private func titleTextEdtingChanged() {
+		delegate?.createEventTitleCellTitleTextUpdated(titleTextField.text)
+	}
+	
+	public func setTitle(title: String?) {
+		titleLabel.text = title
+	}
 }

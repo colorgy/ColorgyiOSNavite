@@ -13,7 +13,7 @@ import Foundation
 /// Will help to generate event model.
 final public class CreateEventContext {
 	
-	public var title: String
+	public var title: String?
 	public var color: UIColor?
 	public var isRepeatEvent: Bool
 	public var repeatEventEndTime: String?

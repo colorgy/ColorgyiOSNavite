@@ -114,10 +114,14 @@ final public class CreateEventView: UIView {
 	}
 
 	// MARK: - Color Cell
+	// update color cell
 	private func reloadColorCell() {
-		createEventTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+		createEventTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: CellArrangement.InfoSection.colorCell.rawValue, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
 	}
 	
+	/// Expand the color plate cell,
+	/// true for expanded cell, false for collasped cell.
+	/// Will update the cell if this method is called.
 	private func expandColorCell(expanded: Bool) {
 		selectColorCellExpanded = expanded
 		reloadColorCell()
@@ -165,6 +169,8 @@ extension CreateEventView : UITableViewDataSource {
 			switch indexPath.row {
 			case CellArrangement.InfoSection.titleCell.rawValue:
 				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
+				cell.delegate = self
+				cell.setTitle(viewModel?.context.title)
 				return cell
 			case CellArrangement.InfoSection.colorCell.rawValue:
 				if selectColorCellExpanded {
@@ -279,14 +285,26 @@ extension CreateEventView : UITableViewDelegate {
 	
 }
 
+extension CreateEventView : CreateEventTitleCellDelegate {
+	public func createEventTitleCellTitleTextUpdated(text: String?) {
+		viewModel.
+	}
+}
+
 extension CreateEventView : CreateEventColorCellDelegate {
 	
 	public func createEventColorCellNeedsExpand() {
 		expandColorCell(true)
 	}
 	
+	
+	/// This method get called when user tap on a color
 	public func createEventColorCell(needsCollapseWithSelectedColor color: UIColor?) {
+		// need to update color inside context,
+		// just call this method to update color inside context.
 		viewModel?.updateSelectedColor(color)
+		// after storing color,
+		// update cell
 		expandColorCell(false)
 	}
 }
