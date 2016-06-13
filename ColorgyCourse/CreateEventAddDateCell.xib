@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="126" id="y1n-CQ-GXH" customClass="CreateEventAddDateCell" customModule="ColorgyCourse" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="506" height="126"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y1n-CQ-GXH" id="Ckm-91-Spy">
+                <rect key="frame" x="0.0" y="0.0" width="506" height="125"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sfh-ZH-CXe">
+                        <rect key="frame" x="24" y="45" width="458" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="8fJ-Ud-yP8"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="Sfh-ZH-CXe" secondAttribute="trailing" constant="16" id="1mj-wq-Wr2"/>
+                    <constraint firstItem="Sfh-ZH-CXe" firstAttribute="centerX" secondItem="Ckm-91-Spy" secondAttribute="centerX" id="9Qe-rX-L9t"/>
+                    <constraint firstItem="Sfh-ZH-CXe" firstAttribute="leading" secondItem="Ckm-91-Spy" secondAttribute="leadingMargin" constant="16" id="Ca9-ei-Q8k"/>
+                    <constraint firstItem="Sfh-ZH-CXe" firstAttribute="centerY" secondItem="Ckm-91-Spy" secondAttribute="centerY" id="feV-3V-rpk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="addDateButton" destination="Sfh-ZH-CXe" id="jpG-Aj-oLQ"/>
+            </connections>
+            <point key="canvasLocation" x="632" y="488"/>
+        </tableViewCell>
+    </objects>
+</document>

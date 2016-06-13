@@ -33,6 +33,7 @@ final public class CreateEventTitleCell: UITableViewCell {
 		titleTextField.autocorrectionType = .No
 		titleTextField.autocapitalizationType = .None
 		titleTextField.textColor = ColorgyColor.TextColor
+		titleTextField.tintColor = ColorgyColor.MainOrange
 		titleTextField.addTarget(self, action: #selector(CreateEventTitleCell.titleTextEdtingChanged), forControlEvents: UIControlEvents.EditingChanged)
 		
 		selectionStyle = .None
@@ -46,6 +47,6 @@ final public class CreateEventTitleCell: UITableViewCell {
 	}
 	
 	public func setTitle(title: String?) {
-		titleLabel.text = title
+		titleTextField.text = title
 	}
 }

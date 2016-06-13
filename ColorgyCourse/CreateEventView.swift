@@ -287,7 +287,7 @@ extension CreateEventView : UITableViewDelegate {
 
 extension CreateEventView : CreateEventTitleCellDelegate {
 	public func createEventTitleCellTitleTextUpdated(text: String?) {
-		viewModel.
+		viewModel?.updateTitleText(text)
 	}
 }
 
