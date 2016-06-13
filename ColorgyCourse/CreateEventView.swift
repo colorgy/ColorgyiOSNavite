@@ -41,11 +41,14 @@ final public class CreateEventView: UIView {
 	private var infoSection: Int = 0
 	private var repeatSection: Int = 1
 	private var eventDateSection: Int = 2
-	private var notesSection: Int = 3
+	private var addEventDateSection: Int = 3
+	private var notesSection: Int = 4
 	
+	private var totalSectionCount: Int = 5
 	private var infoSectionCount: Int = 2
 	private var repeatSectionCount: Int = 2
 	private var eventDateSectionCount: Int = 10
+	private var addEventDateSectionCount: Int = 1
 	private var notesSectionCount: Int = 1
 	
 	public init(frame: CGRect, viewModel: CreateEventViewModel?) {
@@ -65,6 +68,7 @@ final public class CreateEventView: UIView {
 		static let notificationCell = "CreateEventNotificationCell"
 		// date nib
 		static let dateAndLocationCell = "CreateEventDateAndLocationCell"
+		static let addDateCell = "CreateEventAddDateCell"
 		// notes nib
 		static let notesCell = "CreateEventNotesCell"
 		// expanded nib
@@ -85,6 +89,7 @@ final public class CreateEventView: UIView {
 		createEventTableView.registerNib(UINib(nibName: NibName.notificationCell, bundle: nil), forCellReuseIdentifier: NibName.notificationCell)
 		// date nib
 		createEventTableView.registerNib(UINib(nibName: NibName.dateAndLocationCell, bundle: nil), forCellReuseIdentifier: NibName.dateAndLocationCell)
+		createEventTableView.registerNib(UINib(nibName: NibName.addDateCell, bundle: nil), forCellReuseIdentifier: NibName.addDateCell)
 		// notes nib
 		createEventTableView.registerNib(UINib(nibName: NibName.notesCell, bundle: nil), forCellReuseIdentifier: NibName.notesCell)
 		// expanded nib
@@ -143,7 +148,7 @@ extension CreateEventView : UITableViewDataSource {
 	
 	// TODO: into 3 sections, one for containing dates
 	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 4
+		return totalSectionCount
 	}
 	
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -154,6 +159,8 @@ extension CreateEventView : UITableViewDataSource {
 			return repeatSectionCount
 		case eventDateSection:
 			return eventDateSectionCount
+		case addEventDateSection:
+			return addEventDateSectionCount
 		case notesSection:
 			return notesSectionCount
 		default:
@@ -218,6 +225,10 @@ extension CreateEventView : UITableViewDataSource {
 		case eventDateSection:
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.dateAndLocationCell, forIndexPath: indexPath) as! CreateEventDateAndLocationCell
 			return cell
+		case addEventDateSection:
+			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.addDateCell, forIndexPath: indexPath) as! CreateEventAddDateCell
+			cell.delegate = self
+			return cell
 		case notesSection:
 			// notes section
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notesCell, forIndexPath: indexPath) as! CreateEventNotesCell
@@ -252,6 +263,8 @@ extension CreateEventView : UITableViewDataSource {
 		case eventDateSection:
 			// date section
 			return 175.0
+		case addEventDateSection:
+			return 36.0 + 48.0
 		case notesSection:
 			// notes section
 			return 132.0
@@ -306,5 +319,11 @@ extension CreateEventView : CreateEventColorCellDelegate {
 		// after storing color,
 		// update cell
 		expandColorCell(false)
+	}
+}
+
+extension CreateEventView : CreateEventAddDateCellDelegate {
+	public func createEventAddDateCellAddDateButtonClicked() {
+		print("need to implement add date here")
 	}
 }
