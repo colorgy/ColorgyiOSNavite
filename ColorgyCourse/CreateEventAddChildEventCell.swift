@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol CreateEventAddChildEventCellDelegate: class {
-	func createEventAddDateCellAddChildEventButtonClicked()
+	func createEventAddChildEventCellAddChildEventButtonClicked()
 }
 
 final public class CreateEventAddChildEventCell: UITableViewCell {

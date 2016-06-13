@@ -66,8 +66,8 @@ final public class CreateEventView: UIView {
 		static let repeatEndsCell = "CreateEventRepeatEndsCell"
 		static let notificationCell = "CreateEventNotificationCell"
 		// date nib
-		static let dateAndLocationCell = "CreateEventChildEventCell"
-		static let addDateCell = "CreateEventAddDateCell"
+		static let childEventCell = "CreateEventChildEventCell"
+		static let addChildEventCell = "CreateEventAddChildEventCell"
 		// notes nib
 		static let notesCell = "CreateEventNotesCell"
 		// expanded nib
@@ -87,8 +87,8 @@ final public class CreateEventView: UIView {
 		createEventTableView.registerNib(UINib(nibName: NibName.repeatEndsCell, bundle: nil), forCellReuseIdentifier: NibName.repeatEndsCell)
 		createEventTableView.registerNib(UINib(nibName: NibName.notificationCell, bundle: nil), forCellReuseIdentifier: NibName.notificationCell)
 		// date nib
-		createEventTableView.registerNib(UINib(nibName: NibName.dateAndLocationCell, bundle: nil), forCellReuseIdentifier: NibName.dateAndLocationCell)
-		createEventTableView.registerNib(UINib(nibName: NibName.addDateCell, bundle: nil), forCellReuseIdentifier: NibName.addDateCell)
+		createEventTableView.registerNib(UINib(nibName: NibName.childEventCell, bundle: nil), forCellReuseIdentifier: NibName.childEventCell)
+		createEventTableView.registerNib(UINib(nibName: NibName.addChildEventCell, bundle: nil), forCellReuseIdentifier: NibName.addChildEventCell)
 		// notes nib
 		createEventTableView.registerNib(UINib(nibName: NibName.notesCell, bundle: nil), forCellReuseIdentifier: NibName.notesCell)
 		// expanded nib
@@ -222,10 +222,10 @@ extension CreateEventView : UITableViewDataSource {
 				}
 			}
 		case childEventSection:
-			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.dateAndLocationCell, forIndexPath: indexPath) as! CreateEventChildEventCell
+			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.childEventCell, forIndexPath: indexPath) as! CreateEventChildEventCell
 			return cell
 		case addChildEventSection:
-			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.addDateCell, forIndexPath: indexPath) as! CreateEventAddDateCell
+			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.addChildEventCell, forIndexPath: indexPath) as! CreateEventAddChildEventCell
 			cell.delegate = self
 			return cell
 		case notesSection:
@@ -309,7 +309,6 @@ extension CreateEventView : CreateEventColorCellDelegate {
 		expandColorCell(true)
 	}
 	
-	
 	/// This method get called when user tap on a color
 	public func createEventColorCell(needsCollapseWithSelectedColor color: UIColor?) {
 		// need to update color inside context,
@@ -322,7 +321,7 @@ extension CreateEventView : CreateEventColorCellDelegate {
 }
 
 extension CreateEventView : CreateEventAddChildEventCellDelegate {
-	public func createEventAddChildEventCellAddDateButtonClicked() {
+	public func createEventAddChildEventCellAddChildEventButtonClicked() {
 		// Will get called if user wants to add a new child event
 		print("need to implement add date here")
 	}
