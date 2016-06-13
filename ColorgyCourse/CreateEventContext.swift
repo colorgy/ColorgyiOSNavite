@@ -22,9 +22,17 @@ final public class CreateEventContext {
 	public var childEvents: [ChildEvent]
 	
 	public struct ChildEvent {
+		let eventId: String
 		var startTime: NSDate
 		var endTime: NSDate
-		var location: String
+		var location: String?
+		
+		init(startTime: NSDate, endTime: NSDate, location: String?) {
+			eventId = NSUUID().UUIDString
+			self.startTime = startTime
+			self.endTime = endTime
+			self.location = location
+		}
 	}
 	
 	init() {

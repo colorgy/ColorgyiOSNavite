@@ -1,5 +1,5 @@
 //
-//  CreateEventDateAndLocationCell.swift
+//  CreateEventChildEventCell.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/5/23.
@@ -8,7 +8,11 @@
 
 import UIKit
 
-final public class CreateEventDateAndLocationCell: UITableViewCell {
+public protocol CreateEventChildEventCellDelegate: class {
+	func createEventChildEventCellNeedToDeleteChildEvent(id: String?)
+}
+
+final public class CreateEventChildEventCell: UITableViewCell {
 	
 	@IBOutlet weak var deleteIconImageView: UIImageView!
 	@IBOutlet weak var deleteTitleLabel: UILabel!
@@ -22,12 +26,15 @@ final public class CreateEventDateAndLocationCell: UITableViewCell {
 	@IBOutlet weak var endsDateLabel: UILabel!
 	@IBOutlet weak var locationLabel: UILabel!
 	
-
-    override public func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+	public var childEvent: CreateEventContext.ChildEvent?
+	public weak var delegate: CreateEventChildEventCellDelegate?
+	
+	override public func awakeFromNib() {
+		super.awakeFromNib()
+		// Initialization code
 		
 		backgroundColor = UIColor.clearColor()
+		selectionStyle = .None
 		
 		deleteIconImageView.image = UIImage(named: "CircleDeleteIcon")
 		deleteIconImageView.contentMode = .ScaleAspectFill
@@ -37,7 +44,7 @@ final public class CreateEventDateAndLocationCell: UITableViewCell {
 		deleteTitleLabel.textColor = ColorgyColor.grayContentTextColor
 		
 		deleteRegionView.backgroundColor = UIColor.clearColor()
-		deleteRegionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateEventDateAndLocationCell.deleteRegionTapped)))
+		deleteRegionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateEventChildEventCell.deleteRegionTapped)))
 		
 		containerView.backgroundColor = UIColor.whiteColor()
 		seperatorLine1.backgroundColor = ColorgyColor.BackgroundColor
@@ -53,10 +60,10 @@ final public class CreateEventDateAndLocationCell: UITableViewCell {
 		
 		locationLabel.textColor = ColorgyColor.grayContentTextColor
 		locationLabel.text = "地點"
-    }
+	}
 	
 	@objc private func deleteRegionTapped() {
-		
+		delegate?.createEventChildEventCellNeedToDeleteChildEvent(childEvent?.eventId)
 	}
 	
 }

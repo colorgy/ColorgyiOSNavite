@@ -9,7 +9,7 @@
 import UIKit
 
 final public class CreateEventView: UIView {
-
+	
 	private var createEventTableView: UITableView!
 	// select color
 	private var selectColorCellExpanded: Bool = false
@@ -17,7 +17,7 @@ final public class CreateEventView: UIView {
 	private var eventRepeated: Bool = false
 	// viewmodel reference
 	public var viewModel: CreateEventViewModel?
-
+	
 	
 	// MARK: - Table view arrangement
 	private enum CellArrangement {
@@ -40,15 +40,14 @@ final public class CreateEventView: UIView {
 	
 	private var infoSection: Int = 0
 	private var repeatSection: Int = 1
-	private var eventDateSection: Int = 2
-	private var addEventDateSection: Int = 3
+	private var childEventSection: Int = 2
+	private var addChildEventSection: Int = 3
 	private var notesSection: Int = 4
 	
 	private var totalSectionCount: Int = 5
 	private var infoSectionCount: Int = 2
 	private var repeatSectionCount: Int = 2
-	private var eventDateSectionCount: Int = 10
-	private var addEventDateSectionCount: Int = 1
+	private var addChildEventSectionCount: Int = 1
 	private var notesSectionCount: Int = 1
 	
 	public init(frame: CGRect, viewModel: CreateEventViewModel?) {
@@ -67,7 +66,7 @@ final public class CreateEventView: UIView {
 		static let repeatEndsCell = "CreateEventRepeatEndsCell"
 		static let notificationCell = "CreateEventNotificationCell"
 		// date nib
-		static let dateAndLocationCell = "CreateEventDateAndLocationCell"
+		static let dateAndLocationCell = "CreateEventChildEventCell"
 		static let addDateCell = "CreateEventAddDateCell"
 		// notes nib
 		static let notesCell = "CreateEventNotesCell"
@@ -117,7 +116,7 @@ final public class CreateEventView: UIView {
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-
+	
 	// MARK: - Color Cell
 	// update color cell
 	private func reloadColorCell() {
@@ -157,10 +156,10 @@ extension CreateEventView : UITableViewDataSource {
 			return infoSectionCount
 		case repeatSection:
 			return repeatSectionCount
-		case eventDateSection:
-			return eventDateSectionCount
-		case addEventDateSection:
-			return addEventDateSectionCount
+		case childEventSection:
+			return viewModel?.context.childEvents.count ?? 0
+		case addChildEventSection:
+			return addChildEventSectionCount
 		case notesSection:
 			return notesSectionCount
 		default:
@@ -222,10 +221,10 @@ extension CreateEventView : UITableViewDataSource {
 					break
 				}
 			}
-		case eventDateSection:
-			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.dateAndLocationCell, forIndexPath: indexPath) as! CreateEventDateAndLocationCell
+		case childEventSection:
+			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.dateAndLocationCell, forIndexPath: indexPath) as! CreateEventChildEventCell
 			return cell
-		case addEventDateSection:
+		case addChildEventSection:
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.addDateCell, forIndexPath: indexPath) as! CreateEventAddDateCell
 			cell.delegate = self
 			return cell
@@ -260,10 +259,10 @@ extension CreateEventView : UITableViewDataSource {
 		case repeatSection:
 			// date section
 			return 44.0
-		case eventDateSection:
+		case childEventSection:
 			// date section
 			return 175.0
-		case addEventDateSection:
+		case addChildEventSection:
 			return 36.0 + 48.0
 		case notesSection:
 			// notes section

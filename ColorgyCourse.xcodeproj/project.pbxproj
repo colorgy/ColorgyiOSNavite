@@ -103,8 +103,8 @@
 		63B1C3631CF2B49300989B5D /* CreateEventColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C3621CF2B49300989B5D /* CreateEventColorCell.xib */; };
 		63B1C3651CF2B49F00989B5D /* CreateEventColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3641CF2B49F00989B5D /* CreateEventColorCell.swift */; };
 		63B1C3671CF2B5A800989B5D /* CreateEventColorCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3661CF2B5A800989B5D /* CreateEventColorCellDelegate.swift */; };
-		63B1C3691CF2D38400989B5D /* CreateEventDateAndLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C3681CF2D38400989B5D /* CreateEventDateAndLocationCell.xib */; };
-		63B1C36B1CF2D38C00989B5D /* CreateEventDateAndLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C36A1CF2D38C00989B5D /* CreateEventDateAndLocationCell.swift */; };
+		63B1C3691CF2D38400989B5D /* CreateEventChildEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C3681CF2D38400989B5D /* CreateEventChildEventCell.xib */; };
+		63B1C36B1CF2D38C00989B5D /* CreateEventChildEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C36A1CF2D38C00989B5D /* CreateEventChildEventCell.swift */; };
 		63B1C36D1CF2DEE600989B5D /* CreateEventNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C36C1CF2DEE600989B5D /* CreateEventNotificationCell.xib */; };
 		63B1C36F1CF2DEEE00989B5D /* CreateEventNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C36E1CF2DEEE00989B5D /* CreateEventNotificationCell.swift */; };
 		63B1C3711CF2F25700989B5D /* CreateEventRepeatEndsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C3701CF2F25700989B5D /* CreateEventRepeatEndsCell.xib */; };
@@ -340,8 +340,8 @@
 		63B1C3621CF2B49300989B5D /* CreateEventColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventColorCell.xib; sourceTree = "<group>"; };
 		63B1C3641CF2B49F00989B5D /* CreateEventColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventColorCell.swift; sourceTree = "<group>"; };
 		63B1C3661CF2B5A800989B5D /* CreateEventColorCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventColorCellDelegate.swift; sourceTree = "<group>"; };
-		63B1C3681CF2D38400989B5D /* CreateEventDateAndLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventDateAndLocationCell.xib; sourceTree = "<group>"; };
-		63B1C36A1CF2D38C00989B5D /* CreateEventDateAndLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventDateAndLocationCell.swift; sourceTree = "<group>"; };
+		63B1C3681CF2D38400989B5D /* CreateEventChildEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventChildEventCell.xib; sourceTree = "<group>"; };
+		63B1C36A1CF2D38C00989B5D /* CreateEventChildEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventChildEventCell.swift; sourceTree = "<group>"; };
 		63B1C36C1CF2DEE600989B5D /* CreateEventNotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventNotificationCell.xib; sourceTree = "<group>"; };
 		63B1C36E1CF2DEEE00989B5D /* CreateEventNotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventNotificationCell.swift; sourceTree = "<group>"; };
 		63B1C3701CF2F25700989B5D /* CreateEventRepeatEndsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventRepeatEndsCell.xib; sourceTree = "<group>"; };
@@ -774,8 +774,8 @@
 				63B1C3721CF2F26000989B5D /* CreateEventRepeatEndsCell.swift */,
 				63B1C35E1CF2AF9400989B5D /* CreateEventNotesCell.xib */,
 				63B1C3601CF2AF9C00989B5D /* CreateEventNotesCell.swift */,
-				63B1C3681CF2D38400989B5D /* CreateEventDateAndLocationCell.xib */,
-				63B1C36A1CF2D38C00989B5D /* CreateEventDateAndLocationCell.swift */,
+				63B1C3681CF2D38400989B5D /* CreateEventChildEventCell.xib */,
+				63B1C36A1CF2D38C00989B5D /* CreateEventChildEventCell.swift */,
 				63E4472A1D0E9639005186FD /* CreateEventAddDateCell.xib */,
 				63E447281D0E962F005186FD /* CreateEventAddDateCell.swift */,
 				63B1C36C1CF2DEE600989B5D /* CreateEventNotificationCell.xib */,
@@ -993,7 +993,7 @@
 				63EC77B41CC8743D008025A7 /* DLIncomingMessageBubble.xib in Resources */,
 				63B1C35B1CF29C4900989B5D /* CreateEventRepeatedCell.xib in Resources */,
 				63B1C3541CF291E100989B5D /* CreateEventColorExpandedCell.xib in Resources */,
-				63B1C3691CF2D38400989B5D /* CreateEventDateAndLocationCell.xib in Resources */,
+				63B1C3691CF2D38400989B5D /* CreateEventChildEventCell.xib in Resources */,
 				63B1C36D1CF2DEE600989B5D /* CreateEventNotificationCell.xib in Resources */,
 				638BFA0C1D07C2D900939731 /* ChooseSchoolTableViewCell.xib in Resources */,
 				63EC77B71CC8743D008025A7 /* DLIncomingPhotoBubble.xib in Resources */,
@@ -1189,7 +1189,7 @@
 				63B1C3831CF42D9600989B5D /* PhoneInputBox.swift in Sources */,
 				635479EC1CB8B02A00DE8CBC /* CourseRawDataObject.swift in Sources */,
 				63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */,
-				63B1C36B1CF2D38C00989B5D /* CreateEventDateAndLocationCell.swift in Sources */,
+				63B1C36B1CF2D38C00989B5D /* CreateEventChildEventCell.swift in Sources */,
 				630337EE1CE97906006FEA1C /* BlurWallViewController.swift in Sources */,
 				63B1C36F1CF2DEEE00989B5D /* CreateEventNotificationCell.swift in Sources */,
 				63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */,
