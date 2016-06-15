@@ -9,9 +9,22 @@
 import Foundation
 import UIKit
 
-final public class ColorgyNavigationTransitioningDelegate: UIPercentDrivenInteractiveTransition {
+final public class ColorgyNavigationTransitioningDelegate: NSObject {
 	private var isInteractive: Bool = false
 	private var isPresenting: Bool = false
+	
+	private var interactionController: UIPercentDrivenInteractiveTransition?
+	
+	public var navigationController: UINavigationController! {
+		didSet {
+			setupNavigationController()
+		}
+	}
+	private func setupNavigationController() {
+		interactionController = UIPercentDrivenInteractiveTransition()
+		pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+		navigationController.view.addGestureRecognizer(pan)
+	}
 	
 	public var mainViewController: UIViewController! {
 		didSet {
@@ -29,11 +42,12 @@ final public class ColorgyNavigationTransitioningDelegate: UIPercentDrivenIntera
 	}
 	private func setupPresentingVC() {
 		// need a edge gesture to exit presenting view
-		exitingEdgeGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(ColorgyNavigationTransitioningDelegate.handleExitingEdgeGesture(_:)))
-		exitingEdgeGesture.edges = .Left
-		presentingViewController.view.addGestureRecognizer(exitingEdgeGesture)
+//		exitingEdgeGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(ColorgyNavigationTransitioningDelegate.handleExitingEdgeGesture(_:)))
+//		exitingEdgeGesture.edges = .Left
+//		presentingViewController.view.addGestureRecognizer(exitingEdgeGesture)
 	}
 	private var exitingEdgeGesture: UIScreenEdgePanGestureRecognizer!
+	private var pan: UIPanGestureRecognizer!
 	@objc private func handleExitingEdgeGesture(gesture: UIScreenEdgePanGestureRecognizer) {
 		
 		// get offset
@@ -49,16 +63,53 @@ final public class ColorgyNavigationTransitioningDelegate: UIPercentDrivenIntera
 			// while began, mark interactive flag to true
 			isInteractive = true
 			// start the dismiss work
-			presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+			navigationController?.popViewControllerAnimated(true)
 		case .Changed:
 			// update ui according to the progress
-			updateInteractiveTransition(progress)
+			self.interactionController?.updateInteractiveTransition(progress)
 		default:
 			// finished, cancelled, interrupted
 			isInteractive = false
 			// check the progress, larger than 50% will finish the transition
-			progress > 0.5 ? finishInteractiveTransition() : cancelInteractiveTransition()
+			progress > 0.5 ? self.interactionController?.finishInteractiveTransition() : self.interactionController?.cancelInteractiveTransition()
 		}
+	}
+	
+	@objc private func handlePan(gesture: UIPanGestureRecognizer) {
+		
+		// get offset
+		let translation = gesture.translationInView(presentingViewController.view)
+		// calculate the progress
+		// max from x to 0 to prevent negative progress
+		// min from x to 1 is to prevent progress to exceed 0~1
+		let progress = min(max((translation.x / UIScreen.mainScreen().bounds.width), 0), 1)
+		
+		// handle gesture
+		switch gesture.state {
+		case .Began:
+			// while began, mark interactive flag to true
+			isInteractive = true
+			// start the dismiss work
+			navigationController?.popViewControllerAnimated(true)
+		case .Changed:
+			// update ui according to the progress
+			self.interactionController?.updateInteractiveTransition(progress)
+		default:
+			// finished, cancelled, interrupted
+			isInteractive = false
+			// check the progress, larger than 50% will finish the transition
+			progress > 0.5 ? self.interactionController?.finishInteractiveTransition() : self.interactionController?.cancelInteractiveTransition()
+		}
+	}
+}
+
+extension ColorgyNavigationTransitioningDelegate : UINavigationControllerDelegate {
+	public func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		return self
+	}
+	
+	public func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+		return self.interactionController
 	}
 }
 
@@ -71,14 +122,6 @@ extension ColorgyNavigationTransitioningDelegate : UIViewControllerTransitioning
 	public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 		isPresenting = false
 		return self
-	}
-	
-	public func interactionControllerForPresentation(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-		return isInteractive ? self : nil
-	}
-	
-	public func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-		return isInteractive ? self : nil
 	}
 }
 
@@ -126,7 +169,7 @@ extension ColorgyNavigationTransitioningDelegate : UIViewControllerAnimatedTrans
 		}
 		
 		// animation part
-		UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0, initialSpringVelocity: 0, options: [], animations: { 
+		UIView.animateWithDuration(duration, delay: 0, options: [], animations: { 
 			if self.isPresenting {
 				// presenting view enter from right to left
 				self.onStagePresentingVC()

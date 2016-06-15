@@ -15,6 +15,9 @@ public class LoginViewController: UIViewController {
 	@IBOutlet weak var emailLoginButton: UIButton!
 	@IBOutlet weak var emailRegisterButton: UIButton!
 	
+	// MARK: - Parameters
+	private var transitioningManager: ColorgyNavigationTransitioningDelegate!
+	
 	// MARK: - Actions
 	@IBAction func fbLoginButtonClicked() {
 		loginViewModel?.facebookLogin()
@@ -37,6 +40,8 @@ public class LoginViewController: UIViewController {
 	override public func viewDidLoad() {
 		super.viewDidLoad()
 		
+		transitioningManager = ColorgyNavigationTransitioningDelegate()
+		
 		configureLoginButton()
 		
 		configureViewModel()
@@ -48,6 +53,9 @@ public class LoginViewController: UIViewController {
 		super.viewDidAppear(animated)
 	}
 	
+	public override func viewDidDisappear(animated: Bool) {
+		super.viewDidDisappear(animated)
+	}
 	// MARK: - Configure
 	func configureLoginButton() {
 		emailLoginButton.layer.cornerRadius = 4.0
@@ -69,7 +77,10 @@ public class LoginViewController: UIViewController {
 		if segue.identifier == Storyboard.registerEmailSegue {
 			
 		} else if segue.identifier == Storyboard.emailLoginSegue {
-			
+			navigationController?.delegate = transitioningManager
+			transitioningManager.navigationController = self.navigationController
+			transitioningManager.mainViewController = self
+			transitioningManager.presentingViewController = segue.destinationViewController
 		}
 	}
 }

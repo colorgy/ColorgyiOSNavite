@@ -42,6 +42,7 @@
 		632C0C5D1CF71637002C9380 /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C5C1CF71637002C9380 /* PhoneNumberTextField.swift */; };
 		632C0C601CF7FE9F002C9380 /* ReenterPhoneNumberViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C5F1CF7FE9F002C9380 /* ReenterPhoneNumberViewControllerTransitioningDelegate.swift */; };
 		6352C2491D1121780041CF9B /* ColorgyNavigationTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352C2481D1121780041CF9B /* ColorgyNavigationTransitioningDelegate.swift */; };
+		6352C24A1D112C790041CF9B /* ColorgyNavigationTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352C2481D1121780041CF9B /* ColorgyNavigationTransitioningDelegate.swift */; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
 		6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479891CB898C100DE8CBC /* ViewController.swift */; };
 		6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354798B1CB898C100DE8CBC /* Main.storyboard */; };
@@ -1366,6 +1367,7 @@
 				6375477D1CC9D67600BC3BBD /* ColorgyChatContext.swift in Sources */,
 				63F3EE7E1CBF49DF0010D059 /* Semester.swift in Sources */,
 				63B1C3811CF428C100989B5D /* ConfirmPasswordInputBox.swift in Sources */,
+				6352C24A1D112C790041CF9B /* ColorgyNavigationTransitioningDelegate.swift in Sources */,
 				63F3EE801CBF49DF0010D059 /* ColorgyAPIUserResult.swift in Sources */,
 				63C3CE361CC0C8BC000EE808 /* EmailRegisterViewController.swift in Sources */,
 				63F3EE7A1CBF49D10010D059 /* CourseOwnershipObject.swift in Sources */,
