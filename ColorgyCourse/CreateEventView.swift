@@ -228,6 +228,7 @@ extension CreateEventView : UITableViewDataSource {
 			}
 		case childEventSection:
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.childEventCell, forIndexPath: indexPath) as! CreateEventChildEventCell
+			cell.childEvent = viewModel?.context.childEvents[indexPath.row]
 			cell.delegate = self
 			return cell
 		case addChildEventSection:

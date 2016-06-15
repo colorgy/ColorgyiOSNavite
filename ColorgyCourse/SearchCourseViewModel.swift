@@ -83,7 +83,9 @@ final public class SearchCourseViewModel {
 		               "南方產紅豆，春天長得好，多採一點，把妹超好用。",
 		               "原文：【關雎】關關雎鳩，在河之洲。窈窕淑女，君子好逑。",
 		               "廢文翻譯",
-		               "水鳥在沙洲上叫，害我好想把個正妹"]
+		               "水鳥在沙洲上叫，害我好想把個正妹",
+		               "dsiuhsduhfu",
+		               "asi877887saijas1094878356"]
 		self.courses = []
 		for _ in 1...10000 {
 			for e in _events {
