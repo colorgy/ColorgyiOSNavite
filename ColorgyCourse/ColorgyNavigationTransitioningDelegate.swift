@@ -9,11 +9,9 @@
 import Foundation
 import UIKit
 
-final public class ColorgyNavigationTransitioningDelegate: NSObject {
+final public class ColorgyNavigationTransitioningDelegate: UIPercentDrivenInteractiveTransition {
 	private var isInteractive: Bool = false
 	private var isPresenting: Bool = false
-	
-	private var interactionController: UIPercentDrivenInteractiveTransition?
 	
 	public var navigationController: UINavigationController! {
 		didSet {
@@ -21,7 +19,6 @@ final public class ColorgyNavigationTransitioningDelegate: NSObject {
 		}
 	}
 	private func setupNavigationController() {
-		interactionController = UIPercentDrivenInteractiveTransition()
 		pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
 		navigationController.view.addGestureRecognizer(pan)
 	}
@@ -66,12 +63,12 @@ final public class ColorgyNavigationTransitioningDelegate: NSObject {
 			navigationController?.popViewControllerAnimated(true)
 		case .Changed:
 			// update ui according to the progress
-			self.interactionController?.updateInteractiveTransition(progress)
+			updateInteractiveTransition(progress)
 		default:
 			// finished, cancelled, interrupted
 			isInteractive = false
 			// check the progress, larger than 50% will finish the transition
-			progress > 0.5 ? self.interactionController?.finishInteractiveTransition() : self.interactionController?.cancelInteractiveTransition()
+			progress > 0.5 ? finishInteractiveTransition() : cancelInteractiveTransition()
 		}
 	}
 	
@@ -93,23 +90,26 @@ final public class ColorgyNavigationTransitioningDelegate: NSObject {
 			navigationController?.popViewControllerAnimated(true)
 		case .Changed:
 			// update ui according to the progress
-			self.interactionController?.updateInteractiveTransition(progress)
+			updateInteractiveTransition(progress)
 		default:
 			// finished, cancelled, interrupted
 			isInteractive = false
 			// check the progress, larger than 50% will finish the transition
-			progress > 0.5 ? self.interactionController?.finishInteractiveTransition() : self.interactionController?.cancelInteractiveTransition()
+			progress > 0.5 ? finishInteractiveTransition() : cancelInteractiveTransition()
 		}
 	}
 }
 
 extension ColorgyNavigationTransitioningDelegate : UINavigationControllerDelegate {
 	public func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-		return self
+		if operation == UINavigationControllerOperation.Pop {
+			return self
+		}
+		return nil
 	}
 	
 	public func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-		return self.interactionController
+		return self
 	}
 }
 
@@ -122,6 +122,14 @@ extension ColorgyNavigationTransitioningDelegate : UIViewControllerTransitioning
 	public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 		isPresenting = false
 		return self
+	}
+	
+	public func interactionControllerForPresentation(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+		return isInteractive ? self : nil
+	}
+	
+	public func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+		return isInteractive ? self : nil
 	}
 }
 
