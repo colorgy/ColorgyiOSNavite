@@ -19,8 +19,9 @@ final public class ColorgyNavigationTransitioningDelegate: UIPercentDrivenIntera
 		}
 	}
 	private func setupNavigationController() {
-		pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-		navigationController.view.addGestureRecognizer(pan)
+		exitingEdgeGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(ColorgyNavigationTransitioningDelegate.handleExitingEdgeGesture(_:)))
+		exitingEdgeGesture.edges = .Left
+		navigationController.view.addGestureRecognizer(exitingEdgeGesture)
 	}
 	
 	public var mainViewController: UIViewController! {
@@ -38,41 +39,10 @@ final public class ColorgyNavigationTransitioningDelegate: UIPercentDrivenIntera
 		}
 	}
 	private func setupPresentingVC() {
-		// need a edge gesture to exit presenting view
-//		exitingEdgeGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(ColorgyNavigationTransitioningDelegate.handleExitingEdgeGesture(_:)))
-//		exitingEdgeGesture.edges = .Left
-//		presentingViewController.view.addGestureRecognizer(exitingEdgeGesture)
+
 	}
 	private var exitingEdgeGesture: UIScreenEdgePanGestureRecognizer!
-	private var pan: UIPanGestureRecognizer!
 	@objc private func handleExitingEdgeGesture(gesture: UIScreenEdgePanGestureRecognizer) {
-		
-		// get offset
-		let translation = gesture.translationInView(presentingViewController.view)
-		// calculate the progress
-		// max from x to 0 to prevent negative progress
-		// min from x to 1 is to prevent progress to exceed 0~1
-		let progress = min(max((translation.x / UIScreen.mainScreen().bounds.width), 0), 1)
-		
-		// handle gesture
-		switch gesture.state {
-		case .Began:
-			// while began, mark interactive flag to true
-			isInteractive = true
-			// start the dismiss work
-			navigationController?.popViewControllerAnimated(true)
-		case .Changed:
-			// update ui according to the progress
-			updateInteractiveTransition(progress)
-		default:
-			// finished, cancelled, interrupted
-			isInteractive = false
-			// check the progress, larger than 50% will finish the transition
-			progress > 0.5 ? finishInteractiveTransition() : cancelInteractiveTransition()
-		}
-	}
-	
-	@objc private func handlePan(gesture: UIPanGestureRecognizer) {
 		
 		// get offset
 		let translation = gesture.translationInView(presentingViewController.view)
@@ -102,9 +72,11 @@ final public class ColorgyNavigationTransitioningDelegate: UIPercentDrivenIntera
 
 extension ColorgyNavigationTransitioningDelegate : UINavigationControllerDelegate {
 	public func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		// when deriving pop, return animator
 		if operation == UINavigationControllerOperation.Pop {
 			return self
 		}
+		// if not return nil
 		return nil
 	}
 	
@@ -151,6 +123,15 @@ extension ColorgyNavigationTransitioningDelegate {
 	private func onStageMainVC() {
 		mainViewController.view.transform = CGAffineTransformIdentity
 	}
+	
+	private func offStageMainView(view: UIView) {
+		let offset = mainViewController.view.bounds.width * 0.5
+		view.transform = CGAffineTransformMakeTranslation(-offset, 0)
+	}
+	
+	private func onStageMainView(view: UIView) {
+		view.transform = CGAffineTransformIdentity
+	}
 }
 
 extension ColorgyNavigationTransitioningDelegate : UIViewControllerAnimatedTransitioning {
@@ -158,6 +139,7 @@ extension ColorgyNavigationTransitioningDelegate : UIViewControllerAnimatedTrans
 		return 1
 	}
 	
+	// Animation code
 	public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
 		
 		let container = transitionContext.containerView()!
@@ -168,12 +150,19 @@ extension ColorgyNavigationTransitioningDelegate : UIViewControllerAnimatedTrans
 		let mainVC = isPresenting ? screen.from : screen.to
 		let presentingVC = isPresenting ? screen.to : screen.from
 		
+		let mainVCSnapshot = mainVC.view.resizableSnapshotViewFromRect(UIScreen.mainScreen().bounds, afterScreenUpdates: true, withCapInsets: UIEdgeInsetsZero)
+		let presentingVCSnapshot = presentingVC.view.resizableSnapshotViewFromRect(UIScreen.mainScreen().bounds, afterScreenUpdates: true, withCapInsets: UIEdgeInsetsZero)
+		
 		let duration = transitionDuration(transitionContext)
 		
 		// Start animation
 		// initial state
 		if isPresenting {
 			OffStagePresentingVC()
+		} else {
+			container.addSubview(mainVCSnapshot)
+			container.insertSubview(presentingVCSnapshot, aboveSubview: mainVCSnapshot)
+			offStageMainView(mainVCSnapshot)
 		}
 		
 		// animation part
@@ -188,6 +177,7 @@ extension ColorgyNavigationTransitioningDelegate : UIViewControllerAnimatedTrans
 				self.OffStagePresentingVC()
 				// get back main view
 				self.onStageMainVC()
+				self.onStageMainView(mainVCSnapshot)
 			}
 			}, completion: { (finished) in
 				if transitionContext.transitionWasCancelled() {
@@ -201,30 +191,6 @@ extension ColorgyNavigationTransitioningDelegate : UIViewControllerAnimatedTrans
 					UIApplication.sharedApplication().keyWindow?.addSubview(screen.to.view)
 				}
 		})
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	}
 }
