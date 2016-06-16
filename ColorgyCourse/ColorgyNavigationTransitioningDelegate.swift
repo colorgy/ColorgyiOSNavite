@@ -39,7 +39,10 @@ final public class ColorgyNavigationTransitioningDelegate: UIPercentDrivenIntera
 		}
 	}
 	private func setupPresentingVC() {
-
+		exitingEdgeGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(ColorgyNavigationTransitioningDelegate.handleExitingEdgeGesture(_:)))
+		exitingEdgeGesture.edges = .Left
+		pan = UIPanGestureRecognizer(target: self, action: #selector(ColorgyNavigationTransitioningDelegate.handlePanGesture(_:)))
+		presentingViewController.view.addGestureRecognizer(pan)
 	}
 	private var exitingEdgeGesture: UIScreenEdgePanGestureRecognizer!
 	@objc private func handleExitingEdgeGesture(gesture: UIScreenEdgePanGestureRecognizer) {
@@ -57,7 +60,8 @@ final public class ColorgyNavigationTransitioningDelegate: UIPercentDrivenIntera
 			// while began, mark interactive flag to true
 			isInteractive = true
 			// start the dismiss work
-			navigationController?.popViewControllerAnimated(true)
+//			navigationController?.popViewControllerAnimated(true)
+			presentingViewController.dismissViewControllerAnimated(true, completion: nil)
 		case .Changed:
 			// update ui according to the progress
 			updateInteractiveTransition(progress)
@@ -68,20 +72,33 @@ final public class ColorgyNavigationTransitioningDelegate: UIPercentDrivenIntera
 			progress > 0.5 ? finishInteractiveTransition() : cancelInteractiveTransition()
 		}
 	}
-}
-
-extension ColorgyNavigationTransitioningDelegate : UINavigationControllerDelegate {
-	public func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-		// when deriving pop, return animator
-		if operation == UINavigationControllerOperation.Pop {
-			return self
+	private var pan: UIPanGestureRecognizer!
+	@objc private func handlePanGesture(gesture: UIPanGestureRecognizer) {
+		
+		// get offset
+		let translation = gesture.translationInView(presentingViewController.view)
+		// calculate the progress
+		// max from x to 0 to prevent negative progress
+		// min from x to 1 is to prevent progress to exceed 0~1
+		let progress = min(max((translation.x / UIScreen.mainScreen().bounds.width), 0), 1)
+		
+		// handle gesture
+		switch gesture.state {
+		case .Began:
+			// while began, mark interactive flag to true
+			isInteractive = true
+			// start the dismiss work
+			//			navigationController?.popViewControllerAnimated(true)
+			presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+		case .Changed:
+			// update ui according to the progress
+			updateInteractiveTransition(progress)
+		default:
+			// finished, cancelled, interrupted
+			isInteractive = false
+			// check the progress, larger than 50% will finish the transition
+			progress > 0.5 ? finishInteractiveTransition() : cancelInteractiveTransition()
 		}
-		// if not return nil
-		return nil
-	}
-	
-	public func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-		return self
 	}
 }
 
@@ -155,40 +172,47 @@ extension ColorgyNavigationTransitioningDelegate : UIViewControllerAnimatedTrans
 		
 		let duration = transitionDuration(transitionContext)
 		
+		container.addSubview(mainVC.view)
+		container.addSubview(presentingVC.view)
+		
 		// Start animation
 		// initial state
+		let mainOffset: CGFloat = 150
 		if isPresenting {
-			OffStagePresentingVC()
+			presentingVC.view.transform = CGAffineTransformMakeTranslation(presentingVC.view.bounds.width, 0)
 		} else {
-			container.addSubview(mainVCSnapshot)
-			container.insertSubview(presentingVCSnapshot, aboveSubview: mainVCSnapshot)
-			offStageMainView(mainVCSnapshot)
+			
 		}
 		
 		// animation part
 		UIView.animateWithDuration(duration, delay: 0, options: [], animations: { 
 			if self.isPresenting {
 				// presenting view enter from right to left
-				self.onStagePresentingVC()
+				presentingVC.view.transform = CGAffineTransformIdentity
 				// main view move a bit to left
-				self.offStageMainVC()
+				mainVC.view.transform = CGAffineTransformMakeTranslation(-150, 0)
 			} else {
-				// dismiss presenting view
-				self.OffStagePresentingVC()
+				
 				// get back main view
-				self.onStageMainVC()
-				self.onStageMainView(mainVCSnapshot)
+				mainVC.view.transform = CGAffineTransformIdentity
+				// dismiss presenting view
+				presentingVC.view.transform = CGAffineTransformMakeTranslation(presentingVC.view.bounds.width, 0)
 			}
 			}, completion: { (finished) in
 				if transitionContext.transitionWasCancelled() {
 					// transition was cancelled, not completing the transition
 					transitionContext.completeTransition(false)
 					// from view is still in presenting
+					presentingVCSnapshot.removeFromSuperview()
+					screen.from.view.transform = CGAffineTransformIdentity
 					UIApplication.sharedApplication().keyWindow?.addSubview(screen.from.view)
+					screen.from.view.show()
 				} else {
 					// transition completed
 					transitionContext.completeTransition(true)
+					screen.to.view.transform = CGAffineTransformIdentity
 					UIApplication.sharedApplication().keyWindow?.addSubview(screen.to.view)
+					screen.to.view.show()
 				}
 		})
 		

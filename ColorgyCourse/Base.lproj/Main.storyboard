@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w2D-G2-Odt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0TG-bl-5as">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -283,8 +283,8 @@
                         <outlet property="emailLoginButton" destination="DIS-dT-RYQ" id="7In-tZ-i5Y"/>
                         <outlet property="emailRegisterButton" destination="QmN-dB-BlW" id="z4o-Gr-vzv"/>
                         <outlet property="fbLoginButton" destination="Fad-eA-lCh" id="hUf-qh-GvP"/>
-                        <segue destination="wsh-4F-bjd" kind="show" identifier="register email segue" id="44r-4U-aTd"/>
-                        <segue destination="qeP-Gm-qVg" kind="show" identifier="email login segue" id="hdm-OZ-IxA"/>
+                        <segue destination="wsh-4F-bjd" kind="presentation" identifier="register email segue" id="44r-4U-aTd"/>
+                        <segue destination="qeP-Gm-qVg" kind="presentation" identifier="email login segue" id="hdm-OZ-IxA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ap-Tt-hpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -312,7 +312,7 @@
         <!--Email Login View Controller-->
         <scene sceneID="M4i-Vd-J5v">
             <objects>
-                <viewController id="qeP-Gm-qVg" customClass="EmailLoginViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="a" id="qeP-Gm-qVg" customClass="EmailLoginViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cdJ-uC-kRg"/>
                         <viewControllerLayoutGuide type="bottom" id="v4p-rL-ApR"/>
@@ -326,24 +326,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9r-gl-eJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2264" y="217"/>
-        </scene>
-        <!--Colorgy Navigation Controller-->
-        <scene sceneID="Tf1-v9-rts">
-            <objects>
-                <navigationController storyboardIdentifier="Main Login View" automaticallyAdjustsScrollViewInsets="NO" id="w2D-G2-Odt" customClass="ColorgyNavigationController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5QR-15-Yde">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="0TG-bl-5as" kind="relationship" relationship="rootViewController" id="KB6-IP-r87"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LxE-nV-GAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-302" y="-127"/>
         </scene>
         <!--Colorgy Navigation Controller-->
         <scene sceneID="YJt-Uo-Ov6">

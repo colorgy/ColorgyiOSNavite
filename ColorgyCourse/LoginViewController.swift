@@ -77,10 +77,11 @@ public class LoginViewController: UIViewController {
 		if segue.identifier == Storyboard.registerEmailSegue {
 			
 		} else if segue.identifier == Storyboard.emailLoginSegue {
-			navigationController?.delegate = transitioningManager
-			transitioningManager.navigationController = self.navigationController
+//			navigationController?.delegate = transitioningManager
+//			transitioningManager.navigationController = self.navigationController
 			transitioningManager.mainViewController = self
 			transitioningManager.presentingViewController = segue.destinationViewController
+			transitioningManager.presentingViewController.transitioningDelegate = transitioningManager
 		}
 	}
 }
@@ -123,5 +124,11 @@ extension LoginViewController : LoginViewModelDelegate {
 	
 	public func loginViewModelRequestRegisterNewAccount() {
 		performSegueWithIdentifier(Storyboard.registerEmailSegue, sender: nil)
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let vc = storyboard.instantiateViewControllerWithIdentifier("a")
+		presentViewController(vc, animated: true, completion: nil)
+		transitioningManager.mainViewController = self
+		transitioningManager.presentingViewController = vc
+		vc.transitioningDelegate = transitioningManager
 	}
 }
