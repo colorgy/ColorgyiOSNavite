@@ -1,1 +1,0 @@
-../../../SKPhotoBrowser/SKPhotoBrowser/SKPhotoBrowser.h
