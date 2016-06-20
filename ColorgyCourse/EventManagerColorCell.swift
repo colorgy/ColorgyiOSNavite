@@ -37,7 +37,7 @@ final public class EventManagerColorCell: UITableViewCell {
     }
 	
 	@objc private func tapped() {
-		delegate?.createEventColorCellNeedsExpand()
+		delegate?.eventManagerColorCellNeedsExpand()
 	}
 
 	public func updateSelectedColor(color: UIColor?) {

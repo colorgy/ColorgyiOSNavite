@@ -1,5 +1,5 @@
 //
-//  CreateEventRepeatedCell.swift
+//  EventManagerRepeatedCell.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/5/23.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final public class CreateEventRepeatedCell: UITableViewCell {
+final public class EventManagerRepeatedCell: UITableViewCell {
 	
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var contentLabel: UILabel!

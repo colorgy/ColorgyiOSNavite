@@ -100,8 +100,8 @@
 		63B1C3561CF2977B00989B5D /* EventManagerColorExpandedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3551CF2977B00989B5D /* EventManagerColorExpandedCell.swift */; };
 		63B1C3581CF2991A00989B5D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3571CF2991A00989B5D /* UIColorExtension.swift */; };
 		63B1C3591CF2992700989B5D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3571CF2991A00989B5D /* UIColorExtension.swift */; };
-		63B1C35B1CF29C4900989B5D /* CreateEventRepeatedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C35A1CF29C4900989B5D /* CreateEventRepeatedCell.xib */; };
-		63B1C35D1CF29C5800989B5D /* CreateEventRepeatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C35C1CF29C5800989B5D /* CreateEventRepeatedCell.swift */; };
+		63B1C35B1CF29C4900989B5D /* EventManagerCreateEventRepeatedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C35A1CF29C4900989B5D /* EventManagerCreateEventRepeatedCell.xib */; };
+		63B1C35D1CF29C5800989B5D /* EventManagerRepeatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C35C1CF29C5800989B5D /* EventManagerRepeatedCell.swift */; };
 		63B1C35F1CF2AF9400989B5D /* CreateEventNotesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C35E1CF2AF9400989B5D /* CreateEventNotesCell.xib */; };
 		63B1C3611CF2AF9C00989B5D /* CreateEventNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3601CF2AF9C00989B5D /* CreateEventNotesCell.swift */; };
 		63B1C3631CF2B49300989B5D /* EventManagerColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C3621CF2B49300989B5D /* EventManagerColorCell.xib */; };
@@ -337,8 +337,8 @@
 		63B1C3531CF291E100989B5D /* EventManagerColorExpandedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventManagerColorExpandedCell.xib; sourceTree = "<group>"; };
 		63B1C3551CF2977B00989B5D /* EventManagerColorExpandedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerColorExpandedCell.swift; sourceTree = "<group>"; };
 		63B1C3571CF2991A00989B5D /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		63B1C35A1CF29C4900989B5D /* CreateEventRepeatedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventRepeatedCell.xib; sourceTree = "<group>"; };
-		63B1C35C1CF29C5800989B5D /* CreateEventRepeatedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventRepeatedCell.swift; sourceTree = "<group>"; };
+		63B1C35A1CF29C4900989B5D /* EventManagerCreateEventRepeatedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventManagerCreateEventRepeatedCell.xib; sourceTree = "<group>"; };
+		63B1C35C1CF29C5800989B5D /* EventManagerRepeatedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerRepeatedCell.swift; sourceTree = "<group>"; };
 		63B1C35E1CF2AF9400989B5D /* CreateEventNotesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventNotesCell.xib; sourceTree = "<group>"; };
 		63B1C3601CF2AF9C00989B5D /* CreateEventNotesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventNotesCell.swift; sourceTree = "<group>"; };
 		63B1C3621CF2B49300989B5D /* EventManagerColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventManagerColorCell.xib; sourceTree = "<group>"; };
@@ -785,8 +785,8 @@
 				63B1C3641CF2B49F00989B5D /* EventManagerColorCell.swift */,
 				63B1C3531CF291E100989B5D /* EventManagerColorExpandedCell.xib */,
 				63B1C3551CF2977B00989B5D /* EventManagerColorExpandedCell.swift */,
-				63B1C35A1CF29C4900989B5D /* CreateEventRepeatedCell.xib */,
-				63B1C35C1CF29C5800989B5D /* CreateEventRepeatedCell.swift */,
+				63B1C35A1CF29C4900989B5D /* EventManagerCreateEventRepeatedCell.xib */,
+				63B1C35C1CF29C5800989B5D /* EventManagerRepeatedCell.swift */,
 				63B1C3701CF2F25700989B5D /* CreateEventRepeatEndsCell.xib */,
 				63B1C3721CF2F26000989B5D /* CreateEventRepeatEndsCell.swift */,
 				63B1C35E1CF2AF9400989B5D /* CreateEventNotesCell.xib */,
@@ -995,7 +995,7 @@
 				63B1C3631CF2B49300989B5D /* EventManagerColorCell.xib in Resources */,
 				63B1C34E1CF1EC3300989B5D /* EventManagerTitleCell.xib in Resources */,
 				63EC77B41CC8743D008025A7 /* DLIncomingMessageBubble.xib in Resources */,
-				63B1C35B1CF29C4900989B5D /* CreateEventRepeatedCell.xib in Resources */,
+				63B1C35B1CF29C4900989B5D /* EventManagerCreateEventRepeatedCell.xib in Resources */,
 				63B1C3541CF291E100989B5D /* EventManagerColorExpandedCell.xib in Resources */,
 				63B1C3691CF2D38400989B5D /* CreateEventChildEventCell.xib in Resources */,
 				63B1C36D1CF2DEE600989B5D /* CreateEventNotificationCell.xib in Resources */,
@@ -1300,7 +1300,7 @@
 				63F628B51D07B40A00F55E38 /* ChooseSchoolViewModel.swift in Sources */,
 				632C0C551CF542CD002C9380 /* PhoneDigitValidationField.swift in Sources */,
 				63EC77B21CC8743D008025A7 /* ATrickyView.swift in Sources */,
-				63B1C35D1CF29C5800989B5D /* CreateEventRepeatedCell.swift in Sources */,
+				63B1C35D1CF29C5800989B5D /* EventManagerRepeatedCell.swift in Sources */,
 				63561C4C1CBF937F004AEF6D /* ColorgyColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
