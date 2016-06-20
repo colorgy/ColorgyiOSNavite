@@ -22,7 +22,7 @@ final public class EventManagerViewModel {
 		self.context = EventManagerContext()
 	}
 	
-	public func updateTitleText(text: String?) {
+	public func updateTitle(with text: String?) {
 		context.title = text
 	}
 	

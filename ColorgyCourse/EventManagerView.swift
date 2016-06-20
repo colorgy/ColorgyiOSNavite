@@ -354,8 +354,8 @@ extension EventManagerView : EventManagerViewModelDelegate {
 // MARK: - Cell Delegates
 extension EventManagerView : EventManagerTitleCellDelegate {
 	
-	public func eventManagerTitleCellTitleTextUpdated(text: String?) {
-		viewModel.updateTitleText(text)
+	public func eventManagerTitleCell(titleUpdatedWith text: String?) {
+		viewModel.updateTitle(with: text)
 	}
 	
 }

@@ -538,6 +538,43 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		631DAB5E1D17D07600DE55A1 /* Event Manager Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6335DC3C1D17C46500B32B8C /* EventManagerAddChildEventCell.swift */,
+				6335DC3D1D17C46500B32B8C /* EventManagerAddChildEventCell.xib */,
+				6335DC3E1D17C46500B32B8C /* EventManagerChildEventCell.swift */,
+				6335DC3F1D17C46500B32B8C /* EventManagerChildEventCell.xib */,
+				6335DC401D17C46500B32B8C /* EventManagerColorCell.swift */,
+				6335DC411D17C46500B32B8C /* EventManagerColorCell.xib */,
+				6335DC421D17C46500B32B8C /* EventManagerColorCellDelegate.swift */,
+				6335DC431D17C46500B32B8C /* EventManagerColorExpandedCell.swift */,
+				6335DC441D17C46500B32B8C /* EventManagerColorExpandedCell.xib */,
+				6335DC471D17C46500B32B8C /* EventManagerNotesCell.swift */,
+				6335DC481D17C46500B32B8C /* EventManagerNotesCell.xib */,
+				6335DC491D17C46500B32B8C /* EventManagerNotificationCell.swift */,
+				6335DC4A1D17C46500B32B8C /* EventManagerNotificationCell.xib */,
+				6335DC4B1D17C46500B32B8C /* EventManagerRepeatedCell.swift */,
+				6335DC461D17C46500B32B8C /* EventManagerRepeatedCell.xib */,
+				6335DC4C1D17C46500B32B8C /* EventManagerRepeatEndsCell.swift */,
+				6335DC4D1D17C46500B32B8C /* EventManagerRepeatEndsCell.xib */,
+				6335DC4E1D17C46500B32B8C /* EventManagerTitleCell.swift */,
+				6335DC4F1D17C46500B32B8C /* EventManagerTitleCell.xib */,
+			);
+			name = "Event Manager Cell";
+			sourceTree = "<group>";
+		};
+		631DAB5F1D17D0A300DE55A1 /* Event Manager */ = {
+			isa = PBXGroup;
+			children = (
+				6335DC451D17C46500B32B8C /* EventManagerContext.swift */,
+				6335DC501D17C46500B32B8C /* EventManagerView.swift */,
+				6335DC511D17C46500B32B8C /* EventManagerViewModel.swift */,
+				631DAB5E1D17D07600DE55A1 /* Event Manager Cell */,
+			);
+			name = "Event Manager";
+			sourceTree = "<group>";
+		};
 		6324BF331CF00E6D003F1329 /* Search Course View */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,6 +628,7 @@
 				638BFA0A1D07C12C00939731 /* Choose School View */,
 				63E447141D0E5D85005186FD /* Reenter Phone View Controller */,
 				63E447161D0E5DBE005186FD /* Phone Validation View */,
+				631DAB5F1D17D0A300DE55A1 /* Event Manager */,
 				63B1C34C1CF1EC1600989B5D /* Create Event View */,
 				6393BC011CF01B5B008BFF72 /* Week Calendar View */,
 				6324BF331CF00E6D003F1329 /* Search Course View */,
@@ -775,28 +813,6 @@
 			isa = PBXGroup;
 			children = (
 				63B1C34A1CF1EC1200989B5D /* CreateEventViewController.swift */,
-				6335DC3C1D17C46500B32B8C /* EventManagerAddChildEventCell.swift */,
-				6335DC3D1D17C46500B32B8C /* EventManagerAddChildEventCell.xib */,
-				6335DC3E1D17C46500B32B8C /* EventManagerChildEventCell.swift */,
-				6335DC3F1D17C46500B32B8C /* EventManagerChildEventCell.xib */,
-				6335DC401D17C46500B32B8C /* EventManagerColorCell.swift */,
-				6335DC411D17C46500B32B8C /* EventManagerColorCell.xib */,
-				6335DC421D17C46500B32B8C /* EventManagerColorCellDelegate.swift */,
-				6335DC431D17C46500B32B8C /* EventManagerColorExpandedCell.swift */,
-				6335DC441D17C46500B32B8C /* EventManagerColorExpandedCell.xib */,
-				6335DC451D17C46500B32B8C /* EventManagerContext.swift */,
-				6335DC471D17C46500B32B8C /* EventManagerNotesCell.swift */,
-				6335DC481D17C46500B32B8C /* EventManagerNotesCell.xib */,
-				6335DC491D17C46500B32B8C /* EventManagerNotificationCell.swift */,
-				6335DC4A1D17C46500B32B8C /* EventManagerNotificationCell.xib */,
-				6335DC4B1D17C46500B32B8C /* EventManagerRepeatedCell.swift */,
-				6335DC461D17C46500B32B8C /* EventManagerRepeatedCell.xib */,
-				6335DC4C1D17C46500B32B8C /* EventManagerRepeatEndsCell.swift */,
-				6335DC4D1D17C46500B32B8C /* EventManagerRepeatEndsCell.xib */,
-				6335DC4E1D17C46500B32B8C /* EventManagerTitleCell.swift */,
-				6335DC4F1D17C46500B32B8C /* EventManagerTitleCell.xib */,
-				6335DC501D17C46500B32B8C /* EventManagerView.swift */,
-				6335DC511D17C46500B32B8C /* EventManagerViewModel.swift */,
 			);
 			name = "Create Event View";
 			sourceTree = "<group>";

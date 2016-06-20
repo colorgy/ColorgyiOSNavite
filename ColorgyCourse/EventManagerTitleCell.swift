@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol EventManagerTitleCellDelegate: class {
-	func eventManagerTitleCellTitleTextUpdated(text: String?)
+	func eventManagerTitleCell(titleUpdatedWith text: String?)
 }
 
 final public class EventManagerTitleCell: UITableViewCell {
@@ -43,7 +43,7 @@ final public class EventManagerTitleCell: UITableViewCell {
     }
 
 	@objc private func titleTextEdtingChanged() {
-		delegate?.eventManagerTitleCellTitleTextUpdated(titleTextField.text)
+		delegate?.eventManagerTitleCell(titleUpdatedWith: titleTextField.text)
 	}
 	
 	public func setTitle(title: String?) {
