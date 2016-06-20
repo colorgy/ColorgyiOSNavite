@@ -1,5 +1,5 @@
 //
-//  CreateEventChildEventCell.swift
+//  EventManagerChildEventCell.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/5/23.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-public protocol CreateEventChildEventCellDelegate: class {
-	func createEventChildEventCellNeedToDeleteChildEvent(id: String?)
+public protocol EventManagerChildEventCellDelegate: class {
+	func eventManagerChildEventCellNeedToDeleteChildEvent(id: String?)
 }
 
-final public class CreateEventChildEventCell: UITableViewCell {
+final public class EventManagerChildEventCell: UITableViewCell {
 	
 	@IBOutlet weak var deleteIconImageView: UIImageView!
 	@IBOutlet weak var deleteTitleLabel: UILabel!
@@ -27,7 +27,7 @@ final public class CreateEventChildEventCell: UITableViewCell {
 	@IBOutlet weak var locationLabel: UILabel!
 	
 	public var childEvent: EventManagerContext.ChildEvent?
-	public weak var delegate: CreateEventChildEventCellDelegate?
+	public weak var delegate: EventManagerChildEventCellDelegate?
 	
 	override public func awakeFromNib() {
 		super.awakeFromNib()
@@ -63,7 +63,7 @@ final public class CreateEventChildEventCell: UITableViewCell {
 	}
 	
 	@objc private func deleteRegionTapped() {
-		delegate?.createEventChildEventCellNeedToDeleteChildEvent(childEvent?.eventId)
+		delegate?.eventManagerChildEventCellNeedToDeleteChildEvent(childEvent?.eventId)
 	}
 	
 }
