@@ -1,5 +1,5 @@
 //
-//  CreateEventContext.swift
+//  EventManagerContext.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/6/13.
@@ -11,7 +11,7 @@ import Foundation
 /// This context is used while creating an event.
 /// This is **not** a singleton.
 /// Will help to generate event model.
-final public class CreateEventContext {
+final public class EventManagerContext {
 	
 	public var title: String?
 	public var color: UIColor?

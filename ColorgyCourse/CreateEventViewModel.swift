@@ -1,5 +1,5 @@
 //
-//  CreateEventViewModel.swift
+//  EventManagerViewModel.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/6/13.
@@ -8,18 +8,18 @@
 
 import Foundation
 
-public protocol CreateEventViewModelDelegate: class {
+public protocol EventManagerViewModelDelegate: class {
 	
 }
 
-final public class CreateEventViewModel {
+final public class EventManagerViewModel {
 	
-	public weak var delegate: CreateEventViewModelDelegate?
-	public private(set) var context: CreateEventContext
+	public weak var delegate: EventManagerViewModelDelegate?
+	public private(set) var context: EventManagerContext
 	
-	init(delegate: CreateEventViewModelDelegate?) {
+	init(delegate: EventManagerViewModelDelegate?) {
 		self.delegate = delegate
-		self.context = CreateEventContext()
+		self.context = EventManagerContext()
 	}
 	
 	public func updateTitleText(text: String?) {
@@ -31,7 +31,7 @@ final public class CreateEventViewModel {
 	}
 	
 	public func createNewChildEvent() {
-		let childEvent = CreateEventContext.ChildEvent(startTime: NSDate(), endTime: NSDate(), location: "yooooo")
+		let childEvent = EventManagerContext.ChildEvent(startTime: NSDate(), endTime: NSDate(), location: "yooooo")
 		context.childEvents.append(childEvent)
 	}
 	
