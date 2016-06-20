@@ -1,5 +1,5 @@
 //
-//  CreateEventRepeatEndsCell.swift
+//  EventManagerRepeatEndsCell.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/5/23.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final public class CreateEventRepeatEndsCell: UITableViewCell {
+final public class EventManagerRepeatEndsCell: UITableViewCell {
 	
 	@IBOutlet weak var disclosureIndicatorImageView: UIImageView!
 	@IBOutlet weak var titleLable: UILabel!
