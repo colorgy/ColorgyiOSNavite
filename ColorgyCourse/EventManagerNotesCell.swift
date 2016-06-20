@@ -1,5 +1,5 @@
 //
-//  CreateEventNotesCell.swift
+//  EventManagerNotesCell.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/5/23.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final public class CreateEventNotesCell: UITableViewCell {
+final public class EventManagerNotesCell: UITableViewCell {
 
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var contentTextView: UITextView!
@@ -35,7 +35,7 @@ final public class CreateEventNotesCell: UITableViewCell {
 
 }
 
-extension CreateEventNotesCell : UITextViewDelegate {
+extension EventManagerNotesCell : UITextViewDelegate {
 	
 	public func textViewDidBeginEditing(textView: UITextView) {
 		if textView.textColor == ColorgyColor.grayContentTextColor {
