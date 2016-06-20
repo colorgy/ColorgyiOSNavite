@@ -104,9 +104,9 @@
 		63B1C35D1CF29C5800989B5D /* CreateEventRepeatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C35C1CF29C5800989B5D /* CreateEventRepeatedCell.swift */; };
 		63B1C35F1CF2AF9400989B5D /* CreateEventNotesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C35E1CF2AF9400989B5D /* CreateEventNotesCell.xib */; };
 		63B1C3611CF2AF9C00989B5D /* CreateEventNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3601CF2AF9C00989B5D /* CreateEventNotesCell.swift */; };
-		63B1C3631CF2B49300989B5D /* CreateEventColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C3621CF2B49300989B5D /* CreateEventColorCell.xib */; };
-		63B1C3651CF2B49F00989B5D /* CreateEventColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3641CF2B49F00989B5D /* CreateEventColorCell.swift */; };
-		63B1C3671CF2B5A800989B5D /* CreateEventColorCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3661CF2B5A800989B5D /* CreateEventColorCellDelegate.swift */; };
+		63B1C3631CF2B49300989B5D /* EventManagerColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C3621CF2B49300989B5D /* EventManagerColorCell.xib */; };
+		63B1C3651CF2B49F00989B5D /* EventManagerColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3641CF2B49F00989B5D /* EventManagerColorCell.swift */; };
+		63B1C3671CF2B5A800989B5D /* EventManagerColorCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3661CF2B5A800989B5D /* EventManagerColorCellDelegate.swift */; };
 		63B1C3691CF2D38400989B5D /* CreateEventChildEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C3681CF2D38400989B5D /* CreateEventChildEventCell.xib */; };
 		63B1C36B1CF2D38C00989B5D /* CreateEventChildEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C36A1CF2D38C00989B5D /* CreateEventChildEventCell.swift */; };
 		63B1C36D1CF2DEE600989B5D /* CreateEventNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C36C1CF2DEE600989B5D /* CreateEventNotificationCell.xib */; };
@@ -341,9 +341,9 @@
 		63B1C35C1CF29C5800989B5D /* CreateEventRepeatedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventRepeatedCell.swift; sourceTree = "<group>"; };
 		63B1C35E1CF2AF9400989B5D /* CreateEventNotesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventNotesCell.xib; sourceTree = "<group>"; };
 		63B1C3601CF2AF9C00989B5D /* CreateEventNotesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventNotesCell.swift; sourceTree = "<group>"; };
-		63B1C3621CF2B49300989B5D /* CreateEventColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventColorCell.xib; sourceTree = "<group>"; };
-		63B1C3641CF2B49F00989B5D /* CreateEventColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventColorCell.swift; sourceTree = "<group>"; };
-		63B1C3661CF2B5A800989B5D /* CreateEventColorCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventColorCellDelegate.swift; sourceTree = "<group>"; };
+		63B1C3621CF2B49300989B5D /* EventManagerColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventManagerColorCell.xib; sourceTree = "<group>"; };
+		63B1C3641CF2B49F00989B5D /* EventManagerColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerColorCell.swift; sourceTree = "<group>"; };
+		63B1C3661CF2B5A800989B5D /* EventManagerColorCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerColorCellDelegate.swift; sourceTree = "<group>"; };
 		63B1C3681CF2D38400989B5D /* CreateEventChildEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventChildEventCell.xib; sourceTree = "<group>"; };
 		63B1C36A1CF2D38C00989B5D /* CreateEventChildEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventChildEventCell.swift; sourceTree = "<group>"; };
 		63B1C36C1CF2DEE600989B5D /* CreateEventNotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventNotificationCell.xib; sourceTree = "<group>"; };
@@ -780,9 +780,9 @@
 				63B1C3511CF1F3AC00989B5D /* EventManagerView.swift */,
 				63B1C34D1CF1EC3300989B5D /* EventManagerTitleCell.xib */,
 				63B1C34F1CF1ED9A00989B5D /* EventManagerTitleCell.swift */,
-				63B1C3661CF2B5A800989B5D /* CreateEventColorCellDelegate.swift */,
-				63B1C3621CF2B49300989B5D /* CreateEventColorCell.xib */,
-				63B1C3641CF2B49F00989B5D /* CreateEventColorCell.swift */,
+				63B1C3661CF2B5A800989B5D /* EventManagerColorCellDelegate.swift */,
+				63B1C3621CF2B49300989B5D /* EventManagerColorCell.xib */,
+				63B1C3641CF2B49F00989B5D /* EventManagerColorCell.swift */,
 				63B1C3531CF291E100989B5D /* CreateEventColorExpandedCell.xib */,
 				63B1C3551CF2977B00989B5D /* CreateEventColorExpandedCell.swift */,
 				63B1C35A1CF29C4900989B5D /* CreateEventRepeatedCell.xib */,
@@ -992,7 +992,7 @@
 				635479921CB898C100DE8CBC /* LaunchScreen.storyboard in Resources */,
 				630337F21CE9B265006FEA1C /* 1.png in Resources */,
 				63EC77BC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib in Resources */,
-				63B1C3631CF2B49300989B5D /* CreateEventColorCell.xib in Resources */,
+				63B1C3631CF2B49300989B5D /* EventManagerColorCell.xib in Resources */,
 				63B1C34E1CF1EC3300989B5D /* EventManagerTitleCell.xib in Resources */,
 				63EC77B41CC8743D008025A7 /* DLIncomingMessageBubble.xib in Resources */,
 				63B1C35B1CF29C4900989B5D /* CreateEventRepeatedCell.xib in Resources */,
@@ -1222,7 +1222,7 @@
 				63E4471A1D0E5E6B005186FD /* EventRepeatSettingViewModel.swift in Sources */,
 				6305700A1CBD0AA1007D2C9D /* ColorgyChatAPI.swift in Sources */,
 				6324BF321CF00B7C003F1329 /* SearchCourseBar.swift in Sources */,
-				63B1C3651CF2B49F00989B5D /* CreateEventColorCell.swift in Sources */,
+				63B1C3651CF2B49F00989B5D /* EventManagerColorCell.swift in Sources */,
 				63EC77B51CC8743D008025A7 /* DLIncomingMessageDelegate.swift in Sources */,
 				635479ED1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift in Sources */,
 				63E4471E1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift in Sources */,
@@ -1279,7 +1279,7 @@
 				638BFA0E1D07C43000939731 /* ChooseSchoolTableViewCell.swift in Sources */,
 				63E447271D0E8949005186FD /* EventManagerViewModel.swift in Sources */,
 				635479EB1CB8B02A00DE8CBC /* Period.swift in Sources */,
-				63B1C3671CF2B5A800989B5D /* CreateEventColorCellDelegate.swift in Sources */,
+				63B1C3671CF2B5A800989B5D /* EventManagerColorCellDelegate.swift in Sources */,
 				63EC77C31CC87595008025A7 /* ChatRoomViewController.swift in Sources */,
 				63C3CE201CC0C76F000EE808 /* ColorgyAppNotification.swift in Sources */,
 				635479F21CB8B02A00DE8CBC /* AFError.swift in Sources */,

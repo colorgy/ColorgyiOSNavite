@@ -1,5 +1,5 @@
 //
-//  CreateEventColorCell.swift
+//  EventManagerColorCell.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/5/23.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final public class CreateEventColorCell: UITableViewCell {
+final public class EventManagerColorCell: UITableViewCell {
 	
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var choosedColorView: UIView!
@@ -16,7 +16,7 @@ final public class CreateEventColorCell: UITableViewCell {
 	@IBOutlet weak var upperSeperatorLine: UIView!
 	@IBOutlet weak var bottomSeperatorLine: UIView!
 	
-	public weak var delegate: CreateEventColorCellDelegate?
+	public weak var delegate: EventManagerColorCellDelegate?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -28,7 +28,7 @@ final public class CreateEventColorCell: UITableViewCell {
 		choosedColorView.layer.cornerRadius = choosedColorView.bounds.width / 2
 		choosedColorView.backgroundColor = UIColor(red: 198/255.0, green: 188/255.0, blue: 188/255.0, alpha: 1.0)
 		
-		addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateEventColorCell.tapped)))
+		addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(EventManagerColorCell.tapped)))
 		
 		selectionStyle = .None
 		
