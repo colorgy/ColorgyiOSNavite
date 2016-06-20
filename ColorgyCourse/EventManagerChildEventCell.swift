@@ -44,7 +44,7 @@ final public class EventManagerChildEventCell: UITableViewCell {
 		deleteTitleLabel.textColor = ColorgyColor.grayContentTextColor
 		
 		deleteRegionView.backgroundColor = UIColor.clearColor()
-		deleteRegionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateEventChildEventCell.deleteRegionTapped)))
+		deleteRegionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(EventManagerChildEventCell.deleteRegionTapped)))
 		
 		containerView.backgroundColor = UIColor.whiteColor()
 		seperatorLine1.backgroundColor = ColorgyColor.BackgroundColor

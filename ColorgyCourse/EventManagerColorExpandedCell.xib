@@ -128,8 +128,8 @@
                             <constraint firstAttribute="height" constant="0.5" id="VKo-TE-bhu"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sC-Vx-nbK">
-                        <rect key="frame" x="0.0" y="88" width="583" height="0.0"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1sC-Vx-nbK">
+                        <rect key="frame" x="0.0" y="87" width="583" height="0.0"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="LRK-oM-TrV"/>

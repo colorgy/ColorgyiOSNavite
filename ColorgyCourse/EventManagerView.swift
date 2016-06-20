@@ -60,18 +60,18 @@ final public class EventManagerView: UIView {
 	// MARK: - Key
 	private struct NibName {
 		// info nib
-		static let titleCell = "CreateEventTitleCell"
-		static let selectColorCell = "CreateEventColorCell"
-		static let repeatedCell = "CreateEventRepeatedCell"
-		static let repeatEndsCell = "CreateEventRepeatEndsCell"
-		static let notificationCell = "CreateEventNotificationCell"
+		static let titleCell = "EventManagerTitleCell"
+		static let selectColorCell = "EventManagerColorCell"
+		static let repeatedCell = "EventManagerRepeatedCell"
+		static let repeatEndsCell = "EventManagerRepeatEndsCell"
+		static let notificationCell = "EventManagerNotificationCell"
 		// date nib
-		static let childEventCell = "CreateEventChildEventCell"
-		static let addChildEventCell = "CreateEventAddChildEventCell"
+		static let childEventCell = "EventManagerChildEventCell"
+		static let addChildEventCell = "EventManagerAddChildEventCell"
 		// notes nib
-		static let notesCell = "CreateEventNotesCell"
+		static let notesCell = "EventManagerNotesCell"
 		// expanded nib
-		static let expandedSelectColorCell = "CreateEventColorExpandedCell"
+		static let expandedSelectColorCell = "EventManagerColorExpandedCell"
 	}
 	
 	// MARK: - Configuration
@@ -179,18 +179,18 @@ extension EventManagerView : UITableViewDataSource {
 			// info section
 			switch indexPath.row {
 			case CellArrangement.InfoSection.titleCell.rawValue:
-				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
+				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! EventManagerTitleCell
 				cell.delegate = self
 				cell.setTitle(viewModel?.context.title)
 				return cell
 			case CellArrangement.InfoSection.colorCell.rawValue:
 				if selectColorCellExpanded {
-					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.expandedSelectColorCell, forIndexPath: indexPath) as! CreateEventColorExpandedCell
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.expandedSelectColorCell, forIndexPath: indexPath) as! EventManagerColorExpandedCell
 					cell.updateSelectedColor(viewModel?.context.color)
 					cell.delegate = self
 					return cell
 				} else {
-					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.selectColorCell, forIndexPath: indexPath) as! CreateEventColorCell
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.selectColorCell, forIndexPath: indexPath) as! EventManagerColorCell
 					cell.updateSelectedColor(viewModel?.context.color)
 					cell.delegate = self
 					return cell
@@ -203,13 +203,13 @@ extension EventManagerView : UITableViewDataSource {
 			if eventRepeated {
 				switch indexPath.row {
 				case CellArrangement.RepeatSection.repeatCell.rawValue:
-					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatedCell, forIndexPath: indexPath) as! CreateEventRepeatedCell
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatedCell, forIndexPath: indexPath) as! EventManagerRepeatedCell
 					return cell
 				case CellArrangement.RepeatSection.repeatEndsCell.rawValue:
-					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatEndsCell, forIndexPath: indexPath) as! CreateEventRepeatEndsCell
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatEndsCell, forIndexPath: indexPath) as! EventManagerRepeatEndsCell
 					return cell
 				case CellArrangement.RepeatSection.notificationCell.rawValue:
-					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notificationCell, forIndexPath: indexPath) as! CreateEventNotificationCell
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notificationCell, forIndexPath: indexPath) as! EventManagerNotificationCell
 					return cell
 				default:
 					break
@@ -217,33 +217,33 @@ extension EventManagerView : UITableViewDataSource {
 			} else {
 				switch indexPath.row {
 				case CellArrangement.NonRepeatSection.repeatCell.rawValue:
-					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatedCell, forIndexPath: indexPath) as! CreateEventRepeatedCell
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.repeatedCell, forIndexPath: indexPath) as! EventManagerRepeatedCell
 					return cell
 				case CellArrangement.NonRepeatSection.notificationCell.rawValue:
-					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notificationCell, forIndexPath: indexPath) as! CreateEventNotificationCell
+					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notificationCell, forIndexPath: indexPath) as! EventManagerNotificationCell
 					return cell
 				default:
 					break
 				}
 			}
 		case childEventSection:
-			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.childEventCell, forIndexPath: indexPath) as! CreateEventChildEventCell
+			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.childEventCell, forIndexPath: indexPath) as! EventManagerChildEventCell
 			cell.childEvent = viewModel?.context.childEvents[indexPath.row]
 			cell.delegate = self
 			return cell
 		case addChildEventSection:
-			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.addChildEventCell, forIndexPath: indexPath) as! CreateEventAddChildEventCell
+			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.addChildEventCell, forIndexPath: indexPath) as! EventManagerAddChildEventCell
 			cell.delegate = self
 			return cell
 		case notesSection:
 			// notes section
-			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notesCell, forIndexPath: indexPath) as! CreateEventNotesCell
+			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.notesCell, forIndexPath: indexPath) as! EventManagerNotesCell
 			return cell
 		default:
 			break
 		}
 		
-		let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! CreateEventTitleCell
+		let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! EventManagerTitleCell
 		return cell
 	}
 	
@@ -304,20 +304,22 @@ extension EventManagerView : UITableViewDelegate {
 	
 }
 
-extension EventManagerView : CreateEventTitleCellDelegate {
-	public func createEventTitleCellTitleTextUpdated(text: String?) {
+extension EventManagerView : EventManagerTitleCellDelegate {
+	
+	public func eventManagerTitleCellTitleTextUpdated(text: String?) {
 		viewModel?.updateTitleText(text)
 	}
+	
 }
 
-extension EventManagerView : CreateEventColorCellDelegate {
+extension EventManagerView : EventManagerColorCellDelegate {
 	
-	public func createEventColorCellNeedsExpand() {
+	public func eventManagerColorCellNeedsExpand() {
 		expandColorCell(true)
 	}
 	
 	/// This method get called when user tap on a color
-	public func createEventColorCell(needsCollapseWithSelectedColor color: UIColor?) {
+	public func eventManagerColorCell(needsCollapseWithSelectedColor color: UIColor?) {
 		// need to update color inside context,
 		// just call this method to update color inside context.
 		viewModel?.updateSelectedColor(color)
@@ -327,15 +329,18 @@ extension EventManagerView : CreateEventColorCellDelegate {
 	}
 }
 
-extension EventManagerView : CreateEventChildEventCellDelegate {
-	public func createEventChildEventCellNeedToDeleteChildEvent(id: String?) {
+extension EventManagerView : EventManagerChildEventCellDelegate {
+	
+	public func eventManagerChildEventCellNeedToDeleteChildEvent(id: String?) {
 		viewModel?.removeChildeEventWithId(id)
 		reloadChildEventSection()
 	}
+	
 }
 
-extension EventManagerView : CreateEventAddChildEventCellDelegate {
-	public func createEventAddChildEventCellAddChildEventButtonClicked() {
+extension EventManagerView : EventManagerAddChildEventCellDelegate {
+	
+	public func eventManagerAddChildEventCellAddChildEventButtonClicked() {
 		// Will get called if user wants to add a new child event
 		viewModel?.createNewChildEvent()
 		reloadChildEventSection()

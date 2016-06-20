@@ -32,8 +32,8 @@
                             <constraint firstAttribute="height" constant="0.5" id="N6Q-0z-5c6"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iZD-ae-zf1">
-                        <rect key="frame" x="0.0" y="66" width="483" height="0.0"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZD-ae-zf1">
+                        <rect key="frame" x="0.0" y="65" width="483" height="0.0"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="rNK-I7-rYS"/>
