@@ -1,5 +1,5 @@
 //
-//  CreateEventTitleCell.swift
+//  EventManagerTitleCell.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/5/22.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-public protocol CreateEventTitleCellDelegate: class {
-	func createEventTitleCellTitleTextUpdated(text: String?)
+public protocol EventManagerTitleCellDelegate: class {
+	func eventManagerTitleCellTitleTextUpdated(text: String?)
 }
 
-final public class CreateEventTitleCell: UITableViewCell {
+final public class EventManagerTitleCell: UITableViewCell {
 
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var titleTextField: UITextField!
@@ -20,7 +20,7 @@ final public class CreateEventTitleCell: UITableViewCell {
 	@IBOutlet weak var upperSeperatorLine: UIView!
 	@IBOutlet weak var bottomSeperatorLine: UIView!
 	
-	public weak var delegate: CreateEventTitleCellDelegate?
+	public weak var delegate: EventManagerTitleCellDelegate?
 	
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -34,7 +34,7 @@ final public class CreateEventTitleCell: UITableViewCell {
 		titleTextField.autocapitalizationType = .None
 		titleTextField.textColor = ColorgyColor.TextColor
 		titleTextField.tintColor = ColorgyColor.MainOrange
-		titleTextField.addTarget(self, action: #selector(CreateEventTitleCell.titleTextEdtingChanged), forControlEvents: UIControlEvents.EditingChanged)
+		titleTextField.addTarget(self, action: #selector(EventManagerTitleCell.titleTextEdtingChanged), forControlEvents: UIControlEvents.EditingChanged)
 		
 		selectionStyle = .None
 		
@@ -43,7 +43,7 @@ final public class CreateEventTitleCell: UITableViewCell {
     }
 
 	@objc private func titleTextEdtingChanged() {
-		delegate?.createEventTitleCellTitleTextUpdated(titleTextField.text)
+		delegate?.eventManagerTitleCellTitleTextUpdated(titleTextField.text)
 	}
 	
 	public func setTitle(title: String?) {
