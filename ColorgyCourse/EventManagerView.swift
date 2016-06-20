@@ -1,5 +1,5 @@
 //
-//  CreateEventView.swift
+//  EventManagerView.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/5/22.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-final public class CreateEventView: UIView {
+final public class EventManagerView: UIView {
 	
-	private var createEventTableView: UITableView!
+	private var eventManagerTableView: UITableView!
 	// select color
 	private var selectColorCellExpanded: Bool = false
 	// repeat
 	private var eventRepeated: Bool = false
 	// viewmodel reference
-	public var viewModel: CreateEventViewModel?
+	public var viewModel: EventManagerViewModel?
 	
 	
 	// MARK: - Table view arrangement
@@ -50,7 +50,7 @@ final public class CreateEventView: UIView {
 	private var addChildEventSectionCount: Int = 1
 	private var notesSectionCount: Int = 1
 	
-	public init(frame: CGRect, viewModel: CreateEventViewModel?) {
+	public init(frame: CGRect, viewModel: EventManagerViewModel?) {
 		super.init(frame: frame)
 		self.viewModel = viewModel
 		configureCreateEventTableView()
@@ -77,34 +77,34 @@ final public class CreateEventView: UIView {
 	// MARK: - Configuration
 	private func configureCreateEventTableView() {
 		
-		createEventTableView = UITableView(frame: frame)
+		eventManagerTableView = UITableView(frame: frame)
 		
 		// register nib
 		// info nib
-		createEventTableView.registerNib(UINib(nibName: NibName.titleCell, bundle: nil), forCellReuseIdentifier: NibName.titleCell)
-		createEventTableView.registerNib(UINib(nibName: NibName.selectColorCell, bundle: nil), forCellReuseIdentifier: NibName.selectColorCell)
-		createEventTableView.registerNib(UINib(nibName: NibName.repeatedCell, bundle: nil), forCellReuseIdentifier: NibName.repeatedCell)
-		createEventTableView.registerNib(UINib(nibName: NibName.repeatEndsCell, bundle: nil), forCellReuseIdentifier: NibName.repeatEndsCell)
-		createEventTableView.registerNib(UINib(nibName: NibName.notificationCell, bundle: nil), forCellReuseIdentifier: NibName.notificationCell)
+		eventManagerTableView.registerNib(UINib(nibName: NibName.titleCell, bundle: nil), forCellReuseIdentifier: NibName.titleCell)
+		eventManagerTableView.registerNib(UINib(nibName: NibName.selectColorCell, bundle: nil), forCellReuseIdentifier: NibName.selectColorCell)
+		eventManagerTableView.registerNib(UINib(nibName: NibName.repeatedCell, bundle: nil), forCellReuseIdentifier: NibName.repeatedCell)
+		eventManagerTableView.registerNib(UINib(nibName: NibName.repeatEndsCell, bundle: nil), forCellReuseIdentifier: NibName.repeatEndsCell)
+		eventManagerTableView.registerNib(UINib(nibName: NibName.notificationCell, bundle: nil), forCellReuseIdentifier: NibName.notificationCell)
 		// date nib
-		createEventTableView.registerNib(UINib(nibName: NibName.childEventCell, bundle: nil), forCellReuseIdentifier: NibName.childEventCell)
-		createEventTableView.registerNib(UINib(nibName: NibName.addChildEventCell, bundle: nil), forCellReuseIdentifier: NibName.addChildEventCell)
+		eventManagerTableView.registerNib(UINib(nibName: NibName.childEventCell, bundle: nil), forCellReuseIdentifier: NibName.childEventCell)
+		eventManagerTableView.registerNib(UINib(nibName: NibName.addChildEventCell, bundle: nil), forCellReuseIdentifier: NibName.addChildEventCell)
 		// notes nib
-		createEventTableView.registerNib(UINib(nibName: NibName.notesCell, bundle: nil), forCellReuseIdentifier: NibName.notesCell)
+		eventManagerTableView.registerNib(UINib(nibName: NibName.notesCell, bundle: nil), forCellReuseIdentifier: NibName.notesCell)
 		// expanded nib
-		createEventTableView.registerNib(UINib(nibName: NibName.expandedSelectColorCell, bundle: nil), forCellReuseIdentifier: NibName.expandedSelectColorCell)
+		eventManagerTableView.registerNib(UINib(nibName: NibName.expandedSelectColorCell, bundle: nil), forCellReuseIdentifier: NibName.expandedSelectColorCell)
 		
 		// delegate & datasource
-		createEventTableView.delegate = self
-		createEventTableView.dataSource = self
+		eventManagerTableView.delegate = self
+		eventManagerTableView.dataSource = self
 		
 		// style
-		createEventTableView.separatorStyle = .None
-		createEventTableView.backgroundColor = UIColor.clearColor()
+		eventManagerTableView.separatorStyle = .None
+		eventManagerTableView.backgroundColor = UIColor.clearColor()
 		
-		createEventTableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(t)))
+		eventManagerTableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(t)))
 		
-		addSubview(createEventTableView)
+		addSubview(eventManagerTableView)
 	}
 	
 	@objc private func t() {
@@ -120,7 +120,7 @@ final public class CreateEventView: UIView {
 	// MARK: - Color Cell
 	// update color cell
 	private func reloadColorCell() {
-		createEventTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: CellArrangement.InfoSection.colorCell.rawValue, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+		eventManagerTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: CellArrangement.InfoSection.colorCell.rawValue, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
 	}
 	
 	/// Expand the color plate cell,
@@ -133,7 +133,7 @@ final public class CreateEventView: UIView {
 	
 	// MARK: - Repeat Cell
 	private func reloadRepeatCell() {
-		createEventTableView.reloadSections(NSIndexSet(index: repeatSection), withRowAnimation: UITableViewRowAnimation.Fade)
+		eventManagerTableView.reloadSections(NSIndexSet(index: repeatSection), withRowAnimation: UITableViewRowAnimation.Fade)
 	}
 	
 	private func changeEventTo(repeated: Bool) {
@@ -144,11 +144,11 @@ final public class CreateEventView: UIView {
 	
 	// MARK: - Child Event Cell
 	private func reloadChildEventSection() {
-		createEventTableView.reloadSections(NSIndexSet(index: childEventSection), withRowAnimation: UITableViewRowAnimation.Fade)
+		eventManagerTableView.reloadSections(NSIndexSet(index: childEventSection), withRowAnimation: UITableViewRowAnimation.Fade)
 	}
 }
 
-extension CreateEventView : UITableViewDataSource {
+extension EventManagerView : UITableViewDataSource {
 	
 	// TODO: into 3 sections, one for containing dates
 	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -300,17 +300,17 @@ extension CreateEventView : UITableViewDataSource {
 	}
 }
 
-extension CreateEventView : UITableViewDelegate {
+extension EventManagerView : UITableViewDelegate {
 	
 }
 
-extension CreateEventView : CreateEventTitleCellDelegate {
+extension EventManagerView : CreateEventTitleCellDelegate {
 	public func createEventTitleCellTitleTextUpdated(text: String?) {
 		viewModel?.updateTitleText(text)
 	}
 }
 
-extension CreateEventView : CreateEventColorCellDelegate {
+extension EventManagerView : CreateEventColorCellDelegate {
 	
 	public func createEventColorCellNeedsExpand() {
 		expandColorCell(true)
@@ -327,14 +327,14 @@ extension CreateEventView : CreateEventColorCellDelegate {
 	}
 }
 
-extension CreateEventView : CreateEventChildEventCellDelegate {
+extension EventManagerView : CreateEventChildEventCellDelegate {
 	public func createEventChildEventCellNeedToDeleteChildEvent(id: String?) {
 		viewModel?.removeChildeEventWithId(id)
 		reloadChildEventSection()
 	}
 }
 
-extension CreateEventView : CreateEventAddChildEventCellDelegate {
+extension EventManagerView : CreateEventAddChildEventCellDelegate {
 	public func createEventAddChildEventCellAddChildEventButtonClicked() {
 		// Will get called if user wants to add a new child event
 		viewModel?.createNewChildEvent()

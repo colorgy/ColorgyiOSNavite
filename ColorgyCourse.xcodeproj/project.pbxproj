@@ -95,7 +95,7 @@
 		63B1C34B1CF1EC1200989B5D /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C34A1CF1EC1200989B5D /* CreateEventViewController.swift */; };
 		63B1C34E1CF1EC3300989B5D /* CreateEventTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C34D1CF1EC3300989B5D /* CreateEventTitleCell.xib */; };
 		63B1C3501CF1ED9A00989B5D /* CreateEventTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C34F1CF1ED9A00989B5D /* CreateEventTitleCell.swift */; };
-		63B1C3521CF1F3AC00989B5D /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3511CF1F3AC00989B5D /* CreateEventView.swift */; };
+		63B1C3521CF1F3AC00989B5D /* EventManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3511CF1F3AC00989B5D /* EventManagerView.swift */; };
 		63B1C3541CF291E100989B5D /* CreateEventColorExpandedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C3531CF291E100989B5D /* CreateEventColorExpandedCell.xib */; };
 		63B1C3561CF2977B00989B5D /* CreateEventColorExpandedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3551CF2977B00989B5D /* CreateEventColorExpandedCell.swift */; };
 		63B1C3581CF2991A00989B5D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3571CF2991A00989B5D /* UIColorExtension.swift */; };
@@ -163,8 +163,8 @@
 		63E4471E1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4471D1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift */; };
 		63E447221D0E7DE8005186FD /* ColorgyStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447211D0E7DE8005186FD /* ColorgyStyle.swift */; };
 		63E447231D0E8314005186FD /* ColorgyStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447211D0E7DE8005186FD /* ColorgyStyle.swift */; };
-		63E447251D0E84C5005186FD /* CreateEventContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447241D0E84C5005186FD /* CreateEventContext.swift */; };
-		63E447271D0E8949005186FD /* CreateEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447261D0E8949005186FD /* CreateEventViewModel.swift */; };
+		63E447251D0E84C5005186FD /* EventManagerContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447241D0E84C5005186FD /* EventManagerContext.swift */; };
+		63E447271D0E8949005186FD /* EventManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447261D0E8949005186FD /* EventManagerViewModel.swift */; };
 		63E447291D0E962F005186FD /* CreateEventAddChildEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447281D0E962F005186FD /* CreateEventAddChildEventCell.swift */; };
 		63E4472B1D0E9639005186FD /* CreateEventAddChildEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E4472A1D0E9639005186FD /* CreateEventAddChildEventCell.xib */; };
 		63EC77201CC6060E008025A7 /* ColorgyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */; };
@@ -333,7 +333,7 @@
 		63B1C34A1CF1EC1200989B5D /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		63B1C34D1CF1EC3300989B5D /* CreateEventTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventTitleCell.xib; sourceTree = "<group>"; };
 		63B1C34F1CF1ED9A00989B5D /* CreateEventTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventTitleCell.swift; sourceTree = "<group>"; };
-		63B1C3511CF1F3AC00989B5D /* CreateEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
+		63B1C3511CF1F3AC00989B5D /* EventManagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerView.swift; sourceTree = "<group>"; };
 		63B1C3531CF291E100989B5D /* CreateEventColorExpandedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventColorExpandedCell.xib; sourceTree = "<group>"; };
 		63B1C3551CF2977B00989B5D /* CreateEventColorExpandedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventColorExpandedCell.swift; sourceTree = "<group>"; };
 		63B1C3571CF2991A00989B5D /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -377,8 +377,8 @@
 		63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventRepeatSettingTableViewCell.xib; sourceTree = "<group>"; };
 		63E4471D1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingTableViewCell.swift; sourceTree = "<group>"; };
 		63E447211D0E7DE8005186FD /* ColorgyStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyStyle.swift; sourceTree = "<group>"; };
-		63E447241D0E84C5005186FD /* CreateEventContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventContext.swift; sourceTree = "<group>"; };
-		63E447261D0E8949005186FD /* CreateEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewModel.swift; sourceTree = "<group>"; };
+		63E447241D0E84C5005186FD /* EventManagerContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerContext.swift; sourceTree = "<group>"; };
+		63E447261D0E8949005186FD /* EventManagerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerViewModel.swift; sourceTree = "<group>"; };
 		63E447281D0E962F005186FD /* CreateEventAddChildEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventAddChildEventCell.swift; sourceTree = "<group>"; };
 		63E4472A1D0E9639005186FD /* CreateEventAddChildEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventAddChildEventCell.xib; sourceTree = "<group>"; };
 		63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyNavigationController.swift; sourceTree = "<group>"; };
@@ -775,9 +775,9 @@
 			isa = PBXGroup;
 			children = (
 				63B1C34A1CF1EC1200989B5D /* CreateEventViewController.swift */,
-				63E447241D0E84C5005186FD /* CreateEventContext.swift */,
-				63E447261D0E8949005186FD /* CreateEventViewModel.swift */,
-				63B1C3511CF1F3AC00989B5D /* CreateEventView.swift */,
+				63E447241D0E84C5005186FD /* EventManagerContext.swift */,
+				63E447261D0E8949005186FD /* EventManagerViewModel.swift */,
+				63B1C3511CF1F3AC00989B5D /* EventManagerView.swift */,
 				63B1C34D1CF1EC3300989B5D /* CreateEventTitleCell.xib */,
 				63B1C34F1CF1ED9A00989B5D /* CreateEventTitleCell.swift */,
 				63B1C3661CF2B5A800989B5D /* CreateEventColorCellDelegate.swift */,
@@ -1213,7 +1213,7 @@
 				6324BF351CF00E9B003F1329 /* SearchCourseViewController.swift in Sources */,
 				63EC77BB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift in Sources */,
 				63C3CE231CC0C76F000EE808 /* UIImageExtension.swift in Sources */,
-				63B1C3521CF1F3AC00989B5D /* CreateEventView.swift in Sources */,
+				63B1C3521CF1F3AC00989B5D /* EventManagerView.swift in Sources */,
 				63056FFF1CBCABB7007D2C9D /* CourseOwnershipObject.swift in Sources */,
 				6305701C1CBD268A007D2C9D /* HistoryChatroom.swift in Sources */,
 				632C0C601CF7FE9F002C9380 /* ReenterPhoneNumberViewControllerTransitioningDelegate.swift in Sources */,
@@ -1248,7 +1248,7 @@
 				63EC77201CC6060E008025A7 /* ColorgyNavigationController.swift in Sources */,
 				63C3CE1F1CC0C76F000EE808 /* ChatMeUserInformation.swift in Sources */,
 				637305601CBF823B0016A7FC /* EmailRegisterViewController.swift in Sources */,
-				63E447251D0E84C5005186FD /* CreateEventContext.swift in Sources */,
+				63E447251D0E84C5005186FD /* EventManagerContext.swift in Sources */,
 				6393BC001CF01AD7008BFF72 /* ColorgyNavigationBar.swift in Sources */,
 				630570181CBD233A007D2C9D /* Hello.swift in Sources */,
 				635479CF1CB8A5EF00DE8CBC /* Release.swift in Sources */,
@@ -1277,7 +1277,7 @@
 				63EC77BD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift in Sources */,
 				632C0C5D1CF71637002C9380 /* PhoneNumberTextField.swift in Sources */,
 				638BFA0E1D07C43000939731 /* ChooseSchoolTableViewCell.swift in Sources */,
-				63E447271D0E8949005186FD /* CreateEventViewModel.swift in Sources */,
+				63E447271D0E8949005186FD /* EventManagerViewModel.swift in Sources */,
 				635479EB1CB8B02A00DE8CBC /* Period.swift in Sources */,
 				63B1C3671CF2B5A800989B5D /* CreateEventColorCellDelegate.swift in Sources */,
 				63EC77C31CC87595008025A7 /* ChatRoomViewController.swift in Sources */,

@@ -26,7 +26,7 @@ final public class CreateEventChildEventCell: UITableViewCell {
 	@IBOutlet weak var endsDateLabel: UILabel!
 	@IBOutlet weak var locationLabel: UILabel!
 	
-	public var childEvent: CreateEventContext.ChildEvent?
+	public var childEvent: EventManagerContext.ChildEvent?
 	public weak var delegate: CreateEventChildEventCellDelegate?
 	
 	override public func awakeFromNib() {
