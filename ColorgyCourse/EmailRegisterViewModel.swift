@@ -9,8 +9,8 @@
 import Foundation
 
 public enum InvalidInformationError: ErrorType {
-	case NoUserName
 	case InvalidEmail
+	case InvalidPhoneNumber
 	case PasswordLessThen8Characters
 	case TwoPasswordsDontMatch
 }
@@ -26,10 +26,10 @@ final public class EmailRegisterViewModel {
 	// MARK: - Parameters
 	weak var delegate: EmailRegisterViewModelDelegate?
 	private let api: ColorgyAPI
-	public var userName: String?
-	public var email: String?
-	public var password: String?
-	public var confirmPassword: String?
+	public private(set) var email: String?
+	public private(set) var phoneNumber: String?
+	public private(set) var password: String?
+	public private(set) var confirmPassword: String?
 	
 	// MARK: - Init
 	public init(delegate: EmailRegisterViewModelDelegate?) {
@@ -37,13 +37,30 @@ final public class EmailRegisterViewModel {
 		api = ColorgyAPI()
 	}
 	
+	// MARK: - Update Data
+	public func updateEmail(with email: String?) {
+		self.email = email
+	}
+	
+	public func updatePhoneNumber(with number: String?) {
+		self.phoneNumber = number
+	}
+	
+	public func updatePassword(with password: String?) {
+		self.password = password
+	}
+	
+	public func updateConfirmPassword(with password: String?) {
+		self.confirmPassword = password
+	}
+	
 	// MARK: - Public Methods
 	public func submitRegistration() {
 		print("submit register")
 		
 		// User must have at least one charater of name
-		guard let userName = userName where userName.characters.count >= 1 else {
-			delegate?.emailRegisterViewModel(invalidRequiredInformation: InvalidInformationError.NoUserName)
+		guard let number = phoneNumber where number.isValidMobileNumber else {
+			delegate?.emailRegisterViewModel(invalidRequiredInformation: InvalidInformationError.InvalidPhoneNumber)
 			return
 		}
 		

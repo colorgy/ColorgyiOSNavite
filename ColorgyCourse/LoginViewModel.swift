@@ -26,9 +26,6 @@ final public class LoginViewModel {
 	public weak var delegate: LoginViewModelDelegate?
 	// MARK: Private
 	private let colorgyAPI: ColorgyAPI
-	/// Use to check if its able to login
-	private weak var periodRawData: PeriodRawData?
-	private weak var apiMEResult: ColorgyAPIMeResult?
 	
 	// MARK: - Methods
 	/// Call this to perform login using fb token

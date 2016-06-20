@@ -59,8 +59,9 @@ public class EmailRegisterViewController: UIViewController {
 		// arrange views
 		let views = [emailInputBox, phoneInputBox, passwordInputBox, confirmPasswordInputBox]
 		let initialPosition = CGPoint(x: 0, y: 170)
-		let _ = views.reduce(initialPosition.y, combine: arrangeView)
+		_ = views.reduce(initialPosition.y, combine: arrangeView)
 		views.forEach(view.addSubview)
+		views.forEach({ $0.inputBoxDelegate = self })
 		
 		// bind password validator
 		confirmPasswordInputBox.bindPasswordInputBox(passwordInputBox)
@@ -121,10 +122,26 @@ extension EmailRegisterViewController : EmailRegisterViewModelDelegate {
 	}
 }
 
+extension EmailRegisterViewController : InputBoxDelegate {
+	public func inputBoxEditingChanged(inputbox: InputBox, text: String?) {
+		switch inputbox {
+		case emailInputBox:
+			viewModel?.updateEmail(with: text)
+		case phoneInputBox:
+			viewModel.upda
+		case passwordInputBox:
+			
+		case confirmPasswordInputBox:
+			
+		default: break
+		}
+	}
+}
+
 extension EmailRegisterViewController : ColorgyFullScreenButtonDelegate {
 	public func colorgyFullScreenButtonClicked(button: ColorgyFullScreenButton) {
 		if button == registerButton {
-			
+			viewModel?.submitRegistration()
 		}
 	}
 }

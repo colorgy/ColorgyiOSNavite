@@ -61,6 +61,8 @@ final public class ColorgyRefreshCenter {
 	/// background worker's timer
 	private var backgroundWorker: NSTimer?
 	
+	public let rootURL: String = "http://staging.colorgy.io/api/v2"
+	
 	// MARK: - init
 	
 	/// **Singleton** of ColorgyRefreshCenter
@@ -372,7 +374,7 @@ final public class ColorgyRefreshCenter {
 			return
 		}
 		
-		let url = "https://colorgy.io:443/api/v1/me/emails.json?access_token=\(accessToken)"
+		let url = "\(ColorgyRefreshCenter.sharedInstance().rootURL)/me/emails.json?access_token=\(accessToken)"
 		
 		manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 			complete(tokenStillWorking: true)

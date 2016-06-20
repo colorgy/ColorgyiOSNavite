@@ -49,6 +49,8 @@ final public class ColorgyAPI : NSObject {
 	private var pointer: UnsafeMutablePointer<Void> = nil
 	public weak var delegate: ColorgyAPIDelegate?
 	
+	private let rootURL: String = "http://staging.colorgy.io/api/v2"
+	
 	// MARK: - Init
 	/// initializer
 	public override init() {
@@ -214,7 +216,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/me.json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/me.json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -276,7 +278,7 @@ final public class ColorgyAPI : NSObject {
 			}
 			
 			let coursesCount = count ?? 20000
-			let url = "https://colorgy.io:443/api/v1/\(organization.lowercaseString)/courses.json?per_page=\(String(coursesCount))&&&filter%5Byear%5D=\(year)&filter%5Bterm%5D=\(term)&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/\(organization.lowercaseString)/courses.json?per_page=\(String(coursesCount))&&&filter%5Byear%5D=\(year)&filter%5Bterm%5D=\(term)&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&access_token=\(accesstoken)"
 			
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
@@ -321,7 +323,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/\(organization.lowercaseString)/period_data.json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/\(organization.lowercaseString)/period_data.json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -384,7 +386,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleInternalPreparationFailure(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/me/devices/\(uuid).json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/me/devices/\(uuid).json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -430,7 +432,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/me/devices.json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/me/devices.json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -478,7 +480,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/me/devices/\(uuid).json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/me/devices/\(uuid).json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -527,7 +529,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoOrganization(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/\(school.lowercaseString)/courses/\(code).json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/\(school.lowercaseString)/courses/\(code).json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -572,7 +574,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/user_courses.json?filter%5Bcourse_code%5D=\(code)&&&&&&&&&access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/user_courses.json?filter%5Bcourse_code%5D=\(code)&&&&&&&&&access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -619,7 +621,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/users/\(userId).json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/users/\(userId).json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -670,7 +672,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoUserId(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/user_courses.json?filter%5Buser_id%5D=\(userId)&filter%5Bcourse_organization_code%5D=\(organization)&&&&&&&access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/user_courses.json?filter%5Buser_id%5D=\(userId)&filter%5Bcourse_organization_code%5D=\(organization)&&&&&&&access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -722,7 +724,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoOrganization(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/user_courses.json?filter%5Buser_id%5D=\(userId)&filter%5Bcourse_organization_code%5D=\(organization)&&&&&&&access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/user_courses.json?filter%5Buser_id%5D=\(userId)&filter%5Bcourse_organization_code%5D=\(organization)&&&&&&&access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -781,7 +783,7 @@ final public class ColorgyAPI : NSObject {
 					"term": term
 				]
 			]
-			let url = "https://colorgy.io:443/api/v1/me/user_courses/\(uuid).json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/me/user_courses/\(uuid).json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -828,7 +830,7 @@ final public class ColorgyAPI : NSObject {
 				for ownership in ownerships where ownership.courseCode == courseCode {
 					let uuid = ownership.uuid
 					// prepare for delete url
-					let url = "https://colorgy.io:443/api/v1/me/user_courses/\(uuid).json?access_token=\(accesstoken)"
+					let url = "\(self.rootURL)/me/user_courses/\(uuid).json?access_token=\(accesstoken)"
 					guard url.isValidURLString else {
 						self.handleInvalidURL(failure)
 						return
@@ -872,7 +874,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/organizations.json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/organizations.json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -913,7 +915,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/organizations/\(organization.uppercaseString).json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/organizations/\(organization.uppercaseString).json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -955,7 +957,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/me.json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/me.json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1000,7 +1002,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/me/user_table_settings.json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/me/user_table_settings.json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1012,16 +1014,16 @@ final public class ColorgyAPI : NSObject {
 					return
 				}
 				let json = JSON(response)
-//				var isTimeTablePublic = false
-//				if json.isArray {
-//					if let visibility = json[0]["courses_table_visibility"].bool {
-//						isTimeTablePublic = visibility
-//					}
-//				} else {
-//					if let visibility = json["courses_table_visibility"].bool {
-//						isTimeTablePublic = visibility
-//					}
-//				}
+				//        var isTimeTablePublic = false
+				//        if json.isArray {
+				//          if let visibility = json[0]["courses_table_visibility"].bool {
+				//            isTimeTablePublic = visibility
+				//          }
+				//        } else {
+				//          if let visibility = json["courses_table_visibility"].bool {
+				//            isTimeTablePublic = visibility
+				//          }
+				//        }
 				// TODO: 測式這個function
 				let isTimeTablePublic = (json.isArray ? json[0]["courses_table_visibility"].bool : json["courses_table_visibility"].bool) ?? false
 				self.mainBlock({
@@ -1100,7 +1102,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoUserId(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/user_table_settings/\(userId).json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/user_table_settings/\(userId).json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1143,7 +1145,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/me/user_app_feedbacks.json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/me/user_app_feedbacks.json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1194,7 +1196,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/me/emails.json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/me/emails.json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1246,7 +1248,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/me/emails.json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/me/emails.json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1294,7 +1296,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/me.json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/me.json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1311,10 +1313,6 @@ final public class ColorgyAPI : NSObject {
 			]
 			
 			self.manager.PATCH(url, parameters: parameters, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-				guard let response = response else {
-					self.handleFailToParseResult(failure)
-					return
-				}
 				self.mainBlock({
 					success?()
 				})
@@ -1414,7 +1412,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "https://colorgy.io:443/api/v1/available_org/\(organization.uppercaseString).json?access_token=\(accesstoken)"
+			let url = "\(self.rootURL)/available_org/\(organization.uppercaseString).json?access_token=\(accesstoken)"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// EventManagerView is a view that can help you to handle event editing and creating.
 final public class EventManagerView: UIView {
 	
 	// MARK: - Parameters

@@ -98,7 +98,7 @@ extension LoginViewController : LoginViewModelDelegate {
 	}
 	
 	public func loginViewModel(failToLoginToColorgy error: ColorgyLoginError, afError: AFError?) {
-		print(error)
+		print(error, afError)
 	}
 	
 	public func loginViewModel(failToGetDataFromServer error: APIError, afError: AFError?) {
