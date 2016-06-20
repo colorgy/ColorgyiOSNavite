@@ -8,7 +8,7 @@
 
 import UIKit
 
-final public class CreateEventColorExpandedCell: UITableViewCell {
+final public class EventManagerColorExpandedCell: UITableViewCell {
 	
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var choosedColorView: UIView!
@@ -26,7 +26,7 @@ final public class CreateEventColorExpandedCell: UITableViewCell {
 	@IBOutlet weak var upperSeperatorLine: UIView!
 	@IBOutlet weak var bottomSeperatorLine: UIView!
 	
-	public weak var delegate: CreateEventColorCellDelegate?
+	public weak var delegate: EventManagerColorCellDelegate?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +39,7 @@ final public class CreateEventColorExpandedCell: UITableViewCell {
 		let colorViews = [grayColorView, orangeColorView, yellowColorView, greenColorView, blueGreenColorView, blueColorView, indigoColorView, purpleColorView, peachColorView]
 		colorViews.forEach { (view) in
 			view.layer.cornerRadius = view.bounds.width / 2
-			view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateEventColorExpandedCell.tapped(_:))))
+			view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(EventManagerColorExpandedCell.tapped(_:))))
 		}
 		
 		choosedColorView.layer.cornerRadius = choosedColorView.bounds.width / 2
@@ -65,7 +65,7 @@ final public class CreateEventColorExpandedCell: UITableViewCell {
 	}
 	
 	@objc private func tapped(gesture: UITapGestureRecognizer) {
-		delegate?.createEventColorCell(needsCollapseWithSelectedColor: gesture.view?.backgroundColor)
+		delegate?.eventManagerColorCell(needsCollapseWithSelectedColor: gesture.view?.backgroundColor)
     }
 
 	public func updateSelectedColor(color: UIColor?) {
