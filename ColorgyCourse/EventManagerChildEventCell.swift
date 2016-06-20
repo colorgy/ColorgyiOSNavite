@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol EventManagerChildEventCellDelegate: class {
-	func eventManagerChildEventCellNeedToDeleteChildEvent(id: String?)
+	func eventManagerChildEventCell(needToDeleteChildEventWith id: String?)
 }
 
 final public class EventManagerChildEventCell: UITableViewCell {
@@ -63,7 +63,7 @@ final public class EventManagerChildEventCell: UITableViewCell {
 	}
 	
 	@objc private func deleteRegionTapped() {
-		delegate?.eventManagerChildEventCellNeedToDeleteChildEvent(childEvent?.eventId)
+		delegate?.eventManagerChildEventCell(needToDeleteChildEventWith: childEvent?.eventId)
 	}
 	
 }

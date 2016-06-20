@@ -26,7 +26,7 @@ final public class EventManagerViewModel {
 		context.title = text
 	}
 	
-	public func updateSelectedColor(color: UIColor?) {
+	public func updateSelectedColor(with color: UIColor?) {
 		context.color = color
 	}
 	
@@ -35,7 +35,7 @@ final public class EventManagerViewModel {
 		context.childEvents.append(childEvent)
 	}
 	
-	public func removeChildeEventWithId(id: String?) {
+	public func removeChildeEvent(with id: String?) {
 		context.childEvents = context.childEvents.filter { (event) -> Bool in
 			return event.eventId != id
 		}

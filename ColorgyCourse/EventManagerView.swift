@@ -354,10 +354,9 @@ extension EventManagerView : EventManagerViewModelDelegate {
 // MARK: - Cell Delegates
 extension EventManagerView : EventManagerTitleCellDelegate {
 	
-	public func eventManagerTitleCell(titleUpdatedWith text: String?) {
-		viewModel.updateTitle(with: text)
+	public func eventManagerTitleCell(titleUpdatedTo title: String?) {
+		viewModel.updateTitle(with: title)
 	}
-	
 }
 
 extension EventManagerView : EventManagerColorCellDelegate {
@@ -370,7 +369,7 @@ extension EventManagerView : EventManagerColorCellDelegate {
 	public func eventManagerColorCell(needsCollapseWithSelectedColor color: UIColor?) {
 		// need to update color inside context,
 		// just call this method to update color inside context.
-		viewModel.updateSelectedColor(color)
+		viewModel.updateSelectedColor(with: color)
 		// after storing color,
 		// update cell
 		expandColorCell(false)
@@ -379,8 +378,8 @@ extension EventManagerView : EventManagerColorCellDelegate {
 
 extension EventManagerView : EventManagerChildEventCellDelegate {
 	
-	public func eventManagerChildEventCellNeedToDeleteChildEvent(id: String?) {
-		viewModel.removeChildeEventWithId(id)
+	public func eventManagerChildEventCell(needToDeleteChildEventWith id: String?) {
+		viewModel.removeChildeEvent(with: id)
 		reloadChildEventSection()
 	}
 	
