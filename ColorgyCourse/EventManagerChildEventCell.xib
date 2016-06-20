@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="174" id="PY4-j9-dA7" customClass="EventManagerChildEventCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="174" id="PY4-j9-dA7" customClass="EventManagerChildEventCell" customModule="ColorgyCourse" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="519" height="174"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PY4-j9-dA7" id="5gg-ra-j0E">
@@ -129,7 +129,7 @@
                 <outlet property="sideBarView" destination="iaY-QL-tFH" id="EGb-sY-fIe"/>
                 <outlet property="startsDateLabel" destination="aQm-6f-Xzw" id="cyo-bz-EcW"/>
             </connections>
-            <point key="canvasLocation" x="476.5" y="394"/>
+            <point key="canvasLocation" x="482.5" y="494"/>
         </tableViewCell>
     </objects>
 </document>
