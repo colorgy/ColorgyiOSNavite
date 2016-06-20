@@ -1,5 +1,5 @@
 //
-//  CreateEventNotificationCell.swift
+//  EventManagerNotificationCell.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/5/23.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final public class CreateEventNotificationCell: UITableViewCell {
+final public class EventManagerNotificationCell: UITableViewCell {
 	
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var contentLabel: UILabel!

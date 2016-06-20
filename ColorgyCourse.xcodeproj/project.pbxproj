@@ -109,8 +109,8 @@
 		63B1C3671CF2B5A800989B5D /* EventManagerColorCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3661CF2B5A800989B5D /* EventManagerColorCellDelegate.swift */; };
 		63B1C3691CF2D38400989B5D /* EventManagerChildEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C3681CF2D38400989B5D /* EventManagerChildEventCell.xib */; };
 		63B1C36B1CF2D38C00989B5D /* EventManagerChildEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C36A1CF2D38C00989B5D /* EventManagerChildEventCell.swift */; };
-		63B1C36D1CF2DEE600989B5D /* CreateEventNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C36C1CF2DEE600989B5D /* CreateEventNotificationCell.xib */; };
-		63B1C36F1CF2DEEE00989B5D /* CreateEventNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C36E1CF2DEEE00989B5D /* CreateEventNotificationCell.swift */; };
+		63B1C36D1CF2DEE600989B5D /* EventManagerNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C36C1CF2DEE600989B5D /* EventManagerNotificationCell.xib */; };
+		63B1C36F1CF2DEEE00989B5D /* EventManagerNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C36E1CF2DEEE00989B5D /* EventManagerNotificationCell.swift */; };
 		63B1C3711CF2F25700989B5D /* EventManagerRepeatEndsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1C3701CF2F25700989B5D /* EventManagerRepeatEndsCell.xib */; };
 		63B1C3731CF2F26000989B5D /* EventManagerRepeatEndsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3721CF2F26000989B5D /* EventManagerRepeatEndsCell.swift */; };
 		63B1C3751CF30B0500989B5D /* InputBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C3741CF30B0500989B5D /* InputBox.swift */; };
@@ -346,8 +346,8 @@
 		63B1C3661CF2B5A800989B5D /* EventManagerColorCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerColorCellDelegate.swift; sourceTree = "<group>"; };
 		63B1C3681CF2D38400989B5D /* EventManagerChildEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventManagerChildEventCell.xib; sourceTree = "<group>"; };
 		63B1C36A1CF2D38C00989B5D /* EventManagerChildEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerChildEventCell.swift; sourceTree = "<group>"; };
-		63B1C36C1CF2DEE600989B5D /* CreateEventNotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventNotificationCell.xib; sourceTree = "<group>"; };
-		63B1C36E1CF2DEEE00989B5D /* CreateEventNotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventNotificationCell.swift; sourceTree = "<group>"; };
+		63B1C36C1CF2DEE600989B5D /* EventManagerNotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventManagerNotificationCell.xib; sourceTree = "<group>"; };
+		63B1C36E1CF2DEEE00989B5D /* EventManagerNotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerNotificationCell.swift; sourceTree = "<group>"; };
 		63B1C3701CF2F25700989B5D /* EventManagerRepeatEndsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventManagerRepeatEndsCell.xib; sourceTree = "<group>"; };
 		63B1C3721CF2F26000989B5D /* EventManagerRepeatEndsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerRepeatEndsCell.swift; sourceTree = "<group>"; };
 		63B1C3741CF30B0500989B5D /* InputBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputBox.swift; sourceTree = "<group>"; };
@@ -795,8 +795,8 @@
 				63B1C36A1CF2D38C00989B5D /* EventManagerChildEventCell.swift */,
 				63E4472A1D0E9639005186FD /* EventManagerAddChildEventCell.xib */,
 				63E447281D0E962F005186FD /* EventManagerAddChildEventCell.swift */,
-				63B1C36C1CF2DEE600989B5D /* CreateEventNotificationCell.xib */,
-				63B1C36E1CF2DEEE00989B5D /* CreateEventNotificationCell.swift */,
+				63B1C36C1CF2DEE600989B5D /* EventManagerNotificationCell.xib */,
+				63B1C36E1CF2DEEE00989B5D /* EventManagerNotificationCell.swift */,
 			);
 			name = "Create Event View";
 			sourceTree = "<group>";
@@ -998,7 +998,7 @@
 				63B1C35B1CF29C4900989B5D /* EventManagerCreateEventRepeatedCell.xib in Resources */,
 				63B1C3541CF291E100989B5D /* EventManagerColorExpandedCell.xib in Resources */,
 				63B1C3691CF2D38400989B5D /* EventManagerChildEventCell.xib in Resources */,
-				63B1C36D1CF2DEE600989B5D /* CreateEventNotificationCell.xib in Resources */,
+				63B1C36D1CF2DEE600989B5D /* EventManagerNotificationCell.xib in Resources */,
 				638BFA0C1D07C2D900939731 /* ChooseSchoolTableViewCell.xib in Resources */,
 				63EC77B71CC8743D008025A7 /* DLIncomingPhotoBubble.xib in Resources */,
 				63EC77BE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib in Resources */,
@@ -1195,7 +1195,7 @@
 				63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */,
 				63B1C36B1CF2D38C00989B5D /* EventManagerChildEventCell.swift in Sources */,
 				630337EE1CE97906006FEA1C /* BlurWallViewController.swift in Sources */,
-				63B1C36F1CF2DEEE00989B5D /* CreateEventNotificationCell.swift in Sources */,
+				63B1C36F1CF2DEEE00989B5D /* EventManagerNotificationCell.swift in Sources */,
 				63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */,
 				6307AC371CEAB66F00345025 /* SearchEventBar.swift in Sources */,
 				63B1C34B1CF1EC1200989B5D /* CreateEventViewController.swift in Sources */,
