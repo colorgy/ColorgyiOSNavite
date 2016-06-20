@@ -10,16 +10,28 @@ import UIKit
 
 final public class EventManagerView: UIView {
 	
+	// MARK: - Parameters
+	
+	/// Where event manager show its data
 	private var eventManagerTableView: UITableView!
-	// select color
+	/// Flag to determine the color cell to expand or collapse.
 	private var selectColorCellExpanded: Bool = false
-	// repeat
+	/// Flag to determine the event is repeat or not
 	private var eventRepeated: Bool = false
-	// viewmodel reference
-	public var viewModel: EventManagerViewModel?
+	/// view model
+	public var viewModel: EventManagerViewModel!
 	
 	
 	// MARK: - Table view arrangement
+	
+	/// This enum helps to arrange cell positions.
+	///
+	/// Three sections here.
+	///		1. Info: wit title, color
+	///		2. Non Repeat: can control if this event is a repeat event or not
+	///		3. Repeat: can control the end date of this event
+	///
+	/// If you want to change the arrangement of the cell, just revise the given number. Not to change the enum case.
 	private enum CellArrangement {
 		enum InfoSection: Int {
 			case titleCell = 0
@@ -38,23 +50,43 @@ final public class EventManagerView: UIView {
 		}
 	}
 	
-	private var infoSection: Int = 0
-	private var repeatSection: Int = 1
-	private var childEventSection: Int = 2
-	private var addChildEventSection: Int = 3
-	private var notesSection: Int = 4
+	// MARK: - Section Position
 	
-	private var totalSectionCount: Int = 5
-	private var infoSectionCount: Int = 2
+	/// Info section position.
+	private let infoSection: Int = 0
+	/// Repeat section position.
+	private let repeatSection: Int = 1
+	/// Child event section position.
+	private let childEventSection: Int = 2
+	/// Add child section position.
+	private let addChildEventSection: Int = 3
+	/// Notes section position.
+	private let notesSection: Int = 4
+	
+	// MARK: - Section Count
+	
+	/// Total sections we have now.
+	private let totalSectionCount: Int = 5
+	/// Info section count.
+	private let infoSectionCount: Int = 2
+	/// Repeat section count.
 	private var repeatSectionCount: Int = 2
-	private var addChildEventSectionCount: Int = 1
-	private var notesSectionCount: Int = 1
+	/// Add child event section count.
+	private let addChildEventSectionCount: Int = 1
+	/// Notes section count.
+	private let notesSectionCount: Int = 1
 	
-	public init(frame: CGRect, viewModel: EventManagerViewModel?) {
+	// MARK: - Init
+	
+	public override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.viewModel = viewModel
+		self.viewModel = EventManagerViewModel(delegate: self)
 		configureCreateEventTableView()
 		backgroundColor = ColorgyColor.BackgroundColor
+	}
+	
+	required public init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
 	}
 	
 	// MARK: - Key
@@ -75,6 +107,13 @@ final public class EventManagerView: UIView {
 	}
 	
 	// MARK: - Configuration
+	
+	/// Configure event manager view. 
+	/// First, create table view.
+	/// Second, register for nibs.
+	/// Third, setup delegate and datasource.
+	/// Fourth, style.
+	/// Fifth, add to subview.
 	private func configureCreateEventTableView() {
 		
 		eventManagerTableView = UITableView(frame: frame)
@@ -113,18 +152,19 @@ final public class EventManagerView: UIView {
 		changeEventTo(!eventRepeated)
 	}
 	
-	required public init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-	
 	// MARK: - Color Cell
-	// update color cell
+	
+	/// Reload color cell.
+	///
+	/// You can reload color cell while cell need to collapse or expand to show the cell user want.
+	///
+	/// **Causion**: This method is just the reload job. Expanding or collapsing will accroding to datacourse.
 	private func reloadColorCell() {
 		eventManagerTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: CellArrangement.InfoSection.colorCell.rawValue, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
 	}
 	
 	/// Expand the color plate cell,
-	/// true for expanded cell, false for collasped cell.
+	/// **true** for expanded cell, **false** for collasped cell.
 	/// Will update the cell if this method is called.
 	private func expandColorCell(expanded: Bool) {
 		selectColorCellExpanded = expanded
@@ -132,6 +172,8 @@ final public class EventManagerView: UIView {
 	}
 	
 	// MARK: - Repeat Cell
+	
+	/// Reload repeat cell.
 	private func reloadRepeatCell() {
 		eventManagerTableView.reloadSections(NSIndexSet(index: repeatSection), withRowAnimation: UITableViewRowAnimation.Fade)
 	}
@@ -162,7 +204,7 @@ extension EventManagerView : UITableViewDataSource {
 		case repeatSection:
 			return repeatSectionCount
 		case childEventSection:
-			return viewModel?.context.childEvents.count ?? 0
+			return viewModel.context.childEvents.count
 		case addChildEventSection:
 			return addChildEventSectionCount
 		case notesSection:
@@ -181,17 +223,17 @@ extension EventManagerView : UITableViewDataSource {
 			case CellArrangement.InfoSection.titleCell.rawValue:
 				let cell = tableView.dequeueReusableCellWithIdentifier(NibName.titleCell, forIndexPath: indexPath) as! EventManagerTitleCell
 				cell.delegate = self
-				cell.setTitle(viewModel?.context.title)
+				cell.setTitle(viewModel.context.title)
 				return cell
 			case CellArrangement.InfoSection.colorCell.rawValue:
 				if selectColorCellExpanded {
 					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.expandedSelectColorCell, forIndexPath: indexPath) as! EventManagerColorExpandedCell
-					cell.updateSelectedColor(viewModel?.context.color)
+					cell.updateSelectedColor(viewModel.context.color)
 					cell.delegate = self
 					return cell
 				} else {
 					let cell = tableView.dequeueReusableCellWithIdentifier(NibName.selectColorCell, forIndexPath: indexPath) as! EventManagerColorCell
-					cell.updateSelectedColor(viewModel?.context.color)
+					cell.updateSelectedColor(viewModel.context.color)
 					cell.delegate = self
 					return cell
 				}
@@ -228,7 +270,7 @@ extension EventManagerView : UITableViewDataSource {
 			}
 		case childEventSection:
 			let cell = tableView.dequeueReusableCellWithIdentifier(NibName.childEventCell, forIndexPath: indexPath) as! EventManagerChildEventCell
-			cell.childEvent = viewModel?.context.childEvents[indexPath.row]
+			cell.childEvent = viewModel.context.childEvents[indexPath.row]
 			cell.delegate = self
 			return cell
 		case addChildEventSection:
@@ -304,10 +346,16 @@ extension EventManagerView : UITableViewDelegate {
 	
 }
 
+// MARK: - View Model Delegate
+extension EventManagerView : EventManagerViewModelDelegate {
+	
+}
+
+// MARK: - Cell Delegates
 extension EventManagerView : EventManagerTitleCellDelegate {
 	
 	public func eventManagerTitleCellTitleTextUpdated(text: String?) {
-		viewModel?.updateTitleText(text)
+		viewModel.updateTitleText(text)
 	}
 	
 }
@@ -322,7 +370,7 @@ extension EventManagerView : EventManagerColorCellDelegate {
 	public func eventManagerColorCell(needsCollapseWithSelectedColor color: UIColor?) {
 		// need to update color inside context,
 		// just call this method to update color inside context.
-		viewModel?.updateSelectedColor(color)
+		viewModel.updateSelectedColor(color)
 		// after storing color,
 		// update cell
 		expandColorCell(false)
@@ -332,7 +380,7 @@ extension EventManagerView : EventManagerColorCellDelegate {
 extension EventManagerView : EventManagerChildEventCellDelegate {
 	
 	public func eventManagerChildEventCellNeedToDeleteChildEvent(id: String?) {
-		viewModel?.removeChildeEventWithId(id)
+		viewModel.removeChildeEventWithId(id)
 		reloadChildEventSection()
 	}
 	
@@ -342,7 +390,7 @@ extension EventManagerView : EventManagerAddChildEventCellDelegate {
 	
 	public func eventManagerAddChildEventCellAddChildEventButtonClicked() {
 		// Will get called if user wants to add a new child event
-		viewModel?.createNewChildEvent()
+		viewModel.createNewChildEvent()
 		reloadChildEventSection()
 	}
 }

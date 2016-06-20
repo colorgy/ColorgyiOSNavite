@@ -11,18 +11,13 @@ import UIKit
 class CreateEventViewController: UIViewController {
 	
 	var tb: EventManagerView!
-	var viewModel: EventManagerViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		viewModel = EventManagerViewModel(delegate: self)
-		tb = EventManagerView(frame: UIScreen.mainScreen().bounds, viewModel: viewModel)
+		tb = EventManagerView(frame: UIScreen.mainScreen().bounds)
 		view.addSubview(tb)
     }
 }
 
-extension CreateEventViewController : EventManagerViewModelDelegate {
-	
-}

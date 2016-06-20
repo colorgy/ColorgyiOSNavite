@@ -20,8 +20,8 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHL-Sm-T1f">
-                        <rect key="frame" x="0.0" y="44" width="526" height="0.0"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHL-Sm-T1f">
+                        <rect key="frame" x="0.0" y="43" width="526" height="0.0"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="gvo-oR-bcP"/>
@@ -34,8 +34,8 @@
                             <constraint firstAttribute="height" constant="0.5" id="8lb-J9-iwt"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RYg-VL-X9i">
-                        <rect key="frame" x="502" y="16" width="8" height="13"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RYg-VL-X9i">
+                        <rect key="frame" x="502" y="15" width="8" height="13"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="13" id="7vK-pf-UaJ"/>
                             <constraint firstAttribute="width" constant="8" id="M4B-iE-cG7"/>
