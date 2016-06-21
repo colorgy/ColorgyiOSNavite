@@ -16,9 +16,14 @@ public enum InvalidInformationError: ErrorType {
 }
 
 public protocol EmailRegisterViewModelDelegate: class {
+	/// Something wrong in given information
 	func emailRegisterViewModel(invalidRequiredInformation error: InvalidInformationError)
+	/// Everything ok here. Create an account and get token.
 	func emailRegisterViewModelSuccessfullySubmitRegistration()
+	/// This happened when something is wrong when creating account.
 	func emailRegisterViewModel(errorSumittingRequest error: APIError, afError: AFError?)
+	/// This happened when something is wrong after creating account. Maybe fail to get access token.
+	func emailRegisterViewModel(errorAfterSumittingRequest error: ColorgyLoginError, afError: AFError?)
 }
 
 final public class EmailRegisterViewModel {
@@ -81,10 +86,12 @@ final public class EmailRegisterViewModel {
 		
 		// if no data is wrong, perform api request
 		api.registerNewUser(with: email, phoneNumber: number, password: password, passwordConfirm: confirmPassword, success: {
-			print("yooooooooooo")
 			self.successfullyRegister(with: email, and: password)
 			}, failure: { (error, afError) in
+				// TODO: 這邊有三種錯誤，有兩種個別是EMAIL備用過、MOBILE備用過
+				// TODO: 特別的事email跟mobile都備用過，那這邊要怎麼做呢？
 				print(error, afError)
+				self.delegate?.emailRegisterViewModel(errorSumittingRequest: error, afError: afError)
 		})
 	}
 	
@@ -96,6 +103,7 @@ final public class EmailRegisterViewModel {
 				// TODO: what should i do if user fail to login after register?
 				// Should i direct them to login page?
 				print(error, afError)
+				self.delegate?.emailRegisterViewModel(errorAfterSumittingRequest: error, afError: afError)
 		})
 	}
 	

@@ -61,7 +61,7 @@ public class EmailRegisterViewController: UIViewController {
 		let initialPosition = CGPoint(x: 0, y: 170)
 		_ = views.reduce(initialPosition.y, combine: arrangeView)
 		views.forEach(view.addSubview)
-		views.forEach({ $0.inputBoxDelegate = self })
+		views.forEach({ $0.inputBoxUpdatingDelegate = self })
 		
 		// bind password validator
 		confirmPasswordInputBox.bindPasswordInputBox(passwordInputBox)
@@ -82,11 +82,13 @@ public class EmailRegisterViewController: UIViewController {
 }
 
 extension EmailRegisterViewController : EmailRegisterViewModelDelegate {
-	
-	public func emailRegisterViewModelSuccessfullySubmitRegistration() {
 
+	/// Everything ok here. Create an account and get token.
+	public func emailRegisterViewModelSuccessfullySubmitRegistration() {
+		// go to phone validation view
 	}
 	
+	/// Something wrong in given information
 	public func emailRegisterViewModel(invalidRequiredInformation error: InvalidInformationError) {
 		
 		let alert = UIAlertController(title: "你輸入的資料有誤哦！", message: nil, preferredStyle: .Alert)
@@ -112,6 +114,7 @@ extension EmailRegisterViewController : EmailRegisterViewModelDelegate {
 		}
 	}
 	
+	/// This happened when something is wrong when creating account.
 	public func emailRegisterViewModel(errorSumittingRequest error: APIError, afError: AFError?) {
 		let alert = UIAlertController(title: "Server 錯誤", message: "\(error)\n\(afError?.statusCode)\n\(afError?.responseBody)", preferredStyle: .Alert)
 		let ok = UIAlertAction(title: "知道了", style: .Default, handler: nil)
@@ -120,10 +123,20 @@ extension EmailRegisterViewController : EmailRegisterViewModelDelegate {
 			self.presentViewController(alert, animated: true, completion: nil)
 		}
 	}
+	
+	/// This happened when something is wrong after creating account. Maybe fail to get access token.
+	public func emailRegisterViewModel(errorAfterSumittingRequest error: ColorgyLoginError, afError: AFError?) {
+		let alert = UIAlertController(title: "登入 錯誤", message: "\(error)\n\(afError?.statusCode)\n\(afError?.responseBody)", preferredStyle: .Alert)
+		let ok = UIAlertAction(title: "知道了", style: .Default, handler: nil)
+		alert.addAction(ok)
+		dispatch_async(dispatch_get_main_queue()) {
+			self.presentViewController(alert, animated: true, completion: nil)
+		}
+	}
 }
 
-extension EmailRegisterViewController : InputBoxDelegate {
-	public func inputBoxEditingChanged(inputbox: InputBox, text: String?) {
+extension EmailRegisterViewController : InputBoxUpdatingDelegate {
+	public func inputBoxUpdated(inputbox: InputBox, text: String?) {
 		switch inputbox {
 		case emailInputBox:
 			viewModel?.updateEmail(with: text)

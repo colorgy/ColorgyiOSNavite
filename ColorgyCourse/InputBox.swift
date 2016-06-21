@@ -12,6 +12,10 @@ public protocol InputBoxDelegate: class {
 	func inputBoxEditingChanged(inputbox: InputBox, text: String?)
 }
 
+public protocol InputBoxUpdatingDelegate: class {
+	func inputBoxUpdated(inputbox: InputBox, text: String?)
+}
+
 public class InputBox: UIView {
 	
 	public private(set) var iconImageView: UIImageView!
@@ -21,6 +25,7 @@ public class InputBox: UIView {
 	private var errorIndicatorImage: UIImage?
 	
 	public weak var inputBoxDelegate: InputBoxDelegate?
+	public weak var inputBoxUpdatingDelegate: InputBoxUpdatingDelegate?
 
 	// MARK: - Init
 	public init(imageName: String, placeholder: String?, isPassword: Bool, keyboardType: UIKeyboardType) {
@@ -89,6 +94,7 @@ public class InputBox: UIView {
 	// MARK: - Methods
 	@objc private func textfieldEditingChange() {
 		inputBoxDelegate?.inputBoxEditingChanged(self, text: textfield.text)
+		inputBoxUpdatingDelegate?.inputBoxUpdated(self, text: textfield.text)
 	}
 	
 	public func showOKIndicator() {
