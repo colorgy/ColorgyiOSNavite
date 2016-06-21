@@ -28,6 +28,9 @@ public enum ColorgyLoginError: ErrorType {
 /// Login starts here
 final public class ColorgyLogin {
 	
+	// MARK: - Parameters
+	private static let rootURL: String = "\(ColorgyConfig.serverURL)/oauth/token"
+	
 	// MARK: - Helper
 	/// This Method will help you to wrap qos queue for you
 	private class func qosBlock(block: () -> Void) {
@@ -114,14 +117,14 @@ final public class ColorgyLogin {
 		let parameters = [
 			"grant_type": "password",
 			// 應用程式ID application id, in colorgy server
-			"client_id": "ad2d3492de7f83f0708b5b1db0ac7041f9179f78a168171013a4458959085ba4",
-			"client_secret": "d9de77450d6365ca8bd6717bbf8502dfb4a088e50962258d5d94e7f7211596a3",
+			"client_id": ColorgyConfig.clientID,
+			"client_secret": ColorgyConfig.clientSecret,
 			"username": "facebook:access_token",
 			"password": token,
 			"scope": "public account offline_access"
 		]
 		
-		let url = "https://colorgy.io/oauth/token"
+		let url = rootURL
 		
 		guard url.isValidURLString else {
 			failureHelper(failure, error: ColorgyLoginError.InvalidURL, afError: nil)
@@ -146,8 +149,8 @@ final public class ColorgyLogin {
 		
 		let parameters = [
 			"grant_type": "password",
-			"client_id": "ad2d3492de7f83f0708b5b1db0ac7041f9179f78a168171013a4458959085ba4",
-			"client_secret": "d9de77450d6365ca8bd6717bbf8502dfb4a088e50962258d5d94e7f7211596a3",
+			"client_id": ColorgyConfig.clientID,
+			"client_secret": ColorgyConfig.clientSecret,
 			"username": email,
 			"password": password,
 			"scope": "public account offline_access"
@@ -161,7 +164,7 @@ final public class ColorgyLogin {
 			failureHelper(failure, error: ColorgyLoginError.PasswordLessThan8Charater, afError: nil)
 			return
 		}
-		let url = "https://colorgy.io/oauth/token"
+		let url = rootURL
 		guard url.isValidURLString else {
 				failureHelper(failure, error: ColorgyLoginError.InvalidURL, afError: nil)
 			return

@@ -34,6 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //		ColorgyChatContext.initialize()
 		
 		ColorgyVersionControl.checkForUpdate()
+		
+		ColorgyLogin.loginToColorgyWithEmail(email: "a1@aa.aa", password: "00000000", success: { (result) in
+			print(result)
+			}) { (error, afError) in
+				print(error, afError)
+		}
+		
 
 		return true
 	}

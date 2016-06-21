@@ -61,7 +61,7 @@ final public class ColorgyRefreshCenter {
 	/// background worker's timer
 	private var backgroundWorker: NSTimer?
 	
-	public let rootURL: String = "http://staging.colorgy.io/api/v2"
+	public let rootURL: String = "http://staging.colorgy.io"
 	
 	// MARK: - init
 	
@@ -198,7 +198,7 @@ final public class ColorgyRefreshCenter {
 		// lock
 		ColorgyRefreshCenter.sharedInstance().lockWhileRefreshingToken()
 		
-		manager.POST("https://colorgy.io/oauth/token?", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+		manager.POST("\(sharedInstance().rootURL)/oauth/token?", parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
 			guard let response = response else {
 				// Fail to parse response, need to revoke refesh token
 				ColorgyRefreshCenter.revokeRefreshToken()
@@ -374,7 +374,7 @@ final public class ColorgyRefreshCenter {
 			return
 		}
 		
-		let url = "\(ColorgyRefreshCenter.sharedInstance().rootURL)/me/emails.json?access_token=\(accessToken)"
+		let url = "\(ColorgyRefreshCenter.sharedInstance().rootURL)/api/v2/me/emails.json?access_token=\(accessToken)"
 		
 		manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 			complete(tokenStillWorking: true)

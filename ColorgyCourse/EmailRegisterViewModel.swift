@@ -80,10 +80,33 @@ final public class EmailRegisterViewModel {
 		}
 		
 		// if no data is wrong, perform api request
-		api.registerNewUser(userName, email: email, password: password, passwordConfirm: confirmPassword, success: { 
-			self.delegate?.emailRegisterViewModelSuccessfullySubmitRegistration()
+		api.registerNewUser(with: email, phoneNumber: number, password: password, passwordConfirm: confirmPassword, success: {
+			print("yooooooooooo")
+			self.successfullyRegister(with: email, and: password)
 			}, failure: { (error, afError) in
-			self.delegate?.emailRegisterViewModel(errorSumittingRequest: error, afError: afError)
+				print(error, afError)
 		})
 	}
+	
+	/// After register, you need to login and get access token to update mobile.
+	private func successfullyRegister(with email: String, and password: String) {
+		ColorgyLogin.loginToColorgyWithEmail(email: email, password: password, success: { (result) in
+			self.delegate?.emailRegisterViewModelSuccessfullySubmitRegistration()
+			}, failure: { (error, afError) in
+				// TODO: what should i do if user fail to login after register?
+				// Should i direct them to login page?
+				print(error, afError)
+		})
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

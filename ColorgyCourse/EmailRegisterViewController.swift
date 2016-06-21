@@ -95,10 +95,10 @@ extension EmailRegisterViewController : EmailRegisterViewModelDelegate {
 		
 		var message: String?
 		switch error {
-		case .NoUserName:
-			message = "請輸入名字"
 		case .InvalidEmail:
 			message = "Email格式不正確，請輸入正確的Email唷！"
+		case .InvalidPhoneNumber:
+			message = "請輸入正確手機號碼"
 		case .PasswordLessThen8Characters:
 			message = "密碼要大於8個字元喔！"
 		case .TwoPasswordsDontMatch:
@@ -128,11 +128,11 @@ extension EmailRegisterViewController : InputBoxDelegate {
 		case emailInputBox:
 			viewModel?.updateEmail(with: text)
 		case phoneInputBox:
-			viewModel.upda
+			viewModel?.updatePhoneNumber(with: text)
 		case passwordInputBox:
-			
+			viewModel?.updatePassword(with: text)
 		case confirmPasswordInputBox:
-			
+			viewModel?.updateConfirmPassword(with: text)
 		default: break
 		}
 	}

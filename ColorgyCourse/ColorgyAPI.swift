@@ -49,7 +49,7 @@ final public class ColorgyAPI : NSObject {
 	private var pointer: UnsafeMutablePointer<Void> = nil
 	public weak var delegate: ColorgyAPIDelegate?
 	
-	private let rootURL: String = "http://staging.colorgy.io/api/v2"
+	private let rootURL: String = "\(ColorgyConfig.serverURL)/api/v2"
 	
 	// MARK: - Init
 	/// initializer
@@ -1055,7 +1055,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleFailToParseResult(failure)
 				return
 			}
-			let url = "https://colorgy.io/api/v1/user_table_settings/\(userId).json"
+			let url = "\(self.rootURL)/user_table_settings/\(userId).json"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1354,7 +1354,7 @@ final public class ColorgyAPI : NSObject {
 	}
 	
 	// MARK: - Register A New User
-	public func registerNewUser(name: String, email: String, password: String, passwordConfirm: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func registerNewUser(with email: String, phoneNumber: String, password: String, passwordConfirm: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			handleNetworkUnavailable(failure)
@@ -1366,7 +1366,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleAPIUnavailable(failure)
 				return
 			}
-			let url = "https://colorgy.io/api/v1/sign_up"
+			let url = "\(self.rootURL)/users/sign_up"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -1374,10 +1374,10 @@ final public class ColorgyAPI : NSObject {
 			
 			let parameters = [
 				"user": [
-					"name": name,
 					"email": email,
 					"password": password,
-					"password_confirmation": passwordConfirm
+					"password_confirmation": passwordConfirm,
+					"unconfirmed_mobile": phoneNumber
 				]
 			]
 			
