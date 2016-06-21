@@ -75,9 +75,6 @@ public class EmailLoginViewController: UIViewController {
 	}
 	
 	// MARK: - Selector
-	@objc private func loginButtonClicked() {
-		viewModel?.loginToColorgy()
-	}
 }
 
 extension EmailLoginViewController : EmailLoginViewModelDelegate {
@@ -102,6 +99,8 @@ extension EmailLoginViewController : EmailLoginViewModelDelegate {
 extension EmailLoginViewController : ColorgyFullScreenButtonDelegate {
 	public func colorgyFullScreenButtonClicked(button: ColorgyFullScreenButton) {
 		if button == loginButton {
+			viewModel?.updateEmail(with: "a1@aa.aa")
+			viewModel?.updatePassword(with: "00000000")
 			viewModel?.loginToColorgy()
 		}
 	}

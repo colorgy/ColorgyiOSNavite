@@ -221,7 +221,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleInvalidURL(failure)
 				return
 			}
-			
+			print(url)
 			// then start job
 			self.manager.GET(url, parameters: nil, progress: nil,success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
 				// will pass in a json, then generate a result
@@ -230,6 +230,7 @@ final public class ColorgyAPI : NSObject {
 					return
 				}
 				let json = JSON(response)
+				print(json)
 				guard let result = ColorgyAPIMeResult(json: json) else {
 					self.handleFailToParseResult(failure)
 					return
