@@ -80,7 +80,8 @@ public class EmailLoginViewController: UIViewController {
 extension EmailLoginViewController : EmailLoginViewModelDelegate {
 	
 	public func emailLoginViewModelSuccessfullyLoginToColorgy() {
-		
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		storyboard.instantiateViewControllerWithIdentifier("")
 	}
 	
 	public func emailLoginViewModel(failToLoginColorgy error: ColorgyLoginError, afError: AFError?) {
@@ -99,8 +100,6 @@ extension EmailLoginViewController : EmailLoginViewModelDelegate {
 extension EmailLoginViewController : ColorgyFullScreenButtonDelegate {
 	public func colorgyFullScreenButtonClicked(button: ColorgyFullScreenButton) {
 		if button == loginButton {
-			viewModel?.updateEmail(with: "a1@aa.aa")
-			viewModel?.updatePassword(with: "00000000")
 			viewModel?.loginToColorgy()
 		}
 	}

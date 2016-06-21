@@ -34,6 +34,8 @@ private struct APIMeResultKeys {
 	static let userPossibleOrganization = "APIMeResultKeys userPossibleOrganization"
 	static let userEmail = "APIMeResultKeys userEmail"
 	static let userFBEmail = "APIMeResultKeys userFBEmail"
+	static let userMobile = "APIMeResultKeys userMobile"
+	static let userUnconfirmedMobile = "APIMeResultKeys userUnconfirmedMobile"
 }
 
 private struct UserSettingKeys {
@@ -112,6 +114,8 @@ final public class ColorgyUserInformation {
 		ud.setObject(result.possible_organization_code, forKey: APIMeResultKeys.userPossibleOrganization)
 		ud.setObject(result.email, forKey: APIMeResultKeys.userEmail)
 		ud.setObject(result.fbemail, forKey: APIMeResultKeys.userFBEmail)
+		ud.setObject(result.mobile, forKey: APIMeResultKeys.userMobile)
+		ud.setObject(result.unconfirmedMobile, forKey: APIMeResultKeys.userUnconfirmedMobile)
 		ud.synchronize()
 	}
 	

@@ -135,7 +135,7 @@
         <!--Phone Validation View Controller-->
         <scene sceneID="EFw-Rp-RYx">
             <objects>
-                <viewController id="bYp-E5-qqi" customClass="PhoneValidationViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Phone Validation VC" id="bYp-E5-qqi" customClass="PhoneValidationViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UV9-W1-O8Z"/>
                         <viewControllerLayoutGuide type="bottom" id="GOj-7N-nrE"/>

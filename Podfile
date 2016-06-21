@@ -1,9 +1,11 @@
 # Uncomment this line to define a global platform for your project
-platform :ios, '8.0'
-# Uncomment this line if you're using Swift
-use_frameworks!
+platform :ios, '9.0'
 
 target 'ColorgyCourse' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for ColorgyCourse
   pod 'Fabric', '~> 1.6.7'
   pod 'Crashlytics', '~> 3.7.0'
   pod 'Mixpanel', '~> 2.9.6'
@@ -18,15 +20,19 @@ target 'ColorgyCourse' do
   pod 'ImagePickerSheetController', '~> 0.9.1'
   pod 'KeychainSwift', '~> 3.0'
   pod 'Socket.IO-Client-Swift', '~> 6.1.1'
-end
 
-target 'ColorgyCourseTests' do
-  pod 'Quick'
-  pod 'Nimble'
-end
+  target 'ColorgyCourseTests' do
+    inherit! :search_paths
+    # Pods for testing
+    pod 'Quick'
+    pod 'Nimble'
+  end
 
-target 'ColorgyCourseUITests' do
-  pod 'Quick'
-  pod 'Nimble'
-end
+  target 'ColorgyCourseUITests' do
+    inherit! :search_paths
+    # Pods for testing
+    pod 'Quick'
+    pod 'Nimble'
+  end
 
+end

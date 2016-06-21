@@ -35,8 +35,6 @@ extension SocketParsable {
     private func handleConnect(p: SocketPacket) {
         if p.nsp == "/" && nsp != "/" {
             joinNamespace(nsp)
-        } else if p.nsp != "/" && nsp == "/" {
-            didConnect()
         } else {
             didConnect()
         }
@@ -91,32 +89,30 @@ extension SocketParsable {
         }
         
         if !parser.hasNext {
-            return .Right(SocketPacket(type: type, id: -1,
-                nsp: namespace ?? "/", placeholders: placeholders))
+            return .Right(SocketPacket(type: type, nsp: namespace, placeholders: placeholders))
         }
         
         var idString = ""
         
         if type == .Error {
             parser.advanceIndexBy(-1)
-        }
-        
-        while parser.hasNext && type != .Error {
-            if let int = Int(parser.read(1)) {
-                idString += String(int)
-            } else {
-                parser.advanceIndexBy(-2)
-                break
+        } else {
+            while parser.hasNext {
+                if let int = Int(parser.read(1)) {
+                    idString += String(int)
+                } else {
+                    parser.advanceIndexBy(-2)
+                    break
+                }
             }
         }
         
         let d = message[parser.currentIndex.advancedBy(1)..<message.endIndex]
-        let noPlaceholders = d["(\\{\"_placeholder\":true,\"num\":(\\d*)\\})"] <~ "\"~~$2\""
         
-        switch parseData(noPlaceholders) {
+        switch parseData(d) {
         case let .Left(err):
             // Errors aren't always enclosed in an array
-            if case let .Right(data) = parseData("\([noPlaceholders as AnyObject])") {
+            if case let .Right(data) = parseData("\([d as AnyObject])") {
                 return .Right(SocketPacket(type: type, data: data, id: Int(idString) ?? -1,
                     nsp: namespace, placeholders: placeholders))
             } else {
@@ -166,9 +162,7 @@ extension SocketParsable {
         }
         
         // Should execute event?
-        guard waitingPackets[waitingPackets.count - 1].addData(data) else {
-            return
-        }
+        guard waitingPackets[waitingPackets.count - 1].addData(data) else { return }
         
         let packet = waitingPackets.removeLast()
         

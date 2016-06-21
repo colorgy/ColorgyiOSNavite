@@ -43,14 +43,7 @@ final public class LoginViewModel {
 				// 
 				self.colorgyAPI.me(success: { (result) in
 					let organization = self.checkUserOrganization()
-					self.colorgyAPI.getSchoolPeriodData(organization, success: { (periodData) in
-						PeriodRawDataRealmObject.storePeriodRawData(periodData)
-						// check user's possible organization code
-						let state = ColorgyUserInformation.sharedInstance().userPossibleOrganization != nil ? true : false
-						self.delegate?.loginViewModel(loginToColorgy: state)
-						}, failure: { (error, afError) in
-							self.delegate?.loginViewModel(failToGetDataFromServer: error, afError: afError)
-					})
+					
 					}, failure: { (error, afError) in
 						self.delegate?.loginViewModel(failToGetDataFromServer: error, afError: afError)
 				})

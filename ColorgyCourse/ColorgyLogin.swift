@@ -121,7 +121,7 @@ final public class ColorgyLogin {
 			"client_secret": ColorgyConfig.clientSecret,
 			"username": "facebook:access_token",
 			"password": token,
-			"scope": "public account offline_access"
+			"scope": "public account identity offline_access write"
 		]
 		
 		let url = rootURL
@@ -153,7 +153,7 @@ final public class ColorgyLogin {
 			"client_secret": ColorgyConfig.clientSecret,
 			"username": email,
 			"password": password,
-			"scope": "public account offline_access"
+			"scope": "public account identity offline_access write"
 		]
 		
 		guard email.isValidEmail else {

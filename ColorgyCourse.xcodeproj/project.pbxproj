@@ -110,6 +110,7 @@
 		6375477A1CC8C23700BC3BBD /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */; };
 		6375477C1CC8D69800BC3BBD /* ColorgyChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */; };
 		6375477D1CC9D67600BC3BBD /* ColorgyChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */; };
+		637B8F211D192B4600348CF4 /* StoryboardIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B8F201D192B4600348CF4 /* StoryboardIdentifier.swift */; };
 		638BFA0C1D07C2D900939731 /* ChooseSchoolTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 638BFA0B1D07C2D900939731 /* ChooseSchoolTableViewCell.xib */; };
 		638BFA0E1D07C43000939731 /* ChooseSchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638BFA0D1D07C43000939731 /* ChooseSchoolTableViewCell.swift */; };
 		638BFA101D07CB2100939731 /* ChooseSchoolSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638BFA0F1D07CB2100939731 /* ChooseSchoolSearchBar.swift */; };
@@ -349,6 +350,7 @@
 		637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
 		6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyChatContext.swift; sourceTree = "<group>"; };
 		6379FC701CBEA1A8002F10E1 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		637B8F201D192B4600348CF4 /* StoryboardIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifier.swift; sourceTree = "<group>"; };
 		638BFA0B1D07C2D900939731 /* ChooseSchoolTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseSchoolTableViewCell.xib; sourceTree = "<group>"; };
 		638BFA0D1D07C43000939731 /* ChooseSchoolTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSchoolTableViewCell.swift; sourceTree = "<group>"; };
 		638BFA0F1D07CB2100939731 /* ChooseSchoolSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSchoolSearchBar.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				63700E311D18DF1F00DD76F8 /* ColorgyConfig.swift */,
 				635479891CB898C100DE8CBC /* ViewController.swift */,
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
+				637B8F201D192B4600348CF4 /* StoryboardIdentifier.swift */,
 				6352C2481D1121780041CF9B /* ColorgyNavigationTransitioningDelegate.swift */,
 				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
 				63AC1B401CF155F800FDD724 /* Event.swift */,
@@ -1260,6 +1263,7 @@
 				6393BC001CF01AD7008BFF72 /* ColorgyNavigationBar.swift in Sources */,
 				6335DC5F1D17C46500B32B8C /* EventManagerNotificationCell.swift in Sources */,
 				630570181CBD233A007D2C9D /* Hello.swift in Sources */,
+				637B8F211D192B4600348CF4 /* StoryboardIdentifier.swift in Sources */,
 				635479CF1CB8A5EF00DE8CBC /* Release.swift in Sources */,
 				6335DC561D17C46500B32B8C /* EventManagerColorCell.swift in Sources */,
 				63EC77C51CC875A0008025A7 /* ChatRoomViewModel.swift in Sources */,
