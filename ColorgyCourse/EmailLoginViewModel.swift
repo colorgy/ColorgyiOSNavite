@@ -14,9 +14,13 @@ public enum InvalidLoginInformationError: ErrorType {
 }
 
 public protocol EmailLoginViewModelDelegate: class {
+	/// Invalid required information.
 	func emailLoginViewModel(invalidRequiredInformation error: InvalidLoginInformationError)
-	func emailLoginViewModel(successfullyLoginToColorgy userHasPossibleOrganization: Bool)
+	///
+	func emailLoginViewModelSuccessfullyLoginToColorgy()
+	/// Fail to login to colorgy.
 	func emailLoginViewModel(failToLoginColorgy error: ColorgyLoginError, afError: AFError?)
+	/// Fail to fetch data from server.
 	func emailLoginViewModel(failToRetrieveDataFromServre error: APIError, afError: AFError?)
 }
 
@@ -25,8 +29,8 @@ final public class EmailLoginViewModel {
 	// MARK: - Parameters
 	public weak var delegate: EmailLoginViewModelDelegate?
 	private let api: ColorgyAPI
-	public var email: String?
-	public var password: String?
+	public private(set) var email: String?
+	public private(set) var password: String?
 	
 	// MARK: - Init
 	init(delegate: EmailLoginViewModelDelegate?) {
@@ -51,23 +55,22 @@ final public class EmailLoginViewModel {
 			// After getting access token, fetch data from server
 			// First get user information
 			self.api.me(success: { (result) in
-				let organization = self.checkUserOrganization()
-				// get school period data
-				self.api.getSchoolPeriodData(organization, success: { (periodData) in
-					// store period data for further use
-					PeriodRawDataRealmObject.storePeriodRawData(periodData)
-					// check if user has a organization
-					let state = ColorgyUserInformation.sharedInstance().userActualOrganization != nil ? true : false
-					self.delegate?.emailLoginViewModel(successfullyLoginToColorgy: state)
-					}, failure: { (error, afError) in
-						self.delegate?.emailLoginViewModel(failToRetrieveDataFromServre: error, afError: afError)
-				})
+				// check if this user has a confirmed mobile
+				print(result)
 				}, failure: { (error, afError) in
 					self.delegate?.emailLoginViewModel(failToRetrieveDataFromServre: error, afError: afError)
 			})
 			}, failure: { (error, afError) in
 				self.delegate?.emailLoginViewModel(failToLoginColorgy: error, afError: afError)
 		})
+	}
+	
+	public func updateEmail(with email: String?) {
+		self.email = email
+	}
+	
+	public func updatePassword(with password: String?) {
+		self.password = password
 	}
 	
 	// MARK: - Private Methods

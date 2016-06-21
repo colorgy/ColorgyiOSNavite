@@ -57,6 +57,7 @@ public class EmailLoginViewController: UIViewController {
 		let initialPosition = CGPoint(x: 0, y: 170)
 		_ = views.reduce(initialPosition.y, combine: arrangeView)
 		views.forEach(view.addSubview)
+		views.forEach({ $0.inputBoxUpdatingDelegate = self })
 		
 		// configure button
 		configureLoginButton()
@@ -81,8 +82,8 @@ public class EmailLoginViewController: UIViewController {
 
 extension EmailLoginViewController : EmailLoginViewModelDelegate {
 	
-	public func emailLoginViewModel(successfullyLoginToColorgy userHasPossibleOrganization: Bool) {
-		print(userHasPossibleOrganization)
+	public func emailLoginViewModelSuccessfullyLoginToColorgy() {
+		
 	}
 	
 	public func emailLoginViewModel(failToLoginColorgy error: ColorgyLoginError, afError: AFError?) {
@@ -101,8 +102,17 @@ extension EmailLoginViewController : EmailLoginViewModelDelegate {
 extension EmailLoginViewController : ColorgyFullScreenButtonDelegate {
 	public func colorgyFullScreenButtonClicked(button: ColorgyFullScreenButton) {
 		if button == loginButton {
-			emailInputBox.showOKIndicator()
-			passwordInputBox.showErrorIndicator()
+			viewModel?.loginToColorgy()
+		}
+	}
+}
+
+extension EmailLoginViewController : InputBoxUpdatingDelegate {
+	public func inputBoxUpdated(inputbox: InputBox, text: String?) {
+		if inputbox == emailInputBox {
+			viewModel?.updateEmail(with: text)
+		} else if inputbox == passwordInputBox {
+			viewModel?.updatePassword(with: text)
 		}
 	}
 }
