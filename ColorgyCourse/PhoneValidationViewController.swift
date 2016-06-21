@@ -11,14 +11,19 @@ import UIKit
 final public class PhoneValidationViewController: UIViewController {
 	
 	var transitionManager: ReenterPhoneNumberViewControllerTransitioningDelegate?
+	private var viewModel: PhoneValidationViewModel?
 
     override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		viewModel = PhoneValidationViewModel(delegate: self)
+		
 		let k = PhoneValidationView(delegate: self)
 		view.addSubview(k)
 		k.frame.origin.y = 170
+		k.targetPhoneNumber = ColorgyUserInformation.sharedInstance().userUnconfirmedMobile
+		print(ColorgyUserInformation.sharedInstance().userUnconfirmedMobile)
 		
 		let bb = ColorgyBillboardView(initialImageName: "PhoneAuthBillboard", errorImageName: "PhoneAuthErrorBillboard")
 		view.insertSubview(bb, belowSubview: k)
@@ -29,8 +34,18 @@ final public class PhoneValidationViewController: UIViewController {
 		sendCode.frame.origin.y = k.frame.maxY + 24
 		view.addSubview(sendCode)
     }
+	
+	public override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		viewModel?.requestValidationSMS()
+	}
 
 }
+
+extension PhoneValidationViewController : PhoneValidationViewModelDelegate {
+	
+}
+
 extension PhoneValidationViewController : PhoneValidationViewDelegate {
 	public func phoneValidationViewRequestReenterPhoneNumber() {
 		print("phoneValidationViewRequestReenterPhoneNumber")
@@ -38,6 +53,7 @@ extension PhoneValidationViewController : PhoneValidationViewDelegate {
 	
 	public func phoneValidationViewRequestResendValidationCode() {
 		print("phoneValidationViewRequestResendValidationCode")
+		viewModel?.requestValidationSMS()
 	}
 }
 

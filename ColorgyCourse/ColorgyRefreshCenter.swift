@@ -182,8 +182,8 @@ final public class ColorgyRefreshCenter {
 		let parameters = [
 			"grant_type": "refresh_token",
 			// 應用程式ID application id, in colorgy server
-			"client_id": "ad2d3492de7f83f0708b5b1db0ac7041f9179f78a168171013a4458959085ba4",
-			"client_secret": "d9de77450d6365ca8bd6717bbf8502dfb4a088e50962258d5d94e7f7211596a3",
+			"client_id": ColorgyConfig.clientID,
+			"client_secret": ColorgyConfig.clientSecret,
 			"refresh_token": refreshToken
 		]
 		

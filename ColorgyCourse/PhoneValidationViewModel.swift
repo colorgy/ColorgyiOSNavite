@@ -24,10 +24,10 @@ final public class PhoneValidationViewModel {
 	
 	public func requestValidationSMS() {
 		guard let phoneNumber = ColorgyUserInformation.sharedInstance().userUnconfirmedMobile else { return }
-		api.requestSMS(with: phoneNumber, success: { 
+		api.requestSMS(with: "0988913868", success: { 
 			print(#file, #function, #line, "okok")
 			}, failure: { (error, afError) in
-				print(#file, #line,error, afError)
+				print(#file, #line, error, afError)
 		})
 	}
 }
