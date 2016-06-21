@@ -19,7 +19,6 @@ final public class PhoneValidationViewController: UIViewController {
 		let k = PhoneValidationView(delegate: self)
 		view.addSubview(k)
 		k.frame.origin.y = 170
-		k.targetPhoneNumber = "0988913868"
 		
 		let bb = ColorgyBillboardView(initialImageName: "PhoneAuthBillboard", errorImageName: "PhoneAuthErrorBillboard")
 		view.insertSubview(bb, belowSubview: k)
