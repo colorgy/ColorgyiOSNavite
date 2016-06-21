@@ -112,6 +112,9 @@
 		6375477D1CC9D67600BC3BBD /* ColorgyChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */; };
 		637B8F211D192B4600348CF4 /* StoryboardIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B8F201D192B4600348CF4 /* StoryboardIdentifier.swift */; };
 		637B8F231D192BB000348CF4 /* StoryboardViewControllerFetchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B8F221D192BB000348CF4 /* StoryboardViewControllerFetchHelper.swift */; };
+		637B8F261D192D7800348CF4 /* StoryboardViewControllerFetchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B8F221D192BB000348CF4 /* StoryboardViewControllerFetchHelper.swift */; };
+		637B8F271D192D7B00348CF4 /* StoryboardIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B8F201D192B4600348CF4 /* StoryboardIdentifier.swift */; };
+		637B8F281D19311E00348CF4 /* PhoneValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C561CF54A09002C9380 /* PhoneValidationViewController.swift */; };
 		638BFA0C1D07C2D900939731 /* ChooseSchoolTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 638BFA0B1D07C2D900939731 /* ChooseSchoolTableViewCell.xib */; };
 		638BFA0E1D07C43000939731 /* ChooseSchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638BFA0D1D07C43000939731 /* ChooseSchoolTableViewCell.swift */; };
 		638BFA101D07CB2100939731 /* ChooseSchoolSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638BFA0F1D07CB2100939731 /* ChooseSchoolSearchBar.swift */; };
@@ -1374,6 +1377,7 @@
 				63B1C3871CF4350700989B5D /* ColorgyFullScreenButton.swift in Sources */,
 				63F3EE7B1CBF49DF0010D059 /* AFNetworkingErrorParser.swift in Sources */,
 				63B1C37E1CF4244400989B5D /* PasswordInputBox.swift in Sources */,
+				637B8F271D192D7B00348CF4 /* StoryboardIdentifier.swift in Sources */,
 				63700E331D18DFE400DD76F8 /* ColorgyConfig.swift in Sources */,
 				63F3EE7F1CBF49DF0010D059 /* ColorgyAPIMeResult.swift in Sources */,
 				63B1C3591CF2992700989B5D /* UIColorExtension.swift in Sources */,
@@ -1381,6 +1385,7 @@
 				63F3EE9C1CBF56990010D059 /* TestCourseModel.swift in Sources */,
 				63C3CE3D1CC0C8C0000EE808 /* UIViewExtension.swift in Sources */,
 				63C3CE391CC0C8BC000EE808 /* LoginViewController.swift in Sources */,
+				637B8F261D192D7800348CF4 /* StoryboardViewControllerFetchHelper.swift in Sources */,
 				63C3CE3C1CC0C8C0000EE808 /* UIImageExtension.swift in Sources */,
 				6375477D1CC9D67600BC3BBD /* ColorgyChatContext.swift in Sources */,
 				63F3EE7E1CBF49DF0010D059 /* Semester.swift in Sources */,
@@ -1390,6 +1395,7 @@
 				63C3CE361CC0C8BC000EE808 /* EmailRegisterViewController.swift in Sources */,
 				63F3EE7A1CBF49D10010D059 /* CourseOwnershipObject.swift in Sources */,
 				63C3CE2B1CC0C8B5000EE808 /* ColorgyAppNotification.swift in Sources */,
+				637B8F281D19311E00348CF4 /* PhoneValidationViewController.swift in Sources */,
 				63F3EE941CBF49EE0010D059 /* ChatMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

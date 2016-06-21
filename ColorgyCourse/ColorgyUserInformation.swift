@@ -283,4 +283,15 @@ final public class ColorgyUserInformation {
 		let ud = NSUserDefaults.standardUserDefaults()
 		return ud.objectForKey(APIMeResultKeys.userUUID) as? String
 	}
+	
+	// MARK: - Mobile
+	public var userMobile: String? {
+		let ud = NSUserDefaults.standardUserDefaults()
+		return ud.objectForKey(APIMeResultKeys.userMobile) as? String
+	}
+	
+	public var userUnconfirmedMobile: String? {
+		let ud = NSUserDefaults.standardUserDefaults()
+		return ud.objectForKey(APIMeResultKeys.userUnconfirmedMobile) as? String
+	}
 }

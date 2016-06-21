@@ -80,8 +80,13 @@ public class EmailLoginViewController: UIViewController {
 extension EmailLoginViewController : EmailLoginViewModelDelegate {
 	
 	public func emailLoginViewModelSuccessfullyLoginToColorgy() {
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		storyboard.instantiateViewControllerWithIdentifier("")
+		if ColorgyUserInformation.sharedInstance().userMobile == nil {
+			// need to validate phone
+			guard let phoneValidationVC = StoryboardViewControllerFetchHelper.fetchPhoneValidationViewController() else { return }
+			dispatch_async(dispatch_get_main_queue(), { 
+				self.presentViewController(phoneValidationVC, animated: true, completion: nil)
+			})
+		}
 	}
 	
 	public func emailLoginViewModel(failToLoginColorgy error: ColorgyLoginError, afError: AFError?) {
