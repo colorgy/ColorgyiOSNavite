@@ -17,9 +17,10 @@ public enum FacebookLoginError: ErrorType {
 	case FailLoginToFacebook
 }
 
+/// Error while login to colorgy.
 public enum ColorgyLoginError: ErrorType {
 	case FailToParseResult
-	case InvalidEmail
+	case InvalidUsername
 	case PasswordLessThan8Charater
 	case InvalidURL
 	case APIConnectionFailure
@@ -139,8 +140,9 @@ final public class ColorgyLogin {
 		})
 	}
 	
-	/// Login colorgy using email and password 
-	public class func loginToColorgyWithEmail(email email: String, password: String, success: ((result: ColorgyLoginResult) -> Void)?, failure: ((error: ColorgyLoginError, afError: AFError?) -> Void)?) {
+	/// Login colorgy using username and password.
+	/// Username here can be email and mobile.
+	public class func loginToColorgy(with username: String, password: String, success: ((result: ColorgyLoginResult) -> Void)?, failure: ((error: ColorgyLoginError, afError: AFError?) -> Void)?) {
 		
 		let manager = AFHTTPSessionManager(baseURL: nil)
 		manager.requestSerializer = AFJSONRequestSerializer()
@@ -151,13 +153,13 @@ final public class ColorgyLogin {
 			"grant_type": "password",
 			"client_id": ColorgyConfig.clientID,
 			"client_secret": ColorgyConfig.clientSecret,
-			"username": email,
+			"username": username,
 			"password": password,
 			"scope": "public account identity offline_access write"
 		]
 		
-		guard email.isValidEmail else {
-			failureHelper(failure, error: ColorgyLoginError.InvalidEmail, afError: nil)
+		guard username.isValidEmail || username.isValidMobileNumber else {
+			failureHelper(failure, error: ColorgyLoginError.InvalidUsername, afError: nil)
 			return
 		}
 		guard password.characters.count >= 8 else {

@@ -63,7 +63,7 @@ final public class EmailLoginViewModel {
 		}
 		
 		// Prepare to login to colorgy
-		ColorgyLogin.loginToColorgyWithEmail(email: email, password: password, success: { (result) in
+		ColorgyLogin.loginToColorgy(with: email, password: password, success: { (result) in
 			// After getting access token, fetch data from server
 			// First get user information
 			self.api.me(success: { (result) in
