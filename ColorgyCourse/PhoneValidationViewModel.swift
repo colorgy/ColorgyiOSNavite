@@ -45,6 +45,10 @@ final public class PhoneValidationViewModel {
 	
 	/// Validation the validation code user typed in.
 	public func validateSMSValidationCode() {
-		
+		api.validateMobile(with: validationCode, success: { 
+			self.delegate?.phoneValidationViewModelSuccessfullyValidationSMSCode()
+			}, failure: { (error, afError) in
+				self.delegate?.phoneValidationViewModel(failToValidateCodeWith: error, and: afError)
+		})
 	}
 }

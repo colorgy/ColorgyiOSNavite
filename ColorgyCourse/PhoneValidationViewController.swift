@@ -52,6 +52,15 @@ extension PhoneValidationViewController : PhoneValidationViewModelDelegate {
 	public func phoneValidationViewModel(failToSendSMSWith error: APIError, and afError: AFError?) {
 		print(#file, #function, "Fail to send sms with \(error), and \(afError)")
 	}
+	
+	public func phoneValidationViewModelSuccessfullyValidationSMSCode() {
+		print(#file, #function, "yaaaaa")
+	}
+	
+	public func phoneValidationViewModel(failToValidateCodeWith error: APIError, and afError: AFError?) {
+		print(#file, #function, "Fail validate code with \(error), and \(afError)")
+	}
+	
 }
 
 extension PhoneValidationViewController : PhoneValidationViewDelegate {

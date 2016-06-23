@@ -366,7 +366,7 @@ final public class ColorgyAPI : NSObject {
 			
 			self.setManager(new: accesstoken)
 			
-			self.manager.POST(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+			self.manager.PATCH(url, parameters: parameters, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				self.mainBlock({
 					success?()
 				})
