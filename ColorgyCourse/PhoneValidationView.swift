@@ -11,6 +11,7 @@ import UIKit
 public protocol PhoneValidationViewDelegate: class {
 	func phoneValidationViewRequestResendValidationCode()
 	func phoneValidationViewRequestReenterPhoneNumber()
+	func phoneValidationView(validationCodeUpdatedTo code: String)
 }
 
 final public class PhoneValidationView: UIView {
@@ -222,6 +223,7 @@ final public class PhoneValidationView: UIView {
 		var text = ""
 		digits.forEach({ text += $0.text ?? "" })
 		hiddenDigitTextField.text = text
+		delegate?.phoneValidationView(validationCodeUpdatedTo: text)
 	}
 	
 	private func updateTargetPhoneNumber() {

@@ -55,6 +55,12 @@ extension PhoneValidationViewController : PhoneValidationViewDelegate {
 		print("phoneValidationViewRequestResendValidationCode")
 		viewModel?.requestValidationSMS()
 	}
+	
+	/// This method will get called when user input 4 digits.
+	/// Only trigger when input is 4 digits.
+	public func phoneValidationView(validationCodeUpdatedTo code: String) {
+		<#code#>
+	}
 }
 
 extension PhoneValidationViewController : ColorgyFullScreenButtonDelegate {

@@ -9,25 +9,34 @@
 import Foundation
 
 public protocol PhoneValidationViewModelDelegate: class {
-	
+	func phoneValidationViewModelDidSentSMS()
+	func phoneValidationViewModel(failToSendSMSWith error: APIError, and afError: AFError?)
 }
 
 final public class PhoneValidationViewModel {
 	
 	public weak var delegate: PhoneValidationViewModelDelegate?
 	private let api: ColorgyAPI
+	public private(set) var validationCode: String
 	
 	public init(delegate: PhoneValidationViewModelDelegate?) {
 		self.delegate = delegate
 		self.api = ColorgyAPI()
+		self.validationCode = ""
 	}
 	
+	/// Will send a sms to specific number.
+	/// Format: International format, with '+' at very beginning.
 	public func requestValidationSMS() {
 		guard let phoneNumber = ColorgyUserInformation.sharedInstance().userUnconfirmedMobile else { return }
-		api.requestSMS(with: "0988913868", success: { 
-			print(#file, #function, #line, "okok")
+		api.requestSMS(with: phoneNumber, success: {
+			self.delegate?.phoneValidationViewModelDidSentSMS()
 			}, failure: { (error, afError) in
-				print(#file, #line, error, afError)
+				self.delegate?.phoneValidationViewModel(failToSendSMSWith: error, and: afError)
 		})
+	}
+	
+	public func updateValidationCode(with code: String) {
+		validationCode = code
 	}
 }
