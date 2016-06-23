@@ -12,6 +12,7 @@ final public class PhoneValidationViewController: UIViewController {
 	
 	var transitionManager: ReenterPhoneNumberViewControllerTransitioningDelegate?
 	private var viewModel: PhoneValidationViewModel?
+	private var sendValidationCodeButton: ColorgyFullScreenButton!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +31,10 @@ final public class PhoneValidationViewController: UIViewController {
 		
 		view.backgroundColor = ColorgyColor.BackgroundColor
 		
-		let sendCode = ColorgyFullScreenButton(title: "送出驗證碼", delegate: self)
-		sendCode.frame.origin.y = k.frame.maxY + 24
-		view.addSubview(sendCode)
+		sendValidationCodeButton = ColorgyFullScreenButton(title: "送出驗證碼", delegate: self)
+		sendValidationCodeButton.frame.origin.y = k.frame.maxY + 24
+		view.addSubview(sendValidationCodeButton)
+		sendValidationCodeButton.delegate = self
     }
 	
 	public override func viewDidAppear(animated: Bool) {
@@ -43,12 +45,24 @@ final public class PhoneValidationViewController: UIViewController {
 }
 
 extension PhoneValidationViewController : PhoneValidationViewModelDelegate {
+	public func phoneValidationViewModelDidSentSMS() {
+		print(#file, #function, "did sent sms")
+	}
 	
+	public func phoneValidationViewModel(failToSendSMSWith error: APIError, and afError: AFError?) {
+		print(#file, #function, "Fail to send sms with \(error), and \(afError)")
+	}
 }
 
 extension PhoneValidationViewController : PhoneValidationViewDelegate {
+	// TODO: reenter a new phone here.
 	public func phoneValidationViewRequestReenterPhoneNumber() {
 		print("phoneValidationViewRequestReenterPhoneNumber")
+		transitionManager = ReenterPhoneNumberViewControllerTransitioningDelegate()
+		transitionManager?.mainViewController = self
+		let a = ReenterPhoneViewController(title: "重新輸入手機", subtitle: "請檢查不要再寫錯囉～")
+		transitionManager?.presentingViewController = a
+		presentViewController(a, animated: true, completion: nil)
 	}
 	
 	public func phoneValidationViewRequestResendValidationCode() {
@@ -59,16 +73,14 @@ extension PhoneValidationViewController : PhoneValidationViewDelegate {
 	/// This method will get called when user input 4 digits.
 	/// Only trigger when input is 4 digits.
 	public func phoneValidationView(validationCodeUpdatedTo code: String) {
-		<#code#>
+		viewModel?.updateValidationCode(with: code)
 	}
 }
 
 extension PhoneValidationViewController : ColorgyFullScreenButtonDelegate {
 	public func colorgyFullScreenButtonClicked(button: ColorgyFullScreenButton) {
-		transitionManager = ReenterPhoneNumberViewControllerTransitioningDelegate()
-		transitionManager?.mainViewController = self
-		let a = ReenterPhoneViewController(title: "重新輸入手機", subtitle: "請檢查不要再寫錯囉～")
-		transitionManager?.presentingViewController = a
-		presentViewController(a, animated: true, completion: nil)
+		if button == sendValidationCodeButton {
+			viewModel?.validateSMSValidationCode()
+		}
 	}
 }

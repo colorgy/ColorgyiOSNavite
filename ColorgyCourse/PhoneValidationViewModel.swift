@@ -11,6 +11,8 @@ import Foundation
 public protocol PhoneValidationViewModelDelegate: class {
 	func phoneValidationViewModelDidSentSMS()
 	func phoneValidationViewModel(failToSendSMSWith error: APIError, and afError: AFError?)
+	func phoneValidationViewModelSuccessfullyValidationSMSCode()
+	func phoneValidationViewModel(failToValidateCodeWith error: APIError, and afError: AFError?)
 }
 
 final public class PhoneValidationViewModel {
@@ -36,7 +38,13 @@ final public class PhoneValidationViewModel {
 		})
 	}
 	
+	/// Update validation code
 	public func updateValidationCode(with code: String) {
 		validationCode = code
+	}
+	
+	/// Validation the validation code user typed in.
+	public func validateSMSValidationCode() {
+		
 	}
 }
