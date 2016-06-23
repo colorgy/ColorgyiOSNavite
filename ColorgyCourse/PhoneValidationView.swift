@@ -16,15 +16,20 @@ public protocol PhoneValidationViewDelegate: class {
 
 final public class PhoneValidationView: UIView {
 	
+	// MARK: - Parameters
 	private var titleLabel: UILabel!
 	private var subtitleLabel: UILabel!
 	
+	// four displaying validation code.
 	private var digit1: UILabel!
 	private var digit2: UILabel!
 	private var digit3: UILabel!
 	private var digit4: UILabel!
 	private var digits: [UILabel] = []
 	
+	/// This is used for user input.
+	/// But this hidden text field is a CGRectZero input field.
+	/// So user can't see it.
 	private var hiddenDigitTextField: UITextField!
 	
 	private var resendValidationCodeLabel: UILabel!
@@ -32,6 +37,8 @@ final public class PhoneValidationView: UIView {
 	private var middleSeperatorSlashLabel: UILabel!
 	
 	public weak var delegate: PhoneValidationViewDelegate?
+	
+	/// You can get the displaying validation code here.
 	public var validationCode: String? {
 		get {
 			var code = ""
@@ -39,6 +46,7 @@ final public class PhoneValidationView: UIView {
 			return code
 		}
 	}
+	/// The number we are sending sms to.
 	public var targetPhoneNumber: String? {
 		didSet {
 			updateTargetPhoneNumber()
@@ -47,12 +55,16 @@ final public class PhoneValidationView: UIView {
 
 	public init(delegate: PhoneValidationViewDelegate?) {
 		super.init(frame: CGRect(origin: CGPointZero, size: CGSizeZero))
+		
+		// size and style
 		frame.size.width = UIScreen.mainScreen().bounds.width
 		frame.size.height = 182.0
 		backgroundColor = UIColor.whiteColor()
 		
+		// set delegation
 		self.delegate = delegate
 		
+		// configuration code
 		configureTitle()
 		configureSubtitle()
 		configureDigits()
@@ -62,6 +74,7 @@ final public class PhoneValidationView: UIView {
 		configureMiddleSeperatorSlashLabel()
 		arrangeUnderlinedLabels()
 		
+		// gesture.
 		addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PhoneValidationView.validationViewTapped)))
 	}
 	
@@ -109,6 +122,7 @@ final public class PhoneValidationView: UIView {
 		}
 	}
 	
+	/// This will return a line to digit's bottom.
 	private func digitBottomLine(width: CGFloat) -> UIView {
 		let line = UIView(frame: CGRect(origin: CGPointZero, size: CGSize(width: width, height: 1)))
 		line.backgroundColor = ColorgyColor.TextColor
@@ -196,6 +210,7 @@ final public class PhoneValidationView: UIView {
 		addSubview(middleSeperatorSlashLabel)
 	}
 	
+	/// This method help you to arrange two labels: resend and reenter label.
 	private func arrangeUnderlinedLabels() {
 		let initialX = (bounds.width - (resendValidationCodeLabel.bounds.width + reenterPhoneLabel.bounds.width + middleSeperatorSlashLabel.bounds.width)) / 2
 		
@@ -209,9 +224,12 @@ final public class PhoneValidationView: UIView {
 		updateDigits(hiddenDigitTextField.text)
 	}
 
+	/// This gets called when validation view is tapped.
 	@objc private func validationViewTapped(gesture: UITapGestureRecognizer) {
+		// Calculate the rect of digits.
 		let digitsRect = CGRect(origin: digit1.frame.origin, size: CGSize(width: digit4.frame.maxX - digit1.frame.minX, height: digit1.bounds.height))
 		let location = gesture.locationInView(self)
+		// determine where user tapped.
 		CGRectContainsPoint(digitsRect, location) ? showKeyboard() : hideKeyboard()
 	}
 	
@@ -224,6 +242,9 @@ final public class PhoneValidationView: UIView {
 		syncDigitLabelText()
 	}
 	
+	/// This method will sync between digits and hidden text field.
+	/// **When user input 4 digits**, keyboard will hide.
+	/// If user is trying to type the fifth digit, keyboard will hide and digits will be trimmed to only 4 digits.
 	private func updateDigits(text: String?) {
 		guard let digitText = text else { return }
 		4.times({ self.digits[$0].text = digitText.charaterAtIndex($0) ?? "" })
@@ -232,6 +253,7 @@ final public class PhoneValidationView: UIView {
 		}
 	}
 	
+	/// This will keep hidden textfield's charater count not exceeding 4.
 	private func syncDigitLabelText() {
 		var text = ""
 		digits.forEach({ text += $0.text ?? "" })
@@ -239,6 +261,7 @@ final public class PhoneValidationView: UIView {
 		delegate?.phoneValidationView(validationCodeUpdatedTo: text)
 	}
 	
+	/// After setting target phone number, will update subtitle's text
 	private func updateTargetPhoneNumber() {
 		subtitleLabel.text = "已發送簡訊至 " + (targetPhoneNumber ?? "")
 	}

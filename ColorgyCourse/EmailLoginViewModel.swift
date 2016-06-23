@@ -68,7 +68,6 @@ final public class EmailLoginViewModel {
 			// First get user information
 			self.api.me(success: { (result) in
 				// check if this user has a confirmed mobile
-				print(result)
 				self.delegate?.emailLoginViewModelSuccessfullyLoginToColorgy()
 				}, failure: { (error, afError) in
 					// Fail to get data from colorgy.

@@ -97,7 +97,7 @@ final public class EmailRegisterViewModel {
 	
 	/// After register, you need to login and get access token to update mobile.
 	private func successfullyRegister(with email: String, and password: String) {
-		ColorgyLogin.loginToColorgyWithEmail(email: email, password: password, success: { (result) in
+		ColorgyLogin.loginToColorgy(with: email, password: password, success: { (result) in
 			self.delegate?.emailRegisterViewModelSuccessfullySubmitRegistration()
 			}, failure: { (error, afError) in
 				// TODO: what should i do if user fail to login after register?
