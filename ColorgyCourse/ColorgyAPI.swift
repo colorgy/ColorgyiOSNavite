@@ -295,6 +295,8 @@ final public class ColorgyAPI : NSObject {
 	}
 	
 	// MARK: - Validate Phone
+	/// Request a sms.
+	/// This method will send a sms validation code to the given number.
 	public func requestSMS(with number: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
@@ -323,6 +325,46 @@ final public class ColorgyAPI : NSObject {
 			
 			self.setManager(new: accesstoken)
 			print(accesstoken, #file, #function)
+			
+			self.manager.POST(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.handleAPIConnectionFailure(failure, afError: afError)
+			})
+		}
+	}
+	
+	/// Validation mobile number with given validation code.
+	public func validateMobile(with validationCode: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			handleNetworkUnavailable(failure)
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.handleAPIUnavailable(failure)
+				return
+			}
+			guard let accesstoken = self.accessToken else {
+				self.handleNoAccessToken(failure)
+				return
+			}
+			let url = "\(self.rootURL)/me/mobile_confirm"
+			guard url.isValidURLString else {
+				self.handleInvalidURL(failure)
+				return
+			}
+			
+			let parameters = [
+				"confirmation_token": validationCode
+			]
+			
+			self.setManager(new: accesstoken)
 			
 			self.manager.POST(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				self.mainBlock({
