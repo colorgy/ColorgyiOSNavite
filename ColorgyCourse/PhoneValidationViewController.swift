@@ -12,6 +12,8 @@ final public class PhoneValidationViewController: UIViewController {
 	
 	var transitionManager: ReenterPhoneNumberViewControllerTransitioningDelegate?
 	private var viewModel: PhoneValidationViewModel?
+	private var billboard: ColorgyBillboardView!
+	private var phoneValidationView: PhoneValidationView!
 	private var sendValidationCodeButton: ColorgyFullScreenButton!
 
     override public func viewDidLoad() {
@@ -20,21 +22,21 @@ final public class PhoneValidationViewController: UIViewController {
         // Do any additional setup after loading the view.
 		viewModel = PhoneValidationViewModel(delegate: self)
 		
-		let k = PhoneValidationView(delegate: self)
-		view.addSubview(k)
-		k.frame.origin.y = 170
-		k.targetPhoneNumber = ColorgyUserInformation.sharedInstance().userUnconfirmedMobile
+		phoneValidationView = PhoneValidationView(delegate: self)
+		view.addSubview(phoneValidationView)
+		phoneValidationView.frame.origin.y = 170
+		phoneValidationView.targetPhoneNumber = ColorgyUserInformation.sharedInstance().userUnconfirmedMobile
 		print(ColorgyUserInformation.sharedInstance().userUnconfirmedMobile)
 		
-		let bb = ColorgyBillboardView(initialImageName: "PhoneAuthBillboard", errorImageName: "PhoneAuthErrorBillboard")
-		view.insertSubview(bb, belowSubview: k)
-		
-		view.backgroundColor = ColorgyColor.BackgroundColor
+		billboard = ColorgyBillboardView(initialImageName: "PhoneAuthBillboard", errorImageName: "PhoneAuthErrorBillboard")
+		view.insertSubview(billboard, belowSubview: phoneValidationView)
 		
 		sendValidationCodeButton = ColorgyFullScreenButton(title: "送出驗證碼", delegate: self)
-		sendValidationCodeButton.frame.origin.y = k.frame.maxY + 24
+		sendValidationCodeButton.frame.origin.y = phoneValidationView.frame.maxY + 24
 		view.addSubview(sendValidationCodeButton)
 		sendValidationCodeButton.delegate = self
+		
+		view.backgroundColor = ColorgyColor.BackgroundColor
     }
 	
 	public override func viewDidAppear(animated: Bool) {
@@ -47,18 +49,25 @@ final public class PhoneValidationViewController: UIViewController {
 extension PhoneValidationViewController : PhoneValidationViewModelDelegate {
 	public func phoneValidationViewModelDidSentSMS() {
 		print(#file, #function, "did sent sms")
+		phoneValidationView.showErrorMessage("請輸入驗證碼")
+		billboard.showInitialImage()
 	}
 	
 	public func phoneValidationViewModel(failToSendSMSWith error: APIError, and afError: AFError?) {
 		print(#file, #function, "Fail to send sms with \(error), and \(afError)")
+		// TODO: what to do if sms is not sent?
+		
 	}
 	
 	public func phoneValidationViewModelSuccessfullyValidationSMSCode() {
 		print(#file, #function, "yaaaaa")
+		// TODO: VC transition
 	}
 	
 	public func phoneValidationViewModel(failToValidateCodeWith error: APIError, and afError: AFError?) {
 		print(#file, #function, "Fail validate code with \(error), and \(afError)")
+		phoneValidationView.showErrorMessage("你輸入的手機驗證碼有誤！")
+		billboard.showErrorImage()
 	}
 	
 }

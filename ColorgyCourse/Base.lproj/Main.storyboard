@@ -117,7 +117,7 @@
         <!--Choose School View Controller-->
         <scene sceneID="YoU-gF-9kH">
             <objects>
-                <viewController id="UoC-HA-dCX" customClass="ChooseSchoolViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Choose School VC" id="UoC-HA-dCX" customClass="ChooseSchoolViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pli-Ca-x7L"/>
                         <viewControllerLayoutGuide type="bottom" id="Fml-vT-cms"/>

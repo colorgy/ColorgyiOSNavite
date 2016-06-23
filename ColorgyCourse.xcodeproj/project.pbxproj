@@ -94,6 +94,11 @@
 		6353CE801D1B8A1200F90A4D /* ReenterPhoneNumberViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C5F1CF7FE9F002C9380 /* ReenterPhoneNumberViewControllerTransitioningDelegate.swift */; };
 		6353CE811D1B8A1200F90A4D /* ReenterPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C5A1CF70381002C9380 /* ReenterPhoneNumberView.swift */; };
 		6353CE821D1B8A1200F90A4D /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C5C1CF71637002C9380 /* PhoneNumberTextField.swift */; };
+		6353CE831D1BBFD500F90A4D /* ChooseSchoolSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638BFA0F1D07CB2100939731 /* ChooseSchoolSearchBar.swift */; };
+		6353CE841D1BBFD500F90A4D /* ChooseSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F628B21D07B3BC00F55E38 /* ChooseSchoolViewController.swift */; };
+		6353CE851D1BBFD500F90A4D /* ChooseSchoolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F628B41D07B40A00F55E38 /* ChooseSchoolViewModel.swift */; };
+		6353CE861D1BBFD500F90A4D /* ChooseSchoolTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 638BFA0B1D07C2D900939731 /* ChooseSchoolTableViewCell.xib */; };
+		6353CE871D1BBFD500F90A4D /* ChooseSchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638BFA0D1D07C43000939731 /* ChooseSchoolTableViewCell.swift */; };
 		635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
 		6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479891CB898C100DE8CBC /* ViewController.swift */; };
 		6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354798B1CB898C100DE8CBC /* Main.storyboard */; };
@@ -1075,6 +1080,7 @@
 				6353CE531D193F4700F90A4D /* DLOutgoingPhotoBubble.xib in Resources */,
 				6353CE4C1D193F4700F90A4D /* DLIncomingPhotoBubble.xib in Resources */,
 				6353CE511D193F4700F90A4D /* DLOutgoingMessageBubble.xib in Resources */,
+				6353CE861D1BBFD500F90A4D /* ChooseSchoolTableViewCell.xib in Resources */,
 				6353CE491D193F4700F90A4D /* DLIncomingMessageBubble.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1392,8 +1398,10 @@
 				6353CE461D193EFC00F90A4D /* PhoneDigitValidationField.swift in Sources */,
 				63F3EE7C1CBF49DF0010D059 /* AFError.swift in Sources */,
 				63F3EE791CBF49D10010D059 /* Department.swift in Sources */,
+				6353CE831D1BBFD500F90A4D /* ChooseSchoolSearchBar.swift in Sources */,
 				63C3CE351CC0C8BC000EE808 /* EmailLoginViewModel.swift in Sources */,
 				6353CE541D193F4700F90A4D /* DLPhotoMessageDelegate.swift in Sources */,
+				6353CE871D1BBFD500F90A4D /* ChooseSchoolTableViewCell.swift in Sources */,
 				630337F31CE9B563006FEA1C /* AvailableTargetList.swift in Sources */,
 				6373055C1CBF72190016A7FC /* TestPeriod.swift in Sources */,
 				63C3CE3A1CC0C8BC000EE808 /* LoginViewModel.swift in Sources */,
@@ -1409,6 +1417,7 @@
 				63C3CE251CC0C844000EE808 /* TestTimeStamp.swift in Sources */,
 				6353CE551D193F4700F90A4D /* TextInputView.swift in Sources */,
 				63F3EE8E1CBF49EE0010D059 /* ColorgySocket.swift in Sources */,
+				6353CE841D1BBFD500F90A4D /* ChooseSchoolViewController.swift in Sources */,
 				63F3EE8B1CBF49EE0010D059 /* SwiftyJSONExtension.swift in Sources */,
 				63C3CE3B1CC0C8C0000EE808 /* NumerExtensions.swift in Sources */,
 				63B1C38A1CF45D6B00989B5D /* ColorgyBillboardView.swift in Sources */,
@@ -1431,6 +1440,7 @@
 				63B1C37E1CF4244400989B5D /* PasswordInputBox.swift in Sources */,
 				637B8F271D192D7B00348CF4 /* StoryboardIdentifier.swift in Sources */,
 				63700E331D18DFE400DD76F8 /* ColorgyConfig.swift in Sources */,
+				6353CE851D1BBFD500F90A4D /* ChooseSchoolViewModel.swift in Sources */,
 				63F3EE7F1CBF49DF0010D059 /* ColorgyAPIMeResult.swift in Sources */,
 				63B1C3591CF2992700989B5D /* UIColorExtension.swift in Sources */,
 				63F3EE921CBF49EE0010D059 /* HistoryChatroom.swift in Sources */,

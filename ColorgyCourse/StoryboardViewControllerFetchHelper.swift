@@ -16,4 +16,8 @@ final public class StoryboardViewControllerFetchHelper {
 	public class func fetchPhoneValidationViewController() -> PhoneValidationViewController? {
 		return mainStoryboard.instantiateViewControllerWithIdentifier(StoryboardIdentifier.phoneValidationView) as? PhoneValidationViewController
 	}
+	
+	public class func fetchChooseSchooolViewController() -> ChooseSchoolViewController? {
+		return mainStoryboard.instantiateViewControllerWithIdentifier(StoryboardIdentifier.chooseSchoolView) as? ChooseSchoolViewController
+	}
 }
