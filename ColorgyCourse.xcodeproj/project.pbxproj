@@ -37,7 +37,6 @@
 		6324BF321CF00B7C003F1329 /* SearchCourseBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */; };
 		6324BF351CF00E9B003F1329 /* SearchCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF341CF00E9B003F1329 /* SearchCourseViewController.swift */; };
 		632C0C531CF541FA002C9380 /* PhoneValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C521CF541FA002C9380 /* PhoneValidationView.swift */; };
-		632C0C551CF542CD002C9380 /* PhoneDigitValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C541CF542CD002C9380 /* PhoneDigitValidationField.swift */; };
 		632C0C571CF54A09002C9380 /* PhoneValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C561CF54A09002C9380 /* PhoneValidationViewController.swift */; };
 		632C0C591CF7032C002C9380 /* ReenterPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C581CF7032C002C9380 /* ReenterPhoneViewController.swift */; };
 		632C0C5B1CF70381002C9380 /* ReenterPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C5A1CF70381002C9380 /* ReenterPhoneNumberView.swift */; };
@@ -70,7 +69,6 @@
 		6353CE431D193E0500F90A4D /* PhoneValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CE421D193E0500F90A4D /* PhoneValidationViewModel.swift */; };
 		6353CE441D193EF700F90A4D /* PhoneValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C521CF541FA002C9380 /* PhoneValidationView.swift */; };
 		6353CE451D193EFA00F90A4D /* PhoneValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CE421D193E0500F90A4D /* PhoneValidationViewModel.swift */; };
-		6353CE461D193EFC00F90A4D /* PhoneDigitValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C541CF542CD002C9380 /* PhoneDigitValidationField.swift */; };
 		6353CE471D193F4600F90A4D /* ATrickyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A21CC8743D008025A7 /* ATrickyView.swift */; };
 		6353CE481D193F4700F90A4D /* DLIncomingMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */; };
 		6353CE491D193F4700F90A4D /* DLIncomingMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77A41CC8743D008025A7 /* DLIncomingMessageBubble.xib */; };
@@ -310,7 +308,6 @@
 		6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseBar.swift; sourceTree = "<group>"; };
 		6324BF341CF00E9B003F1329 /* SearchCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseViewController.swift; sourceTree = "<group>"; };
 		632C0C521CF541FA002C9380 /* PhoneValidationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneValidationView.swift; sourceTree = "<group>"; };
-		632C0C541CF542CD002C9380 /* PhoneDigitValidationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneDigitValidationField.swift; sourceTree = "<group>"; };
 		632C0C561CF54A09002C9380 /* PhoneValidationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneValidationViewController.swift; sourceTree = "<group>"; };
 		632C0C581CF7032C002C9380 /* ReenterPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReenterPhoneViewController.swift; sourceTree = "<group>"; };
 		632C0C5A1CF70381002C9380 /* ReenterPhoneNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReenterPhoneNumberView.swift; sourceTree = "<group>"; };
@@ -911,7 +908,6 @@
 				632C0C521CF541FA002C9380 /* PhoneValidationView.swift */,
 				632C0C561CF54A09002C9380 /* PhoneValidationViewController.swift */,
 				6353CE421D193E0500F90A4D /* PhoneValidationViewModel.swift */,
-				632C0C541CF542CD002C9380 /* PhoneDigitValidationField.swift */,
 			);
 			name = "Phone Validation View";
 			sourceTree = "<group>";
@@ -1358,7 +1354,6 @@
 				63C3CE211CC0C76F000EE808 /* NumerExtensions.swift in Sources */,
 				635479E41CB8B02A00DE8CBC /* ColorgyUserInformation.swift in Sources */,
 				63F628B51D07B40A00F55E38 /* ChooseSchoolViewModel.swift in Sources */,
-				632C0C551CF542CD002C9380 /* PhoneDigitValidationField.swift in Sources */,
 				63EC77B21CC8743D008025A7 /* ATrickyView.swift in Sources */,
 				63561C4C1CBF937F004AEF6D /* ColorgyColor.swift in Sources */,
 			);
@@ -1395,7 +1390,6 @@
 				63C3CE2E1CC0C8B5000EE808 /* ColorgyColor.swift in Sources */,
 				6353CE4B1D193F4700F90A4D /* DLIncomingPhotoBubble.swift in Sources */,
 				6353CE4E1D193F4700F90A4D /* DLMessageLabel.swift in Sources */,
-				6353CE461D193EFC00F90A4D /* PhoneDigitValidationField.swift in Sources */,
 				63F3EE7C1CBF49DF0010D059 /* AFError.swift in Sources */,
 				63F3EE791CBF49D10010D059 /* Department.swift in Sources */,
 				6353CE831D1BBFD500F90A4D /* ChooseSchoolSearchBar.swift in Sources */,

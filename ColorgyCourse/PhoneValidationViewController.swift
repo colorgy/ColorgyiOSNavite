@@ -22,26 +22,38 @@ final public class PhoneValidationViewController: UIViewController {
         // Do any additional setup after loading the view.
 		viewModel = PhoneValidationViewModel(delegate: self)
 		
-		phoneValidationView = PhoneValidationView(delegate: self)
-		view.addSubview(phoneValidationView)
-		phoneValidationView.frame.origin.y = 170
-		phoneValidationView.targetPhoneNumber = ColorgyUserInformation.sharedInstance().userUnconfirmedMobile
-		print(ColorgyUserInformation.sharedInstance().userUnconfirmedMobile)
+		// configure
+		configurePhoenValidationView()
+		configureBillBoardView()
+		configureSendValidationCodeButton()
 		
-		billboard = ColorgyBillboardView(initialImageName: "PhoneAuthBillboard", errorImageName: "PhoneAuthErrorBillboard")
-		view.insertSubview(billboard, belowSubview: phoneValidationView)
-		
-		sendValidationCodeButton = ColorgyFullScreenButton(title: "送出驗證碼", delegate: self)
-		sendValidationCodeButton.frame.origin.y = phoneValidationView.frame.maxY + 24
-		view.addSubview(sendValidationCodeButton)
-		sendValidationCodeButton.delegate = self
-		
+		// style
 		view.backgroundColor = ColorgyColor.BackgroundColor
     }
 	
 	public override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		viewModel?.requestValidationSMS()
+	}
+	
+	// MARK: - Configuration
+	private func configurePhoenValidationView() {
+		phoneValidationView = PhoneValidationView(delegate: self)
+		view.addSubview(phoneValidationView)
+		phoneValidationView.frame.origin.y = 170
+		phoneValidationView.targetPhoneNumber = ColorgyUserInformation.sharedInstance().userUnconfirmedMobile
+	}
+	
+	private func configureBillBoardView() {
+		billboard = ColorgyBillboardView(initialImageName: "PhoneAuthBillboard", errorImageName: "PhoneAuthErrorBillboard")
+		view.insertSubview(billboard, belowSubview: phoneValidationView)
+	}
+	
+	private func configureSendValidationCodeButton() {
+		sendValidationCodeButton = ColorgyFullScreenButton(title: "送出驗證碼", delegate: self)
+		sendValidationCodeButton.frame.origin.y = phoneValidationView.frame.maxY + 24
+		view.addSubview(sendValidationCodeButton)
+		sendValidationCodeButton.delegate = self
 	}
 
 }
