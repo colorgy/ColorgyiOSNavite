@@ -8,8 +8,11 @@
 
 import Foundation
 
+/// This indicates the information problem user gave.
 public enum InvalidLoginInformationError: ErrorType {
+	/// This is an invalid email format.
 	case InvalidEmail
+	/// Password must be greater or equal to 8 letters.
 	case PasswordLessThan8Characters
 }
 
@@ -29,7 +32,9 @@ final public class EmailLoginViewModel {
 	// MARK: - Parameters
 	public weak var delegate: EmailLoginViewModelDelegate?
 	private let api: ColorgyAPI
+	/// Email that will be use on login to colorgy
 	public private(set) var email: String?
+	/// Password that will be use on login to colorgy
 	public private(set) var password: String?
 	
 	// MARK: - Init
@@ -39,18 +44,25 @@ final public class EmailLoginViewModel {
 	}
 	
 	// MARK: - Public Methods
+	
+	/// Login to colorgy.
+	/// Will check email and password in view model.
+	/// **Make sure you update email and password** in view model before calling this method.
 	public func loginToColorgy() {
 		
+		// Check email format first.
 		guard let email = email where email.isValidEmail else {
 			delegate?.emailLoginViewModel(invalidRequiredInformation: InvalidLoginInformationError.InvalidEmail)
 			return
 		}
 		
+		// Then check password length, must greater or equal to 8 letters.
 		guard let password = password where password.characters.count >= 8 else {
 			delegate?.emailLoginViewModel(invalidRequiredInformation: InvalidLoginInformationError.PasswordLessThan8Characters)
 			return
 		}
 		
+		// Prepare to login to colorgy
 		ColorgyLogin.loginToColorgyWithEmail(email: email, password: password, success: { (result) in
 			// After getting access token, fetch data from server
 			// First get user information
@@ -59,17 +71,21 @@ final public class EmailLoginViewModel {
 				print(result)
 				self.delegate?.emailLoginViewModelSuccessfullyLoginToColorgy()
 				}, failure: { (error, afError) in
+					// Fail to get data from colorgy.
 					self.delegate?.emailLoginViewModel(failToRetrieveDataFromServre: error, afError: afError)
 			})
 			}, failure: { (error, afError) in
+				// Fail to login to colorgy
 				self.delegate?.emailLoginViewModel(failToLoginColorgy: error, afError: afError)
 		})
 	}
 	
+	/// Update view model's email.
 	public func updateEmail(with email: String?) {
 		self.email = email
 	}
 	
+	/// Update view model's password.
 	public func updatePassword(with password: String?) {
 		self.password = password
 	}
