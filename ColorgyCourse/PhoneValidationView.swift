@@ -69,6 +69,19 @@ final public class PhoneValidationView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	// MARK: - Public Methods
+	/// Show error message on phone validation view
+	public func showErrorMessage(message: String?) {
+		titleLabel.textColor = ColorgyColor.red
+		titleLabel.text = message
+	}
+	
+	// Show normal message on phone validation view
+	public func showNormalMessage(message: String?) {
+		titleLabel.textColor = ColorgyColor.TextColor
+		titleLabel.text = message
+	}
+	
 	// MARK: - Configuration
 	private func configureDigits() {
 		
