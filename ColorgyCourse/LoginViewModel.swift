@@ -10,12 +10,19 @@ import Foundation
 
 // MARK: - Delegate
 public protocol LoginViewModelDelegate: class {
+	/// Fail to login to facebook.
 	func loginViewModel(failToLoginToFacebook error: FacebookLoginError)
+	/// Fail to login to colorgy, might be server problem.
 	func loginViewModel(failToLoginToColorgy error: ColorgyLoginError, afError: AFError?)
+	/// Fail to get data from server, maybe fail to get data from me api.
 	func loginViewModel(failToGetDataFromServer error: APIError, afError: AFError?)
+	
 	// Login part
+	/// Login to colorgy.
 	func loginViewModelDidLoginToColorgy()
+	/// Need to goto email login view.
 	func loginViewModelRequestToLoginWithEmail()
+	/// Need to goto register account view.
 	func loginViewModelRequestRegisterNewAccount()
 }
 
@@ -33,29 +40,22 @@ final public class LoginViewModel {
 		ColorgyLogin.getFacebookAccessToken(success: { (token) in
 			// Success login from facebook,
 			// continue to get data from server
-			ColorgyLogin.loginToColorgyWithFacebookToken(token, success: { (result) in
-				// get me data after login
-				
-				//
-				// need to fetch data as follow:
-				// 1. me data
-				// 2. period data
-				// 
-				self.colorgyAPI.me(success: { (result) in
-					let organization = self.checkUserOrganization()
-					
-					}, failure: { (error, afError) in
-						self.delegate?.loginViewModel(failToGetDataFromServer: error, afError: afError)
-				})
-				
-				}, failure: { (error, afError) in
-					// fail to login to colorgy
-					self.delegate?.loginViewModel(failToLoginToColorgy: error, afError: afError)
-			})
+			
 			}, failure: { (error) in
 				self.delegate?.loginViewModel(failToLoginToFacebook: error)
 		})
 	}
+	
+	
+	// MARK: - Init
+	
+	public init(delegate: LoginViewModelDelegate?) {
+		self.delegate = delegate
+		self.colorgyAPI = ColorgyAPI()
+		registerNotification()
+	}
+	
+	// MARK: - Public Methods
 	
 	/// Call this to perform login using email
 	public func emailLogin() {
@@ -71,6 +71,7 @@ final public class LoginViewModel {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTokenRevokedNotification), name: ColorgyAppNotification.RefreshTokenRevokedNotification, object: nil)
 	}
 	
+	// TODO: something to do if refresh token is revoked
 	@objc private func refreshTokenRevokedNotification() {
 		print("YOOoooooo")
 	}
@@ -83,12 +84,5 @@ final public class LoginViewModel {
 	private func checkUserOrganization() -> String {
 		// TODO: handle no orgnization
 		return ColorgyUserInformation.sharedInstance().userActualOrganization ?? "error orgnization"
-	}
-	
-	// MARK: - Init
-	public init(delegate: LoginViewModelDelegate?) {
-		self.delegate = delegate
-		self.colorgyAPI = ColorgyAPI()
-		registerNotification()
 	}
 }
