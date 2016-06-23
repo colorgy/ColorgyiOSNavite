@@ -14,7 +14,7 @@ public protocol LoginViewModelDelegate: class {
 	func loginViewModel(failToLoginToColorgy error: ColorgyLoginError, afError: AFError?)
 	func loginViewModel(failToGetDataFromServer error: APIError, afError: AFError?)
 	// Login part
-	func loginViewModel(loginToColorgy userHasPossibleOrganization: Bool)
+	func loginViewModelDidLoginToColorgy()
 	func loginViewModelRequestToLoginWithEmail()
 	func loginViewModelRequestRegisterNewAccount()
 }

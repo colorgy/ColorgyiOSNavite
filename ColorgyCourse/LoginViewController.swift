@@ -97,25 +97,20 @@ extension LoginViewController : LoginViewModelDelegate {
 		}
 	}
 	
+	/// Might be server error
 	public func loginViewModel(failToLoginToColorgy error: ColorgyLoginError, afError: AFError?) {
 		print(error, afError)
 	}
 	
+	/// Fail to get data from server, maybe fail to retireve me api or something
 	public func loginViewModel(failToGetDataFromServer error: APIError, afError: AFError?) {
 		print(error)
 	}
 
-	public func loginViewModel(loginToColorgy userHasPossibleOrganization: Bool) {
-		// after getting these data you will need to check if user has a valid organization code
-		// 1. if yes, direct to main view
-		// 2. if not, direct to select school view
-		if userHasPossibleOrganization {
-			// main view
-			print(userHasPossibleOrganization)
-		} else {
-			// direct to select school view
-			print(userHasPossibleOrganization)
-		}
+	/// Login to colorgy.
+	/// After login, check if this user validate the phone and choose a school.
+	public func loginViewModelDidLoginToColorgy() {
+		// TODO: VC transition
 	}
 	
 	public func loginViewModelRequestToLoginWithEmail() {
