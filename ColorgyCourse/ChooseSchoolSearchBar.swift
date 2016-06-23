@@ -66,6 +66,9 @@ final public class ChooseSchoolSearchBar: UIView {
 		searchTextField.frame.origin.x = searchIcon.frame.maxX + 20
 		searchTextField.center.y = centerY
 		
+		searchTextField.autocorrectionType = .No
+		searchTextField.autocapitalizationType = .None
+		
 		searchTextField.addTarget(self, action: #selector(ChooseSchoolSearchBar.searchTextFieldEditingChanged(_:)), forControlEvents: UIControlEvents.EditingChanged)
 		
 		addSubview(searchTextField)

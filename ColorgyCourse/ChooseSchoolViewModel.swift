@@ -29,7 +29,12 @@ final public class ChooseSchoolViewModel {
 	}
 	
 	public func fetchSchoolData() {
-		
+		api.getOrganizations({ (organizations) in
+			self.schools = organizations
+			self.delegate?.chooseSchoolViewModelUpdateSchool(self.schools)
+			}, failure: { (error, afError) in
+				self.delegate?.chooseSchoolViewModelFailToFetchSchool(error, afError: afError)
+		})
 	}
 	
 	public func filterSchoolWithText(text: String?) {
