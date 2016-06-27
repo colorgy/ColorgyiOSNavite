@@ -16,6 +16,8 @@ public protocol InputBoxUpdatingDelegate: class {
 	func inputBoxUpdated(inputbox: InputBox, text: String?)
 }
 
+/// Input box is used to handle user input at login, register... and so on.
+/// It will have two delegates, one for validating indicator, another for updating text.
 public class InputBox: UIView {
 	
 	public private(set) var iconImageView: UIImageView!
@@ -28,7 +30,7 @@ public class InputBox: UIView {
 	public weak var inputBoxUpdatingDelegate: InputBoxUpdatingDelegate?
 
 	// MARK: - Init
-	public init(imageName: String, placeholder: String?, isPassword: Bool, keyboardType: UIKeyboardType) {
+	public init(imageName: String, placeholder: String?, isPassword: Bool, keyboardType: UIKeyboardType, delegate: InputBoxDelegate?) {
 		super.init(frame: UIScreen.mainScreen().bounds)
 		frame.size.height = 44
 		backgroundColor = UIColor.whiteColor()
@@ -36,6 +38,8 @@ public class InputBox: UIView {
 		configureIconImageView(imageName)
 		configureIndicator()
 		configureTextField(placeholder, isPassword: isPassword, keyboardType: keyboardType)
+		
+		inputBoxDelegate = delegate
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
