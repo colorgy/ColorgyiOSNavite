@@ -57,3 +57,7 @@
 ### MVVM 架構
 Apple 在 iOS 上的 MVC 被稱為 Massive View Controller，因為在 Controller 之中，要操作 View 跟 邏輯的東西。所以搞到後來整個邏輯跟畫面會混在一起，有時候在 callback 中要處理 View，有時候再更新資料後要處理 View，最後整個專案會很難維護。
 
+### Class 解釋
+#### ColorgyConfig
+這邊存放一些全域的變數，譬如 server 的網址。
+或者 Client id 跟 secret。

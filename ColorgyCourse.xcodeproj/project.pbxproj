@@ -32,6 +32,53 @@
 		6305701E1CBD2902007D2C9D /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701D1CBD2902007D2C9D /* Chatroom.swift */; };
 		630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701F1CBD2999007D2C9D /* ChatMessage.swift */; };
 		6307AC371CEAB66F00345025 /* SearchEventBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307AC361CEAB66F00345025 /* SearchEventBar.swift */; };
+		631594D71D20CB3A00431499 /* ChatMessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375476F1CC8A96900BC3BBD /* ChatMessageList.swift */; };
+		631594D81D20CB5900431499 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */; };
+		631594D91D20CB6700431499 /* SearchCourseBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */; };
+		631594DA1D20CB6700431499 /* SearchCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF341CF00E9B003F1329 /* SearchCourseViewController.swift */; };
+		631594DB1D20CB6700431499 /* SearchCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393BBFD1CF0179E008BFF72 /* SearchCourseViewModel.swift */; };
+		631594DC1D20CB6700431499 /* BlurWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337ED1CE97906006FEA1C /* BlurWallViewController.swift */; };
+		631594DD1D20CB6700431499 /* BlurWallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337E61CE964EE006FEA1C /* BlurWallView.swift */; };
+		631594DE1D20CB6700431499 /* BlurWallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337EB1CE974CE006FEA1C /* BlurWallViewModel.swift */; };
+		631594DF1D20CB6700431499 /* BlurWallViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */; };
+		631594E01D20CB6700431499 /* SearchEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472831CE5782C00D907C4 /* SearchEventListViewController.swift */; };
+		631594E11D20CB6700431499 /* SearchEventBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307AC361CEAB66F00345025 /* SearchEventBar.swift */; };
+		631594E21D20CB6700431499 /* SearchEventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */; };
+		631594E31D20CB6700431499 /* SayHelloCountsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547731CC8BE8400BC3BBD /* SayHelloCountsCell.swift */; };
+		631594E41D20CB6700431499 /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547751CC8BF4A00BC3BBD /* FriendListViewModel.swift */; };
+		631594E51D20CB6700431499 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547771CC8BF6200BC3BBD /* FriendListViewController.swift */; };
+		631594E61D20CB6700431499 /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */; };
+		631594E71D20CB6700431499 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C21CC87595008025A7 /* ChatRoomViewController.swift */; };
+		631594E81D20CB6700431499 /* FloatingOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547711CC8B1BB00BC3BBD /* FloatingOptionView.swift */; };
+		631594E91D20CB7F00431499 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C34A1CF1EC1200989B5D /* CreateEventViewController.swift */; };
+		631594EA1D20CB7F00431499 /* WeekCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */; };
+		631594EB1D20CB7F00431499 /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304728A1CE5DDC500D907C4 /* WeekCalendarView.swift */; };
+		631594EC1D20CB8B00431499 /* EventManagerContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335DC451D17C46500B32B8C /* EventManagerContext.swift */; };
+		631594ED1D20CB8B00431499 /* EventManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335DC501D17C46500B32B8C /* EventManagerView.swift */; };
+		631594EE1D20CB8B00431499 /* EventManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335DC511D17C46500B32B8C /* EventManagerViewModel.swift */; };
+		631594EF1D20CB8B00431499 /* EventManagerAddChildEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335DC3C1D17C46500B32B8C /* EventManagerAddChildEventCell.swift */; };
+		631594F01D20CB8B00431499 /* EventManagerAddChildEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6335DC3D1D17C46500B32B8C /* EventManagerAddChildEventCell.xib */; };
+		631594F11D20CB8B00431499 /* EventManagerChildEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335DC3E1D17C46500B32B8C /* EventManagerChildEventCell.swift */; };
+		631594F21D20CB8B00431499 /* EventManagerChildEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6335DC3F1D17C46500B32B8C /* EventManagerChildEventCell.xib */; };
+		631594F31D20CB8B00431499 /* EventManagerColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335DC401D17C46500B32B8C /* EventManagerColorCell.swift */; };
+		631594F41D20CB8B00431499 /* EventManagerColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6335DC411D17C46500B32B8C /* EventManagerColorCell.xib */; };
+		631594F51D20CB8B00431499 /* EventManagerColorCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335DC421D17C46500B32B8C /* EventManagerColorCellDelegate.swift */; };
+		631594F61D20CB8B00431499 /* EventManagerColorExpandedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335DC431D17C46500B32B8C /* EventManagerColorExpandedCell.swift */; };
+		631594F71D20CB8B00431499 /* EventManagerColorExpandedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6335DC441D17C46500B32B8C /* EventManagerColorExpandedCell.xib */; };
+		631594F81D20CB8B00431499 /* EventManagerNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335DC471D17C46500B32B8C /* EventManagerNotesCell.swift */; };
+		631594F91D20CB8B00431499 /* EventManagerNotesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6335DC481D17C46500B32B8C /* EventManagerNotesCell.xib */; };
+		631594FA1D20CB8B00431499 /* EventManagerNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335DC491D17C46500B32B8C /* EventManagerNotificationCell.swift */; };
+		631594FB1D20CB8B00431499 /* EventManagerNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6335DC4A1D17C46500B32B8C /* EventManagerNotificationCell.xib */; };
+		631594FC1D20CB8B00431499 /* EventManagerRepeatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335DC4B1D17C46500B32B8C /* EventManagerRepeatedCell.swift */; };
+		631594FD1D20CB8B00431499 /* EventManagerRepeatedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6335DC461D17C46500B32B8C /* EventManagerRepeatedCell.xib */; };
+		631594FE1D20CB8B00431499 /* EventManagerRepeatEndsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335DC4C1D17C46500B32B8C /* EventManagerRepeatEndsCell.swift */; };
+		631594FF1D20CB8B00431499 /* EventManagerRepeatEndsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6335DC4D1D17C46500B32B8C /* EventManagerRepeatEndsCell.xib */; };
+		631595001D20CB8B00431499 /* EventManagerTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335DC4E1D17C46500B32B8C /* EventManagerTitleCell.swift */; };
+		631595011D20CB8B00431499 /* EventManagerTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6335DC4F1D17C46500B32B8C /* EventManagerTitleCell.xib */; };
+		631595021D20CBB600431499 /* EventRepeatSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */; };
+		631595031D20CBB600431499 /* EventRepeatSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */; };
+		631595041D20CBB600431499 /* EventRepeatSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4471D1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift */; };
+		631595051D20CBB600431499 /* EventRepeatSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */; };
 		6324BF2F1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */; };
 		6324BF301CEFF721003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */; };
 		6324BF321CF00B7C003F1329 /* SearchCourseBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */; };
@@ -1073,10 +1120,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				631594F91D20CB8B00431499 /* EventManagerNotesCell.xib in Resources */,
+				631595011D20CB8B00431499 /* EventManagerTitleCell.xib in Resources */,
 				6353CE531D193F4700F90A4D /* DLOutgoingPhotoBubble.xib in Resources */,
+				631594FB1D20CB8B00431499 /* EventManagerNotificationCell.xib in Resources */,
+				631595031D20CBB600431499 /* EventRepeatSettingTableViewCell.xib in Resources */,
 				6353CE4C1D193F4700F90A4D /* DLIncomingPhotoBubble.xib in Resources */,
 				6353CE511D193F4700F90A4D /* DLOutgoingMessageBubble.xib in Resources */,
+				631594F21D20CB8B00431499 /* EventManagerChildEventCell.xib in Resources */,
+				631594F71D20CB8B00431499 /* EventManagerColorExpandedCell.xib in Resources */,
 				6353CE861D1BBFD500F90A4D /* ChooseSchoolTableViewCell.xib in Resources */,
+				631594FD1D20CB8B00431499 /* EventManagerRepeatedCell.xib in Resources */,
+				631594F01D20CB8B00431499 /* EventManagerAddChildEventCell.xib in Resources */,
+				631594FF1D20CB8B00431499 /* EventManagerRepeatEndsCell.xib in Resources */,
+				631594F41D20CB8B00431499 /* EventManagerColorCell.xib in Resources */,
 				6353CE491D193F4700F90A4D /* DLIncomingMessageBubble.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1367,17 +1424,24 @@
 				63F3EE811CBF49DF0010D059 /* Course.swift in Sources */,
 				63C3CE3F1CC0C8CD000EE808 /* ChatMeUserInformation.swift in Sources */,
 				6353CE571D193F6000F90A4D /* ColorgyNavigationController.swift in Sources */,
+				631594F11D20CB8B00431499 /* EventManagerChildEventCell.swift in Sources */,
 				63C3CE341CC0C8BC000EE808 /* EmailLoginViewController.swift in Sources */,
+				631594DE1D20CB6700431499 /* BlurWallViewModel.swift in Sources */,
 				63F3EE8D1CBF49EE0010D059 /* DateExtension.swift in Sources */,
 				6353CE811D1B8A1200F90A4D /* ReenterPhoneNumberView.swift in Sources */,
 				6353CE501D193F4700F90A4D /* DLOutgoingMessageBubble.swift in Sources */,
+				631594E01D20CB6700431499 /* SearchEventListViewController.swift in Sources */,
+				631594F31D20CB8B00431499 /* EventManagerColorCell.swift in Sources */,
+				631594FE1D20CB8B00431499 /* EventManagerRepeatEndsCell.swift in Sources */,
 				63F3EE931CBF49EE0010D059 /* Chatroom.swift in Sources */,
 				63F3EE731CBF49CC0010D059 /* PeriodRawDataRealmObject.swift in Sources */,
 				63F3EE971CBF49EE0010D059 /* TimeStamp.swift in Sources */,
 				63B1C3841CF430B900989B5D /* PhoneInputBox.swift in Sources */,
 				6353CE4D1D193F4700F90A4D /* DLMessageData.swift in Sources */,
+				631594ED1D20CB8B00431499 /* EventManagerView.swift in Sources */,
 				63F3EE7D1CBF49DF0010D059 /* ColorgyAPI.swift in Sources */,
 				63F3EE8F1CBF49EE0010D059 /* ColorgyChatAPI.swift in Sources */,
+				631594EB1D20CB7F00431499 /* WeekCalendarView.swift in Sources */,
 				63F3EE761CBF49D10010D059 /* ColorgyUserInformation.swift in Sources */,
 				6353CE451D193EFA00F90A4D /* PhoneValidationViewModel.swift in Sources */,
 				63F3EE9A1CBF53A40010D059 /* TestColorgyAPI.swift in Sources */,
@@ -1388,21 +1452,30 @@
 				63F3EE8C1CBF49EE0010D059 /* StringExtension.swift in Sources */,
 				6353CE521D193F4700F90A4D /* DLOutgoingPhotoBubble.swift in Sources */,
 				63C3CE2E1CC0C8B5000EE808 /* ColorgyColor.swift in Sources */,
+				631594E81D20CB6700431499 /* FloatingOptionView.swift in Sources */,
 				6353CE4B1D193F4700F90A4D /* DLIncomingPhotoBubble.swift in Sources */,
+				631594DD1D20CB6700431499 /* BlurWallView.swift in Sources */,
 				6353CE4E1D193F4700F90A4D /* DLMessageLabel.swift in Sources */,
 				63F3EE7C1CBF49DF0010D059 /* AFError.swift in Sources */,
+				631594D91D20CB6700431499 /* SearchCourseBar.swift in Sources */,
 				63F3EE791CBF49D10010D059 /* Department.swift in Sources */,
 				6353CE831D1BBFD500F90A4D /* ChooseSchoolSearchBar.swift in Sources */,
 				63C3CE351CC0C8BC000EE808 /* EmailLoginViewModel.swift in Sources */,
 				6353CE541D193F4700F90A4D /* DLPhotoMessageDelegate.swift in Sources */,
 				6353CE871D1BBFD500F90A4D /* ChooseSchoolTableViewCell.swift in Sources */,
 				630337F31CE9B563006FEA1C /* AvailableTargetList.swift in Sources */,
+				631594F51D20CB8B00431499 /* EventManagerColorCellDelegate.swift in Sources */,
 				6373055C1CBF72190016A7FC /* TestPeriod.swift in Sources */,
 				63C3CE3A1CC0C8BC000EE808 /* LoginViewModel.swift in Sources */,
 				63C3CE261CC0C8A5000EE808 /* Organization.swift in Sources */,
 				63C3CE371CC0C8BC000EE808 /* EmailRegisterViewModel.swift in Sources */,
+				631595051D20CBB600431499 /* EventRepeatSettingViewModel.swift in Sources */,
 				6353CE591D193F6B00F90A4D /* ColorgyVersionControl.swift in Sources */,
+				631594D71D20CB3A00431499 /* ChatMessageList.swift in Sources */,
+				631594E91D20CB7F00431499 /* CreateEventViewController.swift in Sources */,
 				63B1C3761CF30E1B00989B5D /* InputBox.swift in Sources */,
+				631595001D20CB8B00431499 /* EventManagerTitleCell.swift in Sources */,
+				631594FC1D20CB8B00431499 /* EventManagerRepeatedCell.swift in Sources */,
 				63F3EE951CBF49EE0010D059 /* Hello.swift in Sources */,
 				6353CE481D193F4700F90A4D /* DLIncomingMessageBubble.swift in Sources */,
 				63C3CE2D1CC0C8B5000EE808 /* ViewController.swift in Sources */,
@@ -1411,12 +1484,16 @@
 				63C3CE251CC0C844000EE808 /* TestTimeStamp.swift in Sources */,
 				6353CE551D193F4700F90A4D /* TextInputView.swift in Sources */,
 				63F3EE8E1CBF49EE0010D059 /* ColorgySocket.swift in Sources */,
+				631594EF1D20CB8B00431499 /* EventManagerAddChildEventCell.swift in Sources */,
 				6353CE841D1BBFD500F90A4D /* ChooseSchoolViewController.swift in Sources */,
 				63F3EE8B1CBF49EE0010D059 /* SwiftyJSONExtension.swift in Sources */,
 				63C3CE3B1CC0C8C0000EE808 /* NumerExtensions.swift in Sources */,
+				631594E71D20CB6700431499 /* ChatRoomViewController.swift in Sources */,
 				63B1C38A1CF45D6B00989B5D /* ColorgyBillboardView.swift in Sources */,
 				63F3EE851CBF49DF0010D059 /* ColorgyLogin.swift in Sources */,
+				631594EC1D20CB8B00431499 /* EventManagerContext.swift in Sources */,
 				6353CE581D193F6000F90A4D /* ColorgyNavigationBar.swift in Sources */,
+				631594F61D20CB8B00431499 /* EventManagerColorExpandedCell.swift in Sources */,
 				63C3CE3E1CC0C8CD000EE808 /* AvailableTarget.swift in Sources */,
 				63F3EE831CBF49DF0010D059 /* CourseRawDataObject.swift in Sources */,
 				6353CE4F1D193F4700F90A4D /* DLMessagesViewController.swift in Sources */,
@@ -1428,35 +1505,52 @@
 				63F3EE821CBF49DF0010D059 /* Period.swift in Sources */,
 				63F3EE861CBF49DF0010D059 /* ColorgyLoginResult.swift in Sources */,
 				63B1C3791CF3EDD100989B5D /* EmailInputBox.swift in Sources */,
+				631595041D20CBB600431499 /* EventRepeatSettingTableViewCell.swift in Sources */,
 				63B1C3871CF4350700989B5D /* ColorgyFullScreenButton.swift in Sources */,
 				63F3EE7B1CBF49DF0010D059 /* AFNetworkingErrorParser.swift in Sources */,
 				6353CE801D1B8A1200F90A4D /* ReenterPhoneNumberViewControllerTransitioningDelegate.swift in Sources */,
+				631594E61D20CB6700431499 /* FriendListTableViewCell.swift in Sources */,
+				631595021D20CBB600431499 /* EventRepeatSettingViewController.swift in Sources */,
+				631594E31D20CB6700431499 /* SayHelloCountsCell.swift in Sources */,
 				63B1C37E1CF4244400989B5D /* PasswordInputBox.swift in Sources */,
 				637B8F271D192D7B00348CF4 /* StoryboardIdentifier.swift in Sources */,
+				631594E51D20CB6700431499 /* FriendListViewController.swift in Sources */,
 				63700E331D18DFE400DD76F8 /* ColorgyConfig.swift in Sources */,
 				6353CE851D1BBFD500F90A4D /* ChooseSchoolViewModel.swift in Sources */,
+				631594DA1D20CB6700431499 /* SearchCourseViewController.swift in Sources */,
 				63F3EE7F1CBF49DF0010D059 /* ColorgyAPIMeResult.swift in Sources */,
 				63B1C3591CF2992700989B5D /* UIColorExtension.swift in Sources */,
 				63F3EE921CBF49EE0010D059 /* HistoryChatroom.swift in Sources */,
 				63F3EE9C1CBF56990010D059 /* TestCourseModel.swift in Sources */,
+				631594E11D20CB6700431499 /* SearchEventBar.swift in Sources */,
 				6353CE821D1B8A1200F90A4D /* PhoneNumberTextField.swift in Sources */,
 				63C3CE3D1CC0C8C0000EE808 /* UIViewExtension.swift in Sources */,
 				63C3CE391CC0C8BC000EE808 /* LoginViewController.swift in Sources */,
+				631594DF1D20CB6700431499 /* BlurWallViewCell.swift in Sources */,
 				637B8F261D192D7800348CF4 /* StoryboardViewControllerFetchHelper.swift in Sources */,
 				6353CE7F1D1B8A1200F90A4D /* ReenterPhoneViewController.swift in Sources */,
+				631594E21D20CB6700431499 /* SearchEventListViewModel.swift in Sources */,
 				63C3CE3C1CC0C8C0000EE808 /* UIImageExtension.swift in Sources */,
 				6353CE4A1D193F4700F90A4D /* DLIncomingMessageDelegate.swift in Sources */,
 				6375477D1CC9D67600BC3BBD /* ColorgyChatContext.swift in Sources */,
+				631594DC1D20CB6700431499 /* BlurWallViewController.swift in Sources */,
+				631594EE1D20CB8B00431499 /* EventManagerViewModel.swift in Sources */,
+				631594EA1D20CB7F00431499 /* WeekCalendarViewController.swift in Sources */,
 				63F3EE7E1CBF49DF0010D059 /* Semester.swift in Sources */,
 				63B1C3811CF428C100989B5D /* ConfirmPasswordInputBox.swift in Sources */,
 				6352C24A1D112C790041CF9B /* ColorgyNavigationTransitioningDelegate.swift in Sources */,
 				63F3EE801CBF49DF0010D059 /* ColorgyAPIUserResult.swift in Sources */,
 				63C3CE361CC0C8BC000EE808 /* EmailRegisterViewController.swift in Sources */,
 				63F3EE7A1CBF49D10010D059 /* CourseOwnershipObject.swift in Sources */,
+				631594F81D20CB8B00431499 /* EventManagerNotesCell.swift in Sources */,
+				631594D81D20CB5900431499 /* ChatRoomViewModel.swift in Sources */,
 				6353CE471D193F4600F90A4D /* ATrickyView.swift in Sources */,
 				63C3CE2B1CC0C8B5000EE808 /* ColorgyAppNotification.swift in Sources */,
+				631594E41D20CB6700431499 /* FriendListViewModel.swift in Sources */,
 				637B8F281D19311E00348CF4 /* PhoneValidationViewController.swift in Sources */,
 				63F3EE941CBF49EE0010D059 /* ChatMessage.swift in Sources */,
+				631594FA1D20CB8B00431499 /* EventManagerNotificationCell.swift in Sources */,
+				631594DB1D20CB6700431499 /* SearchCourseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
