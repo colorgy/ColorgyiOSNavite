@@ -12,6 +12,7 @@ public protocol ColorgyFullScreenButtonDelegate: class {
 	func colorgyFullScreenButtonClicked(button: ColorgyFullScreenButton)
 }
 
+/// This is a button with a full screen width.
 final public class ColorgyFullScreenButton: UIButton {
 	
 	public weak var delegate: ColorgyFullScreenButtonDelegate?
@@ -36,6 +37,11 @@ final public class ColorgyFullScreenButton: UIButton {
 		addTarget(self, action: #selector(ColorgyFullScreenButton.touchUpInside), forControlEvents: UIControlEvents.TouchUpInside)
 	}
 	
+	required public init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+	// MARK: - Handle Touch
 	@objc private func touchEnter() {
 		UIView.animateWithDuration(0.15) {
 			self.alpha = 0.7
@@ -55,10 +61,7 @@ final public class ColorgyFullScreenButton: UIButton {
 		delegate?.colorgyFullScreenButtonClicked(self)
 	}
 	
-	required public init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-	
+	/// When this button move to superview, we put this button center horizontally to super view.
 	public override func didMoveToSuperview() {
 		centerHorizontallyToSuperview()
 	}
