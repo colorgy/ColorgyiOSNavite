@@ -60,8 +60,6 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		dateLabel.text = calendar != nil ? "\(calendar!.dayOfDate(date))" : " "
 		dateLabel.sizeToFit()
 		dateLabel.center = CGPoint(x: bounds.midX, y: bounds.midY * dateLabelMoveUpScale)
-		// change color of title
-		changeTitleColor()
 	}
 	
 	func updateDetailLabel() {
@@ -78,20 +76,6 @@ public class DLCalendarViewCell: UICollectionViewCell {
 			deselectedState()
 		}
 	}
-	
-//	func updateTodayLayer() {
-//		if isToday() {
-//			
-//			dateLabel.textColor = calendar?.selectedDateTextColor
-//			selectedShapeLayer?.hidden = false
-//			
-//			if containsToday() {
-//				performOnselectingToday()
-//			}
-//		} else {
-//			selectedShapeLayer?.hidden = true
-//		}
-//	}
 	
 	func configureTodayLayer() {
 		let diameter = min(bounds.height, bounds.width) * 0.5
@@ -174,55 +158,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		selectedShapeLayer?.hidden = true
 		self.dateLabel.textColor = self.isToday() ? self.calendar?.todayColor : self.calendar?.thisMonthTextColor
 	}
-//
-//	func performDeselectingToday() {
-//		// animation part
-//		let group = CAAnimationGroup()
-//		let animationDuration = 0.2
-//		
-//		let scale = CABasicAnimation(keyPath: "transform.scale")
-//		scale.fromValue = 0.8
-//		scale.toValue = 1.2
-//		scale.duration = animationDuration/4*3
-//		scale.fillMode = kCAFillModeForwards
-//		scale.removedOnCompletion = false
-//		
-//		let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-//		scaleDown.fromValue = 1.2
-//		scaleDown.toValue = 1.0
-//		scaleDown.duration = animationDuration/4
-//		scaleDown.beginTime = animationDuration/4*3
-//		scaleDown.fillMode = kCAFillModeForwards
-//		scaleDown.removedOnCompletion = false
-//		
-//		group.duration = animationDuration
-//		group.animations = [scale, scaleDown]
-//		group.fillMode = kCAFillModeForwards
-//		group.removedOnCompletion = false
-//		
-//		selectedShapeLayer?.addAnimation(group, forKey: nil)
-//	}
-	
-	func performDeselect() {
-		UIView.animateWithDuration(0.1) {
-			self.changeTitleColor()
-		}
-	}
-	
-	func changeTitleColor() {
-		if let calendar = calendar {
-			if isToday() {
-				dateLabel.textColor = calendar.selectedDateTextColor
-			} else if calendar.selectedDates.contains(date) {
-				dateLabel.textColor = calendar.selectedDateTextColor
-			} else if sameMonth() {
-				dateLabel.textColor = calendar.thisMonthTextColor
-			} else {
-				dateLabel.textColor = calendar.otherMonthTextColor
-			}
-		}
-	}
-	
+
 	func isToday() -> Bool {
 		let now = NSDate()
 		if let calendar = calendar {

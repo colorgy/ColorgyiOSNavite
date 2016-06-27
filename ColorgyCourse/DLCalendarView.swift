@@ -21,6 +21,7 @@ public class DLCalendarView: UIView {
 	
 	var selectedDates: [NSDate] = []
 	var calendar: [[NSDate]]!
+	var specialDates: [NSDate] = []
 	var startDate: NSDate?
 	var endDate: NSDate?
 	
