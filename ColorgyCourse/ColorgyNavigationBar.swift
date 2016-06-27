@@ -14,6 +14,7 @@ import UIKit
 	optional func colorgyNavigationBarCheckButtonClicked()
 }
 
+/// This is customized navigation bar for colorgy.
 public class ColorgyNavigationBar: UIView {
 	
 	// MARK: - Parameters
