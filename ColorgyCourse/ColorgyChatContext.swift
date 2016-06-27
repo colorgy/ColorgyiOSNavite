@@ -13,6 +13,9 @@ public enum ColorgyChatContextError: ErrorType {
 	case NoStatus
 }
 
+/// Chat context is where we store chat data and context needed.
+/// While app launch, we initialize this class.
+/// Initializer will fetch user data, so we can get userId, status and so on.
 final public class ColorgyChatContext {
 	
 	// MARK: - Parameters
