@@ -69,7 +69,7 @@ public class DLCalendarView: UIView {
 	}
 	
 	func randomSpecialDates() {
-		80.times { (index) in
+		8.times { (index) in
 			let randomDays = random() % 100
 			let factor = random() % 10 > 5 ? -1 : 1
 			if let date = self.dateByAddingDays(factor * randomDays, toDate: NSDate()) {

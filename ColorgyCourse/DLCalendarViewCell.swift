@@ -202,6 +202,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 			return
 		}
 		
+		let before = NSDate()
 		if calendar.specialDates.contains(date) {
 			// if its special date, update the content.
 			dateDetailText = "搶到票"
@@ -214,6 +215,8 @@ public class DLCalendarViewCell: UICollectionViewCell {
 			// reset text
 			dateDetailText = ""
 		}
+		let a = -before.timeIntervalSinceNow*1000
+		print("\(a) ms")
 		
 		updateDetailLabel()
 	}
