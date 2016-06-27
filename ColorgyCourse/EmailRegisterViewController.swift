@@ -61,7 +61,7 @@ public class EmailRegisterViewController: UIViewController {
 		let initialPosition = CGPoint(x: 0, y: 170)
 		_ = views.reduce(initialPosition.y, combine: arrangeView)
 		views.forEach(view.addSubview)
-		views.forEach({ $0.inputBoxUpdatingDelegate = self })
+		views.forEach({ $0.inputBoxDelegate = self })
 		
 		// bind password validator
 		confirmPasswordInputBox.bindPasswordInputBox(passwordInputBox)
@@ -135,8 +135,8 @@ extension EmailRegisterViewController : EmailRegisterViewModelDelegate {
 	}
 }
 
-extension EmailRegisterViewController : InputBoxUpdatingDelegate {
-	public func inputBoxUpdated(inputbox: InputBox, text: String?) {
+extension EmailRegisterViewController : InputBoxDelegate {
+	public func inputBoxEditingChanged(inputbox: InputBox, text: String?) {
 		switch inputbox {
 		case emailInputBox:
 			viewModel?.updateEmail(with: text)

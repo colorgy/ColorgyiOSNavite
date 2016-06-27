@@ -19,7 +19,6 @@ final public class ConfirmPasswordInputBox: InputBox {
 	
 	public init() {
 		super.init(imageName: "PasswordIcon", placeholder: "確認密碼", isPassword: true, keyboardType: UIKeyboardType.Default)
-		self.inputBoxDelegate = self
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -58,10 +57,10 @@ final public class ConfirmPasswordInputBox: InputBox {
 	public func bindPasswordInputBox(inputbox: PasswordInputBox) {
 		passwordInputBox = inputbox
 	}
-}
-
-extension ConfirmPasswordInputBox : InputBoxDelegate {
-	public func inputBoxEditingChanged(inputbox: InputBox, text: String?) {
+	
+	
+	// MARK: - Overriding
+	override func inputBoxEdtingChanged(text: String?) {
 		updateIndicatorWithValidPassword(isValidPassword(text))
 	}
 }

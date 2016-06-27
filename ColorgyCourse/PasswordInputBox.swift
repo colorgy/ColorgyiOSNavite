@@ -19,7 +19,6 @@ final public class PasswordInputBox: InputBox {
 	
 	public init() {
 		super.init(imageName: "PasswordIcon", placeholder: "密碼（8個字以上）", isPassword: true, keyboardType: UIKeyboardType.Default)
-		self.inputBoxDelegate = self
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -42,10 +41,9 @@ final public class PasswordInputBox: InputBox {
 	public var password: String? {
 		return textfield.text
 	}
-}
-
-extension PasswordInputBox : InputBoxDelegate {
-	public func inputBoxEditingChanged(inputbox: InputBox, text: String?) {
+	
+	// MARK: - Overriding
+	override func inputBoxEdtingChanged(text: String?) {
 		updateIndicatorWithValidPassword(isValidPassword(text))
 		delegate?.passwordInputBox(passwordUpdated: text)
 	}

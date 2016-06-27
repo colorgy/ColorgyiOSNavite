@@ -12,10 +12,6 @@ public protocol InputBoxDelegate: class {
 	func inputBoxEditingChanged(inputbox: InputBox, text: String?)
 }
 
-public protocol InputBoxUpdatingDelegate: class {
-	func inputBoxUpdated(inputbox: InputBox, text: String?)
-}
-
 /// Input box is used to handle user input at login, register... and so on.
 /// It will have two delegates, one for validating indicator, another for updating text.
 public class InputBox: UIView {
@@ -27,7 +23,6 @@ public class InputBox: UIView {
 	private var errorIndicatorImage: UIImage?
 	
 	internal weak var inputBoxDelegate: InputBoxDelegate?
-	public weak var inputBoxUpdatingDelegate: InputBoxUpdatingDelegate?
 
 	// MARK: - Init
 	public init(imageName: String, placeholder: String?, isPassword: Bool, keyboardType: UIKeyboardType) {
@@ -95,11 +90,11 @@ public class InputBox: UIView {
 
 	// MARK: - Methods
 	@objc private func textfieldEditingChange() {
-		inputBoxDelegate?.inputBoxEditingChanged(self, text: textfield.text)
 		inputBoxEdtingChanged(textfield.text)
-		inputBoxUpdatingDelegate?.inputBoxUpdated(self, text: textfield.text)
+		inputBoxDelegate?.inputBoxEditingChanged(self, text: textfield.text)
 	}
 	
+	/// Override this method to get notified if inputbox text changed.
 	internal func inputBoxEdtingChanged(text: String?) {
 		
 	}

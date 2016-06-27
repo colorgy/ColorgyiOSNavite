@@ -57,7 +57,7 @@ public class EmailLoginViewController: UIViewController {
 		let initialPosition = CGPoint(x: 0, y: 170)
 		_ = views.reduce(initialPosition.y, combine: arrangeView)
 		views.forEach(view.addSubview)
-		views.forEach({ $0.inputBoxUpdatingDelegate = self })
+		views.forEach({ $0.inputBoxDelegate = self })
 		
 		// configure button
 		configureLoginButton()
@@ -117,9 +117,8 @@ extension EmailLoginViewController : ColorgyFullScreenButtonDelegate {
 		}
 	}
 }
-
-extension EmailLoginViewController : InputBoxUpdatingDelegate {
-	public func inputBoxUpdated(inputbox: InputBox, text: String?) {
+extension EmailLoginViewController : InputBoxDelegate {
+	public func inputBoxEditingChanged(inputbox: InputBox, text: String?) {
 		if inputbox == emailInputBox {
 			viewModel?.updateEmail(with: text)
 		} else if inputbox == passwordInputBox {

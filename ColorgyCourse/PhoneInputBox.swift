@@ -13,7 +13,6 @@ final public class PhoneInputBox: InputBox {
 	
 	public init() {
 		super.init(imageName: "PhoneIcon", placeholder: "手機（傳送驗證碼）", isPassword: false, keyboardType: UIKeyboardType.NumberPad)
-		self.inputBoxDelegate = self
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -31,13 +30,9 @@ final public class PhoneInputBox: InputBox {
 	private func updateIndicatorWithValidPhone(isValid: Bool) {
 		isValid ? showOKIndicator() : showErrorIndicator()
 	}
-}
-
-extension PhoneInputBox : InputBoxDelegate {
-	public func inputBoxEditingChanged(text: String?) {
-		updateIndicatorWithValidPhone(isValidPhone(text))
-	}
-	public func inputBoxEditingChanged(inputbox: InputBox, text: String?) {
+	
+	// MARK: - Overriding
+	override func inputBoxEdtingChanged(text: String?) {
 		updateIndicatorWithValidPhone(isValidPhone(text))
 	}
 }
