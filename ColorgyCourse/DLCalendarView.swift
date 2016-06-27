@@ -28,11 +28,12 @@ public class DLCalendarView: UIView {
 	
 	weak var delegate: DLCalendarViewDelegate?
 	
-	var todayColor: UIColor! = UIColor.redColor()
-	var selectedColor: UIColor! = UIColor(red:0.448,  green:0.647,  blue:0.792, alpha:1)
+	var todayColor: UIColor! = ColorgyColor.MainOrange
+	var selectedColor: UIColor! = ColorgyColor.MainOrange
 	var selectedDateTextColor: UIColor! = UIColor.whiteColor()
-	var thisMonthTextColor: UIColor! = UIColor.blackColor()
-	var otherMonthTextColor: UIColor! = UIColor.lightGrayColor()
+	var thisMonthTextColor: UIColor! = ColorgyColor.grayContentTextColor
+	var otherMonthTextColor: UIColor! = ColorgyColor.grayContentTextColor
+	var specialDateColor: UIColor! = ColorgyColor.waterBlue
 	
 	public convenience init(frameWithHeader frame: CGRect) {
 		

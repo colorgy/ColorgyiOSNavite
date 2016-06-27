@@ -12,7 +12,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	
 	private var dateLabel: UILabel!
 	private var dateDetailLabel: UILabel!
-	private var todayShapeLayer: CAShapeLayer?
+	private var selectedShapeLayer: CAShapeLayer?
 	
 	var calendar: DLCalendarView?
 	var currentCalenderDate: NSDate?
@@ -25,6 +25,8 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
+		
+		configureTodayLayer()
 		
 		dateLabel = UILabel()
 		dateLabel.textAlignment = .Center
@@ -43,7 +45,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	func updateUI() {
 		updateTitleText()
 		updateDetailLabel()
-		updateTodayLayer()
+		
 	}
 	
 	func updateTitleText() {
@@ -60,94 +62,93 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		dateDetailLabel.center = CGPoint(x: bounds.midX, y: bounds.midY * 1.4)
 	}
 	
-	func updateTodayLayer() {
-		if isToday() {
-			let diameter = min(bounds.height, bounds.width) * 0.7
-			todayShapeLayer = CAShapeLayer()
-			todayShapeLayer?.frame = CGRect(x: (bounds.width - diameter) / 2, y: (bounds.height - diameter) / 2, width: diameter, height: diameter)
-			todayShapeLayer?.path = UIBezierPath(ovalInRect: todayShapeLayer!.bounds).CGPath
-			todayShapeLayer?.fillColor = calendar?.todayColor.CGColor
-			
-			todayShapeLayer?.borderColor = UIColor.clearColor().CGColor
-			todayShapeLayer?.borderWidth = 1.0
-			
-			layer.insertSublayer(todayShapeLayer!, below: dateLabel.layer)
-			
-			dateLabel.textColor = calendar?.selectedDateTextColor
-			todayShapeLayer?.hidden = false
-			
-			if containsToday() {
-				performOnselectingToday()
-			}
-		} else {
-			todayShapeLayer?.hidden = true
-		}
+//	func updateTodayLayer() {
+//		if isToday() {
+//			
+//			dateLabel.textColor = calendar?.selectedDateTextColor
+//			selectedShapeLayer?.hidden = false
+//			
+//			if containsToday() {
+//				performOnselectingToday()
+//			}
+//		} else {
+//			selectedShapeLayer?.hidden = true
+//		}
+//	}
+	
+	func configureTodayLayer() {
+		let diameter = min(bounds.height, bounds.width) * 0.7
+		selectedShapeLayer = CAShapeLayer()
+		selectedShapeLayer?.frame = CGRect(x: (bounds.width - diameter) / 2, y: (bounds.height - diameter) / 2, width: diameter, height: diameter)
+		selectedShapeLayer?.path = UIBezierPath(ovalInRect: selectedShapeLayer!.bounds).CGPath
+		selectedShapeLayer?.fillColor = calendar?.todayColor.CGColor
+		
+		selectedShapeLayer?.borderColor = UIColor.clearColor().CGColor
+		selectedShapeLayer?.borderWidth = 1.0
+		
+		layer.insertSublayer(selectedShapeLayer!, below: dateLabel.layer)
 	}
 	
 	func performSelect() {
 		
 		if let calendar = calendar where calendar.selectedDates.contains(date) {
 			if isToday() {
-				performOnselectingToday()
+				// date selected and its today
 			} else {
-//				performOnselect()
+				// date selected
 			}
 		} else {
-			if isToday() {
-				performDeselectingToday()
-			} else {
-				performDeselect()
-			}
+
 		}
 	}
 	
-	func performOnselectingToday() {
-		// animation part
-		let group = CAAnimationGroup()
-		let animationDuration = 0.2
-		
-		let scale = CABasicAnimation(keyPath: "transform.scale")
-		scale.fromValue = 1.0
-		scale.toValue = 0.8
-		scale.duration = animationDuration
-		scale.fillMode = kCAFillModeForwards
-		scale.removedOnCompletion = false
-		
-		group.duration = animationDuration
-		group.animations = [scale]
-		group.fillMode = kCAFillModeForwards
-		group.removedOnCompletion = false
-		
-		todayShapeLayer?.addAnimation(group, forKey: nil)
-	}
-	
-	func performDeselectingToday() {
-		// animation part
-		let group = CAAnimationGroup()
-		let animationDuration = 0.2
-		
-		let scale = CABasicAnimation(keyPath: "transform.scale")
-		scale.fromValue = 0.8
-		scale.toValue = 1.2
-		scale.duration = animationDuration/4*3
-		scale.fillMode = kCAFillModeForwards
-		scale.removedOnCompletion = false
-		
-		let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-		scaleDown.fromValue = 1.2
-		scaleDown.toValue = 1.0
-		scaleDown.duration = animationDuration/4
-		scaleDown.beginTime = animationDuration/4*3
-		scaleDown.fillMode = kCAFillModeForwards
-		scaleDown.removedOnCompletion = false
-		
-		group.duration = animationDuration
-		group.animations = [scale, scaleDown]
-		group.fillMode = kCAFillModeForwards
-		group.removedOnCompletion = false
-		
-		todayShapeLayer?.addAnimation(group, forKey: nil)
-	}
+//	func performOnselectingToday() {
+//		// animation part
+//		let group = CAAnimationGroup()
+//		let animationDuration = 0.2
+//		
+//		let scale = CABasicAnimation(keyPath: "transform.scale")
+//		scale.fromValue = 1.0
+//		scale.toValue = 0.8
+//		scale.duration = animationDuration
+//		scale.fillMode = kCAFillModeForwards
+//		scale.removedOnCompletion = false
+//		
+//		group.duration = animationDuration
+//		group.animations = [scale]
+//		group.fillMode = kCAFillModeForwards
+//		group.removedOnCompletion = false
+//		
+//		selectedShapeLayer?.addAnimation(group, forKey: nil)
+//	}
+//	
+//	func performDeselectingToday() {
+//		// animation part
+//		let group = CAAnimationGroup()
+//		let animationDuration = 0.2
+//		
+//		let scale = CABasicAnimation(keyPath: "transform.scale")
+//		scale.fromValue = 0.8
+//		scale.toValue = 1.2
+//		scale.duration = animationDuration/4*3
+//		scale.fillMode = kCAFillModeForwards
+//		scale.removedOnCompletion = false
+//		
+//		let scaleDown = CABasicAnimation(keyPath: "transform.scale")
+//		scaleDown.fromValue = 1.2
+//		scaleDown.toValue = 1.0
+//		scaleDown.duration = animationDuration/4
+//		scaleDown.beginTime = animationDuration/4*3
+//		scaleDown.fillMode = kCAFillModeForwards
+//		scaleDown.removedOnCompletion = false
+//		
+//		group.duration = animationDuration
+//		group.animations = [scale, scaleDown]
+//		group.fillMode = kCAFillModeForwards
+//		group.removedOnCompletion = false
+//		
+//		selectedShapeLayer?.addAnimation(group, forKey: nil)
+//	}
 	
 	func performDeselect() {
 		UIView.animateWithDuration(0.1) {
@@ -214,7 +215,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	public override func prepareForReuse() {
 		super.prepareForReuse()
 		CATransaction.setDisableActions(true)
-		todayShapeLayer?.hidden = true
+		selectedShapeLayer?.hidden = true
 	}
 	
 }
