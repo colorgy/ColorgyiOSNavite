@@ -11,10 +11,15 @@ import UIKit
 public class DLCalendarViewCell: UICollectionViewCell {
 	
 	private var dateLabel: UILabel!
+	private let dateLabelMoveUpScale: CGFloat = 0.7
 	private var dateDetailLabel: UILabel!
 	private var selectedShapeLayer: CAShapeLayer?
 	
-	var calendar: DLCalendarView?
+	var calendar: DLCalendarView? {
+		didSet {
+			configureShapeLayer()
+		}
+	}
 	var currentCalenderDate: NSDate?
 	var date: NSDate! {
 		didSet {
@@ -26,8 +31,6 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
-		configureTodayLayer()
-		
 		dateLabel = UILabel()
 		dateLabel.textAlignment = .Center
 		dateLabel.font = UIFont.systemFontOfSize(14)
@@ -35,23 +38,28 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		
 		dateDetailLabel = UILabel()
 		dateDetailLabel.textAlignment = .Center
-		dateDetailLabel.font = UIFont.systemFontOfSize(12)
+		dateDetailLabel.font = UIFont.systemFontOfSize(10)
 		dateDetailLabel.frame.size.height = 14
 		
 		addSubview(dateLabel)
 		addSubview(dateDetailLabel)
 	}
 	
+	func configureShapeLayer() {
+		configureTodayLayer()
+		dateDetailLabel.textColor = calendar?.specialDateColor
+	}
+	
 	func updateUI() {
 		updateTitleText()
 		updateDetailLabel()
-		
+		updateSelectionState()
 	}
 	
 	func updateTitleText() {
 		dateLabel.text = calendar != nil ? "\(calendar!.dayOfDate(date))" : " "
 		dateLabel.sizeToFit()
-		dateLabel.center = CGPoint(x: bounds.midX, y: bounds.midY * 0.7)
+		dateLabel.center = CGPoint(x: bounds.midX, y: bounds.midY * dateLabelMoveUpScale)
 		// change color of title
 		changeTitleColor()
 	}
@@ -60,6 +68,15 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		dateDetailLabel.text = dateDetailText
 		dateDetailLabel.sizeToFit()
 		dateDetailLabel.center = CGPoint(x: bounds.midX, y: bounds.midY * 1.4)
+	}
+	
+	func updateSelectionState() {
+		
+		if let calendar = calendar where calendar.selectedDates.contains(date) {
+			onselectedState()
+		} else {
+			deselectedState()
+		}
 	}
 	
 //	func updateTodayLayer() {
@@ -77,9 +94,14 @@ public class DLCalendarViewCell: UICollectionViewCell {
 //	}
 	
 	func configureTodayLayer() {
-		let diameter = min(bounds.height, bounds.width) * 0.7
-		selectedShapeLayer = CAShapeLayer()
-		selectedShapeLayer?.frame = CGRect(x: (bounds.width - diameter) / 2, y: (bounds.height - diameter) / 2, width: diameter, height: diameter)
+		let diameter = min(bounds.height, bounds.width) * 0.5
+		if selectedShapeLayer == nil {
+			selectedShapeLayer = CAShapeLayer()
+		}
+		selectedShapeLayer?.frame = CGRect(x: (bounds.width - diameter) / 2,
+		                                   y: (bounds.height - diameter) / 2 - bounds.midY * (1 - dateLabelMoveUpScale),
+		                                   width: diameter,
+		                                   height: diameter)
 		selectedShapeLayer?.path = UIBezierPath(ovalInRect: selectedShapeLayer!.bounds).CGPath
 		selectedShapeLayer?.fillColor = calendar?.todayColor.CGColor
 		
@@ -87,41 +109,72 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		selectedShapeLayer?.borderWidth = 1.0
 		
 		layer.insertSublayer(selectedShapeLayer!, below: dateLabel.layer)
+		
+		selectedShapeLayer?.hidden = true
 	}
 	
 	func performSelect() {
 		
 		if let calendar = calendar where calendar.selectedDates.contains(date) {
-			if isToday() {
-				// date selected and its today
-			} else {
-				// date selected
-			}
+			// selected
+			performOnselectingDate()
+			animateOnselectingDateTextColor()
 		} else {
-
+			// deselected
+			performDeselectingDate()
+			animateDeselectingDateTextColor()
 		}
 	}
 	
-//	func performOnselectingToday() {
-//		// animation part
-//		let group = CAAnimationGroup()
-//		let animationDuration = 0.2
-//		
-//		let scale = CABasicAnimation(keyPath: "transform.scale")
-//		scale.fromValue = 1.0
-//		scale.toValue = 0.8
-//		scale.duration = animationDuration
-//		scale.fillMode = kCAFillModeForwards
-//		scale.removedOnCompletion = false
-//		
-//		group.duration = animationDuration
-//		group.animations = [scale]
-//		group.fillMode = kCAFillModeForwards
-//		group.removedOnCompletion = false
-//		
-//		selectedShapeLayer?.addAnimation(group, forKey: nil)
-//	}
-//	
+	func performOnselectingDate() {
+		
+		selectedShapeLayer?.hidden = false
+		
+		// animation part
+		let group = CAAnimationGroup()
+		let animationDuration = 0.2
+		
+		let scale = CABasicAnimation(keyPath: "transform.scale")
+		scale.fromValue = 0.0
+		scale.toValue = 1.0
+		scale.duration = animationDuration
+		scale.fillMode = kCAFillModeForwards
+		scale.removedOnCompletion = false
+		
+		group.duration = animationDuration
+		group.animations = [scale]
+		group.fillMode = kCAFillModeForwards
+		group.removedOnCompletion = false
+		
+		selectedShapeLayer?.addAnimation(group, forKey: nil)
+	}
+	
+	func performDeselectingDate() {
+		selectedShapeLayer?.hidden = true
+	}
+	
+	func animateOnselectingDateTextColor() {
+		UIView.animateWithDuration(0.2) {
+			self.dateLabel.textColor = self.calendar?.selectedDateTextColor
+		}
+	}
+	
+	func animateDeselectingDateTextColor() {
+		UIView.animateWithDuration(0.2) {
+			self.dateLabel.textColor = self.isToday() ? self.calendar?.todayColor : self.calendar?.thisMonthTextColor
+		}
+	}
+	
+	func onselectedState() {
+		selectedShapeLayer?.hidden = false
+		self.dateLabel.textColor = self.calendar?.selectedDateTextColor
+	}
+	
+	func deselectedState() {
+		selectedShapeLayer?.hidden = true
+		self.dateLabel.textColor = self.isToday() ? self.calendar?.todayColor : self.calendar?.thisMonthTextColor
+	}
+//
 //	func performDeselectingToday() {
 //		// animation part
 //		let group = CAAnimationGroup()

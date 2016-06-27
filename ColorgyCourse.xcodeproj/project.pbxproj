@@ -1067,6 +1067,7 @@
 				TargetAttributes = {
 					635479831CB898C000DE8CBC = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 55V6ERRQ79;
 					};
 					635479971CB898C100DE8CBC = {
 						CreatedOnToolsVersion = 7.3;
@@ -1699,6 +1700,8 @@
 			baseConfigurationReference = 98C8B2C713A3B1FF5924D037 /* Pods-ColorgyCourse.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1710,6 +1713,7 @@
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = misk.ColorgyCourse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ColorgyCourse/Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1720,6 +1724,8 @@
 			baseConfigurationReference = 34DF674E89A9791783AF087F /* Pods-ColorgyCourse.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1731,6 +1737,7 @@
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = misk.ColorgyCourse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ColorgyCourse/Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

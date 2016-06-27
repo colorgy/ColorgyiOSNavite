@@ -16,10 +16,11 @@ public class MonthCalendarViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		cc = DLCalendarView(frameWithHeader: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width)))
+		cc = DLCalendarView(frameWithHeader: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 330)))
 		view.addSubview(cc)
 		cc.jumpToDate(NSDate())
-		cc.backgroundColor = ColorgyColor.BackgroundColor
+		cc.backgroundColor = UIColor.whiteColor()
+		view.backgroundColor = ColorgyColor.BackgroundColor
 		
     }
 

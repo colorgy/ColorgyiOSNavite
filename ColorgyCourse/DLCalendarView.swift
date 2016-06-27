@@ -40,6 +40,7 @@ public class DLCalendarView: UIView {
 		self.init()
 		self.frame = frame
 		
+		let padding: CGFloat = frame.width * 0.05
 		// configure header
 		let headerSize = CGSize(width: frame.width, height: 42)
 		
@@ -54,7 +55,7 @@ public class DLCalendarView: UIView {
 			label.textColor = UIColor.grayColor()
 			label.sizeToFit()
 			label.center.y = container.bounds.midY
-			label.center.x = (container.bounds.width / CGFloat(weekdays.count)) * (CGFloat(index) + 0.5)
+			label.center.x = ((container.bounds.width - 2 * padding) / weekdays.count.CGFloatValue) * (CGFloat(index) + 0.5) + padding
 			container.addSubview(label)
 		}
 		
@@ -78,11 +79,12 @@ public class DLCalendarView: UIView {
 		calendar = []
 		
 		// layout
-		calendarCollectionViewLayout.sectionInset = UIEdgeInsetsZero
+		let padding: CGFloat = frame.width * 0.05
+		calendarCollectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: padding, bottom: padding, right: padding)
 		calendarCollectionViewLayout.minimumLineSpacing = 0
 		calendarCollectionViewLayout.minimumInteritemSpacing = 0
-		let itemWidth = frame.width / 7
-		let itemHeight = frame.height / 6
+		let itemWidth = (frame.width - padding * 2) / 7
+		let itemHeight = (frame.height - padding) / 6
 		calendarCollectionViewLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
 		calendarCollectionViewLayout.scrollDirection = .Horizontal
 		
