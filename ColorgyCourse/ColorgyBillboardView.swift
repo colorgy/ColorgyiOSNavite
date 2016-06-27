@@ -19,13 +19,12 @@ final public class ColorgyBillboardView: UIView {
 	private var billboardImageView: UIImageView!
 	private var initialImage: UIImage?
 	private var errorImage: UIImage?
-	private let billboardHeight: CGFloat = 170.0
 
 	// MARK: - Init
 	
 	/// Initializeing billboard, you have to give the initializer two image names.
 	public convenience init(initialImageName: String, errorImageName: String) {
-		self.init(frame: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: billboardHeight)))
+		self.init(frame: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 170.0)))
 		
 		// init images.
 		initialImage = UIImage(named: initialImageName)

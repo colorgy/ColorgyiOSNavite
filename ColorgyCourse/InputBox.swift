@@ -26,11 +26,11 @@ public class InputBox: UIView {
 	private var okIndicatorImage: UIImage?
 	private var errorIndicatorImage: UIImage?
 	
-	public weak var inputBoxDelegate: InputBoxDelegate?
+	internal weak var inputBoxDelegate: InputBoxDelegate?
 	public weak var inputBoxUpdatingDelegate: InputBoxUpdatingDelegate?
 
 	// MARK: - Init
-	public init(imageName: String, placeholder: String?, isPassword: Bool, keyboardType: UIKeyboardType, delegate: InputBoxDelegate?) {
+	public init(imageName: String, placeholder: String?, isPassword: Bool, keyboardType: UIKeyboardType) {
 		super.init(frame: UIScreen.mainScreen().bounds)
 		frame.size.height = 44
 		backgroundColor = UIColor.whiteColor()
@@ -38,8 +38,6 @@ public class InputBox: UIView {
 		configureIconImageView(imageName)
 		configureIndicator()
 		configureTextField(placeholder, isPassword: isPassword, keyboardType: keyboardType)
-		
-		inputBoxDelegate = delegate
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -98,7 +96,12 @@ public class InputBox: UIView {
 	// MARK: - Methods
 	@objc private func textfieldEditingChange() {
 		inputBoxDelegate?.inputBoxEditingChanged(self, text: textfield.text)
+		inputBoxEdtingChanged(textfield.text)
 		inputBoxUpdatingDelegate?.inputBoxUpdated(self, text: textfield.text)
+	}
+	
+	internal func inputBoxEdtingChanged(text: String?) {
+		
 	}
 	
 	public func showOKIndicator() {

@@ -12,7 +12,6 @@ final public class EmailInputBox: InputBox {
 
 	public init() {
 		super.init(imageName: "EmailIcon", placeholder: "信箱", isPassword: false, keyboardType: UIKeyboardType.EmailAddress)
-		self.inputBoxDelegate = self
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -31,10 +30,8 @@ final public class EmailInputBox: InputBox {
 		isValid ? showOKIndicator() : showErrorIndicator()
 	}
 
-}
-
-extension EmailInputBox : InputBoxDelegate {
-	public func inputBoxEditingChanged(inputbox: InputBox, text: String?) {
+	// MARK: - Overriding
+	override func inputBoxEdtingChanged(text: String?) {
 		updateIndicatorWithValidEmail(isValidEmail(text))
 	}
 }
