@@ -58,7 +58,6 @@ final public class ConfirmPasswordInputBox: InputBox {
 		passwordInputBox = inputbox
 	}
 	
-	
 	// MARK: - Overriding
 	override func inputBoxEdtingChanged(text: String?) {
 		updateIndicatorWithValidPassword(isValidPassword(text))

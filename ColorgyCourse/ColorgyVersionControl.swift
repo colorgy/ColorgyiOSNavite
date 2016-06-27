@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 import AFNetworking
 
+/// Version control let you able to check the current version on the app store.
 final public class ColorgyVersionControl {
 	
 	public private(set) var newVersion: String
