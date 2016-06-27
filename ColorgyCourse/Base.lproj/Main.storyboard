@@ -114,6 +114,24 @@
             </objects>
             <point key="canvasLocation" x="-302" y="-2922"/>
         </scene>
+        <!--Month Calendar View Controller-->
+        <scene sceneID="OWv-NK-3SP">
+            <objects>
+                <viewController id="FeK-1G-9WF" customClass="MonthCalendarViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zOj-Qu-Kr0"/>
+                        <viewControllerLayoutGuide type="bottom" id="1vk-Jc-tqb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p6Q-Od-RjV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OU8-u5-pce" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-302" y="-3639"/>
+        </scene>
         <!--Choose School View Controller-->
         <scene sceneID="YoU-gF-9kH">
             <objects>
