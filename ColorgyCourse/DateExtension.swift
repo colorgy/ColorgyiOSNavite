@@ -8,56 +8,17 @@
 
 import Foundation
 
-//extension NSDate {
-//	
-//	/// To get year string from this date
-//	var year: String {
-//		let formatter = NSDateFormatter()
-//		//        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
-//		formatter.dateFormat = "yyyy"
-//		return formatter.stringFromDate(self)
-//	}
-//	
-//	var month: String {
-//		/// To get month string from this date
-//		let formatter = NSDateFormatter()
-//		//        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
-//		formatter.dateFormat = "MM"
-//		return formatter.stringFromDate(self)
-//	}
-//	
-//	/// To get day string from this date
-//	var day: String {
-//		let formatter = NSDateFormatter()
-//		//        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
-//		formatter.dateFormat = "dd"
-//		return formatter.stringFromDate(self)
-//	}
-//	
-//	/// To get hour string from this date
-//	var hour: String {
-//		let formatter = NSDateFormatter()
-//		//        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
-//		formatter.dateFormat = "HH"
-//		return formatter.stringFromDate(self)
-//	}
-//	
-//	/// To get minute string from this date
-//	var minute: String {
-//		let formatter = NSDateFormatter()
-//		//        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
-//		formatter.dateFormat = "mm"
-//		return formatter.stringFromDate(self)
-//	}
-//	
-//	/// To get second string from this date
-//	var second: String {
-//		let formatter = NSDateFormatter()
-//		//        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
-//		formatter.dateFormat = "ss"
-//		return formatter.stringFromDate(self)
-//	}
-//}
+extension NSDate {
+	public override func isEqual(object: AnyObject?) -> Bool {
+		if let date = object as? NSDate {
+			if date.day == self.day && date.month == self.month && date.year == self.year {
+				// 年月日一樣即相等
+				return true
+			}
+		}
+		return false
+	}
+}
 
 extension NSDate {
 	

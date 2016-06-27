@@ -40,6 +40,8 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		dateDetailLabel.textAlignment = .Center
 		dateDetailLabel.font = UIFont.systemFontOfSize(10)
 		dateDetailLabel.frame.size.height = 14
+		dateDetailLabel.frame.size.width = frame.width
+		dateDetailLabel.center = CGPoint(x: bounds.midX, y: bounds.midY * 1.4)
 		
 		addSubview(dateLabel)
 		addSubview(dateDetailLabel)
@@ -52,7 +54,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	
 	func updateUI() {
 		updateTitleText()
-		updateDetailLabel()
+		updateDetailLabelText()
 		updateSelectionState()
 	}
 	
@@ -64,8 +66,6 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	
 	func updateDetailLabel() {
 		dateDetailLabel.text = dateDetailText
-		dateDetailLabel.sizeToFit()
-		dateDetailLabel.center = CGPoint(x: bounds.midX, y: bounds.midY * 1.4)
 	}
 	
 	func updateSelectionState() {
@@ -194,6 +194,28 @@ public class DLCalendarViewCell: UICollectionViewCell {
 			return true
 		}
 		return false
+	}
+	
+	func updateDetailLabelText() {
+		
+		guard let calendar = calendar else {
+			return
+		}
+		
+		if calendar.specialDates.contains(date) {
+			// if its special date, update the content.
+			dateDetailText = "搶到票"
+			dateDetailLabel.textColor = calendar.specialDateColor
+		} else if date.day == 1 {
+			// if not special date, but its first date of month, update text
+			dateDetailText = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"][date.month - 1]
+			dateDetailLabel.textColor = calendar.thisMonthTextColor
+		} else {
+			// reset text
+			dateDetailText = ""
+		}
+		
+		updateDetailLabel()
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {

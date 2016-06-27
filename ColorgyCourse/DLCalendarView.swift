@@ -67,6 +67,16 @@ public class DLCalendarView: UIView {
 			origin: CGPoint(x: 0, y: headerSize.height),
 			size: CGSize(width: frame.width, height: frame.height - headerSize.height)))
 	}
+	
+	func randomSpecialDates() {
+		80.times { (index) in
+			let randomDays = random() % 100
+			let factor = random() % 10 > 5 ? -1 : 1
+			if let date = self.dateByAddingDays(factor * randomDays, toDate: NSDate()) {
+				self.specialDates.append(date)
+			}
+		}
+	}
 
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -74,7 +84,7 @@ public class DLCalendarView: UIView {
 	}
 	
 	func configureCalendar(frame: CGRect) {
-		
+		randomSpecialDates()
 		calendarCollectionViewLayout = UICollectionViewFlowLayout()
 		calendarCollectionView = UICollectionView(frame: frame, collectionViewLayout: calendarCollectionViewLayout)
 		calendar = []
