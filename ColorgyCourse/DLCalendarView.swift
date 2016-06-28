@@ -178,6 +178,9 @@ public class DLCalendarView: UIView {
 		
 		// After creating the view, now we are going to create the date to be shown on the calendar.
 		// Configure calendar dates.
+		
+		// First, check if start date is assigned.
+		// If not, set the default to 1970/1/1.
 		if startDate == nil {
 			let components = NSDateComponents()
 			components.year = 1970
@@ -185,6 +188,8 @@ public class DLCalendarView: UIView {
 			components.day = 1
 			startDate = NSCalendar.currentCalendar().dateFromComponents(components)
 		}
+		// Check if end date is assigned.
+		// If not, set the default to 1970/1/1.
 		if endDate == nil {
 			let components = NSDateComponents()
 			components.year = 2099

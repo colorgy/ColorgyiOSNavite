@@ -21,6 +21,16 @@ extension NSDate {
 }
 
 extension NSDate {
+	class func year(year: Int, month: Int, day: Int) {
+		let components = NSDateComponents()
+		components.year = year
+		components.month = month
+		components.day = day
+		return NSCalendar.currentCalendar().dateFromComponents(components)
+	}
+}
+
+extension NSDate {
 	
 	var daysInItsMonth: Int {
 		return NSCalendar.currentCalendar().rangeOfUnit(NSCalendarUnit.Day, inUnit: NSCalendarUnit.Month, forDate: self).length
