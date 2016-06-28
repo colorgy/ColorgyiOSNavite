@@ -21,7 +21,7 @@ extension NSDate {
 }
 
 extension NSDate {
-	class func year(year: Int, month: Int, day: Int) {
+	class func create(dateOn year: Int, month: Int, day: Int) -> NSDate? {
 		let components = NSDateComponents()
 		components.year = year
 		components.month = month

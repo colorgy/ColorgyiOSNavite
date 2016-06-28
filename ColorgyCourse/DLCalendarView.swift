@@ -182,20 +182,12 @@ public class DLCalendarView: UIView {
 		// First, check if start date is assigned.
 		// If not, set the default to 1970/1/1.
 		if startDate == nil {
-			let components = NSDateComponents()
-			components.year = 1970
-			components.month = 1
-			components.day = 1
-			startDate = NSCalendar.currentCalendar().dateFromComponents(components)
+			startDate = NSDate.create(dateOn: 1970, month: 1, day: 1)
 		}
 		// Check if end date is assigned.
 		// If not, set the default to 1970/1/1.
 		if endDate == nil {
-			let components = NSDateComponents()
-			components.year = 2099
-			components.month = 12
-			components.day = 31
-			endDate = NSCalendar.currentCalendar().dateFromComponents(components)
+			endDate = NSDate.create(dateOn: 2099, month: 12, day: 31)
 		}
 		if let startDate = startDate, let endDate = endDate {
 			// calculate the required months to create
