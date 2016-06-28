@@ -257,6 +257,10 @@
 		63D22D2B1D226F5D00F0C640 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D281D226F1F00F0C640 /* MyPageViewController.swift */; };
 		63D22D2D1D226FB000F0C640 /* MyPagePersonalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D2C1D226FB000F0C640 /* MyPagePersonalInfoView.swift */; };
 		63D22D2E1D226FE700F0C640 /* MyPagePersonalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D2C1D226FB000F0C640 /* MyPagePersonalInfoView.swift */; };
+		63D22D301D22788100F0C640 /* MyPageMoreOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D2F1D22788100F0C640 /* MyPageMoreOptionView.swift */; };
+		63D22D311D22788100F0C640 /* MyPageMoreOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D2F1D22788100F0C640 /* MyPageMoreOptionView.swift */; };
+		63D22D331D227EB600F0C640 /* NumebrAndUIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D321D227EB600F0C640 /* NumebrAndUIViewExtension.swift */; };
+		63D22D341D227EB600F0C640 /* NumebrAndUIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D321D227EB600F0C640 /* NumebrAndUIViewExtension.swift */; };
 		63E447181D0E5E58005186FD /* EventRepeatSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */; };
 		63E4471A1D0E5E6B005186FD /* EventRepeatSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */; };
 		63E4471C1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */; };
@@ -481,6 +485,8 @@
 		63D22D261D226DA000F0C640 /* MyPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		63D22D281D226F1F00F0C640 /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		63D22D2C1D226FB000F0C640 /* MyPagePersonalInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPagePersonalInfoView.swift; sourceTree = "<group>"; };
+		63D22D2F1D22788100F0C640 /* MyPageMoreOptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageMoreOptionView.swift; sourceTree = "<group>"; };
+		63D22D321D227EB600F0C640 /* NumebrAndUIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumebrAndUIViewExtension.swift; sourceTree = "<group>"; };
 		63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingViewController.swift; sourceTree = "<group>"; };
 		63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingViewModel.swift; sourceTree = "<group>"; };
 		63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventRepeatSettingTableViewCell.xib; sourceTree = "<group>"; };
@@ -812,6 +818,7 @@
 				63C3CE1B1CC0C76F000EE808 /* NumerExtensions.swift */,
 				63C3CE1D1CC0C76F000EE808 /* UIImageExtension.swift */,
 				637305631CBF83D80016A7FC /* UIViewExtension.swift */,
+				63D22D321D227EB600F0C640 /* NumebrAndUIViewExtension.swift */,
 				635479DD1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift */,
 				635479DE1CB8B02A00DE8CBC /* StringExtension.swift */,
 				635479DF1CB8B02A00DE8CBC /* DateExtension.swift */,
@@ -958,6 +965,7 @@
 		63D22D2A1D226F3600F0C640 /* My Page */ = {
 			isa = PBXGroup;
 			children = (
+				63D22D2F1D22788100F0C640 /* MyPageMoreOptionView.swift */,
 				63D22D261D226DA000F0C640 /* MyPage.storyboard */,
 				63D22D281D226F1F00F0C640 /* MyPageViewController.swift */,
 				63D22D2C1D226FB000F0C640 /* MyPagePersonalInfoView.swift */,
@@ -1392,6 +1400,7 @@
 				635479E91CB8B02A00DE8CBC /* ColorgyAPIUserResult.swift in Sources */,
 				6352C2491D1121780041CF9B /* ColorgyNavigationTransitioningDelegate.swift in Sources */,
 				630337EC1CE974CE006FEA1C /* BlurWallViewModel.swift in Sources */,
+				63D22D331D227EB600F0C640 /* NumebrAndUIViewExtension.swift in Sources */,
 				635479F01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift in Sources */,
 				637B8F231D192BB000348CF4 /* StoryboardViewControllerFetchHelper.swift in Sources */,
 				637547701CC8A96900BC3BBD /* ChatMessageList.swift in Sources */,
@@ -1431,6 +1440,7 @@
 				6335DC661D17C46500B32B8C /* EventManagerView.swift in Sources */,
 				6304728B1CE5DDC500D907C4 /* WeekCalendarView.swift in Sources */,
 				63EC77B61CC8743D008025A7 /* DLIncomingPhotoBubble.swift in Sources */,
+				63D22D301D22788100F0C640 /* MyPageMoreOptionView.swift in Sources */,
 				63B1C37B1CF4221400989B5D /* PasswordInputBox.swift in Sources */,
 				630570051CBCC94A007D2C9D /* Department.swift in Sources */,
 				630472891CE5DD2000D907C4 /* WeekCalendarViewController.swift in Sources */,
@@ -1478,6 +1488,7 @@
 				6353CE811D1B8A1200F90A4D /* ReenterPhoneNumberView.swift in Sources */,
 				63D22D2B1D226F5D00F0C640 /* MyPageViewController.swift in Sources */,
 				6353CE501D193F4700F90A4D /* DLOutgoingMessageBubble.swift in Sources */,
+				63D22D311D22788100F0C640 /* MyPageMoreOptionView.swift in Sources */,
 				631594E01D20CB6700431499 /* SearchEventListViewController.swift in Sources */,
 				631594F31D20CB8B00431499 /* EventManagerColorCell.swift in Sources */,
 				631594FE1D20CB8B00431499 /* EventManagerRepeatEndsCell.swift in Sources */,
@@ -1552,6 +1563,7 @@
 				63F3EE781CBF49D10010D059 /* PeriodRawData.swift in Sources */,
 				63E447231D0E8314005186FD /* ColorgyStyle.swift in Sources */,
 				6353CE441D193EF700F90A4D /* PhoneValidationView.swift in Sources */,
+				63D22D341D227EB600F0C640 /* NumebrAndUIViewExtension.swift in Sources */,
 				63C3CE2C1CC0C8B5000EE808 /* Release.swift in Sources */,
 				63F3EE821CBF49DF0010D059 /* Period.swift in Sources */,
 				63F3EE861CBF49DF0010D059 /* ColorgyLoginResult.swift in Sources */,

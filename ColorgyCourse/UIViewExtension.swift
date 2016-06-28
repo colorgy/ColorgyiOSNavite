@@ -46,4 +46,10 @@ extension UIView {
 			self.center.x = superview.bounds.midX
 		}
 	}
+	
+	/// Get bounds' center x.
+	/// Its different from center.x, because center.x is according to frame
+	var centerXOfBounds: CGFloat {
+		return bounds.midX
+	}
 }
