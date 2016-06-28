@@ -395,7 +395,7 @@ public class DLCalendarView: UIView {
 		}
 	}
 	
-	func currentDateOfIndexPath(indexPath: NSIndexPath) -> NSDate {
+	func currentMonthOfIndexPath(indexPath: NSIndexPath) -> NSDate {
 		return calendar[indexPath.section][21]
 	}
 	
@@ -497,7 +497,7 @@ extension DLCalendarView : UICollectionViewDelegate, UICollectionViewDataSource 
 	public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! DLCalendarViewCell
 		cell.calendar = self
-		cell.currentCalenderDate = currentDateOfIndexPath(indexPath)
+		cell.currentCalenderMonth = currentMonthOfIndexPath(indexPath)
 		cell.date = dateOfIndexPath(indexPath)
 		
 		return cell
@@ -509,6 +509,7 @@ extension DLCalendarView : UICollectionViewDelegate, UICollectionViewDataSource 
 		deselectPreviousIndexPath(andReplaceWith: indexPath)
 		cell.calendar = self
 		cell.performSelect()
+		print(currentDateOfIndexPath(indexPath))
 	}
 }
 extension DLCalendarView : UIScrollViewDelegate {

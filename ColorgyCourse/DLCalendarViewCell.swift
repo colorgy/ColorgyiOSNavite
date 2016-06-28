@@ -20,7 +20,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 			configureShapeLayer()
 		}
 	}
-	var currentCalenderDate: NSDate?
+	var currentCalenderMonth: NSDate?
 	var date: NSDate! {
 		didSet {
 			updateUI()
@@ -176,7 +176,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	}
 	
 	func sameMonth() -> Bool {
-		if let currentCalenderDate = currentCalenderDate where date.month == currentCalenderDate.month {
+		if let currentCalenderMonth = currentCalenderMonth where date.month == currentCalenderMonth.month {
 			return true
 		}
 		return false
