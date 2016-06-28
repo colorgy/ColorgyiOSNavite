@@ -12,7 +12,6 @@ import UIKit
 	optional func DLCalendar(didScrollTo date: NSDate?)
 	optional func DLCalendar(didSelect date: NSDate)
 	optional func DLCalendar(didDeselect date: NSDate)
-	optional func DLCalendar(didFinishSelecting date: NSDate?)
 }
 
 public class DLCalendarView: UIView {
@@ -116,7 +115,7 @@ public class DLCalendarView: UIView {
 	// TODO: remove this method
 	/// This can generate some random special dates for test.
 	private func randomSpecialDates() {
-		800.times { (index) in
+		16.times { (index) in
 			let randomDays = random() % 100
 			let factor = random() % 10 > 5 ? -1 : 1
 			if let date = self.dateByAddingDays(factor * randomDays, toDate: NSDate()) {
@@ -408,7 +407,7 @@ public class DLCalendarView: UIView {
 			// if there exits a previous selected indexpathm deselect it!
 			let cell = calendarCollectionView.cellForItemAtIndexPath(previousSelectedIndexPath) as! DLCalendarViewCell
 			// perfrom selection
-			cell.performSelect(complete: nil)
+			cell.performSelect()
 		}
 		
 		// update index path.
@@ -521,10 +520,7 @@ extension DLCalendarView : UICollectionViewDelegate, UICollectionViewDataSource 
 		selectIndexPathOnCalendar(indexPath)
 		deselectPreviousIndexPath(andReplaceWith: indexPath)
 		cell.calendar = self
-		cell.performSelect(complete: {
-			self.delegate?.DLCalendar?(didFinishSelecting: cell.date)
-		})
-		print(dateOfIndexPath(indexPath))
+		cell.performSelect()
 	}
 }
 extension DLCalendarView : UIScrollViewDelegate {

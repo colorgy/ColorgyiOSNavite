@@ -97,7 +97,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		selectedShapeLayer?.hidden = true
 	}
 	
-	public func performSelect(complete complete: (() -> Void)?) {
+	public func performSelect() {
 		
 		if let calendar = calendar where calendar.selectedDates.contains(date) {
 			// selected
@@ -108,11 +108,6 @@ public class DLCalendarViewCell: UICollectionViewCell {
 			performDeselectingDate()
 			animateDeselectingDateTextColor()
 		}
-		
-		let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 0.2))
-		dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
-			complete?()
-		})
 	}
 	
 	private func performOnselectingDate() {

@@ -9,6 +9,13 @@
 import Foundation
 
 public struct StoryboardIdentifier {
-	static let phoneValidationView: String = "Phone Validation VC"
-	static let chooseSchoolView: String = "Choose School VC"
+	
+	public struct MainStoryboard {
+		static let phoneValidationView: String = "Phone Validation VC"
+		static let chooseSchoolView: String = "Choose School VC"
+	}
+	
+	public struct MyPageStoryboard {
+		
+	}
 }

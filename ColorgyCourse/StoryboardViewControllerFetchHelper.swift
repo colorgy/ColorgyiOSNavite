@@ -14,14 +14,15 @@ final public class StoryboardViewControllerFetchHelper {
 	
 	/// Main storyboard.
 	private static let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+	private static let myPageStoryboard = UIStoryboard(name: "MyPage", bundle: nil)
 	
 	/// Fetch phone validation view controller.
 	public class func fetchPhoneValidationViewController() -> PhoneValidationViewController? {
-		return mainStoryboard.instantiateViewControllerWithIdentifier(StoryboardIdentifier.phoneValidationView) as? PhoneValidationViewController
+		return mainStoryboard.instantiateViewControllerWithIdentifier(StoryboardIdentifier.MainStoryboard.phoneValidationView) as? PhoneValidationViewController
 	}
 	
 	/// Fetch choose school view controller
 	public class func fetchChooseSchooolViewController() -> ChooseSchoolViewController? {
-		return mainStoryboard.instantiateViewControllerWithIdentifier(StoryboardIdentifier.chooseSchoolView) as? ChooseSchoolViewController
+		return mainStoryboard.instantiateViewControllerWithIdentifier(StoryboardIdentifier.MainStoryboard.chooseSchoolView) as? ChooseSchoolViewController
 	}
 }

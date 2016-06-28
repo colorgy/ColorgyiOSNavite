@@ -36,7 +36,7 @@ extension MonthCalendarViewController {
 extension MonthCalendarViewController : DLCalendarViewDelegate {
 	
 	public func DLCalendar(didFinishSelecting date: NSDate?) {
-		<#code#>
+		print(date)
 	}
 	
 }

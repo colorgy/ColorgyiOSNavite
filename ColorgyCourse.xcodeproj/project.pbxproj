@@ -252,6 +252,7 @@
 		63C3CE451CC0C94B000EE808 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE441CC0C94B000EE808 /* libz.tbd */; };
 		63C3CE471CC0C98B000EE808 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE461CC0C98B000EE808 /* SystemConfiguration.framework */; };
 		63C3CE491CC0C990000EE808 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE481CC0C990000EE808 /* Security.framework */; };
+		63D22D271D226DA000F0C640 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D22D261D226DA000F0C640 /* MyPage.storyboard */; };
 		63E447181D0E5E58005186FD /* EventRepeatSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */; };
 		63E4471A1D0E5E6B005186FD /* EventRepeatSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */; };
 		63E4471C1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */; };
@@ -473,6 +474,7 @@
 		63C3CE441CC0C94B000EE808 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		63C3CE461CC0C98B000EE808 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		63C3CE481CC0C990000EE808 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		63D22D261D226DA000F0C640 /* MyPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingViewController.swift; sourceTree = "<group>"; };
 		63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingViewModel.swift; sourceTree = "<group>"; };
 		63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventRepeatSettingTableViewCell.xib; sourceTree = "<group>"; };
@@ -716,6 +718,7 @@
 				63700E311D18DF1F00DD76F8 /* ColorgyConfig.swift */,
 				635479891CB898C100DE8CBC /* ViewController.swift */,
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
+				63D22D261D226DA000F0C640 /* MyPage.storyboard */,
 				637B8F201D192B4600348CF4 /* StoryboardIdentifier.swift */,
 				637B8F221D192BB000348CF4 /* StoryboardViewControllerFetchHelper.swift */,
 				6352C2481D1121780041CF9B /* ColorgyNavigationTransitioningDelegate.swift */,
@@ -1133,6 +1136,7 @@
 				63EC77BE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib in Resources */,
 				6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */,
 				63B1C37D1CF4227A00989B5D /* Assets.xcassets in Resources */,
+				63D22D271D226DA000F0C640 /* MyPage.storyboard in Resources */,
 				63E4471C1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
