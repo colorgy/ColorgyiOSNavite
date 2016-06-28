@@ -8,6 +8,12 @@
 
 import UIKit
 
+@objc public protocol MyPageMoreOptionViewDelegate: class {
+	optional func myPageMoreOptionViewMyActivityTapped()
+	optional func myPageMoreOptionViewGreetingsTapped()
+	optional func myPageMoreOptionViewSettingsTapped()
+}
+
 final public class MyPageMoreOptionView: UIView {
 
 	
@@ -19,10 +25,14 @@ final public class MyPageMoreOptionView: UIView {
 	private let heightOfOptionView: CGFloat = 75
 	private var optionData: [(title: String, imageName: String, color: UIColor, selector: Selector)] = []
 	
+	public weak var delegate: MyPageMoreOptionViewDelegate?
+	
 	// MARK: - Init
 	
-	public convenience init() {
+	public convenience init(delegate: MyPageMoreOptionViewDelegate?) {
 		self.init(frame: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 75)))
+		
+		self.delegate = delegate
 		
 		// setup option data
 		optionData.append((title: "我的活動", imageName: "OptionMyActivityIcon", color: ColorgyColor.waterBlue, selector: #selector(MyPageMoreOptionView.myActivityOptionViewTapped)))
@@ -85,14 +95,14 @@ final public class MyPageMoreOptionView: UIView {
 	
 	// MARK: - Selectors
 	@objc private func myActivityOptionViewTapped() {
-		
+		delegate?.myPageMoreOptionViewMyActivityTapped?()
 	}
 	
 	@objc private func greetingsOptionViewTapped() {
-		
+		delegate?.myPageMoreOptionViewGreetingsTapped?()
 	}
 	
 	@objc private func settingsOptionViewTapped() {
-		
+		delegate?.myPageMoreOptionViewSettingsTapped?()
 	}
 }
