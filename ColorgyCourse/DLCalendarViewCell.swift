@@ -145,7 +145,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	
 	func animateDeselectingDateTextColor() {
 		UIView.animateWithDuration(0.2) {
-			self.dateLabel.textColor = self.isToday() ? self.calendar?.todayColor : self.calendar?.thisMonthTextColor
+			self.dateLabel.textColor = self.isToday() ? self.calendar?.todayColor : self.calendar?.normalContentTextColor
 		}
 	}
 	
@@ -156,7 +156,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	
 	func deselectedState() {
 		selectedShapeLayer?.hidden = true
-		self.dateLabel.textColor = self.isToday() ? self.calendar?.todayColor : self.calendar?.thisMonthTextColor
+		self.dateLabel.textColor = self.isToday() ? self.calendar?.todayColor : self.calendar?.normalContentTextColor
 	}
 
 	func isToday() -> Bool {
@@ -210,7 +210,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		} else if date.day == 1 {
 			// if not special date, but its first date of month, update text
 			dateDetailText = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"][date.month - 1]
-			dateDetailLabel.textColor = calendar.thisMonthTextColor
+			dateDetailLabel.textColor = calendar.normalContentTextColor
 		} else {
 			// reset text
 			dateDetailText = ""

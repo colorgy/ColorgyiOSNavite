@@ -16,39 +16,79 @@ public protocol DLCalendarViewDelegate: class {
 
 public class DLCalendarView: UIView {
 	
+	// MARK: - Parameters
+	
+	/// This is collection view of the calendar.
 	var calendarCollectionView: UICollectionView!
+	/// This is the flow layout of a collection view.
 	var calendarCollectionViewLayout: UICollectionViewFlowLayout!
 	
+	/// Dates user selected.
 	var selectedDates: [NSDate] = []
+	/// Indexpath user previous selected, used to perform deselection animation.
 	var previousSelectedIndexPath: NSIndexPath?
+	// TODO: revise the name of calendar.
+	/// Where we store dates.
 	var calendar: [[NSDate]]!
+	/// Special dates, like 端午節、二退、期中期末.
 	var specialDates: [NSDate] = []
+	/// Date that calendar starts.
+	/// If this property is not assigned, default is 1970/1.
 	var startDate: NSDate?
+	/// Date that calendar ends.
+	/// If this property is not assigned, default is 2099/12.
 	var endDate: NSDate?
 	
+	/// This is the view that show weekdays.
+	/// Like 一二三四五六日.
 	var headerView: UIView!
 	
+	/// Delegation of this calendar view.
 	weak var delegate: DLCalendarViewDelegate?
 	
+	// MARK: Color
+	
+	/// Color of today.
+	/// Defaults to colorgy's main orange color.
 	var todayColor: UIColor! = ColorgyColor.MainOrange
+	/// Color of selected date.
+	/// Defaults to colorgy's main orange color.
 	var selectedColor: UIColor! = ColorgyColor.MainOrange
+	/// Color of selected date's text.
+	/// Defaults to white.
 	var selectedDateTextColor: UIColor! = UIColor.whiteColor()
-	var thisMonthTextColor: UIColor! = ColorgyColor.grayContentTextColor
-	var otherMonthTextColor: UIColor! = ColorgyColor.grayContentTextColor
+	/// Color for dates and details that is normal state.
+	/// Like 四月 below date's text, or normal state date text color.
+	/// Defaults to colorgy's gray content text color.
+	var normalContentTextColor: UIColor! = ColorgyColor.grayContentTextColor
+	/// Color for special dates, like 期中期末、二退.
+	/// Defaults to colorgy's water blue color.
 	var specialDateColor: UIColor! = ColorgyColor.waterBlue
 	
+	// MARK: - Init
+	
+	/// Init calendar with a header on top of it.
+	/// Header will display content like weekdays.
 	public convenience init(frameWithHeader frame: CGRect) {
 		
 		self.init()
+		// First, set the frame size of this calendar.
 		self.frame = frame
 		
+		// determine the padding of left, right and bottom.
 		let padding: CGFloat = frame.width * 0.05
-		// configure header
+		
+		// determine size of header.
+		// Default height of header is 42.
 		let headerSize = CGSize(width: frame.width, height: 42)
 		
+		// Container is the base view of header view, which I put weekdays onto it.
+		// Will snapshot after I finish configuring it.
 		let container = UIView(frame: CGRect(origin: CGPointZero, size: headerSize))
 //		let weekdays = ["日","一","二","三","四","五","六"]
 		let weekdays = ["一","二","三","四","五","六","日"]
+		
+		// loop through it and determine its style and arrangement.
 		for (index, weekday) : (Int, String) in weekdays.enumerate() {
 			let label = UILabel()
 			label.frame.size.height = headerSize.height
@@ -57,6 +97,8 @@ public class DLCalendarView: UIView {
 			label.textColor = UIColor.grayColor()
 			label.sizeToFit()
 			label.center.y = container.bounds.midY
+			// First, trim left and right padding.
+			// Second, calculate the offset according to index.
 			label.center.x = ((container.bounds.width - 2 * padding) / weekdays.count.CGFloatValue) * (CGFloat(index) + 0.5) + padding
 			container.addSubview(label)
 		}
@@ -69,6 +111,8 @@ public class DLCalendarView: UIView {
 			size: CGSize(width: frame.width, height: frame.height - headerSize.height)))
 	}
 	
+	// TODO: remove this method
+	/// This can generate some random special dates for test.
 	func randomSpecialDates() {
 		8.times { (index) in
 			let randomDays = random() % 100
@@ -79,38 +123,61 @@ public class DLCalendarView: UIView {
 		}
 	}
 
+	/// Init a calendar without header.
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		configureCalendar(frame)
 	}
 	
+	// MARK: - Init
+	
+	/// Configure calendar with given size.
 	func configureCalendar(frame: CGRect) {
+		
+		// TODO: remove this random special dates.
 		randomSpecialDates()
+		
+		// First, configure layout of the calendar collection view.
 		calendarCollectionViewLayout = UICollectionViewFlowLayout()
+		// Second, according to layout, create calendar collection view.
 		calendarCollectionView = UICollectionView(frame: frame, collectionViewLayout: calendarCollectionViewLayout)
+		// set calendar dates to an empty array.
 		calendar = []
 		
-		// layout
-		let padding: CGFloat = frame.width * 0.05
+		// Then determine layout.
+		// We want padding on left, right and bottom side.
+		// 3 percent of the given frame's width.
+		let padding: CGFloat = frame.width * 0.03
 		calendarCollectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: padding, bottom: padding, right: padding)
+		// No space between every line.
 		calendarCollectionViewLayout.minimumLineSpacing = 0
 		calendarCollectionViewLayout.minimumInteritemSpacing = 0
+		// After setting the layout, we are going to determine its item size.
 		let itemWidth = (frame.width - padding * 2) / 7
 		let itemHeight = (frame.height - padding) / 6
 		calendarCollectionViewLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+		
+		// After all the work we've done above, set the scrolling direction to horizontal.
 		calendarCollectionViewLayout.scrollDirection = .Horizontal
 		
-		// configure collection view
+		// default calendar collectino view's background color to clear color.
+		// So if we change the calendar color, it wont affect.
 		calendarCollectionView.backgroundColor = UIColor.clearColor()
+		// We want this calendar to stay in focus in every scroll.
+		// Enable paging here.
 		calendarCollectionView.pagingEnabled = true
+		
+		// Delegate and datasource.
 		calendarCollectionView.delegate = self
 		calendarCollectionView.dataSource = self
 		
+		// Register the class to collection view for the reusable cell.
 		calendarCollectionView.registerClass(DLCalendarViewCell.self, forCellWithReuseIdentifier: "cell")
 		
 		addSubview(calendarCollectionView)
 		
-		// configure calendar
+		// After creating the view, now we are going to create the date to be shown on the calendar.
+		// Configure calendar dates.
 		if startDate == nil {
 			let components = NSDateComponents()
 			components.year = 1970
