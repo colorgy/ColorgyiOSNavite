@@ -214,7 +214,7 @@ public class DLCalendarView: UIView {
 	
 	/// Get months between given dates.
 	func monthsBetween(date date: NSDate, andDate: NSDate) -> Int {
-		return (yearOfDate(andDate) - yearOfDate(date)) * 12 + (monthOfDate(andDate) - monthOfDate(date)) + 1
+		return (andDate.year - date.year) * 12 + (andDate.month - date.month) + 1
 	}
 	
 	/// This method will create dates that will show on specific month.
@@ -233,7 +233,7 @@ public class DLCalendarView: UIView {
 	func configureMonthByDate(date: NSDate) -> [NSDate]? {
 		// TODO: 完成這邊的註解、跟weekday的排列問題
 		// check if this date has a first date of the month
-		guard let firstDayOfTheMonth = beginingDateOfMonth(date) else { return nil }
+		guard let firstDayOfTheMonth = beginningDateOfMonth(date) else { return nil }
 		// initial cache
 		var datesOfMonth = [NSDate]()
 		// get weekday of the beginning date of this month
@@ -260,7 +260,7 @@ public class DLCalendarView: UIView {
 		// third, make this array to contain 42 days.
 		guard var endDate = endDateOfMonth(firstDayOfTheMonth) else { return nil }
 		while datesOfMonth.count != 42 {
-			if let date = tomorrowOfDate(endDate) {
+			if let date = endDate.tomorrow {
 				datesOfMonth.append(date)
 				endDate = date
 			}
@@ -292,35 +292,21 @@ public class DLCalendarView: UIView {
 		return NSCalendar.currentCalendar().component(NSCalendarUnit.Weekday, fromDate: date)
 	}
 	
-	func beginingDateOfMonth(date: NSDate) -> NSDate? {
+	/// Can get the begining date of given date.
+	///
+	/// This will start from 1 instead of 0, because its date.
+	func beginningDateOfMonth(date: NSDate) -> NSDate? {
 		let component = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour], fromDate: date)
 		component.day = 1
 		return NSCalendar.currentCalendar().dateFromComponents(component)
 	}
 	
+	/// Can get the end date of given date.
 	func endDateOfMonth(date: NSDate) -> NSDate? {
 		let component = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour], fromDate: date)
 		component.month += 1
 		component.day = 0
 		return NSCalendar.currentCalendar().dateFromComponents(component)
-	}
-	
-	func tomorrowOfDate(date: NSDate) -> NSDate? {
-		let component = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour], fromDate: date)
-		component.day += 1
-		return NSCalendar.currentCalendar().dateFromComponents(component)
-	}
-	
-	func yearOfDate(date: NSDate) -> Int {
-		return NSCalendar.currentCalendar().components(NSCalendarUnit.Year, fromDate: date).year
-	}
-	
-	func monthOfDate(date: NSDate) -> Int {
-		return NSCalendar.currentCalendar().components(NSCalendarUnit.Month, fromDate: date).month
-	}
-	
-	func dayOfDate(date: NSDate) -> Int {
-		return NSCalendar.currentCalendar().components(NSCalendarUnit.Day, fromDate: date).day
 	}
 	
 	func dateByAddingMonths(months: Int, toDate: NSDate) -> NSDate? {
@@ -356,9 +342,9 @@ public class DLCalendarView: UIView {
 	}
 	
 	func stringOfDate(date: NSDate) -> String {
-		let year = yearOfDate(date)
-		let month = monthOfDate(date)
-		let day = dayOfDate(date)
+		let year = date.year
+		let month = date.month
+		let day = date.day
 		return "\(year)-\(month)-\(day)"
 	}
 	
@@ -371,7 +357,7 @@ public class DLCalendarView: UIView {
 	}
 	
 	func dateOfSection(section: Int) -> NSDate? {
-		return beginingDateOfMonth(calendar[section][21])
+		return beginningDateOfMonth(calendar[section][21])
 	}
 	
 	func selectIndexPathOnCalendar(indexPath: NSIndexPath) {
