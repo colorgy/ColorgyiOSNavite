@@ -20,6 +20,7 @@ public class DLCalendarView: UIView {
 	var calendarCollectionViewLayout: UICollectionViewFlowLayout!
 	
 	var selectedDates: [NSDate] = []
+	var previousSelectedIndexPath: NSIndexPath?
 	var calendar: [[NSDate]]!
 	var specialDates: [NSDate] = []
 	var startDate: NSDate?
@@ -282,14 +283,14 @@ public class DLCalendarView: UIView {
 	}
 	
 	func selectIndexPathOnCalendar(indexPath: NSIndexPath) {
-		let dateSelected = dateOfIndexPath(indexPath)
-		if !selectedDates.contains(dateSelected) {
-			selectedDates.append(dateSelected)
-//			print("select", dateSelected)
-			delegate?.DLCalendarViewDidSelectDate(dateSelected)
-		} else {
-			removeDate(dateSelected)
+		// first, deselect a date
+		if let date = selectedDates.first {
+			removeDate(date)
 		}
+		// second, select a date
+		let dateSelected = dateOfIndexPath(indexPath)
+		selectedDates.append(dateSelected)
+		delegate?.DLCalendarViewDidSelectDate(dateSelected)
 	}
 	
 	func removeDate(date: NSDate) {
@@ -301,6 +302,16 @@ public class DLCalendarView: UIView {
 	
 	func currentDateOfIndexPath(indexPath: NSIndexPath) -> NSDate {
 		return calendar[indexPath.section][21]
+	}
+	
+	func deselectPreviousIndexPath(andReplaceWith newIndexPath: NSIndexPath) {
+		if let previousSelectedIndexPath = previousSelectedIndexPath {
+			// if there exits a previous selected indexpathm deselect it!
+			let cell = calendarCollectionView.cellForItemAtIndexPath(previousSelectedIndexPath) as! DLCalendarViewCell
+			cell.performSelect()
+		}
+		
+		previousSelectedIndexPath = newIndexPath
 	}
 	
 	// MARK: - Getters
@@ -400,6 +411,7 @@ extension DLCalendarView : UICollectionViewDelegate, UICollectionViewDataSource 
 	public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		let cell = collectionView.cellForItemAtIndexPath(indexPath) as! DLCalendarViewCell
 		selectIndexPathOnCalendar(indexPath)
+		deselectPreviousIndexPath(andReplaceWith: indexPath)
 		cell.calendar = self
 		cell.performSelect()
 	}
