@@ -395,36 +395,48 @@ public class DLCalendarView: UIView {
 		}
 	}
 	
+	/// Get current month of indexPath
+	///
+	/// This method is used to check which month of the given section
 	func currentMonthOfIndexPath(indexPath: NSIndexPath) -> NSDate {
 		return calendar[indexPath.section][21]
 	}
 	
+	/// Help you to deselect the previous selected indexPath.
 	func deselectPreviousIndexPath(andReplaceWith newIndexPath: NSIndexPath) {
 		if let previousSelectedIndexPath = previousSelectedIndexPath {
 			// if there exits a previous selected indexpathm deselect it!
 			let cell = calendarCollectionView.cellForItemAtIndexPath(previousSelectedIndexPath) as! DLCalendarViewCell
+			// perfrom selection
 			cell.performSelect()
 		}
 		
+		// update index path.
 		previousSelectedIndexPath = newIndexPath
 	}
 	
 	// MARK: - Getters
-	var currentMaxMonths: Int? {
+	
+	/// Get the count of month of this calendar.
+	var currentCalendarMonthCount: Int? {
 		if let startDate = startDate, let endDate = endDate {
 			return monthsBetween(date: startDate, andDate: endDate)
 		}
 		return nil
 	}
 	
+	/// Width of calendar
 	var calendarWidth: CGFloat {
 		return calendarCollectionView.frame.width
 	}
 	
+	/// Get the scrolling X offset of calendar collection view.
 	var calendarContentOffsetX: CGFloat {
 		return calendarCollectionView.contentOffset.x
 	}
 	
+	/// Get the date of current scrolling position.
+	/// Will return the first date of the section.
 	var currentDate: NSDate? {
 		let section = Int(calendarContentOffsetX / calendarWidth)
 		return dateOfSection(section)
@@ -484,6 +496,7 @@ public class DLCalendarView: UIView {
 	}
 }
 
+// MARK: - Datasource and Delegate
 extension DLCalendarView : UICollectionViewDelegate, UICollectionViewDataSource {
 	
 	public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -509,7 +522,7 @@ extension DLCalendarView : UICollectionViewDelegate, UICollectionViewDataSource 
 		deselectPreviousIndexPath(andReplaceWith: indexPath)
 		cell.calendar = self
 		cell.performSelect()
-		print(currentDateOfIndexPath(indexPath))
+		print(dateOfIndexPath(indexPath))
 	}
 }
 extension DLCalendarView : UIScrollViewDelegate {
