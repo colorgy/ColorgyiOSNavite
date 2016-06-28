@@ -131,6 +131,10 @@ public class DLCalendarView: UIView {
 	
 	// MARK: - Init
 	
+	public required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
 	/// Configure calendar with given size.
 	func configureCalendar(frame: CGRect) {
 		
@@ -309,6 +313,7 @@ public class DLCalendarView: UIView {
 		return NSCalendar.currentCalendar().dateFromComponents(component)
 	}
 	
+	/// Get the date by adding months to date.
 	func dateByAddingMonths(months: Int, toDate: NSDate) -> NSDate? {
 		let components = NSDateComponents()
 		components.year = NSIntegerMax
@@ -319,10 +324,12 @@ public class DLCalendarView: UIView {
 		return NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: toDate, options: [])
 	}
 	
+	/// Get the date by subtracting months to date.
 	func dateBySubtractingMonths(months: Int, toDate: NSDate) -> NSDate? {
 		return dateByAddingMonths(-months, toDate: toDate)
 	}
 	
+	/// Get the date by adding days to date.
 	func dateByAddingDays(days: Int, toDate: NSDate) -> NSDate? {
 		let components = NSDateComponents()
 		components.year = NSIntegerMax
@@ -333,12 +340,9 @@ public class DLCalendarView: UIView {
 		return NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: toDate, options: [])
 	}
 	
+	/// Get the date by subtracting days to date.
 	func dateBySubtractingDays(days: Int, toDate: NSDate) -> NSDate? {
 		return dateByAddingDays(-days, toDate: toDate)
-	}
-	
-	public required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
 	}
 	
 	func stringOfDate(date: NSDate) -> String {
@@ -348,18 +352,28 @@ public class DLCalendarView: UIView {
 		return "\(year)-\(month)-\(day)"
 	}
 	
+	// MARK: - Handle IndexPath
+	
+	/// Map indexPath to array index.
+	///
+	/// Because the arrange between array and collection view datasource is different.
+	/// Since collection view is listing data from top to bottom, and array is from left to right.
+	/// So here, we must map from indexpath to index.
 	func dateOfIndexPath(indexPath: NSIndexPath) -> NSDate {
 		let indexOnCalendar = 7 * (indexPath.item % 6) + indexPath.item / 6
-//		print(indexOnCalendar)
-//		print(calendar[indexPath.section])
-//		print("幹", dayOfDate(calendar[indexPath.section][indexOnCalendar]))
 		return calendar[indexPath.section][indexOnCalendar]
 	}
 	
+	/// Get the date of given section.
+	/// Will be the beginning date of the month.
 	func dateOfSection(section: Int) -> NSDate? {
 		return beginningDateOfMonth(calendar[section][21])
 	}
 	
+	/// Call this method to update data source and to select or deselect the given indexPath.
+	/// But now just can select one date at a time.
+	///
+	/// After selecting  dates, will call the delegate method to notify update.
 	func selectIndexPathOnCalendar(indexPath: NSIndexPath) {
 		// first, deselect a date
 		if let date = selectedDates.first {
@@ -371,6 +385,9 @@ public class DLCalendarView: UIView {
 		delegate?.DLCalendarViewDidSelectDate(dateSelected)
 	}
 	
+	/// Remove the date from data source.
+	///
+	/// After removing, will call delegate method to notify update.
 	func removeDate(date: NSDate) {
 		if let index = selectedDates.indexOf(date) {
 			selectedDates.removeAtIndex(index)
