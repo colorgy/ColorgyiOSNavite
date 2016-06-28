@@ -59,7 +59,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	}
 	
 	func updateTitleText() {
-		dateLabel.text = calendar != nil ? "\(calendar!.dayOfDate(date))" : " "
+		dateLabel.text = calendar != nil ? "\(date.day)" : " "
 		dateLabel.sizeToFit()
 		dateLabel.center = CGPoint(x: bounds.midX, y: bounds.midY * dateLabelMoveUpScale)
 	}
@@ -160,29 +160,15 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	}
 
 	func isToday() -> Bool {
-		let now = NSDate()
-		if let calendar = calendar {
-			if calendar.dayOfDate(date) == calendar.dayOfDate(now) {
-				if calendar.monthOfDate(date) == calendar.monthOfDate(now) {
-					if calendar.yearOfDate(date) == calendar.yearOfDate(now) {
-						return true
-					}
-				}
-			}
-		}
-		return false
+		return date == NSDate()
 	}
 	
 	func containsToday() -> Bool {
 		let now = NSDate()
 		if let calendar = calendar {
 			for _date in calendar.selectedDates {
-				if calendar.dayOfDate(_date) == calendar.dayOfDate(now) {
-					if calendar.monthOfDate(_date) == calendar.monthOfDate(now) {
-						if calendar.yearOfDate(_date) == calendar.yearOfDate(now) {
-							return true
-						}
-					}
+				if _date == now {
+					return true
 				}
 			}
 		}
@@ -190,7 +176,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	}
 	
 	func sameMonth() -> Bool {
-		if let currentCalenderDate = currentCalenderDate where calendar?.monthOfDate(date) == calendar?.monthOfDate(currentCalenderDate) {
+		if let currentCalenderDate = currentCalenderDate where date.month == currentCalenderDate.month {
 			return true
 		}
 		return false
