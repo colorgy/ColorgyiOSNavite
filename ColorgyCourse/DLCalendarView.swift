@@ -8,10 +8,11 @@
 
 import UIKit
 
-public protocol DLCalendarViewDelegate: class {
-	func DLCalendarViewDidChangeToDate(date: NSDate?)
-	func DLCalendarViewDidSelectDate(date: NSDate)
-	func DLCalendarViewDidDeselectDate(date: NSDate)
+@objc public protocol DLCalendarViewDelegate: class {
+	optional func DLCalendar(didScrollTo date: NSDate?)
+	optional func DLCalendar(didSelect date: NSDate)
+	optional func DLCalendar(didDeselect date: NSDate)
+	optional func DLCalendar(didFinishSelecting date: NSDate?)
 }
 
 public class DLCalendarView: UIView {
@@ -19,51 +20,51 @@ public class DLCalendarView: UIView {
 	// MARK: - Parameters
 	
 	/// This is collection view of the calendar.
-	var calendarCollectionView: UICollectionView!
+	private var calendarCollectionView: UICollectionView!
 	/// This is the flow layout of a collection view.
-	var calendarCollectionViewLayout: UICollectionViewFlowLayout!
+	private var calendarCollectionViewLayout: UICollectionViewFlowLayout!
 	
 	/// Dates user selected.
-	var selectedDates: [NSDate] = []
+	public private(set) var selectedDates: [NSDate] = []
 	/// Indexpath user previous selected, used to perform deselection animation.
-	var previousSelectedIndexPath: NSIndexPath?
+	private var previousSelectedIndexPath: NSIndexPath?
 	// TODO: revise the name of calendar.
 	/// Where we store dates.
-	var calendar: [[NSDate]]!
+	public private(set) var calendar: [[NSDate]]!
 	/// Special dates, like 端午節、二退、期中期末.
-	var specialDates: [NSDate] = []
+	public private(set) var specialDates: [NSDate] = []
 	/// Date that calendar starts.
 	/// If this property is not assigned, default is 1970/1.
-	var startDate: NSDate?
+	public var startDate: NSDate?
 	/// Date that calendar ends.
 	/// If this property is not assigned, default is 2099/12.
-	var endDate: NSDate?
+	public var endDate: NSDate?
 	
 	/// This is the view that show weekdays.
 	/// Like 一二三四五六日.
-	var headerView: UIView!
+	private var headerView: UIView!
 	
 	/// Delegation of this calendar view.
-	weak var delegate: DLCalendarViewDelegate?
+	public weak var delegate: DLCalendarViewDelegate?
 	
 	// MARK: Color
 	
 	/// Color of today.
 	/// Defaults to colorgy's main orange color.
-	var todayColor: UIColor! = ColorgyColor.MainOrange
+	public var todayColor: UIColor! = ColorgyColor.MainOrange
 	/// Color of selected date.
 	/// Defaults to colorgy's main orange color.
-	var selectedColor: UIColor! = ColorgyColor.MainOrange
+	public var selectedColor: UIColor! = ColorgyColor.MainOrange
 	/// Color of selected date's text.
 	/// Defaults to white.
-	var selectedDateTextColor: UIColor! = UIColor.whiteColor()
+	public var selectedDateTextColor: UIColor! = UIColor.whiteColor()
 	/// Color for dates and details that is normal state.
 	/// Like 四月 below date's text, or normal state date text color.
 	/// Defaults to colorgy's gray content text color.
-	var normalContentTextColor: UIColor! = ColorgyColor.grayContentTextColor
+	public var normalContentTextColor: UIColor! = ColorgyColor.grayContentTextColor
 	/// Color for special dates, like 期中期末、二退.
 	/// Defaults to colorgy's water blue color.
-	var specialDateColor: UIColor! = ColorgyColor.waterBlue
+	public var specialDateColor: UIColor! = ColorgyColor.waterBlue
 	
 	// MARK: - Init
 	
@@ -72,6 +73,7 @@ public class DLCalendarView: UIView {
 	public convenience init(frameWithHeader frame: CGRect) {
 		
 		self.init()
+		
 		// First, set the frame size of this calendar.
 		self.frame = frame
 		
@@ -113,8 +115,8 @@ public class DLCalendarView: UIView {
 	
 	// TODO: remove this method
 	/// This can generate some random special dates for test.
-	func randomSpecialDates() {
-		8.times { (index) in
+	private func randomSpecialDates() {
+		800.times { (index) in
 			let randomDays = random() % 100
 			let factor = random() % 10 > 5 ? -1 : 1
 			if let date = self.dateByAddingDays(factor * randomDays, toDate: NSDate()) {
@@ -129,14 +131,12 @@ public class DLCalendarView: UIView {
 		configureCalendar(frame)
 	}
 	
-	// MARK: - Init
-	
 	public required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
 	/// Configure calendar with given size.
-	func configureCalendar(frame: CGRect) {
+	private func configureCalendar(frame: CGRect) {
 		
 		// TODO: remove this random special dates.
 		randomSpecialDates()
@@ -217,7 +217,7 @@ public class DLCalendarView: UIView {
 	}
 	
 	/// Get months between given dates.
-	func monthsBetween(date date: NSDate, andDate: NSDate) -> Int {
+	private func monthsBetween(date date: NSDate, andDate: NSDate) -> Int {
 		return (andDate.year - date.year) * 12 + (andDate.month - date.month) + 1
 	}
 	
@@ -234,7 +234,7 @@ public class DLCalendarView: UIView {
 	/// ```
 	/// 
 	/// Will totally display 42 days, 6 weeks of this month.
-	func configureMonthByDate(date: NSDate) -> [NSDate]? {
+	private func configureMonthByDate(date: NSDate) -> [NSDate]? {
 		// TODO: 完成這邊的註解、跟weekday的排列問題
 		// check if this date has a first date of the month
 		guard let firstDayOfTheMonth = beginningDateOfMonth(date) else { return nil }
@@ -276,7 +276,7 @@ public class DLCalendarView: UIView {
 	// MARK: - Helper Methods
 	
 	/// Can check how many days a month by the given date.
-	func daysAMonthOfDate(date: NSDate) -> Int {
+	private func daysAMonthOfDate(date: NSDate) -> Int {
 		return NSCalendar.currentCalendar().rangeOfUnit(NSCalendarUnit.Day, inUnit: NSCalendarUnit.Month, forDate: date).length
 	}
 	
@@ -292,21 +292,21 @@ public class DLCalendarView: UIView {
 	/// sun mon tue wen thu fri sat
 	///  1   2   3   4   5   6   7
 	/// ```
-	func weekdayOfDate(date: NSDate) -> Int {
+	private func weekdayOfDate(date: NSDate) -> Int {
 		return NSCalendar.currentCalendar().component(NSCalendarUnit.Weekday, fromDate: date)
 	}
 	
 	/// Can get the begining date of given date.
 	///
 	/// This will start from 1 instead of 0, because its date.
-	func beginningDateOfMonth(date: NSDate) -> NSDate? {
+	private func beginningDateOfMonth(date: NSDate) -> NSDate? {
 		let component = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour], fromDate: date)
 		component.day = 1
 		return NSCalendar.currentCalendar().dateFromComponents(component)
 	}
 	
 	/// Can get the end date of given date.
-	func endDateOfMonth(date: NSDate) -> NSDate? {
+	private func endDateOfMonth(date: NSDate) -> NSDate? {
 		let component = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour], fromDate: date)
 		component.month += 1
 		component.day = 0
@@ -314,7 +314,7 @@ public class DLCalendarView: UIView {
 	}
 	
 	/// Get the date by adding months to date.
-	func dateByAddingMonths(months: Int, toDate: NSDate) -> NSDate? {
+	private func dateByAddingMonths(months: Int, toDate: NSDate) -> NSDate? {
 		let components = NSDateComponents()
 		components.year = NSIntegerMax
 		components.month = NSIntegerMax
@@ -325,12 +325,12 @@ public class DLCalendarView: UIView {
 	}
 	
 	/// Get the date by subtracting months to date.
-	func dateBySubtractingMonths(months: Int, toDate: NSDate) -> NSDate? {
+	private func dateBySubtractingMonths(months: Int, toDate: NSDate) -> NSDate? {
 		return dateByAddingMonths(-months, toDate: toDate)
 	}
 	
 	/// Get the date by adding days to date.
-	func dateByAddingDays(days: Int, toDate: NSDate) -> NSDate? {
+	private func dateByAddingDays(days: Int, toDate: NSDate) -> NSDate? {
 		let components = NSDateComponents()
 		components.year = NSIntegerMax
 		components.month = NSIntegerMax
@@ -341,11 +341,11 @@ public class DLCalendarView: UIView {
 	}
 	
 	/// Get the date by subtracting days to date.
-	func dateBySubtractingDays(days: Int, toDate: NSDate) -> NSDate? {
+	private func dateBySubtractingDays(days: Int, toDate: NSDate) -> NSDate? {
 		return dateByAddingDays(-days, toDate: toDate)
 	}
 	
-	func stringOfDate(date: NSDate) -> String {
+	private func stringOfDate(date: NSDate) -> String {
 		let year = date.year
 		let month = date.month
 		let day = date.day
@@ -359,14 +359,14 @@ public class DLCalendarView: UIView {
 	/// Because the arrange between array and collection view datasource is different.
 	/// Since collection view is listing data from top to bottom, and array is from left to right.
 	/// So here, we must map from indexpath to index.
-	func dateOfIndexPath(indexPath: NSIndexPath) -> NSDate {
+	private func dateOfIndexPath(indexPath: NSIndexPath) -> NSDate {
 		let indexOnCalendar = 7 * (indexPath.item % 6) + indexPath.item / 6
 		return calendar[indexPath.section][indexOnCalendar]
 	}
 	
 	/// Get the date of given section.
 	/// Will be the beginning date of the month.
-	func dateOfSection(section: Int) -> NSDate? {
+	private func dateOfSection(section: Int) -> NSDate? {
 		return beginningDateOfMonth(calendar[section][21])
 	}
 	
@@ -374,7 +374,7 @@ public class DLCalendarView: UIView {
 	/// But now just can select one date at a time.
 	///
 	/// After selecting  dates, will call the delegate method to notify update.
-	func selectIndexPathOnCalendar(indexPath: NSIndexPath) {
+	private func selectIndexPathOnCalendar(indexPath: NSIndexPath) {
 		// first, deselect a date
 		if let date = selectedDates.first {
 			removeDate(date)
@@ -382,33 +382,33 @@ public class DLCalendarView: UIView {
 		// second, select a date
 		let dateSelected = dateOfIndexPath(indexPath)
 		selectedDates.append(dateSelected)
-		delegate?.DLCalendarViewDidSelectDate(dateSelected)
+		delegate?.DLCalendar?(didSelect: dateSelected)
 	}
 	
 	/// Remove the date from data source.
 	///
 	/// After removing, will call delegate method to notify update.
-	func removeDate(date: NSDate) {
+	private func removeDate(date: NSDate) {
 		if let index = selectedDates.indexOf(date) {
 			selectedDates.removeAtIndex(index)
-			delegate?.DLCalendarViewDidDeselectDate(date)
+			delegate?.DLCalendar?(didDeselect: date)
 		}
 	}
 	
 	/// Get current month of indexPath
 	///
 	/// This method is used to check which month of the given section
-	func currentMonthOfIndexPath(indexPath: NSIndexPath) -> NSDate {
+	private func currentMonthOfIndexPath(indexPath: NSIndexPath) -> NSDate {
 		return calendar[indexPath.section][21]
 	}
 	
 	/// Help you to deselect the previous selected indexPath.
-	func deselectPreviousIndexPath(andReplaceWith newIndexPath: NSIndexPath) {
+	private func deselectPreviousIndexPath(andReplaceWith newIndexPath: NSIndexPath) {
 		if let previousSelectedIndexPath = previousSelectedIndexPath {
 			// if there exits a previous selected indexpathm deselect it!
 			let cell = calendarCollectionView.cellForItemAtIndexPath(previousSelectedIndexPath) as! DLCalendarViewCell
 			// perfrom selection
-			cell.performSelect()
+			cell.performSelect(complete: nil)
 		}
 		
 		// update index path.
@@ -418,7 +418,7 @@ public class DLCalendarView: UIView {
 	// MARK: - Getters
 	
 	/// Get the count of month of this calendar.
-	var currentCalendarMonthCount: Int? {
+	private var currentCalendarMonthCount: Int? {
 		if let startDate = startDate, let endDate = endDate {
 			return monthsBetween(date: startDate, andDate: endDate)
 		}
@@ -426,43 +426,43 @@ public class DLCalendarView: UIView {
 	}
 	
 	/// Width of calendar
-	var calendarWidth: CGFloat {
+	private var calendarWidth: CGFloat {
 		return calendarCollectionView.frame.width
 	}
 	
 	/// Get the scrolling X offset of calendar collection view.
-	var calendarContentOffsetX: CGFloat {
+	private var calendarContentOffsetX: CGFloat {
 		return calendarCollectionView.contentOffset.x
 	}
 	
 	/// Get the date of current scrolling position.
 	/// Will return the first date of the section.
-	var currentDate: NSDate? {
+	private var currentDate: NSDate? {
 		let section = Int(calendarContentOffsetX / calendarWidth)
 		return dateOfSection(section)
 	}
 	
 	// MARK: - Calendar mover
-	func jumpToTaday() {
+	public func jumpToTaday() {
 		let now = NSDate()
 		jumpToDate(now)
 	}
 	
-	func jumpToDate(date: NSDate) {
+	public func jumpToDate(date: NSDate) {
 		guard let point = pointOfDate(date) else { return }
 		moveToPoint(point)
 	}
 	
-	func pointOfDate(date: NSDate) -> CGPoint? {
+	private func pointOfDate(date: NSDate) -> CGPoint? {
 		guard let section = sectionOfDate(date) else { return nil }
 		return CGPoint(x: calendarWidth * CGFloat(section), y: 0)
 	}
 	
-	func dateFromOffset(offset: CGFloat) {
+	private func dateFromOffset(offset: CGFloat) {
 		
 	}
 	
-	func sectionOfDate(date: NSDate) -> Int? {
+	private func sectionOfDate(date: NSDate) -> Int? {
 		guard let startDate = startDate, let endDate = endDate else { return nil }
 		guard date.timeIntervalSinceDate(startDate) >= 0 else { return nil }
 		guard date.timeIntervalSinceDate(endDate) <= 0 else { return nil }
@@ -471,11 +471,11 @@ public class DLCalendarView: UIView {
 		return months - 1
 	}
 	
-	func moveToPoint(point: CGPoint) {
+	private func moveToPoint(point: CGPoint) {
 		calendarCollectionView.setContentOffset(point, animated: true)
 	}
 	
-	func nextMonth() {
+	public func nextMonth() {
 		let point = CGPoint(x: calendarContentOffsetX + calendarWidth, y: 0)
 		if let startDate = startDate, let endDate = endDate {
 			if !(point.x > CGFloat(monthsBetween(date: startDate, andDate: endDate) - 1) * calendarWidth) {
@@ -484,14 +484,14 @@ public class DLCalendarView: UIView {
 		}
 	}
 	
-	func previousMonth() {
+	public func previousMonth() {
 		let point = CGPoint(x: calendarContentOffsetX - calendarWidth, y: 0)
 		if !(point.x < 0) {
 			calendarCollectionView.setContentOffset(point, animated: true)
 		}
 	}
 	
-	func reloadCalendarColor() {
+	private func reloadCalendarColor() {
 		calendarCollectionView.reloadData()
 	}
 }
@@ -521,7 +521,9 @@ extension DLCalendarView : UICollectionViewDelegate, UICollectionViewDataSource 
 		selectIndexPathOnCalendar(indexPath)
 		deselectPreviousIndexPath(andReplaceWith: indexPath)
 		cell.calendar = self
-		cell.performSelect()
+		cell.performSelect(complete: {
+			self.delegate?.DLCalendar?(didFinishSelecting: cell.date)
+		})
 		print(dateOfIndexPath(indexPath))
 	}
 }
@@ -529,6 +531,6 @@ extension DLCalendarView : UIScrollViewDelegate {
 	public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 		let page = Int(scrollView.contentOffset.x / scrollView.frame.width)
 		let date = dateOfSection(page)
-		delegate?.DLCalendarViewDidChangeToDate(date)
+		delegate?.DLCalendar?(didScrollTo: date)
 	}
 }

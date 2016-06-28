@@ -8,20 +8,35 @@
 
 import UIKit
 
-public class MonthCalendarViewController: UIViewController {
+final public class MonthCalendarViewController: UIViewController {
 	
-	private var cc: DLCalendarView!
-
+//	private var cc: DLCalendarView!
+	public var k: DLCalendarView!
+//	private var f: DLCalendarView?
+	
     override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		cc = DLCalendarView(frameWithHeader: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 330)))
-		view.addSubview(cc)
-		cc.jumpToDate(NSDate())
-		cc.backgroundColor = UIColor.whiteColor()
+		k = DLCalendarView(frameWithHeader: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 330)))
+		view.addSubview(k)
+		k.jumpToDate(NSDate())
+		k.backgroundColor = UIColor.whiteColor()
+		k.delegate = self
 		view.backgroundColor = ColorgyColor.BackgroundColor
-		
-    }
 
+    }
+	
+	
+
+}
+extension MonthCalendarViewController {
+	
+}
+extension MonthCalendarViewController : DLCalendarViewDelegate {
+	
+	public func DLCalendar(didFinishSelecting date: NSDate?) {
+		<#code#>
+	}
+	
 }

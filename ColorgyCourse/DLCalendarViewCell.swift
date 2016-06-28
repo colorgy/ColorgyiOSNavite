@@ -15,20 +15,20 @@ public class DLCalendarViewCell: UICollectionViewCell {
 	private var dateDetailLabel: UILabel!
 	private var selectedShapeLayer: CAShapeLayer?
 	
-	var calendar: DLCalendarView? {
+	public var calendar: DLCalendarView? {
 		didSet {
 			configureShapeLayer()
 		}
 	}
-	var currentCalenderMonth: NSDate?
-	var date: NSDate! {
+	public var currentCalenderMonth: NSDate?
+	public var date: NSDate! {
 		didSet {
 			updateUI()
 		}
 	}
-	var dateDetailText: String! = "yoyo"
+	public var dateDetailText: String! = "yoyo"
 	
-	override init(frame: CGRect) {
+	override public init(frame: CGRect) {
 		super.init(frame: frame)
 		
 		dateLabel = UILabel()
@@ -47,28 +47,28 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		addSubview(dateDetailLabel)
 	}
 	
-	func configureShapeLayer() {
+	private func configureShapeLayer() {
 		configureTodayLayer()
 		dateDetailLabel.textColor = calendar?.specialDateColor
 	}
 	
-	func updateUI() {
+	private func updateUI() {
 		updateTitleText()
 		updateDetailLabelText()
 		updateSelectionState()
 	}
 	
-	func updateTitleText() {
+	private func updateTitleText() {
 		dateLabel.text = calendar != nil ? "\(date.day)" : " "
 		dateLabel.sizeToFit()
 		dateLabel.center = CGPoint(x: bounds.midX, y: bounds.midY * dateLabelMoveUpScale)
 	}
 	
-	func updateDetailLabel() {
+	private func updateDetailLabel() {
 		dateDetailLabel.text = dateDetailText
 	}
 	
-	func updateSelectionState() {
+	private func updateSelectionState() {
 		
 		if let calendar = calendar where calendar.selectedDates.contains(date) {
 			onselectedState()
@@ -77,7 +77,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		}
 	}
 	
-	func configureTodayLayer() {
+	private func configureTodayLayer() {
 		let diameter = min(bounds.height, bounds.width) * 0.5
 		if selectedShapeLayer == nil {
 			selectedShapeLayer = CAShapeLayer()
@@ -97,7 +97,7 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		selectedShapeLayer?.hidden = true
 	}
 	
-	func performSelect() {
+	public func performSelect(complete complete: (() -> Void)?) {
 		
 		if let calendar = calendar where calendar.selectedDates.contains(date) {
 			// selected
@@ -108,9 +108,14 @@ public class DLCalendarViewCell: UICollectionViewCell {
 			performDeselectingDate()
 			animateDeselectingDateTextColor()
 		}
+		
+		let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 0.2))
+		dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
+			complete?()
+		})
 	}
 	
-	func performOnselectingDate() {
+	private func performOnselectingDate() {
 		
 		selectedShapeLayer?.hidden = false
 		
@@ -133,37 +138,37 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		selectedShapeLayer?.addAnimation(group, forKey: nil)
 	}
 	
-	func performDeselectingDate() {
+	private func performDeselectingDate() {
 		selectedShapeLayer?.hidden = true
 	}
 	
-	func animateOnselectingDateTextColor() {
+	private func animateOnselectingDateTextColor() {
 		UIView.animateWithDuration(0.2) {
 			self.dateLabel.textColor = self.calendar?.selectedDateTextColor
 		}
 	}
 	
-	func animateDeselectingDateTextColor() {
+	private func animateDeselectingDateTextColor() {
 		UIView.animateWithDuration(0.2) {
 			self.dateLabel.textColor = self.isToday() ? self.calendar?.todayColor : self.calendar?.normalContentTextColor
 		}
 	}
 	
-	func onselectedState() {
+	private func onselectedState() {
 		selectedShapeLayer?.hidden = false
 		self.dateLabel.textColor = self.calendar?.selectedDateTextColor
 	}
 	
-	func deselectedState() {
+	private func deselectedState() {
 		selectedShapeLayer?.hidden = true
 		self.dateLabel.textColor = self.isToday() ? self.calendar?.todayColor : self.calendar?.normalContentTextColor
 	}
 
-	func isToday() -> Bool {
+	private func isToday() -> Bool {
 		return date == NSDate()
 	}
 	
-	func containsToday() -> Bool {
+	private func containsToday() -> Bool {
 		let now = NSDate()
 		if let calendar = calendar {
 			for _date in calendar.selectedDates {
@@ -175,14 +180,14 @@ public class DLCalendarViewCell: UICollectionViewCell {
 		return false
 	}
 	
-	func sameMonth() -> Bool {
+	private func sameMonth() -> Bool {
 		if let currentCalenderMonth = currentCalenderMonth where date.month == currentCalenderMonth.month {
 			return true
 		}
 		return false
 	}
 	
-	func updateDetailLabelText() {
+	private func updateDetailLabelText() {
 		
 		guard let calendar = calendar else {
 			return

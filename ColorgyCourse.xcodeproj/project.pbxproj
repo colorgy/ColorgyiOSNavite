@@ -711,8 +711,7 @@
 				63EC77A11CC8743D008025A7 /* DLMessageVIew */,
 				630570221CBD2D97007D2C9D /* Realm Object */,
 				635479871CB898C100DE8CBC /* AppDelegate.swift */,
-				631595061D20ED3300431499 /* DLCalendarView.swift */,
-				631595071D20ED3300431499 /* DLCalendarViewCell.swift */,
+				63D22D251D2250B800F0C640 /* DL Calendar View */,
 				6315950A1D20EDA900431499 /* MonthCalendarViewController.swift */,
 				63700E311D18DF1F00DD76F8 /* ColorgyConfig.swift */,
 				635479891CB898C100DE8CBC /* ViewController.swift */,
@@ -936,6 +935,15 @@
 				63561C4D1CBF9848004AEF6D /* EmailRegisterViewModel.swift */,
 			);
 			name = "Email Register View";
+			sourceTree = "<group>";
+		};
+		63D22D251D2250B800F0C640 /* DL Calendar View */ = {
+			isa = PBXGroup;
+			children = (
+				631595061D20ED3300431499 /* DLCalendarView.swift */,
+				631595071D20ED3300431499 /* DLCalendarViewCell.swift */,
+			);
+			name = "DL Calendar View";
 			sourceTree = "<group>";
 		};
 		63E447141D0E5D85005186FD /* Reenter Phone View Controller */ = {
