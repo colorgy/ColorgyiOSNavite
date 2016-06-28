@@ -17,11 +17,25 @@ final public class MyPageMoreOptionView: UIView {
 	private let numberOfViewsInRow = 3
 	private let numberOfRows = 1
 	private let heightOfOptionView: CGFloat = 75
+	private var optionData: [(title: String, imageName: String, color: UIColor, selector: Selector)] = []
 	
 	// MARK: - Init
 	
 	public convenience init() {
 		self.init(frame: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 75)))
+		
+		// setup option data
+		optionData.append((title: "我的活動", imageName: "OptionMyActivityIcon", color: ColorgyColor.waterBlue, selector: #selector(MyPageMoreOptionView.myActivityOptionViewTapped)))
+		optionData.append((title: "我的招呼", imageName: "OptionGreetingsIcon", color: ColorgyColor.orangeYellow, selector: #selector(MyPageMoreOptionView.greetingsOptionViewTapped)))
+		optionData.append((title: "更多設定", imageName: "OptionSettingsIcon", color: ColorgyColor.magenta, selector: #selector(MyPageMoreOptionView.settingsOptionViewTapped)))
+		
+		// configure
+		optionData.forEach({ optionViews.append(configureOptionView(with: $0)) })
+		// arrange
+		for (index, optionView) in optionViews.enumerate() {
+			optionView.frame.origin.x = index.CGFloatValue * optionView.bounds.width
+			addSubview(optionView)
+		}
 	}
 	
 	override private init(frame: CGRect) {
@@ -33,17 +47,17 @@ final public class MyPageMoreOptionView: UIView {
 	}
 
 	// MARK: - Configuration
-	private func configureOptionView(with optionTitle: String?, optionImageName: String?, optionColor: UIColor?) -> UIView {
+	private func configureOptionView(with option: (title: String, imageName: String, color: UIColor, selector: Selector)) -> UIView {
 		let optionView = UIView(
 			frame: CGRect(origin: CGPointZero,
 			size: CGSize(width: bounds.width / numberOfViewsInRow.CGFloatValue, height: heightOfOptionView)))
 		
-		optionView.backgroundColor = optionColor
+		optionView.backgroundColor = option.color
 		
 		// configure image of option view
 		let imageView = UIImageView(frame: CGRect(origin: CGPointZero, size: CGSize(width: 21, height: 21)))
 		imageView.contentMode = .ScaleAspectFill
-		imageView.image = UIImage(named: optionImageName ?? "")
+		imageView.image = UIImage(named: option.imageName)
 		
 		imageView.frame.origin.y = 18
 		imageView.center.x = centerXOfBounds
@@ -56,13 +70,29 @@ final public class MyPageMoreOptionView: UIView {
 		titleLabel.font = UIFont.systemFontOfSize(13)
 		titleLabel.textColor = UIColor.whiteColor()
 		titleLabel.textAlignment = .Center
-		titleLabel.text = optionTitle
+		titleLabel.text = option.title
 		
 		titleLabel.frame.origin.y = 8.point(below: imageView)
 		titleLabel.center.x = centerXOfBounds
 		
 		optionView.addSubview(titleLabel)
 		
+		// tap gesture
+		optionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: option.selector))
+		
 		return optionView
+	}
+	
+	// MARK: - Selectors
+	@objc private func myActivityOptionViewTapped() {
+		
+	}
+	
+	@objc private func greetingsOptionViewTapped() {
+		
+	}
+	
+	@objc private func settingsOptionViewTapped() {
+		
 	}
 }
