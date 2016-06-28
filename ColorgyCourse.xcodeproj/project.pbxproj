@@ -253,6 +253,10 @@
 		63C3CE471CC0C98B000EE808 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE461CC0C98B000EE808 /* SystemConfiguration.framework */; };
 		63C3CE491CC0C990000EE808 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE481CC0C990000EE808 /* Security.framework */; };
 		63D22D271D226DA000F0C640 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D22D261D226DA000F0C640 /* MyPage.storyboard */; };
+		63D22D291D226F1F00F0C640 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D281D226F1F00F0C640 /* MyPageViewController.swift */; };
+		63D22D2B1D226F5D00F0C640 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D281D226F1F00F0C640 /* MyPageViewController.swift */; };
+		63D22D2D1D226FB000F0C640 /* MyPagePersonalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D2C1D226FB000F0C640 /* MyPagePersonalInfoView.swift */; };
+		63D22D2E1D226FE700F0C640 /* MyPagePersonalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D2C1D226FB000F0C640 /* MyPagePersonalInfoView.swift */; };
 		63E447181D0E5E58005186FD /* EventRepeatSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */; };
 		63E4471A1D0E5E6B005186FD /* EventRepeatSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */; };
 		63E4471C1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */; };
@@ -475,6 +479,8 @@
 		63C3CE461CC0C98B000EE808 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		63C3CE481CC0C990000EE808 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		63D22D261D226DA000F0C640 /* MyPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
+		63D22D281D226F1F00F0C640 /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		63D22D2C1D226FB000F0C640 /* MyPagePersonalInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPagePersonalInfoView.swift; sourceTree = "<group>"; };
 		63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingViewController.swift; sourceTree = "<group>"; };
 		63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingViewModel.swift; sourceTree = "<group>"; };
 		63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventRepeatSettingTableViewCell.xib; sourceTree = "<group>"; };
@@ -718,7 +724,7 @@
 				63700E311D18DF1F00DD76F8 /* ColorgyConfig.swift */,
 				635479891CB898C100DE8CBC /* ViewController.swift */,
 				6354798B1CB898C100DE8CBC /* Main.storyboard */,
-				63D22D261D226DA000F0C640 /* MyPage.storyboard */,
+				63D22D2A1D226F3600F0C640 /* My Page */,
 				637B8F201D192B4600348CF4 /* StoryboardIdentifier.swift */,
 				637B8F221D192BB000348CF4 /* StoryboardViewControllerFetchHelper.swift */,
 				6352C2481D1121780041CF9B /* ColorgyNavigationTransitioningDelegate.swift */,
@@ -947,6 +953,16 @@
 				631595071D20ED3300431499 /* DLCalendarViewCell.swift */,
 			);
 			name = "DL Calendar View";
+			sourceTree = "<group>";
+		};
+		63D22D2A1D226F3600F0C640 /* My Page */ = {
+			isa = PBXGroup;
+			children = (
+				63D22D261D226DA000F0C640 /* MyPage.storyboard */,
+				63D22D281D226F1F00F0C640 /* MyPageViewController.swift */,
+				63D22D2C1D226FB000F0C640 /* MyPagePersonalInfoView.swift */,
+			);
+			name = "My Page";
 			sourceTree = "<group>";
 		};
 		63E447141D0E5D85005186FD /* Reenter Phone View Controller */ = {
@@ -1350,6 +1366,7 @@
 				6324BF351CF00E9B003F1329 /* SearchCourseViewController.swift in Sources */,
 				63EC77BB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift in Sources */,
 				63C3CE231CC0C76F000EE808 /* UIImageExtension.swift in Sources */,
+				63D22D291D226F1F00F0C640 /* MyPageViewController.swift in Sources */,
 				63056FFF1CBCABB7007D2C9D /* CourseOwnershipObject.swift in Sources */,
 				6305701C1CBD268A007D2C9D /* HistoryChatroom.swift in Sources */,
 				632C0C601CF7FE9F002C9380 /* ReenterPhoneNumberViewControllerTransitioningDelegate.swift in Sources */,
@@ -1369,6 +1386,7 @@
 				6335DC5D1D17C46500B32B8C /* EventManagerNotesCell.swift in Sources */,
 				63B1C3781CF3EDBF00989B5D /* EmailInputBox.swift in Sources */,
 				635479F11CB8B02A00DE8CBC /* ColorgyLogin.swift in Sources */,
+				63D22D2D1D226FB000F0C640 /* MyPagePersonalInfoView.swift in Sources */,
 				63561C4E1CBF9848004AEF6D /* EmailRegisterViewModel.swift in Sources */,
 				63F628B31D07B3BC00F55E38 /* ChooseSchoolViewController.swift in Sources */,
 				635479E91CB8B02A00DE8CBC /* ColorgyAPIUserResult.swift in Sources */,
@@ -1458,6 +1476,7 @@
 				631594DE1D20CB6700431499 /* BlurWallViewModel.swift in Sources */,
 				63F3EE8D1CBF49EE0010D059 /* DateExtension.swift in Sources */,
 				6353CE811D1B8A1200F90A4D /* ReenterPhoneNumberView.swift in Sources */,
+				63D22D2B1D226F5D00F0C640 /* MyPageViewController.swift in Sources */,
 				6353CE501D193F4700F90A4D /* DLOutgoingMessageBubble.swift in Sources */,
 				631594E01D20CB6700431499 /* SearchEventListViewController.swift in Sources */,
 				631594F31D20CB8B00431499 /* EventManagerColorCell.swift in Sources */,
@@ -1476,6 +1495,7 @@
 				6353CE451D193EFA00F90A4D /* PhoneValidationViewModel.swift in Sources */,
 				63F3EE9A1CBF53A40010D059 /* TestColorgyAPI.swift in Sources */,
 				63F3EE6B1CBF3CA00010D059 /* TestColorgyRefershCenter.swift in Sources */,
+				63D22D2E1D226FE700F0C640 /* MyPagePersonalInfoView.swift in Sources */,
 				63F3EE841CBF49DF0010D059 /* ColorgyRefreshCenter.swift in Sources */,
 				6354799D1CB898C100DE8CBC /* ColorgyCourseTests.swift in Sources */,
 				6324BF301CEFF721003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */,
