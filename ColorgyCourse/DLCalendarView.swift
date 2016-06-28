@@ -189,11 +189,15 @@ public class DLCalendarView: UIView {
 		if endDate == nil {
 			endDate = NSDate.create(dateOn: 2099, month: 12, day: 31)
 		}
+		
 		if let startDate = startDate, let endDate = endDate {
 			// calculate the required months to create
 			let monthsToCreate = monthsBetween(date: startDate, andDate: endDate)
 			if monthsToCreate >= 0 {
+				// loop through all the month need to create.
 				for month in 0..<monthsToCreate {
+					// Starting from start date, get the date by adding month.
+					// then configure the month that contains the dates we needed.
 					if let date = dateByAddingMonths(month, toDate: startDate), let monthOnCalendar = configureMonthByDate(date) {
 						calendar.append(monthOnCalendar)
 					}
@@ -208,12 +212,26 @@ public class DLCalendarView: UIView {
 		calendarCollectionView.reloadData()
 	}
 	
+	/// Get months between given dates.
 	func monthsBetween(date date: NSDate, andDate: NSDate) -> Int {
 		return (yearOfDate(andDate) - yearOfDate(date)) * 12 + (monthOfDate(andDate) - monthOfDate(date)) + 1
 	}
 	
+	/// This method will create dates that will show on specific month.
+	/// ex. 2016/6, will look like this
+	///
+	/// ```
+	/// 29 30 31  1  2  3  4
+	///	 5  6  7  8  9 10 11
+	/// 12 13 14 15 16 17 18
+	/// 19 20 21 22 23 24 25
+	/// 26 27 28 29 30  1  2
+	///  3  4  5  6  7  8  9
+	/// ```
+	/// 
+	/// Will totally display 42 days, 6 weeks of this month.
 	func configureMonthByDate(date: NSDate) -> [NSDate]? {
-		
+		// TODO: 完成這邊的註解、跟weekday的排列問題
 		// check if this date has a first date of the month
 		guard let firstDayOfTheMonth = beginingDateOfMonth(date) else { return nil }
 		// initial cache
@@ -222,7 +240,7 @@ public class DLCalendarView: UIView {
 		let startWeekday = weekdayOfDate(firstDayOfTheMonth)
 
 		// first, create dates of this month.
-		for dayOffsetFromFirstDay in 0..<daysOfDate(firstDayOfTheMonth) {
+		for dayOffsetFromFirstDay in 0..<daysAMonthOfDate(firstDayOfTheMonth) {
 			// 0 is first day of this month.
 			// this for loop will create dates of this month
 			// ex. 4/1 ~ 4/30, 30 is +29 offset from first day
@@ -251,16 +269,26 @@ public class DLCalendarView: UIView {
 		return datesOfMonth
 	}
 	
-	func daysOfDate(date: NSDate) -> Int {
+	// MARK: - Helper Methods
+	
+	/// Can check how many days a month by the given date.
+	func daysAMonthOfDate(date: NSDate) -> Int {
 		return NSCalendar.currentCalendar().rangeOfUnit(NSCalendarUnit.Day, inUnit: NSCalendarUnit.Month, forDate: date).length
 	}
 	
+	/// Can get the weekday by the given date.
+	///
+	/// Will return from 1 ~ 7
+	///
+	/// **1** is **sunday**
+	///
+	/// **7** is **saturday**
+	///
+	/// ```
+	/// sun mon tue wen thu fri sat
+	///  1   2   3   4   5   6   7
+	/// ```
 	func weekdayOfDate(date: NSDate) -> Int {
-		// will return from 1 ~ 7
-		// 1 is sunday
-		// 7 is saturday
-		// sun mon tue wen thu fri sat
-		//  1	2	3	4	5	6	7
 		return NSCalendar.currentCalendar().component(NSCalendarUnit.Weekday, fromDate: date)
 	}
 	
