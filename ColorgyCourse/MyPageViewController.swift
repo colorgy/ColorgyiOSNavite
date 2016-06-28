@@ -21,10 +21,14 @@ final public class MyPageViewController: UIViewController {
 		view.addSubview(personalInfoView)
 		
 		moreOptionView = MyPageMoreOptionView(delegate: self)
-		moreOptionView.frame.origin.y = 16.point(below: personalInfoView)
+		moreOptionView.move(16, pointBelow: personalInfoView)
 		view.addSubview(moreOptionView)
 		
 		view.backgroundColor = ColorgyColor.BackgroundColor
     }
 
+}
+
+extension MyPageViewController : MyPageMoreOptionViewDelegate {
+	
 }

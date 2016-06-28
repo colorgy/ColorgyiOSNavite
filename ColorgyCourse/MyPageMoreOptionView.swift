@@ -70,7 +70,7 @@ final public class MyPageMoreOptionView: UIView {
 		imageView.image = UIImage(named: option.imageName)
 		
 		imageView.frame.origin.y = 18
-		imageView.center.x = centerXOfBounds
+		imageView.centerX(to: optionView)
 		
 		optionView.addSubview(imageView)
 		
@@ -82,8 +82,8 @@ final public class MyPageMoreOptionView: UIView {
 		titleLabel.textAlignment = .Center
 		titleLabel.text = option.title
 		
-		titleLabel.frame.origin.y = 8.point(below: imageView)
-		titleLabel.center.x = centerXOfBounds
+		titleLabel.move(8, pointBelow: imageView)
+		titleLabel.centerX(to: optionView)
 		
 		optionView.addSubview(titleLabel)
 		

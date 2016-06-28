@@ -54,7 +54,12 @@ extension UIView {
 	}
 	
 	/// Move below given point and view
-	func move(point: CGFloat, below view: UIView) {
+	func move(point: CGFloat, pointBelow view: UIView) {
 		self.frame.origin.y = point.point(below: view)
+	}
+	
+	/// Center x to given view
+	func centerX(to view: UIView) {
+		self.center.x = view.bounds.midX
 	}
 }
