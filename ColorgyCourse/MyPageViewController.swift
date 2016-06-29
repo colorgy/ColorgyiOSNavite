@@ -28,14 +28,14 @@ final public class MyPageViewController: UIViewController {
 extension MyPageViewController : MyPageMoreOptionViewDelegate {
 	
 	public func myPageMoreOptionViewSettingsTapped() {
-		print(#line)
+		print(#file, #function, #line)
 	}
 	
 	public func myPageMoreOptionViewGreetingsTapped() {
-		print(#line)
+		print(#file, #function, #line)
 	}
 	
 	public func myPageMoreOptionViewMyActivityTapped() {
-		print(#line)
+		print(#file, #function, #line)
 	}
 }

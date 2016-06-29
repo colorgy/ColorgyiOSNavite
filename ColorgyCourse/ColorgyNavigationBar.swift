@@ -12,6 +12,7 @@ import UIKit
 	optional func colorgyNavigationBarBackButtonClicked()
 	optional func colorgyNavigationBarCrossButtonClicked()
 	optional func colorgyNavigationBarCheckButtonClicked()
+	optional func colorgyNavigationBarAdjustingButtonClicked()
 }
 
 /// This is customized navigation bar for colorgy.
@@ -83,6 +84,13 @@ public class ColorgyNavigationBar: UIView {
 		rightButton.addTarget(self, action: #selector(ColorgyNavigationBar.checkButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
 	}
 	
+	public func iWantAAdjusttingButtonAtRight() {
+		configureRightButtonWithImage("OrangeAdjustingButton")
+		rightButton.addTarget(self, action: #selector(ColorgyNavigationBar.adjustingButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
+	}
+	
+	// MARK: - Configuration
+	
 	private func configureLeftButtonWithImage(name: String) {
 		leftButton = configureBarButton(name)
 		
@@ -90,6 +98,8 @@ public class ColorgyNavigationBar: UIView {
 		leftButton.center.y = centerY
 		
 		addSubview(leftButton)
+		
+		leftButton.removeTarget(self, action: nil, forControlEvents: UIControlEvents.AllEvents)
 	}
 	
 	private func configureRightButtonWithImage(name: String) {
@@ -99,6 +109,8 @@ public class ColorgyNavigationBar: UIView {
 		rightButton.center.y = centerY
 		
 		addSubview(rightButton)
+		
+		rightButton.removeTarget(self, action: nil, forControlEvents: UIControlEvents.AllEvents)
 	}
 	
 	private func configureBarButton(name: String) -> UIButton {
@@ -125,5 +137,9 @@ public class ColorgyNavigationBar: UIView {
 	
 	@objc private func backButtonClicked() {
 		delegate?.colorgyNavigationBarBackButtonClicked?()
+	}
+	
+	@objc private func adjustingButtonClicked() {
+		delegate?.colorgyNavigationBarAdjustingButtonClicked?()
 	}
 }
