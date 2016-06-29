@@ -44,7 +44,7 @@ final public class SettingsViewController: UIViewController {
 		
 		view.addSubview(settingsTableView)
 		
-		settingsTableView.registerClass(SettingsCell.self, forCellReuseIdentifier: Keys.cellIdentifier)
+		settingsTableView.registerNib(UINib(nibName: "SettingsCell", bundle: nil), forCellReuseIdentifier: Keys.cellIdentifier)
 		settingsTableView.delegate = self
 		settingsTableView.dataSource = self
 	}
@@ -102,7 +102,7 @@ extension SettingsViewController : UITableViewDelegate, UITableViewDataSource {
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier(Keys.cellIdentifier, forIndexPath: indexPath) as! SettingsCell
 		
-//		cell.titleLabel.text = settingsData[indexPath.row].title
+		cell.titleLabel.text = settingsData[indexPath.row].title
 		
 		return cell
 	}
