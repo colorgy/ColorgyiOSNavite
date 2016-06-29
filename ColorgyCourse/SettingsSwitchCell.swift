@@ -17,6 +17,10 @@ final public class SettingsSwitchCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+		titleLabel.textColor = ColorgyColor.grayContentTextColor
+		titleLabel.font = UIFont.systemFontOfSize(16)
+		
+		seperatorLine.backgroundColor = ColorgyColor.BackgroundColor
 		
 		selectionStyle = .None
     }

@@ -17,6 +17,13 @@ final public class SettingsCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+		titleLabel.textColor = ColorgyColor.TextColor
+		titleLabel.font = UIFont.systemFontOfSize(16)
+		
+		disclosureImageView.image = UIImage(named: "GrayDisclosureIndicator")
+		disclosureImageView.contentMode = .ScaleAspectFill
+		
+		seperatorLine.backgroundColor = ColorgyColor.BackgroundColor
 		
 		selectionStyle = .None
     }
