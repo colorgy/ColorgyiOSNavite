@@ -78,7 +78,7 @@ final public class MyPagePersonalInfoView: UIView {
 		schoolLabel.textColor = ColorgyColor.TextColor
 		
 		schoolLabel.frame.origin.x = padding
-		schoolLabel.frame.origin.y = nameLabel.frame.maxY + 10
+		schoolLabel.move(10, pointBelow: nameLabel)
 		
 		addSubview(schoolLabel)
 	}

@@ -10,19 +10,15 @@ import UIKit
 
 final public class MyPageViewController: UIViewController {
 	
-	private var personalInfoView: MyPagePersonalInfoView!
-	private var moreOptionView: MyPageMoreOptionView!
+	private var myPageContainerView: MyPageContainerView!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		personalInfoView = MyPagePersonalInfoView(name: "揪揪掰掰", school: "耶黑黑嘿嘿")
-		view.addSubview(personalInfoView)
-		
-		moreOptionView = MyPageMoreOptionView(delegate: self)
-		moreOptionView.move(16, pointBelow: personalInfoView)
-		view.addSubview(moreOptionView)
+		let size = UIScreen.mainScreen().bounds.size
+		myPageContainerView = MyPageContainerView(frame: CGRect(origin: CGPointZero, size: size), moreOptionViewDelegate: self)
+		view.addSubview(myPageContainerView)
 		
 		view.backgroundColor = ColorgyColor.BackgroundColor
     }
@@ -31,4 +27,15 @@ final public class MyPageViewController: UIViewController {
 
 extension MyPageViewController : MyPageMoreOptionViewDelegate {
 	
+	public func myPageMoreOptionViewSettingsTapped() {
+		print(#line)
+	}
+	
+	public func myPageMoreOptionViewGreetingsTapped() {
+		print(#line)
+	}
+	
+	public func myPageMoreOptionViewMyActivityTapped() {
+		print(#line)
+	}
 }

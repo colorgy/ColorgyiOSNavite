@@ -29,10 +29,8 @@ final public class MyPageMoreOptionView: UIView {
 	
 	// MARK: - Init
 	
-	public convenience init(delegate: MyPageMoreOptionViewDelegate?) {
+	public convenience init() {
 		self.init(frame: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 75)))
-		
-		self.delegate = delegate
 		
 		// setup option data
 		optionData.append((title: "我的活動", imageName: "OptionMyActivityIcon", color: ColorgyColor.waterBlue, selector: #selector(MyPageMoreOptionView.myActivityOptionViewTapped)))
