@@ -1020,6 +1020,14 @@
 			isa = PBXGroup;
 			children = (
 				63B657CC1D23BADB0050A8A4 /* SettingsViewController.swift */,
+				63B657E21D23C10D0050A8A4 /* Settings Cells */,
+			);
+			name = "Settings View";
+			sourceTree = "<group>";
+		};
+		63B657E21D23C10D0050A8A4 /* Settings Cells */ = {
+			isa = PBXGroup;
+			children = (
 				63B657D01D23BB2C0050A8A4 /* SettingsCell.xib */,
 				63B657D91D23BBDE0050A8A4 /* SettingsCell.swift */,
 				63B657D31D23BB460050A8A4 /* SettingsDisplayContentCell.xib */,
@@ -1027,7 +1035,7 @@
 				63B657D61D23BB580050A8A4 /* SettingsSwitchCell.xib */,
 				63B657DF1D23BE360050A8A4 /* SettingsSwitchCell.swift */,
 			);
-			name = "Settings View";
+			name = "Settings Cells";
 			sourceTree = "<group>";
 		};
 		63C3CE161CC0C673000EE808 /* Email Login View */ = {

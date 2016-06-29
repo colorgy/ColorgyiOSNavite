@@ -46,9 +46,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="disclosureImageView" destination="7Q1-7t-mpk" id="ci8-By-i7B"/>
-                <outlet property="seperatorLine" destination="YMO-4h-dva" id="l5S-fK-Ssg"/>
-                <outlet property="titleLabel" destination="QIh-Cf-U0I" id="7y4-bl-GbL"/>
+                <outlet property="disclosureImageView" destination="7Q1-7t-mpk" id="sOQ-TF-DZ5"/>
+                <outlet property="seperatorLine" destination="YMO-4h-dva" id="uJ2-8B-vLv"/>
+                <outlet property="titleLabel" destination="QIh-Cf-U0I" id="4rW-UU-sod"/>
             </connections>
             <point key="canvasLocation" x="260" y="325"/>
         </tableViewCell>

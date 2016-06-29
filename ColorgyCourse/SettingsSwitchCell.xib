@@ -42,9 +42,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="seperatorLine" destination="Lqf-FC-wLp" id="70e-an-Rga"/>
-                <outlet property="switchControl" destination="KzW-Ms-wcG" id="efR-wt-iFC"/>
-                <outlet property="titleLabel" destination="96Q-ah-9El" id="edl-Sw-5QO"/>
+                <outlet property="seperatorLine" destination="Lqf-FC-wLp" id="GX0-Fc-9qU"/>
+                <outlet property="switchControl" destination="KzW-Ms-wcG" id="lqf-A2-QlB"/>
+                <outlet property="titleLabel" destination="96Q-ah-9El" id="FMt-xd-t5a"/>
             </connections>
             <point key="canvasLocation" x="260" y="325"/>
         </tableViewCell>

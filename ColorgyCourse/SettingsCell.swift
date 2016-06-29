@@ -21,6 +21,7 @@ final public class SettingsCell: UITableViewCell {
 		titleLabel.font = UIFont.systemFontOfSize(16)
 		
 		disclosureImageView.image = UIImage(named: "GrayDisclosureIndicator")
+		print(disclosureImageView.image)
 		disclosureImageView.contentMode = .ScaleAspectFill
 		
 		seperatorLine.backgroundColor = ColorgyColor.BackgroundColor
