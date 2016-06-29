@@ -8,7 +8,7 @@ target 'ColorgyCourse' do
   # Pods for ColorgyCourse
   pod 'Fabric', '~> 1.6.7'
   pod 'Crashlytics', '~> 3.7.0'
-  pod 'Mixpanel', '~> 2.9.6'
+  # pod 'Mixpanel', '~> 2.9.6'
   pod 'FBSDKCoreKit', '~> 4.10.1'
   pod 'FBSDKLoginKit', '~> 4.10.1'
   pod 'FBSDKShareKit', '~> 4.10.1'

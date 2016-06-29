@@ -39,11 +39,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Mixpanel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Nimble.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -102,17 +97,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>17C997549C8B80914F0A32036F9BF885</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1A54A167C32DFCCEA6CDB5334A0DB6AC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2340964DAB106F62E6DF4D051276E8B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,27 +142,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6EAF107889FF31C59FC7C543D6A32062</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8953B116259780EA6A946AFD4C52454B</key>
+		<key>702FBCFC7AD6E21960D70EA9F2313FEC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>94F7F09CEF1B7825CA14BC89667F6806</key>
+		<key>9378436A8955195C2CECC1C832B7F76D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B5F312ABB371123942048FA3C80AB971</key>
+		<key>C3A644DF4A0954E0C0B799F889A92BED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -177,17 +167,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF22069F06AFA1972ADC929FEC52BB2C</key>
+		<key>F0AA5D909B1915E40A7D9BF4079EFE13</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E67E948F07EFBBC75ADEC3B47E0EE012</key>
+		<key>F1D32CA2CE4C2F08A978815CBC76B6C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F1EFF5A9EFB1A176DCB9D940678BE3C4</key>
+		<key>F7FBAA02270BC7D0550CB30A9AC56800</key>
 		<dict>
 			<key>primary</key>
 			<true/>

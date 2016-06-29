@@ -31,9 +31,6 @@ PODS:
     - FBSDKCoreKit
   - ImagePickerSheetController (0.9.1)
   - KeychainSwift (3.0.16)
-  - Mixpanel (2.9.9):
-    - Mixpanel/Mixpanel (= 2.9.9)
-  - Mixpanel/Mixpanel (2.9.9)
   - Nimble (4.0.1)
   - Quick (0.9.2)
   - Realm (1.0.1):
@@ -57,7 +54,6 @@ DEPENDENCIES:
   - FBSDKShareKit (~> 4.10.1)
   - ImagePickerSheetController (~> 0.9.1)
   - KeychainSwift (~> 3.0)
-  - Mixpanel (~> 2.9.6)
   - Nimble
   - Quick
   - RealmSwift
@@ -85,7 +81,6 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 2fd887cce0056bdda91f99b2021d724a4fed8e88
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
   KeychainSwift: a5bb85cd498ce2217b55e055ec59e9268d83384c
-  Mixpanel: 818d1940c2d9402453b349545022a86968097f57
   Nimble: 0f3c8b8b084cda391209c3c5efbb48bedeeb920a
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
   Realm: 2e15e39d35b08abb529e212ed5d8af107b5236c8
@@ -95,6 +90,6 @@ SPEC CHECKSUMS:
   Socket.IO-Client-Swift: 00eb528b3eaa0c0385e54b8c6c00e36abc992257
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: be6e88871668b75913f136c6c0cbbcf6d5202c35
+PODFILE CHECKSUM: 858500563b91d933eb9b29636ca131dff311d3bd
 
 COCOAPODS: 1.0.1
