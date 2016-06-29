@@ -7,36 +7,50 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="204" id="17k-pf-4LR">
-            <rect key="frame" x="0.0" y="0.0" width="615" height="204"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="17k-pf-4LR" customClass="SettingsCell" customModule="ColorgyCourse" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="378" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="17k-pf-4LR" id="Lqe-ia-8rS">
-                <rect key="frame" x="0.0" y="0.0" width="615" height="203"/>
+                <rect key="frame" x="0.0" y="0.0" width="378" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIh-Cf-U0I">
-                        <rect key="frame" x="16" y="91" width="42" height="21"/>
+                        <rect key="frame" x="16" y="11" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMO-4h-dva">
-                        <rect key="frame" x="0.0" y="178" width="615" height="25"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMO-4h-dva">
+                        <rect key="frame" x="0.0" y="42" width="378" height="1"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="BOg-8l-MAY"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Q1-7t-mpk">
+                        <rect key="frame" x="354" y="15" width="8" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="ReF-mJ-uEh"/>
+                            <constraint firstAttribute="height" constant="13" id="URP-ul-m2s"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="7Q1-7t-mpk" secondAttribute="trailing" constant="8" id="0Xi-HL-pll"/>
                     <constraint firstAttribute="trailing" secondItem="YMO-4h-dva" secondAttribute="trailing" id="9YE-UZ-s0w"/>
                     <constraint firstAttribute="bottom" secondItem="YMO-4h-dva" secondAttribute="bottom" id="NkV-MZ-oXb"/>
                     <constraint firstItem="YMO-4h-dva" firstAttribute="leading" secondItem="Lqe-ia-8rS" secondAttribute="leading" id="Oct-ez-Bqi"/>
                     <constraint firstItem="QIh-Cf-U0I" firstAttribute="leading" secondItem="Lqe-ia-8rS" secondAttribute="leadingMargin" constant="8" id="TUH-Vt-asy"/>
                     <constraint firstItem="QIh-Cf-U0I" firstAttribute="centerY" secondItem="Lqe-ia-8rS" secondAttribute="centerY" id="snj-UI-DUH"/>
+                    <constraint firstItem="7Q1-7t-mpk" firstAttribute="centerY" secondItem="Lqe-ia-8rS" secondAttribute="centerY" id="vAs-C6-Dtg"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="378.5" y="405"/>
+            <connections>
+                <outlet property="disclosureImageView" destination="7Q1-7t-mpk" id="ci8-By-i7B"/>
+                <outlet property="seperatorLine" destination="YMO-4h-dva" id="l5S-fK-Ssg"/>
+                <outlet property="titleLabel" destination="QIh-Cf-U0I" id="7y4-bl-GbL"/>
+            </connections>
+            <point key="canvasLocation" x="260" y="325"/>
         </tableViewCell>
     </objects>
 </document>

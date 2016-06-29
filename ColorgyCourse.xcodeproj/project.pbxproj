@@ -255,6 +255,8 @@
 		63B657D81D23BB580050A8A4 /* SettingsSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B657D61D23BB580050A8A4 /* SettingsSwitchCell.xib */; };
 		63B657DA1D23BBDE0050A8A4 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B657D91D23BBDE0050A8A4 /* SettingsCell.swift */; };
 		63B657DB1D23BBDE0050A8A4 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B657D91D23BBDE0050A8A4 /* SettingsCell.swift */; };
+		63B657DD1D23BCB80050A8A4 /* SettingsDisplayContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B657DC1D23BCB80050A8A4 /* SettingsDisplayContentCell.swift */; };
+		63B657DE1D23BCB80050A8A4 /* SettingsDisplayContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B657DC1D23BCB80050A8A4 /* SettingsDisplayContentCell.swift */; };
 		63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */; };
 		63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */; };
 		63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */; };
@@ -516,6 +518,7 @@
 		63B657D31D23BB460050A8A4 /* SettingsDisplayContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsDisplayContentCell.xib; sourceTree = "<group>"; };
 		63B657D61D23BB580050A8A4 /* SettingsSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSwitchCell.xib; sourceTree = "<group>"; };
 		63B657D91D23BBDE0050A8A4 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		63B657DC1D23BCB80050A8A4 /* SettingsDisplayContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDisplayContentCell.swift; sourceTree = "<group>"; };
 		63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
 		63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableTarget.swift; sourceTree = "<group>"; };
@@ -1017,6 +1020,7 @@
 				63B657D01D23BB2C0050A8A4 /* SettingsCell.xib */,
 				63B657D91D23BBDE0050A8A4 /* SettingsCell.swift */,
 				63B657D31D23BB460050A8A4 /* SettingsDisplayContentCell.xib */,
+				63B657DC1D23BCB80050A8A4 /* SettingsDisplayContentCell.swift */,
 				63B657D61D23BB580050A8A4 /* SettingsSwitchCell.xib */,
 			);
 			name = "Settings View";
@@ -1475,6 +1479,7 @@
 				6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */,
 				6305701E1CBD2902007D2C9D /* Chatroom.swift in Sources */,
 				635479EE1CB8B02A00DE8CBC /* StringExtension.swift in Sources */,
+				63B657DD1D23BCB80050A8A4 /* SettingsDisplayContentCell.swift in Sources */,
 				63EC77B91CC8743D008025A7 /* DLMessageLabel.swift in Sources */,
 				635479F31CB8B02A00DE8CBC /* ColorgyLoginResult.swift in Sources */,
 				63B1C3801CF424C700989B5D /* ConfirmPasswordInputBox.swift in Sources */,
@@ -1698,6 +1703,7 @@
 				631594E51D20CB6700431499 /* FriendListViewController.swift in Sources */,
 				63700E331D18DFE400DD76F8 /* ColorgyConfig.swift in Sources */,
 				6353CE851D1BBFD500F90A4D /* ChooseSchoolViewModel.swift in Sources */,
+				63B657DE1D23BCB80050A8A4 /* SettingsDisplayContentCell.swift in Sources */,
 				631594DA1D20CB6700431499 /* SearchCourseViewController.swift in Sources */,
 				63F3EE7F1CBF49DF0010D059 /* ColorgyAPIMeResult.swift in Sources */,
 				63B657DB1D23BBDE0050A8A4 /* SettingsCell.swift in Sources */,
