@@ -24,18 +24,18 @@ final public class NotificationSettingsViewModel {
 	
 	// MARK: - Methods
 	public func turnCourseNotification(on: Bool) {
-		
+		print(#file, #function, #line, on)
 	}
 	
 	public func turnRollCallNotification(on: Bool) {
-		
+		print(#file, #function, #line, on)
 	}
 	
 	public func turnSystemNotification(on: Bool) {
-		
+		print(#file, #function, #line, on)
 	}
 	
 	public func turnGreetingsNotification(on: Bool) {
-		
+		print(#file, #function, #line, on)
 	}
 }

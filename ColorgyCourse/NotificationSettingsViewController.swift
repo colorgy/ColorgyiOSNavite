@@ -14,13 +14,15 @@ final public class NotificationSettingsViewController: UIViewController {
 	private var navigationBar: ColorgyNavigationBar!
 	private var notificationSettingsTableView: UITableView!
 	private var notificationSettingsData: [String] = []
-	private var viewModel: NotificationSettings
+	private var viewModel: NotificationSettingsViewModel?
 
 	// MARK: - Life Cycle
     override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		viewModel = NotificationSettingsViewModel(delegate: self)
+		
 		configureNotificationSettingsData()
 		configureNavigationBar()
 		configureNotificationSettingsTableView()
@@ -68,13 +70,13 @@ final public class NotificationSettingsViewController: UIViewController {
 	private func handleSwitchStateChange(to on: Bool, at indexPath: NSIndexPath) {
 		switch indexPath.row {
 		case 0:
-			print(#function, #line)
+			viewModel?.turnCourseNotification(on)
 		case 1:
-			print(#function, #line)
+			viewModel?.turnRollCallNotification(on)
 		case 2:
-			print(#function, #line)
+			viewModel?.turnSystemNotification(on)
 		case 3:
-			print(#function, #line)
+			viewModel?.turnGreetingsNotification(on)
 		default:
 			print(#function, #line)
 			break
@@ -103,6 +105,10 @@ extension NotificationSettingsViewController : UITableViewDelegate, UITableViewD
 extension NotificationSettingsViewController : SettingsSwitchCellDelegate {
 	public func settingsSwitchCell(switchDidChangedIn cell: SettingsSwitchCell, toState on: Bool) {
 		guard let indexPath = notificationSettingsTableView.indexPathForCell(cell) else { return }
-		handleSwitchStateChange(with: on, at: indexPath)
+		handleSwitchStateChange(to: on, at: indexPath)
 	}
+}
+
+extension NotificationSettingsViewController : NotificationSettingsViewModelDelegate {
+	
 }
