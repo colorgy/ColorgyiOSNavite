@@ -39,6 +39,8 @@
 		6306F6781D24CD4500035AD9 /* PrivacySettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F6761D24CD4500035AD9 /* PrivacySettingsViewModel.swift */; };
 		6306F67A1D24CD6500035AD9 /* PrivacySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F6791D24CD6500035AD9 /* PrivacySettingsViewController.swift */; };
 		6306F67B1D24CD6500035AD9 /* PrivacySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F6791D24CD6500035AD9 /* PrivacySettingsViewController.swift */; };
+		6306F67E1D24D0C100035AD9 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F67D1D24D0C100035AD9 /* UILabelExtension.swift */; };
+		6306F67F1D24D0C100035AD9 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F67D1D24D0C100035AD9 /* UILabelExtension.swift */; };
 		6307AC371CEAB66F00345025 /* SearchEventBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307AC361CEAB66F00345025 /* SearchEventBar.swift */; };
 		631594D71D20CB3A00431499 /* ChatMessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375476F1CC8A96900BC3BBD /* ChatMessageList.swift */; };
 		631594D81D20CB5900431499 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */; };
@@ -413,6 +415,7 @@
 		6306F66F1D24C9BE00035AD9 /* NotificationSettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewModel.swift; sourceTree = "<group>"; };
 		6306F6761D24CD4500035AD9 /* PrivacySettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacySettingsViewModel.swift; sourceTree = "<group>"; };
 		6306F6791D24CD6500035AD9 /* PrivacySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacySettingsViewController.swift; sourceTree = "<group>"; };
+		6306F67D1D24D0C100035AD9 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		6307AC361CEAB66F00345025 /* SearchEventBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventBar.swift; sourceTree = "<group>"; };
 		631595061D20ED3300431499 /* DLCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCalendarView.swift; sourceTree = "<group>"; };
 		631595071D20ED3300431499 /* DLCalendarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCalendarViewCell.swift; sourceTree = "<group>"; };
@@ -913,6 +916,7 @@
 				635479DE1CB8B02A00DE8CBC /* StringExtension.swift */,
 				635479DF1CB8B02A00DE8CBC /* DateExtension.swift */,
 				63B1C3571CF2991A00989B5D /* UIColorExtension.swift */,
+				6306F67D1D24D0C100035AD9 /* UILabelExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1625,6 +1629,7 @@
 				63B1C3581CF2991A00989B5D /* UIColorExtension.swift in Sources */,
 				63AC1B3F1CF1389000FDD724 /* ColorgyVersionControl.swift in Sources */,
 				63EC77B81CC8743D008025A7 /* DLMessageData.swift in Sources */,
+				6306F67E1D24D0C100035AD9 /* UILabelExtension.swift in Sources */,
 				6306F6771D24CD4500035AD9 /* PrivacySettingsViewModel.swift in Sources */,
 				635479E61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift in Sources */,
 				630570011CBCBC86007D2C9D /* Semester.swift in Sources */,
@@ -1656,6 +1661,7 @@
 				6353CE811D1B8A1200F90A4D /* ReenterPhoneNumberView.swift in Sources */,
 				63D22D2B1D226F5D00F0C640 /* MyPageViewController.swift in Sources */,
 				6353CE501D193F4700F90A4D /* DLOutgoingMessageBubble.swift in Sources */,
+				6306F67F1D24D0C100035AD9 /* UILabelExtension.swift in Sources */,
 				63D22D311D22788100F0C640 /* MyPageMoreOptionView.swift in Sources */,
 				631594E01D20CB6700431499 /* SearchEventListViewController.swift in Sources */,
 				631594F31D20CB8B00431499 /* EventManagerColorCell.swift in Sources */,
