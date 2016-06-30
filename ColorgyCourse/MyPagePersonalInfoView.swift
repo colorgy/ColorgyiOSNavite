@@ -28,7 +28,7 @@ final public class MyPagePersonalInfoView: UIView {
 	/// Set this will automatically update greetings' count.
 	public var greetings: Int? {
 		didSet {
-			updateGreetingsCountLabel()
+			updateGreetings()
 		}
 	}
 	
@@ -41,7 +41,7 @@ final public class MyPagePersonalInfoView: UIView {
 
 	// MARK: - Init
 	
-	public convenience init(name: String?, school: String?) {
+	public convenience init(name: String?, school: String?, greetings: Int?) {
 		self.init(frame: UIScreen.mainScreen().bounds)
 		frame.size.height = 118.0
 		
@@ -56,8 +56,10 @@ final public class MyPagePersonalInfoView: UIView {
 		// set values
 		self.name = name
 		self.school = school
+		self.greetings = greetings
 		updateName()
 		updateSchool()
+		updateGreetings()
 	}
 	
 	override private init(frame: CGRect) {
@@ -70,7 +72,7 @@ final public class MyPagePersonalInfoView: UIView {
 	
 	// MARK: - Configuration
 	private func configureNameLabel() {
-		let padding: CGFloat = 28
+		let padding: CGFloat = 24
 		nameLabel = UILabel(
 			frame: CGRect(origin: CGPointZero,
 			size: CGSize(width: bounds.width - padding * 2, height: 24)))
@@ -84,7 +86,7 @@ final public class MyPagePersonalInfoView: UIView {
 	}
 	
 	private func configureSchoolLabel() {
-		let padding: CGFloat = 28
+		let padding: CGFloat = 24
 		schoolLabel = UILabel(
 			frame: CGRect(origin: CGPointZero,
 				size: CGSize(width: bounds.width - padding * 2, height: 16)))
@@ -112,10 +114,8 @@ final public class MyPagePersonalInfoView: UIView {
 		greetingsCountLabel.font = UIFont.systemFontOfSize(12)
 		greetingsCountLabel.textColor = ColorgyColor.MainOrange
 		
-		greetingsCountLabel.move(10, pointsRightTo: greetingsIcon)
+		greetingsCountLabel.move(8, pointsRightTo: greetingsIcon)
 		greetingsCountLabel.centerHorizontally(to: greetingsIcon)
-		
-		greetings = 1000
 		
 		addSubview(greetingsCountLabel)
 	}
@@ -145,9 +145,11 @@ final public class MyPagePersonalInfoView: UIView {
 		schoolLabel.updateWidthToPreferredSizeByFontSize()
 	}
 	
-	private func updateGreetingsCountLabel() {
-		guard let greetings = greetings else { return }
-		let greetingsText = "\(greetings) 個招呼"
+	private func updateGreetings() {
+		// Check if greetings is nil, if nil, set to 0
+		// Then if its negative, set to 0
+		let greetingsCount = max(greetings ?? 0, 0)
+		let greetingsText = "\(greetingsCount)個招呼"
 		greetingsCountLabel.text = greetingsText
 		greetingsCountLabel.updateWidthToPreferredSizeByFontSize()
 	}

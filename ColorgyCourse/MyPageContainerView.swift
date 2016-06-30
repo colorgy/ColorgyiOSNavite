@@ -39,13 +39,13 @@ final public class MyPageContainerView: UIScrollView {
 		profileImageView = UIImageView(frame: CGRect(origin: CGPointZero, size: CGSize(width: bounds.width, height: bounds.width)))
 		
 		profileImageView.contentMode = .ScaleAspectFill
-		profileImageView.image = UIImage(named: "1.png")
+		profileImageView.image = UIImage(named: "5.jpg")
 		
 		addSubview(profileImageView)
 	}
 	
 	private func configurePersonalInfoView() {
-		personalInfoView = MyPagePersonalInfoView(name: "揪揪掰掰", school: "耶黑黑嘿嘿")
+		personalInfoView = MyPagePersonalInfoView(name: "我是青峯", school: "耶黑黑嘿嘿黑黑嘿嘿黑黑嘿嘿", greetings: 21983892)
 		personalInfoView.move(0, pointBelow: profileImageView)
 		addSubview(personalInfoView)
 	}

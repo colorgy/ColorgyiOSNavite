@@ -70,7 +70,7 @@ public class EmailLoginViewController: UIViewController {
 	
 	private func configureLoginButton() {
 		loginButton =  ColorgyFullScreenButton(title: "登入", delegate: self)
-		loginButton.frame.origin.y = passwordInputBox.frame.maxY + 48
+		loginButton.move(48, pointBelow: passwordInputBox)
 		view.addSubview(loginButton)
 	}
 	
