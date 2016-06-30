@@ -31,6 +31,8 @@
 		6305701C1CBD268A007D2C9D /* HistoryChatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */; };
 		6305701E1CBD2902007D2C9D /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701D1CBD2902007D2C9D /* Chatroom.swift */; };
 		630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701F1CBD2999007D2C9D /* ChatMessage.swift */; };
+		6306F66D1D24C01E00035AD9 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F66C1D24C01E00035AD9 /* NotificationSettingsViewController.swift */; };
+		6306F66E1D24C02100035AD9 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F66C1D24C01E00035AD9 /* NotificationSettingsViewController.swift */; };
 		6307AC371CEAB66F00345025 /* SearchEventBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307AC361CEAB66F00345025 /* SearchEventBar.swift */; };
 		631594D71D20CB3A00431499 /* ChatMessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375476F1CC8A96900BC3BBD /* ChatMessageList.swift */; };
 		631594D81D20CB5900431499 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */; };
@@ -401,6 +403,7 @@
 		6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryChatroom.swift; sourceTree = "<group>"; };
 		6305701D1CBD2902007D2C9D /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		6305701F1CBD2999007D2C9D /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		6306F66C1D24C01E00035AD9 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		6307AC361CEAB66F00345025 /* SearchEventBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventBar.swift; sourceTree = "<group>"; };
 		631595061D20ED3300431499 /* DLCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCalendarView.swift; sourceTree = "<group>"; };
 		631595071D20ED3300431499 /* DLCalendarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCalendarViewCell.swift; sourceTree = "<group>"; };
@@ -1071,6 +1074,7 @@
 				63D22D261D226DA000F0C640 /* MyPage.storyboard */,
 				63B657B61D23A4070050A8A4 /* Friend Container View */,
 				63B657B01D239C9F0050A8A4 /* ClassmatesViewController.swift */,
+				6306F66C1D24C01E00035AD9 /* NotificationSettingsViewController.swift */,
 				63B657CF1D23BADF0050A8A4 /* Settings View */,
 				63B657AC1D239C610050A8A4 /* My Page View */,
 			);
@@ -1520,6 +1524,7 @@
 				630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */,
 				637305641CBF83D80016A7FC /* UIViewExtension.swift in Sources */,
 				63B657E01D23BE360050A8A4 /* SettingsSwitchCell.swift in Sources */,
+				6306F66D1D24C01E00035AD9 /* NotificationSettingsViewController.swift in Sources */,
 				635479FB1CB8D17800DE8CBC /* PeriodRawData.swift in Sources */,
 				6335DC5D1D17C46500B32B8C /* EventManagerNotesCell.swift in Sources */,
 				63B1C3781CF3EDBF00989B5D /* EmailInputBox.swift in Sources */,
@@ -1661,6 +1666,7 @@
 				631594F51D20CB8B00431499 /* EventManagerColorCellDelegate.swift in Sources */,
 				6373055C1CBF72190016A7FC /* TestPeriod.swift in Sources */,
 				63C3CE3A1CC0C8BC000EE808 /* LoginViewModel.swift in Sources */,
+				6306F66E1D24C02100035AD9 /* NotificationSettingsViewController.swift in Sources */,
 				63C3CE261CC0C8A5000EE808 /* Organization.swift in Sources */,
 				63C3CE371CC0C8BC000EE808 /* EmailRegisterViewModel.swift in Sources */,
 				631595051D20CBB600431499 /* EventRepeatSettingViewModel.swift in Sources */,
