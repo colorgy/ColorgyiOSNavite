@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol SettingsSwitchCellDelegate: class {
-	func settingsSwitchCell(switchDidChangedIn cell: SettingsSwitchCell, to state: Bool)
+	func settingsSwitchCell(switchDidChangedIn cell: SettingsSwitchCell, toState on: Bool)
 }
 
 final public class SettingsSwitchCell: UITableViewCell {
@@ -34,7 +34,7 @@ final public class SettingsSwitchCell: UITableViewCell {
     }
 	
 	@objc private func switchControlValueChanged() {
-		delegate?.settingsSwitchCell(switchDidChangedIn: self, to: switchControl.on)
+		delegate?.settingsSwitchCell(switchDidChangedIn: self, toState: switchControl.on)
 	}
 
 }

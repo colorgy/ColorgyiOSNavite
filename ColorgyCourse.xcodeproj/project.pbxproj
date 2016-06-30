@@ -33,6 +33,8 @@
 		630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701F1CBD2999007D2C9D /* ChatMessage.swift */; };
 		6306F66D1D24C01E00035AD9 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F66C1D24C01E00035AD9 /* NotificationSettingsViewController.swift */; };
 		6306F66E1D24C02100035AD9 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F66C1D24C01E00035AD9 /* NotificationSettingsViewController.swift */; };
+		6306F6701D24C9BE00035AD9 /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F66F1D24C9BE00035AD9 /* NotificationSettingsViewModel.swift */; };
+		6306F6711D24C9BE00035AD9 /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F66F1D24C9BE00035AD9 /* NotificationSettingsViewModel.swift */; };
 		6307AC371CEAB66F00345025 /* SearchEventBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307AC361CEAB66F00345025 /* SearchEventBar.swift */; };
 		631594D71D20CB3A00431499 /* ChatMessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375476F1CC8A96900BC3BBD /* ChatMessageList.swift */; };
 		631594D81D20CB5900431499 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */; };
@@ -404,6 +406,7 @@
 		6305701D1CBD2902007D2C9D /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		6305701F1CBD2999007D2C9D /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		6306F66C1D24C01E00035AD9 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
+		6306F66F1D24C9BE00035AD9 /* NotificationSettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewModel.swift; sourceTree = "<group>"; };
 		6307AC361CEAB66F00345025 /* SearchEventBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventBar.swift; sourceTree = "<group>"; };
 		631595061D20ED3300431499 /* DLCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCalendarView.swift; sourceTree = "<group>"; };
 		631595071D20ED3300431499 /* DLCalendarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCalendarViewCell.swift; sourceTree = "<group>"; };
@@ -1075,6 +1078,7 @@
 				63B657B61D23A4070050A8A4 /* Friend Container View */,
 				63B657B01D239C9F0050A8A4 /* ClassmatesViewController.swift */,
 				6306F66C1D24C01E00035AD9 /* NotificationSettingsViewController.swift */,
+				6306F66F1D24C9BE00035AD9 /* NotificationSettingsViewModel.swift */,
 				63B657CF1D23BADF0050A8A4 /* Settings View */,
 				63B657AC1D239C610050A8A4 /* My Page View */,
 			);
@@ -1491,6 +1495,7 @@
 				6307AC371CEAB66F00345025 /* SearchEventBar.swift in Sources */,
 				63B1C34B1CF1EC1200989B5D /* CreateEventViewController.swift in Sources */,
 				6324BF2F1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */,
+				6306F6701D24C9BE00035AD9 /* NotificationSettingsViewModel.swift in Sources */,
 				6305700E1CBD11EA007D2C9D /* ChatUser.swift in Sources */,
 				6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */,
 				6305701E1CBD2902007D2C9D /* Chatroom.swift in Sources */,
@@ -1631,6 +1636,7 @@
 				631594FE1D20CB8B00431499 /* EventManagerRepeatEndsCell.swift in Sources */,
 				63B657AB1D23934C0050A8A4 /* MyPageContainerView.swift in Sources */,
 				63F3EE931CBF49EE0010D059 /* Chatroom.swift in Sources */,
+				6306F6711D24C9BE00035AD9 /* NotificationSettingsViewModel.swift in Sources */,
 				63F3EE731CBF49CC0010D059 /* PeriodRawDataRealmObject.swift in Sources */,
 				63F3EE971CBF49EE0010D059 /* TimeStamp.swift in Sources */,
 				63B1C3841CF430B900989B5D /* PhoneInputBox.swift in Sources */,

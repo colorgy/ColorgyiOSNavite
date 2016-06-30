@@ -14,6 +14,7 @@ final public class NotificationSettingsViewController: UIViewController {
 	private var navigationBar: ColorgyNavigationBar!
 	private var notificationSettingsTableView: UITableView!
 	private var notificationSettingsData: [String] = []
+	private var viewModel: NotificationSettings
 
 	// MARK: - Life Cycle
     override public func viewDidLoad() {
@@ -64,7 +65,7 @@ final public class NotificationSettingsViewController: UIViewController {
 	}
 	
 	// MARK: - Selectors
-	private func handleSwitchStateChange(with state: Bool, at indexPath: NSIndexPath) {
+	private func handleSwitchStateChange(to on: Bool, at indexPath: NSIndexPath) {
 		switch indexPath.row {
 		case 0:
 			print(#function, #line)
@@ -100,8 +101,8 @@ extension NotificationSettingsViewController : UITableViewDelegate, UITableViewD
 }
 
 extension NotificationSettingsViewController : SettingsSwitchCellDelegate {
-	public func settingsSwitchCell(switchDidChangedIn cell: SettingsSwitchCell, to state: Bool) {
+	public func settingsSwitchCell(switchDidChangedIn cell: SettingsSwitchCell, toState on: Bool) {
 		guard let indexPath = notificationSettingsTableView.indexPathForCell(cell) else { return }
-		handleSwitchStateChange(with: state, at: indexPath)
+		handleSwitchStateChange(with: on, at: indexPath)
 	}
 }
