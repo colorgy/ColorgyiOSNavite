@@ -33,11 +33,10 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 	public func myPageMoreOptionViewSettingsTapped() {
 		print(#file, #function, #line)
 		let settingsVC = StoryboardViewControllerFetchHelper.MyPage.fetchSettingsViewController()
-		print(settingsVC)
-//		transitionManager.mainViewController = self
-//		transitionManager.presentingViewController = settingsVC
-//		transitionManager.presentingViewController.transitioningDelegate = transitionManager
-		dispatch_sync(dispatch_get_main_queue()) {
+		transitionManager.mainViewController = self
+		transitionManager.presentingViewController = settingsVC
+		transitionManager.presentingViewController.transitioningDelegate = transitionManager
+		dispatch_async(dispatch_get_main_queue()) {
 			self.presentViewController(settingsVC, animated: true, completion: nil)
 		}
 	}

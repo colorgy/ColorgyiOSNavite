@@ -13,6 +13,8 @@ public struct StoryboardIdentifier {
 	public struct MainStoryboard {
 		static let phoneValidationView: String = "Phone Validation VC"
 		static let chooseSchoolView: String = "Choose School VC"
+		static let emailRegisterView: String = "Email Register VC"
+		static let emailLoginView: String = "Email Login VC"
 	}
 	
 	public struct MyPageStoryboard {

@@ -25,6 +25,14 @@ final public class StoryboardViewControllerFetchHelper {
 		public static func fetchChooseSchooolViewController() -> ChooseSchoolViewController {
 			return mainStoryboard.instantiateViewControllerWithIdentifier(StoryboardIdentifier.MainStoryboard.chooseSchoolView) as! ChooseSchoolViewController
 		}
+		
+		public static func fetchEmailLoginViewController() -> EmailLoginViewController {
+			return mainStoryboard.instantiateViewControllerWithIdentifier(StoryboardIdentifier.MainStoryboard.emailLoginView) as! EmailLoginViewController
+		}
+		
+		public static func fetchEmailRegisterViewController() -> EmailRegisterViewController {
+			return mainStoryboard.instantiateViewControllerWithIdentifier(StoryboardIdentifier.MainStoryboard.emailRegisterView) as! EmailRegisterViewController
+		}
 	}
 	
 	public struct MyPage {
