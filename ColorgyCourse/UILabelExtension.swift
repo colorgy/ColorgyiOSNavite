@@ -10,10 +10,8 @@ import Foundation
 import UIKit
 
 extension UILabel {
-	var textWidth: CGFloat {
-		guard let attrString = self.text as? NSAttributedString else { return 0 }
-		let constraintRect = CGSize(width: CGFloat.max, height: self.font.pointSize)
-		let boundingBox = attrString.boundingRectWithSize(constraintRect, options: .UsesLineFragmentOrigin, context: nil)
-		return ceil(boundingBox.width)
+	func preferredTextWidthConstraintByFontSize(size: CGFloat) -> CGFloat {
+		guard let text = self.text else { return 0 }
+		return text.preferredTextWidth(constraintByFontSize: self.font.pointSize)
 	}
 }

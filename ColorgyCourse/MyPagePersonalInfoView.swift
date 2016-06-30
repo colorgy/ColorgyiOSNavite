@@ -90,5 +90,10 @@ final public class MyPagePersonalInfoView: UIView {
 	
 	private func updateSchool() {
 		schoolLabel.text = school
+		print("about to configure school label, calculate length...")
+		print("frame length is \(schoolLabel.frame.width)")
+		print("length after calculate: \()")
+		
+		schoolLabel.preferredTextWidthConstraintByFontSize(<#T##size: CGFloat##CGFloat#>)
 	}
 }

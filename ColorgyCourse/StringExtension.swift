@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
 	
@@ -58,4 +59,29 @@ extension String {
 		return self[range]
 	}
 
+	/// get preferred text width by given font size
+	func preferredTextWidth(constraintByFontSize size: CGFloat) -> CGFloat {
+		let attrString = NSAttributedString(string: self, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(size)])
+		let constraintRect = CGSize(width: CGFloat.max, height: size)
+		let boundingBox = attrString.boundingRectWithSize(constraintRect, options: .UsesLineFragmentOrigin, context: nil)
+		return ceil(boundingBox.width)
+	}
+	
+	/// Get preferred text height by given width
+	func preferredTextHeight(withConstrainedWidth width: CGFloat, andFontSize size: CGFloat) -> CGFloat {
+		let attrString = NSAttributedString(string: self, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(size)])
+		let constraintRect = CGSize(width: width, height: CGFloat.max)
+		let boundingBox = attrString.boundingRectWithSize(constraintRect, options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
+		return ceil(boundingBox.height)
+	}
+	
+	/// Get preferred text width by given height
+	func preferredTextWidth(withConstrainedHeight height: CGFloat, andFontSize size: CGFloat) -> CGFloat {
+		let attrString = NSAttributedString(string: self, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(size)])
+		let constraintRect = CGSize(width: CGFloat.max, height: height)
+		let boundingBox = attrString.boundingRectWithSize(constraintRect, options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
+		return ceil(boundingBox.width)
+ }
+	
+	
 }
