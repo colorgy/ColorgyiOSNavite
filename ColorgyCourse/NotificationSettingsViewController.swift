@@ -20,6 +20,11 @@ final public class NotificationSettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		configureNotificationSettingsData()
+		configureNavigationBar()
+		configureNotificationSettingsTableView()
+		
+		view.backgroundColor = ColorgyColor.BackgroundColor
     }
 	
 	// MARK: - Configuration
@@ -29,7 +34,8 @@ final public class NotificationSettingsViewController: UIViewController {
 	
 	private func configureNavigationBar() {
 		navigationBar = ColorgyNavigationBar()
-		
+		navigationBar.iWantABackButtonAtLeft()
+		navigationBar.title = "通知設定"
 		view.addSubview(navigationBar)
 	}
 	
@@ -41,6 +47,7 @@ final public class NotificationSettingsViewController: UIViewController {
 		notificationSettingsTableView = UITableView(frame: CGRect(origin: origin, size: size))
 		
 		notificationSettingsTableView.backgroundColor = UIColor.clearColor()
+		notificationSettingsTableView.separatorStyle = .None
 		
 		notificationSettingsTableView.registerNib(UINib(nibName: "SettingsSwitchCell", bundle: nil), forCellReuseIdentifier: Keys.cellIdentifier)
 		notificationSettingsTableView.delegate = self
