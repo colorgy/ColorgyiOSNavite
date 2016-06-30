@@ -82,13 +82,13 @@ extension EmailLoginViewController : EmailLoginViewModelDelegate {
 	public func emailLoginViewModelSuccessfullyLoginToColorgy() {
 		if ColorgyUserInformation.sharedInstance().userMobile == nil {
 			// need to validate phone
-			guard let phoneValidationVC = StoryboardViewControllerFetchHelper.fetchPhoneValidationViewController() else { return }
+			let phoneValidationVC = StoryboardViewControllerFetchHelper.Main.fetchPhoneValidationViewController()
 			dispatch_async(dispatch_get_main_queue(), { 
 				self.presentViewController(phoneValidationVC, animated: true, completion: nil)
 			})
 		} else if ColorgyUserInformation.sharedInstance().userPossibleOrganization == nil {
 			// need to choose school
-			guard let chooseSchoolVC = StoryboardViewControllerFetchHelper.fetchChooseSchooolViewController() else { return }
+			let chooseSchoolVC = StoryboardViewControllerFetchHelper.Main.fetchChooseSchooolViewController()
 			dispatch_async(dispatch_get_main_queue(), {
 				self.presentViewController(chooseSchoolVC, animated: true, completion: nil)
 			})

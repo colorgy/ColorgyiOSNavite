@@ -11,6 +11,7 @@ import UIKit
 final public class MyPageViewController: UIViewController {
 	
 	private var myPageContainerView: MyPageContainerView!
+	private var transitionManager: ColorgyNavigationTransitioningDelegate!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,8 @@ final public class MyPageViewController: UIViewController {
 		view.addSubview(myPageContainerView)
 		
 		view.backgroundColor = ColorgyColor.BackgroundColor
+		
+		transitionManager = ColorgyNavigationTransitioningDelegate()
     }
 
 }
@@ -29,6 +32,14 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 	
 	public func myPageMoreOptionViewSettingsTapped() {
 		print(#file, #function, #line)
+		let settingsVC = StoryboardViewControllerFetchHelper.MyPage.fetchSettingsViewController()
+		print(settingsVC)
+//		transitionManager.mainViewController = self
+//		transitionManager.presentingViewController = settingsVC
+//		transitionManager.presentingViewController.transitioningDelegate = transitionManager
+		dispatch_sync(dispatch_get_main_queue()) {
+			self.presentViewController(settingsVC, animated: true, completion: nil)
+		}
 	}
 	
 	public func myPageMoreOptionViewGreetingsTapped() {
