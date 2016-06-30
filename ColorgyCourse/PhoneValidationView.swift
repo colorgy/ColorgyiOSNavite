@@ -112,10 +112,11 @@ final public class PhoneValidationView: UIView {
 			digit.textColor = ColorgyColor.waterBlue
 			digit.textAlignment = .Center
 			digit.frame.origin.x = initialX + index.CGFloatValue * (digitSpacing + digitSize)
-			digit.frame.origin.y = subtitleLabel.frame.maxY + 20
+			digit.move(20, pointBelow: subtitleLabel)
 			
 			let line = digitBottomLine(digit.bounds.width)
 			line.frame.origin.y = digit.bounds.maxY - line.bounds.height
+
 			digit.addSubview(line)
 			
 			addSubview(digit)
@@ -153,7 +154,7 @@ final public class PhoneValidationView: UIView {
 	
 	private func configureSubtitle() {
 		subtitleLabel = UILabel(frame: CGRect(origin: CGPointZero, size: CGSize(width: bounds.width, height: 13)))
-		subtitleLabel.frame.origin.y = titleLabel.frame.maxY + 6
+		subtitleLabel.move(6, pointBelow: titleLabel)
 		subtitleLabel.font = UIFont.systemFontOfSize(13)
 		subtitleLabel.textColor = ColorgyColor.TextColor
 		subtitleLabel.textAlignment = .Center
@@ -167,7 +168,7 @@ final public class PhoneValidationView: UIView {
 		resendValidationCodeLabel.textColor = ColorgyColor.lightGrayContentTextColor
 		resendValidationCodeLabel.textAlignment = .Center
 		resendValidationCodeLabel.text = "重新發送驗證碼"
-		resendValidationCodeLabel.frame.origin.y = digit1.frame.maxY + 24
+		resendValidationCodeLabel.move(24, pointBelow: digit1)
 		
 		let line = digitBottomLine(resendValidationCodeLabel.bounds.width)
 		line.backgroundColor = resendValidationCodeLabel.textColor
@@ -186,7 +187,8 @@ final public class PhoneValidationView: UIView {
 		reenterPhoneLabel.textColor = ColorgyColor.lightGrayContentTextColor
 		reenterPhoneLabel.textAlignment = .Center
 		reenterPhoneLabel.text = "重新輸入手機"
-		reenterPhoneLabel.frame.origin.y = digit1.frame.maxY + 24
+//		reenterPhoneLabel.frame.origin.y = digit1.frame.maxY + 24
+		reenterPhoneLabel.move(24, pointBelow: digit1)
 		
 		let line = digitBottomLine(reenterPhoneLabel.bounds.width)
 		line.backgroundColor = reenterPhoneLabel.textColor
@@ -206,6 +208,7 @@ final public class PhoneValidationView: UIView {
 		middleSeperatorSlashLabel.textAlignment = .Center
 		middleSeperatorSlashLabel.text = "／"
 		middleSeperatorSlashLabel.frame.origin.y = digit1.frame.maxY + 24
+		middleSeperatorSlashLabel.move(24, pointBelow: digit1)
 
 		addSubview(middleSeperatorSlashLabel)
 	}
