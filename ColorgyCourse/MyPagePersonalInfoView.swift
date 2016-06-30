@@ -18,26 +18,40 @@ final public class MyPagePersonalInfoView: UIView {
 		}
 	}
 	
+	/// Set this will update school.
 	public var school: String? {
 		didSet {
 			updateSchool()
 		}
 	}
 	
+	/// Set this will automatically update greetings' count.
+	public var greetings: Int? {
+		didSet {
+			updateGreetingsCountLabel()
+		}
+	}
+	
 	private var nameLabel: UILabel!
 	private var schoolLabel: UILabel!
+	private var greetingsIcon: UIImageView!
+	private var greetingsCountLabel: UILabel!
+	
+	private var editPersonalInfoButton: UIButton!
 
 	// MARK: - Init
 	
 	public convenience init(name: String?, school: String?) {
 		self.init(frame: UIScreen.mainScreen().bounds)
-		frame.size.height = 90.0
+		frame.size.height = 118.0
 		
 		backgroundColor = UIColor.whiteColor()
 		
 		// configure labels
 		configureNameLabel()
 		configureSchoolLabel()
+		configureEditPersonalInfoButton()
+		configureGreetings()
 		
 		// set values
 		self.name = name
@@ -59,8 +73,8 @@ final public class MyPagePersonalInfoView: UIView {
 		let padding: CGFloat = 28
 		nameLabel = UILabel(
 			frame: CGRect(origin: CGPointZero,
-			size: CGSize(width: bounds.width - padding * 2, height: 20)))
-		nameLabel.font = UIFont.systemFontOfSize(20)
+			size: CGSize(width: bounds.width - padding * 2, height: 24)))
+		nameLabel.font = UIFont.systemFontOfSize(24)
 		nameLabel.textColor = ColorgyColor.TextColor
 		
 		nameLabel.frame.origin.x = padding
@@ -78,9 +92,47 @@ final public class MyPagePersonalInfoView: UIView {
 		schoolLabel.textColor = ColorgyColor.TextColor
 		
 		schoolLabel.frame.origin.x = padding
-		schoolLabel.move(10, pointBelow: nameLabel)
+		schoolLabel.move(12, pointBelow: nameLabel)
 		
 		addSubview(schoolLabel)
+	}
+	
+	private func configureGreetings() {
+		greetingsIcon = UIImageView(frame: CGRect(origin: CGPointZero, size: CGSize(width: 13, height: 13)))
+		greetingsIcon.image = UIImage(named: "PersonalInfoGreetingsIcon")
+		greetingsIcon.contentMode = .ScaleAspectFill
+		
+		greetingsIcon.frame.origin.x = 24
+		greetingsIcon.move(12, pointBelow: schoolLabel)
+		
+		addSubview(greetingsIcon)
+		
+		greetingsCountLabel = UILabel()
+		greetingsCountLabel.frame.size.height = 12
+		greetingsCountLabel.font = UIFont.systemFontOfSize(12)
+		greetingsCountLabel.textColor = ColorgyColor.MainOrange
+		
+		greetingsCountLabel.move(10, pointsRightTo: greetingsIcon)
+		greetingsCountLabel.centerHorizontally(to: greetingsIcon)
+		
+		greetings = 1000
+		
+		addSubview(greetingsCountLabel)
+	}
+	
+	private func configureEditPersonalInfoButton() {
+		editPersonalInfoButton = UIButton(type: UIButtonType.System)
+		editPersonalInfoButton.frame.size = CGSize(width: 12, height: 12)
+		editPersonalInfoButton.tintColor = ColorgyColor.TextColor
+		editPersonalInfoButton.setImage(UIImage(named: "EditPersonalInfoButton"), forState: UIControlState.Normal)
+		editPersonalInfoButton.contentMode = .ScaleAspectFill
+		
+		editPersonalInfoButton.frame.origin.y = 24
+		editPersonalInfoButton.move(24, pointsTrailingToAndInside: self)
+		
+		editPersonalInfoButton.addTarget(self, action: #selector(MyPagePersonalInfoView.editPersonalInfoButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
+		
+		addSubview(editPersonalInfoButton)
 	}
 	
 	// MARK: - Update UI
@@ -90,10 +142,18 @@ final public class MyPagePersonalInfoView: UIView {
 	
 	private func updateSchool() {
 		schoolLabel.text = school
-		print("about to configure school label, calculate length...")
-		print("frame length is \(schoolLabel.frame.width)")
-		print("length after calculate: \()")
-		
-		schoolLabel.preferredTextWidthConstraintByFontSize(<#T##size: CGFloat##CGFloat#>)
+		schoolLabel.updateWidthToPreferredSizeByFontSize()
+	}
+	
+	private func updateGreetingsCountLabel() {
+		guard let greetings = greetings else { return }
+		let greetingsText = "\(greetings) 個招呼"
+		greetingsCountLabel.text = greetingsText
+		greetingsCountLabel.updateWidthToPreferredSizeByFontSize()
+	}
+	
+	// MARK: - Selector
+	@objc private func editPersonalInfoButtonClicked() {
+		print(#file, #function, #line)
 	}
 }

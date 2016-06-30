@@ -62,4 +62,21 @@ extension UIView {
 	func centerX(to view: UIView) {
 		self.center.x = view.bounds.midX
 	}
+	
+	/// Move view in view to its right
+	/// This is used when you want to arrange a view to the right side inside the view.
+	func move(point: CGFloat, pointsTrailingToAndInside view: UIView) {
+		self.frame.origin.x = view.bounds.width - self.bounds.width - point
+	}
+	
+	/// Move view in view's right
+	/// This is used to move to a view's right, not inside the view.
+	func move(point: CGFloat, pointsRightTo view: UIView) {
+		self.frame.origin.x = view.frame.maxX + point
+	}
+	
+	/// Center horizontally to a view
+	func centerHorizontally(to view: UIView) {
+		self.center.y = view.center.y
+	}
 }

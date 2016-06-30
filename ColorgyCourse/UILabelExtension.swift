@@ -10,8 +10,14 @@ import Foundation
 import UIKit
 
 extension UILabel {
-	func preferredTextWidthConstraintByFontSize(size: CGFloat) -> CGFloat {
+	/// Get preferred text width according to font size.
+	func preferredTextWidthConstraintByFontSize() -> CGFloat {
 		guard let text = self.text else { return 0 }
 		return text.preferredTextWidth(constraintByFontSize: self.font.pointSize)
+	}
+	
+	/// Update label's width according to its font size and its text.
+	func updateWidthToPreferredSizeByFontSize() {
+		self.frame.size.width = self.preferredTextWidthConstraintByFontSize()
 	}
 }

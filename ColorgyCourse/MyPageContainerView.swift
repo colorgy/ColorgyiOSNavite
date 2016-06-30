@@ -52,15 +52,22 @@ final public class MyPageContainerView: UIScrollView {
 	
 	private func configureMoreOptionView() {
 		moreOptionView = MyPageMoreOptionView()
-		moreOptionView.move(16, pointBelow: personalInfoView)
+		moreOptionView.move(0, pointBelow: personalInfoView)
 		addSubview(moreOptionView)
 	}
 
 	private func updateProfilePhoto(with offset: CGFloat) {
-		// arrange
-		profileImageView.frame.origin.y = offset
-		// resize
-		profileImageView.frame.size = CGSize(width: bounds.width, height: bounds.width - offset)
+		// check move up or down
+		if offset <= 0 {
+			// move down
+			// arrange
+			profileImageView.frame.origin.y = offset
+			// resize
+			profileImageView.frame.size = CGSize(width: bounds.width, height: bounds.width - offset)
+		} else {
+			// move up
+			profileImageView.frame.origin.y = offset * 0.3
+		}
 	}
 }
 
@@ -69,7 +76,7 @@ extension MyPageContainerView : UIScrollViewDelegate {
 	public func scrollViewDidScroll(scrollView: UIScrollView) {
 		// will be negative or 0.
 		// never be positive.
-		let offsetY = min(scrollView.contentOffset.y, 0)
+		let offsetY = scrollView.contentOffset.y
 		updateProfilePhoto(with: offsetY)
 	}
 }
