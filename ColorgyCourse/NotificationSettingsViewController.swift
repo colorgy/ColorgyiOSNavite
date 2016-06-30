@@ -13,7 +13,7 @@ final public class NotificationSettingsViewController: UIViewController {
 	// MARK: - Parameters
 	private var navigationBar: ColorgyNavigationBar!
 	private var notificationSettingsTableView: UITableView!
-	private var notificationSettingsData: [(title: String, selector: Selector)] = []
+	private var notificationSettingsData: [String] = []
 
 	// MARK: - Life Cycle
     override public func viewDidLoad() {
@@ -58,11 +58,26 @@ final public class NotificationSettingsViewController: UIViewController {
 	
 	private func configureNotificationSettingsData() {
 		notificationSettingsData.append((title: "上課通知", selector: #selector(NotificationSettingsViewController.courseNotificationSwitch)))
+		notificationSettingsData.append((title: "點名通知", selector: #selector(NotificationSettingsViewController.rollCallSwitch)))
 	}
 	
 	// MARK: - Selectors
-	@objc private func courseNotificationSwitch() {
-		print(#function, #line)
+	private func handleSwitchStateChange(with state: Bool, at indexPath: NSIndexPath) {
+		switch indexPath.row {
+		case 0:
+			print(#function, #line)
+		case 1:
+			print(#function, #line)
+		case 2:
+			print(#function, #line)
+		case 3:
+			print(#function, #line)
+		case 4:
+			print(#function, #line)
+		default:
+			print(#function, #line)
+			break
+		}
 	}
 }
 
@@ -78,6 +93,16 @@ extension NotificationSettingsViewController : UITableViewDelegate, UITableViewD
 	
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier(Keys.cellIdentifier, forIndexPath: indexPath) as! SettingsSwitchCell
+		cell.titleLabel.text = notificationSettingsData[indexPath.row]
+		cell.delegate = self
 		return cell
+	}
+}
+
+extension NotificationSettingsViewController : SettingsSwitchCellDelegate {
+	public func settingsSwitchCell(switchDidChangedIn cell: SettingsSwitchCell, toState on: Bool) {
+		guard let indexPath = notificationSettingsTableView.indexPathForCell(cell) else { return }
+		print("it's been \(on), at indexPath \(indexPath)")
+		
 	}
 }
