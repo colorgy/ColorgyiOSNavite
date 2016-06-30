@@ -57,8 +57,10 @@ final public class NotificationSettingsViewController: UIViewController {
 	}
 	
 	private func configureNotificationSettingsData() {
-		notificationSettingsData.append((title: "上課通知", selector: #selector(NotificationSettingsViewController.courseNotificationSwitch)))
-		notificationSettingsData.append((title: "點名通知", selector: #selector(NotificationSettingsViewController.rollCallSwitch)))
+		notificationSettingsData.append("上課通知")
+		notificationSettingsData.append("點名通知")
+		notificationSettingsData.append("系統通知")
+		notificationSettingsData.append("打招呼通知")
 	}
 	
 	// MARK: - Selectors
@@ -71,8 +73,6 @@ final public class NotificationSettingsViewController: UIViewController {
 		case 2:
 			print(#function, #line)
 		case 3:
-			print(#function, #line)
-		case 4:
 			print(#function, #line)
 		default:
 			print(#function, #line)
@@ -100,9 +100,8 @@ extension NotificationSettingsViewController : UITableViewDelegate, UITableViewD
 }
 
 extension NotificationSettingsViewController : SettingsSwitchCellDelegate {
-	public func settingsSwitchCell(switchDidChangedIn cell: SettingsSwitchCell, toState on: Bool) {
+	public func settingsSwitchCell(switchDidChangedIn cell: SettingsSwitchCell, to state: Bool) {
 		guard let indexPath = notificationSettingsTableView.indexPathForCell(cell) else { return }
-		print("it's been \(on), at indexPath \(indexPath)")
-		
+		handleSwitchStateChange(with: state, at: indexPath)
 	}
 }
