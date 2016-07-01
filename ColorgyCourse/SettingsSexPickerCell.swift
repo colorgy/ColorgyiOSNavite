@@ -8,6 +8,10 @@
 
 import UIKit
 
+public protocol SettingsSexPickerCellDelegate: class {
+	func settingsSexPickerCell(didSelect sex: SettingsSexPickerCell.Sex)
+}
+
 final public class SettingsSexPickerCell: UITableViewCell {
 	
 	@IBOutlet weak var seperatorLine: UIView!
@@ -15,7 +19,9 @@ final public class SettingsSexPickerCell: UITableViewCell {
 	@IBOutlet weak var girlButton: UIButton!
 	@IBOutlet weak var otherButton: UIButton!
 	
-	enum Sex: String {
+	public weak var delegate: SettingsSexPickerCellDelegate?
+	
+	public enum Sex: String {
 		case Boy = "Boy"
 		case Girl = "Girl"
 		case Other = "Other"
@@ -48,6 +54,23 @@ final public class SettingsSexPickerCell: UITableViewCell {
 			girlButton.tintColor = ColorgyColor.TextColor
 		case .Other:
 			otherButton.tintColor = ColorgyColor.TextColor
+		}
+	}
+	
+	// MARK: - Actions
+	@IBAction public func sexButtonClicked(button: UIButton) {
+		switch button {
+		case boyButton:
+			active(selected: .Boy)
+			delegate?.settingsSexPickerCell(didSelect: .Boy)
+		case girlButton:
+			active(selected: .Girl)
+			delegate?.settingsSexPickerCell(didSelect: .Girl)
+		case otherButton:
+			active(selected: .Other)
+			delegate?.settingsSexPickerCell(didSelect: .Other)
+		default:
+			break
 		}
 	}
 

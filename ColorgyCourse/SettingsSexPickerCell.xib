@@ -20,14 +20,23 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fT8-wA-MEc">
                                 <rect key="frame" x="0.0" y="3" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="sexButtonClicked:" destination="O2H-an-t6g" eventType="touchUpInside" id="xxP-W1-qNL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrl-bS-6Hv">
                                 <rect key="frame" x="121" y="3" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="sexButtonClicked:" destination="O2H-an-t6g" eventType="touchUpInside" id="NYV-4k-01B"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKd-66-TpN">
                                 <rect key="frame" x="241" y="3" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="sexButtonClicked:" destination="O2H-an-t6g" eventType="touchUpInside" id="94t-7P-3e8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>

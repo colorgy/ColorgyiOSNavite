@@ -54,6 +54,12 @@
                     <constraint firstItem="Gzh-dR-7wX" firstAttribute="leading" secondItem="Sc6-nh-8tD" secondAttribute="trailing" constant="36" id="wBE-ML-Voa"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="contentLabel" destination="Gzh-dR-7wX" id="2eB-dI-nL8"/>
+                <outlet property="disclosureImageView" destination="af1-qo-8At" id="kOK-1F-jLe"/>
+                <outlet property="seperatorLine" destination="8Go-cd-xzl" id="R8d-eZ-Gt7"/>
+                <outlet property="titleLabel" destination="Sc6-nh-8tD" id="7PK-As-kpO"/>
+            </connections>
             <point key="canvasLocation" x="356.5" y="360.5"/>
         </tableViewCell>
     </objects>
