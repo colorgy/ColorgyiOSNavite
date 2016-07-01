@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 final public class Event: CustomStringConvertible {
 	

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol DLMessageDelegate {
 	func DLMessage(didTapOnUserImageView image: UIImage?, message: ChatMessage)

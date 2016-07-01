@@ -26,6 +26,8 @@ target 'ColorgyCourse' do
     # Pods for testing
     pod 'Quick'
     pod 'Nimble'
+    pod 'Fabric', '~> 1.6.7'
+    pod 'Crashlytics', '~> 3.7.0'
   end
 
   target 'ColorgyCourseUITests' do

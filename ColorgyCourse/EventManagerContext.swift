@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// This context is used while creating an event.
 /// This is **not** a singleton.

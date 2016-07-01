@@ -277,7 +277,6 @@
 		63C3CE211CC0C76F000EE808 /* NumerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE1B1CC0C76F000EE808 /* NumerExtensions.swift */; };
 		63C3CE221CC0C76F000EE808 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE1C1CC0C76F000EE808 /* Organization.swift */; };
 		63C3CE231CC0C76F000EE808 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE1D1CC0C76F000EE808 /* UIImageExtension.swift */; };
-		63C3CE251CC0C844000EE808 /* TestTimeStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE241CC0C844000EE808 /* TestTimeStamp.swift */; };
 		63C3CE261CC0C8A5000EE808 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE1C1CC0C76F000EE808 /* Organization.swift */; };
 		63C3CE2B1CC0C8B5000EE808 /* ColorgyAppNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE1A1CC0C76F000EE808 /* ColorgyAppNotification.swift */; };
 		63C3CE2C1CC0C8B5000EE808 /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479CE1CB8A5EF00DE8CBC /* Release.swift */; };
@@ -555,7 +554,6 @@
 		63C3CE1B1CC0C76F000EE808 /* NumerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumerExtensions.swift; sourceTree = "<group>"; };
 		63C3CE1C1CC0C76F000EE808 /* Organization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
 		63C3CE1D1CC0C76F000EE808 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
-		63C3CE241CC0C844000EE808 /* TestTimeStamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeStamp.swift; sourceTree = "<group>"; };
 		63C3CE401CC0C93D000EE808 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
 		63C3CE421CC0C945000EE808 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		63C3CE441CC0C94B000EE808 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -882,7 +880,6 @@
 				6373055B1CBF72190016A7FC /* TestPeriod.swift */,
 				63F3EE991CBF53A40010D059 /* TestColorgyAPI.swift */,
 				6354799E1CB898C100DE8CBC /* Info.plist */,
-				63C3CE241CC0C844000EE808 /* TestTimeStamp.swift */,
 			);
 			path = ColorgyCourseTests;
 			sourceTree = "<group>";
@@ -1756,7 +1753,6 @@
 				63C3CE2D1CC0C8B5000EE808 /* ViewController.swift in Sources */,
 				63F3EE961CBF49EE0010D059 /* ChatUserInformation.swift in Sources */,
 				6353CE561D193F4700F90A4D /* Event.swift in Sources */,
-				63C3CE251CC0C844000EE808 /* TestTimeStamp.swift in Sources */,
 				6353CE551D193F4700F90A4D /* TextInputView.swift in Sources */,
 				636634E41D2117AE0063E43C /* MonthCalendarViewController.swift in Sources */,
 				63F3EE8E1CBF49EE0010D059 /* ColorgySocket.swift in Sources */,
