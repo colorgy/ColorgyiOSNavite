@@ -70,18 +70,30 @@ final public class ChooseSchoolViewController: UIViewController {
 }
 
 extension ChooseSchoolViewController : ChooseSchoolViewModelDelegate {
-	public func chooseSchoolViewModelUpdateSchool(schools: [Organization]) {
+	
+	// update filtered school
+	public func chooseSchoolViewModel(updateSchool schools: [Organization]) {
 		print("yoyo")
 		schoolTableView.reloadData()
 	}
 	
-	public func chooseSchoolViewModelFailToFetchSchool(error: APIError, afError: AFError?) {
+	public func chooseSchoolViewModel(updateFilteredSchool schools: [Organization]) {
+		print(schools)
+		schoolTableView.reloadData()
+	}
+	
+	public func chooseSchoolViewModel(failToFetchSchoolWith error: APIError, and afError: AFError?) {
 		
 	}
 	
-	public func chooseSchoolViewModelUpdateFilteredSchool(schools: [Organization]) {
-		print(schools)
-		schoolTableView.reloadData()
+	// Handle organization.
+	
+	public func chooseSchoolViewModel(updateOrganizationTo organization: Organization) {
+		
+	}
+	
+	public func chooseSchoolViewModel(failToUpdateOrganizationWith error: APIError, and afError: AFError?) {
+		
 	}
 }
 
@@ -102,6 +114,15 @@ extension ChooseSchoolViewController : UITableViewDelegate, UITableViewDataSourc
 		let cell = tableView.dequeueReusableCellWithIdentifier(Key.cellIdentifier, forIndexPath: indexPath) as! ChooseSchoolTableViewCell
 		cell.school = searchBar.isSearching ? viewModel?.filteredSchools[indexPath.row] : viewModel?.schools[indexPath.row]
 		return cell
+	}
+	
+	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		if searchBar.isSearching {
+			print(viewModel?.filteredSchools[indexPath.row])
+		} else {
+			print(viewModel?.schools[indexPath.row])
+		}
+		
 	}
 }
 

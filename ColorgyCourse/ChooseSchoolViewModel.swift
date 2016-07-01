@@ -9,9 +9,11 @@
 import Foundation
 
 public protocol ChooseSchoolViewModelDelegate: class {
-	func chooseSchoolViewModelUpdateSchool(schools: [Organization])
-	func chooseSchoolViewModelUpdateFilteredSchool(schools: [Organization])
-	func chooseSchoolViewModelFailToFetchSchool(error: APIError, afError: AFError?)
+	func chooseSchoolViewModel(updateSchool schools: [Organization])
+	func chooseSchoolViewModel(updateFilteredSchool schools: [Organization])
+	func chooseSchoolViewModel(failToFetchSchoolWith error: APIError, and afError: AFError?)
+	func chooseSchoolViewModel(updateOrganizationTo organization: Organization)
+	func chooseSchoolViewModel(failToUpdateOrganizationWith error: APIError, and afError: AFError?)
 }
 
 final public class ChooseSchoolViewModel {
@@ -31,9 +33,9 @@ final public class ChooseSchoolViewModel {
 	public func fetchSchoolData() {
 		api.getOrganizations({ (organizations) in
 			self.schools = organizations
-			self.delegate?.chooseSchoolViewModelUpdateSchool(self.schools)
+			self.delegate?.chooseSchoolViewModel(UpdateSchool: self.schools)
 			}, failure: { (error, afError) in
-				self.delegate?.chooseSchoolViewModelFailToFetchSchool(error, afError: afError)
+				self.delegate?.chooseSchoolViewModel(failToFetchSchoolWith: error, and: afError)
 		})
 	}
 	
@@ -43,7 +45,7 @@ final public class ChooseSchoolViewModel {
 		// if is an empty string, show origin schools
 		if text == "" {
 			filteredSchools = schools
-			delegate?.chooseSchoolViewModelUpdateFilteredSchool(filteredSchools)
+			self.delegate?.chooseSchoolViewModel(updateFilteredSchool: self.filteredSchools)
 		} else {
 			// if not, filter it
 			filteredSchools = []
@@ -57,10 +59,18 @@ final public class ChooseSchoolViewModel {
 					}
 				})
 				dispatch_async(dispatch_get_main_queue(), { () -> Void in
-					self.delegate?.chooseSchoolViewModelUpdateFilteredSchool(self.filteredSchools)
+					self.delegate?.chooseSchoolViewModel(updateFilteredSchool: self.filteredSchools)
 				})
 			})
 		}
+	}
+	
+	public func enroll(to organization: Organization) {
+		api.updateOrganization(withCode: organization.code, success: {
+			self.delegate?.chooseSchoolViewModel(updateOrganizationTo: organization)
+			}, failure: { (error, afError) in
+				self.delegate?.chooseSchoolViewModel(failToUpdateOrganizationWith: error, and: afError)
+		})
 	}
 	
 }

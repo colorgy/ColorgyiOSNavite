@@ -229,7 +229,7 @@ final public class ColorgyAPI : NSObject {
 
 			self.setManager(new: accesstoken)
 			// then start job
-			self.manager.GET(url, parameters: nil, progress: nil,success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
 				// will pass in a json, then generate a result
 				guard let response = response else {
 					self.handleFailToParseResult(failure)
@@ -248,6 +248,48 @@ final public class ColorgyAPI : NSObject {
 				})
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
 					// then handle response
+					let aferror = AFError(operation: operation, error: error)
+					self.handleAPIConnectionFailure(failure, afError: aferror)
+			})
+		}
+	}
+	
+	/// Update user's organization code.
+	public func updateOrganization(withCode code: String, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			handleNetworkUnavailable(failure)
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.handleAPIUnavailable(failure)
+				return
+			}
+			guard let accesstoken = self.accessToken else {
+				self.handleNoAccessToken(failure)
+				return
+			}
+			let url = "\(self.rootURL)/me"
+			guard url.isValidURLString else {
+				self.handleInvalidURL(failure)
+				return
+			}
+			
+			let parameters = [
+				"user": [
+					"unconfirmed_organization_code": code.uppercaseString
+				]
+			]
+			
+			self.setManager(new: accesstoken)
+			self.manager.PATCH(url, parameters: parameters, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				// success
+				self.mainBlock({
+					success?()
+				})
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 					let aferror = AFError(operation: operation, error: error)
 					self.handleAPIConnectionFailure(failure, afError: aferror)
 			})
