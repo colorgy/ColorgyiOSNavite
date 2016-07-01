@@ -22,9 +22,9 @@ final public class SettingsSexPickerCell: UITableViewCell {
 	public weak var delegate: SettingsSexPickerCellDelegate?
 	
 	public enum Sex: String {
-		case Boy = "Boy"
-		case Girl = "Girl"
-		case Other = "Other"
+		case Boy = "男生"
+		case Girl = "女生"
+		case Other = "其他"
 	}
 
     override public func awakeFromNib() {
@@ -33,9 +33,9 @@ final public class SettingsSexPickerCell: UITableViewCell {
 		
 		deactiveAllButtons()
 		
-		boyButton.setTitle("男生", forState: UIControlState.Normal)
-		girlButton.setTitle("女生", forState: UIControlState.Normal)
-		otherButton.setTitle("其他", forState: UIControlState.Normal)
+		boyButton.setTitle(Sex.Boy.rawValue, forState: UIControlState.Normal)
+		girlButton.setTitle(Sex.Girl.rawValue, forState: UIControlState.Normal)
+		otherButton.setTitle(Sex.Other.rawValue, forState: UIControlState.Normal)
 		
 		seperatorLine.backgroundColor = ColorgyColor.BackgroundColor
 		

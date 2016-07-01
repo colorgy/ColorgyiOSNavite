@@ -81,7 +81,17 @@ extension String {
 		let constraintRect = CGSize(width: CGFloat.max, height: height)
 		let boundingBox = attrString.boundingRectWithSize(constraintRect, options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
 		return ceil(boundingBox.width)
- }
+	}
+	
+	/// Transform string into secret dot text
+	var dottedString: String {
+		let count = self.characters.count
+		var dottedString = ""
+		for _ in 1...count {
+			dottedString += "●"
+		}
+		return dottedString
+	}
 	
 	
 }

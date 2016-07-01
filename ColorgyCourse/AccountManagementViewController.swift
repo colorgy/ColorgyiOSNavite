@@ -129,7 +129,12 @@ extension AccountManagementViewController : UITableViewDelegate, UITableViewData
 			let cell = tableView.dequeueReusableCellWithIdentifier(Keys.normalCellIdentifier, forIndexPath: indexPath) as! SettingsDisplayContentCell
 			
 			cell.titleLabel.text = accountManagementData[indexPath.row].title
-			cell.contentLabel.text = accountManagementData[indexPath.row].content
+			// check if its password slot
+			if indexPath.row == 1 {
+				cell.contentLabel.text = accountManagementData[indexPath.row].content
+			} else {
+				cell.contentLabel.text = accountManagementData[indexPath.row].content
+			}
 			
 			return cell
 		}
