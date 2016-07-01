@@ -33,7 +33,7 @@ final public class ChooseSchoolViewModel {
 	public func fetchSchoolData() {
 		api.getOrganizations({ (organizations) in
 			self.schools = organizations
-			self.delegate?.chooseSchoolViewModel(UpdateSchool: self.schools)
+			self.delegate?.chooseSchoolViewModel(updateSchool: self.schools)
 			}, failure: { (error, afError) in
 				self.delegate?.chooseSchoolViewModel(failToFetchSchoolWith: error, and: afError)
 		})

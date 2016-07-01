@@ -89,11 +89,11 @@ extension ChooseSchoolViewController : ChooseSchoolViewModelDelegate {
 	// Handle organization.
 	
 	public func chooseSchoolViewModel(updateOrganizationTo organization: Organization) {
-		
+		print("ok enroll to \(organization)")
 	}
 	
 	public func chooseSchoolViewModel(failToUpdateOrganizationWith error: APIError, and afError: AFError?) {
-		
+		print("fix problem here", #file, #function, #line)
 	}
 }
 
@@ -117,12 +117,9 @@ extension ChooseSchoolViewController : UITableViewDelegate, UITableViewDataSourc
 	}
 	
 	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		if searchBar.isSearching {
-			print(viewModel?.filteredSchools[indexPath.row])
-		} else {
-			print(viewModel?.schools[indexPath.row])
-		}
-		
+		guard let organization = (searchBar.isSearching ? viewModel?.filteredSchools[indexPath.row] : viewModel?.schools[indexPath.row]) else { return }
+		viewModel?.enroll(to: organization)
+		print("fix problem here", #file, #function, #line)
 	}
 }
 
