@@ -53,5 +53,10 @@ final public class StoryboardViewControllerFetchHelper {
 		public static func fetchPrivacySettingsViewController() -> PrivacySettingsViewController {
 			return myPageStoryboard.instantiateViewControllerWithIdentifier(StoryboardIdentifier.MyPageStoryboard.privacySettingsView) as! PrivacySettingsViewController
 		}
+		
+		/// Fetch privacy settgins view controller.
+		public static func fetchAccountManagementViewController() -> AccountManagementViewController {
+			return myPageStoryboard.instantiateViewControllerWithIdentifier(StoryboardIdentifier.MyPageStoryboard.accountManagementView) as! AccountManagementViewController
+		}
 	}
 }

@@ -76,6 +76,24 @@
             </objects>
             <point key="canvasLocation" x="1709" y="2618"/>
         </scene>
+        <!--Account Management View Controller-->
+        <scene sceneID="XTU-lN-isp">
+            <objects>
+                <viewController storyboardIdentifier="Account Management VC" id="el1-8v-KNF" customClass="AccountManagementViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K4N-Gg-MIP"/>
+                        <viewControllerLayoutGuide type="bottom" id="hNU-UD-MUR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="H0f-F7-Lw0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oFf-j6-aaU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1709" y="3336"/>
+        </scene>
         <!--Classmates View Controller-->
         <scene sceneID="vrp-k8-39P">
             <objects>

@@ -14,17 +14,26 @@ final public class AccountManagementViewController: UIViewController {
 	private var navigationBar: ColorgyNavigationBar!
 	private var accountManagementTableView: UITableView!
 	private var accountManagementData: [(title: String, content: String?)] = []
+	private var accountManagementSexData: SettingsSexPickerCell.Sex!
+	
 	
 	// MARK: - Life Cycle
 	override public func viewDidLoad() {
 		super.viewDidLoad()
 		
 		// Do any additional setup after loading the view.
+		configureAccountManagementData()
+		configureNavigationBar()
+		configureAccountManagementTableView()
+		
+		view.backgroundColor = ColorgyColor.BackgroundColor
 	}
 	
 	// MARK: - Configuration
 	struct Keys {
-		static let cellIdentifier = "cell"
+		static let normalCellIdentifier = "normal cell"
+		static let sexCellIdentifier = "sex cell"
+		static let sexPickerCellIdentifier = "sex picker cell"
 	}
 	
 	private func configureNavigationBar() {
@@ -44,7 +53,9 @@ final public class AccountManagementViewController: UIViewController {
 		accountManagementTableView.backgroundColor = UIColor.clearColor()
 		accountManagementTableView.separatorStyle = .None
 		
-		accountManagementTableView.registerNib(UINib(nibName: "SettingsSwitchCell", bundle: nil), forCellReuseIdentifier: Keys.cellIdentifier)
+		accountManagementTableView.registerNib(UINib(nibName: "SettingsDisplayContentCell", bundle: nil), forCellReuseIdentifier: Keys.normalCellIdentifier)
+		accountManagementTableView.registerNib(UINib(nibName: "SettingsSexCell", bundle: nil), forCellReuseIdentifier: Keys.sexCellIdentifier)
+		accountManagementTableView.registerNib(UINib(nibName: "SettingsSexPickerCell", bundle: nil), forCellReuseIdentifier: Keys.sexPickerCellIdentifier)
 		accountManagementTableView.delegate = self
 		accountManagementTableView.dataSource = self
 		
@@ -55,6 +66,7 @@ final public class AccountManagementViewController: UIViewController {
 		accountManagementData.append(("信箱", "hello@mail.com"))
 		accountManagementData.append(("密碼", "77777777"))
 		accountManagementData.append(("手機", "0912345678"))
+		accountManagementSexData = SettingsSexPickerCell.Sex.Other
 	}
 
 }
@@ -66,11 +78,27 @@ extension AccountManagementViewController : UITableViewDelegate, UITableViewData
 	}
 	
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return accountManagementData.count
+		return accountManagementData.count + 1
 	}
 	
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		
+		if indexPath.row < 3 {
+			// normal cell
+			let cell = tableView.dequeueReusableCellWithIdentifier(Keys.normalCellIdentifier, forIndexPath: indexPath) as! SettingsDisplayContentCell
+			
+			cell.titleLabel.text = accountManagementData[indexPath.row].title
+			cell.contentLabel.text = accountManagementData[indexPath.row].content
+			
+			return cell
+		} else {
+			// sex cell
+			let cell = tableView.dequeueReusableCellWithIdentifier(Keys.sexCellIdentifier, forIndexPath: indexPath) as! SettingsSexCell
+			
+			cell.titleLabel.text = "性別"
+			cell.contentLabel.text = accountManagementSexData.rawValue
+			
+			return cell
+		}
 	}
 	
 }

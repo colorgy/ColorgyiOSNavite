@@ -21,5 +21,6 @@ public struct StoryboardIdentifier {
 		static let settingsView: String = "Settings VC"
 		static let notificationSettingsView: String = "Notification Settings VC"
 		static let privacySettingsView: String = "Privacy Settings VC"
+		static let accountManagementView: String = "Account Management VC"
 	}
 }

@@ -67,7 +67,9 @@ final public class SettingsViewController: UIViewController {
 
 	// MARK: - Selectors
 	@objc private func gotoAccountManagement() {
-		print(#file, #function, #line)
+		print(#function, #line)
+		let accountManagementVC = StoryboardViewControllerFetchHelper.MyPage.fetchAccountManagementViewController()
+		transit(to: accountManagementVC)
 	}
 	
 	@objc private func gotoNotificationSettings() {
