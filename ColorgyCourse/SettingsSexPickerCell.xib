@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="159" id="O2H-an-t6g" customClass="SettingsSexPickerCell" customModule="ColorgyCourse" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="573" height="159"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O2H-an-t6g" id="kRY-ne-r0J">
+                <rect key="frame" x="0.0" y="0.0" width="573" height="158"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="Pxh-Ow-B1x">
+                        <rect key="frame" x="143" y="62" width="287" height="35"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fT8-wA-MEc">
+                                <rect key="frame" x="0.0" y="3" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrl-bS-6Hv">
+                                <rect key="frame" x="121" y="3" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKd-66-TpN">
+                                <rect key="frame" x="241" y="3" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="i9r-T8-Gh5"/>
+                        </constraints>
+                    </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riv-qb-mhS">
+                        <rect key="frame" x="0.0" y="157" width="573" height="1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="A0B-BV-HBu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Pxh-Ow-B1x" firstAttribute="width" secondItem="kRY-ne-r0J" secondAttribute="width" multiplier="0.5" id="07M-L9-9s9"/>
+                    <constraint firstAttribute="trailing" secondItem="riv-qb-mhS" secondAttribute="trailing" id="JPb-T8-ZKo"/>
+                    <constraint firstAttribute="bottom" secondItem="riv-qb-mhS" secondAttribute="bottom" id="LJ3-cS-Ygx"/>
+                    <constraint firstItem="riv-qb-mhS" firstAttribute="leading" secondItem="kRY-ne-r0J" secondAttribute="leading" id="gQe-fR-g8m"/>
+                    <constraint firstItem="Pxh-Ow-B1x" firstAttribute="centerY" secondItem="kRY-ne-r0J" secondAttribute="centerY" id="tcH-om-ltD"/>
+                    <constraint firstItem="Pxh-Ow-B1x" firstAttribute="centerX" secondItem="kRY-ne-r0J" secondAttribute="centerX" id="xOK-f3-bmf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="boyButton" destination="fT8-wA-MEc" id="jbC-TK-EQ1"/>
+                <outlet property="girlButton" destination="qrl-bS-6Hv" id="nmc-qK-oFC"/>
+                <outlet property="otherButton" destination="PKd-66-TpN" id="PKc-Vh-6Wd"/>
+                <outlet property="seperatorLine" destination="riv-qb-mhS" id="RLa-4d-NF4"/>
+            </connections>
+            <point key="canvasLocation" x="433.5" y="366.5"/>
+        </tableViewCell>
+    </objects>
+</document>
