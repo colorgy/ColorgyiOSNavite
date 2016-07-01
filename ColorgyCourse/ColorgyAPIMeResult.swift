@@ -21,8 +21,8 @@ private struct APIResult {
 		static let _type = "_type"
 		static let organization = "organization"
 		static let department = "department"
-		static let possible_organization_code = "possible_organization_code"
-		static let possible_department_code = "possible_department_code"
+		static let unconfirmed_organization_code = "unconfirmed_organization_code"
+		static let unconfirmed_department_code = "unconfirmed_department_code"
 		static let email = "email"
 		static let fbemail = "fbemail"
 		static let mobile = "mobile"
@@ -43,14 +43,14 @@ public class ColorgyAPIMeResult : CustomStringConvertible {
 	public let _type: String?
 	public let organization: String?
 	public let department: String?
-	public let possible_organization_code: String?
-	public let possible_department_code: String?
+	public let unconfirmed_organization_code: String?
+	public let unconfirmed_department_code: String?
 	public let email: String?
 	public let fbemail: String?
 	public let mobile: String?
 	public let unconfirmedMobile: String?
 	
-	public var description: String { return "ColorgyAPIMeResult: {\n\tid => \(id)\n\tuuid => \(uuid)\n\tusername => \(username)\n\tname => \(name)\n\tavatar_url => \(avatar_url)\n\tcover_photo_url => \(cover_photo_url)\n\t_type => \(_type)\n\torganization => \(organization)\n\tdepartment => \(department)\n\tpossible_organization_code => \(possible_organization_code)\n\tpossible_department_code => \(possible_department_code)\n\temail => \(email)\n\tfbemail => \(fbemail)\n\tmobile => \(mobile)\n\tunconfirmedMobile => \(unconfirmedMobile)\n}" }
+	public var description: String { return "ColorgyAPIMeResult: {\n\tid => \(id)\n\tuuid => \(uuid)\n\tusername => \(username)\n\tname => \(name)\n\tavatar_url => \(avatar_url)\n\tcover_photo_url => \(cover_photo_url)\n\t_type => \(_type)\n\torganization => \(organization)\n\tdepartment => \(department)\n\tunconfirmed_organization_code => \(unconfirmed_organization_code)\n\tunconfirmed_department_code => \(unconfirmed_department_code)\n\temail => \(email)\n\tfbemail => \(fbemail)\n\tmobile => \(mobile)\n\tunconfirmedMobile => \(unconfirmedMobile)\n}" }
 	
 	// MARK: - Init
 	init?(json: JSON) {
@@ -69,8 +69,8 @@ public class ColorgyAPIMeResult : CustomStringConvertible {
 		self._type = json[APIResult.Me._type].string
 		self.organization = json[APIResult.Me.organization].string
 		self.department = json[APIResult.Me.department].string
-		self.possible_organization_code = json[APIResult.Me.possible_organization_code].string
-		self.possible_department_code = json[APIResult.Me.possible_department_code].string
+		self.unconfirmed_organization_code = json[APIResult.Me.unconfirmed_organization_code].string
+		self.unconfirmed_department_code = json[APIResult.Me.unconfirmed_department_code].string
 		self.email = json[APIResult.Me.email].string
 		self.fbemail = json[APIResult.Me.fbemail].string
 		self.mobile = json[APIResult.Me.mobile].string

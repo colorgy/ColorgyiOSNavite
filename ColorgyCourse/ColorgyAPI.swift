@@ -236,6 +236,7 @@ final public class ColorgyAPI : NSObject {
 					return
 				}
 				let json = JSON(response)
+				print(json)
 				guard let result = ColorgyAPIMeResult(json: json) else {
 					self.handleFailToParseResult(failure)
 					return

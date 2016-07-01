@@ -53,6 +53,7 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 	
 	public func myPageMoreOptionViewMyActivityTapped() {
 		print(#file, #function, #line)
+		api.me(success: nil, failure: nil)
 		api.getCoursesList(nil) { (error, afError) in
 			print(error, afError)
 		}
