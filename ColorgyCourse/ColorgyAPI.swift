@@ -30,6 +30,8 @@ public enum APIError: ErrorType {
 	case NoUserId
 	/// Internal preparation fail, might be uuid generate fail or something, chech inside
 	case InternalPreparationFail
+	/// Fail to download content, eg. fail to download courses list
+	case FailToDownloadContent
 }
 
 public protocol ColorgyAPIDelegate : class {
@@ -137,6 +139,11 @@ final public class ColorgyAPI : NSObject {
 		handleFailure(failure, error: APIError.InternalPreparationFail, afError: nil)
 	}
 	
+	/// Handle fail to download content condition
+	private func handleFailToDownloadContent(failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		handleFailure(failure, error: APIError.FailToDownloadContent, afError: nil)
+	}
+	
 	/// This depends on Refresh center
 	/// Will lock if token is refreshing
 	/// - returns:
@@ -236,7 +243,6 @@ final public class ColorgyAPI : NSObject {
 					return
 				}
 				let json = JSON(response)
-				print(json)
 				guard let result = ColorgyAPIMeResult(json: json) else {
 					self.handleFailToParseResult(failure)
 					return
@@ -509,11 +515,11 @@ final public class ColorgyAPI : NSObject {
 	public func getCoursesList(success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		let semester = Semester.currentSemesterAndYear()
-		getCourseList(of: semester.year, andTerm: semester.term, success: success, failure: failure)
+		getCoursesList(of: semester.year, andTerm: semester.term, success: success, failure: failure)
 	}
 	
 	/// Get a semester's course list
-	public func getCourseList(of year: Int, andTerm term: Int, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func getCoursesList(of year: Int, andTerm term: Int, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			handleNetworkUnavailable(failure)
@@ -551,11 +557,36 @@ final public class ColorgyAPI : NSObject {
 					return
 				}
 				let json = JSON(response)
-				print(json)
+				print(#function, #line, json)
+				self.courses(contentOf: json["s3_url"].string, success: success, failure: failure)
 				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
 					let afError = AFError(operation: operation, error: error)
 					self.handleAPIConnectionFailure(failure, afError: afError)
 			})
+		}
+	}
+	
+	/// Download the courses content of given url, will transform into objects.
+	public func courses(contentOf url: String?, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			handleNetworkUnavailable(failure)
+			return
+		}
+		guard let url = url where url.isValidURLString else {
+			self.handleInvalidURL(failure)
+			return
+		}
+
+		qosBlock { 
+			if let coursesData = NSData(contentsOfURL: url.url!) {
+				let json = JSON(data: coursesData)
+				self.mainBlock({ 
+					success?()
+				})
+			} else {
+				self.handleFailToDownloadContent(failure)
+			}
 		}
 	}
 	
