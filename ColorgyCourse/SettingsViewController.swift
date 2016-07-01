@@ -72,11 +72,14 @@ final public class SettingsViewController: UIViewController {
 	
 	@objc private func gotoNotificationSettings() {
 		print(#function, #line)
-		
+		let notificationSettingsVC = StoryboardViewControllerFetchHelper.MyPage.fetchNotificationSettingsViewController()
+		transit(to: notificationSettingsVC)
 	}
 	
 	@objc private func gotoPrivacySettings() {
 		print(#file, #function, #line)
+		let privacySettingsVC = StoryboardViewControllerFetchHelper.MyPage.fetchPrivacySettingsViewController()
+		transit(to: privacySettingsVC)
 	}
 	
 	@objc private func gotoReport() {

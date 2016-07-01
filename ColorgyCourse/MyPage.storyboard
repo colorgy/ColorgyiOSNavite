@@ -61,7 +61,7 @@
         <!--Privacy Settings View Controller-->
         <scene sceneID="QeF-pe-XIe">
             <objects>
-                <viewController id="ula-Jj-Rvq" customClass="PrivacySettingsViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Privacy Settings VC" id="ula-Jj-Rvq" customClass="PrivacySettingsViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y6v-Db-LI1"/>
                         <viewControllerLayoutGuide type="bottom" id="TX3-XT-UYE"/>

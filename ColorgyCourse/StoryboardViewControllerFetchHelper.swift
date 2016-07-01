@@ -48,5 +48,10 @@ final public class StoryboardViewControllerFetchHelper {
 		public static func fetchNotificationSettingsViewController() -> NotificationSettingsViewController {
 			return myPageStoryboard.instantiateViewControllerWithIdentifier(StoryboardIdentifier.MyPageStoryboard.notificationSettingsView) as! NotificationSettingsViewController
 		}
+		
+		/// Fetch privacy settgins view controller.
+		public static func fetchPrivacySettingsViewController() -> PrivacySettingsViewController {
+			return myPageStoryboard.instantiateViewControllerWithIdentifier(StoryboardIdentifier.MyPageStoryboard.privacySettingsView) as! PrivacySettingsViewController
+		}
 	}
 }
