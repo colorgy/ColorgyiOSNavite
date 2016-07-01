@@ -15,6 +15,11 @@ final public class AccountManagementViewController: UIViewController {
 	private var accountManagementTableView: UITableView!
 	private var accountManagementData: [(title: String, content: String?)] = []
 	private var accountManagementSexData: SettingsSexPickerCell.Sex!
+	private var needToPickSex: Bool = false {
+		didSet {
+			reloadSexPickerRegion()
+		}
+	}
 	
 	
 	// MARK: - Life Cycle
@@ -69,6 +74,15 @@ final public class AccountManagementViewController: UIViewController {
 		accountManagementSexData = SettingsSexPickerCell.Sex.Other
 	}
 
+	private func reloadSexPickerRegion() {
+//		accountManagementTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
+		let indexPaths = [NSIndexPath(forRow: 4, inSection: 0)]
+		if needToPickSex {
+			accountManagementTableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Fade)
+		} else {
+			accountManagementTableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Fade)
+		}
+	}
 }
 
 extension AccountManagementViewController : UITableViewDelegate, UITableViewDataSource {
@@ -78,11 +92,28 @@ extension AccountManagementViewController : UITableViewDelegate, UITableViewData
 	}
 	
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return accountManagementData.count + 1
+		return accountManagementData.count + (!needToPickSex ? 1 : 2)
 	}
 	
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		if indexPath.row < 3 {
+		
+		if indexPath.row == 3 {
+			// sex
+			let cell = tableView.dequeueReusableCellWithIdentifier(Keys.sexCellIdentifier, forIndexPath: indexPath) as! SettingsSexCell
+			
+			cell.titleLabel.text = "性別"
+			cell.contentLabel.text = accountManagementSexData.rawValue
+			
+			return cell
+		} else if indexPath.row == 4 {
+			// sex picker
+			let cell = tableView.dequeueReusableCellWithIdentifier(Keys.sexPickerCellIdentifier, forIndexPath: indexPath) as! SettingsSexPickerCell
+			
+			cell.delegate = self
+			cell.active(selected: accountManagementSexData)
+			
+			return cell
+		} else {
 			// normal cell
 			let cell = tableView.dequeueReusableCellWithIdentifier(Keys.normalCellIdentifier, forIndexPath: indexPath) as! SettingsDisplayContentCell
 			
@@ -90,15 +121,21 @@ extension AccountManagementViewController : UITableViewDelegate, UITableViewData
 			cell.contentLabel.text = accountManagementData[indexPath.row].content
 			
 			return cell
-		} else {
-			// sex cell
-			let cell = tableView.dequeueReusableCellWithIdentifier(Keys.sexCellIdentifier, forIndexPath: indexPath) as! SettingsSexCell
-			
-			cell.titleLabel.text = "性別"
-			cell.contentLabel.text = accountManagementSexData.rawValue
-			
-			return cell
+		}
+		
+	}
+	
+	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		if indexPath.row == 3 {
+			// need to pick sex
+			needToPickSex = true
 		}
 	}
 	
+}
+
+extension AccountManagementViewController : SettingsSexPickerCellDelegate {
+	public func settingsSexPickerCell(didSelect sex: SettingsSexPickerCell.Sex) {
+		needToPickSex = false
+	}
 }
