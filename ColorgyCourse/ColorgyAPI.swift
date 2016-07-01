@@ -419,4 +419,84 @@ final public class ColorgyAPI : NSObject {
 			})
 		}
 	}
+	
+	// MARK: - Calendars
+	
+	/// Get user's all calendars
+	public func getCalendars(success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			handleNetworkUnavailable(failure)
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.handleAPIUnavailable(failure)
+				return
+			}
+			guard let accesstoken = self.accessToken else {
+				self.handleNoAccessToken(failure)
+				return
+			}
+			let url = "\(self.rootURL)/me/calendars"
+			guard url.isValidURLString else {
+				self.handleInvalidURL(failure)
+				return
+			}
+			
+			self.setManager(new: accesstoken)
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				guard let response = response else {
+					self.handleFailToParseResult(failure)
+					return
+				}
+				let json = JSON(response)
+				print(json)
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.handleAPIConnectionFailure(failure, afError: afError)
+			})
+		}
+	}
+	
+	// MARK: - Enroll Courses
+	public func getCoursesList(success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			handleNetworkUnavailable(failure)
+			return
+		}
+		
+		qosBlock {
+			guard self.allowAPIAccessing() else {
+				self.handleAPIUnavailable(failure)
+				return
+			}
+			guard let accesstoken = self.accessToken else {
+				self.handleNoAccessToken(failure)
+				return
+			}
+			let url = "\(self.rootURL)/me/calendars"
+			guard url.isValidURLString else {
+				self.handleInvalidURL(failure)
+				return
+			}
+			
+			self.setManager(new: accesstoken)
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				guard let response = response else {
+					self.handleFailToParseResult(failure)
+					return
+				}
+				let json = JSON(response)
+				print(json)
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.handleAPIConnectionFailure(failure, afError: afError)
+			})
+		}
+	}
+	
+	// MARK: - Create Courses
 }

@@ -43,6 +43,7 @@ public class ColorgyNavigationBar: UIView {
 		super.init(frame: CGRect(origin: CGPointZero, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 64)))
 		backgroundColor = UIColor.whiteColor()
 		configureTitleLabel()
+		configureBottomLine()
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -61,6 +62,18 @@ public class ColorgyNavigationBar: UIView {
 		centerLabel()
 		
 		addSubview(titleLabel)
+	}
+	
+	private func configureBottomLine() {
+		let line = UIView()
+		line.frame.size.width = bounds.width
+		line.frame.size.height = 0.5
+		
+		line.frame.origin.y = bounds.height - 0.5
+		
+		line.backgroundColor = ColorgyColor.grayContentTextColor
+		
+		addSubview(line)
 	}
 	
 	private func centerLabel() {

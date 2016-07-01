@@ -12,6 +12,9 @@ final public class MyPageViewController: UIViewController {
 	
 	private var myPageContainerView: MyPageContainerView!
 	private var transitionManager: ColorgyNavigationTransitioningDelegate!
+	
+	// test
+	private var api: ColorgyAPI!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,9 @@ final public class MyPageViewController: UIViewController {
 		view.backgroundColor = ColorgyColor.BackgroundColor
 		
 		transitionManager = ColorgyNavigationTransitioningDelegate()
+		
+		// test
+		api = ColorgyAPI()
     }
 
 }
@@ -47,5 +53,8 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 	
 	public func myPageMoreOptionViewMyActivityTapped() {
 		print(#file, #function, #line)
+		api.getCalendars(nil) { (error, afError) in
+			print(error, afError)
+		}
 	}
 }

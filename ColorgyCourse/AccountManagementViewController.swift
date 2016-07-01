@@ -69,7 +69,7 @@ final public class AccountManagementViewController: UIViewController {
 	
 	private func configureAccountManagementData() {
 		accountManagementData.append(("信箱", "hello@mail.com"))
-		accountManagementData.append(("密碼", "77777777"))
+		accountManagementData.append(("密碼", "777"))
 		accountManagementData.append(("手機", "0912345678"))
 		accountManagementSexData = SettingsSexPickerCell.Sex.Other
 	}
@@ -131,7 +131,7 @@ extension AccountManagementViewController : UITableViewDelegate, UITableViewData
 			cell.titleLabel.text = accountManagementData[indexPath.row].title
 			// check if its password slot
 			if indexPath.row == 1 {
-				cell.contentLabel.text = accountManagementData[indexPath.row].content
+				cell.contentLabel.text = accountManagementData[indexPath.row].content?.dottedString
 			} else {
 				cell.contentLabel.text = accountManagementData[indexPath.row].content
 			}
