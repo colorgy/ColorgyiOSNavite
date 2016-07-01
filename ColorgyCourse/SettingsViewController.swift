@@ -71,13 +71,11 @@ final public class SettingsViewController: UIViewController {
 	}
 	
 	@objc private func gotoNotificationSettings() {
-		print(#function, #line)
 		let notificationSettingsVC = StoryboardViewControllerFetchHelper.MyPage.fetchNotificationSettingsViewController()
 		transit(to: notificationSettingsVC)
 	}
 	
 	@objc private func gotoPrivacySettings() {
-		print(#file, #function, #line)
 		let privacySettingsVC = StoryboardViewControllerFetchHelper.MyPage.fetchPrivacySettingsViewController()
 		transit(to: privacySettingsVC)
 	}
@@ -87,7 +85,19 @@ final public class SettingsViewController: UIViewController {
 	}
 	
 	@objc private func gotoFanPage() {
-		print(#file, #function, #line)
+		print(#function, #line)
+		let alert = UIAlertController(title: "你正準備離開 Colorgy", message: "您現在要前往我們的粉絲專頁！如果喜歡我們的 App，歡迎幫我們打氣按讚喔！", preferredStyle: UIAlertControllerStyle.Alert)
+		let ok = UIAlertAction(title: "好", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
+			if UIApplication.sharedApplication().canOpenURL(NSURL(string: "fb://profile/1529686803975150")!) {
+				UIApplication.sharedApplication().openURL(NSURL(string: "fb://profile/1529686803975150")!)
+			} else {
+				UIApplication.sharedApplication().openURL(NSURL(string: "https://www.facebook.com/1529686803975150")!)
+			}
+		})
+		let cancel = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+		alert.addAction(ok)
+		alert.addAction(cancel)
+		self.presentViewController(alert, animated: true, completion: nil)
 	}
 	
 	@objc private func logout() {

@@ -307,6 +307,16 @@
 		63D22D311D22788100F0C640 /* MyPageMoreOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D2F1D22788100F0C640 /* MyPageMoreOptionView.swift */; };
 		63D22D331D227EB600F0C640 /* NumebrAndUIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D321D227EB600F0C640 /* NumebrAndUIViewExtension.swift */; };
 		63D22D341D227EB600F0C640 /* NumebrAndUIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D22D321D227EB600F0C640 /* NumebrAndUIViewExtension.swift */; };
+		63DC351E1D26052C001443D0 /* AccountManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DC351D1D26052C001443D0 /* AccountManagementViewController.swift */; };
+		63DC351F1D26052C001443D0 /* AccountManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DC351D1D26052C001443D0 /* AccountManagementViewController.swift */; };
+		63DC35221D2606B9001443D0 /* SettingsSexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DC35211D2606B9001443D0 /* SettingsSexCell.xib */; };
+		63DC35231D2606B9001443D0 /* SettingsSexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DC35211D2606B9001443D0 /* SettingsSexCell.xib */; };
+		63DC35251D2606C6001443D0 /* SettingsExpandedSexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DC35241D2606C6001443D0 /* SettingsExpandedSexCell.xib */; };
+		63DC35261D2606C6001443D0 /* SettingsExpandedSexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DC35241D2606C6001443D0 /* SettingsExpandedSexCell.xib */; };
+		63DC35281D2606E0001443D0 /* SettingsSexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DC35271D2606E0001443D0 /* SettingsSexCell.swift */; };
+		63DC35291D2606E0001443D0 /* SettingsSexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DC35271D2606E0001443D0 /* SettingsSexCell.swift */; };
+		63DC352B1D2606EB001443D0 /* SettingsExpandedSexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DC352A1D2606EB001443D0 /* SettingsExpandedSexCell.swift */; };
+		63DC352C1D2606EB001443D0 /* SettingsExpandedSexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DC352A1D2606EB001443D0 /* SettingsExpandedSexCell.swift */; };
 		63E447181D0E5E58005186FD /* EventRepeatSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */; };
 		63E4471A1D0E5E6B005186FD /* EventRepeatSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */; };
 		63E4471C1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */; };
@@ -556,6 +566,11 @@
 		63D22D2C1D226FB000F0C640 /* MyPagePersonalInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPagePersonalInfoView.swift; sourceTree = "<group>"; };
 		63D22D2F1D22788100F0C640 /* MyPageMoreOptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageMoreOptionView.swift; sourceTree = "<group>"; };
 		63D22D321D227EB600F0C640 /* NumebrAndUIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumebrAndUIViewExtension.swift; sourceTree = "<group>"; };
+		63DC351D1D26052C001443D0 /* AccountManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountManagementViewController.swift; sourceTree = "<group>"; };
+		63DC35211D2606B9001443D0 /* SettingsSexCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSexCell.xib; sourceTree = "<group>"; };
+		63DC35241D2606C6001443D0 /* SettingsExpandedSexCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsExpandedSexCell.xib; sourceTree = "<group>"; };
+		63DC35271D2606E0001443D0 /* SettingsSexCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSexCell.swift; sourceTree = "<group>"; };
+		63DC352A1D2606EB001443D0 /* SettingsExpandedSexCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsExpandedSexCell.swift; sourceTree = "<group>"; };
 		63E447171D0E5E58005186FD /* EventRepeatSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingViewController.swift; sourceTree = "<group>"; };
 		63E447191D0E5E6B005186FD /* EventRepeatSettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingViewModel.swift; sourceTree = "<group>"; };
 		63E4471B1D0E6269005186FD /* EventRepeatSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventRepeatSettingTableViewCell.xib; sourceTree = "<group>"; };
@@ -1064,6 +1079,10 @@
 			children = (
 				63B657D01D23BB2C0050A8A4 /* SettingsCell.xib */,
 				63B657D91D23BBDE0050A8A4 /* SettingsCell.swift */,
+				63DC35211D2606B9001443D0 /* SettingsSexCell.xib */,
+				63DC35271D2606E0001443D0 /* SettingsSexCell.swift */,
+				63DC35241D2606C6001443D0 /* SettingsExpandedSexCell.xib */,
+				63DC352A1D2606EB001443D0 /* SettingsExpandedSexCell.swift */,
 				63B657D31D23BB460050A8A4 /* SettingsDisplayContentCell.xib */,
 				63B657DC1D23BCB80050A8A4 /* SettingsDisplayContentCell.swift */,
 				63B657D61D23BB580050A8A4 /* SettingsSwitchCell.xib */,
@@ -1105,12 +1124,21 @@
 				63D22D261D226DA000F0C640 /* MyPage.storyboard */,
 				63B657B61D23A4070050A8A4 /* Friend Container View */,
 				63B657B01D239C9F0050A8A4 /* ClassmatesViewController.swift */,
+				63DC35201D26053B001443D0 /* Account Management */,
 				6306F67C1D24CEE600035AD9 /* Privacy Settings */,
 				6306F6721D24CB5100035AD9 /* Notification Settings */,
 				63B657CF1D23BADF0050A8A4 /* Settings View */,
 				63B657AC1D239C610050A8A4 /* My Page View */,
 			);
 			name = "My Page";
+			sourceTree = "<group>";
+		};
+		63DC35201D26053B001443D0 /* Account Management */ = {
+			isa = PBXGroup;
+			children = (
+				63DC351D1D26052C001443D0 /* AccountManagementViewController.swift */,
+			);
+			name = "Account Management";
 			sourceTree = "<group>";
 		};
 		63E447141D0E5D85005186FD /* Reenter Phone View Controller */ = {
@@ -1283,6 +1311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63B657BB1D23A5AE0050A8A4 /* 2.jpg in Resources */,
+				63DC35221D2606B9001443D0 /* SettingsSexCell.xib in Resources */,
 				6335DC5E1D17C46500B32B8C /* EventManagerNotesCell.xib in Resources */,
 				635479921CB898C100DE8CBC /* LaunchScreen.storyboard in Resources */,
 				63B657C41D23B2050050A8A4 /* 12322956_1099901806710902_7549313410105387854_o.jpg in Resources */,
@@ -1303,6 +1332,7 @@
 				63B657C11D23B1EE0050A8A4 /* 5.jpg in Resources */,
 				6335DC551D17C46500B32B8C /* EventManagerChildEventCell.xib in Resources */,
 				6335DC531D17C46500B32B8C /* EventManagerAddChildEventCell.xib in Resources */,
+				63DC35251D2606C6001443D0 /* SettingsExpandedSexCell.xib in Resources */,
 				6335DC651D17C46500B32B8C /* EventManagerTitleCell.xib in Resources */,
 				63EC77BE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib in Resources */,
 				63B657CA1D23B2310050A8A4 /* 7.jpg in Resources */,
@@ -1342,8 +1372,10 @@
 				631594FF1D20CB8B00431499 /* EventManagerRepeatEndsCell.xib in Resources */,
 				631594F41D20CB8B00431499 /* EventManagerColorCell.xib in Resources */,
 				63B657D21D23BB2C0050A8A4 /* SettingsCell.xib in Resources */,
+				63DC35231D2606B9001443D0 /* SettingsSexCell.xib in Resources */,
 				63B657D81D23BB580050A8A4 /* SettingsSwitchCell.xib in Resources */,
 				6353CE491D193F4700F90A4D /* DLIncomingMessageBubble.xib in Resources */,
+				63DC35261D2606C6001443D0 /* SettingsExpandedSexCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1524,8 +1556,10 @@
 				63B1C34B1CF1EC1200989B5D /* CreateEventViewController.swift in Sources */,
 				6324BF2F1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */,
 				6306F6701D24C9BE00035AD9 /* NotificationSettingsViewModel.swift in Sources */,
+				63DC35281D2606E0001443D0 /* SettingsSexCell.swift in Sources */,
 				6305700E1CBD11EA007D2C9D /* ChatUser.swift in Sources */,
 				6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */,
+				63DC352B1D2606EB001443D0 /* SettingsExpandedSexCell.swift in Sources */,
 				6305701E1CBD2902007D2C9D /* Chatroom.swift in Sources */,
 				635479EE1CB8B02A00DE8CBC /* StringExtension.swift in Sources */,
 				63B657DD1D23BCB80050A8A4 /* SettingsDisplayContentCell.swift in Sources */,
@@ -1564,6 +1598,7 @@
 				63B1C3781CF3EDBF00989B5D /* EmailInputBox.swift in Sources */,
 				635479F11CB8B02A00DE8CBC /* ColorgyLogin.swift in Sources */,
 				63D22D2D1D226FB000F0C640 /* MyPagePersonalInfoView.swift in Sources */,
+				63DC351E1D26052C001443D0 /* AccountManagementViewController.swift in Sources */,
 				63561C4E1CBF9848004AEF6D /* EmailRegisterViewModel.swift in Sources */,
 				63F628B31D07B3BC00F55E38 /* ChooseSchoolViewController.swift in Sources */,
 				635479E91CB8B02A00DE8CBC /* ColorgyAPIUserResult.swift in Sources */,
@@ -1706,6 +1741,7 @@
 				63C3CE3A1CC0C8BC000EE808 /* LoginViewModel.swift in Sources */,
 				6306F66E1D24C02100035AD9 /* NotificationSettingsViewController.swift in Sources */,
 				63C3CE261CC0C8A5000EE808 /* Organization.swift in Sources */,
+				63DC35291D2606E0001443D0 /* SettingsSexCell.swift in Sources */,
 				63C3CE371CC0C8BC000EE808 /* EmailRegisterViewModel.swift in Sources */,
 				631595051D20CBB600431499 /* EventRepeatSettingViewModel.swift in Sources */,
 				6353CE591D193F6B00F90A4D /* ColorgyVersionControl.swift in Sources */,
@@ -1762,11 +1798,13 @@
 				6353CE851D1BBFD500F90A4D /* ChooseSchoolViewModel.swift in Sources */,
 				63B657DE1D23BCB80050A8A4 /* SettingsDisplayContentCell.swift in Sources */,
 				631594DA1D20CB6700431499 /* SearchCourseViewController.swift in Sources */,
+				63DC351F1D26052C001443D0 /* AccountManagementViewController.swift in Sources */,
 				63F3EE7F1CBF49DF0010D059 /* ColorgyAPIMeResult.swift in Sources */,
 				63B657DB1D23BBDE0050A8A4 /* SettingsCell.swift in Sources */,
 				63B1C3591CF2992700989B5D /* UIColorExtension.swift in Sources */,
 				63F3EE921CBF49EE0010D059 /* HistoryChatroom.swift in Sources */,
 				63B657E11D23BE360050A8A4 /* SettingsSwitchCell.swift in Sources */,
+				63DC352C1D2606EB001443D0 /* SettingsExpandedSexCell.swift in Sources */,
 				63F3EE9C1CBF56990010D059 /* TestCourseModel.swift in Sources */,
 				631594E11D20CB6700431499 /* SearchEventBar.swift in Sources */,
 				6353CE821D1B8A1200F90A4D /* PhoneNumberTextField.swift in Sources */,
