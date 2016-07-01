@@ -30,8 +30,8 @@ private struct APIMeResultKeys {
 	static let userUUID = "APIMeResultKeys userUUID"
 	static let userDepartment = "APIMeResultKeys userDepartment"
 	static let userOrganization = "APIMeResultKeys userOrganization"
-	static let userPossibleDepartment = "APIMeResultKeys userPossibleDepartment"
-	static let userPossibleOrganization = "APIMeResultKeys userPossibleOrganization"
+	static let userUnconfirmedDepartment = "APIMeResultKeys userUnconfirmedDepartment"
+	static let userUnconfirmedOrganization = "APIMeResultKeys userUnconfirmedOrganization"
 	static let userEmail = "APIMeResultKeys userEmail"
 	static let userFBEmail = "APIMeResultKeys userFBEmail"
 	static let userMobile = "APIMeResultKeys userMobile"
@@ -110,8 +110,8 @@ final public class ColorgyUserInformation {
 		ud.setObject(result.uuid, forKey: APIMeResultKeys.userUUID)
 		ud.setObject(result.department, forKey: APIMeResultKeys.userDepartment)
 		ud.setObject(result.organization, forKey: APIMeResultKeys.userOrganization)
-		ud.setObject(result.possible_department_code, forKey: APIMeResultKeys.userPossibleDepartment)
-		ud.setObject(result.possible_organization_code, forKey: APIMeResultKeys.userPossibleOrganization)
+		ud.setObject(result.unconfirmed_department_code, forKey: APIMeResultKeys.userUnconfirmedDepartment)
+		ud.setObject(result.unconfirmed_organization_code, forKey: APIMeResultKeys.userUnconfirmedOrganization)
 		ud.setObject(result.email, forKey: APIMeResultKeys.userEmail)
 		ud.setObject(result.fbemail, forKey: APIMeResultKeys.userFBEmail)
 		ud.setObject(result.mobile, forKey: APIMeResultKeys.userMobile)
@@ -130,8 +130,8 @@ final public class ColorgyUserInformation {
 		ud.removeObjectForKey(APIMeResultKeys.userUUID)
 		ud.removeObjectForKey(APIMeResultKeys.userDepartment)
 		ud.removeObjectForKey(APIMeResultKeys.userOrganization)
-		ud.removeObjectForKey(APIMeResultKeys.userPossibleDepartment)
-		ud.removeObjectForKey(APIMeResultKeys.userPossibleOrganization)
+		ud.removeObjectForKey(APIMeResultKeys.userUnconfirmedDepartment)
+		ud.removeObjectForKey(APIMeResultKeys.userUnconfirmedOrganization)
 		ud.removeObjectForKey(APIMeResultKeys.userEmail)
 		ud.removeObjectForKey(APIMeResultKeys.userFBEmail)
 		ud.synchronize()
@@ -252,9 +252,9 @@ final public class ColorgyUserInformation {
 		return ud.objectForKey(APIMeResultKeys.userOrganization) as? String
 	}
 	
-	public var userPossibleOrganization: String? {
+	public var userUnconfirmedOrganization: String? {
 		let ud = NSUserDefaults.standardUserDefaults()
-		return ud.objectForKey(APIMeResultKeys.userPossibleOrganization) as? String
+		return ud.objectForKey(APIMeResultKeys.userUnconfirmedOrganization) as? String
 	}
 	
 	/// Get user's actual organization
@@ -265,8 +265,8 @@ final public class ColorgyUserInformation {
 	public var userActualOrganization: String? {
 		let ud = NSUserDefaults.standardUserDefaults()
 		let organization = ud.objectForKey(APIMeResultKeys.userOrganization) as? String
-		let possibleOrganization = ud.objectForKey(APIMeResultKeys.userPossibleOrganization) as? String
-		return organization ?? possibleOrganization ?? nil
+		let unconfirmedOrganization = ud.objectForKey(APIMeResultKeys.userUnconfirmedOrganization) as? String
+		return organization ?? unconfirmedOrganization ?? nil
 	}
 	
 	public var userName : String? {
