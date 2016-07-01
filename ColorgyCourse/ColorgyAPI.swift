@@ -461,7 +461,16 @@ final public class ColorgyAPI : NSObject {
 	}
 	
 	// MARK: - Enroll Courses
+	
+	/// Get current semester's course list.
 	public func getCoursesList(success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		let semester = Semester.currentSemesterAndYear()
+		getCourseList(of: semester.year, andTerm: semester.term, success: success, failure: failure)
+	}
+	
+	/// Get a semester's course list
+	public func getCourseList(of year: Int, andTerm term: Int, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			handleNetworkUnavailable(failure)
@@ -477,14 +486,23 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoAccessToken(failure)
 				return
 			}
-			let url = "\(self.rootURL)/me/calendars"
+			guard let school = ColorgyUserInformation.sharedInstance().userActualOrganization else {
+				self.handleNoOrganization(failure)
+				return
+			}
+			let url = "\(self.rootURL)/organizations/\(school)/courses"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
 			}
 			
+			let parameters = [
+				"year": year,
+				"term": term
+			]
+			
 			self.setManager(new: accesstoken)
-			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+			self.manager.GET(url, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
 				guard let response = response else {
 					self.handleFailToParseResult(failure)
 					return
@@ -497,6 +515,7 @@ final public class ColorgyAPI : NSObject {
 			})
 		}
 	}
+	
 	
 	// MARK: - Create Courses
 }
