@@ -13,6 +13,8 @@ final public class SettingsViewController: UIViewController {
 	private var navigationBar: ColorgyNavigationBar!
 	private var settingsTableView: UITableView!
 	private var settingsData: [(title: String, selector: Selector)] = []
+	
+	private var transitionManager: ColorgyNavigationTransitioningDelegate!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +71,8 @@ final public class SettingsViewController: UIViewController {
 	}
 	
 	@objc private func gotoNotificationSettings() {
-		print(#file, #function, #line)
+		print(#function, #line)
+		
 	}
 	
 	@objc private func gotoPrivacySettings() {
@@ -86,6 +89,16 @@ final public class SettingsViewController: UIViewController {
 	
 	@objc private func logout() {
 		print(#file, #function, #line)
+	}
+	
+	private func transit(to viewController: UIViewController) {
+		transitionManager = ColorgyNavigationTransitioningDelegate()
+		transitionManager.mainViewController = self
+		transitionManager.presentingViewController = viewController
+		transitionManager.presentingViewController.transitioningDelegate = transitionManager
+		dispatch_async(dispatch_get_main_queue()) { 
+			self.presentViewController(viewController, animated: true, completion: nil)
+		}
 	}
 }
 

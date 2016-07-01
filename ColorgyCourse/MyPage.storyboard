@@ -43,7 +43,7 @@
         <!--Notification Settings View Controller-->
         <scene sceneID="fo3-2s-HRi">
             <objects>
-                <viewController id="Oig-Rd-oVc" customClass="NotificationSettingsViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Notification Settings VC" id="Oig-Rd-oVc" customClass="NotificationSettingsViewController" customModule="ColorgyCourse" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="A0Z-Ea-qx3"/>
                         <viewControllerLayoutGuide type="bottom" id="wZL-FX-HQE"/>

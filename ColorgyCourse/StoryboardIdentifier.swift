@@ -19,5 +19,6 @@ public struct StoryboardIdentifier {
 	
 	public struct MyPageStoryboard {
 		static let settingsView: String = "Settings VC"
+		static let notificationSettingsView: String = "Notification Settings VC"
 	}
 }
