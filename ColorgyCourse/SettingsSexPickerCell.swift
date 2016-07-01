@@ -31,11 +31,7 @@ final public class SettingsSexPickerCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
 		
-		let buttons = [boyButton, girlButton, otherButton]
-		buttons.forEach { (button) in
-			button.tintColor = ColorgyColor.grayContentTextColor
-			button.titleLabel?.font = UIFont.systemFontOfSize(16)
-		}
+		deactiveAllButtons()
 		
 		boyButton.setTitle("男生", forState: UIControlState.Normal)
 		girlButton.setTitle("女生", forState: UIControlState.Normal)
@@ -46,7 +42,18 @@ final public class SettingsSexPickerCell: UITableViewCell {
 		selectionStyle = .None
     }
 	
+	private func deactiveAllButtons() {
+		let buttons = [boyButton, girlButton, otherButton]
+		buttons.forEach { (button) in
+			button.tintColor = ColorgyColor.grayContentTextColor
+			button.titleLabel?.font = UIFont.systemFontOfSize(16)
+		}
+	}
+	
 	public func active(selected sex: Sex) {
+		
+		deactiveAllButtons()
+		
 		switch sex {
 		case .Boy:
 			boyButton.tintColor = ColorgyColor.TextColor

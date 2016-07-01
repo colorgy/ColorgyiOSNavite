@@ -27,9 +27,9 @@ final public class AccountManagementViewController: UIViewController {
 		super.viewDidLoad()
 		
 		// Do any additional setup after loading the view.
-		configureAccountManagementData()
 		configureNavigationBar()
 		configureAccountManagementTableView()
+		configureAccountManagementData()
 		
 		view.backgroundColor = ColorgyColor.BackgroundColor
 	}
@@ -74,14 +74,25 @@ final public class AccountManagementViewController: UIViewController {
 		accountManagementSexData = SettingsSexPickerCell.Sex.Other
 	}
 
+	// MARK: - Reload
 	private func reloadSexPickerRegion() {
 //		accountManagementTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
 		let indexPaths = [NSIndexPath(forRow: 4, inSection: 0)]
 		if needToPickSex {
-			accountManagementTableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Fade)
+			if accountManagementTableView.numberOfRowsInSection(0) == accountManagementData.count + 1 {
+				accountManagementTableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Fade)
+			}
 		} else {
-			accountManagementTableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Fade)
+			if accountManagementTableView.numberOfRowsInSection(0) == accountManagementData.count + 2 {
+				accountManagementTableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Fade)
+			}
 		}
+	}
+	
+	// MARK: - Update UI
+	private func updateSexText() {
+		let cell = accountManagementTableView.cellForRowAtIndexPath(NSIndexPath(forRow: accountManagementData.count, inSection: 0)) as! SettingsSexCell
+		cell.contentLabel.text = accountManagementSexData.rawValue
 	}
 }
 
@@ -136,6 +147,8 @@ extension AccountManagementViewController : UITableViewDelegate, UITableViewData
 
 extension AccountManagementViewController : SettingsSexPickerCellDelegate {
 	public func settingsSexPickerCell(didSelect sex: SettingsSexPickerCell.Sex) {
+		accountManagementSexData = sex
+		updateSexText()
 		needToPickSex = false
 	}
 }
