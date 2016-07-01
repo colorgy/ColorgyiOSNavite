@@ -86,7 +86,7 @@ extension EmailLoginViewController : EmailLoginViewModelDelegate {
 			dispatch_async(dispatch_get_main_queue(), { 
 				self.presentViewController(phoneValidationVC, animated: true, completion: nil)
 			})
-		} else if ColorgyUserInformation.sharedInstance().userPossibleOrganization == nil {
+		} else if ColorgyUserInformation.sharedInstance().userUnconfirmedOrganization == nil {
 			// need to choose school
 			let chooseSchoolVC = StoryboardViewControllerFetchHelper.Main.fetchChooseSchooolViewController()
 			dispatch_async(dispatch_get_main_queue(), {
