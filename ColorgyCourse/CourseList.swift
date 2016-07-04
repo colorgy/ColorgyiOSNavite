@@ -42,6 +42,12 @@ final public class CourseList {
 	}
 }
 
+extension CourseList : CustomStringConvertible {
+	public var description: String {
+		return courseList.description
+	}
+}
+
 extension CourseList {
 	public func saveListToRealm(complete: ((succeed: Bool) -> Void)?) {
 		do {

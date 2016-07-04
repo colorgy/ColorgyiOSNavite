@@ -80,9 +80,9 @@ extension Subevent : CustomStringConvertible {
 }
 
 extension Subevent {
-	public class func generateSubevents(with json: JSON) -> [Subevent] {
+	public class func generateSubevents(with json: JSON?) -> [Subevent] {
 		var subevents = [Subevent]()
-		guard json.isArray else { return subevents }
+		guard let json = json where json.isArray else { return subevents }
 		for (_, json) : (String, JSON) in json {
 			if let subevent = Subevent(json: json) {
 				subevents.append(subevent)

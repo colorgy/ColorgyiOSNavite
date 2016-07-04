@@ -81,8 +81,30 @@ final public class Course {
 		
 	}
 	
+	public convenience init?(withRealmObject object: CourseRealmObject) {
+		self.init(
+			id: object.id,
+			name: object.name,
+			uuid: object.uuid,
+			rrule: object.rrule,
+			dtStart: object.dtStart,
+			dtEnd: object.dtEnd,
+			detailDescription: object.detailDescription,
+			referenceId: object.referenceId,
+			createdAt: object.createdAt,
+			updatedAt: object.updatedAt,
+			courseCredits: object.courseCredits,
+			courseLecturer: object.courseLecturer,
+			courseURL: object.courseURL,
+			courseCode: object.courseCode,
+			courseRequired: object.courseRequired,
+			courseTerm: object.courseTerm,
+			courseYear: object.courseYear,
+			subcourses: nil)
+	}
+	
 	/// Init with contents
-	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?, subcourses: JSON) {
+	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?, subcourses: JSON?) {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }
@@ -117,7 +139,7 @@ final public class Course {
 		self.courseTerm = courseTerm
 		self.courseYear = courseYear
 		
-		self.subcourses = Subcourse.generateSubevents(with: subcourses)
+		self.subcourses = Subcourse.generateSubcourses(with: subcourses)
 	}
 }
 
@@ -138,6 +160,16 @@ extension Course {
 		}
 		return courses
 	}
+	
+	public class func generateCourses(withRealmObjects objects: [CourseRealmObject]) -> [Course] {
+		var courses = [Course]()
+		for object in objects {
+			if let course = Course(withRealmObject: object) {
+				courses.append(course)
+			}
+		}
+		return courses
+	}
 }
 
 extension Course {
@@ -146,7 +178,7 @@ extension Course {
 			let realm = try Realm()
 			realm.beginWrite()
 			// start writing to realm
-			let courseRealmObject = CourseRealmObject(withCourse: course)
+			let courseRealmObject = CourseRealmObject(withCourse: self)
 			realm.add(courseRealmObject)
 			// commit write
 			try realm.commitWrite()
@@ -155,5 +187,9 @@ extension Course {
 		} catch {
 			complete?(succeed: false)
 		}
+	}
+	
+	public class func tranfromFrom(courseRealmObject: CourseRealmObject) {
+		
 	}
 }

@@ -117,9 +117,9 @@ extension Subcourse : CustomStringConvertible {
 }
 
 extension Subcourse {
-	public class func generateSubevents(with json: JSON) -> [Subcourse] {
+	public class func generateSubcourses(with json: JSON?) -> [Subcourse] {
 		var subcourses = [Subcourse]()
-		guard json.isArray else { return subcourses }
+		guard let json = json where json.isArray else { return subcourses }
 		for (_, json) : (String, JSON) in json {
 			if let subcourse = Subcourse(json: json) {
 				subcourses.append(subcourse)

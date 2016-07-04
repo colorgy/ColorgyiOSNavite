@@ -49,6 +49,8 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 	
 	public func myPageMoreOptionViewGreetingsTapped() {
 		print(#file, #function, #line)
+		let list = CourseRealmObject.getCourseList()
+		print(list)
 	}
 	
 	public func myPageMoreOptionViewMyActivityTapped() {
@@ -56,7 +58,13 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 		api.me(success: nil, failure: nil)
 		
 		api.getCoursesList(of: 2015, andTerm: 1, success: { (courseList) in
-			print(courseList.count)
+			courseList.saveListToRealm({ (succeed) in
+				if succeed {
+					print(CourseRealmObject.getCourseList())
+				} else {
+					print("fail")
+				}
+			})
 			}) { (error, afError) in
 				print(error, afError)
 		}

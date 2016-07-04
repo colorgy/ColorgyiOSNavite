@@ -33,7 +33,8 @@ final public class CourseRealmObject: Object {
 	let subcourses = List<SubcourseRealmObject>()
 	
 	// MARK: - Init
-	public init(withCourse: Course) {
+	public convenience init(withCourse course: Course) {
+		self.init()
 		self.id = course.id
 		self.name = course.name
 		self.uuid = course.uuid
@@ -51,5 +52,27 @@ final public class CourseRealmObject: Object {
 		self.courseRequired = course.courseRequired
 		self.courseTerm = course.courseTerm
 		self.courseYear = course.courseYear
+	}
+	
+}
+
+extension CourseRealmObject {
+	public class func getCourseList() -> CourseList? {
+		do {
+			let realm = try Realm()
+			// get courses store in realm
+			// cause its Results, so we need to map it and turn it into sequence type
+			let courseObjects = realm.objects(CourseRealmObject.self).map { $0 }
+			// init a list
+			let courseList = CourseList()
+			// tranform into Course
+			let courses = Course.generateCourses(withRealmObjects: courseObjects)
+			// add to list
+			courseList.add(courses)
+			// return list
+			return courseList
+		} catch {
+			return nil
+		}
 	}
 }
