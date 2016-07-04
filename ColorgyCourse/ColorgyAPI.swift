@@ -512,14 +512,14 @@ final public class ColorgyAPI : NSObject {
 	// MARK: - Enroll Courses
 	
 	/// Get current semester's course list.
-	public func getCoursesList(success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func getCoursesList(success: ((courses: [Course]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		let semester = Semester.currentSemesterAndYear()
 		getCoursesList(of: semester.year, andTerm: semester.term, success: success, failure: failure)
 	}
 	
 	/// Get a semester's course list
-	public func getCoursesList(of year: Int, andTerm term: Int, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func getCoursesList(of year: Int, andTerm term: Int, success: ((courses: [Course]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			handleNetworkUnavailable(failure)
@@ -567,7 +567,7 @@ final public class ColorgyAPI : NSObject {
 	}
 	
 	/// Download the courses content of given url, will transform into objects.
-	public func courses(contentOf url: String?, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func courses(contentOf url: String?, success: ((courses: [Course]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			handleNetworkUnavailable(failure)
@@ -581,16 +581,9 @@ final public class ColorgyAPI : NSObject {
 		qosBlock { 
 			if let coursesData = NSData(contentsOfURL: url.url!) {
 				let json = JSON(data: coursesData)
-				let now = NSDate()
 				let courses = Course.generateCourses(with: json)
-				print("takes \(NSDate().timeIntervalSinceDate(now)) to generate")
-				print(courses.first)
-				let now2 = NSDate()
-				let events = Event.generateEvents(with: json)
-				print("takes \(NSDate().timeIntervalSinceDate(now2)) to generate")
-				print(events.first)
 				self.mainBlock({ 
-					success?()
+					success?(courses: courses)
 				})
 			} else {
 				self.handleFailToDownloadContent(failure)
