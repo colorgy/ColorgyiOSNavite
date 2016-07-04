@@ -72,3 +72,22 @@ final public class Subevent {
 	}
 	
 }
+
+extension Subevent : CustomStringConvertible {
+	public var description: String {
+		return "Subevent: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tdtStart: \(dtStart)\n\tdtEnd: \(dtEnd)\n\tdetailDescription: \(detailDescription)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n}"
+	}
+}
+
+extension Subevent {
+	public class func generateSubevents(with json: JSON) -> [Subevent] {
+		var subevents = [Subevent]()
+		guard json.isArray else { return subevents }
+		for (_, json) : (String, JSON) in json {
+			if let subevent = Subevent(json: json) {
+				subevents.append(subevent)
+			}
+		}
+		return subevents
+	}
+}

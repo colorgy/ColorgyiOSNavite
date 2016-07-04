@@ -22,6 +22,8 @@ final public class Event {
 	public private(set) var createdAt: String
 	public private(set) var updatedAt: String?
 	
+	public private(set) var subevents: [Subevent]
+	
 	// MARK: - Keys
 	struct Keys {
 		static let id = "id"
@@ -34,6 +36,7 @@ final public class Event {
 		static let referenceId = "reference_id"
 		static let createdAt = "created_at"
 		static let updatedAt = "updated_at"
+		static let subevents = "sub_events"
 	}
 	
 	// MARK: - Init
@@ -50,11 +53,12 @@ final public class Event {
 			detailDescription: json[Keys.detailDescription].string,
 			referenceId: json[Keys.referenceId].string,
 			createdAt: json[Keys.createdAt].string,
-			updatedAt: json[Keys.updatedAt].string)
+			updatedAt: json[Keys.updatedAt].string,
+			subevents: json[Keys.subevents])
 	}
 	
 	/// Init with contents
-	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?) {
+	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, subevents: JSON) {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }
@@ -73,12 +77,14 @@ final public class Event {
 		self.referenceId = referenceId
 		self.createdAt = createdAt
 		self.updatedAt = updatedAt
+		
+		self.subevents = Subevent.generateSubevents(with: subevents)
 	}
 }
 
 extension Event : CustomStringConvertible {
 	public var description: String {
-		return "Event: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tdtStart: \(dtStart)\n\tdtEnd: \(dtEnd)\n\tdetailDescription: \(detailDescription)\n\treferenceId: \(referenceId)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n}"
+		return "Event: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tdtStart: \(dtStart)\n\tdtEnd: \(dtEnd)\n\tdetailDescription: \(detailDescription)\n\treferenceId: \(referenceId)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n\n\tsubevents: \(subevents)}"
 	}
 }
 

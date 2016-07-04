@@ -109,3 +109,22 @@ final public class Subcourse {
 		self.courseYear = courseYear
 	}
 }
+
+extension Subcourse : CustomStringConvertible {
+	public var description: String {
+		return "Subcourse: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tdtStart: \(dtStart)\n\tdtEnd: \(dtEnd)\n\tdetailDescription: \(detailDescription)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n}"
+	}
+}
+
+extension Subcourse {
+	public class func generateSubevents(with json: JSON) -> [Subcourse] {
+		var subcourses = [Subcourse]()
+		guard json.isArray else { return subcourses }
+		for (_, json) : (String, JSON) in json {
+			if let subcourse = Subcourse(json: json) {
+				subcourses.append(subcourse)
+			}
+		}
+		return subcourses
+	}
+}

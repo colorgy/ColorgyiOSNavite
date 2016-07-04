@@ -30,6 +30,8 @@ final public class Course {
 	public private(set) var courseTerm: Int
 	public private(set) var courseYear: Int
 	
+	public private(set) var subcourses: [Subcourse]
+	
 	// MARK: - Keys
 	struct Keys {
 		static let id = "id"
@@ -49,6 +51,7 @@ final public class Course {
 		static let courseRequired = "course_required"
 		static let courseTerm = "course_term"
 		static let courseYear = "course_year"
+		static let subcourses = "sub_courses"
 	}
 	
 	// MARK: - Init
@@ -72,12 +75,13 @@ final public class Course {
 			courseCode: json[Keys.courseCode].string,
 			courseRequired: json[Keys.courseRequired].bool,
 			courseTerm: json[Keys.courseTerm].int,
-			courseYear: json[Keys.courseYear].int)
+			courseYear: json[Keys.courseYear].int,
+			subcourses: json[Keys.subcourses])
 		
 	}
 	
 	/// Init with contents
-	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?) {
+	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?, subcourses: JSON) {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }
@@ -111,12 +115,14 @@ final public class Course {
 		self.courseRequired = courseRequired
 		self.courseTerm = courseTerm
 		self.courseYear = courseYear
+		
+		self.subcourses = Subcourse.generateSubevents(with: subcourses)
 	}
 }
 
 extension Course : CustomStringConvertible {
 	public var description: String {
-		return "Course: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tdtStart: \(dtStart)\n\tdtEnd: \(dtEnd)\n\tdetailDescription: \(detailDescription)\n\treferenceId: \(referenceId)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n\tcourseCredits: \(courseCredits)\n\tcourseLecturer: \(courseLecturer)\n\tcourseURL: \(courseURL)\n\tcourseCode: \(courseCode)\n\tcourseRequired: \(courseRequired)\n\tcourseTerm: \(courseTerm)\n\tcourseYear: \(courseYear)\n}"
+		return "Course: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tdtStart: \(dtStart)\n\tdtEnd: \(dtEnd)\n\tdetailDescription: \(detailDescription)\n\treferenceId: \(referenceId)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n\tcourseCredits: \(courseCredits)\n\tcourseLecturer: \(courseLecturer)\n\tcourseURL: \(courseURL)\n\tcourseCode: \(courseCode)\n\tcourseRequired: \(courseRequired)\n\tcourseTerm: \(courseTerm)\n\tcourseYear: \(courseYear)\n\tsubcourses: \(subcourses)\n}"
 	}
 }
 
