@@ -55,8 +55,8 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 		print(#file, #function, #line)
 		api.me(success: nil, failure: nil)
 		
-		api.getCoursesList(of: 2015, andTerm: 1, success: { (courses) in
-			print(courses.count)
+		api.getCoursesList(of: 2015, andTerm: 1, success: { (courseList) in
+			print(courseList.count)
 			}) { (error, afError) in
 				print(error, afError)
 		}
