@@ -15,8 +15,8 @@ final public class Event: CustomStringConvertible {
 	public private(set) var name: String
 	public private(set) var uuid: String
 	public private(set) var rrule: String?
-	public private(set) var dtStart: String?
-	public private(set) var dtEnd: String?
+	public private(set) var dtStart: String
+	public private(set) var dtEnd: String
 	public private(set) var detailDescription: String?
 	public private(set) var referenceId: String?
 	public private(set) var createdAt: String
@@ -62,6 +62,8 @@ final public class Event: CustomStringConvertible {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }
+		guard let dtStart = dtStart else { return nil }
+		guard let dtEnd = dtEnd else { return nil }
 		guard let uuid = uuid else { return nil }
 		guard let createdAt = createdAt else { return nil }
 		
