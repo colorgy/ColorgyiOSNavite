@@ -1,5 +1,5 @@
 //
-//  SubeventRealmObject.swift
+//  SubcourseRealmObject.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/7/4.
@@ -9,8 +9,8 @@
 import Foundation
 import RealmSwift
 
-final public class SubeventRealmObject: Object {
-    
+final public class SubcourseRealmObject: Object {
+	
 	dynamic var id: String = ""
 	dynamic var name: String = ""
 	dynamic var uuid: String =  ""
@@ -20,5 +20,13 @@ final public class SubeventRealmObject: Object {
 	dynamic var dtEnd: String = ""
 	dynamic var createdAt: String = ""
 	dynamic var updatedAt: String?
+	
+	dynamic var courseCredits: Int = 0
+	dynamic var courseLecturer: String = ""
+	dynamic var courseURL: String = ""
+	dynamic var courseCode: String = ""
+	dynamic var courseRequired: Bool = false
+	dynamic var courseTerm: Int = 0
+	dynamic var courseYear: Int = 0
 	
 }

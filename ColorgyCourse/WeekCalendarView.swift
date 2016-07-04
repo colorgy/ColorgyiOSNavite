@@ -173,18 +173,7 @@ final public class WeekCalendarView: UIView {
 	}
 
 	private func updateEvents() {
-		events.forEach { (event) in
-			print(event)
-			let cell = UIView()
-			// TODO: check starts and ends time
-			cell.frame.size.height = pointOnWeekViewOfDate(event.ends) - pointOnWeekViewOfDate(event.starts)
-			cell.frame.size.width = itemSize
-			cell.frame.origin.y = pointOnWeekViewOfDate(event.starts)
-			cell.frame.origin.x = pointOfX(event.starts).CGFloatValue * itemSize
-			cell.backgroundColor = UIColor.blueColor()
-			cell.layer.cornerRadius = 2.0
-			weekContentView.addSubview(cell)
-		}
+		print(#file, #function, "need implement")
 	}
 	
 	private func pointOfX(date: NSDate) -> Int {

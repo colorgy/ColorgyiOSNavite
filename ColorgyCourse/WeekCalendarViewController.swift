@@ -19,8 +19,7 @@ final public class WeekCalendarViewController: UIViewController {
 		v.days = [29,30,31,1,2,3,4]
 		
 		
-		let e = Event(title: "yo", location: "yo", starts: NSDate(), ends: NSDate(timeInterval: 111000, sinceDate: NSDate()), repeats: true, color: UIColor.whiteColor(), alertTime: nil, notes: "hiii")
-		v.events = [e]
+
     }
 	public override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)

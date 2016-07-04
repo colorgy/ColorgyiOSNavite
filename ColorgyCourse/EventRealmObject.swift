@@ -9,10 +9,11 @@
 import Foundation
 import RealmSwift
 
-public class EventRealmObject: Object {
+final public class EventRealmObject: Object {
 	
 	dynamic var id: String = ""
 	dynamic var name: String = ""
+	dynamic var uuid: String =  ""
 	dynamic var rrule: String?
 	dynamic var dtStart: String = ""
 	dynamic var dtEnd: String = ""
@@ -20,5 +21,7 @@ public class EventRealmObject: Object {
 	dynamic var referenceId: String?
 	dynamic var createdAt: String = ""
 	dynamic var updatedAt: String?
+	
+	let subevents = List<SubeventRealmObject>()
 	
 }
