@@ -188,6 +188,8 @@
 		6362621F1D2A10D300C16625 /* EventRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6362621E1D2A10D300C16625 /* EventRealmObject.swift */; };
 		636262201D2A10D300C16625 /* EventRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6362621E1D2A10D300C16625 /* EventRealmObject.swift */; };
 		636262211D2A10D800C16625 /* CourseRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6362621C1D2A0EEB00C16625 /* CourseRealmObject.swift */; };
+		636262231D2A11BF00C16625 /* SubeventRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636262221D2A11BF00C16625 /* SubeventRealmObject.swift */; };
+		636262241D2A11BF00C16625 /* SubeventRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636262221D2A11BF00C16625 /* SubeventRealmObject.swift */; };
 		636634E21D2117A90063E43C /* DLCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631595061D20ED3300431499 /* DLCalendarView.swift */; };
 		636634E31D2117AC0063E43C /* DLCalendarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631595071D20ED3300431499 /* DLCalendarViewCell.swift */; };
 		636634E41D2117AE0063E43C /* MonthCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315950A1D20EDA900431499 /* MonthCalendarViewController.swift */; };
@@ -497,6 +499,7 @@
 		63561C4D1CBF9848004AEF6D /* EmailRegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailRegisterViewModel.swift; sourceTree = "<group>"; };
 		6362621C1D2A0EEB00C16625 /* CourseRealmObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseRealmObject.swift; sourceTree = "<group>"; };
 		6362621E1D2A10D300C16625 /* EventRealmObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRealmObject.swift; sourceTree = "<group>"; };
+		636262221D2A11BF00C16625 /* SubeventRealmObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubeventRealmObject.swift; sourceTree = "<group>"; };
 		63700E311D18DF1F00DD76F8 /* ColorgyConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyConfig.swift; sourceTree = "<group>"; };
 		6373055B1CBF72190016A7FC /* TestPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPeriod.swift; sourceTree = "<group>"; };
 		6373055F1CBF823B0016A7FC /* EmailRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailRegisterViewController.swift; sourceTree = "<group>"; };
@@ -710,6 +713,7 @@
 			children = (
 				6362621C1D2A0EEB00C16625 /* CourseRealmObject.swift */,
 				6362621E1D2A10D300C16625 /* EventRealmObject.swift */,
+				636262221D2A11BF00C16625 /* SubeventRealmObject.swift */,
 			);
 			name = "Realm Object";
 			sourceTree = "<group>";
@@ -1539,6 +1543,7 @@
 				635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */,
 				63B657AA1D2391310050A8A4 /* MyPageContainerView.swift in Sources */,
 				63B1C3831CF42D9600989B5D /* PhoneInputBox.swift in Sources */,
+				636262231D2A11BF00C16625 /* SubeventRealmObject.swift in Sources */,
 				6335DC5B1D17C46500B32B8C /* EventManagerContext.swift in Sources */,
 				635479EC1CB8B02A00DE8CBC /* CourseRawDataObject.swift in Sources */,
 				6335DC641D17C46500B32B8C /* EventManagerTitleCell.swift in Sources */,
@@ -1801,6 +1806,7 @@
 				63F3EE921CBF49EE0010D059 /* HistoryChatroom.swift in Sources */,
 				63B657E11D23BE360050A8A4 /* SettingsSwitchCell.swift in Sources */,
 				63DC352C1D2606EB001443D0 /* SettingsSexPickerCell.swift in Sources */,
+				636262241D2A11BF00C16625 /* SubeventRealmObject.swift in Sources */,
 				63F3EE9C1CBF56990010D059 /* TestCourseModel.swift in Sources */,
 				631594E11D20CB6700431499 /* SearchEventBar.swift in Sources */,
 				6353CE821D1B8A1200F90A4D /* PhoneNumberTextField.swift in Sources */,
