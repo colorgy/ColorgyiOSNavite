@@ -73,6 +73,26 @@ final public class Subcourse {
 		
 	}
 	
+	public convenience init?(withRealmObject object: SubcourseRealmObject) {
+		self.init(
+			id: object.id,
+			name: object.name,
+			uuid: object.uuid,
+			rrule: object.rrule,
+			dtStart: object.dtStart,
+			dtEnd: object.dtEnd,
+			detailDescription: object.detailDescription,
+			createdAt: object.createdAt,
+			updatedAt: object.updatedAt,
+			courseCredits: object.courseCredits,
+			courseLecturer: object.courseLecturer,
+			courseURL: object.courseURL,
+			courseCode: object.courseCode,
+			courseRequired: object.courseRequired,
+			courseTerm: object.courseTerm,
+			courseYear: object.courseYear)
+	}
+	
 	/// Init with contents
 	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?) {
 		
@@ -122,6 +142,16 @@ extension Subcourse {
 		guard let json = json where json.isArray else { return subcourses }
 		for (_, json) : (String, JSON) in json {
 			if let subcourse = Subcourse(json: json) {
+				subcourses.append(subcourse)
+			}
+		}
+		return subcourses
+	}
+	
+	public class func generateSubcourses(withRealmObjects objects: [SubcourseRealmObject]) -> [Subcourse] {
+		var subcourses = [Subcourse]()
+		for object in objects {
+			if let subcourse = Subcourse(withRealmObject: object) {
 				subcourses.append(subcourse)
 			}
 		}

@@ -29,4 +29,35 @@ final public class SubcourseRealmObject: Object {
 	dynamic var courseTerm: Int = 0
 	dynamic var courseYear: Int = 0
 	
+	// MARK: - Init
+	public convenience init(withSubcourse subcourse: Subcourse) {
+		self.init()
+		self.id = subcourse.id
+		self.name = subcourse.name
+		self.uuid = subcourse.uuid
+		self.rrule = subcourse.rrule
+		self.dtStart = subcourse.dtStart
+		self.dtEnd = subcourse.dtEnd
+		self.detailDescription = subcourse.detailDescription
+		self.createdAt = subcourse.createdAt
+		self.updatedAt = subcourse.updatedAt
+		self.courseCredits = subcourse.courseCredits
+		self.courseLecturer = subcourse.courseLecturer
+		self.courseURL = subcourse.courseURL
+		self.courseCode = subcourse.courseCode
+		self.courseRequired = subcourse.courseRequired
+		self.courseTerm = subcourse.courseTerm
+		self.courseYear = subcourse.courseYear
+	}
+}
+
+extension SubcourseRealmObject {
+	public class func generate(withSubcourses subcourses: [Subcourse]) -> [SubcourseRealmObject] {
+		var objects = [SubcourseRealmObject]()
+		for subcourse in subcourses {
+			let object = SubcourseRealmObject(withSubcourse: subcourse)
+			objects.append(object)
+		}
+		return objects
+	}
 }

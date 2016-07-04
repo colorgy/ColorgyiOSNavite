@@ -30,7 +30,7 @@ final public class CourseRealmObject: Object {
 	dynamic var courseTerm: Int = 0
 	dynamic var courseYear: Int = 0
 	
-	let subcourses = List<SubcourseRealmObject>()
+	var subcourses = List<SubcourseRealmObject>()
 	
 	// MARK: - Init
 	public convenience init(withCourse course: Course) {
@@ -52,6 +52,9 @@ final public class CourseRealmObject: Object {
 		self.courseRequired = course.courseRequired
 		self.courseTerm = course.courseTerm
 		self.courseYear = course.courseYear
+		
+		let subcourseObjects = SubcourseRealmObject.generate(withSubcourses: course.subcourses)
+		self.subcourses.appendContentsOf(subcourseObjects)
 	}
 	
 }

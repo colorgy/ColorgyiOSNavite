@@ -59,6 +59,9 @@ final public class Course {
 	
 	/// Init with json
 	public convenience init?(json: JSON) {
+		
+		let subcourses = Subcourse.generateSubcourses(with: json[Keys.subcourses])
+		
 		self.init(
 			id: json[Keys.id].string,
 			name: json[Keys.name].string,
@@ -77,11 +80,16 @@ final public class Course {
 			courseRequired: json[Keys.courseRequired].bool,
 			courseTerm: json[Keys.courseTerm].int,
 			courseYear: json[Keys.courseYear].int,
-			subcourses: json[Keys.subcourses])
+			subcourses: subcourses)
 		
 	}
 	
 	public convenience init?(withRealmObject object: CourseRealmObject) {
+		
+		// object -> Course -> subcourse
+		let subcourseObjects = object.subcourses.map { $0 }
+		let subcourses = Subcourse.generateSubcourses(withRealmObjects: subcourseObjects)
+		
 		self.init(
 			id: object.id,
 			name: object.name,
@@ -100,11 +108,11 @@ final public class Course {
 			courseRequired: object.courseRequired,
 			courseTerm: object.courseTerm,
 			courseYear: object.courseYear,
-			subcourses: nil)
+			subcourses: subcourses)
 	}
 	
 	/// Init with contents
-	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?, subcourses: JSON?) {
+	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?, subcourses: [Subcourse]) {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }
@@ -139,7 +147,8 @@ final public class Course {
 		self.courseTerm = courseTerm
 		self.courseYear = courseYear
 		
-		self.subcourses = Subcourse.generateSubcourses(with: subcourses)
+		self.subcourses = subcourses
+		
 	}
 }
 
@@ -187,9 +196,5 @@ extension Course {
 		} catch {
 			complete?(succeed: false)
 		}
-	}
-	
-	public class func tranfromFrom(courseRealmObject: CourseRealmObject) {
-		
 	}
 }
