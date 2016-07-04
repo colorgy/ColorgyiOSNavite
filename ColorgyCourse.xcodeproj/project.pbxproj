@@ -184,6 +184,10 @@
 		635479F31CB8B02A00DE8CBC /* ColorgyLoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */; };
 		63561C4C1CBF937F004AEF6D /* ColorgyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */; };
 		63561C4E1CBF9848004AEF6D /* EmailRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63561C4D1CBF9848004AEF6D /* EmailRegisterViewModel.swift */; };
+		6362621D1D2A0EEB00C16625 /* CourseRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6362621C1D2A0EEB00C16625 /* CourseRealmObject.swift */; };
+		6362621F1D2A10D300C16625 /* EventRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6362621E1D2A10D300C16625 /* EventRealmObject.swift */; };
+		636262201D2A10D300C16625 /* EventRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6362621E1D2A10D300C16625 /* EventRealmObject.swift */; };
+		636262211D2A10D800C16625 /* CourseRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6362621C1D2A0EEB00C16625 /* CourseRealmObject.swift */; };
 		636634E21D2117A90063E43C /* DLCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631595061D20ED3300431499 /* DLCalendarView.swift */; };
 		636634E31D2117AC0063E43C /* DLCalendarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631595071D20ED3300431499 /* DLCalendarViewCell.swift */; };
 		636634E41D2117AE0063E43C /* MonthCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315950A1D20EDA900431499 /* MonthCalendarViewController.swift */; };
@@ -491,6 +495,8 @@
 		635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyLoginResult.swift; sourceTree = "<group>"; };
 		63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyColor.swift; sourceTree = "<group>"; };
 		63561C4D1CBF9848004AEF6D /* EmailRegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailRegisterViewModel.swift; sourceTree = "<group>"; };
+		6362621C1D2A0EEB00C16625 /* CourseRealmObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseRealmObject.swift; sourceTree = "<group>"; };
+		6362621E1D2A10D300C16625 /* EventRealmObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRealmObject.swift; sourceTree = "<group>"; };
 		63700E311D18DF1F00DD76F8 /* ColorgyConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyConfig.swift; sourceTree = "<group>"; };
 		6373055B1CBF72190016A7FC /* TestPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPeriod.swift; sourceTree = "<group>"; };
 		6373055F1CBF823B0016A7FC /* EmailRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailRegisterViewController.swift; sourceTree = "<group>"; };
@@ -702,6 +708,8 @@
 		630570221CBD2D97007D2C9D /* Realm Object */ = {
 			isa = PBXGroup;
 			children = (
+				6362621C1D2A0EEB00C16625 /* CourseRealmObject.swift */,
+				6362621E1D2A10D300C16625 /* EventRealmObject.swift */,
 			);
 			name = "Realm Object";
 			sourceTree = "<group>";
@@ -1645,6 +1653,7 @@
 				63EC77C31CC87595008025A7 /* ChatRoomViewController.swift in Sources */,
 				6335DC581D17C46500B32B8C /* EventManagerColorCellDelegate.swift in Sources */,
 				63C3CE201CC0C76F000EE808 /* ColorgyAppNotification.swift in Sources */,
+				6362621F1D2A10D300C16625 /* EventRealmObject.swift in Sources */,
 				635479F21CB8B02A00DE8CBC /* AFError.swift in Sources */,
 				63EC77C11CC8743D008025A7 /* TextInputView.swift in Sources */,
 				63EC77BF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift in Sources */,
@@ -1664,6 +1673,7 @@
 				63F628B51D07B40A00F55E38 /* ChooseSchoolViewModel.swift in Sources */,
 				63EC77B21CC8743D008025A7 /* ATrickyView.swift in Sources */,
 				63561C4C1CBF937F004AEF6D /* ColorgyColor.swift in Sources */,
+				6362621D1D2A0EEB00C16625 /* CourseRealmObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1778,6 +1788,7 @@
 				63B1C37E1CF4244400989B5D /* PasswordInputBox.swift in Sources */,
 				637B8F271D192D7B00348CF4 /* StoryboardIdentifier.swift in Sources */,
 				631594E51D20CB6700431499 /* FriendListViewController.swift in Sources */,
+				636262211D2A10D800C16625 /* CourseRealmObject.swift in Sources */,
 				63700E331D18DFE400DD76F8 /* ColorgyConfig.swift in Sources */,
 				6353CE851D1BBFD500F90A4D /* ChooseSchoolViewModel.swift in Sources */,
 				63B657DE1D23BCB80050A8A4 /* SettingsDisplayContentCell.swift in Sources */,
@@ -1786,6 +1797,7 @@
 				63F3EE7F1CBF49DF0010D059 /* ColorgyAPIMeResult.swift in Sources */,
 				63B657DB1D23BBDE0050A8A4 /* SettingsCell.swift in Sources */,
 				63B1C3591CF2992700989B5D /* UIColorExtension.swift in Sources */,
+				636262201D2A10D300C16625 /* EventRealmObject.swift in Sources */,
 				63F3EE921CBF49EE0010D059 /* HistoryChatroom.swift in Sources */,
 				63B657E11D23BE360050A8A4 /* SettingsSwitchCell.swift in Sources */,
 				63DC352C1D2606EB001443D0 /* SettingsSexPickerCell.swift in Sources */,

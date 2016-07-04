@@ -581,7 +581,7 @@ final public class ColorgyAPI : NSObject {
 		qosBlock { 
 			if let coursesData = NSData(contentsOfURL: url.url!) {
 				let json = JSON(data: coursesData)
-				print(json.count)
+				print(json.first)
 				self.mainBlock({ 
 					success?()
 				})
