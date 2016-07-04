@@ -581,7 +581,14 @@ final public class ColorgyAPI : NSObject {
 		qosBlock { 
 			if let coursesData = NSData(contentsOfURL: url.url!) {
 				let json = JSON(data: coursesData)
-				print(json.first)
+				let now = NSDate()
+				let courses = Course.generateCourses(with: json)
+				print("takes \(NSDate().timeIntervalSinceDate(now)) to generate")
+				print(courses.first)
+				let now2 = NSDate()
+				let events = Event.generateEvents(with: json)
+				print("takes \(NSDate().timeIntervalSinceDate(now2)) to generate")
+				print(events.first)
 				self.mainBlock({ 
 					success?()
 				})

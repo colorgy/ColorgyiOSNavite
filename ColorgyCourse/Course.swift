@@ -113,3 +113,22 @@ final public class Course {
 		self.courseYear = courseYear
 	}
 }
+
+extension Course : CustomStringConvertible {
+	public var description: String {
+		return "Course: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tdtStart: \(dtStart)\n\tdtEnd: \(dtEnd)\n\tdetailDescription: \(detailDescription)\n\treferenceId: \(referenceId)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n\tcourseCredits: \(courseCredits)\n\tcourseLecturer: \(courseLecturer)\n\tcourseURL: \(courseURL)\n\tcourseCode: \(courseCode)\n\tcourseRequired: \(courseRequired)\n\tcourseTerm: \(courseTerm)\n\tcourseYear: \(courseYear)\n}"
+	}
+}
+
+extension Course {
+	public class func generateCourses(with json: JSON) -> [Course] {
+		var courses = [Course]()
+		guard json.isArray else { return courses }
+		for (_, json) : (String, JSON) in json {
+			if let course = Course(json: json) {
+				courses.append(course)
+			}
+		}
+		return courses
+	}
+}

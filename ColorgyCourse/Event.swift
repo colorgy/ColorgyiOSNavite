@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-final public class Event: CustomStringConvertible {
+final public class Event {
 	
 	public private(set) var id: String
 	public private(set) var name: String
@@ -21,10 +21,6 @@ final public class Event: CustomStringConvertible {
 	public private(set) var referenceId: String?
 	public private(set) var createdAt: String
 	public private(set) var updatedAt: String?
-	
-	public var description: String {
-		return "Event: {}"
-	}
 	
 	// MARK: - Keys
 	struct Keys {
@@ -77,5 +73,24 @@ final public class Event: CustomStringConvertible {
 		self.referenceId = referenceId
 		self.createdAt = createdAt
 		self.updatedAt = updatedAt
+	}
+}
+
+extension Event : CustomStringConvertible {
+	public var description: String {
+		return "Event: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tdtStart: \(dtStart)\n\tdtEnd: \(dtEnd)\n\tdetailDescription: \(detailDescription)\n\treferenceId: \(referenceId)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n}"
+	}
+}
+
+extension Event {
+	public class func generateEvents(with json: JSON) -> [Event] {
+		var events = [Event]()
+		guard json.isArray else { return events }
+		for (_, json) : (String, JSON) in json {
+			if let event = Event(json: json) {
+				events.append(event)
+			}
+		}
+		return events
 	}
 }
