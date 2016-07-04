@@ -1,5 +1,5 @@
 //
-//  Course.swift
+//  Subcourse.swift
 //  ColorgyCourse
 //
 //  Created by David on 2016/7/4.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-final public class Course {
+final public class Subcourse {
 	
 	public private(set) var id: String
 	public private(set) var name: String
@@ -18,7 +18,6 @@ final public class Course {
 	public private(set) var dtStart: String
 	public private(set) var dtEnd: String
 	public private(set) var detailDescription: String?
-	public private(set) var referenceId: String?
 	public private(set) var createdAt: String
 	public private(set) var updatedAt: String?
 	
@@ -39,7 +38,6 @@ final public class Course {
 		static let dtStart = "dtstart"
 		static let dtEnd = "dtend"
 		static let detailDescription = "description"
-		static let referenceId = "reference_id"
 		static let createdAt = "created_at"
 		static let updatedAt = "updated_at"
 		static let courseCredits = "course_credits"
@@ -63,7 +61,6 @@ final public class Course {
 			dtStart: json[Keys.dtStart].string,
 			dtEnd: json[Keys.dtEnd].string,
 			detailDescription: json[Keys.detailDescription].string,
-			referenceId: json[Keys.referenceId].string,
 			createdAt: json[Keys.createdAt].string,
 			updatedAt: json[Keys.updatedAt].string,
 			courseCredits: json[Keys.courseCredits].int,
@@ -77,7 +74,7 @@ final public class Course {
 	}
 	
 	/// Init with contents
-	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?) {
+	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?) {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }
@@ -100,7 +97,6 @@ final public class Course {
 		self.dtStart = dtStart
 		self.dtEnd = dtEnd
 		self.detailDescription = detailDescription
-		self.referenceId = referenceId
 		self.createdAt = createdAt
 		self.updatedAt = updatedAt
 		

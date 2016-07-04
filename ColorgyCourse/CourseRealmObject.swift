@@ -23,7 +23,7 @@ final public class CourseRealmObject: Object {
 	dynamic var updatedAt: String?
 	
 	dynamic var courseCredits: Int = 0
-	dynamic var courseLecturer: String = ""
+	dynamic var courseLecturer: String?
 	dynamic var courseURL: String = ""
 	dynamic var courseCode: String = ""
 	dynamic var courseRequired: Bool = false
