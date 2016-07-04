@@ -182,8 +182,6 @@
 		635479F11CB8B02A00DE8CBC /* ColorgyLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E11CB8B02A00DE8CBC /* ColorgyLogin.swift */; };
 		635479F21CB8B02A00DE8CBC /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E21CB8B02A00DE8CBC /* AFError.swift */; };
 		635479F31CB8B02A00DE8CBC /* ColorgyLoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */; };
-		635479FB1CB8D17800DE8CBC /* PeriodRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479FA1CB8D17800DE8CBC /* PeriodRawData.swift */; };
-		635479FF1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */; };
 		63561C4C1CBF937F004AEF6D /* ColorgyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */; };
 		63561C4E1CBF9848004AEF6D /* EmailRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63561C4D1CBF9848004AEF6D /* EmailRegisterViewModel.swift */; };
 		636634E21D2117A90063E43C /* DLCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631595061D20ED3300431499 /* DLCalendarView.swift */; };
@@ -341,9 +339,7 @@
 		63EC77C31CC87595008025A7 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C21CC87595008025A7 /* ChatRoomViewController.swift */; };
 		63EC77C51CC875A0008025A7 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */; };
 		63F3EE6B1CBF3CA00010D059 /* TestColorgyRefershCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3EE6A1CBF3CA00010D059 /* TestColorgyRefershCenter.swift */; };
-		63F3EE731CBF49CC0010D059 /* PeriodRawDataRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */; };
 		63F3EE761CBF49D10010D059 /* ColorgyUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D41CB8B02A00DE8CBC /* ColorgyUserInformation.swift */; };
-		63F3EE781CBF49D10010D059 /* PeriodRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479FA1CB8D17800DE8CBC /* PeriodRawData.swift */; };
 		63F3EE791CBF49D10010D059 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570041CBCC94A007D2C9D /* Department.swift */; };
 		63F3EE7A1CBF49D10010D059 /* CourseOwnershipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */; };
 		63F3EE7B1CBF49DF0010D059 /* AFNetworkingErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift */; };
@@ -493,8 +489,6 @@
 		635479E11CB8B02A00DE8CBC /* ColorgyLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyLogin.swift; sourceTree = "<group>"; };
 		635479E21CB8B02A00DE8CBC /* AFError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFError.swift; sourceTree = "<group>"; };
 		635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyLoginResult.swift; sourceTree = "<group>"; };
-		635479FA1CB8D17800DE8CBC /* PeriodRawData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodRawData.swift; sourceTree = "<group>"; };
-		635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodRawDataRealmObject.swift; sourceTree = "<group>"; };
 		63561C4B1CBF937F004AEF6D /* ColorgyColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyColor.swift; sourceTree = "<group>"; };
 		63561C4D1CBF9848004AEF6D /* EmailRegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailRegisterViewModel.swift; sourceTree = "<group>"; };
 		63700E311D18DF1F00DD76F8 /* ColorgyConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyConfig.swift; sourceTree = "<group>"; };
@@ -708,7 +702,6 @@
 		630570221CBD2D97007D2C9D /* Realm Object */ = {
 			isa = PBXGroup;
 			children = (
-				635479FE1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift */,
 			);
 			name = "Realm Object";
 			sourceTree = "<group>";
@@ -898,7 +891,6 @@
 			children = (
 				630570211CBD2D85007D2C9D /* Colorgy Chat API */,
 				635479D41CB8B02A00DE8CBC /* ColorgyUserInformation.swift */,
-				635479FA1CB8D17800DE8CBC /* PeriodRawData.swift */,
 				630570041CBCC94A007D2C9D /* Department.swift */,
 				63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */,
 				635479F91CB8B0BD00DE8CBC /* AFNetworking Helper */,
@@ -1590,7 +1582,6 @@
 				637305641CBF83D80016A7FC /* UIViewExtension.swift in Sources */,
 				63B657E01D23BE360050A8A4 /* SettingsSwitchCell.swift in Sources */,
 				6306F66D1D24C01E00035AD9 /* NotificationSettingsViewController.swift in Sources */,
-				635479FB1CB8D17800DE8CBC /* PeriodRawData.swift in Sources */,
 				6335DC5D1D17C46500B32B8C /* EventManagerNotesCell.swift in Sources */,
 				63B1C3781CF3EDBF00989B5D /* EmailInputBox.swift in Sources */,
 				635479F11CB8B02A00DE8CBC /* ColorgyLogin.swift in Sources */,
@@ -1605,7 +1596,6 @@
 				635479F01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift in Sources */,
 				637B8F231D192BB000348CF4 /* StoryboardViewControllerFetchHelper.swift in Sources */,
 				637547701CC8A96900BC3BBD /* ChatMessageList.swift in Sources */,
-				635479FF1CB8DECF00DE8CBC /* PeriodRawDataRealmObject.swift in Sources */,
 				630570121CBD1A2E007D2C9D /* ChatUserInformation.swift in Sources */,
 				63E447221D0E7DE8005186FD /* ColorgyStyle.swift in Sources */,
 				6335DC671D17C46500B32B8C /* EventManagerViewModel.swift in Sources */,
@@ -1701,7 +1691,6 @@
 				63B657AB1D23934C0050A8A4 /* MyPageContainerView.swift in Sources */,
 				63F3EE931CBF49EE0010D059 /* Chatroom.swift in Sources */,
 				6306F6711D24C9BE00035AD9 /* NotificationSettingsViewModel.swift in Sources */,
-				63F3EE731CBF49CC0010D059 /* PeriodRawDataRealmObject.swift in Sources */,
 				63F3EE971CBF49EE0010D059 /* TimeStamp.swift in Sources */,
 				63B1C3841CF430B900989B5D /* PhoneInputBox.swift in Sources */,
 				6353CE4D1D193F4700F90A4D /* DLMessageData.swift in Sources */,
@@ -1770,7 +1759,6 @@
 				63F3EE831CBF49DF0010D059 /* CourseRawDataObject.swift in Sources */,
 				6353CE4F1D193F4700F90A4D /* DLMessagesViewController.swift in Sources */,
 				63F3EE981CBF49EE0010D059 /* ChatUser.swift in Sources */,
-				63F3EE781CBF49D10010D059 /* PeriodRawData.swift in Sources */,
 				63E447231D0E8314005186FD /* ColorgyStyle.swift in Sources */,
 				6353CE441D193EF700F90A4D /* PhoneValidationView.swift in Sources */,
 				63D22D341D227EB600F0C640 /* NumebrAndUIViewExtension.swift in Sources */,
