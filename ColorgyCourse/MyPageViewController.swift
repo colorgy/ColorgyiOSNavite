@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 final public class MyPageViewController: UIViewController {
 	
@@ -51,6 +52,7 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 		print(#file, #function, #line)
 		let list = CourseRealmObject.getCourseList()
 		print(list)
+		Realm.clearRealm()
 	}
 	
 	public func myPageMoreOptionViewMyActivityTapped() {

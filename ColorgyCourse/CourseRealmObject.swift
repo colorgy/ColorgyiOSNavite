@@ -59,6 +59,19 @@ final public class CourseRealmObject: Object {
 	
 }
 
+extension Realm {
+	public class func clearRealm() {
+		do {
+			let realm = try Realm()
+			realm.beginWrite()
+			realm.deleteAll()
+			try realm.commitWrite()
+		} catch {
+			
+		}
+	}
+}
+
 extension CourseRealmObject {
 	public class func getCourseList() -> CourseList? {
 		do {
