@@ -16,10 +16,10 @@ final public class SubcourseRealmObject: Object {
 	dynamic var uuid: String =  ""
 	dynamic var detailDescription: String?
 	dynamic var rrule: String?
-	dynamic var dtStart: String = ""
-	dynamic var dtEnd: String = ""
-	dynamic var createdAt: String = ""
-	dynamic var updatedAt: String?
+	dynamic var dtStart: NSDate = NSDate()
+	dynamic var dtEnd: NSDate = NSDate()
+	dynamic var createdAt: NSDate = NSDate()
+	dynamic var updatedAt: NSDate?
 	
 	dynamic var courseCredits: Int = 0
 	dynamic var courseLecturer: String?

@@ -15,12 +15,12 @@ final public class EventRealmObject: Object {
 	dynamic var name: String = ""
 	dynamic var uuid: String =  ""
 	dynamic var rrule: String?
-	dynamic var dtStart: String = ""
-	dynamic var dtEnd: String = ""
+	dynamic var dtStart: NSDate = NSDate()
+	dynamic var dtEnd: NSDate = NSDate()
 	dynamic var detailDescription: String?
 	dynamic var referenceId: String?
-	dynamic var createdAt: String = ""
-	dynamic var updatedAt: String?
+	dynamic var createdAt: NSDate = NSDate()
+	dynamic var updatedAt: NSDate?
 	
 	let subevents = List<SubeventRealmObject>()
 	
@@ -29,7 +29,7 @@ final public class EventRealmObject: Object {
 extension EventRealmObject {
 	public class func queryData(from fromYear: Int, to toYear: Int, complete: (() -> Void)?) {
 		autoreleasepool {
-			let predicate = NSPredicate(format: "", argumentArray: <#T##[AnyObject]?#>)
+			
 		}
 	}
 }

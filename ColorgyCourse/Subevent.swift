@@ -16,10 +16,10 @@ final public class Subevent {
 	public private(set) var uuid: String
 	public private(set) var detailDescription: String?
 	public private(set) var rrule: String?
-	public private(set) var dtStart: String
-	public private(set) var dtEnd: String
-	public private(set) var createdAt: String
-	public private(set) var updatedAt: String?
+	public private(set) var dtStart: NSDate
+	public private(set) var dtEnd: NSDate
+	public private(set) var createdAt: NSDate
+	public private(set) var updatedAt: NSDate?
 	
 	// MARK: - Keys
 	struct Keys {
