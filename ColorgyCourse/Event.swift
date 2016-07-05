@@ -43,6 +43,7 @@ final public class Event {
 	
 	/// Init with json
 	public convenience init?(json: JSON) {
+		let subevents = Subevent.generateSubevents(with: json)
 		self.init(
 			id: json[Keys.id].string,
 			name: json[Keys.name].string,
@@ -54,11 +55,28 @@ final public class Event {
 			referenceId: json[Keys.referenceId].string,
 			createdAt: json[Keys.createdAt].string,
 			updatedAt: json[Keys.updatedAt].string,
-			subevents: json[Keys.subevents])
+			subevents: subevents)
+	}
+	
+	/// Init with SubcourseRealmObject
+	public convenience init?(withRealmObject object: EventRealmObject) {
+		let subevents = Subevent.generateSubevnets(withRealmObjects: object.subevents.map { $0 })
+		self.init(
+			id: json[Keys.id].string,
+			name: json[Keys.name].string,
+			uuid: json[Keys.uuid].string,
+			rrule: json[Keys.rrule].string,
+			dtStart: json[Keys.dtStart].string,
+			dtEnd: json[Keys.dtEnd].string,
+			detailDescription: json[Keys.detailDescription].string,
+			referenceId: json[Keys.referenceId].string,
+			createdAt: json[Keys.createdAt].string,
+			updatedAt: json[Keys.updatedAt].string,
+			subevents: subevents)
 	}
 	
 	/// Init with contents
-	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, subevents: JSON) {
+	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, subevents: [Subevent]) {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }
@@ -78,7 +96,7 @@ final public class Event {
 		self.createdAt = createdAt
 		self.updatedAt = updatedAt
 		
-		self.subevents = Subevent.generateSubevents(with: subevents)
+		self.subevents = subevents
 	}
 }
 

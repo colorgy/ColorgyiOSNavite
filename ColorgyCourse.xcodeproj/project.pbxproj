@@ -46,6 +46,12 @@
 		630B9DBD1D2A52D100B2B250 /* CourseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B9DBB1D2A52D100B2B250 /* CourseList.swift */; };
 		630B9DBF1D2A557900B2B250 /* CourseListGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B9DBE1D2A557900B2B250 /* CourseListGenerator.swift */; };
 		630B9DC01D2A557900B2B250 /* CourseListGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B9DBE1D2A557900B2B250 /* CourseListGenerator.swift */; };
+		630B9DC21D2B70E600B2B250 /* ScheduleContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B9DC11D2B70E600B2B250 /* ScheduleContext.swift */; };
+		630B9DC31D2B70E600B2B250 /* ScheduleContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B9DC11D2B70E600B2B250 /* ScheduleContext.swift */; };
+		630B9DC51D2B725400B2B250 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B9DC41D2B725400B2B250 /* EventList.swift */; };
+		630B9DC61D2B725400B2B250 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B9DC41D2B725400B2B250 /* EventList.swift */; };
+		630B9DC81D2B72EA00B2B250 /* EventListGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B9DC71D2B72EA00B2B250 /* EventListGenerator.swift */; };
+		630B9DC91D2B72EA00B2B250 /* EventListGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B9DC71D2B72EA00B2B250 /* EventListGenerator.swift */; };
 		631594D71D20CB3A00431499 /* ChatMessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375476F1CC8A96900BC3BBD /* ChatMessageList.swift */; };
 		631594D81D20CB5900431499 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */; };
 		631594D91D20CB6700431499 /* SearchCourseBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */; };
@@ -436,6 +442,9 @@
 		6307AC361CEAB66F00345025 /* SearchEventBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventBar.swift; sourceTree = "<group>"; };
 		630B9DBB1D2A52D100B2B250 /* CourseList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseList.swift; sourceTree = "<group>"; };
 		630B9DBE1D2A557900B2B250 /* CourseListGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseListGenerator.swift; sourceTree = "<group>"; };
+		630B9DC11D2B70E600B2B250 /* ScheduleContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleContext.swift; sourceTree = "<group>"; };
+		630B9DC41D2B725400B2B250 /* EventList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
+		630B9DC71D2B72EA00B2B250 /* EventListGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListGenerator.swift; sourceTree = "<group>"; };
 		631595061D20ED3300431499 /* DLCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCalendarView.swift; sourceTree = "<group>"; };
 		631595071D20ED3300431499 /* DLCalendarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCalendarViewCell.swift; sourceTree = "<group>"; };
 		6315950A1D20EDA900431499 /* MonthCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCalendarViewController.swift; sourceTree = "<group>"; };
@@ -720,9 +729,12 @@
 		630570221CBD2D97007D2C9D /* Realm Object */ = {
 			isa = PBXGroup;
 			children = (
+				630B9DC11D2B70E600B2B250 /* ScheduleContext.swift */,
 				6362622B1D2A1C5800C16625 /* Course.swift */,
 				630B9DBB1D2A52D100B2B250 /* CourseList.swift */,
 				630B9DBE1D2A557900B2B250 /* CourseListGenerator.swift */,
+				630B9DC41D2B725400B2B250 /* EventList.swift */,
+				630B9DC71D2B72EA00B2B250 /* EventListGenerator.swift */,
 				6362621C1D2A0EEB00C16625 /* CourseRealmObject.swift */,
 				6362622E1D2A2F7600C16625 /* Subcourse.swift */,
 				636262251D2A125C00C16625 /* SubcourseRealmObject.swift */,
@@ -1608,6 +1620,7 @@
 				6306F66D1D24C01E00035AD9 /* NotificationSettingsViewController.swift in Sources */,
 				6335DC5D1D17C46500B32B8C /* EventManagerNotesCell.swift in Sources */,
 				63B1C3781CF3EDBF00989B5D /* EmailInputBox.swift in Sources */,
+				630B9DC21D2B70E600B2B250 /* ScheduleContext.swift in Sources */,
 				635479F11CB8B02A00DE8CBC /* ColorgyLogin.swift in Sources */,
 				63D22D2D1D226FB000F0C640 /* MyPagePersonalInfoView.swift in Sources */,
 				63DC351E1D26052C001443D0 /* AccountManagementViewController.swift in Sources */,
@@ -1653,6 +1666,7 @@
 				637547781CC8BF6200BC3BBD /* FriendListViewController.swift in Sources */,
 				635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */,
 				63AC1B411CF155F800FDD724 /* Event.swift in Sources */,
+				630B9DC51D2B725400B2B250 /* EventList.swift in Sources */,
 				63B1C3861CF4350000989B5D /* ColorgyFullScreenButton.swift in Sources */,
 				63B1C3751CF30B0500989B5D /* InputBox.swift in Sources */,
 				635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */,
@@ -1683,6 +1697,7 @@
 				635479E61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift in Sources */,
 				630570011CBCBC86007D2C9D /* Semester.swift in Sources */,
 				630337E71CE964EE006FEA1C /* BlurWallView.swift in Sources */,
+				630B9DC81D2B72EA00B2B250 /* EventListGenerator.swift in Sources */,
 				630472861CE5AA4E00D907C4 /* SearchEventListViewModel.swift in Sources */,
 				63EC77BA1CC8743D008025A7 /* DLMessagesViewController.swift in Sources */,
 				630B9DBC1D2A52D100B2B250 /* CourseList.swift in Sources */,
@@ -1733,6 +1748,7 @@
 				63F3EE9A1CBF53A40010D059 /* TestColorgyAPI.swift in Sources */,
 				63F3EE6B1CBF3CA00010D059 /* TestColorgyRefershCenter.swift in Sources */,
 				63D22D2E1D226FE700F0C640 /* MyPagePersonalInfoView.swift in Sources */,
+				630B9DC31D2B70E600B2B250 /* ScheduleContext.swift in Sources */,
 				63F3EE841CBF49DF0010D059 /* ColorgyRefreshCenter.swift in Sources */,
 				636262271D2A125C00C16625 /* SubcourseRealmObject.swift in Sources */,
 				6354799D1CB898C100DE8CBC /* ColorgyCourseTests.swift in Sources */,
@@ -1757,6 +1773,7 @@
 				631594F51D20CB8B00431499 /* EventManagerColorCellDelegate.swift in Sources */,
 				6373055C1CBF72190016A7FC /* TestPeriod.swift in Sources */,
 				63C3CE3A1CC0C8BC000EE808 /* LoginViewModel.swift in Sources */,
+				630B9DC61D2B725400B2B250 /* EventList.swift in Sources */,
 				6306F66E1D24C02100035AD9 /* NotificationSettingsViewController.swift in Sources */,
 				63C3CE261CC0C8A5000EE808 /* Organization.swift in Sources */,
 				63DC35291D2606E0001443D0 /* SettingsSexCell.swift in Sources */,
@@ -1787,6 +1804,7 @@
 				63B1C38A1CF45D6B00989B5D /* ColorgyBillboardView.swift in Sources */,
 				63F3EE851CBF49DF0010D059 /* ColorgyLogin.swift in Sources */,
 				631594EC1D20CB8B00431499 /* EventManagerContext.swift in Sources */,
+				630B9DC91D2B72EA00B2B250 /* EventListGenerator.swift in Sources */,
 				6353CE581D193F6000F90A4D /* ColorgyNavigationBar.swift in Sources */,
 				631594F61D20CB8B00431499 /* EventManagerColorExpandedCell.swift in Sources */,
 				6362622A1D2A196D00C16625 /* Subevent.swift in Sources */,

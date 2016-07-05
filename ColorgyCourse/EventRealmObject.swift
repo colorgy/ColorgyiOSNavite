@@ -25,3 +25,11 @@ final public class EventRealmObject: Object {
 	let subevents = List<SubeventRealmObject>()
 	
 }
+
+extension EventRealmObject {
+	public class func queryData(from fromYear: Int, to toYear: Int, complete: (() -> Void)?) {
+		autoreleasepool {
+			let predicate = NSPredicate(format: "", argumentArray: <#T##[AnyObject]?#>)
+		}
+	}
+}

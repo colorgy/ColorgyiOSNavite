@@ -183,18 +183,20 @@ extension Course {
 
 extension Course {
 	public func saveToRealm(complete: ((succeed: Bool) -> Void)?) {
-		do {
-			let realm = try Realm()
-			realm.beginWrite()
-			// start writing to realm
-			let courseRealmObject = CourseRealmObject(withCourse: self)
-			realm.add(courseRealmObject)
-			// commit write
-			try realm.commitWrite()
-			// finished
-			complete?(succeed: true)
-		} catch {
-			complete?(succeed: false)
+		autoreleasepool {
+			do {
+				let realm = try Realm()
+				realm.beginWrite()
+				// start writing to realm
+				let courseRealmObject = CourseRealmObject(withCourse: self)
+				realm.add(courseRealmObject)
+				// commit write
+				try realm.commitWrite()
+				// finished
+				complete?(succeed: true)
+			} catch {
+				complete?(succeed: false)
+			}
 		}
 	}
 }

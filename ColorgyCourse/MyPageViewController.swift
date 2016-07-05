@@ -51,7 +51,8 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 	public func myPageMoreOptionViewGreetingsTapped() {
 		print(#file, #function, #line)
 		let list = CourseRealmObject.getCourseList()
-		print(list)
+		print(list?.count)
+		print("removing db...")
 		Realm.clearRealm()
 	}
 	
@@ -62,7 +63,7 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 		api.getCoursesList(of: 2015, andTerm: 1, success: { (courseList) in
 			courseList.saveListToRealm({ (succeed) in
 				if succeed {
-					print(CourseRealmObject.getCourseList())
+					print(CourseRealmObject.getCourseList()?.count)
 				} else {
 					print("fail")
 				}

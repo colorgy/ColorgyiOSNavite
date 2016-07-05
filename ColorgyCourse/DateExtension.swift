@@ -9,6 +9,20 @@
 import Foundation
 
 extension NSDate {
+	public var iso8601String: String {
+		
+	}
+	
+	public class func dateFrom(iso8601 iso8601String: String) -> NSDate? {
+		let formatter = NSDateFormatter()
+		let currentLocale = NSLocale.currentLocale()
+		formatter.locale = currentLocale
+		formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+		return formatter.dateFromString(iso8601String)
+	}
+}
+
+extension NSDate {
 	public override func isEqual(object: AnyObject?) -> Bool {
 		if let date = object as? NSDate {
 			if date.day == self.day && date.month == self.month && date.year == self.year {

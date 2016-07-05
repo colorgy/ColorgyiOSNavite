@@ -132,7 +132,7 @@ final public class Subcourse {
 
 extension Subcourse : CustomStringConvertible {
 	public var description: String {
-		return "Subcourse: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tdtStart: \(dtStart)\n\tdtEnd: \(dtEnd)\n\tdetailDescription: \(detailDescription)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n}"
+		return "Subcourse: {\n\t\tid: \(id)\n\t\tname: \(name)\n\t\tuuid: \(uuid)\n\t\trrule: \(rrule)\n\t\tdtStart: \(dtStart)\n\t\tdtEnd: \(dtEnd)\n\t\tdetailDescription: \(detailDescription)\n\t\tcreatedAt: \(createdAt)\n\t\tupdatedAt: \(updatedAt)\n}"
 	}
 }
 

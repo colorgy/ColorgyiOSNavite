@@ -578,18 +578,20 @@ final public class ColorgyAPI : NSObject {
 			return
 		}
 
-		qosBlock { 
-			if let coursesData = NSData(contentsOfURL: url.url!) {
-				let json = JSON(data: coursesData)
-				let courses = Course.generateCourses(with: json)
-				let courseList = CourseList()
-				courseList.add(courses)
-				self.mainBlock({ 
-					success?(courseList: courseList)
-				})
-			} else {
-				self.handleFailToDownloadContent(failure)
-			}
+		qosBlock {
+			autoreleasepool({
+				if let coursesData = NSData(contentsOfURL: url.url!) {
+					let json = JSON(data: coursesData)
+					let courses = Course.generateCourses(with: json)
+					let courseList = CourseList()
+					courseList.add(courses)
+					self.mainBlock({ 
+						success?(courseList: courseList)
+					})
+				} else {
+					self.handleFailToDownloadContent(failure)
+				}
+			})
 		}
 	}
 	

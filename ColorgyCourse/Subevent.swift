@@ -50,6 +50,20 @@ final public class Subevent {
 			updatedAt: json[Keys.updatedAt].string)
 	}
 	
+	/// Init with realm object
+	public convenience init?(withRealmObject object: SubeventRealmObject) {
+		self.init(
+			id: object.id,
+			name: object.name,
+			uuid: object.uuid,
+			rrule: object.rrule,
+			dtStart: object.dtStart,
+			dtEnd: object.dtEnd,
+			detailDescription: object.detailDescription,
+			createdAt: object.createdAt,
+			updatedAt: object.updatedAt)
+	}
+	
 	/// Init with contents
 	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, createdAt: String?, updatedAt: String?) {
 		
@@ -75,7 +89,7 @@ final public class Subevent {
 
 extension Subevent : CustomStringConvertible {
 	public var description: String {
-		return "Subevent: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tdtStart: \(dtStart)\n\tdtEnd: \(dtEnd)\n\tdetailDescription: \(detailDescription)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n}"
+		return "Subevent: {\n\t\tid: \(id)\n\t\tname: \(name)\n\t\tuuid: \(uuid)\n\t\trrule: \(rrule)\n\t\tdtStart: \(dtStart)\n\t\tdtEnd: \(dtEnd)\n\t\tdetailDescription: \(detailDescription)\n\t\tcreatedAt: \(createdAt)\n\t\tupdatedAt: \(updatedAt)\n}"
 	}
 }
 
@@ -85,6 +99,16 @@ extension Subevent {
 		guard let json = json where json.isArray else { return subevents }
 		for (_, json) : (String, JSON) in json {
 			if let subevent = Subevent(json: json) {
+				subevents.append(subevent)
+			}
+		}
+		return subevents
+	}
+	
+	public class func generateSubevnets(withRealmObjects objects: [SubeventRealmObject]) -> [Subevent] {
+		var subevents = [Subevent]()
+		for object in objects {
+			if let subevent = Subevent(withRealmObject: object) {
 				subevents.append(subevent)
 			}
 		}
