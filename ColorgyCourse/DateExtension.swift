@@ -10,7 +10,11 @@ import Foundation
 
 extension NSDate {
 	public var iso8601String: String {
-		
+		let formatter = NSDateFormatter()
+		let currentLocale = NSLocale.currentLocale()
+		formatter.locale = currentLocale
+		formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+		return formatter.stringFromDate(self)
 	}
 	
 	public class func dateFrom(iso8601 iso8601String: String) -> NSDate? {
