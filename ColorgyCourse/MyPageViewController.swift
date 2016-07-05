@@ -50,10 +50,10 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 	
 	public func myPageMoreOptionViewGreetingsTapped() {
 		print(#file, #function, #line)
-		let list = CourseRealmObject.getCourseList()
-		print(list?.count)
-		print("removing db...")
-		Realm.clearRealm()
+//		let list = CourseRealmObject.getCourseList()
+		EventRealmObject.queryData(fromYear: 1970, toYear: 1971) { (events) in
+			print(events)
+		}
 	}
 	
 	public func myPageMoreOptionViewMyActivityTapped() {

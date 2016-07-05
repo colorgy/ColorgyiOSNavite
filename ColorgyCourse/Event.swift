@@ -135,4 +135,14 @@ extension Event {
 		}
 		return events
 	}
+	
+	public class func generateEvents(withRealmObjects objects: [EventRealmObject]) -> [Event] {
+		var events = [Event]()
+		for object in objects {
+			if let event = Event(withRealmObject: object) {
+				events.append(event)
+			}
+		}
+		return events
+	}
 }
