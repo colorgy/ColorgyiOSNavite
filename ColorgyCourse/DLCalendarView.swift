@@ -185,12 +185,12 @@ public class DLCalendarView: UIView {
 		// First, check if start date is assigned.
 		// If not, set the default to 1970/1/1.
 		if startDate == nil {
-			startDate = NSDate.create(dateOn: 1970, month: 1, day: 1)
+			startDate = NSDate.create(dateOnYear: 1970, month: 1, day: 1)
 		}
 		// Check if end date is assigned.
 		// If not, set the default to 1970/1/1.
 		if endDate == nil {
-			endDate = NSDate.create(dateOn: 2099, month: 12, day: 31)
+			endDate = NSDate.create(dateOnYear: 2099, month: 12, day: 31)
 		}
 		
 		if let startDate = startDate, let endDate = endDate {

@@ -40,7 +40,7 @@ extension NSDate {
 }
 
 extension NSDate {
-	class func create(dateOn year: Int, month: Int, day: Int) -> NSDate? {
+	class func create(dateOnYear year: Int, month: Int, day: Int) -> NSDate? {
 		let components = NSDateComponents()
 		components.year = year
 		components.month = month

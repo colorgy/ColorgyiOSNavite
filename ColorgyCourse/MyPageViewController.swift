@@ -51,8 +51,11 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 	public func myPageMoreOptionViewGreetingsTapped() {
 		print(#file, #function, #line)
 //		let list = CourseRealmObject.getCourseList()
-		EventRealmObject.queryData(fromYear: 1970, toYear: 1971) { (events) in
-			print(events)
+//		EventRealmObject.queryData(fromYear: 1970, toYear: 1971) { (events) in
+//			print(events)
+//		}
+		CourseRealmObject.queryData(fromYear: 2014, toYear: 2016) { (courses) in
+			print(courses)
 		}
 	}
 	
