@@ -54,8 +54,8 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 //		EventRealmObject.queryData(fromYear: 1970, toYear: 1971) { (events) in
 //			print(events)
 //		}
-		CourseRealmObject.queryData(fromYear: 2014, toYear: 2016) { (courses) in
-			print(courses)
+		CourseRealmObject.queryData(fromYear: 2016, toYear: 2016) { (courses) in
+			print(courses.count)
 		}
 	}
 	

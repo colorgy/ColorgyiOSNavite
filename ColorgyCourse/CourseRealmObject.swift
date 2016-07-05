@@ -107,7 +107,7 @@ extension CourseRealmObject {
 			}
 			do {
 				let realm = try Realm()
-				let objects = realm.objects(CourseRealmObject.self).filter("dtStart >= %@ AND dtEnd >= %@ AND dtStart <= %@ AND dtEnd <= %@", fromDate, fromDate, toDate, toDate).map { $0 }
+				let objects = realm.objects(CourseRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
 				courses = Course.generateCourses(withRealmObjects: objects)
 				complete?(courses: courses)
 			} catch {

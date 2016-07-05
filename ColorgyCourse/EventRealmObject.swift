@@ -42,7 +42,7 @@ extension EventRealmObject {
 			}
 			do {
 				let realm = try Realm()
-				let objects = realm.objects(EventRealmObject.self).filter("dtStart >= %@ AND dtEnd >= %@ AND dtStart <= %@ AND dtEnd <= %@", fromDate, fromDate, toDate, toDate).map { $0 }
+				let objects = realm.objects(EventRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
 				events = Event.generateEvents(withRealmObjects: objects)
 				complete?(events: events)
 			} catch {
