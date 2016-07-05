@@ -93,8 +93,31 @@ final public class Subcourse {
 			courseYear: object.courseYear)
 	}
 	
+	/// Init with content of strings
+	public convenience init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?) {
+		// transform string into nsdate
+		
+		self.init(
+			id: id,
+			name: name,
+			uuid: uuid,
+			rrule: rrule,
+			dtStart: NSDate.dateFrom(iso8601: dtStart),
+			dtEnd: NSDate.dateFrom(iso8601: dtEnd),
+			detailDescription: detailDescription,
+			createdAt: NSDate.dateFrom(iso8601: createdAt),
+			updatedAt: NSDate.dateFrom(iso8601: updatedAt),
+			courseCredits: courseCredits,
+			courseLecturer: courseLecturer,
+			courseURL: courseURL,
+			courseCode: courseCode,
+			courseRequired: courseRequired,
+			courseTerm: courseTerm,
+			courseYear: courseYear)
+	}
+	
 	/// Init with contents
-	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?) {
+	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: NSDate?, dtEnd: NSDate?, detailDescription: String?, createdAt: NSDate?, updatedAt: NSDate?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?) {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }

@@ -17,7 +17,8 @@ extension NSDate {
 		return formatter.stringFromDate(self)
 	}
 	
-	public class func dateFrom(iso8601 iso8601String: String) -> NSDate? {
+	public class func dateFrom(iso8601 iso8601String: String?) -> NSDate? {
+		guard let iso8601String = iso8601String else { return nil }
 		let formatter = NSDateFormatter()
 		let currentLocale = NSLocale.currentLocale()
 		formatter.locale = currentLocale

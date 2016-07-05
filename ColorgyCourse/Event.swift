@@ -62,21 +62,39 @@ final public class Event {
 	public convenience init?(withRealmObject object: EventRealmObject) {
 		let subevents = Subevent.generateSubevnets(withRealmObjects: object.subevents.map { $0 })
 		self.init(
-			id: json[Keys.id].string,
-			name: json[Keys.name].string,
-			uuid: json[Keys.uuid].string,
-			rrule: json[Keys.rrule].string,
-			dtStart: json[Keys.dtStart].string,
-			dtEnd: json[Keys.dtEnd].string,
-			detailDescription: json[Keys.detailDescription].string,
-			referenceId: json[Keys.referenceId].string,
-			createdAt: json[Keys.createdAt].string,
-			updatedAt: json[Keys.updatedAt].string,
+			id: object.id,
+			name: object.name,
+			uuid: object.uuid,
+			rrule: object.rrule,
+			dtStart: object.dtStart,
+			dtEnd: object.dtEnd,
+			detailDescription: object.detailDescription,
+			referenceId: object.referenceId,
+			createdAt: object.createdAt,
+			updatedAt: object.updatedAt,
+			subevents: subevents)
+	}
+	
+	/// Init with content of strings
+	public convenience init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, subevents: [Subevent]) {
+		// transform string into nsdate
+		
+		self.init(
+			id: id,
+			name: name,
+			uuid: uuid,
+			rrule: rrule,
+			dtStart: NSDate.dateFrom(iso8601: dtStart),
+			dtEnd: NSDate.dateFrom(iso8601: dtEnd),
+			detailDescription: detailDescription,
+			referenceId: referenceId,
+			createdAt: NSDate.dateFrom(iso8601: createdAt),
+			updatedAt: NSDate.dateFrom(iso8601: updatedAt),
 			subevents: subevents)
 	}
 	
 	/// Init with contents
-	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, subevents: [Subevent]) {
+	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: NSDate?, dtEnd: NSDate?, detailDescription: String?, referenceId: String?, createdAt: NSDate?, updatedAt: NSDate?, subevents: [Subevent]) {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }

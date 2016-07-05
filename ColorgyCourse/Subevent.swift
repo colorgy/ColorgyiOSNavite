@@ -64,8 +64,24 @@ final public class Subevent {
 			updatedAt: object.updatedAt)
 	}
 	
+	/// Init with content of strings
+	public convenience init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, createdAt: String?, updatedAt: String?) {
+		// transform string into nsdate
+		
+		self.init(
+			id: id,
+			name: name,
+			uuid: uuid,
+			rrule: rrule,
+			dtStart: NSDate.dateFrom(iso8601: dtStart),
+			dtEnd: NSDate.dateFrom(iso8601: dtEnd),
+			detailDescription: detailDescription,
+			createdAt: NSDate.dateFrom(iso8601: createdAt),
+			updatedAt: NSDate.dateFrom(iso8601: updatedAt))
+	}
+	
 	/// Init with contents
-	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, createdAt: String?, updatedAt: String?) {
+	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: NSDate?, dtEnd: NSDate?, detailDescription: String?, createdAt: NSDate?, updatedAt: NSDate?) {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }
