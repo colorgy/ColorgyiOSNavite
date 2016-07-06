@@ -9,6 +9,29 @@
 import Foundation
 
 extension NSDate {
+	
+	public func isBefore(date: NSDate) -> Bool {
+		return compare(date) == .OrderedAscending
+	}
+	
+	public func isSame(with date: NSDate) -> Bool {
+		return compare(date) == .OrderedSame
+	}
+	
+	public func isAfter(date: NSDate) -> Bool {
+		return compare(date) == .OrderedDescending
+	}
+	
+	public func isAfterOrSame(with date: NSDate) -> Bool {
+		return isSame(with: date) || isAfter(date)
+	}
+	
+	public func isBeforeOrSame(with date: NSDate) -> Bool {
+		return isSame(with: date) || isBefore(date)
+	}
+}
+
+extension NSDate {
 	public var iso8601String: String {
 		let formatter = NSDateFormatter()
 		let currentLocale = NSLocale.currentLocale()

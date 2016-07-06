@@ -75,7 +75,8 @@ public struct RRule {
 		}
 		
 		// beyond dtstart, move forward
-		if baseDate.compare(self.dtStart) == .OrderedDescending {
+		// base date < dtstart
+		if baseDate.compare(self.dtStart) == .OrderedAscending {
 			// move 7 days forward
 			if let newBaseDate = baseDate.dateByAddingDay(7) {
 				baseDate = newBaseDate
@@ -86,8 +87,8 @@ public struct RRule {
 		
 		var loopingDate = baseDate
 		var allOccurrences: [NSDate] = [loopingDate]
-		print(self.until, loopingDate.compare(self.until) != .OrderedAscending)
-		while loopingDate.compare(self.until) != .OrderedAscending {
+		
+		while loopingDate.compare(self.until) != .OrderedDescending {
 			switch self.frequency {
 			case .Yearly:
 				guard let nextDate = loopingDate.dateByAddingYear(1 * self.interval) else { return [] }
@@ -102,6 +103,7 @@ public struct RRule {
 				guard let nextDate = loopingDate.dateByAddingDay(1 * self.interval) else { return [] }
 				loopingDate = nextDate
 			}
+			if
 			allOccurrences.append(loopingDate)
 		}
 		

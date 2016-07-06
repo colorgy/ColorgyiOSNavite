@@ -34,7 +34,7 @@ final public class MyPageViewController: UIViewController {
 		
 		let rs = "DTSTART=20150901T000000Z;UNTIL=20160131T000000Z;FREQ=WEEKLY;WKST=MO;"
 		let rs2 = "DTSTART=20150901T000000Z;FREQ=WEEKLY;WKST=MO;"
-		let rr = RRule(rruleString: rs2)
+		let rr = RRule(rruleString: rs)
 		print(rr?.allOccurrences())
     }
 
