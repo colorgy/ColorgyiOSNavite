@@ -62,10 +62,53 @@ public struct RRule {
 	}
 	
 	public func allOccurrences() -> [NSDate] {
-		var baseDate = NSDate.create(dateOnYear: dtStart.year, month: dtStart.month, day: dtStart.day)
+		// first, find base date to get start with
+		guard var baseDate = NSDate.create(dateOnYear: dtStart.year, month: dtStart.month, day: dtStart.day) else { return [] }
 		// find start week day
-		baseDate?.weekday self.weekStartDay
+		let weekdayOffset = baseDate.weekday - self.weekStartDay.toInt()
+		
+		// choose the start day
+		if let newBaseDate = baseDate.dateBySubtractingDay(weekdayOffset) {
+			baseDate = newBaseDate
+		} else {
+			return []
+		}
+		
+		// beyond dtstart, move forward
+		if baseDate.compare(self.dtStart) == .OrderedDescending {
+			// move 7 days forward
+			if let newBaseDate = baseDate.dateByAddingDay(7) {
+				baseDate = newBaseDate
+			} else {
+				return []
+			}
+		}
+		
+		var loopingDate = baseDate
+		var allOccurrences: [NSDate] = [loopingDate]
+		print(self.until, loopingDate.compare(self.until) != .OrderedAscending)
+		while loopingDate.compare(self.until) != .OrderedAscending {
+			switch self.frequency {
+			case .Yearly:
+				guard let nextDate = loopingDate.dateByAddingYear(1 * self.interval) else { return [] }
+				loopingDate = nextDate
+			case .Monthly:
+				guard let nextDate = loopingDate.dateByAddingMonth(1 * self.interval) else { return [] }
+				loopingDate = nextDate
+			case .Weekly:
+				guard let nextDate = loopingDate.dateByAddingWeek(1 * self.interval) else { return [] }
+				loopingDate = nextDate
+			case .Daily:
+				guard let nextDate = loopingDate.dateByAddingDay(1 * self.interval) else { return [] }
+				loopingDate = nextDate
+			}
+			allOccurrences.append(loopingDate)
+		}
+		
+		return allOccurrences
 	}
+	
+
 	
 	public static func transform(RRuleDateString rds: String?) -> NSDate? {
 		guard let rds = rds else { return nil }
@@ -80,9 +123,6 @@ public struct RRule {
 		case Monthly = "MONTHLY"
 		case Weekly = "WEEKLY"
 		case Daily = "DAILY"
-		case Hourly = "HOURLY"
-		case Minutely = "MINUTELY"
-		case Secondly = "SECONDLY"
 		
 		public init?(freqString freq: String) {
 			switch freq {
@@ -90,9 +130,6 @@ public struct RRule {
 			case Frequency.Monthly.rawValue: self = .Monthly
 			case Frequency.Weekly.rawValue: self = .Weekly
 			case Frequency.Daily.rawValue: self = .Daily
-			case Frequency.Hourly.rawValue: self = .Hourly
-			case Frequency.Minutely.rawValue: self = .Minutely
-			case Frequency.Secondly.rawValue: self = .Secondly
 			default: return nil
 			}
 		}
@@ -122,13 +159,13 @@ public struct RRule {
 		
 		public func toInt() -> Int {
 			switch self {
+			case .SU: return 1
 			case .MO: return 2
 			case .TU: return 3
 			case .WE: return 4
 			case .TH: return 5
 			case .FR: return 6
 			case .SA: return 7
-			case .SU: return 1
 			}
 		}
 	}
