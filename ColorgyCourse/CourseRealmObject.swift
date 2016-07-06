@@ -92,26 +92,25 @@ extension CourseRealmObject {
 		}
 	}
 	
-	public class func queryData(fromYear fromYear: Int, toYear: Int, complete: ((courses: [Course]) -> Void)?) {
+	public class func queryData(fromYear fromYear: Int, toYear: Int, complete: ((objects: [CourseRealmObject]) -> Void)?) {
 		autoreleasepool {
-			var courses = [Course]()
+			var objects = [CourseRealmObject]()
 			let _fromYear = fromYear < toYear ? fromYear : toYear
 			let _toYear = fromYear < toYear ? toYear : fromYear
 			guard let fromDate = NSDate.create(dateOnYear: _fromYear, month: 1, day: 1) else {
-				complete?(courses: courses)
+				complete?(objects: objects)
 				return
 			}
 			guard let toDate = NSDate.create(dateOnYear: _toYear, month: 12, day: 31) else {
-				complete?(courses: courses)
+				complete?(objects: objects)
 				return
 			}
 			do {
 				let realm = try Realm()
-				let objects = realm.objects(CourseRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
-				courses = Course.generateCourses(withRealmObjects: objects)
-				complete?(courses: courses)
+				objects = realm.objects(CourseRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
+				complete?(objects: objects)
 			} catch {
-				complete?(courses: courses)
+				complete?(objects: objects)
 			}
 		}
 	}

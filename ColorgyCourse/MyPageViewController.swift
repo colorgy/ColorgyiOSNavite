@@ -31,6 +31,12 @@ final public class MyPageViewController: UIViewController {
 		
 		// test
 		api = ColorgyAPI()
+		
+		let rs = "DTSTART=20150901T000000Z;UNTIL=20160131T000000Z;FREQ=WEEKLY;WKST=MO;"
+		let rs2 = "DTSTART=20150901T000000Z;FREQ=WEEKLY;WKST=MO;"
+		let rr = RRule(rruleString: rs2)
+		print(rr)
+		print(rr?.dtStart.day, rr?.until.day)
     }
 
 }
@@ -55,7 +61,7 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 //			print(events)
 //		}
 		CourseRealmObject.queryData(fromYear: 2016, toYear: 2016) { (courses) in
-			print(courses.count)
+			print(courses)
 		}
 	}
 	

@@ -27,27 +27,40 @@ final public class EventRealmObject: Object {
 }
 
 extension EventRealmObject {
-	public class func queryData(fromYear fromYear: Int, toYear: Int, complete: ((events: [Event]) -> Void)?) {
+	public class func queryData(fromYear fromYear: Int, toYear: Int, complete: ((objects: [EventRealmObject]) -> Void)?) {
 		autoreleasepool {
-			var events = [Event]()
+			var objects = [EventRealmObject]()
 			let _fromYear = fromYear < toYear ? fromYear : toYear
 			let _toYear = fromYear < toYear ? toYear : fromYear
 			guard let fromDate = NSDate.create(dateOnYear: _fromYear, month: 1, day: 1) else {
-				complete?(events: events)
+				complete?(objects: objects)
 				return
 			}
 			guard let toDate = NSDate.create(dateOnYear: _toYear, month: 12, day: 31) else {
-				complete?(events: events)
+				complete?(objects: objects)
 				return
 			}
 			do {
 				let realm = try Realm()
-				let objects = realm.objects(EventRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
-				events = Event.generateEvents(withRealmObjects: objects)
-				complete?(events: events)
+				objects = realm.objects(EventRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
+				complete?(objects: objects)
 			} catch {
-				complete?(events: events)
+				complete?(objects: objects)
 			}
+		}
+	}
+}
+
+extension Array where Element: EventRealmObject {
+	public func querySubevent(fromDate fromDate: NSDate, to toDate: NSDate) {
+		var objects = [SubeventRealmObject]()
+		let _fromDate = (fromDate.compare(toDate) == .OrderedDescending ? fromDate : toDate)
+		let _toDate = (toDate.compare(fromDate) != .OrderedDescending ? toDate : fromDate)
+		do {
+			let realm = try Realm()
+			self
+		} catch {
+			
 		}
 	}
 }

@@ -80,12 +80,14 @@ extension NSDate {
 		return NSCalendar.currentCalendar().dateFromComponents(component)
 	}
 	
+	/// will return from 1 ~ 7
+	/// 1 is sunday
+	/// 7 is saturday
+	/// ```
+	/// sun mon tue wen thu fri sat
+	///  1   2   3   4   5   6   7
+	/// ```
 	var weekday: Int {
-		// will return from 1 ~ 7
-		// 1 is sunday
-		// 7 is saturday
-		// sun mon tue wen thu fri sat
-		//  1	2	3	4	5	6	7
 		return NSCalendar.currentCalendar().component(NSCalendarUnit.Weekday, fromDate: self)
 	}
 	
