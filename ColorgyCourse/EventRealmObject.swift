@@ -54,8 +54,8 @@ extension EventRealmObject {
 extension Array where Element: EventRealmObject {
 	public func querySubevent(fromDate fromDate: NSDate, to toDate: NSDate) {
 		var objects = [SubeventRealmObject]()
-		let _fromDate = (fromDate.compare(toDate) == .OrderedDescending ? fromDate : toDate)
-		let _toDate = (toDate.compare(fromDate) != .OrderedDescending ? toDate : fromDate)
+		let _fromDate = (fromDate.isBefore(toDate) ? fromDate : toDate)
+		let _toDate = (toDate.isAfterOrSame(with: fromDate) ? toDate : fromDate)
 		do {
 			let realm = try Realm()
 			self

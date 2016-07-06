@@ -9,12 +9,15 @@
 import Foundation
 
 public struct RRule {
+	
+	// MARK: - Parameters
 	public var dtStart: NSDate
 	public var until: NSDate
 	public var interval: Int
 	public var frequency: Frequency
 	public var weekStartDay: WKST
 	
+	// MARK: - Keys
 	private struct Keys {
 		static let dtStart = "DTSTART"
 		static let until = "UNTIL"
@@ -23,7 +26,8 @@ public struct RRule {
 		static let weekStartDay = "WKST"
 	}
 	
-	public init?(rruleString rs: String) {
+	// MARK: - Init
+	public init?(initWithRRuleString rs: String) {
 		var dictionary = [String:String]()
 		let contents = rs.characters.split(";").map(String.init)
 		for content in contents {
@@ -76,7 +80,7 @@ public struct RRule {
 		
 		// beyond dtstart, move forward
 		// base date < dtstart
-		if baseDate.compare(self.dtStart) == .OrderedAscending {
+		if baseDate.isBefore(self.dtStart) {
 			// move 7 days forward
 			if let newBaseDate = baseDate.dateByAddingDay(7) {
 				baseDate = newBaseDate
@@ -88,7 +92,7 @@ public struct RRule {
 		var loopingDate = baseDate
 		var allOccurrences: [NSDate] = [loopingDate]
 		
-		while loopingDate.compare(self.until) != .OrderedDescending {
+		while loopingDate.isBeforeOrSame(with: self.until) {
 			switch self.frequency {
 			case .Yearly:
 				guard let nextDate = loopingDate.dateByAddingYear(1 * self.interval) else { return [] }
@@ -103,8 +107,9 @@ public struct RRule {
 				guard let nextDate = loopingDate.dateByAddingDay(1 * self.interval) else { return [] }
 				loopingDate = nextDate
 			}
-			if
-			allOccurrences.append(loopingDate)
+			if loopingDate.isBeforeOrSame(with: self.until) {
+				allOccurrences.append(loopingDate)
+			}
 		}
 		
 		return allOccurrences
@@ -120,6 +125,17 @@ public struct RRule {
 		return formatter.dateFromString(rds)
 	}
 	
+	// MARK: - Getters
+	public var rruleString: String {
+		
+		var rruleString: String = ""
+		
+		if let dtStart = dtStart {
+			rruleString += "\(Keys.dtStart)=\(dtStart);"
+		}
+	}
+	
+	// MARK: - Enums
 	public enum Frequency: String {
 		case Yearly = "YEARLY"
 		case Monthly = "MONTHLY"
