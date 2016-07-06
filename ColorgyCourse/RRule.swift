@@ -130,9 +130,13 @@ public struct RRule {
 		
 		var rruleString: String = ""
 		
-		if let dtStart = dtStart {
-			rruleString += "\(Keys.dtStart)=\(dtStart);"
-		}
+		rruleString += "\(Keys.dtStart)=\(dtStart.rruleFormatString);"
+		rruleString += "\(Keys.until)=\(until.rruleFormatString);"
+		rruleString += "\(Keys.frequency)=\(frequency.rawValue);"
+		rruleString += "\(Keys.interval)=\(interval);"
+		rruleString += "\(Keys.weekStartDay)=\(weekStartDay.rawValue);"
+		
+		return rruleString
 	}
 	
 	// MARK: - Enums

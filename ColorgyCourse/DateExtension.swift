@@ -12,7 +12,7 @@ extension NSDate {
 	public var rruleFormatString: String {
 		let formatter = NSDateFormatter()
 		formatter.timeZone = NSTimeZone(abbreviation: "UTC")
-		formatter.dateFormat = "yyyyMMdd't'HHmmss'Z'"
+		formatter.dateFormat = "yyyyMMdd'T'HHmmss'Z'"
 		return formatter.stringFromDate(self)
 	}
 }
