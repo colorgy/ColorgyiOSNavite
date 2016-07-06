@@ -79,6 +79,17 @@ extension NSDate {
 		components.day = day
 		return NSCalendar.currentCalendar().dateFromComponents(components)
 	}
+	
+	class func create(dateOnYear year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int) -> NSDate? {
+		let components = NSDateComponents()
+		components.year = year
+		components.month = month
+		components.day = day
+		components.hour = hour
+		components.minute = minute
+		components.second = second
+		return NSCalendar.currentCalendar().dateFromComponents(components)
+	}
 }
 
 extension NSDate {

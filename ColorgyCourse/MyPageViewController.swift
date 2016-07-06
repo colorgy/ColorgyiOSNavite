@@ -33,12 +33,16 @@ final public class MyPageViewController: UIViewController {
 		api = ColorgyAPI()
 		
 		let rs = "DTSTART=20150901T000000Z;UNTIL=20160131T000000Z;FREQ=WEEKLY;WKST=MO;"
-		let rs2 = "DTSTART=20150901T000000Z;FREQ=WEEKLY;WKST=MO;"
-		let rr = RRule(initWithRRuleString: rs)
-		let yo = rr!.rruleString
-		print(yo)
-		let hey = RRule(initWithRRuleString: yo)
-		print(hey)
+		let rs2 = "DTSTART=20150831T231407Z;UNTIL=20150901T231408Z;FREQ=WEEKLY;INTERVAL=1;WKST=MO;"
+		let rr = RRule(initWithRRuleString: rs2)
+		print(rr)
+		print(rr?.allOccurrences())
+		
+		print("test")
+		let now = NSDate.create(dateOnYear: <#T##Int#>, month: <#T##Int#>, day: <#T##Int#>)
+		print(now.rruleFormatString)
+		print(now)
+		print(now.year ,now.month ,now.day ,now.hour ,now.minute ,now.second)
     }
 
 }

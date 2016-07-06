@@ -67,10 +67,9 @@ public struct RRule {
 	
 	public func allOccurrences() -> [NSDate] {
 		// first, find base date to get start with
-		guard var baseDate = NSDate.create(dateOnYear: dtStart.year, month: dtStart.month, day: dtStart.day) else { return [] }
+		var baseDate = self.dtStart
 		// find start week day
 		let weekdayOffset = baseDate.weekday - self.weekStartDay.toInt()
-		
 		// choose the start day
 		if let newBaseDate = baseDate.dateBySubtractingDay(weekdayOffset) {
 			baseDate = newBaseDate
@@ -87,6 +86,10 @@ public struct RRule {
 			} else {
 				return []
 			}
+		}
+		
+		if baseDate.isAfter(self.until) {
+			return []
 		}
 		
 		var loopingDate = baseDate
