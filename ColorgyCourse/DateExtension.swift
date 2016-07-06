@@ -15,6 +15,13 @@ extension NSDate {
 		formatter.dateFormat = "yyyyMMdd'T'HHmmss'Z'"
 		return formatter.stringFromDate(self)
 	}
+	
+	public class func dateFromRRuleString(rruleString: String) -> NSDate? {
+		let formatter = NSDateFormatter()
+		formatter.timeZone = NSTimeZone(abbreviation: "UTC")
+		formatter.dateFormat = "yyyyMMdd'T'HHmmss'Z'"
+		return formatter.dateFromString(rruleString)
+	}
 }
 
 extension NSDate {

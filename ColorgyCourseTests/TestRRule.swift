@@ -31,10 +31,9 @@ class TestRRule: XCTestCase {
 		if let rr = rr {
 			expect(rr.allOccurrences().count).to(equal(0))
 		}
-		print(rr?.allOccurrences())
 	}
 	
-	func testOccurences() {
+	func testRRuleStringConverting() {
 		let before = NSDate.create(dateOnYear: 2015, month: 8, day: 31, hour: 0, minute: 0, second: 0)
 		let after = NSDate.create(dateOnYear: 2015, month: 9, day: 31, hour: 0, minute: 0, second: 0)
 		expect(before!).toNot(beNil())
@@ -44,12 +43,13 @@ class TestRRule: XCTestCase {
 		expect(rr.until.rruleFormatString).to(equal("20150930T160000Z"))
 	}
 	
-	func testRRuleStringConverting() {
-		let before = NSDate.create(dateOnYear: 2015, month: 8, day: 31, hour: 0, minute: 0, second: 0)
-		let after = NSDate.create(dateOnYear: 2015, month: 9, day: 31, hour: 0, minute: 0, second: 0)
-		expect(before!).toNot(beNil())
-		expect(after!).toNot(beNil())
-		let rr = RRule(withStartDate: before!, until: after!)
+	func testOneOccurence() {
+		let rs2 = "DTSTART=20150831T231407Z;UNTIL=20150901T231408Z;FREQ=WEEKLY;INTERVAL=1;WKST=WE;"
+		let rr = RRule(initWithRRuleString: rs2)
+		expect(rr).toNot(beNil())
+		if let rr = rr {
+			expect(rr.allOccurrences().count).to(equal(1))
+		}
 	}
 		
     func testPerformanceExample() {
