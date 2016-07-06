@@ -39,10 +39,13 @@ final public class MyPageViewController: UIViewController {
 		print(rr?.allOccurrences())
 		
 		print("test")
-		let now = NSDate.create(dateOnYear: <#T##Int#>, month: <#T##Int#>, day: <#T##Int#>)
-		print(now.rruleFormatString)
-		print(now)
-		print(now.year ,now.month ,now.day ,now.hour ,now.minute ,now.second)
+		let before = NSDate.create(dateOnYear: 2015, month: 8, day: 31, hour: 0, minute: 0, second: 0)
+		let after = NSDate.create(dateOnYear: 2015, month: 9, day: 31, hour: 0, minute: 0, second: 0)
+		let testR = RRule(initWithRRuleString: "DTSTART=\(before!.rruleFormatString);UNTIL=\(after!.rruleFormatString);FREQ=WEEKLY;WKST=MO;")
+		print(testR)
+		for i in testR!.allOccurrences() {
+			print(i.year, i.month, i.day, i.hour, i.minute, i.second)
+		}
     }
 
 }

@@ -73,11 +73,7 @@ extension NSDate {
 
 extension NSDate {
 	class func create(dateOnYear year: Int, month: Int, day: Int) -> NSDate? {
-		let components = NSDateComponents()
-		components.year = year
-		components.month = month
-		components.day = day
-		return NSCalendar.currentCalendar().dateFromComponents(components)
+		return create(dateOnYear: year, month: month, day: day, hour: 0, minute: 0, second: 0)
 	}
 	
 	class func create(dateOnYear year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int) -> NSDate? {
@@ -88,6 +84,10 @@ extension NSDate {
 		components.hour = hour
 		components.minute = minute
 		components.second = second
+//		let formatter = NSDateFormatter()
+//		formatter.timeZone = NSTimeZone.localTimeZone()
+//		formatter.dateFormat = "yyyy MM dd HH mm ss"
+//		return formatter.dateFromString("\(year) \(month) \(day) \(hour) \(minute) \(second)")
 		return NSCalendar.currentCalendar().dateFromComponents(components)
 	}
 }

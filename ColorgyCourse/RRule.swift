@@ -65,6 +65,16 @@ public struct RRule {
 		}
 	}
 	
+	public init(withStartDate startDate: NSDate, until: NSDate) {
+		
+		self.dtStart = startDate
+		self.until = until
+		
+		interval = 1
+		frequency = .Weekly
+		weekStartDay = .MO
+	}
+	
 	public func allOccurrences() -> [NSDate] {
 		// first, find base date to get start with
 		var baseDate = self.dtStart
