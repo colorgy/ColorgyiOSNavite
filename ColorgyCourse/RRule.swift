@@ -11,10 +11,20 @@ import Foundation
 public struct RRule {
 	
 	// MARK: - Parameters
+	/// Start date of rrule.
+	/// This is required.
 	public var dtStart: NSDate
+	/// End date of rrule.
+	/// This is required.
 	public var until: NSDate
+	/// Gap between recurrence date rule, default to 1.
+	/// This is required.
 	public var interval: Int
+	/// Frequency of date, default to Weekly.
+	/// This is required.
 	public var frequency: Frequency
+	/// Week start day of rrule, default to .MO
+	/// This is required
 	public var weekStartDay: WKST
 	
 	// MARK: - Keys
@@ -27,7 +37,10 @@ public struct RRule {
 	}
 	
 	// MARK: - Init
+	/// Init rrule with a rrule string
+	/// DTSTART is a required part in this string, is DTSTART is not given, this initialzer will fail.
 	public init?(initWithRRuleString rs: String) {
+		// map all the key/value pair in to this dictionary
 		var dictionary = [String:String]()
 		let contents = rs.characters.split(";").map(String.init)
 		for content in contents {
@@ -40,31 +53,36 @@ public struct RRule {
 		}
 		
 		// start init
-		guard let dtStart = RRule.transform(RRuleDateString: dictionary[Keys.dtStart]) else { return nil }
+		guard let dtStart = RRule.dateFrom(RRuleDateString: dictionary[Keys.dtStart]) else { return nil }
 		self.dtStart = dtStart
 		
-		guard let dateUntil = (RRule.transform(RRuleDateString: dictionary[Keys.until]) ?? NSDate.create(dateOnYear: 2099, month: 12, day: 31) ?? nil) else { return nil }
+		guard let dateUntil = (RRule.dateFrom(RRuleDateString: dictionary[Keys.until]) ?? NSDate.create(dateOnYear: 2099, month: 12, day: 31) ?? nil) else { return nil }
 		self.until = dateUntil
 		
 		if let intervalString = dictionary[Keys.interval], let interval = Int(intervalString) where interval > 0 {
 			self.interval = interval
 		} else {
+			// default value
 			interval = 1
 		}
 		
 		if let freqString = dictionary[Keys.frequency], let frequency = Frequency(freqString: freqString) {
 			self.frequency = frequency
 		} else {
+			// default value
 			frequency = .Weekly
 		}
 		
 		if let wsdtString = dictionary[Keys.weekStartDay], let wkst = WKST(wkst: wsdtString) {
 			self.weekStartDay = wkst
 		} else {
+			// default value
 			self.weekStartDay = .MO
 		}
 	}
 	
+	/// Init with a starting and ending date.
+	/// Other properties will be default value.
 	public init(withStartDate startDate: NSDate, until: NSDate) {
 		
 		self.dtStart = startDate
@@ -75,6 +93,28 @@ public struct RRule {
 		weekStartDay = .MO
 	}
 	
+	/// Simply init a new rrule object
+	/// Can modify this object to get a new rrule string
+	///
+	/// ```swift
+	/// //e.g.
+	///
+	/// rrule.interval = 3
+	///	rrule.frequency = .Yearly
+	/// rrule.weekStartDay = .FR
+	///
+	/// ```
+	/// Then you can get a rrule string from this rrule object
+	public init() {
+		dtStart = NSDate()
+		until = NSDate()
+		interval = 1
+		frequency = .Weekly
+		weekStartDay = .MO
+	}
+	
+	/// Can get all occurrences between dtStart and until.
+	/// Time of all these occurrences will start and depends on dtStart time.
 	public func allOccurrences() -> [NSDate] {
 		// first, find base date to get start with
 		var baseDate = self.dtStart
@@ -127,10 +167,11 @@ public struct RRule {
 		
 		return allOccurrences
 	}
-	
 
-	
-	public static func transform(RRuleDateString rds: String?) -> NSDate? {
+	/// Get a date from given rrule date string.
+	///
+	/// format: `"yyyyMMdd'T'HHmmss'Z'"`
+	public static func dateFrom(RRuleDateString rds: String?) -> NSDate? {
 		guard let rds = rds else { return nil }
 		let formatter = NSDateFormatter()
 		formatter.timeZone = NSTimeZone(abbreviation: "UTC")
@@ -139,6 +180,7 @@ public struct RRule {
 	}
 	
 	// MARK: - Getters
+	/// Get a rrule string of this rrule object.
 	public var rruleString: String {
 		
 		var rruleString: String = ""
