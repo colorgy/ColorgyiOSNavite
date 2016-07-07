@@ -35,7 +35,7 @@ final public class SubcourseRealmObject: Object {
 		self.id = subcourse.id
 		self.name = subcourse.name
 		self.uuid = subcourse.uuid
-		self.rrule = subcourse.rrule
+		self.rrule = subcourse.rrule?.toRealmObject
 		self.dtStart = subcourse.dtStart
 		self.dtEnd = subcourse.dtEnd
 		self.detailDescription = subcourse.detailDescription

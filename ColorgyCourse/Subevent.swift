@@ -38,6 +38,7 @@ final public class Subevent {
 	
 	/// Init with json
 	public convenience init?(json: JSON) {
+		let rrule = RRule(initWithRRuleString: <#T##String#>)
 		self.init(
 			id: json[Keys.id].string,
 			name: json[Keys.name].string,
@@ -65,7 +66,7 @@ final public class Subevent {
 	}
 	
 	/// Init with content of strings
-	public convenience init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, createdAt: String?, updatedAt: String?) {
+	public convenience init?(id: String?, name: String?, uuid: String?, rrule: RRule?, dtStart: String?, dtEnd: String?, detailDescription: String?, createdAt: String?, updatedAt: String?) {
 		// transform string into nsdate
 		
 		self.init(
@@ -81,7 +82,7 @@ final public class Subevent {
 	}
 	
 	/// Init with contents
-	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: NSDate?, dtEnd: NSDate?, detailDescription: String?, createdAt: NSDate?, updatedAt: NSDate?) {
+	public init?(id: String?, name: String?, uuid: String?, rrule: RRule?, dtStart: NSDate?, dtEnd: NSDate?, detailDescription: String?, createdAt: NSDate?, updatedAt: NSDate?) {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }

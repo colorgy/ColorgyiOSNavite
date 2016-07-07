@@ -40,6 +40,8 @@ public struct RRule {
 	/// Init rrule with a rrule string
 	/// DTSTART is a required part in this string, is DTSTART is not given, this initialzer will fail.
 	public init?(initWithRRuleString rs: String) {
+		guard let rs = rs else { return nil }
+		
 		// map all the key/value pair in to this dictionary
 		var dictionary = [String:String]()
 		let contents = rs.characters.split(";").map(String.init)
