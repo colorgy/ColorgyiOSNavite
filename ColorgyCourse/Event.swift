@@ -44,11 +44,12 @@ final public class Event {
 	/// Init with json
 	public convenience init?(json: JSON) {
 		let subevents = Subevent.generateSubevents(with: json)
+		let rrule = RRule(initWithRRuleString: json[Keys.rrule].string)
 		self.init(
 			id: json[Keys.id].string,
 			name: json[Keys.name].string,
 			uuid: json[Keys.uuid].string,
-			rrule: json[Keys.rrule].string,
+			rrule: rrule,
 			dtStart: json[Keys.dtStart].string,
 			dtEnd: json[Keys.dtEnd].string,
 			detailDescription: json[Keys.detailDescription].string,
@@ -65,7 +66,7 @@ final public class Event {
 			id: object.id,
 			name: object.name,
 			uuid: object.uuid,
-			rrule: object.rrule,
+			rrule: object.rrule?.toRRule,
 			dtStart: object.dtStart,
 			dtEnd: object.dtEnd,
 			detailDescription: object.detailDescription,
@@ -76,7 +77,7 @@ final public class Event {
 	}
 	
 	/// Init with content of strings
-	public convenience init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, subevents: [Subevent]) {
+	public convenience init?(id: String?, name: String?, uuid: String?, rrule: RRule?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, subevents: [Subevent]) {
 		// transform string into nsdate
 		
 		self.init(
@@ -94,7 +95,7 @@ final public class Event {
 	}
 	
 	/// Init with contents
-	public init?(id: String?, name: String?, uuid: String?, rrule: String?, dtStart: NSDate?, dtEnd: NSDate?, detailDescription: String?, referenceId: String?, createdAt: NSDate?, updatedAt: NSDate?, subevents: [Subevent]) {
+	public init?(id: String?, name: String?, uuid: String?, rrule: RRule?, dtStart: NSDate?, dtEnd: NSDate?, detailDescription: String?, referenceId: String?, createdAt: NSDate?, updatedAt: NSDate?, subevents: [Subevent]) {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }
