@@ -151,6 +151,10 @@ final public class Subcourse {
 		self.courseTerm = courseTerm
 		self.courseYear = courseYear
 	}
+	
+	public var toRealmObject: SubcourseRealmObject {
+		return SubcourseRealmObject(withSubcourse: self)
+	}
 }
 
 extension Subcourse : CustomStringConvertible {
