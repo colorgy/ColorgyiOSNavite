@@ -92,16 +92,34 @@ extension CourseRealmObject {
 		}
 	}
 	
+	public class func queryDate(fromDate fromDate: NSDate, toDate: NSDate, complete: ((objects: [CourseRealmObject]) -> Void)?) {
+		guard fromDate.isBefore(toDate) else {
+			complete?(objects: [])
+			print(#function, "from date must smaller than to date")
+			return
+		}
+		do {
+			let realm = try Realm()
+			objects = realm.objects(CourseRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
+			complete?(objects: objects)
+		} catch {
+			complete?(objects: objects)
+		}
+	}
+	
 	public class func queryData(fromYear fromYear: Int, toYear: Int, complete: ((objects: [CourseRealmObject]) -> Void)?) {
 		autoreleasepool {
 			var objects = [CourseRealmObject]()
-			let _fromYear = fromYear < toYear ? fromYear : toYear
-			let _toYear = fromYear < toYear ? toYear : fromYear
-			guard let fromDate = NSDate.create(dateOnYear: _fromYear, month: 1, day: 1) else {
+			guard fromYear <= toYear else {
+				complete?(objects: objects)
+				print(#function, "from year must smaller than to year")
+				return
+			}
+			guard let fromDate = NSDate.create(dateOnYear: fromYear, month: 1, day: 1) else {
 				complete?(objects: objects)
 				return
 			}
-			guard let toDate = NSDate.create(dateOnYear: _toYear, month: 12, day: 31) else {
+			guard let toDate = NSDate.create(dateOnYear: toYear, month: 12, day: 31) else {
 				complete?(objects: objects)
 				return
 			}

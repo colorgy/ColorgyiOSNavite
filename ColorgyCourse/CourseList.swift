@@ -50,23 +50,26 @@ extension CourseList : CustomStringConvertible {
 
 extension CourseList {
 	public func saveListToRealm(complete: ((succeed: Bool) -> Void)?) {
-		autoreleasepool {
-			do {
-				let realm = try Realm()
-				realm.beginWrite()
-				// start writing to realm
-				self.forEach({ (course) in
-					let courseRealmObject = CourseRealmObject(withCourse: course)
-					realm.add(courseRealmObject)
-				})
-				// commit write
-				try realm.commitWrite()
-				// finished
-				complete?(succeed: true)
-			} catch {
-				complete?(succeed: false)
+		let qos = Int(QOS_CLASS_USER_INTERACTIVE.rawValue)
+		dispatch_async(dispatch_get_global_queue(qos, 0), { () -> Void in
+			autoreleasepool {
+				do {
+					let realm = try Realm()
+					realm.beginWrite()
+					// start writing to realm
+					self.forEach({ (course) in
+						let courseRealmObject = CourseRealmObject(withCourse: course)
+						realm.add(courseRealmObject)
+					})
+					// commit write
+					try realm.commitWrite()
+					// finished
+					complete?(succeed: true)
+				} catch {
+					complete?(succeed: false)
+				}
 			}
-		}
+		})
 	}
 }
 
