@@ -128,6 +128,10 @@ public struct RRule {
 	
 	// MARK: - Methods
 	
+	public var toRealmObject: RRuleRealmObject {
+		return RRuleRealmObject(withRRule: self)
+	}
+	
 	/// Can get all occurrences between dtStart and until.
 	/// Time of all these occurrences will start and depends on dtStart time.
 	public func allOccurrences() -> [NSDate] {
