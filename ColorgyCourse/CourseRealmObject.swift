@@ -93,39 +93,35 @@ extension CourseRealmObject {
 	}
 	
 	public class func queryDate(fromDate fromDate: NSDate, toDate: NSDate, complete: ((objects: [CourseRealmObject]) -> Void)?) {
-		autoreleasepool {
-			guard fromDate.isBefore(toDate) else {
-				complete?(objects: [])
-				print(#function, "from date must smaller than to date")
-				return
-			}
-			do {
-				let realm = try Realm()
-				let objects = realm.objects(CourseRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
-				complete?(objects: objects)
-			} catch {
-				complete?(objects: [])
-			}
+		guard fromDate.isBefore(toDate) else {
+			complete?(objects: [])
+			print(#function, "from date must smaller than to date")
+			return
+		}
+		do {
+			let realm = try Realm()
+			let objects = realm.objects(CourseRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
+			complete?(objects: objects)
+		} catch {
+			complete?(objects: [])
 		}
 	}
 	
 	public class func queryData(fromYear fromYear: Int, toYear: Int, complete: ((objects: [CourseRealmObject]) -> Void)?) {
-		autoreleasepool {
-			guard fromYear <= toYear else {
-				complete?(objects: [])
-				print(#function, "from year must smaller than to year")
-				return
-			}
-			guard let fromDate = NSDate.create(dateOnYear: fromYear, month: 1, day: 1) else {
-				complete?(objects: [])
-				return
-			}
-			guard let toDate = NSDate.create(dateOnYear: toYear, month: 12, day: 31) else {
-				complete?(objects: [])
-				return
-			}
-			queryDate(fromDate: fromDate, toDate: toDate, complete: complete)
+		guard fromYear <= toYear else {
+			complete?(objects: objects)
+			print(#function, "from year must smaller than to year")
+			return
 		}
+		guard let fromDate = NSDate.create(dateOnYear: fromYear, month: 1, day: 1) else {
+			complete?(objects: [])
+			return
+		}
+		guard let toDate = NSDate.create(dateOnYear: toYear, month: 12, day: 31) else {
+			complete?(objects: [])
+			return
+		}
+		queryDate(fromDate: fromDate, toDate: toDate, complete: complete)
 	}
 }
 

@@ -56,7 +56,12 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 //		EventRealmObject.queryData(fromYear: 1970, toYear: 1971) { (events) in
 //			print(events)
 //		}
-		CourseRealmObject.queryData(fromYear: 2014, toYear: 2017) { (objects) in
+		let from = NSDate.create(dateOnYear: 2016, month: 7, day: 1, hour: 0, minute: 0, second: 0)!
+		let to = NSDate.create(dateOnYear: 2016, month: 8, day: 1, hour: 0, minute: 0, second: 0)!
+		CourseRealmObject.queryDate(fromDate: from, toDate: to) { (objects) in
+			print(objects.count)
+		}
+		CourseRealmObject.queryData(fromYear: 2016, toYear: 2016) { (objects) in
 			print(objects.count)
 		}
 	}
