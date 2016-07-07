@@ -14,7 +14,7 @@ final public class Event {
 	public private(set) var id: String
 	public private(set) var name: String
 	public private(set) var uuid: String
-	public private(set) var rrule: String?
+	public private(set) var rrule: RRule?
 	public private(set) var dtStart: NSDate
 	public private(set) var dtEnd: NSDate
 	public private(set) var detailDescription: String?

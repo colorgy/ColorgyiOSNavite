@@ -15,7 +15,7 @@ final public class SubeventRealmObject: Object {
 	dynamic var name: String = ""
 	dynamic var uuid: String =  ""
 	dynamic var detailDescription: String?
-	dynamic var rrule: String?
+	dynamic var rrule: RRuleRealmObject?
 	dynamic var dtStart: NSDate = NSDate()
 	dynamic var dtEnd: NSDate = NSDate()
 	dynamic var createdAt: NSDate = NSDate()
