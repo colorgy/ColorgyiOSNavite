@@ -36,6 +36,10 @@ final public class RRuleRealmObject: Object {
 		self.frequency = rrule.frequency.rawValue
 		self.weekStartDay = rrule.weekStartDay.rawValue
 	}
+	
+	public var toRRule: RRule? {
+		return RRule(withRealmObject: self)
+	}
 }
 
 extension RRuleRealmObject {

@@ -38,12 +38,12 @@ final public class Subevent {
 	
 	/// Init with json
 	public convenience init?(json: JSON) {
-		let rrule = RRule(initWithRRuleString: <#T##String#>)
+		let rrule = RRule(initWithRRuleString: json[Keys.rrule].string)
 		self.init(
 			id: json[Keys.id].string,
 			name: json[Keys.name].string,
 			uuid: json[Keys.uuid].string,
-			rrule: json[Keys.rrule].string,
+			rrule: rrule,
 			dtStart: json[Keys.dtStart].string,
 			dtEnd: json[Keys.dtEnd].string,
 			detailDescription: json[Keys.detailDescription].string,

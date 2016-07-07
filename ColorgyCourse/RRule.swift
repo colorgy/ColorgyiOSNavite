@@ -39,7 +39,7 @@ public struct RRule {
 	// MARK: - Init
 	/// Init rrule with a rrule string
 	/// DTSTART is a required part in this string, is DTSTART is not given, this initialzer will fail.
-	public init?(initWithRRuleString rs: String) {
+	public init?(initWithRRuleString rs: String?) {
 		guard let rs = rs else { return nil }
 		
 		// map all the key/value pair in to this dictionary
