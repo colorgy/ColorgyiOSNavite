@@ -124,7 +124,7 @@ public struct RRule {
 		
 		interval = object.interval.int
 		
-		guard let weekStartDay = WKST(wkst: object.weekStartDay) else { return inl }
+		guard let weekStartDay = WKST(wkst: object.weekStartDay) else { return nil }
 		self.weekStartDay = weekStartDay
 	}
 	
