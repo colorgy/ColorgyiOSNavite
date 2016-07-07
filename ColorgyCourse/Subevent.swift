@@ -57,7 +57,7 @@ final public class Subevent {
 			id: object.id,
 			name: object.name,
 			uuid: object.uuid,
-			rrule: object.rrule,
+			rrule: object.rrule?.toRRule,
 			dtStart: object.dtStart,
 			dtEnd: object.dtEnd,
 			detailDescription: object.detailDescription,
