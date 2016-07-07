@@ -44,4 +44,8 @@ extension Int {
 			block(index: index)
 		}
 	}
+	
+	var int32: Int32 {
+		return Int32(self)
+	}
 }

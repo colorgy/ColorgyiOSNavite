@@ -118,9 +118,9 @@ public struct RRule {
 	public func allOccurrences() -> [NSDate] {
 		// first, find base date to get start with
 		var baseDate = self.dtStart
-		// find start week day
+		// find start week day. Here, we are going to find the previous week start day.
 		let weekdayOffset = baseDate.weekday - self.weekStartDay.toInt()
-		// choose the start day
+		// choose the start day, subtract to get previous start day.
 		if let newBaseDate = baseDate.dateBySubtractingDay(weekdayOffset) {
 			baseDate = newBaseDate
 		} else {
