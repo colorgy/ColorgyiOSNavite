@@ -115,3 +115,9 @@ extension CourseRealmObject {
 		}
 	}
 }
+
+extension Array where Element: CourseRealmObject {
+	public var toCoursesArray: [Course] {
+		return Course.generateCourses(withRealmObjects: self)
+	}
+}
