@@ -113,6 +113,21 @@ public struct RRule {
 		weekStartDay = .MO
 	}
 	
+	public init?(withRealmObject object: RRuleRealmObject) {
+		dtStart = object.dtStart
+		until = object.until
+		
+		guard let frequency = Frequency(freqString: object.frequency) else { return nil }
+		self.frequency = frequency
+		
+		interval = object.interval.int
+		
+		guard let weekStartDay = WKST(wkst: object.weekStartDay) else { return inl }
+		self.weekStartDay = weekStartDay
+	}
+	
+	// MARK: - Methods
+	
 	/// Can get all occurrences between dtStart and until.
 	/// Time of all these occurrences will start and depends on dtStart time.
 	public func allOccurrences() -> [NSDate] {

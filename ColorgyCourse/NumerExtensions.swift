@@ -49,3 +49,9 @@ extension Int {
 		return Int32(self)
 	}
 }
+
+extension Int32 {
+	var int: Int {
+		return Int(self)
+	}
+}
