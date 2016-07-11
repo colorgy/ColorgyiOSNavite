@@ -15,8 +15,8 @@ final public class Subcourse {
 	public private(set) var name: String
 	public private(set) var uuid: String
 	public private(set) var rrule: RRule?
-	public private(set) var dtStart: NSDate
-	public private(set) var dtEnd: NSDate
+	public private(set) var startTime: NSDate
+	public private(set) var endTime: NSDate
 	public private(set) var detailDescription: String?
 	public private(set) var createdAt: NSDate
 	public private(set) var updatedAt: NSDate?
@@ -35,8 +35,8 @@ final public class Subcourse {
 		static let name = "name"
 		static let uuid = "uuid"
 		static let rrule = "rrule"
-		static let dtStart = "dtstart"
-		static let dtEnd = "dtend"
+		static let startTime = "start_time"
+		static let endTime = "end_time"
 		static let detailDescription = "description"
 		static let createdAt = "created_at"
 		static let updatedAt = "updated_at"
@@ -59,8 +59,8 @@ final public class Subcourse {
 			name: json[Keys.name].string,
 			uuid: json[Keys.uuid].string,
 			rrule: rrule,
-			dtStart: json[Keys.dtStart].string,
-			dtEnd: json[Keys.dtEnd].string,
+			startTime: json[Keys.startTime].string,
+			endTime: json[Keys.endTime].string,
 			detailDescription: json[Keys.detailDescription].string,
 			createdAt: json[Keys.createdAt].string,
 			updatedAt: json[Keys.updatedAt].string,
@@ -80,8 +80,8 @@ final public class Subcourse {
 			name: object.name,
 			uuid: object.uuid,
 			rrule: object.rrule?.toRRule,
-			dtStart: object.dtStart,
-			dtEnd: object.dtEnd,
+			startTime: object.startTime,
+			endTime: object.endTime,
 			detailDescription: object.detailDescription,
 			createdAt: object.createdAt,
 			updatedAt: object.updatedAt,
@@ -95,7 +95,7 @@ final public class Subcourse {
 	}
 	
 	/// Init with content of strings
-	public convenience init?(id: String?, name: String?, uuid: String?, rrule: RRule?, dtStart: String?, dtEnd: String?, detailDescription: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?) {
+	public convenience init?(id: String?, name: String?, uuid: String?, rrule: RRule?, startTime: String?, endTime: String?, detailDescription: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?) {
 		// transform string into nsdate
 		
 		self.init(
@@ -103,8 +103,8 @@ final public class Subcourse {
 			name: name,
 			uuid: uuid,
 			rrule: rrule,
-			dtStart: NSDate.dateFrom(iso8601: dtStart),
-			dtEnd: NSDate.dateFrom(iso8601: dtEnd),
+			startTime: NSDate.dateFrom(iso8601: startTime),
+			endTime: NSDate.dateFrom(iso8601: endTime),
 			detailDescription: detailDescription,
 			createdAt: NSDate.dateFrom(iso8601: createdAt),
 			updatedAt: NSDate.dateFrom(iso8601: updatedAt),
@@ -118,12 +118,12 @@ final public class Subcourse {
 	}
 	
 	/// Init with contents
-	public init?(id: String?, name: String?, uuid: String?, rrule: RRule?, dtStart: NSDate?, dtEnd: NSDate?, detailDescription: String?, createdAt: NSDate?, updatedAt: NSDate?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?) {
+	public init?(id: String?, name: String?, uuid: String?, rrule: RRule?, startTime: NSDate?, endTime: NSDate?, detailDescription: String?, createdAt: NSDate?, updatedAt: NSDate?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?) {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }
-		guard let dtStart = dtStart else { return nil }
-		guard let dtEnd = dtEnd else { return nil }
+		guard let startTime = startTime else { return nil }
+		guard let endTime = endTime else { return nil }
 		guard let uuid = uuid else { return nil }
 		guard let createdAt = createdAt else { return nil }
 		
@@ -138,8 +138,8 @@ final public class Subcourse {
 		self.name = name
 		self.uuid = uuid
 		self.rrule = rrule
-		self.dtStart = dtStart
-		self.dtEnd = dtEnd
+		self.startTime = startTime
+		self.endTime = endTime
 		self.detailDescription = detailDescription
 		self.createdAt = createdAt
 		self.updatedAt = updatedAt
@@ -160,7 +160,7 @@ final public class Subcourse {
 
 extension Subcourse : CustomStringConvertible {
 	public var description: String {
-		return "Subcourse: {\n\t\tid: \(id)\n\t\tname: \(name)\n\t\tuuid: \(uuid)\n\t\trrule: \(rrule)\n\t\tdtStart: \(dtStart)\n\t\tdtEnd: \(dtEnd)\n\t\tdetailDescription: \(detailDescription)\n\t\tcreatedAt: \(createdAt)\n\t\tupdatedAt: \(updatedAt)\n}"
+		return "Subcourse: {\n\t\tid: \(id)\n\t\tname: \(name)\n\t\tuuid: \(uuid)\n\t\trrule: \(rrule)\n\t\tstartTime: \(startTime)\n\t\tendTime: \(endTime)\n\t\tdetailDescription: \(detailDescription)\n\t\tcreatedAt: \(createdAt)\n\t\tupdatedAt: \(updatedAt)\n}"
 	}
 }
 
