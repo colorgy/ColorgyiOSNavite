@@ -39,8 +39,8 @@ final public class CourseRealmObject: Object {
 		self.name = course.name
 		self.uuid = course.uuid
 		self.rrule = course.rrule?.toRealmObject
-		self.dtStart = course.dtStart
-		self.dtEnd = course.dtEnd
+		self.startTime = course.startTime
+		self.endTime = course.endTime
 		self.detailDescription = course.detailDescription
 		self.referenceId = course.referenceId
 		self.createdAt = course.createdAt

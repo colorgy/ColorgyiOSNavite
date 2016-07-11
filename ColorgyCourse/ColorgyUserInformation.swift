@@ -43,10 +43,6 @@ private struct UserSettingKeys {
 	static let devicePushNotificationTokenKey = "UserSettingKeys devicePushNotificationTokenKey"
 }
 
-private struct RefreshCenterKeys {
-	static let refreshTokenHasBeenRevokedKey = "RefreshCenterKeys refreshTokenHasBeenRevokedKey"
-}
-
 // MARK: - Class
 final public class ColorgyUserInformation {
 	
@@ -192,38 +188,6 @@ final public class ColorgyUserInformation {
 	public var pushNotificationToken: NSData? {
 		let ud = NSUserDefaults.standardUserDefaults()
 		return ud.objectForKey(UserSettingKeys.devicePushNotificationTokenKey) as? NSData
-	}
-	
-	// MARK: - Refresh Center 
-	/// **Must** call this method while login to colorgy
-	public class func activeRefreshCenterTokenState() {
-		let ud = NSUserDefaults.standardUserDefaults()
-		// true for active, false for revoke
-		ud.setBool(true, forKey: RefreshCenterKeys.refreshTokenHasBeenRevokedKey)
-		ud.synchronize()
-	}
-	
-	/// **Must** call this method if fail to get new refresh token
-	public class func revokeRefreshCenterTokenState() {
-		let ud = NSUserDefaults.standardUserDefaults()
-		// true for active, false for revoke
-		ud.setBool(false, forKey: RefreshCenterKeys.refreshTokenHasBeenRevokedKey)
-		ud.synchronize()
-	}
-	
-	/// Get refresh token's state
-	///
-	/// Returning **only Active / Revoke** state
-	public var refreshTokenState: RefreshTokenState {
-		let ud = NSUserDefaults.standardUserDefaults()
-		// true for active, false for revoke
-		if ud.boolForKey(RefreshCenterKeys.refreshTokenHasBeenRevokedKey) {
-			// true is for active state
-			return RefreshTokenState.Active
-		} else {
-			// false is for revoke state
-			return RefreshTokenState.Revoke
-		}
 	}
 	
 	// MARK: - Getters

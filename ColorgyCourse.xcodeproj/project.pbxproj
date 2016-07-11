@@ -9,13 +9,7 @@
 /* Begin PBXBuildFile section */
 		1658E37B9D5B1E049F1B970D /* Pods_ColorgyCourse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F0906B7C0CF4EE31C05A495 /* Pods_ColorgyCourse.framework */; };
 		5316BA6EAC71B40BA0F157C5 /* Pods_ColorgyCourseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A1A2DCAF4F2A4E0945439D /* Pods_ColorgyCourseTests.framework */; };
-		630337E71CE964EE006FEA1C /* BlurWallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337E61CE964EE006FEA1C /* BlurWallView.swift */; };
-		630337E91CE9732B006FEA1C /* BlurWallViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */; };
-		630337EC1CE974CE006FEA1C /* BlurWallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337EB1CE974CE006FEA1C /* BlurWallViewModel.swift */; };
-		630337EE1CE97906006FEA1C /* BlurWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337ED1CE97906006FEA1C /* BlurWallViewController.swift */; };
-		630337F01CE9AB4B006FEA1C /* AvailableTargetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337EF1CE9AB4B006FEA1C /* AvailableTargetList.swift */; };
 		630337F21CE9B265006FEA1C /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 630337F11CE9B265006FEA1C /* 1.png */; };
-		630337F31CE9B563006FEA1C /* AvailableTargetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337EF1CE9AB4B006FEA1C /* AvailableTargetList.swift */; };
 		630472841CE5782C00D907C4 /* SearchEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472831CE5782C00D907C4 /* SearchEventListViewController.swift */; };
 		630472861CE5AA4E00D907C4 /* SearchEventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */; };
 		630472891CE5DD2000D907C4 /* WeekCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */; };
@@ -23,14 +17,6 @@
 		63056FFF1CBCABB7007D2C9D /* CourseOwnershipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */; };
 		630570011CBCBC86007D2C9D /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570001CBCBC86007D2C9D /* Semester.swift */; };
 		630570051CBCC94A007D2C9D /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570041CBCC94A007D2C9D /* Department.swift */; };
-		6305700A1CBD0AA1007D2C9D /* ColorgyChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570091CBD0AA1007D2C9D /* ColorgyChatAPI.swift */; };
-		6305700C1CBD0AB9007D2C9D /* ColorgySocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305700B1CBD0AB9007D2C9D /* ColorgySocket.swift */; };
-		6305700E1CBD11EA007D2C9D /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305700D1CBD11EA007D2C9D /* ChatUser.swift */; };
-		630570121CBD1A2E007D2C9D /* ChatUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */; };
-		630570181CBD233A007D2C9D /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570171CBD233A007D2C9D /* Hello.swift */; };
-		6305701C1CBD268A007D2C9D /* HistoryChatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */; };
-		6305701E1CBD2902007D2C9D /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701D1CBD2902007D2C9D /* Chatroom.swift */; };
-		630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701F1CBD2999007D2C9D /* ChatMessage.swift */; };
 		6306F66D1D24C01E00035AD9 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F66C1D24C01E00035AD9 /* NotificationSettingsViewController.swift */; };
 		6306F66E1D24C02100035AD9 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F66C1D24C01E00035AD9 /* NotificationSettingsViewController.swift */; };
 		6306F6701D24C9BE00035AD9 /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306F66F1D24C9BE00035AD9 /* NotificationSettingsViewModel.swift */; };
@@ -52,24 +38,12 @@
 		630B9DC61D2B725400B2B250 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B9DC41D2B725400B2B250 /* EventList.swift */; };
 		630B9DC81D2B72EA00B2B250 /* EventListGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B9DC71D2B72EA00B2B250 /* EventListGenerator.swift */; };
 		630B9DC91D2B72EA00B2B250 /* EventListGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B9DC71D2B72EA00B2B250 /* EventListGenerator.swift */; };
-		631594D71D20CB3A00431499 /* ChatMessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375476F1CC8A96900BC3BBD /* ChatMessageList.swift */; };
-		631594D81D20CB5900431499 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */; };
 		631594D91D20CB6700431499 /* SearchCourseBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */; };
 		631594DA1D20CB6700431499 /* SearchCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF341CF00E9B003F1329 /* SearchCourseViewController.swift */; };
 		631594DB1D20CB6700431499 /* SearchCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393BBFD1CF0179E008BFF72 /* SearchCourseViewModel.swift */; };
-		631594DC1D20CB6700431499 /* BlurWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337ED1CE97906006FEA1C /* BlurWallViewController.swift */; };
-		631594DD1D20CB6700431499 /* BlurWallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337E61CE964EE006FEA1C /* BlurWallView.swift */; };
-		631594DE1D20CB6700431499 /* BlurWallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337EB1CE974CE006FEA1C /* BlurWallViewModel.swift */; };
-		631594DF1D20CB6700431499 /* BlurWallViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */; };
 		631594E01D20CB6700431499 /* SearchEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472831CE5782C00D907C4 /* SearchEventListViewController.swift */; };
 		631594E11D20CB6700431499 /* SearchEventBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307AC361CEAB66F00345025 /* SearchEventBar.swift */; };
 		631594E21D20CB6700431499 /* SearchEventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */; };
-		631594E31D20CB6700431499 /* SayHelloCountsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547731CC8BE8400BC3BBD /* SayHelloCountsCell.swift */; };
-		631594E41D20CB6700431499 /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547751CC8BF4A00BC3BBD /* FriendListViewModel.swift */; };
-		631594E51D20CB6700431499 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547771CC8BF6200BC3BBD /* FriendListViewController.swift */; };
-		631594E61D20CB6700431499 /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */; };
-		631594E71D20CB6700431499 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C21CC87595008025A7 /* ChatRoomViewController.swift */; };
-		631594E81D20CB6700431499 /* FloatingOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547711CC8B1BB00BC3BBD /* FloatingOptionView.swift */; };
 		631594E91D20CB7F00431499 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1C34A1CF1EC1200989B5D /* CreateEventViewController.swift */; };
 		631594EA1D20CB7F00431499 /* WeekCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630472881CE5DD2000D907C4 /* WeekCalendarViewController.swift */; };
 		631594EB1D20CB7F00431499 /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304728A1CE5DDC500D907C4 /* WeekCalendarView.swift */; };
@@ -102,8 +76,6 @@
 		631595081D20ED3300431499 /* DLCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631595061D20ED3300431499 /* DLCalendarView.swift */; };
 		631595091D20ED3300431499 /* DLCalendarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631595071D20ED3300431499 /* DLCalendarViewCell.swift */; };
 		6315950B1D20EDA900431499 /* MonthCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315950A1D20EDA900431499 /* MonthCalendarViewController.swift */; };
-		6324BF2F1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */; };
-		6324BF301CEFF721003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */; };
 		6324BF321CF00B7C003F1329 /* SearchCourseBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */; };
 		6324BF351CF00E9B003F1329 /* SearchCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324BF341CF00E9B003F1329 /* SearchCourseViewController.swift */; };
 		632C0C531CF541FA002C9380 /* PhoneValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C521CF541FA002C9380 /* PhoneValidationView.swift */; };
@@ -139,21 +111,6 @@
 		6353CE431D193E0500F90A4D /* PhoneValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CE421D193E0500F90A4D /* PhoneValidationViewModel.swift */; };
 		6353CE441D193EF700F90A4D /* PhoneValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C0C521CF541FA002C9380 /* PhoneValidationView.swift */; };
 		6353CE451D193EFA00F90A4D /* PhoneValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CE421D193E0500F90A4D /* PhoneValidationViewModel.swift */; };
-		6353CE471D193F4600F90A4D /* ATrickyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A21CC8743D008025A7 /* ATrickyView.swift */; };
-		6353CE481D193F4700F90A4D /* DLIncomingMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */; };
-		6353CE491D193F4700F90A4D /* DLIncomingMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77A41CC8743D008025A7 /* DLIncomingMessageBubble.xib */; };
-		6353CE4A1D193F4700F90A4D /* DLIncomingMessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A51CC8743D008025A7 /* DLIncomingMessageDelegate.swift */; };
-		6353CE4B1D193F4700F90A4D /* DLIncomingPhotoBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A61CC8743D008025A7 /* DLIncomingPhotoBubble.swift */; };
-		6353CE4C1D193F4700F90A4D /* DLIncomingPhotoBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77A71CC8743D008025A7 /* DLIncomingPhotoBubble.xib */; };
-		6353CE4D1D193F4700F90A4D /* DLMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A81CC8743D008025A7 /* DLMessageData.swift */; };
-		6353CE4E1D193F4700F90A4D /* DLMessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A91CC8743D008025A7 /* DLMessageLabel.swift */; };
-		6353CE4F1D193F4700F90A4D /* DLMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77AA1CC8743D008025A7 /* DLMessagesViewController.swift */; };
-		6353CE501D193F4700F90A4D /* DLOutgoingMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77AB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift */; };
-		6353CE511D193F4700F90A4D /* DLOutgoingMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77AC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib */; };
-		6353CE521D193F4700F90A4D /* DLOutgoingPhotoBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77AD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift */; };
-		6353CE531D193F4700F90A4D /* DLOutgoingPhotoBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77AE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib */; };
-		6353CE541D193F4700F90A4D /* DLPhotoMessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77AF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift */; };
-		6353CE551D193F4700F90A4D /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77B11CC8743D008025A7 /* TextInputView.swift */; };
 		6353CE561D193F4700F90A4D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AC1B401CF155F800FDD724 /* Event.swift */; };
 		6353CE571D193F6000F90A4D /* ColorgyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */; };
 		6353CE581D193F6000F90A4D /* ColorgyNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393BBFF1CF01AD7008BFF72 /* ColorgyNavigationBar.swift */; };
@@ -177,7 +134,6 @@
 		635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D01CB8AA0700DE8CBC /* LoginViewController.swift */; };
 		635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D21CB8AC6300DE8CBC /* LoginViewModel.swift */; };
 		635479E41CB8B02A00DE8CBC /* ColorgyUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D41CB8B02A00DE8CBC /* ColorgyUserInformation.swift */; };
-		635479E51CB8B02A00DE8CBC /* TimeStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D51CB8B02A00DE8CBC /* TimeStamp.swift */; };
 		635479E61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift */; };
 		635479E71CB8B02A00DE8CBC /* ColorgyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D71CB8B02A00DE8CBC /* ColorgyAPI.swift */; };
 		635479E81CB8B02A00DE8CBC /* ColorgyAPIMeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D81CB8B02A00DE8CBC /* ColorgyAPIMeResult.swift */; };
@@ -185,7 +141,6 @@
 		635479ED1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479DD1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift */; };
 		635479EE1CB8B02A00DE8CBC /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479DE1CB8B02A00DE8CBC /* StringExtension.swift */; };
 		635479EF1CB8B02A00DE8CBC /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479DF1CB8B02A00DE8CBC /* DateExtension.swift */; };
-		635479F01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift */; };
 		635479F11CB8B02A00DE8CBC /* ColorgyLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E11CB8B02A00DE8CBC /* ColorgyLogin.swift */; };
 		635479F21CB8B02A00DE8CBC /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E21CB8B02A00DE8CBC /* AFError.swift */; };
 		635479F31CB8B02A00DE8CBC /* ColorgyLoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */; };
@@ -213,14 +168,6 @@
 		63700E341D18E14800DD76F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479871CB898C100DE8CBC /* AppDelegate.swift */; };
 		637305601CBF823B0016A7FC /* EmailRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373055F1CBF823B0016A7FC /* EmailRegisterViewController.swift */; };
 		637305641CBF83D80016A7FC /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637305631CBF83D80016A7FC /* UIViewExtension.swift */; };
-		637547701CC8A96900BC3BBD /* ChatMessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375476F1CC8A96900BC3BBD /* ChatMessageList.swift */; };
-		637547721CC8B1BB00BC3BBD /* FloatingOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547711CC8B1BB00BC3BBD /* FloatingOptionView.swift */; };
-		637547741CC8BE8400BC3BBD /* SayHelloCountsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547731CC8BE8400BC3BBD /* SayHelloCountsCell.swift */; };
-		637547761CC8BF4A00BC3BBD /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547751CC8BF4A00BC3BBD /* FriendListViewModel.swift */; };
-		637547781CC8BF6200BC3BBD /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547771CC8BF6200BC3BBD /* FriendListViewController.swift */; };
-		6375477A1CC8C23700BC3BBD /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */; };
-		6375477C1CC8D69800BC3BBD /* ColorgyChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */; };
-		6375477D1CC9D67600BC3BBD /* ColorgyChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */; };
 		637B8F211D192B4600348CF4 /* StoryboardIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B8F201D192B4600348CF4 /* StoryboardIdentifier.swift */; };
 		637B8F231D192BB000348CF4 /* StoryboardViewControllerFetchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B8F221D192BB000348CF4 /* StoryboardViewControllerFetchHelper.swift */; };
 		637B8F261D192D7800348CF4 /* StoryboardViewControllerFetchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B8F221D192BB000348CF4 /* StoryboardViewControllerFetchHelper.swift */; };
@@ -294,8 +241,6 @@
 		63B657E11D23BE360050A8A4 /* SettingsSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B657DF1D23BE360050A8A4 /* SettingsSwitchCell.swift */; };
 		63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */; };
 		63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */; };
-		63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */; };
-		63C3CE1F1CC0C76F000EE808 /* ChatMeUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE191CC0C76F000EE808 /* ChatMeUserInformation.swift */; };
 		63C3CE201CC0C76F000EE808 /* ColorgyAppNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE1A1CC0C76F000EE808 /* ColorgyAppNotification.swift */; };
 		63C3CE211CC0C76F000EE808 /* NumerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE1B1CC0C76F000EE808 /* NumerExtensions.swift */; };
 		63C3CE221CC0C76F000EE808 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE1C1CC0C76F000EE808 /* Organization.swift */; };
@@ -314,8 +259,6 @@
 		63C3CE3B1CC0C8C0000EE808 /* NumerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE1B1CC0C76F000EE808 /* NumerExtensions.swift */; };
 		63C3CE3C1CC0C8C0000EE808 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE1D1CC0C76F000EE808 /* UIImageExtension.swift */; };
 		63C3CE3D1CC0C8C0000EE808 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637305631CBF83D80016A7FC /* UIViewExtension.swift */; };
-		63C3CE3E1CC0C8CD000EE808 /* AvailableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */; };
-		63C3CE3F1CC0C8CD000EE808 /* ChatMeUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3CE191CC0C76F000EE808 /* ChatMeUserInformation.swift */; };
 		63C3CE431CC0C945000EE808 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE421CC0C945000EE808 /* libc++.tbd */; };
 		63C3CE451CC0C94B000EE808 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE441CC0C94B000EE808 /* libz.tbd */; };
 		63C3CE471CC0C98B000EE808 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3CE461CC0C98B000EE808 /* SystemConfiguration.framework */; };
@@ -346,24 +289,6 @@
 		63E447221D0E7DE8005186FD /* ColorgyStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447211D0E7DE8005186FD /* ColorgyStyle.swift */; };
 		63E447231D0E8314005186FD /* ColorgyStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E447211D0E7DE8005186FD /* ColorgyStyle.swift */; };
 		63EC77201CC6060E008025A7 /* ColorgyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */; };
-		63EC77B21CC8743D008025A7 /* ATrickyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A21CC8743D008025A7 /* ATrickyView.swift */; };
-		63EC77B31CC8743D008025A7 /* DLIncomingMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */; };
-		63EC77B41CC8743D008025A7 /* DLIncomingMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77A41CC8743D008025A7 /* DLIncomingMessageBubble.xib */; };
-		63EC77B51CC8743D008025A7 /* DLIncomingMessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A51CC8743D008025A7 /* DLIncomingMessageDelegate.swift */; };
-		63EC77B61CC8743D008025A7 /* DLIncomingPhotoBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A61CC8743D008025A7 /* DLIncomingPhotoBubble.swift */; };
-		63EC77B71CC8743D008025A7 /* DLIncomingPhotoBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77A71CC8743D008025A7 /* DLIncomingPhotoBubble.xib */; };
-		63EC77B81CC8743D008025A7 /* DLMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A81CC8743D008025A7 /* DLMessageData.swift */; };
-		63EC77B91CC8743D008025A7 /* DLMessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77A91CC8743D008025A7 /* DLMessageLabel.swift */; };
-		63EC77BA1CC8743D008025A7 /* DLMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77AA1CC8743D008025A7 /* DLMessagesViewController.swift */; };
-		63EC77BB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77AB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift */; };
-		63EC77BC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77AC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib */; };
-		63EC77BD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77AD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift */; };
-		63EC77BE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EC77AE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib */; };
-		63EC77BF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77AF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift */; };
-		63EC77C11CC8743D008025A7 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77B11CC8743D008025A7 /* TextInputView.swift */; };
-		63EC77C31CC87595008025A7 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C21CC87595008025A7 /* ChatRoomViewController.swift */; };
-		63EC77C51CC875A0008025A7 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */; };
-		63F3EE6B1CBF3CA00010D059 /* TestColorgyRefershCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3EE6A1CBF3CA00010D059 /* TestColorgyRefershCenter.swift */; };
 		63F3EE761CBF49D10010D059 /* ColorgyUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D41CB8B02A00DE8CBC /* ColorgyUserInformation.swift */; };
 		63F3EE791CBF49D10010D059 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570041CBCC94A007D2C9D /* Department.swift */; };
 		63F3EE7A1CBF49D10010D059 /* CourseOwnershipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */; };
@@ -373,21 +298,11 @@
 		63F3EE7E1CBF49DF0010D059 /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570001CBCBC86007D2C9D /* Semester.swift */; };
 		63F3EE7F1CBF49DF0010D059 /* ColorgyAPIMeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D81CB8B02A00DE8CBC /* ColorgyAPIMeResult.swift */; };
 		63F3EE801CBF49DF0010D059 /* ColorgyAPIUserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D91CB8B02A00DE8CBC /* ColorgyAPIUserResult.swift */; };
-		63F3EE841CBF49DF0010D059 /* ColorgyRefreshCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift */; };
 		63F3EE851CBF49DF0010D059 /* ColorgyLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E11CB8B02A00DE8CBC /* ColorgyLogin.swift */; };
 		63F3EE861CBF49DF0010D059 /* ColorgyLoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */; };
 		63F3EE8B1CBF49EE0010D059 /* SwiftyJSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479DD1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift */; };
 		63F3EE8C1CBF49EE0010D059 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479DE1CB8B02A00DE8CBC /* StringExtension.swift */; };
 		63F3EE8D1CBF49EE0010D059 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479DF1CB8B02A00DE8CBC /* DateExtension.swift */; };
-		63F3EE8E1CBF49EE0010D059 /* ColorgySocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305700B1CBD0AB9007D2C9D /* ColorgySocket.swift */; };
-		63F3EE8F1CBF49EE0010D059 /* ColorgyChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570091CBD0AA1007D2C9D /* ColorgyChatAPI.swift */; };
-		63F3EE921CBF49EE0010D059 /* HistoryChatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */; };
-		63F3EE931CBF49EE0010D059 /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701D1CBD2902007D2C9D /* Chatroom.swift */; };
-		63F3EE941CBF49EE0010D059 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305701F1CBD2999007D2C9D /* ChatMessage.swift */; };
-		63F3EE951CBF49EE0010D059 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570171CBD233A007D2C9D /* Hello.swift */; };
-		63F3EE961CBF49EE0010D059 /* ChatUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */; };
-		63F3EE971CBF49EE0010D059 /* TimeStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635479D51CB8B02A00DE8CBC /* TimeStamp.swift */; };
-		63F3EE981CBF49EE0010D059 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305700D1CBD11EA007D2C9D /* ChatUser.swift */; };
 		63F628B31D07B3BC00F55E38 /* ChooseSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F628B21D07B3BC00F55E38 /* ChooseSchoolViewController.swift */; };
 		63F628B51D07B40A00F55E38 /* ChooseSchoolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F628B41D07B40A00F55E38 /* ChooseSchoolViewModel.swift */; };
 		DC9793805EBD5F5CE0FCF75E /* Pods_ColorgyCourseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63259315E3F1E479B64E07B /* Pods_ColorgyCourseUITests.framework */; };
@@ -415,11 +330,6 @@
 		2CA4435635DB33822880C423 /* Pods-ColorgyCourseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourseTests/Pods-ColorgyCourseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		34DF674E89A9791783AF087F /* Pods-ColorgyCourse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourse.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourse/Pods-ColorgyCourse.release.xcconfig"; sourceTree = "<group>"; };
 		51F147C904FA49A1C1E73869 /* Pods-ColorgyCourseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourseTests/Pods-ColorgyCourseTests.release.xcconfig"; sourceTree = "<group>"; };
-		630337E61CE964EE006FEA1C /* BlurWallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallView.swift; sourceTree = "<group>"; };
-		630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallViewCell.swift; sourceTree = "<group>"; };
-		630337EB1CE974CE006FEA1C /* BlurWallViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallViewModel.swift; sourceTree = "<group>"; };
-		630337ED1CE97906006FEA1C /* BlurWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurWallViewController.swift; sourceTree = "<group>"; };
-		630337EF1CE9AB4B006FEA1C /* AvailableTargetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableTargetList.swift; sourceTree = "<group>"; };
 		630337F11CE9B265006FEA1C /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		630472831CE5782C00D907C4 /* SearchEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewController.swift; sourceTree = "<group>"; };
 		630472851CE5AA4E00D907C4 /* SearchEventListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventListViewModel.swift; sourceTree = "<group>"; };
@@ -428,14 +338,6 @@
 		63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseOwnershipObject.swift; sourceTree = "<group>"; };
 		630570001CBCBC86007D2C9D /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
 		630570041CBCC94A007D2C9D /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
-		630570091CBD0AA1007D2C9D /* ColorgyChatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyChatAPI.swift; sourceTree = "<group>"; };
-		6305700B1CBD0AB9007D2C9D /* ColorgySocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgySocket.swift; sourceTree = "<group>"; };
-		6305700D1CBD11EA007D2C9D /* ChatUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
-		630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUserInformation.swift; sourceTree = "<group>"; };
-		630570171CBD233A007D2C9D /* Hello.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
-		6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryChatroom.swift; sourceTree = "<group>"; };
-		6305701D1CBD2902007D2C9D /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
-		6305701F1CBD2999007D2C9D /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		6306F66C1D24C01E00035AD9 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		6306F66F1D24C9BE00035AD9 /* NotificationSettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewModel.swift; sourceTree = "<group>"; };
 		6306F6761D24CD4500035AD9 /* PrivacySettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacySettingsViewModel.swift; sourceTree = "<group>"; };
@@ -450,7 +352,6 @@
 		631595061D20ED3300431499 /* DLCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCalendarView.swift; sourceTree = "<group>"; };
 		631595071D20ED3300431499 /* DLCalendarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCalendarViewCell.swift; sourceTree = "<group>"; };
 		6315950A1D20EDA900431499 /* MonthCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCalendarViewController.swift; sourceTree = "<group>"; };
-		6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyChatAPIErrorHandler.swift; sourceTree = "<group>"; };
 		6324BF311CF00B7C003F1329 /* SearchCourseBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseBar.swift; sourceTree = "<group>"; };
 		6324BF341CF00E9B003F1329 /* SearchCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseViewController.swift; sourceTree = "<group>"; };
 		632C0C521CF541FA002C9380 /* PhoneValidationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneValidationView.swift; sourceTree = "<group>"; };
@@ -499,7 +400,6 @@
 		635479D01CB8AA0700DE8CBC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		635479D21CB8AC6300DE8CBC /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		635479D41CB8B02A00DE8CBC /* ColorgyUserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyUserInformation.swift; sourceTree = "<group>"; };
-		635479D51CB8B02A00DE8CBC /* TimeStamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeStamp.swift; sourceTree = "<group>"; };
 		635479D61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFNetworkingErrorParser.swift; sourceTree = "<group>"; };
 		635479D71CB8B02A00DE8CBC /* ColorgyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyAPI.swift; sourceTree = "<group>"; };
 		635479D81CB8B02A00DE8CBC /* ColorgyAPIMeResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyAPIMeResult.swift; sourceTree = "<group>"; };
@@ -507,7 +407,6 @@
 		635479DD1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSONExtension.swift; sourceTree = "<group>"; };
 		635479DE1CB8B02A00DE8CBC /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		635479DF1CB8B02A00DE8CBC /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		635479E01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyRefreshCenter.swift; sourceTree = "<group>"; };
 		635479E11CB8B02A00DE8CBC /* ColorgyLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyLogin.swift; sourceTree = "<group>"; };
 		635479E21CB8B02A00DE8CBC /* AFError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFError.swift; sourceTree = "<group>"; };
 		635479E31CB8B02A00DE8CBC /* ColorgyLoginResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyLoginResult.swift; sourceTree = "<group>"; };
@@ -523,13 +422,6 @@
 		63700E311D18DF1F00DD76F8 /* ColorgyConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyConfig.swift; sourceTree = "<group>"; };
 		6373055F1CBF823B0016A7FC /* EmailRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailRegisterViewController.swift; sourceTree = "<group>"; };
 		637305631CBF83D80016A7FC /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		6375476F1CC8A96900BC3BBD /* ChatMessageList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageList.swift; sourceTree = "<group>"; };
-		637547711CC8B1BB00BC3BBD /* FloatingOptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingOptionView.swift; sourceTree = "<group>"; };
-		637547731CC8BE8400BC3BBD /* SayHelloCountsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SayHelloCountsCell.swift; sourceTree = "<group>"; };
-		637547751CC8BF4A00BC3BBD /* FriendListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
-		637547771CC8BF6200BC3BBD /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
-		637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
-		6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyChatContext.swift; sourceTree = "<group>"; };
 		6379FC701CBEA1A8002F10E1 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		637B8F201D192B4600348CF4 /* StoryboardIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifier.swift; sourceTree = "<group>"; };
 		637B8F221D192BB000348CF4 /* StoryboardViewControllerFetchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardViewControllerFetchHelper.swift; sourceTree = "<group>"; };
@@ -573,8 +465,6 @@
 		63B657DF1D23BE360050A8A4 /* SettingsSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSwitchCell.swift; sourceTree = "<group>"; };
 		63C3CE121CC0AFF0000EE808 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		63C3CE141CC0B0B2000EE808 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
-		63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableTarget.swift; sourceTree = "<group>"; };
-		63C3CE191CC0C76F000EE808 /* ChatMeUserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMeUserInformation.swift; sourceTree = "<group>"; };
 		63C3CE1A1CC0C76F000EE808 /* ColorgyAppNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyAppNotification.swift; sourceTree = "<group>"; };
 		63C3CE1B1CC0C76F000EE808 /* NumerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumerExtensions.swift; sourceTree = "<group>"; };
 		63C3CE1C1CC0C76F000EE808 /* Organization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
@@ -600,24 +490,6 @@
 		63E4471D1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRepeatSettingTableViewCell.swift; sourceTree = "<group>"; };
 		63E447211D0E7DE8005186FD /* ColorgyStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyStyle.swift; sourceTree = "<group>"; };
 		63EC771F1CC6060E008025A7 /* ColorgyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorgyNavigationController.swift; sourceTree = "<group>"; };
-		63EC77A21CC8743D008025A7 /* ATrickyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATrickyView.swift; sourceTree = "<group>"; };
-		63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLIncomingMessageBubble.swift; sourceTree = "<group>"; };
-		63EC77A41CC8743D008025A7 /* DLIncomingMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLIncomingMessageBubble.xib; sourceTree = "<group>"; };
-		63EC77A51CC8743D008025A7 /* DLIncomingMessageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLIncomingMessageDelegate.swift; sourceTree = "<group>"; };
-		63EC77A61CC8743D008025A7 /* DLIncomingPhotoBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLIncomingPhotoBubble.swift; sourceTree = "<group>"; };
-		63EC77A71CC8743D008025A7 /* DLIncomingPhotoBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLIncomingPhotoBubble.xib; sourceTree = "<group>"; };
-		63EC77A81CC8743D008025A7 /* DLMessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLMessageData.swift; sourceTree = "<group>"; };
-		63EC77A91CC8743D008025A7 /* DLMessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLMessageLabel.swift; sourceTree = "<group>"; };
-		63EC77AA1CC8743D008025A7 /* DLMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLMessagesViewController.swift; sourceTree = "<group>"; };
-		63EC77AB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLOutgoingMessageBubble.swift; sourceTree = "<group>"; };
-		63EC77AC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLOutgoingMessageBubble.xib; sourceTree = "<group>"; };
-		63EC77AD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLOutgoingPhotoBubble.swift; sourceTree = "<group>"; };
-		63EC77AE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLOutgoingPhotoBubble.xib; sourceTree = "<group>"; };
-		63EC77AF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLPhotoMessageDelegate.swift; sourceTree = "<group>"; };
-		63EC77B11CC8743D008025A7 /* TextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
-		63EC77C21CC87595008025A7 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
-		63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
-		63F3EE6A1CBF3CA00010D059 /* TestColorgyRefershCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestColorgyRefershCenter.swift; sourceTree = "<group>"; };
 		63F628B21D07B3BC00F55E38 /* ChooseSchoolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSchoolViewController.swift; sourceTree = "<group>"; };
 		63F628B41D07B40A00F55E38 /* ChooseSchoolViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSchoolViewModel.swift; sourceTree = "<group>"; };
 		98C8B2C713A3B1FF5924D037 /* Pods-ColorgyCourse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorgyCourse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorgyCourse/Pods-ColorgyCourse.debug.xcconfig"; sourceTree = "<group>"; };
@@ -687,17 +559,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		630337EA1CE9734A006FEA1C /* Blur Wall */ = {
-			isa = PBXGroup;
-			children = (
-				630337ED1CE97906006FEA1C /* BlurWallViewController.swift */,
-				630337E61CE964EE006FEA1C /* BlurWallView.swift */,
-				630337EB1CE974CE006FEA1C /* BlurWallViewModel.swift */,
-				630337E81CE9732B006FEA1C /* BlurWallViewCell.swift */,
-			);
-			name = "Blur Wall";
-			sourceTree = "<group>";
-		};
 		630472871CE5DCEF00D907C4 /* Search Event List View */ = {
 			isa = PBXGroup;
 			children = (
@@ -715,17 +576,6 @@
 				635479D21CB8AC6300DE8CBC /* LoginViewModel.swift */,
 			);
 			name = "Login View";
-			sourceTree = "<group>";
-		};
-		630570211CBD2D85007D2C9D /* Colorgy Chat API */ = {
-			isa = PBXGroup;
-			children = (
-				6305700B1CBD0AB9007D2C9D /* ColorgySocket.swift */,
-				630570091CBD0AA1007D2C9D /* ColorgyChatAPI.swift */,
-				6324BF2E1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift */,
-				630570231CBD2DCC007D2C9D /* Model */,
-			);
-			name = "Colorgy Chat API";
 			sourceTree = "<group>";
 		};
 		630570221CBD2D97007D2C9D /* Realm Object */ = {
@@ -748,24 +598,6 @@
 				636262221D2A11BF00C16625 /* SubeventRealmObject.swift */,
 			);
 			name = "Realm Object";
-			sourceTree = "<group>";
-		};
-		630570231CBD2DCC007D2C9D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				63C3CE181CC0C76F000EE808 /* AvailableTarget.swift */,
-				630337EF1CE9AB4B006FEA1C /* AvailableTargetList.swift */,
-				63C3CE191CC0C76F000EE808 /* ChatMeUserInformation.swift */,
-				6305701B1CBD268A007D2C9D /* HistoryChatroom.swift */,
-				6305701D1CBD2902007D2C9D /* Chatroom.swift */,
-				6305701F1CBD2999007D2C9D /* ChatMessage.swift */,
-				6375476F1CC8A96900BC3BBD /* ChatMessageList.swift */,
-				630570171CBD233A007D2C9D /* Hello.swift */,
-				630570111CBD1A2E007D2C9D /* ChatUserInformation.swift */,
-				635479D51CB8B02A00DE8CBC /* TimeStamp.swift */,
-				6305700D1CBD11EA007D2C9D /* ChatUser.swift */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		6306F6721D24CB5100035AD9 /* Notification Settings */ = {
@@ -859,7 +691,6 @@
 			isa = PBXGroup;
 			children = (
 				6379FC701CBEA1A8002F10E1 /* Header.h */,
-				63EC77A11CC8743D008025A7 /* DLMessageVIew */,
 				630570221CBD2D97007D2C9D /* Realm Object */,
 				635479871CB898C100DE8CBC /* AppDelegate.swift */,
 				63D22D251D2250B800F0C640 /* DL Calendar View */,
@@ -871,7 +702,6 @@
 				637B8F201D192B4600348CF4 /* StoryboardIdentifier.swift */,
 				637B8F221D192BB000348CF4 /* StoryboardViewControllerFetchHelper.swift */,
 				6352C2481D1121780041CF9B /* ColorgyNavigationTransitioningDelegate.swift */,
-				6375477B1CC8D69800BC3BBD /* ColorgyChatContext.swift */,
 				6393BC031CF01B74008BFF72 /* Global */,
 				630337F11CE9B265006FEA1C /* 1.png */,
 				63B657B81D23A5AE0050A8A4 /* 2.jpg */,
@@ -891,10 +721,7 @@
 				63B1C34C1CF1EC1600989B5D /* Create Event View */,
 				6393BC011CF01B5B008BFF72 /* Week Calendar View */,
 				6324BF331CF00E6D003F1329 /* Search Course View */,
-				630337EA1CE9734A006FEA1C /* Blur Wall */,
 				630472871CE5DCEF00D907C4 /* Search Event List View */,
-				6375477E1CC9E65100BC3BBD /* Friend List View */,
-				6375476C1CC87BF600BC3BBD /* Chat Room View */,
 				63C3CE161CC0C673000EE808 /* Email Login View */,
 				63C3CE171CC0C67D000EE808 /* Email Register View */,
 				630570081CBD0A45007D2C9D /* Login View */,
@@ -911,7 +738,6 @@
 			isa = PBXGroup;
 			children = (
 				6354799C1CB898C100DE8CBC /* ColorgyCourseTests.swift */,
-				63F3EE6A1CBF3CA00010D059 /* TestColorgyRefershCenter.swift */,
 				637CA6BD1D2CDFB300E4C0B1 /* TestRRule.swift */,
 				6354799E1CB898C100DE8CBC /* Info.plist */,
 			);
@@ -930,24 +756,14 @@
 		635479F41CB8B04B00DE8CBC /* Colorgy API */ = {
 			isa = PBXGroup;
 			children = (
-				630570211CBD2D85007D2C9D /* Colorgy Chat API */,
 				635479D41CB8B02A00DE8CBC /* ColorgyUserInformation.swift */,
 				630570041CBCC94A007D2C9D /* Department.swift */,
 				63056FFE1CBCABB7007D2C9D /* CourseOwnershipObject.swift */,
 				635479F91CB8B0BD00DE8CBC /* AFNetworking Helper */,
 				635479F71CB8B0A400DE8CBC /* API */,
-				635479F51CB8B06F00DE8CBC /* Refresh Center */,
 				635479F81CB8B0B200DE8CBC /* Login */,
 			);
 			name = "Colorgy API";
-			sourceTree = "<group>";
-		};
-		635479F51CB8B06F00DE8CBC /* Refresh Center */ = {
-			isa = PBXGroup;
-			children = (
-				635479E01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift */,
-			);
-			name = "Refresh Center";
 			sourceTree = "<group>";
 		};
 		635479F61CB8B09100DE8CBC /* Extensions */ = {
@@ -994,27 +810,6 @@
 				635479E21CB8B02A00DE8CBC /* AFError.swift */,
 			);
 			name = "AFNetworking Helper";
-			sourceTree = "<group>";
-		};
-		6375476C1CC87BF600BC3BBD /* Chat Room View */ = {
-			isa = PBXGroup;
-			children = (
-				63EC77C21CC87595008025A7 /* ChatRoomViewController.swift */,
-				637547711CC8B1BB00BC3BBD /* FloatingOptionView.swift */,
-				63EC77C41CC875A0008025A7 /* ChatRoomViewModel.swift */,
-			);
-			name = "Chat Room View";
-			sourceTree = "<group>";
-		};
-		6375477E1CC9E65100BC3BBD /* Friend List View */ = {
-			isa = PBXGroup;
-			children = (
-				637547731CC8BE8400BC3BBD /* SayHelloCountsCell.swift */,
-				637547751CC8BF4A00BC3BBD /* FriendListViewModel.swift */,
-				637547771CC8BF6200BC3BBD /* FriendListViewController.swift */,
-				637547791CC8C23700BC3BBD /* FriendListTableViewCell.swift */,
-			);
-			name = "Friend List View";
 			sourceTree = "<group>";
 		};
 		638BFA0A1D07C12C00939731 /* Choose School View */ = {
@@ -1201,28 +996,6 @@
 			name = "Phone Validation View";
 			sourceTree = "<group>";
 		};
-		63EC77A11CC8743D008025A7 /* DLMessageVIew */ = {
-			isa = PBXGroup;
-			children = (
-				63EC77A21CC8743D008025A7 /* ATrickyView.swift */,
-				63EC77A31CC8743D008025A7 /* DLIncomingMessageBubble.swift */,
-				63EC77A41CC8743D008025A7 /* DLIncomingMessageBubble.xib */,
-				63EC77A51CC8743D008025A7 /* DLIncomingMessageDelegate.swift */,
-				63EC77A61CC8743D008025A7 /* DLIncomingPhotoBubble.swift */,
-				63EC77A71CC8743D008025A7 /* DLIncomingPhotoBubble.xib */,
-				63EC77A81CC8743D008025A7 /* DLMessageData.swift */,
-				63EC77A91CC8743D008025A7 /* DLMessageLabel.swift */,
-				63EC77AA1CC8743D008025A7 /* DLMessagesViewController.swift */,
-				63EC77AB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift */,
-				63EC77AC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib */,
-				63EC77AD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift */,
-				63EC77AE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib */,
-				63EC77AF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift */,
-				63EC77B11CC8743D008025A7 /* TextInputView.swift */,
-			);
-			path = DLMessageVIew;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1345,13 +1118,10 @@
 				630337F21CE9B265006FEA1C /* 1.png in Resources */,
 				6335DC601D17C46500B32B8C /* EventManagerNotificationCell.xib in Resources */,
 				63B657C71D23B2160050A8A4 /* 6.jpg in Resources */,
-				63EC77BC1CC8743D008025A7 /* DLOutgoingMessageBubble.xib in Resources */,
 				6335DC631D17C46500B32B8C /* EventManagerRepeatEndsCell.xib in Resources */,
 				6335DC571D17C46500B32B8C /* EventManagerColorCell.xib in Resources */,
-				63EC77B41CC8743D008025A7 /* DLIncomingMessageBubble.xib in Resources */,
 				6335DC5A1D17C46500B32B8C /* EventManagerColorExpandedCell.xib in Resources */,
 				638BFA0C1D07C2D900939731 /* ChooseSchoolTableViewCell.xib in Resources */,
-				63EC77B71CC8743D008025A7 /* DLIncomingPhotoBubble.xib in Resources */,
 				63B657D11D23BB2C0050A8A4 /* SettingsCell.xib in Resources */,
 				63B657BE1D23B1D30050A8A4 /* 4.jpg in Resources */,
 				6335DC5C1D17C46500B32B8C /* EventManagerRepeatedCell.xib in Resources */,
@@ -1361,7 +1131,6 @@
 				6335DC531D17C46500B32B8C /* EventManagerAddChildEventCell.xib in Resources */,
 				63DC35251D2606C6001443D0 /* SettingsSexPickerCell.xib in Resources */,
 				6335DC651D17C46500B32B8C /* EventManagerTitleCell.xib in Resources */,
-				63EC77BE1CC8743D008025A7 /* DLOutgoingPhotoBubble.xib in Resources */,
 				63B657CA1D23B2310050A8A4 /* 7.jpg in Resources */,
 				63B657D41D23BB460050A8A4 /* SettingsDisplayContentCell.xib in Resources */,
 				6354798D1CB898C100DE8CBC /* Main.storyboard in Resources */,
@@ -1380,14 +1149,11 @@
 				631594F91D20CB8B00431499 /* EventManagerNotesCell.xib in Resources */,
 				631595011D20CB8B00431499 /* EventManagerTitleCell.xib in Resources */,
 				63B657C21D23B1EE0050A8A4 /* 5.jpg in Resources */,
-				6353CE531D193F4700F90A4D /* DLOutgoingPhotoBubble.xib in Resources */,
 				631594FB1D20CB8B00431499 /* EventManagerNotificationCell.xib in Resources */,
 				631595031D20CBB600431499 /* EventRepeatSettingTableViewCell.xib in Resources */,
 				63B657BC1D23A5AE0050A8A4 /* 2.jpg in Resources */,
 				63B657BF1D23B1D30050A8A4 /* 4.jpg in Resources */,
 				63B657C51D23B2050050A8A4 /* 12322956_1099901806710902_7549313410105387854_o.jpg in Resources */,
-				6353CE4C1D193F4700F90A4D /* DLIncomingPhotoBubble.xib in Resources */,
-				6353CE511D193F4700F90A4D /* DLOutgoingMessageBubble.xib in Resources */,
 				63B657BA1D23A5AE0050A8A4 /* 3.jpg in Resources */,
 				631594F21D20CB8B00431499 /* EventManagerChildEventCell.xib in Resources */,
 				631594F71D20CB8B00431499 /* EventManagerColorExpandedCell.xib in Resources */,
@@ -1401,7 +1167,6 @@
 				63B657D21D23BB2C0050A8A4 /* SettingsCell.xib in Resources */,
 				63DC35231D2606B9001443D0 /* SettingsSexCell.xib in Resources */,
 				63B657D81D23BB580050A8A4 /* SettingsSwitchCell.xib in Resources */,
-				6353CE491D193F4700F90A4D /* DLIncomingMessageBubble.xib in Resources */,
 				63DC35261D2606C6001443D0 /* SettingsSexPickerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1556,14 +1321,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6375477A1CC8C23700BC3BBD /* FriendListTableViewCell.swift in Sources */,
 				630472841CE5782C00D907C4 /* SearchEventListViewController.swift in Sources */,
 				635479EF1CB8B02A00DE8CBC /* DateExtension.swift in Sources */,
 				632C0C531CF541FA002C9380 /* PhoneValidationView.swift in Sources */,
 				638BFA101D07CB2100939731 /* ChooseSchoolSearchBar.swift in Sources */,
 				63700E321D18DF1F00DD76F8 /* ColorgyConfig.swift in Sources */,
 				632C0C5B1CF70381002C9380 /* ReenterPhoneNumberView.swift in Sources */,
-				630337F01CE9AB4B006FEA1C /* AvailableTargetList.swift in Sources */,
 				6335DC521D17C46500B32B8C /* EventManagerAddChildEventCell.swift in Sources */,
 				635479D11CB8AA0700DE8CBC /* LoginViewController.swift in Sources */,
 				63B657AA1D2391310050A8A4 /* MyPageContainerView.swift in Sources */,
@@ -1572,52 +1335,38 @@
 				6335DC5B1D17C46500B32B8C /* EventManagerContext.swift in Sources */,
 				6335DC641D17C46500B32B8C /* EventManagerTitleCell.swift in Sources */,
 				63B657AE1D239C850050A8A4 /* FriendContainerView.swift in Sources */,
-				63C3CE1E1CC0C76F000EE808 /* AvailableTarget.swift in Sources */,
 				6335DC541D17C46500B32B8C /* EventManagerChildEventCell.swift in Sources */,
 				6315950B1D20EDA900431499 /* MonthCalendarViewController.swift in Sources */,
-				630337EE1CE97906006FEA1C /* BlurWallViewController.swift in Sources */,
 				6335DC611D17C46500B32B8C /* EventManagerRepeatedCell.swift in Sources */,
 				63C3CE151CC0B0B2000EE808 /* EmailLoginViewModel.swift in Sources */,
 				636262261D2A125C00C16625 /* SubcourseRealmObject.swift in Sources */,
 				6307AC371CEAB66F00345025 /* SearchEventBar.swift in Sources */,
 				63B1C34B1CF1EC1200989B5D /* CreateEventViewController.swift in Sources */,
-				6324BF2F1CEFF69A003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */,
 				6306F6701D24C9BE00035AD9 /* NotificationSettingsViewModel.swift in Sources */,
 				63DC35281D2606E0001443D0 /* SettingsSexCell.swift in Sources */,
-				6305700E1CBD11EA007D2C9D /* ChatUser.swift in Sources */,
 				6354798A1CB898C100DE8CBC /* ViewController.swift in Sources */,
 				63DC352B1D2606EB001443D0 /* SettingsSexPickerCell.swift in Sources */,
-				6305701E1CBD2902007D2C9D /* Chatroom.swift in Sources */,
 				635479EE1CB8B02A00DE8CBC /* StringExtension.swift in Sources */,
 				63B657DD1D23BCB80050A8A4 /* SettingsDisplayContentCell.swift in Sources */,
 				637CA6C01D2DF83900E4C0B1 /* RRuleRealmObject.swift in Sources */,
-				63EC77B91CC8743D008025A7 /* DLMessageLabel.swift in Sources */,
 				635479F31CB8B02A00DE8CBC /* ColorgyLoginResult.swift in Sources */,
 				63B1C3801CF424C700989B5D /* ConfirmPasswordInputBox.swift in Sources */,
 				63B657CD1D23BADB0050A8A4 /* SettingsViewController.swift in Sources */,
-				637547741CC8BE8400BC3BBD /* SayHelloCountsCell.swift in Sources */,
-				63EC77B31CC8743D008025A7 /* DLIncomingMessageBubble.swift in Sources */,
-				637547761CC8BF4A00BC3BBD /* FriendListViewModel.swift in Sources */,
 				6324BF351CF00E9B003F1329 /* SearchCourseViewController.swift in Sources */,
-				63EC77BB1CC8743D008025A7 /* DLOutgoingMessageBubble.swift in Sources */,
 				63C3CE231CC0C76F000EE808 /* UIImageExtension.swift in Sources */,
 				63B657B41D239F0E0050A8A4 /* FriendContainerCell.swift in Sources */,
 				63D22D291D226F1F00F0C640 /* MyPageViewController.swift in Sources */,
 				6306F67A1D24CD6500035AD9 /* PrivacySettingsViewController.swift in Sources */,
 				63056FFF1CBCABB7007D2C9D /* CourseOwnershipObject.swift in Sources */,
-				6305701C1CBD268A007D2C9D /* HistoryChatroom.swift in Sources */,
 				632C0C601CF7FE9F002C9380 /* ReenterPhoneNumberViewControllerTransitioningDelegate.swift in Sources */,
 				63C3CE131CC0AFF0000EE808 /* EmailLoginViewController.swift in Sources */,
 				63C3CE221CC0C76F000EE808 /* Organization.swift in Sources */,
 				63E4471A1D0E5E6B005186FD /* EventRepeatSettingViewModel.swift in Sources */,
-				6305700A1CBD0AA1007D2C9D /* ColorgyChatAPI.swift in Sources */,
 				6335DC591D17C46500B32B8C /* EventManagerColorExpandedCell.swift in Sources */,
 				6324BF321CF00B7C003F1329 /* SearchCourseBar.swift in Sources */,
-				63EC77B51CC8743D008025A7 /* DLIncomingMessageDelegate.swift in Sources */,
 				635479ED1CB8B02A00DE8CBC /* SwiftyJSONExtension.swift in Sources */,
 				63E4471E1D0E6351005186FD /* EventRepeatSettingTableViewCell.swift in Sources */,
 				631595081D20ED3300431499 /* DLCalendarView.swift in Sources */,
-				630570201CBD2999007D2C9D /* ChatMessage.swift in Sources */,
 				637305641CBF83D80016A7FC /* UIViewExtension.swift in Sources */,
 				63B657E01D23BE360050A8A4 /* SettingsSwitchCell.swift in Sources */,
 				6306F66D1D24C01E00035AD9 /* NotificationSettingsViewController.swift in Sources */,
@@ -1631,42 +1380,30 @@
 				63F628B31D07B3BC00F55E38 /* ChooseSchoolViewController.swift in Sources */,
 				635479E91CB8B02A00DE8CBC /* ColorgyAPIUserResult.swift in Sources */,
 				6352C2491D1121780041CF9B /* ColorgyNavigationTransitioningDelegate.swift in Sources */,
-				630337EC1CE974CE006FEA1C /* BlurWallViewModel.swift in Sources */,
 				63D22D331D227EB600F0C640 /* NumebrAndUIViewExtension.swift in Sources */,
-				635479F01CB8B02A00DE8CBC /* ColorgyRefreshCenter.swift in Sources */,
 				637B8F231D192BB000348CF4 /* StoryboardViewControllerFetchHelper.swift in Sources */,
-				637547701CC8A96900BC3BBD /* ChatMessageList.swift in Sources */,
-				630570121CBD1A2E007D2C9D /* ChatUserInformation.swift in Sources */,
 				63E447221D0E7DE8005186FD /* ColorgyStyle.swift in Sources */,
 				6335DC671D17C46500B32B8C /* EventManagerViewModel.swift in Sources */,
-				6305700C1CBD0AB9007D2C9D /* ColorgySocket.swift in Sources */,
 				632C0C591CF7032C002C9380 /* ReenterPhoneViewController.swift in Sources */,
 				63EC77201CC6060E008025A7 /* ColorgyNavigationController.swift in Sources */,
-				63C3CE1F1CC0C76F000EE808 /* ChatMeUserInformation.swift in Sources */,
 				637305601CBF823B0016A7FC /* EmailRegisterViewController.swift in Sources */,
 				6393BC001CF01AD7008BFF72 /* ColorgyNavigationBar.swift in Sources */,
 				6335DC5F1D17C46500B32B8C /* EventManagerNotificationCell.swift in Sources */,
 				631595091D20ED3300431499 /* DLCalendarViewCell.swift in Sources */,
 				636262291D2A196D00C16625 /* Subevent.swift in Sources */,
-				630570181CBD233A007D2C9D /* Hello.swift in Sources */,
 				637B8F211D192B4600348CF4 /* StoryboardIdentifier.swift in Sources */,
 				635479CF1CB8A5EF00DE8CBC /* Release.swift in Sources */,
 				6335DC561D17C46500B32B8C /* EventManagerColorCell.swift in Sources */,
-				63EC77C51CC875A0008025A7 /* ChatRoomViewModel.swift in Sources */,
-				6375477C1CC8D69800BC3BBD /* ColorgyChatContext.swift in Sources */,
 				63B657B11D239C9F0050A8A4 /* ClassmatesViewController.swift in Sources */,
 				632C0C571CF54A09002C9380 /* PhoneValidationViewController.swift in Sources */,
-				635479E51CB8B02A00DE8CBC /* TimeStamp.swift in Sources */,
 				63B657DA1D23BBDE0050A8A4 /* SettingsCell.swift in Sources */,
 				635479E71CB8B02A00DE8CBC /* ColorgyAPI.swift in Sources */,
 				6335DC621D17C46500B32B8C /* EventManagerRepeatEndsCell.swift in Sources */,
 				63E447181D0E5E58005186FD /* EventRepeatSettingViewController.swift in Sources */,
 				6353CE431D193E0500F90A4D /* PhoneValidationViewModel.swift in Sources */,
-				630337E91CE9732B006FEA1C /* BlurWallViewCell.swift in Sources */,
 				63B1C3891CF45A1300989B5D /* ColorgyBillboardView.swift in Sources */,
 				6362622C1D2A1C5800C16625 /* Course.swift in Sources */,
 				6393BBFE1CF0179E008BFF72 /* SearchCourseViewModel.swift in Sources */,
-				637547781CC8BF6200BC3BBD /* FriendListViewController.swift in Sources */,
 				635479D31CB8AC6300DE8CBC /* LoginViewModel.swift in Sources */,
 				63AC1B411CF155F800FDD724 /* Event.swift in Sources */,
 				630B9DC51D2B725400B2B250 /* EventList.swift in Sources */,
@@ -1675,41 +1412,31 @@
 				635479881CB898C100DE8CBC /* AppDelegate.swift in Sources */,
 				6335DC661D17C46500B32B8C /* EventManagerView.swift in Sources */,
 				6304728B1CE5DDC500D907C4 /* WeekCalendarView.swift in Sources */,
-				63EC77B61CC8743D008025A7 /* DLIncomingPhotoBubble.swift in Sources */,
 				63D22D301D22788100F0C640 /* MyPageMoreOptionView.swift in Sources */,
 				63B1C37B1CF4221400989B5D /* PasswordInputBox.swift in Sources */,
 				630570051CBCC94A007D2C9D /* Department.swift in Sources */,
 				630472891CE5DD2000D907C4 /* WeekCalendarViewController.swift in Sources */,
 				635479E81CB8B02A00DE8CBC /* ColorgyAPIMeResult.swift in Sources */,
-				63EC77BD1CC8743D008025A7 /* DLOutgoingPhotoBubble.swift in Sources */,
 				632C0C5D1CF71637002C9380 /* PhoneNumberTextField.swift in Sources */,
 				638BFA0E1D07C43000939731 /* ChooseSchoolTableViewCell.swift in Sources */,
-				63EC77C31CC87595008025A7 /* ChatRoomViewController.swift in Sources */,
 				637CA6BB1D2CB77C00E4C0B1 /* RRule.swift in Sources */,
 				6335DC581D17C46500B32B8C /* EventManagerColorCellDelegate.swift in Sources */,
 				63C3CE201CC0C76F000EE808 /* ColorgyAppNotification.swift in Sources */,
 				630B9DBF1D2A557900B2B250 /* CourseListGenerator.swift in Sources */,
 				6362621F1D2A10D300C16625 /* EventRealmObject.swift in Sources */,
 				635479F21CB8B02A00DE8CBC /* AFError.swift in Sources */,
-				63EC77C11CC8743D008025A7 /* TextInputView.swift in Sources */,
-				63EC77BF1CC8743D008025A7 /* DLPhotoMessageDelegate.swift in Sources */,
 				63B1C3581CF2991A00989B5D /* UIColorExtension.swift in Sources */,
 				63AC1B3F1CF1389000FDD724 /* ColorgyVersionControl.swift in Sources */,
-				63EC77B81CC8743D008025A7 /* DLMessageData.swift in Sources */,
 				6306F67E1D24D0C100035AD9 /* UILabelExtension.swift in Sources */,
 				6306F6771D24CD4500035AD9 /* PrivacySettingsViewModel.swift in Sources */,
 				635479E61CB8B02A00DE8CBC /* AFNetworkingErrorParser.swift in Sources */,
 				630570011CBCBC86007D2C9D /* Semester.swift in Sources */,
-				630337E71CE964EE006FEA1C /* BlurWallView.swift in Sources */,
 				630B9DC81D2B72EA00B2B250 /* EventListGenerator.swift in Sources */,
 				630472861CE5AA4E00D907C4 /* SearchEventListViewModel.swift in Sources */,
-				63EC77BA1CC8743D008025A7 /* DLMessagesViewController.swift in Sources */,
 				630B9DBC1D2A52D100B2B250 /* CourseList.swift in Sources */,
-				637547721CC8B1BB00BC3BBD /* FloatingOptionView.swift in Sources */,
 				63C3CE211CC0C76F000EE808 /* NumerExtensions.swift in Sources */,
 				635479E41CB8B02A00DE8CBC /* ColorgyUserInformation.swift in Sources */,
 				63F628B51D07B40A00F55E38 /* ChooseSchoolViewModel.swift in Sources */,
-				63EC77B21CC8743D008025A7 /* ATrickyView.swift in Sources */,
 				63561C4C1CBF937F004AEF6D /* ColorgyColor.swift in Sources */,
 				6362621D1D2A0EEB00C16625 /* CourseRealmObject.swift in Sources */,
 				6362622F1D2A2F7600C16625 /* Subcourse.swift in Sources */,
@@ -1722,60 +1449,43 @@
 			files = (
 				636634E21D2117A90063E43C /* DLCalendarView.swift in Sources */,
 				63700E341D18E14800DD76F8 /* AppDelegate.swift in Sources */,
-				63C3CE3F1CC0C8CD000EE808 /* ChatMeUserInformation.swift in Sources */,
 				6353CE571D193F6000F90A4D /* ColorgyNavigationController.swift in Sources */,
 				631594F11D20CB8B00431499 /* EventManagerChildEventCell.swift in Sources */,
 				63C3CE341CC0C8BC000EE808 /* EmailLoginViewController.swift in Sources */,
-				631594DE1D20CB6700431499 /* BlurWallViewModel.swift in Sources */,
 				63F3EE8D1CBF49EE0010D059 /* DateExtension.swift in Sources */,
 				6353CE811D1B8A1200F90A4D /* ReenterPhoneNumberView.swift in Sources */,
 				63D22D2B1D226F5D00F0C640 /* MyPageViewController.swift in Sources */,
-				6353CE501D193F4700F90A4D /* DLOutgoingMessageBubble.swift in Sources */,
 				6306F67F1D24D0C100035AD9 /* UILabelExtension.swift in Sources */,
 				63D22D311D22788100F0C640 /* MyPageMoreOptionView.swift in Sources */,
 				631594E01D20CB6700431499 /* SearchEventListViewController.swift in Sources */,
 				631594F31D20CB8B00431499 /* EventManagerColorCell.swift in Sources */,
 				631594FE1D20CB8B00431499 /* EventManagerRepeatEndsCell.swift in Sources */,
 				63B657AB1D23934C0050A8A4 /* MyPageContainerView.swift in Sources */,
-				63F3EE931CBF49EE0010D059 /* Chatroom.swift in Sources */,
 				6306F6711D24C9BE00035AD9 /* NotificationSettingsViewModel.swift in Sources */,
-				63F3EE971CBF49EE0010D059 /* TimeStamp.swift in Sources */,
 				63B1C3841CF430B900989B5D /* PhoneInputBox.swift in Sources */,
-				6353CE4D1D193F4700F90A4D /* DLMessageData.swift in Sources */,
 				631594ED1D20CB8B00431499 /* EventManagerView.swift in Sources */,
 				63F3EE7D1CBF49DF0010D059 /* ColorgyAPI.swift in Sources */,
 				636634E31D2117AC0063E43C /* DLCalendarViewCell.swift in Sources */,
-				63F3EE8F1CBF49EE0010D059 /* ColorgyChatAPI.swift in Sources */,
 				631594EB1D20CB7F00431499 /* WeekCalendarView.swift in Sources */,
 				63F3EE761CBF49D10010D059 /* ColorgyUserInformation.swift in Sources */,
 				6353CE451D193EFA00F90A4D /* PhoneValidationViewModel.swift in Sources */,
 				637CA6BC1D2CB77C00E4C0B1 /* RRule.swift in Sources */,
-				63F3EE6B1CBF3CA00010D059 /* TestColorgyRefershCenter.swift in Sources */,
 				63D22D2E1D226FE700F0C640 /* MyPagePersonalInfoView.swift in Sources */,
 				630B9DC31D2B70E600B2B250 /* ScheduleContext.swift in Sources */,
-				63F3EE841CBF49DF0010D059 /* ColorgyRefreshCenter.swift in Sources */,
 				636262271D2A125C00C16625 /* SubcourseRealmObject.swift in Sources */,
 				637CA6C11D2DF83900E4C0B1 /* RRuleRealmObject.swift in Sources */,
 				6354799D1CB898C100DE8CBC /* ColorgyCourseTests.swift in Sources */,
-				6324BF301CEFF721003F1329 /* ColorgyChatAPIErrorHandler.swift in Sources */,
 				630B9DC01D2A557900B2B250 /* CourseListGenerator.swift in Sources */,
 				63F3EE8C1CBF49EE0010D059 /* StringExtension.swift in Sources */,
-				6353CE521D193F4700F90A4D /* DLOutgoingPhotoBubble.swift in Sources */,
 				63C3CE2E1CC0C8B5000EE808 /* ColorgyColor.swift in Sources */,
 				636262301D2A2F7600C16625 /* Subcourse.swift in Sources */,
-				631594E81D20CB6700431499 /* FloatingOptionView.swift in Sources */,
-				6353CE4B1D193F4700F90A4D /* DLIncomingPhotoBubble.swift in Sources */,
-				631594DD1D20CB6700431499 /* BlurWallView.swift in Sources */,
-				6353CE4E1D193F4700F90A4D /* DLMessageLabel.swift in Sources */,
 				63F3EE7C1CBF49DF0010D059 /* AFError.swift in Sources */,
 				631594D91D20CB6700431499 /* SearchCourseBar.swift in Sources */,
 				63F3EE791CBF49D10010D059 /* Department.swift in Sources */,
 				637CA6BE1D2CDFB300E4C0B1 /* TestRRule.swift in Sources */,
 				6353CE831D1BBFD500F90A4D /* ChooseSchoolSearchBar.swift in Sources */,
 				63C3CE351CC0C8BC000EE808 /* EmailLoginViewModel.swift in Sources */,
-				6353CE541D193F4700F90A4D /* DLPhotoMessageDelegate.swift in Sources */,
 				6353CE871D1BBFD500F90A4D /* ChooseSchoolTableViewCell.swift in Sources */,
-				630337F31CE9B563006FEA1C /* AvailableTargetList.swift in Sources */,
 				631594F51D20CB8B00431499 /* EventManagerColorCellDelegate.swift in Sources */,
 				63C3CE3A1CC0C8BC000EE808 /* LoginViewModel.swift in Sources */,
 				630B9DC61D2B725400B2B250 /* EventList.swift in Sources */,
@@ -1785,27 +1495,20 @@
 				63C3CE371CC0C8BC000EE808 /* EmailRegisterViewModel.swift in Sources */,
 				631595051D20CBB600431499 /* EventRepeatSettingViewModel.swift in Sources */,
 				6353CE591D193F6B00F90A4D /* ColorgyVersionControl.swift in Sources */,
-				631594D71D20CB3A00431499 /* ChatMessageList.swift in Sources */,
 				631594E91D20CB7F00431499 /* CreateEventViewController.swift in Sources */,
 				63B1C3761CF30E1B00989B5D /* InputBox.swift in Sources */,
 				630B9DBD1D2A52D100B2B250 /* CourseList.swift in Sources */,
 				631595001D20CB8B00431499 /* EventManagerTitleCell.swift in Sources */,
 				631594FC1D20CB8B00431499 /* EventManagerRepeatedCell.swift in Sources */,
 				63B657AF1D239C850050A8A4 /* FriendContainerView.swift in Sources */,
-				63F3EE951CBF49EE0010D059 /* Hello.swift in Sources */,
-				6353CE481D193F4700F90A4D /* DLIncomingMessageBubble.swift in Sources */,
 				63C3CE2D1CC0C8B5000EE808 /* ViewController.swift in Sources */,
-				63F3EE961CBF49EE0010D059 /* ChatUserInformation.swift in Sources */,
 				6353CE561D193F4700F90A4D /* Event.swift in Sources */,
-				6353CE551D193F4700F90A4D /* TextInputView.swift in Sources */,
 				636634E41D2117AE0063E43C /* MonthCalendarViewController.swift in Sources */,
-				63F3EE8E1CBF49EE0010D059 /* ColorgySocket.swift in Sources */,
 				631594EF1D20CB8B00431499 /* EventManagerAddChildEventCell.swift in Sources */,
 				6353CE841D1BBFD500F90A4D /* ChooseSchoolViewController.swift in Sources */,
 				63F3EE8B1CBF49EE0010D059 /* SwiftyJSONExtension.swift in Sources */,
 				63C3CE3B1CC0C8C0000EE808 /* NumerExtensions.swift in Sources */,
 				6362622D1D2A1C5800C16625 /* Course.swift in Sources */,
-				631594E71D20CB6700431499 /* ChatRoomViewController.swift in Sources */,
 				63B1C38A1CF45D6B00989B5D /* ColorgyBillboardView.swift in Sources */,
 				63F3EE851CBF49DF0010D059 /* ColorgyLogin.swift in Sources */,
 				631594EC1D20CB8B00431499 /* EventManagerContext.swift in Sources */,
@@ -1813,9 +1516,6 @@
 				6353CE581D193F6000F90A4D /* ColorgyNavigationBar.swift in Sources */,
 				631594F61D20CB8B00431499 /* EventManagerColorExpandedCell.swift in Sources */,
 				6362622A1D2A196D00C16625 /* Subevent.swift in Sources */,
-				63C3CE3E1CC0C8CD000EE808 /* AvailableTarget.swift in Sources */,
-				6353CE4F1D193F4700F90A4D /* DLMessagesViewController.swift in Sources */,
-				63F3EE981CBF49EE0010D059 /* ChatUser.swift in Sources */,
 				63E447231D0E8314005186FD /* ColorgyStyle.swift in Sources */,
 				6353CE441D193EF700F90A4D /* PhoneValidationView.swift in Sources */,
 				63D22D341D227EB600F0C640 /* NumebrAndUIViewExtension.swift in Sources */,
@@ -1827,13 +1527,10 @@
 				63B1C3871CF4350700989B5D /* ColorgyFullScreenButton.swift in Sources */,
 				63F3EE7B1CBF49DF0010D059 /* AFNetworkingErrorParser.swift in Sources */,
 				6353CE801D1B8A1200F90A4D /* ReenterPhoneNumberViewControllerTransitioningDelegate.swift in Sources */,
-				631594E61D20CB6700431499 /* FriendListTableViewCell.swift in Sources */,
 				631595021D20CBB600431499 /* EventRepeatSettingViewController.swift in Sources */,
 				63B657CE1D23BADB0050A8A4 /* SettingsViewController.swift in Sources */,
-				631594E31D20CB6700431499 /* SayHelloCountsCell.swift in Sources */,
 				63B1C37E1CF4244400989B5D /* PasswordInputBox.swift in Sources */,
 				637B8F271D192D7B00348CF4 /* StoryboardIdentifier.swift in Sources */,
-				631594E51D20CB6700431499 /* FriendListViewController.swift in Sources */,
 				636262211D2A10D800C16625 /* CourseRealmObject.swift in Sources */,
 				63700E331D18DFE400DD76F8 /* ColorgyConfig.swift in Sources */,
 				6353CE851D1BBFD500F90A4D /* ChooseSchoolViewModel.swift in Sources */,
@@ -1844,7 +1541,6 @@
 				63B657DB1D23BBDE0050A8A4 /* SettingsCell.swift in Sources */,
 				63B1C3591CF2992700989B5D /* UIColorExtension.swift in Sources */,
 				636262201D2A10D300C16625 /* EventRealmObject.swift in Sources */,
-				63F3EE921CBF49EE0010D059 /* HistoryChatroom.swift in Sources */,
 				63B657E11D23BE360050A8A4 /* SettingsSwitchCell.swift in Sources */,
 				63DC352C1D2606EB001443D0 /* SettingsSexPickerCell.swift in Sources */,
 				636262241D2A11BF00C16625 /* SubeventRealmObject.swift in Sources */,
@@ -1852,14 +1548,10 @@
 				6353CE821D1B8A1200F90A4D /* PhoneNumberTextField.swift in Sources */,
 				63C3CE3D1CC0C8C0000EE808 /* UIViewExtension.swift in Sources */,
 				63C3CE391CC0C8BC000EE808 /* LoginViewController.swift in Sources */,
-				631594DF1D20CB6700431499 /* BlurWallViewCell.swift in Sources */,
 				637B8F261D192D7800348CF4 /* StoryboardViewControllerFetchHelper.swift in Sources */,
 				6353CE7F1D1B8A1200F90A4D /* ReenterPhoneViewController.swift in Sources */,
 				631594E21D20CB6700431499 /* SearchEventListViewModel.swift in Sources */,
 				63C3CE3C1CC0C8C0000EE808 /* UIImageExtension.swift in Sources */,
-				6353CE4A1D193F4700F90A4D /* DLIncomingMessageDelegate.swift in Sources */,
-				6375477D1CC9D67600BC3BBD /* ColorgyChatContext.swift in Sources */,
-				631594DC1D20CB6700431499 /* BlurWallViewController.swift in Sources */,
 				631594EE1D20CB8B00431499 /* EventManagerViewModel.swift in Sources */,
 				631594EA1D20CB7F00431499 /* WeekCalendarViewController.swift in Sources */,
 				63F3EE7E1CBF49DF0010D059 /* Semester.swift in Sources */,
@@ -1871,13 +1563,9 @@
 				63C3CE361CC0C8BC000EE808 /* EmailRegisterViewController.swift in Sources */,
 				63F3EE7A1CBF49D10010D059 /* CourseOwnershipObject.swift in Sources */,
 				631594F81D20CB8B00431499 /* EventManagerNotesCell.swift in Sources */,
-				631594D81D20CB5900431499 /* ChatRoomViewModel.swift in Sources */,
-				6353CE471D193F4600F90A4D /* ATrickyView.swift in Sources */,
 				63C3CE2B1CC0C8B5000EE808 /* ColorgyAppNotification.swift in Sources */,
 				6306F6781D24CD4500035AD9 /* PrivacySettingsViewModel.swift in Sources */,
-				631594E41D20CB6700431499 /* FriendListViewModel.swift in Sources */,
 				637B8F281D19311E00348CF4 /* PhoneValidationViewController.swift in Sources */,
-				63F3EE941CBF49EE0010D059 /* ChatMessage.swift in Sources */,
 				631594FA1D20CB8B00431499 /* EventManagerNotificationCell.swift in Sources */,
 				631594DB1D20CB6700431499 /* SearchCourseViewModel.swift in Sources */,
 			);

@@ -24,9 +24,5 @@ final public class AFError: NSObject {
 	public init(operation: NSURLSessionDataTask?, error: NSError) {
 		self.statusCode = AFNetworkingErrorParser.statusCode(operation)
 		self.responseBody = AFNetworkingErrorParser.responseBody(error)
-		if let statusCode = self.statusCode where statusCode == 401 {
-			// 401 is not authed, tell refresh center to check the token
-			ColorgyRefreshCenter.notify401UnautherizedErrorGet()
-		}
 	}
 }

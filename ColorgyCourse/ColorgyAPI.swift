@@ -22,8 +22,6 @@ public enum APIError: ErrorType {
 	case InvalidURLString
 	/// Fail to get api from server, parse AFError to get the detail description
 	case APIConnectionFailure
-	/// API currently unavailable, refresh token might be refreshing...
-	case APIUnavailable
 	/// User has no organization code
 	case NoOrganization
 	/// User has no user id
@@ -67,7 +65,7 @@ final public class ColorgyAPI : NSObject {
 	/// private access token getter
 	private var accessToken: String? {
 		get {
-			return ColorgyRefreshCenter.sharedInstance().accessToken
+			return ColorgyUserInformation.sharedInstance().userAccessToken
 		}
 	}
 	
@@ -119,11 +117,6 @@ final public class ColorgyAPI : NSObject {
 		handleFailure(failure, error: APIError.APIConnectionFailure, afError: afError)
 	}
 	
-	/// Handle API unavailable condition
-	private func handleAPIUnavailable(failure: ((error: APIError, afError: AFError?) -> Void)?) {
-		handleFailure(failure, error: APIError.APIUnavailable, afError: nil)
-	}
-	
 	/// Handle no organization condition
 	private func handleNoOrganization(failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		handleFailure(failure, error: APIError.NoOrganization, afError: nil)
@@ -142,30 +135,6 @@ final public class ColorgyAPI : NSObject {
 	/// Handle fail to download content condition
 	private func handleFailToDownloadContent(failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		handleFailure(failure, error: APIError.FailToDownloadContent, afError: nil)
-	}
-	
-	/// This depends on Refresh center
-	/// Will lock if token is refreshing
-	/// - returns:
-	///   - True: If token is available
-	///   - False: Time out, no network might cause this problem
-	private func allowAPIAccessing() -> Bool {
-		
-		var retryCounter = 100
-		
-		while retryCounter > 0 {
-			// decrease counter
-			retryCounter -= 1
-			// check if available
-			if ColorgyRefreshCenter.sharedInstance().currentRefreshingState == RefreshingState.NotRefreshing {
-				// if token is not refreshing, allow api accessing
-				return true
-			}
-			// wait for 3 seconds
-			NSThread.sleepForTimeInterval(0.1)
-		}
-		
-		return false
 	}
 	
 	/// **Reachability**
@@ -220,10 +189,6 @@ final public class ColorgyAPI : NSObject {
 		}
 		
 		qosBlock {
-			guard self.allowAPIAccessing() else {
-				self.handleAPIUnavailable(failure)
-				return
-			}
 			guard let accesstoken = self.accessToken else {
 				self.handleNoAccessToken(failure)
 				return
@@ -270,10 +235,6 @@ final public class ColorgyAPI : NSObject {
 		}
 		
 		qosBlock {
-			guard self.allowAPIAccessing() else {
-				self.handleAPIUnavailable(failure)
-				return
-			}
 			guard let accesstoken = self.accessToken else {
 				self.handleNoAccessToken(failure)
 				return
@@ -312,10 +273,6 @@ final public class ColorgyAPI : NSObject {
 		}
 		
 		qosBlock {
-			guard self.allowAPIAccessing() else {
-				self.handleAPIUnavailable(failure)
-				return
-			}
 			let url = "\(self.rootURL)/users/sign_up"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
@@ -353,11 +310,7 @@ final public class ColorgyAPI : NSObject {
 			return
 		}
 		
-		qosBlock { 
-			guard self.allowAPIAccessing() else {
-				self.handleAPIUnavailable(failure)
-				return
-			}
+		qosBlock {
 			guard let accesstoken = self.accessToken else {
 				self.handleNoAccessToken(failure)
 				return
@@ -395,10 +348,6 @@ final public class ColorgyAPI : NSObject {
 		}
 		
 		qosBlock {
-			guard self.allowAPIAccessing() else {
-				self.handleAPIUnavailable(failure)
-				return
-			}
 			guard let accesstoken = self.accessToken else {
 				self.handleNoAccessToken(failure)
 				return
@@ -437,10 +386,6 @@ final public class ColorgyAPI : NSObject {
 		}
 		
 		qosBlock {
-			guard self.allowAPIAccessing() else {
-				self.handleAPIUnavailable(failure)
-				return
-			}
 			guard let accesstoken = self.accessToken else {
 				self.handleNoAccessToken(failure)
 				return
@@ -480,10 +425,6 @@ final public class ColorgyAPI : NSObject {
 		}
 		
 		qosBlock {
-			guard self.allowAPIAccessing() else {
-				self.handleAPIUnavailable(failure)
-				return
-			}
 			guard let accesstoken = self.accessToken else {
 				self.handleNoAccessToken(failure)
 				return
@@ -527,10 +468,6 @@ final public class ColorgyAPI : NSObject {
 		}
 		
 		qosBlock {
-			guard self.allowAPIAccessing() else {
-				self.handleAPIUnavailable(failure)
-				return
-			}
 			guard let accesstoken = self.accessToken else {
 				self.handleNoAccessToken(failure)
 				return

@@ -77,8 +77,6 @@ final public class ColorgyLogin {
 		}
 		// store
 		ColorgyUserInformation.saveLoginResult(result)
-		// active refresh token
-		ColorgyRefreshCenter.activeRefreshToken()
 		// success
 		successHelper(success, result: result)
 	}
