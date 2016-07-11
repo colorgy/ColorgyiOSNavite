@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftyJSON
 
 final public class MyPageViewController: UIViewController {
 	
@@ -70,15 +71,9 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 		print(#file, #function, #line)
 		
 		api.getCoursesList(of: 2015, andTerm: 1, success: { (courseList) in
-			print(courseList[0])
-			print("enrolling!!!!!!!!")
-			self.api.enrollCourse(course: courseList[0], success: nil, failure: {error, aferror in
-				print(error, aferror)
-			})
-			self.api.dropCourse(course: courseList[0], success: { 
-				print(#line)
-				}, failure: { (error, afError) in
-					print(error, afError, #line)
+			print(courseList[0].generatePostDictionary())
+			self.api.enrollCourse(course: courseList[0], success: nil, failure: { (error, afError) in
+				print(error, afError)
 			})
 			}) { (error, afError) in
 				print(error, afError)

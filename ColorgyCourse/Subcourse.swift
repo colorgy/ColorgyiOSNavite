@@ -186,3 +186,26 @@ extension Subcourse {
 		return subcourses
 	}
 }
+
+extension Subcourse {
+	public func generatePostData() -> [String : Any?] {
+		let parameters: [String : Any?] = [
+			// 由 client 產生 uuid
+			"uuid": NSUUID().UUIDString,
+			"name": self.name,
+			"description": self.detailDescription,
+			"start_time": self.startTime.iso8601String,
+			"end_time": self.endTime.iso8601String,
+			"rrule": self.rrule?.rruleString ?? nil,
+			"course_year": self.courseYear,
+			"course_term": self.courseTerm,
+			"course_lecturer": self.courseLecturer,
+			"course_credits": self.courseCredits,
+			"course_url": self.courseURL,
+			"course_required": self.courseRequired,
+			"course_code": self.courseCode,
+			"period_string": nil
+		]
+		return parameters
+	}
+}

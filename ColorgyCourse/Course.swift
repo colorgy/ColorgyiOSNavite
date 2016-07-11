@@ -229,25 +229,33 @@ extension Course {
 
 extension Course {
 	/// Generate a dictionary to post to server
-	public func generatePostDictionary() -> [String : AnyObject?]{
-		let parameters = [
-			"course": [
-				"name": self.name,
-				"description": self.detailDescription,
-				"start_time": self.startTime.iso8601String,
-				"end_time": self.endTime.iso8601String,
-				"rrule": self.rrule?.rruleString ?? nil,
-				"course_year": self.courseYear,
-				"course_term": self.courseTerm,
-				"course_lecturer": self.courseLecturer,
-				"course_credits": self.courseCredits,
-				"course_url": self.courseURL,
-				"course_required": self.courseRequired,
-				"course_code": self.courseCode,
-				"period_string": nil,
-				"sub_courses": []
-			]
+	public func generatePostDictionary() -> [String : Any?] {
+		
+		var subcourses = [[String : Any?]]()
+		self.subcourses.forEach({ subcourses.append($0.generatePostData()) })
+		
+		let course: [String : Any?] = [
+			"name": self.name,
+			"description": self.detailDescription,
+			"start_time": self.startTime.iso8601String,
+			"end_time": self.endTime.iso8601String,
+			"rrule": self.rrule?.rruleString ?? nil,
+			"course_year": self.courseYear,
+			"course_term": self.courseTerm,
+			"course_lecturer": self.courseLecturer,
+			"course_credits": self.courseCredits,
+			"course_url": self.courseURL,
+			"course_required": self.courseRequired,
+			"course_code": self.courseCode,
+			"period_string": nil,
+			"sub_courses": subcourses
 		]
+		
+		let parameters: [String : Any?] = [
+			"course": course
+		]
+		
 		return parameters
+		
 	}
 }
