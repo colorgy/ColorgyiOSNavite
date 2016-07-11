@@ -42,7 +42,6 @@ PODS:
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
   - SKPhotoBrowser (2.0.0)
-  - Socket.IO-Client-Swift (6.1.3)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -59,7 +58,6 @@ DEPENDENCIES:
   - RealmSwift
   - SDWebImage (~> 3.7)
   - SKPhotoBrowser
-  - Socket.IO-Client-Swift (~> 6.1.1)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 EXTERNAL SOURCES:
@@ -87,9 +85,8 @@ SPEC CHECKSUMS:
   RealmSwift: d73ea2af08c3676dbdd5e4b669651a0f492162a4
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   SKPhotoBrowser: 6a4ef17ea9e4e7358df29c2e552d9f33657dcd8a
-  Socket.IO-Client-Swift: 00eb528b3eaa0c0385e54b8c6c00e36abc992257
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 48c3d1fe0b5a3dccb6f55c81ec140081d9f766af
+PODFILE CHECKSUM: 83237ed138d9ce8376d83a9aba8c5070a8bc7d3b
 
 COCOAPODS: 1.0.1

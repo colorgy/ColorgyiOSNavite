@@ -19,7 +19,7 @@ target 'ColorgyCourse' do
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod 'ImagePickerSheetController', '~> 0.9.1'
   pod 'KeychainSwift', '~> 3.0'
-  pod 'Socket.IO-Client-Swift', '~> 6.1.1'
+  # pod 'Socket.IO-Client-Swift', '~> 6.1.1'
 
   target 'ColorgyCourseTests' do
     inherit! :search_paths
