@@ -737,14 +737,14 @@
 				6362622B1D2A1C5800C16625 /* Course.swift */,
 				630B9DBB1D2A52D100B2B250 /* CourseList.swift */,
 				630B9DBE1D2A557900B2B250 /* CourseListGenerator.swift */,
-				630B9DC41D2B725400B2B250 /* EventList.swift */,
-				630B9DC71D2B72EA00B2B250 /* EventListGenerator.swift */,
 				6362621C1D2A0EEB00C16625 /* CourseRealmObject.swift */,
 				6362622E1D2A2F7600C16625 /* Subcourse.swift */,
 				636262251D2A125C00C16625 /* SubcourseRealmObject.swift */,
+				630B9DC41D2B725400B2B250 /* EventList.swift */,
+				630B9DC71D2B72EA00B2B250 /* EventListGenerator.swift */,
 				63AC1B401CF155F800FDD724 /* Event.swift */,
-				636262281D2A196D00C16625 /* Subevent.swift */,
 				6362621E1D2A10D300C16625 /* EventRealmObject.swift */,
+				636262281D2A196D00C16625 /* Subevent.swift */,
 				636262221D2A11BF00C16625 /* SubeventRealmObject.swift */,
 			);
 			name = "Realm Object";

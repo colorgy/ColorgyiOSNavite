@@ -100,7 +100,8 @@ extension CourseRealmObject {
 		}
 		do {
 			let realm = try Realm()
-			let objects = realm.objects(CourseRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
+			let objects = realm.objects(CourseRealmObject.self).filter("rrule.dtStart <= %@ AND rrule.until >= %@", toDate, fromDate).map { $0 }
+//			let objects = realm.objects(CourseRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
 			complete?(objects: objects)
 		} catch {
 			complete?(objects: [])
@@ -109,7 +110,7 @@ extension CourseRealmObject {
 	
 	public class func queryData(fromYear fromYear: Int, toYear: Int, complete: ((objects: [CourseRealmObject]) -> Void)?) {
 		guard fromYear <= toYear else {
-			complete?(objects: objects)
+			complete?(objects: [])
 			print(#function, "from year must smaller than to year")
 			return
 		}
