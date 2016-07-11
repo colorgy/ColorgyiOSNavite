@@ -533,5 +533,117 @@ final public class ColorgyAPI : NSObject {
 	}
 	
 	
-	// MARK: - Create Courses
+	// MARK: - Courses API
+	public func enrollCourse(course course: Course, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			handleNetworkUnavailable(failure)
+			return
+		}
+		
+		qosBlock {
+			guard let school = ColorgyUserInformation.sharedInstance().userUnconfirmedOrganization else {
+				self.handleNoOrganization(failure)
+				return
+			}
+			let url = "\(self.rootURL)/organizations/\(school.uppercaseString)/courses/\(course.courseCode)/enroll"
+			guard url.isValidURLString else {
+				self.handleInvalidURL(failure)
+				return
+			}
+			guard let accessToken = self.accessToken else {
+				self.handleNoAccessToken(failure)
+				return
+			}
+			
+			self.setManager(new: accessToken)
+			self.manager.POST(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				guard let response = response else {
+					self.handleFailToParseResult(failure)
+					return
+				}
+				let json = JSON(response)
+				print(json, #line, #function)
+				let course = Course(json: json)
+				print(course)
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.handleAPIConnectionFailure(failure, afError: afError)
+			})
+		}
+	}
+	
+	public func dropCourse(course course: Course, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			handleNetworkUnavailable(failure)
+			return
+		}
+		
+		qosBlock {
+			guard let school = ColorgyUserInformation.sharedInstance().userUnconfirmedOrganization else {
+				self.handleNoOrganization(failure)
+				return
+			}
+			let url = "\(self.rootURL)/organizations/\(school.uppercaseString)/courses/\(course.courseCode)/drop"
+			guard url.isValidURLString else {
+				self.handleInvalidURL(failure)
+				return
+			}
+			guard let accessToken = self.accessToken else {
+				self.handleNoAccessToken(failure)
+				return
+			}
+			
+			self.setManager(new: accessToken)
+			self.manager.DELETE(url, parameters: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				self.mainBlock({
+					success?()
+				})
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.handleAPIConnectionFailure(failure, afError: afError)
+			})
+		}
+	}
+	
+	public func getClassmates(in course: Course, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			handleNetworkUnavailable(failure)
+			return
+		}
+		
+		qosBlock {
+			guard let school = ColorgyUserInformation.sharedInstance().userUnconfirmedOrganization else {
+				self.handleNoOrganization(failure)
+				return
+			}
+			let url = "\(self.rootURL)/organizations/\(school.uppercaseString)/courses/\(course.courseCode)/classmates"
+			guard url.isValidURLString else {
+				self.handleInvalidURL(failure)
+				return
+			}
+			guard let accessToken = self.accessToken else {
+				self.handleNoAccessToken(failure)
+				return
+			}
+			
+			self.setManager(new: accessToken)
+			self.manager.GET(url, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				guard let response = response else {
+					self.handleFailToParseResult(failure)
+					return
+				}
+				let json = JSON(response)
+				print(json, #line, #function)
+				self.mainBlock({
+					success?()
+				})
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					self.handleAPIConnectionFailure(failure, afError: afError)
+			})
+		}
+	}
 }

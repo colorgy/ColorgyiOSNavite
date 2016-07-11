@@ -68,15 +68,17 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 	
 	public func myPageMoreOptionViewMyActivityTapped() {
 		print(#file, #function, #line)
-		api.me(success: nil, failure: nil)
 		
 		api.getCoursesList(of: 2015, andTerm: 1, success: { (courseList) in
-			courseList.saveListToRealm({ (succeed) in
-				if succeed {
-					print(CourseRealmObject.getCourseList()?.count)
-				} else {
-					print("fail")
-				}
+			print(courseList[0])
+			print("enrolling!!!!!!!!")
+			self.api.enrollCourse(course: courseList[0], success: nil, failure: {error, aferror in
+				print(error, aferror)
+			})
+			self.api.dropCourse(course: courseList[0], success: { 
+				print(#line)
+				}, failure: { (error, afError) in
+					print(error, afError, #line)
 			})
 			}) { (error, afError) in
 				print(error, afError)
