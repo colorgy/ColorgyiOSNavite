@@ -229,29 +229,29 @@ extension Course {
 
 extension Course {
 	/// Generate a dictionary to post to server
-	public func generatePostDictionary() -> [String : Any?] {
+	public func generatePostDictionary() -> [String : AnyObject] {
 		
-		var subcourses = [[String : Any?]]()
+		var subcourses = [[String : AnyObject]]()
 		self.subcourses.forEach({ subcourses.append($0.generatePostData()) })
 		
-		let course: [String : Any?] = [
+		let course: [String : AnyObject] = [
 			"name": self.name,
-			"description": self.detailDescription,
+			"description": self.detailDescription ?? NSNull(),
 			"start_time": self.startTime.iso8601String,
 			"end_time": self.endTime.iso8601String,
-			"rrule": self.rrule?.rruleString ?? nil,
+			"rrule": self.rrule?.rruleString ?? NSNull(),
 			"course_year": self.courseYear,
 			"course_term": self.courseTerm,
-			"course_lecturer": self.courseLecturer,
+			"course_lecturer": self.courseLecturer ?? NSNull(),
 			"course_credits": self.courseCredits,
-			"course_url": self.courseURL,
+			"course_url": self.courseURL ?? NSNull(),
 			"course_required": self.courseRequired,
 			"course_code": self.courseCode,
-			"period_string": nil,
+			"period_string": NSNull(),
 			"sub_courses": subcourses
 		]
 		
-		let parameters: [String : Any?] = [
+		let parameters: [String : AnyObject] = [
 			"course": course
 		]
 		

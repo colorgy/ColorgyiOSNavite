@@ -646,4 +646,45 @@ final public class ColorgyAPI : NSObject {
 			})
 		}
 	}
+	
+	public func createCustomCourse(course course: Course, success: (() -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+		
+		guard networkAvailable() else {
+			handleNetworkUnavailable(failure)
+			return
+		}
+		
+		qosBlock { 
+			let url = "\(self.rootURL)/calendars/DEFAULT/courses/\(NSUUID().UUIDString)"
+			guard url.isValidURLString else {
+				self.handleInvalidURL(failure)
+				return
+			}
+			guard let accessToken = self.accessToken else {
+				self.handleNoAccessToken(failure)
+				return
+			}
+			
+			let parameters = course.generatePostDictionary()
+			print(parameters)
+			print(JSON(parameters))
+	
+			self.setManager(new: accessToken)
+			self.manager.PUT(url, parameters: parameters, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+				guard let response = response else {
+					self.handleFailToParseResult(failure)
+					return
+				}
+				let json = JSON(response)
+				print(json, #line, #function)
+				self.mainBlock({
+					success?()
+				})
+				}, failure: { (operation: NSURLSessionDataTask?, error: NSError) in
+					let afError = AFError(operation: operation, error: error)
+					print(afError, #function)
+					self.handleAPIConnectionFailure(failure, afError: afError)
+			})
+		}
+	}
 }

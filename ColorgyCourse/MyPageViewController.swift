@@ -71,10 +71,11 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 		print(#file, #function, #line)
 		
 		api.getCoursesList(of: 2015, andTerm: 1, success: { (courseList) in
-			print(courseList[0].generatePostDictionary())
-			self.api.enrollCourse(course: courseList[0], success: nil, failure: { (error, afError) in
-				print(error, afError)
-			})
+//			print(courseList[0].generatePostDictionary())
+//			self.api.enrollCourse(course: courseList[0], success: nil, failure: { (error, afError) in
+//				print(error, afError)
+//			})
+			self.api.createCustomCourse(course: courseList[0], success: nil, failure: nil)
 			}) { (error, afError) in
 				print(error, afError)
 		}

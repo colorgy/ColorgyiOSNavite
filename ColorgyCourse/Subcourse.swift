@@ -188,23 +188,23 @@ extension Subcourse {
 }
 
 extension Subcourse {
-	public func generatePostData() -> [String : Any?] {
-		let parameters: [String : Any?] = [
+	public func generatePostData() -> [String : AnyObject] {
+		let parameters: [String : AnyObject] = [
 			// 由 client 產生 uuid
 			"uuid": NSUUID().UUIDString,
 			"name": self.name,
-			"description": self.detailDescription,
+			"description": self.detailDescription ?? NSNull(),
 			"start_time": self.startTime.iso8601String,
 			"end_time": self.endTime.iso8601String,
-			"rrule": self.rrule?.rruleString ?? nil,
+			"rrule": self.rrule?.rruleString ?? NSNull(),
 			"course_year": self.courseYear,
 			"course_term": self.courseTerm,
-			"course_lecturer": self.courseLecturer,
+			"course_lecturer": self.courseLecturer ?? NSNull(),
 			"course_credits": self.courseCredits,
 			"course_url": self.courseURL,
 			"course_required": self.courseRequired,
 			"course_code": self.courseCode,
-			"period_string": nil
+			"period_string": NSNull()
 		]
 		return parameters
 	}
