@@ -60,9 +60,9 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 		let to = NSDate.create(dateOnYear: 2016, month: 10, day: 1, hour: 22, minute: 0, second: 0)!
 		CourseRealmObject.queryDate(fromDate: from, toDate: to) { (objects) in
 			print(objects.count, "courses in db")
-			print(objects.first)
 			let courses = Course.generateCourses(withRealmObjects: objects)
 			print(courses.count, "courses been transformed")
+			print(courses.first)
 		}
 	}
 	

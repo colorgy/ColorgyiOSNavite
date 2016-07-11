@@ -15,8 +15,8 @@ final public class EventRealmObject: Object {
 	dynamic var name: String = ""
 	dynamic var uuid: String =  ""
 	dynamic var rrule: RRuleRealmObject?
-	dynamic var dtStart: NSDate = NSDate()
-	dynamic var dtEnd: NSDate = NSDate()
+	dynamic var startTime: NSDate = NSDate()
+	dynamic var endTime: NSDate = NSDate()
 	dynamic var detailDescription: String?
 	dynamic var referenceId: String?
 	dynamic var createdAt: NSDate = NSDate()
@@ -42,7 +42,8 @@ extension EventRealmObject {
 			}
 			do {
 				let realm = try Realm()
-				objects = realm.objects(EventRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
+//				objects = realm.objects(EventRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
+				objects = realm.objects(EventRealmObject.self).filter("rrule.dtStart <= %@ AND rrule.until >= %@", toDate, fromDate).map { $0 }
 				complete?(objects: objects)
 			} catch {
 				complete?(objects: objects)

@@ -16,8 +16,8 @@ final public class Course {
 	public private(set) var name: String
 	public private(set) var uuid: String
 	public private(set) var rrule: RRule?
-	public private(set) var dtStart: NSDate
-	public private(set) var dtEnd: NSDate
+	public private(set) var startTime: NSDate
+	public private(set) var endTime: NSDate
 	public private(set) var detailDescription: String?
 	public private(set) var referenceId: String?
 	public private(set) var createdAt: NSDate
@@ -39,8 +39,8 @@ final public class Course {
 		static let name = "name"
 		static let uuid = "uuid"
 		static let rrule = "rrule"
-		static let dtStart = "dtstart"
-		static let dtEnd = "dtend"
+		static let startTime = "start_time"
+		static let endTime = "end_time"
 		static let detailDescription = "description"
 		static let referenceId = "reference_id"
 		static let createdAt = "created_at"
@@ -68,8 +68,8 @@ final public class Course {
 			name: json[Keys.name].string,
 			uuid: json[Keys.uuid].string,
 			rrule: rrule,
-			dtStart: json[Keys.dtStart].string,
-			dtEnd: json[Keys.dtEnd].string,
+			dtStart: json[Keys.startTime].string,
+			dtEnd: json[Keys.endTime].string,
 			detailDescription: json[Keys.detailDescription].string,
 			referenceId: json[Keys.referenceId].string,
 			createdAt: json[Keys.createdAt].string,
@@ -96,8 +96,8 @@ final public class Course {
 			name: object.name,
 			uuid: object.uuid,
 			rrule: object.rrule?.toRRule,
-			dtStart: object.dtStart,
-			dtEnd: object.dtEnd,
+			startTime: object.startTime,
+			endTime: object.endTime,
 			detailDescription: object.detailDescription,
 			referenceId: object.referenceId,
 			createdAt: object.createdAt,
@@ -113,7 +113,7 @@ final public class Course {
 	}
 	
 	/// Init with content of strings
-	public convenience init?(id: String?, name: String?, uuid: String?, rrule: RRule?, dtStart: String?, dtEnd: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?, subcourses: [Subcourse]) {
+	public convenience init?(id: String?, name: String?, uuid: String?, rrule: RRule?, startTime: String?, endTime: String?, detailDescription: String?, referenceId: String?, createdAt: String?, updatedAt: String?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?, subcourses: [Subcourse]) {
 		// transform string into nsdate
 		
 		self.init(
@@ -121,8 +121,8 @@ final public class Course {
 			name: name,
 			uuid: uuid,
 			rrule: rrule,
-			dtStart: NSDate.dateFrom(iso8601: dtStart),
-			dtEnd: NSDate.dateFrom(iso8601: dtEnd),
+			startTime: NSDate.dateFrom(iso8601: startTime),
+			endTime: NSDate.dateFrom(iso8601: endTime),
 			detailDescription: detailDescription,
 			referenceId: referenceId,
 			createdAt: NSDate.dateFrom(iso8601: createdAt),
@@ -138,12 +138,12 @@ final public class Course {
 	}
 	
 	/// Init with contents
-	public init?(id: String?, name: String?, uuid: String?, rrule: RRule?, dtStart: NSDate?, dtEnd: NSDate?, detailDescription: String?, referenceId: String?, createdAt: NSDate?, updatedAt: NSDate?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?, subcourses: [Subcourse]) {
+	public init?(id: String?, name: String?, uuid: String?, rrule: RRule?, startTime: NSDate?, endTime: NSDate?, detailDescription: String?, referenceId: String?, createdAt: NSDate?, updatedAt: NSDate?, courseCredits: Int?, courseLecturer: String?, courseURL: String?, courseCode: String?, courseRequired: Bool?, courseTerm: Int?, courseYear: Int?, subcourses: [Subcourse]) {
 		
 		guard let id = id else { return nil }
 		guard let name = name else { return nil }
-		guard let dtStart = dtStart else { return nil }
-		guard let dtEnd = dtEnd else { return nil }
+		guard let startTime = startTime else { return nil }
+		guard let endTime = endTime else { return nil }
 		guard let uuid = uuid else { return nil }
 		guard let createdAt = createdAt else { return nil }
 		
@@ -158,8 +158,8 @@ final public class Course {
 		self.name = name
 		self.uuid = uuid
 		self.rrule = rrule
-		self.dtStart = dtStart
-		self.dtEnd = dtEnd
+		self.startTime = startTime
+		self.endTime = endTime
 		self.detailDescription = detailDescription
 		self.referenceId = referenceId
 		self.createdAt = createdAt
@@ -180,7 +180,7 @@ final public class Course {
 
 extension Course : CustomStringConvertible {
 	public var description: String {
-		return "Course: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tdtStart: \(dtStart)\n\tdtEnd: \(dtEnd)\n\tdetailDescription: \(detailDescription)\n\treferenceId: \(referenceId)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n\tcourseCredits: \(courseCredits)\n\tcourseLecturer: \(courseLecturer)\n\tcourseURL: \(courseURL)\n\tcourseCode: \(courseCode)\n\tcourseRequired: \(courseRequired)\n\tcourseTerm: \(courseTerm)\n\tcourseYear: \(courseYear)\n\tsubcourses: \(subcourses)\n}"
+		return "Course: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tstartTime: \(startTime)\n\tendTime: \(endTime)\n\tdetailDescription: \(detailDescription)\n\treferenceId: \(referenceId)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n\tcourseCredits: \(courseCredits)\n\tcourseLecturer: \(courseLecturer)\n\tcourseURL: \(courseURL)\n\tcourseCode: \(courseCode)\n\tcourseRequired: \(courseRequired)\n\tcourseTerm: \(courseTerm)\n\tcourseYear: \(courseYear)\n\tsubcourses: \(subcourses)\n}"
 	}
 }
 

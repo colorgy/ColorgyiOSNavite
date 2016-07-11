@@ -15,8 +15,8 @@ final public class CourseRealmObject: Object {
 	dynamic var name: String = ""
 	dynamic var uuid: String =  ""
 	dynamic var rrule: RRuleRealmObject?
-	dynamic var dtStart: NSDate = NSDate()
-	dynamic var dtEnd: NSDate = NSDate()
+	dynamic var startTime: NSDate = NSDate()
+	dynamic var endTime: NSDate = NSDate()
 	dynamic var detailDescription: String?
 	dynamic var referenceId: String?
 	dynamic var createdAt: NSDate = NSDate()
