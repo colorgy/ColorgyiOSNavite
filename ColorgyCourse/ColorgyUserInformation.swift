@@ -60,13 +60,6 @@ final public class ColorgyUserInformation {
 	
 	// MARK: save/delete Login Result
 	
-	public class func fakeRefreshToken() {
-		let keychain = KeychainSwift()
-		if let rt = ColorgyUserInformation.sharedInstance().userRefreshToken {
-			keychain.set(rt + "11", forKey: LoginResultKeys.refresh_token)
-		}
-	}
-	
 	public class func saveLoginResult(result: ColorgyLoginResult) {
 		let ud = NSUserDefaults.standardUserDefaults()
 		let keychain = KeychainSwift()
@@ -257,5 +250,13 @@ final public class ColorgyUserInformation {
 	public var userUnconfirmedMobile: String? {
 		let ud = NSUserDefaults.standardUserDefaults()
 		return ud.objectForKey(APIMeResultKeys.userUnconfirmedMobile) as? String
+	}
+	
+	// MARK: - Clear
+	public func clearUserDefaults() {
+		let ud = NSUserDefaults.standardUserDefaults()
+		let keys = ud.dictionaryRepresentation().keys
+		keys.forEach({ ud.removeObjectForKey($0) })
+		ud.synchronize()
 	}
 }
