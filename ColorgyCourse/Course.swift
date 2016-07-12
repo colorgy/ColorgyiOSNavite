@@ -235,6 +235,7 @@ extension Course {
 		self.subcourses.forEach({ subcourses.append($0.generatePostData()) })
 		
 		let course: [String : AnyObject] = [
+			"id": self.id
 			"name": self.name,
 			"description": self.detailDescription ?? NSNull(),
 			"start_time": self.startTime.iso8601String,

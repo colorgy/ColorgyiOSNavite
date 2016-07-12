@@ -546,7 +546,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoOrganization(failure)
 				return
 			}
-			let url = "\(self.rootURL)/organizations/\(school.uppercaseString)/courses/\(course.courseCode)/enroll"
+			let url = "\(self.rootURL)/organizations/\(school.uppercaseString)/courses/\(course.id)/enroll"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -585,7 +585,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoOrganization(failure)
 				return
 			}
-			let url = "\(self.rootURL)/organizations/\(school.uppercaseString)/courses/\(course.courseCode)/drop"
+			let url = "\(self.rootURL)/organizations/\(school.uppercaseString)/courses/\(course.id)/drop"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
@@ -619,7 +619,7 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoOrganization(failure)
 				return
 			}
-			let url = "\(self.rootURL)/organizations/\(school.uppercaseString)/courses/\(course.courseCode)/classmates"
+			let url = "\(self.rootURL)/organizations/\(school.uppercaseString)/courses/\(course.id)/classmates"
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return
