@@ -19,7 +19,8 @@ final public class WeekCalendarViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 		navigationBar = ColorgyNavigationBar()
-		navigationBar.iWantAAdjusttingButtonAtRight()
+		navigationBar.iWantACalendarButtonAtLeft()
+		navigationBar.iWantAAddButtonAtRight()
 		navigationBar.title = "嘿YO油"
 		view.addSubview(navigationBar)
 		
@@ -80,9 +81,13 @@ final public class WeekCalendarViewController: UIViewController {
 }
 
 extension WeekCalendarViewController : ColorgyNavigationBarDelegate {
-	public func colorgyNavigationBarAdjustingButtonClicked() {
+	public func colorgyNavigationBarCalendarButtonClicked() {
 		print(#function, #line)
 		toggleCalendarView()
+	}
+	
+	public func colorgyNavigationBarAddButtonClicked() {
+		print(#function, #line)
 	}
 }
 

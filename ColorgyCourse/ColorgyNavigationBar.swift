@@ -14,6 +14,7 @@ import UIKit
 	optional func colorgyNavigationBarCheckButtonClicked()
 	optional func colorgyNavigationBarAdjustingButtonClicked()
 	optional func colorgyNavigationBarCalendarButtonClicked()
+	optional func colorgyNavigationBarAddButtonClicked()
 }
 
 /// This is customized navigation bar for colorgy.
@@ -110,6 +111,11 @@ public class ColorgyNavigationBar: UIView {
 		rightButton.addTarget(self, action: #selector(ColorgyNavigationBar.adjustingButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
 	}
 	
+	public func iWantAAddButtonAtRight() {
+		configureRightButtonWithImage("OrangeAddButton")
+		rightButton.addTarget(self, action: #selector(ColorgyNavigationBar.addButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
+	}
+	
 	// MARK: - Configuration
 	
 	private func configureLeftButtonWithImage(name: String) {
@@ -166,5 +172,9 @@ public class ColorgyNavigationBar: UIView {
 	
 	@objc private func calendarButtonClicked() {
 		delegate?.colorgyNavigationBarCalendarButtonClicked?()
+	}
+	
+	@objc private func addButtonClicked() {
+		delegate?.colorgyNavigationBarAddButtonClicked?()
 	}
 }
