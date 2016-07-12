@@ -45,13 +45,13 @@ final public class CourseRealmObject: Object {
 		self.referenceId = course.referenceId
 		self.createdAt = course.createdAt
 		self.updatedAt = course.updatedAt
-		self.courseCredits = course.courseCredits
+		self.courseCredits = course.courseCredits ?? 0
 		self.courseLecturer = course.courseLecturer
-		self.courseURL = course.courseURL
-		self.courseCode = course.courseCode
+		self.courseURL = course.courseURL ?? ""
+		self.courseCode = course.courseCode ?? ""
 		self.courseRequired = course.courseRequired
-		self.courseTerm = course.courseTerm
-		self.courseYear = course.courseYear
+		self.courseTerm = course.courseTerm ?? 0
+		self.courseYear = course.courseYear ?? 0
 		
 		let subcourseObjects = SubcourseRealmObject.generate(withSubcourses: course.subcourses)
 		self.subcourses.appendContentsOf(subcourseObjects)

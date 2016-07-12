@@ -58,6 +58,8 @@ final public class WeekCalendarView: UIView {
 		configureWeekContainerView()
 		configureSidebar()
 		configureHeader()
+		
+		// set default content insets
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -106,7 +108,7 @@ final public class WeekCalendarView: UIView {
 		
 		let contentView = UIView()
 		contentView.frame.size = sidebarContainerView.contentSize
-		for (index, _time) in ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"].enumerate() {
+		for (index, _time) in ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"].enumerate() {
 			// 00:00 ~ 24:00
 			let timeLabel = UILabel()
 			timeLabel.frame.size.width = 100
@@ -116,7 +118,7 @@ final public class WeekCalendarView: UIView {
 			timeLabel.textColor = ColorgyColor.TextColor
 			timeLabel.text = "\(_time):00"
 			timeLabel.center.x = contentView.bounds.midX
-			timeLabel.center.y = itemSize * (index + 1).CGFloatValue
+			timeLabel.center.y = itemSize * (index).CGFloatValue
 			
 			contentView.addSubview(timeLabel)
 		}

@@ -70,14 +70,24 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 	public func myPageMoreOptionViewMyActivityTapped() {
 		print(#file, #function, #line)
 		
-		api.getCoursesList(of: 2015, andTerm: 1, success: { (courseList) in
-//			print(courseList[0].generatePostDictionary())
-//			self.api.enrollCourse(course: courseList[0], success: nil, failure: { (error, afError) in
-//				print(error, afError)
-//			})
-			self.api.createCustomCourse(course: courseList[0], success: nil, failure: nil)
-			}) { (error, afError) in
-				print(error, afError)
-		}
+		let c = Course(id: NSUUID().UUIDString,
+		               name: "某捷克",
+		               uuid: NSUUID().UUIDString,
+		               rrule: nil,
+		               startTime: NSDate.create(dateOnYear: 2016, month: 7, day: 12, hour: 0, minute: 0, second: 0),
+		               endTime: NSDate.create(dateOnYear: 2016, month: 7, day: 12, hour: 3, minute: 0, second: 0),
+		               detailDescription: nil,
+		               referenceId: nil,
+		               createdAt: NSDate(),
+		               updatedAt: NSDate(),
+		               courseCredits: nil,
+		               courseLecturer: nil,
+		               courseURL: nil,
+		               courseCode: nil,
+		               courseRequired: nil,
+		               courseTerm: nil,
+		               courseYear: nil,
+		               subcourses: [])
+		print(c)
 	}
 }

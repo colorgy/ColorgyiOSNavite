@@ -23,13 +23,13 @@ final public class Course {
 	public private(set) var createdAt: NSDate
 	public private(set) var updatedAt: NSDate?
 	
-	public private(set) var courseCredits: Int
+	public private(set) var courseCredits: Int?
 	public private(set) var courseLecturer: String?
-	public private(set) var courseURL: String
-	public private(set) var courseCode: String
+	public private(set) var courseURL: String?
+	public private(set) var courseCode: String?
 	public private(set) var courseRequired: Bool = false
-	public private(set) var courseTerm: Int
-	public private(set) var courseYear: Int
+	public private(set) var courseTerm: Int?
+	public private(set) var courseYear: Int?
 	
 	public private(set) var subcourses: [Subcourse]
 	
@@ -147,12 +147,12 @@ final public class Course {
 		guard let uuid = uuid else { return nil }
 		guard let createdAt = createdAt else { return nil }
 		
-		guard let courseCredits = courseCredits else { return nil }
-		guard let courseURL = courseURL else { return nil }
-		guard let courseCode = courseCode else { return nil }
-		guard let courseRequired = courseRequired else { return nil }
-		guard let courseTerm = courseTerm else { return nil }
-		guard let courseYear = courseYear else { return nil }
+//		guard let courseCredits = courseCredits else { return nil }
+//		guard let courseURL = courseURL else { return nil }
+//		guard let courseCode = courseCode else { return nil }
+//		guard let courseRequired = courseRequired else { return nil }
+//		guard let courseTerm = courseTerm else { return nil }
+//		guard let courseYear = courseYear else { return nil }
 		
 		self.id = id
 		self.name = name
@@ -169,7 +169,7 @@ final public class Course {
 		self.courseLecturer = courseLecturer
 		self.courseURL = courseURL
 		self.courseCode = courseCode
-		self.courseRequired = courseRequired
+		self.courseRequired = courseRequired ?? false
 		self.courseTerm = courseTerm
 		self.courseYear = courseYear
 		
@@ -240,13 +240,13 @@ extension Course {
 			"start_time": self.startTime.iso8601String,
 			"end_time": self.endTime.iso8601String,
 			"rrule": self.rrule?.rruleString ?? NSNull(),
-			"course_year": self.courseYear,
-			"course_term": self.courseTerm,
+			"course_year": self.courseYear ?? NSNull(),
+			"course_term": self.courseTerm ?? NSNull(),
 			"course_lecturer": self.courseLecturer ?? NSNull(),
-			"course_credits": self.courseCredits,
+			"course_credits": self.courseCredits ?? NSNull(),
 			"course_url": self.courseURL ?? NSNull(),
 			"course_required": self.courseRequired,
-			"course_code": self.courseCode,
+			"course_code": self.courseCode ?? NSNull(),
 			"period_string": NSNull(),
 			"sub_courses": subcourses
 		]
