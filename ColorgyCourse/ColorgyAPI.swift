@@ -476,7 +476,8 @@ final public class ColorgyAPI : NSObject {
 				self.handleNoOrganization(failure)
 				return
 			}
-			let url = "\(self.rootURL)/organizations/\(school)/courses"
+			let url = "\(self.rootURL)/organizations/\(school.uppercaseString)/courses"
+			print(NSURL(string: url))
 			guard url.isValidURLString else {
 				self.handleInvalidURL(failure)
 				return

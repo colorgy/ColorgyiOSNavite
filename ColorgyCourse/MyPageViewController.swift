@@ -23,7 +23,7 @@ final public class MyPageViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 		let size = UIScreen.mainScreen().bounds.size
-		myPageContainerView = MyPageContainerView(frame: CGRect(origin: CGPointZero, size: size), moreOptionViewDelegate: self)
+		myPageContainerView = MyPageContainerView(frame: CGRect(origin: CGPointZero, size: size), moreOptionViewDelegate: self, personalInfoViewDelegate: self)
 		view.addSubview(myPageContainerView)
 		
 		view.backgroundColor = ColorgyColor.BackgroundColor
@@ -90,13 +90,22 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 		               subcourses: [])
 		print(c)
 		
-		api.getCoursesList({ (courses) in
-			courses.saveToRealm({ (succeed) in
-				print(succeed)
-				print("fuck")
+		CourseRealmObject.
+	}
+}
+
+extension MyPageViewController : MyPagePersonalInfoViewDelegate {
+	public func myPagePersonalInfoViewEditPersonalInforButtonClicked() {
+		ColorgyLogin.loginToColorgy(with: "a1@aa.aa", password: "00000000", success: { (result) in
+			ColorgyUserInformation.saveLoginResult(result)
+			ColorgyAPI().me(success: { (result) in
+				ColorgyUserInformation.saveAPIMeResult(result)
+				print("SHIT!!!!")
+				}, failure: { (error, afError) in
+					print(error, afError)
 			})
-			}) { (error, afError) in
-				print(error,afError)
+		}) { (error, afError) in
+			print(error, afError)
 		}
 	}
 }

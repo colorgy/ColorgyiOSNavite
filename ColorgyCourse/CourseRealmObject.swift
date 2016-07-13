@@ -124,6 +124,11 @@ extension CourseRealmObject {
 		}
 		queryDate(fromDate: fromDate, toDate: toDate, complete: complete)
 	}
+	
+	/// Get
+	public class func getAllStoredObjects() -> [CourseRealmObject] {
+		
+	}
 }
 
 extension Array where Element: CourseRealmObject {

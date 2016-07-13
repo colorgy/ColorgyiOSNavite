@@ -15,7 +15,7 @@ final public class MyPageContainerView: UIScrollView {
 	private var moreOptionView: MyPageMoreOptionView!
 
 	// MARK: - Init
-	public init(frame: CGRect, moreOptionViewDelegate: MyPageMoreOptionViewDelegate?) {
+	public init(frame: CGRect, moreOptionViewDelegate: MyPageMoreOptionViewDelegate?, personalInfoViewDelegate: MyPagePersonalInfoViewDelegate?) {
 		super.init(frame: frame)
 		
 		// configure
@@ -25,6 +25,7 @@ final public class MyPageContainerView: UIScrollView {
 		
 		// set delegation
 		moreOptionView.delegate = moreOptionViewDelegate
+		personalInfoView.delegate = personalInfoViewDelegate
 		self.delegate = self
 		
 		contentSize = CGSize(width: bounds.width, height: moreOptionView.frame.maxY*2)

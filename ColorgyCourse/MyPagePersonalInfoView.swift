@@ -8,7 +8,9 @@
 
 import UIKit
 
-
+@objc public protocol MyPagePersonalInfoViewDelegate: class {
+	optional func myPagePersonalInfoViewEditPersonalInforButtonClicked()
+}
 
 final public class MyPagePersonalInfoView: UIView {
 	
@@ -40,6 +42,8 @@ final public class MyPagePersonalInfoView: UIView {
 	private var greetingsCountLabel: UILabel!
 	
 	private var editPersonalInfoButton: UIButton!
+	
+	public weak var delegate: MyPagePersonalInfoViewDelegate?
 
 	// MARK: - Init
 	
@@ -159,5 +163,6 @@ final public class MyPagePersonalInfoView: UIView {
 	// MARK: - Selector
 	@objc private func editPersonalInfoButtonClicked() {
 		print(#file, #function, #line)
+		delegate?.myPagePersonalInfoViewEditPersonalInforButtonClicked?()
 	}
 }

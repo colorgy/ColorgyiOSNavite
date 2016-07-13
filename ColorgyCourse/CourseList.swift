@@ -24,6 +24,10 @@ final public class CourseList {
 		courseList.appendContentsOf(courses)
 	}
 	
+	public func clearList() {
+		courseList.removeAll()
+	}
+	
 	// MARK: - Getter
 	public var count: Int {
 		return courseList.count
