@@ -21,7 +21,7 @@ final public class WeekCalendarViewModel {
 	}
 	
 	// MARK: - Public methods
-	public func loadData(of date: NSDate) {
+	public func loadData(between fromDate: NSDate, and toDate: NSDate) {
 		
 	}
 }

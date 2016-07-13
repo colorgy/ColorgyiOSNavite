@@ -269,6 +269,15 @@ public class Course : CustomStringConvertible {
 		return parameters
 		
 	}
+	
+	/// This method will check if date is between from date and todate.
+	/// if todate is before from date, this method will automatically swap these two days for you.
+	/// Dont worry about dates.
+	public func isBetween(fromDate: NSDate, and toDate: NSDate) -> Bool {
+		let earlierDate = fromDate.isBefore(toDate) ? fromDate : toDate
+		let laterDate = toDate.isAfterOrSame(with: fromDate) ? toDate : fromDate
+		return self.startTime.isBeforeOrSame(with: laterDate) && self.endTime.isAfterOrSame(with: earlierDate)
+	}
 }
 
 extension Array where Element: Course {
