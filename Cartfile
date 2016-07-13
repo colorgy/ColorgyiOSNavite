@@ -1,11 +1,5 @@
 github "AFNetworking/AFNetworking" ~> 3.1.0
 github "rs/SDWebImage" ~> 3.7.5
-github "suzuki-0000/SKPhotoBrowser" ~> 1.8.1
 github "SwiftyJSON/SwiftyJSON" ~> 2.3.3
-github "larcus94/ImagePickerSheetController" ~> 0.9.1
-github "realm/realm-cocoa" ~> 0.98.6
-github "marketplacer/keychain-swift" ~> 3.0
-github "socketio/socket.io-client-swift" ~> 6.0.0
-github "Quick/Quick"
-github "Quick/Nimble"
-github "delba/Log"
+github "realm/realm-cocoa"
+github "marketplacer/keychain-swift" ~> 4.0
