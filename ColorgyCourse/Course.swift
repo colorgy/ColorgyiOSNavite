@@ -234,20 +234,29 @@ extension Course {
 		var subcourses = [[String : AnyObject]]()
 		self.subcourses.forEach({ subcourses.append($0.generatePostData()) })
 		
+		let description: AnyObject = self.description ?? NSNull()
+		let rrule: AnyObject = self.rrule?.rruleString ?? NSNull()
+		let courseYear: AnyObject = self.courseYear ?? NSNull()
+		let courseTerm: AnyObject = self.courseTerm ?? NSNull()
+		let courseLecturer: AnyObject = self.courseLecturer ?? NSNull()
+		let courseCredits: AnyObject = self.courseCredits ?? NSNull()
+		let courseURL: AnyObject = self.courseURL ?? NSNull()
+		let courseCode: AnyObject = self.courseCode ?? NSNull()
+		
 		let course: [String : AnyObject] = [
 			"id": self.id,
 			"name": self.name,
-			"description": self.detailDescription ?? NSNull(),
+			"description": description,
 			"start_time": self.startTime.iso8601String,
 			"end_time": self.endTime.iso8601String,
-			"rrule": self.rrule?.rruleString ?? NSNull(),
-			"course_year": self.courseYear ?? NSNull(),
-			"course_term": self.courseTerm ?? NSNull(),
-			"course_lecturer": self.courseLecturer ?? NSNull(),
-			"course_credits": self.courseCredits ?? NSNull(),
-			"course_url": self.courseURL ?? NSNull(),
+			"rrule": rrule,
+			"course_year": courseYear,
+			"course_term": courseTerm,
+			"course_lecturer": courseLecturer,
+			"course_credits": courseCredits,
+			"course_url": courseURL,
 			"course_required": self.courseRequired,
-			"course_code": self.courseCode ?? NSNull(),
+			"course_code": courseCode,
 			"period_string": NSNull(),
 			"sub_courses": subcourses
 		]
