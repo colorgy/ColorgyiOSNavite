@@ -134,11 +134,52 @@ public struct RRule {
 		return RRuleRealmObject(withRRule: self)
 	}
 	
-	/// Can get all occurrences between dtStart and until.
-	/// Time of all these occurrences will start and depends on dtStart time.
-	public func allOccurrences() -> [NSDate] {
+	public func allOccurrences(withStartTime st: NSDate, andEndTime et: NSDate) -> [(startTime: NSDate, endTime: NSDate)] {
+		guard st.isBefore(et) else {
+			print(#function, #file, "Error: start time must before end time!")
+			return []
+		}
+		let timeInterval = et.timeIntervalSinceDate(st)
+		let allStartTimes = allOccurrences(withStartDate: st)
+		// 檢查前一個的ENTIME是否跨越
+		guard let firstStartTime = allStartTimes.first else {
+			return []
+		}
+		var previousStartTime: NSDate!
+		var previousEndTime: NSDate!
+		// find previos start time
+		switch self.frequency {
+		case .Daily:
+			guard let p = firstStartTime.dateBySubtractingDay(1 * self.interval) else { return [] }
+			previousStartTime = p
+		case .Weekly:
+			guard let p = firstStartTime.dateBySubtractingWeek(1 * self.interval) else { return [] }
+			previousStartTime = p
+		case .Monthly:
+			guard let p = firstStartTime.dateBySubtractingMonth(1 * self.interval) else { return [] }
+			previousStartTime = p
+		case .Yearly:
+			guard let p = firstStartTime.dateBySubtractingYear(1 * self.interval) else { return [] }
+			previousStartTime = p
+		}
+		previousEndTime = previousStartTime.dateByAddingTimeInterval(timeInterval)
+		
+		// compose return array
+		var times = [(startTime: NSDate, endTime: NSDate)]()
+		if previousEndTime.isAfterOrSame(with: firstStartTime) {
+			times.append((previousStartTime, previousEndTime))
+		}
+		allStartTimes.forEach { (startTime) in
+			let endTime = startTime.dateByAddingTimeInterval(timeInterval)
+			times.append((startTime, endTime))
+		}
+		
+		return times
+	}
+	
+	public func allOccurrences(withStartDate sd: NSDate) -> [NSDate] {
 		// first, find base date to get start with
-		var baseDate = self.dtStart
+		var baseDate = sd
 		// find start week day. Here, we are going to find the previous week start day.
 		let weekdayOffset = baseDate.weekday - self.weekStartDay.toInt()
 		// choose the start day, subtract to get previous start day.
@@ -187,6 +228,12 @@ public struct RRule {
 		}
 		
 		return allOccurrences
+	}
+	
+	/// Can get all occurrences between dtStart and until.
+	/// Time of all these occurrences will start and depends on dtStart time.
+	public func allOccurrences() -> [NSDate] {
+		return allOccurrences(withStartDate: dtStart)
 	}
 
 	/// Get a date from given rrule date string.

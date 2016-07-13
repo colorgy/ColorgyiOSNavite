@@ -153,6 +153,23 @@ final public class Subcourse {
 		self.courseYear = courseYear
 	}
 	
+	// MARK: - Check occurrence
+	
+	/// This method will check if date is between from date and todate.
+	/// if todate is before from date, this method will automatically swap these two days for you.
+	/// Dont worry about dates.
+	///
+	/// If the course has no rrule, will check its startTime and endTime.
+	///
+	/// If the course has rrule, will check its all occurrence dates.
+	public func isBetween(fromDate: NSDate, and toDate: NSDate) -> Bool {
+		let earlierDate = fromDate.isBefore(toDate) ? fromDate : toDate
+		let laterDate = toDate.isAfterOrSame(with: fromDate) ? toDate : fromDate
+		self.rrule?.allOccurrences()
+		return self.startTime.isBeforeOrSame(with: laterDate) && self.endTime.isAfterOrSame(with: earlierDate)
+	}
+	
+	// MARK: - Save to db
 	public var toRealmObject: SubcourseRealmObject {
 		return SubcourseRealmObject(withSubcourse: self)
 	}
