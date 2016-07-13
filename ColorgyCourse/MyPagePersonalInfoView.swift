@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 final public class MyPagePersonalInfoView: UIView {
 	
 	// MARK: - Parameters

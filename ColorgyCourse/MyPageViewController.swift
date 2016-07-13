@@ -70,9 +70,6 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 	public func myPageMoreOptionViewMyActivityTapped() {
 		print(#file, #function, #line)
 		
-		let list = CourseRealmObject.getCourseList()
-		print(list?[0].generatePostDictionary())
-		
 		let c = Course(id: NSUUID().UUIDString,
 		               name: "某捷克",
 		               uuid: NSUUID().UUIDString,
@@ -93,5 +90,13 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 		               subcourses: [])
 		print(c)
 		
+		api.getCoursesList({ (courses) in
+			courses.saveToRealm({ (succeed) in
+				print(succeed)
+				print("fuck")
+			})
+			}) { (error, afError) in
+				print(error,afError)
+		}
 	}
 }

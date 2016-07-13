@@ -199,9 +199,8 @@ public class Course : CustomStringConvertible {
 			}
 		}
 	}
-}
 
-extension Course {
+	// MARK: - Generate Objects
 	public class func generateCourses(with json: JSON) -> [Course] {
 		var courses = [Course]()
 		guard json.isArray else { return courses }
@@ -222,9 +221,8 @@ extension Course {
 		}
 		return courses
 	}
-}
 
-extension Course {
+	// MARK: - Generate Post Data
 	/// Generate a dictionary to post to server
 	public func generatePostDictionary() -> [String : AnyObject] {
 		
@@ -264,5 +262,24 @@ extension Course {
 		
 		return parameters
 		
+	}
+}
+
+extension Array where Element: Course {
+	public func saveToRealm(complete: ((succeed: Bool) -> Void)?) {
+		autoreleasepool {
+			do {
+				let realm = try Realm()
+				realm.beginWrite()
+				self.forEach({ (course) in
+					let object = CourseRealmObject(withCourse: course)
+					realm.add(object)
+				})
+				try realm.commitWrite()
+				complete?(succeed: true)
+			} catch {
+				complete?(succeed: false)
+			}
+		}
 	}
 }

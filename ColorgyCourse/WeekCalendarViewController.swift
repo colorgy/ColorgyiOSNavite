@@ -88,6 +88,7 @@ extension WeekCalendarViewController : ColorgyNavigationBarDelegate {
 	
 	public func colorgyNavigationBarAddButtonClicked() {
 		print(#function, #line)
+		
 	}
 }
 

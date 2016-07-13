@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-public class ServreCourseRealmObject: Object {
+public class ServerCourseRealmObject: Object {
     
 	dynamic var id: String = ""
 	dynamic var name: String = ""
@@ -33,7 +33,7 @@ public class ServreCourseRealmObject: Object {
 	var subcourses = List<SubcourseRealmObject>()
 	
 	// MARK: - Init
-	public convenience init(withCourse course: ServerCourse) {
+	public convenience init(withServerCourse course: ServerCourse) {
 		self.init()
 		self.id = course.id
 		self.name = course.name

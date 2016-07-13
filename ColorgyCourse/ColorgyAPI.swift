@@ -453,14 +453,14 @@ final public class ColorgyAPI : NSObject {
 	// MARK: - Enroll Courses
 	
 	/// Get current semester's course list.
-	public func getCoursesList(success: ((courseList: CourseList) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func getCoursesList(success: ((courses: [ServerCourse]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		let semester = Semester.currentSemesterAndYear()
 		getCoursesList(of: semester.year, andTerm: semester.term, success: success, failure: failure)
 	}
 	
 	/// Get a semester's course list
-	public func getCoursesList(of year: Int, andTerm term: Int, success: ((courseList: CourseList) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func getCoursesList(of year: Int, andTerm term: Int, success: ((courses: [ServerCourse]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			handleNetworkUnavailable(failure)
@@ -504,7 +504,7 @@ final public class ColorgyAPI : NSObject {
 	}
 	
 	/// Download the courses content of given url, will transform into objects.
-	public func courses(contentOf url: String?, success: ((courseList: CourseList) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
+	public func courses(contentOf url: String?, success: ((courses: [ServerCourse]) -> Void)?, failure: ((error: APIError, afError: AFError?) -> Void)?) {
 		
 		guard networkAvailable() else {
 			handleNetworkUnavailable(failure)
@@ -519,11 +519,9 @@ final public class ColorgyAPI : NSObject {
 			autoreleasepool({
 				if let coursesData = NSData(contentsOfURL: url.url!) {
 					let json = JSON(data: coursesData)
-					let courses = Course.generateCourses(with: json)
-					let courseList = CourseList()
-					courseList.add(courses)
+					let courses = ServerCourse.generateServerCourses(with: json)
 					self.mainBlock({ 
-						success?(courseList: courseList)
+						success?(courses: courses)
 					})
 				} else {
 					self.handleFailToDownloadContent(failure)
