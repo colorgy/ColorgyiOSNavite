@@ -29,11 +29,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ImagePickerSheetController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>KeychainSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -79,11 +74,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SKPhotoBrowser.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -97,12 +87,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1A8BF701EBA42A0673A5751BA7897113</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2AAAB9973850C35994DC04473435E1A3</key>
+		<key>2F3398364933A59A25341476071E34D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,42 +127,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>64DC7EAC5F96043ED49DA79C61C5B61A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7BD5E1E6DEB5F4484E8734483EF471CB</key>
+		<key>74A9FEF24271E92B0DB612FCF769A69F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7C1EC4DA4A7536498C1042E930D5CE91</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A478D7F98B28EDFBF767550820C96F5A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A791B427BC38BFEB6E1DF5277AC4EA74</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AA87C7BE9535B3C70A203899CF227486</key>
+		<key>910CB2A3249469FCD60D81FFD94F6958</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D5AA2B5508060DBAA909A65787DFBA18</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F6CBBEB124F216839564AA8A060010B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

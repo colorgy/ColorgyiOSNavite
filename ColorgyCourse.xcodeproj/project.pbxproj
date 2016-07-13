@@ -1010,6 +1010,7 @@
 				635479CD1CB8A2DD00DE8CBC /* ShellScript */,
 				72C3D4154267320270BDC8E2 /* [CP] Embed Pods Frameworks */,
 				98D7934C8A7FB89C48A3816E /* [CP] Copy Pods Resources */,
+				639EC8F11D35CB31003166CD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1223,6 +1224,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" e709dd3229ee919ed0fef9ac4423afa4c9bae156 2fbc1d63ab59663379a655410b55e15089849de3798b93b390afc2613c3a9bb4";
+		};
+		639EC8F11D35CB31003166CD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		72C3D4154267320270BDC8E2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
