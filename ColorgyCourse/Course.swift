@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 import RealmSwift
 
-final public class Course {
+public class Course : CustomStringConvertible {
 	
 	public private(set) var id: String
 	public private(set) var name: String
@@ -53,6 +53,11 @@ final public class Course {
 		static let courseTerm = "course_term"
 		static let courseYear = "course_year"
 		static let subcourses = "sub_courses"
+	}
+	
+	// MARK: - Description
+	public var description: String {
+		return "Course: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tstartTime: \(startTime)\n\tendTime: \(endTime)\n\tdetailDescription: \(detailDescription)\n\treferenceId: \(referenceId)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n\tcourseCredits: \(courseCredits)\n\tcourseLecturer: \(courseLecturer)\n\tcourseURL: \(courseURL)\n\tcourseCode: \(courseCode)\n\tcourseRequired: \(courseRequired)\n\tcourseTerm: \(courseTerm)\n\tcourseYear: \(courseYear)\n\tsubcourses: \(subcourses)\n}"
 	}
 	
 	// MARK: - Init
@@ -176,11 +181,23 @@ final public class Course {
 		self.subcourses = subcourses
 		
 	}
-}
-
-extension Course : CustomStringConvertible {
-	public var description: String {
-		return "Course: {\n\tid: \(id)\n\tname: \(name)\n\tuuid: \(uuid)\n\trrule: \(rrule)\n\tstartTime: \(startTime)\n\tendTime: \(endTime)\n\tdetailDescription: \(detailDescription)\n\treferenceId: \(referenceId)\n\tcreatedAt: \(createdAt)\n\tupdatedAt: \(updatedAt)\n\tcourseCredits: \(courseCredits)\n\tcourseLecturer: \(courseLecturer)\n\tcourseURL: \(courseURL)\n\tcourseCode: \(courseCode)\n\tcourseRequired: \(courseRequired)\n\tcourseTerm: \(courseTerm)\n\tcourseYear: \(courseYear)\n\tsubcourses: \(subcourses)\n}"
+	
+	public func saveToRealm(complete: ((succeed: Bool) -> Void)?) {
+		autoreleasepool {
+			do {
+				let realm = try Realm()
+				realm.beginWrite()
+				// start writing to realm
+				let courseRealmObject = CourseRealmObject(withCourse: self)
+				realm.add(courseRealmObject)
+				// commit write
+				try realm.commitWrite()
+				// finished
+				complete?(succeed: true)
+			} catch {
+				complete?(succeed: false)
+			}
+		}
 	}
 }
 
@@ -204,26 +221,6 @@ extension Course {
 			}
 		}
 		return courses
-	}
-}
-
-extension Course {
-	public func saveToRealm(complete: ((succeed: Bool) -> Void)?) {
-		autoreleasepool {
-			do {
-				let realm = try Realm()
-				realm.beginWrite()
-				// start writing to realm
-				let courseRealmObject = CourseRealmObject(withCourse: self)
-				realm.add(courseRealmObject)
-				// commit write
-				try realm.commitWrite()
-				// finished
-				complete?(succeed: true)
-			} catch {
-				complete?(succeed: false)
-			}
-		}
 	}
 }
 
