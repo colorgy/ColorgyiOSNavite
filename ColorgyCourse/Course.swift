@@ -182,6 +182,12 @@ public class Course : CustomStringConvertible {
 		
 	}
 	
+	// MARK: - Getters
+	public var isRecurrenceCourse: Bool {
+		return rrule == nil ? false : true
+	}
+	
+	// MARK: - DB methods
 	public func saveToRealm(complete: ((succeed: Bool) -> Void)?) {
 		autoreleasepool {
 			do {
