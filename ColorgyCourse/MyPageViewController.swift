@@ -90,7 +90,10 @@ extension MyPageViewController : MyPageMoreOptionViewDelegate {
 		               subcourses: [])
 		print(c)
 		
-		CourseRealmObject.
+		print(CourseRealmObject.getAllStoredObjects()?.count, "in course realm")
+		print(ServerCourseRealmObject.getAllStoredObjects()?.count, "int server course realm")
+		
+	
 	}
 }
 

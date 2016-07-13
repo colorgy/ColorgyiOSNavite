@@ -40,10 +40,7 @@ final public class ScheduleContext {
 	/// Init this array if user request to search server course.
 	public private(set) var serverCourses: [ServerCourse]
 	
-	// MARK: - 
-	public func retrieveData(from fromYear: Int, to toYear: Int, complete: (() -> Void)?) {
-		
-	}
+	// MARK: - Loading Methods
 	
 	/// Load and update course list of date.
 	/// This method will get first day in that month of given date.
@@ -53,23 +50,53 @@ final public class ScheduleContext {
 	///
 	/// When finish loading course list, will call the complete callback.
 	public func loadCourseList(of date: NSDate, complete: ((succeed: Bool) -> Void)?) {
-		guard let fromDate = date.beginingDateOfItsMonth else {
-			complete?(succeed: false)
-			return
+		qosBlock {
+			guard let fromDate = date.beginingDateOfItsMonth else {
+				self.mainBlock { complete?(succeed: false) }
+				return
+			}
+			guard let toDate = date.dateByAddingDay(41) else {
+				self.mainBlock { complete?(succeed: false) }
+				return
+			}
+			CourseRealmObject.queryDate(fromDate: fromDate, toDate: toDate) { (objects) in
+				// transform
+				let courses = Course.generateCourses(withRealmObjects: objects)
+				// clear old data
+				self.courseList.clearList()
+				// add to list
+				self.courseList.add(courses)
+				// notify update
+				self.mainBlock { complete?(succeed: true) }
+			}
 		}
-		guard let toDate = date.dateByAddingDay(41) else {
-			complete?(succeed: false)
-			return
+	}
+	
+	/// Lazy load server courses for searching courses.
+	public func loadServerCourses(complete: ((succeed: Bool) -> Void)?) {
+		qosBlock { 
+			guard let objects = ServerCourseRealmObject.getAllStoredObjects() else {
+				self.mainBlock { complete?(succeed: false) }
+				return
+			}
+			let courses = ServerCourse.generateServerCourses(withRealmObjects: objects)
+			self.serverCourses = courses
+			self.mainBlock { complete?(succeed: true) }
 		}
-		CourseRealmObject.queryDate(fromDate: fromDate, toDate: toDate) { (objects) in
-			// transform
-			let courses = Course.generateCourses(withRealmObjects: objects)
-			// clear old data
-			self.courseList.clearList()
-			// add to list
-			self.courseList.add(courses)
-			// notify update
-			complete?(succeed: true)
+	}
+	
+	// MARK: - Helper Methods
+	private func mainBlock(block: () -> Void) {
+		dispatch_async(dispatch_get_main_queue()) { 
+			block()
+		}
+	}
+	
+	private func qosBlock(block: () -> Void) {
+		let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
+		let queue = dispatch_get_global_queue(qos, 0)
+		dispatch_async(queue) { 
+			block()
 		}
 	}
 }

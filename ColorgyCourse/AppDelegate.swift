@@ -30,10 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// start monitoring
 		AFNetworkReachabilityManager.sharedManager().startMonitoring()
 		
-		// Setup Chat Contect
-//		ColorgyChatContext.initialize()
-		
 		ColorgyVersionControl.checkForUpdate()
+		
+		// Init Context
+		ScheduleContext.shared()
 
 		return true
 	}

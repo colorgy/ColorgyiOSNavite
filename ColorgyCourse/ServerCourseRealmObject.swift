@@ -56,4 +56,14 @@ public class ServerCourseRealmObject: Object {
 		let subcourseObjects = SubcourseRealmObject.generate(withSubcourses: course.subcourses)
 		self.subcourses.appendContentsOf(subcourseObjects)
 	}
+	
+	/// Get all stored objects of ServerCourseRealmObject
+	public class func getAllStoredObjects() -> [ServerCourseRealmObject]? {
+		do {
+			let realm = try Realm()
+			return realm.objects(ServerCourseRealmObject.self).map { $0 }
+		} catch {
+			return nil
+		}
+	}
 }

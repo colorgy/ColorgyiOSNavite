@@ -73,24 +73,6 @@ extension Realm {
 }
 
 extension CourseRealmObject {
-	public class func getCourseList() -> CourseList? {
-		do {
-			let realm = try Realm()
-			// get courses store in realm
-			// cause its Results, so we need to map it and turn it into sequence type
-			let courseObjects = realm.objects(CourseRealmObject.self).map { $0 }
-			// init a list
-			let courseList = CourseList()
-			// tranform into Course
-			let courses = Course.generateCourses(withRealmObjects: courseObjects)
-			// add to list
-			courseList.add(courses)
-			// return list
-			return courseList
-		} catch {
-			return nil
-		}
-	}
 	
 	public class func queryDate(fromDate fromDate: NSDate, toDate: NSDate, complete: ((objects: [CourseRealmObject]) -> Void)?) {
 		guard fromDate.isBefore(toDate) else {
@@ -125,9 +107,14 @@ extension CourseRealmObject {
 		queryDate(fromDate: fromDate, toDate: toDate, complete: complete)
 	}
 	
-	/// Get
-	public class func getAllStoredObjects() -> [CourseRealmObject] {
-		
+	/// Get all stored objects of CourseRealmObject
+	public class func getAllStoredObjects() -> [CourseRealmObject]? {
+		do {
+			let realm = try Realm()
+			return realm.objects(CourseRealmObject.self).map { $0 }
+		} catch {
+			return nil
+		}
 	}
 }
 
