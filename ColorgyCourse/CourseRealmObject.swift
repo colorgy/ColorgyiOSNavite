@@ -83,6 +83,8 @@ extension CourseRealmObject {
 		do {
 			let realm = try Realm()
 			let objects = realm.objects(CourseRealmObject.self).filter("rrule.dtStart <= %@ AND rrule.until >= %@", toDate, fromDate).map { $0 }
+			let objectsWithoutRRule = realm.objects(CourseRealmObject.self).filter("rrule == nil").map { $0 }
+			print(objectsWithoutRRule)
 //			let objects = realm.objects(CourseRealmObject.self).filter("dtStart <= %@ AND dtEnd >= %@", toDate, fromDate).map { $0 }
 			complete?(objects: objects)
 		} catch {

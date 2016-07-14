@@ -22,6 +22,10 @@ final public class WeekCalendarViewModel {
 	
 	// MARK: - Public methods
 	public func loadData(between fromDate: NSDate, and toDate: NSDate) {
-		Course
+		ScheduleContext.shared().loadCourseList(of: NSDate.create(dateOnYear: 2016, month: 7, day: 1)!) { (succeed) in
+			print(succeed, #line, #function)
+			let courses = ScheduleContext.shared().courseList
+			print(courses)
+		}
 	}
 }

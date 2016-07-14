@@ -13,11 +13,16 @@ final public class WeekCalendarViewController: UIViewController {
 	var v: WeekCalendarView!
 	var navigationBar: ColorgyNavigationBar!
 	var calendarView: DLCalendarView!
+	var viewModel: WeekCalendarViewModel?
 	
     override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		viewModel = WeekCalendarViewModel(delegate: self)
+		
+		
+		
 		navigationBar = ColorgyNavigationBar()
 		navigationBar.iWantACalendarButtonAtLeft()
 		navigationBar.iWantAAddButtonAtRight()
@@ -88,10 +93,14 @@ extension WeekCalendarViewController : ColorgyNavigationBarDelegate {
 	
 	public func colorgyNavigationBarAddButtonClicked() {
 		print(#function, #line)
-		
+		viewModel?.loadData(between: NSDate(), and: NSDate())
 	}
 }
 
 extension WeekCalendarViewController : DLCalendarViewDelegate {
+	
+}
+
+extension WeekCalendarViewController : WeekCalendarViewModelDelegate {
 	
 }
